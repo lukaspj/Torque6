@@ -27,7 +27,8 @@
 extern void CreateWin32MenuBar( void );
 extern void DestroyWin32MenuBar( void );
 extern bool HasWin32MenuBar( void );
-
-DLL_PUBLIC S32 main(S32 argc, const char **argv, HINSTANCE hInstance = NULL);
+extern "C" {
+   DLL_PUBLIC S32 main(S32 argc, const char **argv, HINSTANCE hInstance = NULL);
+}
 
 #endif _PLATFORM_WIN32_WINWINDOW_H
