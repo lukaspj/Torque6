@@ -46,6 +46,8 @@
 #include "collection/hashTable.h"
 #endif
 
+#include "c-interface/c-interface.h"
+
 static Mutex* sLogMutex;
 
 extern StringStack STR;
@@ -974,6 +976,10 @@ const char *execute(S32 argc, const char *argv[])
    if(isMainThread())
    {
 #endif
+      bool result;
+      const char* methodRes = CInterface::CallFunction(argv[0], argv + 1, argc - 1, &result);
+      if (result)
+         return methodRes;
       Namespace::Entry *ent;
       StringTableEntry funcName = StringTable->insert(argv[0]);
       ent = Namespace::global()->lookup(funcName);
@@ -1011,6 +1017,11 @@ const char *execute(S32 argc, const char *argv[])
 //------------------------------------------------------------------------------
 const char *execute(SimObject *object, S32 argc, const char *argv[],bool thisCallOnly)
 {
+   bool result;
+   const char* methodRes = CInterface::CallMethod(object, argv[0], argv+2, argc-2, &result);
+   if (result)
+      return methodRes;
+
    static char idBuf[16];
    if(argc < 2)
       return "";

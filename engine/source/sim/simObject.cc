@@ -32,6 +32,8 @@
 
 #include "simObject_ScriptBinding.h"
 
+#include "c-interface/c-interface.h"
+
 //-----------------------------------------------------------------------------
 
 IMPLEMENT_CONOBJECT(SimObject);
@@ -77,6 +79,9 @@ bool SimObject::isMethod( const char* methodName )
       return false;
 
    StringTableEntry stname = StringTable->insert( methodName );
+
+   if (CInterface::isMethod(getClassName(), stname))
+      return true;
 
    if( getNamespace() )
       return ( getNamespace()->lookup( stname ) != NULL );
