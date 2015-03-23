@@ -79,7 +79,8 @@ static Vector<OSCardProfile> sOSCardProfiles(__FILE__, __LINE__);
 
 //------------------------------------------------------------------------------
 
-#include "winOGLVideo_ScriptBinding.h"
+//TODO no need to include this afaik
+//#include "winOGLVideo_ScriptBinding.h"
 
 //------------------------------------------------------------------------------
 

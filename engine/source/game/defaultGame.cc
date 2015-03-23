@@ -82,7 +82,8 @@
 #endif
 
 // Script binding.
-#include "platform/platform_ScriptBinding.h"
+//TODO no need to include this here afaik
+//#include "platform/platform_ScriptBinding.h"
 
 //-----------------------------------------------------------------------------
 

@@ -94,8 +94,9 @@ ConsoleMethodGroupEndWithDocs(GameConnection)
 
 //added for a lack of a better place
 /*! Purge resources from the resource manager.
-*/
+WTF, this is defined in resourceManager
 ConsoleFunctionWithDocs( purgeResources, ConsoleVoid, 1, 1, ())
 {
    ResourceManager->purge();
 }
+*/
