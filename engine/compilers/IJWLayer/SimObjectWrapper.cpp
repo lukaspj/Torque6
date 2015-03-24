@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-#include "IJWLayer.h"
+#include "SimObjectWrapper.h"
 
 #include "console/consoleBaseType.h"
 #include <vcclr.h>
@@ -45,6 +45,19 @@ bool IJWLayer::SimObjectWrapper::IsAlive()
 }
 
 ///-------------------------------------------------------------------------------------------------
+/// <summary>  Gets object pointer. </summary>
+///
+/// <remarks>  Lukas, 24-03-2015. </remarks>
+///
+/// <returns>  null if it fails, else the object pointer. </returns>
+///-------------------------------------------------------------------------------------------------
+
+SimObject* IJWLayer::SimObjectWrapper::GetObjectPtr()
+{
+   return mObject;
+}
+
+///-------------------------------------------------------------------------------------------------
 /// <summary>  Get the unique numeric ID -- or "handle" -- of this object. </summary>
 ///
 /// <remarks>
@@ -64,6 +77,21 @@ int IJWLayer::SimObjectWrapper::GetID(String^ mName)
    SimObject* object = Sim::findObject(nativeString);
    if (object)
       return object->getId();
+   return -1;
+}
+
+///-------------------------------------------------------------------------------------------------
+/// <summary>  Gets the SimObjectID. </summary>
+///
+/// <remarks>  Lukas, 24-03-2015. </remarks>
+///
+/// <returns>  The SimObjectID. </returns>
+///-------------------------------------------------------------------------------------------------
+
+int IJWLayer::SimObjectWrapper::GetID()
+{
+   if (IsAlive())
+      return mObject->getId();
    return -1;
 }
 

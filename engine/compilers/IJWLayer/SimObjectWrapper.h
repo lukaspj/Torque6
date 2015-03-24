@@ -17,19 +17,22 @@ using namespace System;
 
 namespace IJWLayer {
 
-
 	public ref class SimObjectWrapper
-	{
+   {
    private:
-      SimObject *mObject;
       void *mPtr;
+   protected:
+      SimObject *mObject;
    public:
       SimObjectWrapper(int ID);
       ~SimObjectWrapper();
 
       bool IsAlive();
 
+      SimObject* GetObjectPtr();
+
       static int GetID(String^ mName);
+      int GetID();
       void SetName(String^ mNewName);
       String^ GetName();
       String^ getClassNamespace();

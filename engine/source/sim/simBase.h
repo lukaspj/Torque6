@@ -142,7 +142,7 @@ typedef U32 SimTime;
 
 namespace Sim
 {
-   DeclareNamedSet(ActiveActionMapSet)
+   DLL_PUBLIC DeclareNamedSet(ActiveActionMapSet)
    DeclareNamedSet(GhostAlwaysSet)
    DeclareNamedSet(BehaviorSet)
    DeclareNamedSet(AchievementSet)

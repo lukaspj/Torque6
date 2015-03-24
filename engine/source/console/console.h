@@ -302,7 +302,7 @@ namespace Con
    /// @param  pDstPath    Pointer to string buffer to fill with absolute path.
    /// @param  size        Size of buffer pointed to by pDstPath.
    /// @param  pSrcPath    Original, possibly relative path.
-   bool expandPath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWorkingDirectoryHint = NULL, const bool ensureTrailingSlash = false );
+   DLL_PUBLIC bool expandPath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWorkingDirectoryHint = NULL, const bool ensureTrailingSlash = false );
    void collapsePath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWorkingDirectoryHint = NULL );
    bool isBasePath( const char* SrcPath, const char* pBasePath );
    void ensureTrailingSlash( char* pDstPath, const char* pSrcPath );
