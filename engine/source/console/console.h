@@ -568,10 +568,10 @@ namespace Con
    /// @endcode
    // [neo, 5/10/2007 - #3010]
    // Added flag thisCallOnly to bypass dynamic method calls
-   const char *execute(SimObject *object, S32 argc, const char *argv[], bool thisCallOnly = false);
+   DLL_PUBLIC const char *execute(SimObject *object, S32 argc, const char *argv[], bool thisCallOnly = false);
 
    /// @see execute(SimObject *, S32 argc, const char *argv[])
-   const char *executef(SimObject *, S32 argc, ...);
+   DLL_PUBLIC const char *executef(SimObject *, S32 argc, ...);
 
    /// Evaluate an arbitrary chunk of code.
    ///
@@ -597,7 +597,7 @@ namespace Con
    /// @{
 
    ///
-   char *getReturnBuffer(U32 bufferSize);
+   DLL_PUBLIC char *getReturnBuffer(U32 bufferSize);
    char *getReturnBuffer(const char *stringToCopy);
 
    char *getArgBuffer(U32 bufferSize);
@@ -822,7 +822,7 @@ public:
 
 #  define ConsoleFunctionWithDocs(name,returnType,minArgs,maxArgs,argString)              \
       static returnType c##name(SimObject *, S32, const char **argv);                     \
-	  static ConsoleConstructor g##name##obj(NULL,#name,c##name,#argString,minArgs,maxArgs);      \
+      static ConsoleConstructor g##name##obj(NULL,#name,c##name,#argString,minArgs,maxArgs);      \
       static returnType c##name(SimObject *, S32 argc, const char **argv)
 
 #  define ConsoleFunctionGroupEnd(groupName) \

@@ -160,8 +160,8 @@ namespace Sim
    SimDataBlockGroup *getDataBlockGroup();
    SimGroup* getRootGroup();
 
-   SimObject* findObject(SimObjectId);
-   SimObject* findObject(const char* name);
+   DLL_PUBLIC SimObject* findObject(SimObjectId);
+   DLL_PUBLIC SimObject* findObject(const char* name);
    template<class T> inline bool findObject(SimObjectId id,T*&t)
    {
       t = dynamic_cast<T*>(findObject(id));
@@ -183,11 +183,11 @@ namespace Sim
 
    void advanceToTime(SimTime time);
    void advanceTime(SimTime delta);
-   SimTime getCurrentTime();
+   DLL_PUBLIC SimTime getCurrentTime();
    SimTime getTargetTime();
 
    /// a target time of 0 on an event means current event
-   U32 postEvent(SimObject*, SimEvent*, U32 targetTime);
+   DLL_PUBLIC U32 postEvent(SimObject*, SimEvent*, U32 targetTime);
 
    inline U32 postEvent(SimObjectId iD,SimEvent*evt, U32 targetTime)
    {
@@ -210,7 +210,7 @@ namespace Sim
       return postEvent(obj,evt,getCurrentTime());
    }
 
-   void cancelEvent(U32 eventId);
+   DLL_PUBLIC void cancelEvent(U32 eventId);
    bool isEventPending(U32 eventId);
    U32  getEventTimeLeft(U32 eventId);
    U32  getTimeSinceStart(U32 eventId);
