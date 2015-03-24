@@ -47,7 +47,9 @@ namespace HorribleHackz
          {
             found = true;
             object simObj = Activator.CreateInstance(type, args);
-            return (string)callbackMethod.Invoke(simObj, args);
+            if (callbackMethod.ReturnType == typeof(string))
+               return (string)callbackMethod.Invoke(simObj, args);
+            callbackMethod.Invoke(simObj, args);
          }
          found = false;
          return null;

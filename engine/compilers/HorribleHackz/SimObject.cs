@@ -21,12 +21,8 @@ namespace HorribleHackz
       }
 
       [ConsoleFunction]
-      public static string BeforeQuit()
+      public static void BeforeQuit()
       {
-         SimObjectWrapper wrapper = new SimObjectWrapper(SimObjectWrapper.GetID("Test"));
-         wrapper.deleteObject();
-         wrapper.GetName();
-         return "";
       }
    }
 }
