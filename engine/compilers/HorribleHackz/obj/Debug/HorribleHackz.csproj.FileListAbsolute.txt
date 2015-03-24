@@ -1,0 +1,6 @@
+E:\GitHub\Torque6\build\HorribleHackz.exe.config
+E:\GitHub\Torque6\build\HorribleHackz.exe
+E:\GitHub\Torque6\build\HorribleHackz.pdb
+E:\GitHub\Torque6\engine\compilers\HorribleHackz\obj\Debug\HorribleHackz.csprojResolveAssemblyReference.cache
+E:\GitHub\Torque6\engine\compilers\HorribleHackz\obj\Debug\HorribleHackz.exe
+E:\GitHub\Torque6\engine\compilers\HorribleHackz\obj\Debug\HorribleHackz.pdb
