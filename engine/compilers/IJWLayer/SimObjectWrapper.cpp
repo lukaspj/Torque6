@@ -17,6 +17,12 @@ IJWLayer::SimObjectWrapper::SimObjectWrapper(int ID)
    mPtr = new SimObjectPtr<SimObject>(mObject);
 }
 
+IJWLayer::SimObjectWrapper::SimObjectWrapper(SimObject* object)
+{
+   mObject = object;
+   mPtr = new SimObjectPtr<SimObject>(mObject);
+}
+
 IJWLayer::SimObjectWrapper::~SimObjectWrapper()
 {
    if (IsAlive())

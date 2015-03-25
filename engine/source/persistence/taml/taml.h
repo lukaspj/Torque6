@@ -69,9 +69,11 @@ extern StringTableEntry tamlNamedObjectName;
 
 //-----------------------------------------------------------------------------
 
+template class DLL_PUBLIC HashMap < SimObjectId, TamlWriteNode* > ;
+
 /// @ingroup tamlGroup
 /// @see tamlGroup
-class Taml : public SimObject
+class DLL_PUBLIC Taml : public SimObject
 {
 public:
     enum TamlFormatMode

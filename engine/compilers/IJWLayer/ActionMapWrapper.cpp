@@ -1,6 +1,5 @@
 // This is the main DLL file.
 
-#pragma warning( push )
 #pragma warning( disable : 4251)
 #include "stdafx.h"
 
@@ -395,5 +394,3 @@ String^ IJWLayer::ActionMapWrapper::getDeadZone(String^ device, String^ action)
    const char* _action = (char*)Marshal::StringToHGlobalAnsi(action).ToPointer();
    return gcnew String(GetObjectPtr()->getDeadZone(_device, _action));
 }
-
-#pragma warning( pop ) 

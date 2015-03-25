@@ -814,7 +814,7 @@ ConsoleMethodWithDocs( AssetManager, findInvalidAssetReferences, ConsoleInt, 3, 
     @param assetQueryAsSource Whether to use the asset query as the data-source rather than the asset managers database or not.  Doing this effectively filters the asset query.  Optional: Defaults to false.
     @return The number of asset Ids found or (-1) if an error occurred.
 */
-ConsoleMethodWithDocs( AssetManager, findTaggedAssets, ConsoleInt, 4, 5, (assetQuery, assetTagNames, [assetQueryAsSource?]))
+ConsoleMethodWithDocs( AssetManager, findTaggedAssets, ConsoleInt, 4, 5, (assetQuery, assetTagNamesassetTagNames, [assetQueryAsSource?]))
 {
     // Fetch asset query.
     AssetQuery* pAssetQuery = Sim::findObject<AssetQuery>( argv[2] );

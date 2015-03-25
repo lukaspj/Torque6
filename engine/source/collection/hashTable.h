@@ -31,15 +31,15 @@ namespace Hash
 {
 //-Mat this was copied from StringTable
     void initTolowerTable();
-   U32 hash(const char *str);
+   DLL_PUBLIC U32 hash(const char *str);
 
 //-Mat
-   inline U32 hash(U32 data)
+   DLL_PUBLIC inline U32 hash(U32 data)
    {
       return data;
    }
 
-   inline U32 hash(const void *data)
+   DLL_PUBLIC inline U32 hash(const void *data)
    {
 #ifdef TORQUE_64
       return (U32)((U64)data);

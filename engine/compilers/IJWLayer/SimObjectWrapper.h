@@ -3,7 +3,6 @@
 #pragma once
 
 #define TINYXML_INCLUDED
-#define TORQUE_DEBUG
 
 class TiXmlElement;
 
@@ -25,6 +24,7 @@ namespace IJWLayer {
       SimObject *mObject;
    public:
       SimObjectWrapper(int ID);
+      SimObjectWrapper(SimObject* obj);
       ~SimObjectWrapper();
 
       bool IsAlive();

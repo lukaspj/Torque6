@@ -69,7 +69,7 @@ class AssetPtrBase;
 
 //-----------------------------------------------------------------------------
 
-class AssetManager : public SimObject, public ModuleCallbacks
+class DLL_PUBLIC AssetManager : public SimObject, public ModuleCallbacks
 {
 private:
     typedef SimObject Parent;
@@ -390,6 +390,6 @@ private:
 
 //-----------------------------------------------------------------------------
 
-extern AssetManager AssetDatabase;
+DLL_PUBLIC extern AssetManager AssetDatabase;
 
 #endif // _ASSET_MANAGER_H_

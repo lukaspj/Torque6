@@ -105,7 +105,7 @@ class TextureObject;
 ///
 /// Also note the operator TextureObject*, as you can actually cast
 /// a TextureHandle to a TextureObject* if necessary.
-class TextureHandle
+class DLL_PUBLIC TextureHandle
 {    
 public:
     enum TextureHandleType
