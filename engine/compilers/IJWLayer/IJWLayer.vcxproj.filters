@@ -98,6 +98,21 @@
     <ClInclude Include="SimObjects\Headers\UndoWrappers.h">
       <Filter>SimObjects\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Namespaces\Headers\Platform.h">
+      <Filter>Namespaces\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Namespaces\Headers\Console.h">
+      <Filter>Namespaces\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Namespaces\Headers\Script.h">
+      <Filter>Namespaces\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Namespaces\Headers\Globals.h">
+      <Filter>Namespaces\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Namespaces\Headers\Version.h">
+      <Filter>Namespaces\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -167,6 +182,21 @@
     </ClCompile>
     <ClCompile Include="SimObjects\Sources\UndoWrappers.cpp">
       <Filter>SimObjects\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Namespaces\Sources\Platform.cpp">
+      <Filter>Namespaces\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Namespaces\Sources\Console.cpp">
+      <Filter>Namespaces\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Namespaces\Sources\Script.cpp">
+      <Filter>Namespaces\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Namespaces\Sources\Globals.cpp">
+      <Filter>Namespaces\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Namespaces\Sources\Version.cpp">
+      <Filter>Namespaces\Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

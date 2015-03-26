@@ -60,7 +60,7 @@ namespace Zip
    class CentralDir;
 }
 
-extern ResManager *ResourceManager;
+DLL_PUBLIC extern ResManager *ResourceManager;
 
 //------------------------------------------------------------------------------
 class ResourceObject;

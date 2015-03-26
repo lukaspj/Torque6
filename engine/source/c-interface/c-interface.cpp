@@ -12,14 +12,19 @@ bool CInterface::isMethod(const char* className, const char* methodName)
    return GetCInterface()._isMethod(className, methodName);
 }
 
-char* CInterface::CallFunction(const char* name, const char **argv, int argc, bool *result)
+const char* CInterface::CallFunction(const char* name, const char **argv, int argc, bool *result)
 {
    return GetCInterface()._CallFunction(name, argv, argc, result);
 }
 
-char* CInterface::CallMethod(SimObject* obj, const char* name, const char **argv, int argc, bool *res)
+const char* CInterface::CallMethod(SimObject* obj, const char* name, const char **argv, int argc, bool *res)
 {
    return GetCInterface()._CallMethod(obj->getClassName(), obj->getId(), name, argv, argc, res);
+}
+
+void CInterface::CallMain(bool *res)
+{
+   GetCInterface()._CallMain(res);
 }
 
 bool CInterface::_isMethod(const char* className, const char* methodName)
@@ -30,26 +35,37 @@ bool CInterface::_isMethod(const char* className, const char* methodName)
    return NULL;
 }
 
-char* CInterface::_CallFunction(const char* name, const char **argv, int argc, bool *result)
+const char* CInterface::_CallFunction(const char* name, const char **argv, int argc, bool *result)
 {
    if (mFunctionCallback){
       return mFunctionCallback(name, argv, argc, result);
    }
-   result = false;
+   *result = false;
    return NULL;
 }
 
-char* CInterface::_CallMethod(const char* className, U32 object, const char* name, const char **argv, int argc, bool *res)
+const char* CInterface::_CallMethod(const char* className, U32 object, const char* name, const char **argv, int argc, bool *res)
 {
    if (mMethodCallback){
       return mMethodCallback(className, object, name, argv, argc, res);
    }
-   res = false;
+   *res = false;
    return NULL;
 }
 
-void SetCallbacks(void* ptr, void* methodPtr, void* isMethodPtr) {
+void CInterface::_CallMain(bool *res)
+{
+   if (mMainCallback){
+      *res = true;
+      mMainCallback();
+      return;
+   }
+   *res = false;
+}
+
+void SetCallbacks(void* ptr, void* methodPtr, void* isMethodPtr, void* mainPtr) {
    CInterface::GetCInterface().SetCallFunctionCallback(ptr);
    CInterface::GetCInterface().SetCallMethodCallback(methodPtr);
    CInterface::GetCInterface().SetCallIsMethodCallback(isMethodPtr);
+   CInterface::GetCInterface().SetMainCallback(mainPtr);
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -9,6 +8,14 @@ namespace HorribleHackz
 {
    class Initializer
    {
+
+      private static MethodInfo mScriptEntryPointMethodInfo = null;
+
+      public static MethodInfo GetScriptEntry()
+      {
+         return mScriptEntryPointMethodInfo;
+      }
+
       public static void InitializeTypeDictionaries()
       {
          var types = AppDomain.CurrentDomain.GetAssemblies()
@@ -27,6 +34,20 @@ namespace HorribleHackz
                      methodInfo.GetCustomAttributes<ConsoleFunctionAttribute>(false);
                if (functionAttributes.Any())
                   EngineCallbacks.RegisterFunction(functionAttributes.First().FunctionName ?? methodInfo.Name, methodInfo);
+
+               IEnumerable<ScriptEntryPointAttribute> entryAttribute =
+                     methodInfo.GetCustomAttributes<ScriptEntryPointAttribute>(false);
+               if (entryAttribute.Any())
+               {
+                  if (methodInfo.IsStatic && !methodInfo.GetParameters().Any() && methodInfo.ReturnType == typeof (void))
+                  {
+                     mScriptEntryPointMethodInfo = methodInfo;
+                  }
+                  else
+                  {
+                     Console.WriteLine("ScriptEntry method: " + methodInfo.Name + " did not match the necessary signature.");
+                  }
+               }
             }
          }
       }

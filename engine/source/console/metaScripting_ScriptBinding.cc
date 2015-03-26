@@ -189,7 +189,7 @@ ConsoleFunctionWithDocs(compilePath, ConsoleString, 2, 2, ( path ))
    return result;
 }
 
-static bool scriptExecutionEcho = false;
+DLL_PUBLIC extern bool scriptExecutionEcho = false;
 /*! Whether to echo script file execution or not.
 */
 ConsoleFunctionWithDocs(setScriptExecEcho, ConsoleVoid, 2, 2, (echo?))

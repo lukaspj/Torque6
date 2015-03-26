@@ -86,7 +86,7 @@ class Point2I;
 
 //------------------------------------------------------------------------------
 
-struct Platform
+DLL_PUBLIC struct Platform
 {
     struct LocalTime
     {
@@ -140,12 +140,12 @@ struct Platform
     static void shutdown();
     static void sleep(U32 ms);
     static void restartInstance();
-    static void postQuitMessage(const U32 in_quitVal);
+    DLL_PUBLIC static void postQuitMessage(const U32 in_quitVal);
     static void forceShutdown(S32 returnValue);
 
     /// User.
-    static StringTableEntry getUserHomeDirectory();
-    static StringTableEntry getUserDataDirectory();
+    DLL_PUBLIC static StringTableEntry getUserHomeDirectory();
+    DLL_PUBLIC static StringTableEntry getUserDataDirectory();
 
     /// Window.
     static void initWindow(const Point2I &initialSize, const char *name);
@@ -186,12 +186,12 @@ struct Platform
 
     /// File IO.
     static StringTableEntry getCurrentDirectory();
-    static bool setCurrentDirectory(StringTableEntry newDir);
+    DLL_PUBLIC static bool setCurrentDirectory(StringTableEntry newDir);
     static StringTableEntry getTemporaryDirectory();
     static StringTableEntry getTemporaryFileName();
     static StringTableEntry getExecutableName();
     static StringTableEntry getExecutablePath(); 
-    static void setMainDotCsDir(const char *dir);
+    DLL_PUBLIC static void setMainDotCsDir(const char *dir);
     static StringTableEntry getMainDotCsDir();
     static StringTableEntry getPrefsPath(const char *file = NULL);
     static char *makeFullPathName(const char *path, char *buffer, U32 size, const char *cwd = NULL);

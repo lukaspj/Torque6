@@ -390,39 +390,39 @@ namespace Con
    /// Assign a string value to a global console variable
    /// @param name   Global console variable name to set
    /// @param value  String value to assign to this variable.
-   void setVariable(const char *name, const char *value);
+   DLL_PUBLIC void setVariable(const char *name, const char *value);
 
    /// Retrieve the string value of a global console variable
    /// @param name   Global Console variable name to query
    /// @return       The string value of the variable or "" if the variable does not exist.
-   const char* getVariable(const char* name);
+   DLL_PUBLIC const char* getVariable(const char* name);
 
    /// Same as setVariable(), but for bools.
-   void setBoolVariable (const char* name,bool var);
+   DLL_PUBLIC void setBoolVariable(const char* name, bool var);
 
    /// Same as getVariable(), but for bools.
    ///
    /// @param  name  Name of the variable.
    /// @param  def   Default value to supply if no matching variable is found.
-   bool getBoolVariable (const char* name,bool def = false);
+   DLL_PUBLIC bool getBoolVariable(const char* name, bool def = false);
 
    /// Same as setVariable(), but for ints.
-   void setIntVariable  (const char* name,S32 var);
+   DLL_PUBLIC void setIntVariable  (const char* name,S32 var);
 
    /// Same as getVariable(), but for ints.
    ///
    /// @param  name  Name of the variable.
    /// @param  def   Default value to supply if no matching variable is found.
-   S32  getIntVariable  (const char* name,S32 def = 0);
+   DLL_PUBLIC S32  getIntVariable(const char* name, S32 def = 0);
 
    /// Same as setVariable(), but for floats.
-   void setFloatVariable(const char* name,F32 var);
+   DLL_PUBLIC void setFloatVariable(const char* name, F32 var);
 
    /// Same as getVariable(), but for floats.
    ///
    /// @param  name  Name of the variable.
    /// @param  def   Default value to supply if no matching variable is found.
-   F32  getFloatVariable(const char* name,F32 def = .0f);
+   DLL_PUBLIC F32  getFloatVariable(const char* name, F32 def = .0f);
 
    /// @}
 
@@ -622,7 +622,7 @@ namespace Con
 
    void getLockLog(ConsoleLogEntry * &log, U32 &size);
    void unlockLog(void);
-   void setLogMode(S32 mode);
+   DLL_PUBLIC void setLogMode(S32 mode);
 
    /// @}
 

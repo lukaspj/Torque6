@@ -36,10 +36,10 @@ const char* getVersionString();
 /// Gets the compile date and time
 const char* getCompileTimeString();
 
-const char* getCompanyName();
-const char* getProductName();
+DLL_PUBLIC const char* getCompanyName();
+DLL_PUBLIC const char* getProductName();
 
-void setCompanyName(StringTableEntry companyName);
-void setProductName(StringTableEntry productName);
+DLL_PUBLIC void setCompanyName(StringTableEntry companyName);
+DLL_PUBLIC void setProductName(StringTableEntry productName);
 
 #endif // _ENGINE_VERSION_H_

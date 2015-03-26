@@ -58,6 +58,7 @@
 #include "platform/nativeDialogs/msgBox.h"
 #include "platform/nativeDialogs/fileDialog.h"
 #include "memory/safeDelete.h"
+#include "c-interface/c-interface.h"
 
 #include <stdio.h>
 
@@ -244,6 +245,11 @@ bool initializeGame(int argc, const char **argv)
     // Scan executable location and all sub-directories.
     ResourceManager->setWriteablePath(Platform::getCurrentDirectory());
     ResourceManager->addPath( Platform::getCurrentDirectory() );
+
+    bool externalMain = false;
+    CInterface::CallMain(&externalMain);
+    if (externalMain)
+       return true;
 
     FileStream scriptFileStream; 
     Stream* scriptStream;

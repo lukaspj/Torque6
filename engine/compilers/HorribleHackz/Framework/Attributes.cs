@@ -23,4 +23,9 @@ namespace HorribleHackz.CustomAttributes
          FunctionName = pFunctionName;
       }
    }
+
+   [AttributeUsage(AttributeTargets.Method)]
+   class ScriptEntryPointAttribute : Attribute
+   {
+   }
 }
