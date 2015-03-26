@@ -35,7 +35,7 @@ class NetConnection;
 class NetStringHandle;
 extern U32 GameAddTaggedString(const char *string);
 
-class NetStringTable
+class DLL_PUBLIC NetStringTable
 {
    friend class NetStringHandle;
    friend U32 GameAddTaggedString(const char *string);
@@ -95,7 +95,7 @@ public:
 #endif // DEBUG
 };
 
-extern NetStringTable *gNetStringTable;
+DLL_PUBLIC extern NetStringTable *gNetStringTable;
 
 class NetStringHandle
 {

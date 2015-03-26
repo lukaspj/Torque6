@@ -1,7 +1,6 @@
-using namespace System;
+using System::String;
 
 namespace IJWLayer {
-
    public ref class MarshalHelper
    {
    public:

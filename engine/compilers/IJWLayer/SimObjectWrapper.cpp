@@ -9,6 +9,7 @@
 #include "sim/simObjectTimerEvent.h"
 #include "string/stringTable.h"
 
+using namespace System;
 using namespace System::Runtime::InteropServices;
 
 IJWLayer::SimObjectWrapper::SimObjectWrapper(int ID)

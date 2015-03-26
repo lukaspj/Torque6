@@ -5,6 +5,8 @@
 #include "SimObjectWrapper.h"
 
 #include "assets/assetBase.h"
+#include "assets/declaredAssets.h"
+#include "assets/referencedAssets.h"
 #include "audio/AudioAsset.h"
 #include "3d/assets/baseMaterialAsset.h"
 #include "3d/assets/deferredMaterialAsset.h"
@@ -17,6 +19,26 @@
 using namespace System;
 
 namespace IJWLayer {
+
+   public ref class DeclaredAssetWrapper : SimObjectWrapper
+	{
+   public:
+      DeclaredAssetWrapper(int ID) : SimObjectWrapper(ID){};
+
+      DeclaredAssets* GetObjectPtr(){
+         return static_cast<DeclaredAssets*>(mObject);
+      };
+	};
+
+   public ref class ReferencedAssetsWrapper : SimObjectWrapper
+	{
+   public:
+      ReferencedAssetsWrapper(int ID) : SimObjectWrapper(ID){};
+
+      ReferencedAssets* GetObjectPtr(){
+         return static_cast<ReferencedAssets*>(mObject);
+      };
+	};
 
    public ref class AssetBaseWrapper : SimObjectWrapper
 	{

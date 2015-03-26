@@ -12,7 +12,7 @@ class TiXmlElement;
 #include "sim/simObjectPtr.h"
 #pragma managed(pop)
 
-using namespace System;
+using System::String;
 
 namespace IJWLayer {
 

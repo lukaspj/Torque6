@@ -71,8 +71,8 @@ struct Net
    static Error sendtoSocket(NetSocket socket, const U8 *buffer, S32 bufferSize);
 
    static bool compareAddresses(const NetAddress *a1, const NetAddress *a2);
-   static bool stringToAddress(const char *addressString, NetAddress *address);
-   static void addressToString(const NetAddress *address, char addressString[256]);
+   DLL_PUBLIC static bool stringToAddress(const char *addressString, NetAddress *address);
+   DLL_PUBLIC static void addressToString(const NetAddress *address, char addressString[256]);
 
    // Lower-level socket-based functions.
    static NetSocket openSocket();

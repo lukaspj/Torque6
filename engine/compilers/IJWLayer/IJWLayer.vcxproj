@@ -55,9 +55,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>TORQUE_PLUGIN;WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TORQUE_PLUGIN;WIN32;TORQUE_MULTITHREAD;TORQUE_ENABLE_PROFILER;TORQUE_DEBUG;TORQUE_DEBUG_GUARD;_CRT_SECURE_NO_DEPRECATE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>../../../engine/source/;../../../engine/lib/assimp/include;../../../engine/lib/bgfx/include;../../../engine/lib/bgfx/common/imgui;../../../engine/lib/bgfx/common/nanovg;../../../engine/lib/openal/win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../engine/source/;../../../engine/lib/assimp/include;../../../engine/lib/bgfx/include;../../../engine/lib/bgfx/common/imgui;../../../engine/lib/bgfx/common/nanovg;../../../engine/lib/lpng;../../../engine/lib/openal/win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -68,9 +68,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>TORQUE_PLUGIN;WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TORQUE_PLUGIN;WIN32;NDEBUG;UNICODE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>../../../engine/source/;../../../engine/lib/assimp/include;../../../engine/lib/bgfx/include;../../../engine/lib/bgfx/common/imgui;../../../engine/lib/bgfx/common/nanovg;../../../engine/lib/openal/win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../engine/source/;../../../engine/lib/assimp/include;../../../engine/lib/bgfx/include;../../../engine/lib/bgfx/common/imgui;../../../engine/lib/bgfx/common/nanovg;../../../engine/lib/lpng;../../../engine/lib/openal/win32;../../../engine/lib/lpng;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -84,17 +84,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IJWLayer.h" />
+    <ClInclude Include="ActionMapWrapper.h" />
+    <ClInclude Include="AssetManagerWrapper.h" />
+    <ClInclude Include="AssetWrappers.h" />
+    <ClInclude Include="BehaviourWrappers.h" />
+    <ClInclude Include="ConsoleWrappers.h" />
+    <ClInclude Include="DatablockWrapper.h" />
+    <ClInclude Include="DebuggerWrapper.h" />
+    <ClInclude Include="EventManagerWrapper.h" />
+    <ClInclude Include="FileWrappers.h" />
+    <ClInclude Include="GraphicsWrappers.h" />
+    <ClInclude Include="GuiWrappers.h" />
+    <ClInclude Include="InputDeviceWrappers.h" />
+    <ClInclude Include="LanguageWrappers.h" />
+    <ClInclude Include="MarshalHelper.h" />
+    <ClInclude Include="MessageWrappers.h" />
+    <ClInclude Include="ModuleWrappers.h" />
+    <ClInclude Include="NetworkWrappers.h" />
+    <ClInclude Include="SceneWrappers.h" />
+    <ClInclude Include="PersistenceWrapper.h" />
+    <ClInclude Include="SimObjectWrapper.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="CollectionsWrapper.h" />
     <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="StreamWrappers.h" />
+    <ClInclude Include="UndoWrappers.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ActionMapWrapper.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="IJWLayer.cpp" />
+    <ClCompile Include="AssetManagerWrapper.cpp" />
+    <ClCompile Include="AssetWrappers.cpp" />
+    <ClCompile Include="BehaviourWrappers.cpp" />
+    <ClCompile Include="ConsoleWrappers.cpp" />
+    <ClCompile Include="DebuggerWrapper.cpp" />
+    <ClCompile Include="EventManagerWrapper.cpp" />
+    <ClCompile Include="FileWrappers.cpp" />
+    <ClCompile Include="GraphicsWrappers.cpp" />
+    <ClCompile Include="GuiWrappers.cpp" />
+    <ClCompile Include="InputDeviceWrappers.cpp" />
+    <ClCompile Include="LanguageWrappers.cpp" />
+    <ClCompile Include="MarshalHelper.cpp" />
+    <ClCompile Include="MessageWrappers.cpp" />
+    <ClCompile Include="ModuleWrappers.cpp" />
+    <ClCompile Include="NetworkWrappers.cpp" />
+    <ClCompile Include="SceneWrappers.cpp" />
+    <ClCompile Include="PersistenceWrapper.cpp" />
+    <ClCompile Include="SimObjectWrapper.cpp" />
+    <ClCompile Include="CollectionsWrapper.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="StreamWrappers.cpp" />
+    <ClCompile Include="UndoWrappers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />

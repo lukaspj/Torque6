@@ -32,7 +32,7 @@ struct PlatformPopupMenuData;
 // PopupMenu represents a menu.
 // You can add menu items to the menu, but there is no torque object associated
 // with these menu items, they exist only in a  platform specific manner.
-class PopupMenu : public SimObject, public virtual Dispatcher::IMessageListener
+class DLL_PUBLIC PopupMenu : public SimObject, public virtual Dispatcher::IMessageListener
 {
    typedef SimObject Parent;
 

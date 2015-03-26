@@ -516,7 +516,7 @@ namespace Con
    /// @param _format   A stdlib printf style formatted out put string
    /// @param ...       Variables to be written
    /// @see Con::errorf()
-   void errorf(ConsoleLogEntry::Type type, const char *_format, ...);
+   void DLL_PUBLIC errorf(ConsoleLogEntry::Type type, const char *_format, ...);
 
    /// clear the console log
    void cls( void );
@@ -638,8 +638,8 @@ namespace Con
    const char *getTypeName(S32 type);
    bool isDatablockType( S32 type ); */
 
-   void setData(S32 type, void *dptr, S32 index, S32 argc, const char **argv, EnumTable *tbl = NULL, BitSet32 flag = 0);
-   const char *getData(S32 type, void *dptr, S32 index, EnumTable *tbl = NULL, BitSet32 flag = 0);
+   DLL_PUBLIC void setData(S32 type, void *dptr, S32 index, S32 argc, const char **argv, EnumTable *tbl = NULL, BitSet32 flag = 0);
+   DLL_PUBLIC const char *getData(S32 type, void *dptr, S32 index, EnumTable *tbl = NULL, BitSet32 flag = 0);
    /// @}
 };
 

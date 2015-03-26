@@ -348,7 +348,7 @@ const char* mConvertMaskToString( const U32 mask )
     return bits;
 }
 
-Point3F mConvertStringToPoint3F( const char* pString )
+Point3F mConvertStringToPoint3F(const char* pString)
 {
    const U32 elementCount = Utility::mGetStringElementCount(pString);
 

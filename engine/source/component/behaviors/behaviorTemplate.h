@@ -33,7 +33,7 @@
 
 //-----------------------------------------------------------------------------
 
-class BehaviorTemplate : public SimObject
+class DLL_PUBLIC BehaviorTemplate : public SimObject
 {
    typedef SimObject Parent;
 

@@ -56,7 +56,7 @@ class AssetManager;
 
 //-----------------------------------------------------------------------------
 
-class AssetTagsManifest : public SimObject
+class DLL_PUBLIC AssetTagsManifest : public SimObject
 {
     friend class AssetManager;
 

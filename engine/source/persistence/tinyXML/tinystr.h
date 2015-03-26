@@ -44,6 +44,9 @@ distribution.
     #define TIXML_EXPLICIT
 #endif
 
+// Plugin Export
+#include "platform/platformLibrary.h"
+
 
 /*
    TiXmlString is an emulation of a subset of the std::string template.
@@ -247,7 +250,7 @@ class TiXmlString
     }
 
     Rep * rep_;
-    static Rep nullrep_;
+    DLL_PUBLIC static Rep nullrep_;
 
 } ;
 

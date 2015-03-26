@@ -6,9 +6,9 @@
 
 #include "input/actionMap.h"
 
-using namespace System;
-
 namespace IJWLayer {
+
+   using namespace System;
 
    public ref class ActionMapWrapper : SimObjectWrapper
 	{

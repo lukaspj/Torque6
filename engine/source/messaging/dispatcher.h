@@ -64,7 +64,7 @@ namespace Dispatcher
 ///
 /// @see ScriptMsgListener
 //////////////////////////////////////////////////////////////////////////
-class IMessageListener
+class DLL_PUBLIC IMessageListener
 {
 protected:
    /// List of queues this listener is registered with.

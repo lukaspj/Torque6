@@ -52,7 +52,7 @@ class CodeBlock;
 
 //-----------------------------------------------------------------------------
 
-class RemoteDebuggerBase : public SimObject, public virtual Tickable
+class DLL_PUBLIC RemoteDebuggerBase : public SimObject, public virtual Tickable
 {
     friend class RemoteDebuggerBridge;
 

@@ -32,7 +32,7 @@ void RegisterMathFunctions(void);
 // Define Math Console Types
 DefineConsoleType( TypePoint2I )
 DefineConsoleType( TypePoint2F )
-DefineConsoleType( TypePoint3F )
+DLL_PUBLIC DefineConsoleType( TypePoint3F )
 DefineConsoleType( TypePoint4F )
 DefineConsoleType( TypePoint2FVector )
 DefineConsoleType( TypeRectI )

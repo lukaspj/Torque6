@@ -2,8 +2,9 @@
 
 #pragma once
 
-#include "SimSetWrapper.h"
+#include "CollectionsWrapper.h"
 #include "module/moduleManager.h"
+#include "module/moduleMergeDefinition.h"
 
 using namespace System;
 
@@ -26,6 +27,7 @@ namespace IJWLayer {
    {
    public:
       ModuleDefinitionWrapper(int ID) : SimSetWrapper(ID){};
+      ModuleDefinitionWrapper(ModuleDefinition* object) : SimSetWrapper(object){};
 
       ModuleDefinition* GetObjectPtr(){
          return static_cast<ModuleDefinition*>(mObject);
@@ -37,5 +39,18 @@ namespace IJWLayer {
       String^ getDependency(int dependencyIndex);
       bool addDependency(String^ moduleId, int versionId);
       bool removeDependency(String^ moduleId);
+   };
+
+   public ref class ModuleMergeDefinitionWrapper : SimObjectWrapper
+   {
+
+   public:
+      ModuleMergeDefinitionWrapper(int ID) : SimObjectWrapper(ID){};
+      ModuleMergeDefinitionWrapper(ModuleManager* obj) : SimObjectWrapper(obj){};
+
+      ModuleMergeDefinition* GetObjectPtr(){
+         return static_cast<ModuleMergeDefinition*>(mObject);
+      };
+
    };
 }

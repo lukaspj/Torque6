@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class RemoteDebugger1 : public RemoteDebuggerBase
+class DLL_PUBLIC RemoteDebugger1 : public RemoteDebuggerBase
 {
     typedef RemoteDebuggerBase Parent;
 

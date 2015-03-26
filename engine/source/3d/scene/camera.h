@@ -49,7 +49,7 @@
 
 namespace Scene
 {
-   class SceneCamera : public SimObject, public virtual Tickable
+   class DLL_PUBLIC SceneCamera : public SimObject, public virtual Tickable
    {
       private:
          typedef SimObject Parent;

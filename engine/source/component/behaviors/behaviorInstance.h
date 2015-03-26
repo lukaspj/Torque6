@@ -41,7 +41,7 @@ class BehaviorComponent;
 
 //-----------------------------------------------------------------------------
 
-class BehaviorInstance : public SimObject
+class DLL_PUBLIC BehaviorInstance : public SimObject
 {
     typedef SimObject Parent;
 

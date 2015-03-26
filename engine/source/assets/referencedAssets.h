@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class ReferencedAssets : public SimObject
+class DLL_PUBLIC ReferencedAssets : public SimObject
 {
     friend class AssetManager;
 

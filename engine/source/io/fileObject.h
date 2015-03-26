@@ -33,7 +33,7 @@
 #include "io/fileStream.h"
 #endif
 
-class FileObject : public SimObject
+class DLL_PUBLIC FileObject : public SimObject
 {
    typedef SimObject Parent;
    U8 *mFileBuffer;
