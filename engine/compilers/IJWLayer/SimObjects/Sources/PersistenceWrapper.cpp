@@ -1,6 +1,6 @@
-#include "Stdafx.h"
-#include "PersistenceWrapper.h"
-#include "MarshalHelper.h"
+#include "../../Stdafx.h"
+#include "../Headers/PersistenceWrapper.h"
+#include "../Headers/MarshalHelper.h"
 
 using namespace System::Runtime::InteropServices;
 

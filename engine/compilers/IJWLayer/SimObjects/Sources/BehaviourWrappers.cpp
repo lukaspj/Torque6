@@ -1,5 +1,5 @@
-#include "Stdafx.h"
-#include "BehaviourWrappers.h"
+#include "../../Stdafx.h"
+#include "../Headers/BehaviourWrappers.h"
 
 using namespace System::Runtime::InteropServices;
 

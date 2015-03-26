@@ -1,6 +1,6 @@
-#include "Stdafx.h"
-#include "EventManagerWrapper.h"
-#include "MarshalHelper.h"
+#include "../../Stdafx.h"
+#include "../Headers/EventManagerWrapper.h"
+#include "../Headers/MarshalHelper.h"
 
 using namespace System::Runtime::InteropServices;
 

@@ -1,6 +1,6 @@
-#include "Stdafx.h"
-#include "ConsoleWrappers.h"
-#include "MarshalHelper.h"
+#include "../../Stdafx.h"
+#include "../Headers/ConsoleWrappers.h"
+#include "../Headers/MarshalHelper.h"
 
 using namespace System::Runtime::InteropServices;
 

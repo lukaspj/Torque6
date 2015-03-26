@@ -1,6 +1,6 @@
-#include "Stdafx.h"
-#include "GraphicsWrappers.h"
-#include "MarshalHelper.h"
+#include "../../Stdafx.h"
+#include "../Headers/GraphicsWrappers.h"
+#include "../Headers/MarshalHelper.h"
 #include "io/fileStream.h"
 
 using namespace System::Runtime::InteropServices;

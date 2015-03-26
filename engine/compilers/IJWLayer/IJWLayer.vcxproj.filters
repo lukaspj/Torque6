@@ -1,168 +1,172 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="SimObjects">
+      <UniqueIdentifier>{654fd022-77d9-41e6-b76d-74e15f40d474}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Namespaces">
+      <UniqueIdentifier>{010c8018-f984-491f-9ab8-996a466c3d4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Namespaces\Headers">
+      <UniqueIdentifier>{8b799dd0-7b83-49fe-9bff-369390f37cd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Namespaces\Sources">
+      <UniqueIdentifier>{61170561-2e69-4b8c-988b-7b774ee55e8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SimObjects\Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="SimObjects\Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Stdafx.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="SimObjects\Headers\ActionMapWrapper.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\AssetManagerWrapper.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="SimObjectWrapper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\AssetWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="ActionMapWrapper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\BehaviourWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="MarshalHelper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\CollectionsWrapper.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="AssetWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\ConsoleWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="AssetManagerWrapper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\DatablockWrapper.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\DebuggerWrapper.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="BehaviourWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\EventManagerWrapper.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="ConsoleWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\FileWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\GraphicsWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="EventManagerWrapper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\GuiWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="FileWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\InputDeviceWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="GuiWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\LanguageWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="InputDeviceWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\MarshalHelper.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="LanguageWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\MessageWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="MessageWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\ModuleWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="NetworkWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\NetworkWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="SceneWrappers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\PersistenceWrapper.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="DebuggerWrapper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\SceneWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="DatablockWrapper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\SimObjectWrapper.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="PersistenceWrapper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\StreamWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="StreamWrappers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UndoWrappers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CollectionsWrapper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SimObjects\Headers\UndoWrappers.h">
+      <Filter>SimObjects\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AssemblyInfo.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Stdafx.cpp" />
+    <ClCompile Include="SimObjects\Sources\ActionMapWrapper.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="Stdafx.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\AssetManagerWrapper.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="SimObjectWrapper.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\AssetWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="ActionMapWrapper.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\BehaviourWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="MarshalHelper.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\CollectionsWrapper.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="AssetWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\ConsoleWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="AssetManagerWrapper.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\DebuggerWrapper.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\EventManagerWrapper.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="BehaviourWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\FileWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="ConsoleWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\GraphicsWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\GuiWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="EventManagerWrapper.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\InputDeviceWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="FileWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\LanguageWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="GuiWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\MarshalHelper.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="InputDeviceWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\MessageWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="LanguageWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\ModuleWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="MessageWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\NetworkWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="NetworkWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\PersistenceWrapper.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="SceneWrappers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\SceneWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="DebuggerWrapper.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\SimObjectWrapper.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="PersistenceWrapper.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\StreamWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="StreamWrappers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UndoWrappers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CollectionsWrapper.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SimObjects\Sources\UndoWrappers.cpp">
+      <Filter>SimObjects\Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

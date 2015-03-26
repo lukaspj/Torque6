@@ -1,5 +1,5 @@
-#include "Stdafx.h"
-#include "AssetManagerWrapper.h"
+#include "../../Stdafx.h"
+#include "../Headers/AssetManagerWrapper.h"
 
 using namespace System::Runtime::InteropServices;
 

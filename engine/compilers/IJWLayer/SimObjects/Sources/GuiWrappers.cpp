@@ -1,6 +1,6 @@
-#include "Stdafx.h"
-#include "GuiWrappers.h"
-#include "MarshalHelper.h"
+#include "../../Stdafx.h"
+#include "../Headers/GuiWrappers.h"
+#include "../Headers/MarshalHelper.h"
 
 using namespace System::Runtime::InteropServices;
 

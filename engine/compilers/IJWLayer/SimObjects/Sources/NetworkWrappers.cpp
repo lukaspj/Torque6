@@ -1,6 +1,6 @@
-#include "Stdafx.h"
-#include "NetworkWrappers.h"
-#include "MarshalHelper.h"
+#include "../../Stdafx.h"
+#include "../Headers/NetworkWrappers.h"
+#include "../Headers/MarshalHelper.h"
 
 using namespace System::Runtime::InteropServices;
 using System::String;

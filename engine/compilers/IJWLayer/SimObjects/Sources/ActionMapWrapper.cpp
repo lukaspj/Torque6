@@ -1,10 +1,10 @@
 // This is the main DLL file.
 
 #pragma warning( disable : 4251)
-#include "stdafx.h"
+#include "../../stdafx.h"
 
-#include "MarshalHelper.h"
-#include "ActionMapWrapper.h"
+#include "../Headers/MarshalHelper.h"
+#include "../Headers/ActionMapWrapper.h"
 
 using namespace System::Runtime::InteropServices;
 

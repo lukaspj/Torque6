@@ -1,5 +1,5 @@
-#include "Stdafx.h"
-#include "MarshalHelper.h"
+#include "../../Stdafx.h"
+#include "../Headers/MarshalHelper.h"
 
 using namespace System::Runtime::InteropServices;
 

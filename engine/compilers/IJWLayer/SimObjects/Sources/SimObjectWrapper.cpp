@@ -1,8 +1,8 @@
 // This is the main DLL file.
 
-#include "stdafx.h"
+#include "../../stdafx.h"
 
-#include "SimObjectWrapper.h"
+#include "../Headers/SimObjectWrapper.h"
 
 #include "console/consoleBaseType.h"
 #include <vcclr.h>
