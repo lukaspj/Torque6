@@ -113,6 +113,9 @@
     <ClInclude Include="Namespaces\Headers\Version.h">
       <Filter>Namespaces\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Namespaces\Headers\Scene.h">
+      <Filter>Namespaces\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -196,6 +199,9 @@
       <Filter>Namespaces\Sources</Filter>
     </ClCompile>
     <ClCompile Include="Namespaces\Sources\Version.cpp">
+      <Filter>Namespaces\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Namespaces\Sources\Scene.cpp">
       <Filter>Namespaces\Sources</Filter>
     </ClCompile>
   </ItemGroup>

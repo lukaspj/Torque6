@@ -87,6 +87,7 @@
     <ClInclude Include="Namespaces\Headers\Console.h" />
     <ClInclude Include="Namespaces\Headers\Globals.h" />
     <ClInclude Include="Namespaces\Headers\Platform.h" />
+    <ClInclude Include="Namespaces\Headers\Scene.h" />
     <ClInclude Include="Namespaces\Headers\Script.h" />
     <ClInclude Include="Namespaces\Headers\Version.h" />
     <ClInclude Include="resource.h" />
@@ -126,6 +127,10 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Namespaces\Sources\Platform.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="Namespaces\Sources\Scene.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
