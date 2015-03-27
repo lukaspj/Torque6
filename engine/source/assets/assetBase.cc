@@ -199,7 +199,16 @@ StringTableEntry AssetBase::expandAssetFilePath( const char* pAssetFilePath ) co
     StringTableEntry assetBasePathHint;
     if ( getOwned() && !getAssetPrivate() )
     {
-        assetBasePathHint = mpOwningAssetManager->getAssetPath( getAssetId() );
+       bool relativeToAsset = pAssetFilePath[0] == '.' && pAssetFilePath[1] == '/';
+       if (relativeToAsset)
+         assetBasePathHint = mpOwningAssetManager->getAssetPath(getAssetId());
+       else{
+          ModuleDefinition *module = mpOwningAssetManager->getAssetModuleDefinition(getAssetId());
+          if (module)
+          {
+             assetBasePathHint = module->getModulePath();
+          }
+       }
     }
     else
     {
@@ -208,7 +217,7 @@ StringTableEntry AssetBase::expandAssetFilePath( const char* pAssetFilePath ) co
 
     // Expand the path with the asset base-path hint.
     char assetFilePathBuffer[1024];
-    Con::expandPath( assetFilePathBuffer, sizeof(assetFilePathBuffer), pAssetFilePath, assetBasePathHint );
+    Con::expandPath(assetFilePathBuffer, sizeof(assetFilePathBuffer), pAssetFilePath, assetBasePathHint);
     return StringTable->insert( assetFilePathBuffer );
 }
 

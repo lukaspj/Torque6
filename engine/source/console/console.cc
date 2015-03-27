@@ -1482,7 +1482,7 @@ bool expandPath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWo
     }
 
     // Script-Relative.
-    if ( leadingToken == '.' )
+    if (leadingToken == '.' && pWorkingDirectoryHint == NULL)
     {
         // Fetch the code-block file-path.
         const StringTableEntry codeblockFullPath = CodeBlock::getCurrentCodeBlockFullPath();
