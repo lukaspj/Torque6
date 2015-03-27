@@ -296,7 +296,7 @@ IJWLayer::ModuleDefinitionWrapper^ IJWLayer::AssetManagerWrapper::getAssetModule
    const char* _assetId = (char*)Marshal::StringToHGlobalAnsi(assetId).ToPointer();
    ModuleDefinition* pModuleDefinition = GetObjectPtr()->getAssetModuleDefinition(_assetId);
 
-   return pModuleDefinition == NULL ? nullptr : gcnew ModuleDefinitionWrapper(pModuleDefinition);
+   return pModuleDefinition == NULL ? nullptr : ModuleDefinitionWrapper::Wrap(pModuleDefinition);
 }
 
 bool IJWLayer::AssetManagerWrapper::isAssetInternal(String^ assetId)
@@ -466,7 +466,7 @@ IJWLayer::AssetTagsManifestWrapper^ IJWLayer::AssetManagerWrapper::getAssetTags(
    // Fetch the asset tags manifest.
    AssetTagsManifest* pAssetTagsManifest = GetObjectPtr()->getAssetTags();
 
-   return pAssetTagsManifest == NULL ? nullptr : gcnew AssetTagsManifestWrapper(pAssetTagsManifest);
+   return pAssetTagsManifest == NULL ? nullptr : AssetTagsManifestWrapper::Wrap(pAssetTagsManifest);
 }
 
 int IJWLayer::AssetManagerWrapper::findAllAssets(AssetQueryWrapper^ assetQuery, bool ignoreInternal, bool ignorePrivate)

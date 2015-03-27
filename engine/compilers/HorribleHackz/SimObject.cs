@@ -22,8 +22,8 @@ namespace HorribleHackz
 
          EngineVersion.setCompanyAndProduct("LukasPJ", "Torque6");
 
-         ModuleDatabase = new ModuleManagerWrapper(SimObjectWrapper.GetID("ModuleDatabase"));
-         AssetDatabase = new AssetManagerWrapper(SimObjectWrapper.GetID("AssetDatabase"));
+         ModuleDatabase = ModuleManagerWrapper.Wrap(SimObjectWrapper.GetID("ModuleDatabase"));
+         AssetDatabase = AssetManagerWrapper.Wrap(SimObjectWrapper.GetID("AssetDatabase"));
          if(!ModuleDatabase.IsAlive())
             throw new Exception("ModuleDatabase not found");
          ModuleDatabase.setFieldValue("EchoInfo", "false");

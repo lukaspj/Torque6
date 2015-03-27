@@ -46,10 +46,13 @@ namespace HorribleHackz
          if (callbackMethod != null)
          {
             found = true;
-            object simObj = Activator.CreateInstance(type, args);
+            object simObj = null;
+            if (!callbackMethod.IsStatic)
+               simObj = Activator.CreateInstance(type, args);
             if (callbackMethod.ReturnType == typeof(string))
                return (string)callbackMethod.Invoke(simObj, args);
             callbackMethod.Invoke(simObj, args);
+            return null;
          }
          found = false;
          return null;

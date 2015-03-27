@@ -12,7 +12,8 @@ namespace IJWLayer {
    public ref class LangTableWrapper : SimObjectWrapper
    {
    public:
-      LangTableWrapper(int ID) : SimObjectWrapper(ID){};
+      static LangTableWrapper^ Wrap(int ID) { return static_cast<LangTableWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static LangTableWrapper^ Wrap(LangTable* obj) { return static_cast<LangTableWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       LangTable* GetObjectPtr(){
          return static_cast<LangTable*>(mObject);

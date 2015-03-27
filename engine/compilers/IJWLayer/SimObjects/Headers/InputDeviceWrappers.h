@@ -31,7 +31,8 @@ namespace IJWLayer {
    public ref class InputDeviceWrapper : SimObjectWrapper
    {
    public:
-      InputDeviceWrapper(int ID) : SimObjectWrapper(ID){};
+      static InputDeviceWrapper^ Wrap(int ID) { return static_cast<InputDeviceWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static InputDeviceWrapper^ Wrap(InputDevice* obj) { return static_cast<InputDeviceWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       InputDevice* GetObjectPtr(){
          return static_cast<InputDevice*>(mObject);
@@ -41,7 +42,8 @@ namespace IJWLayer {
    public ref class InputManagerWrapper : SimGroupWrapper
    {
    public:
-      InputManagerWrapper(int ID) : SimGroupWrapper(ID){};
+      static InputManagerWrapper^ Wrap(int ID) { return static_cast<InputManagerWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static InputManagerWrapper^ Wrap(InputManager* obj) { return static_cast<InputManagerWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       InputManager* GetObjectPtr(){
          return static_cast<InputManager*>(mObject);

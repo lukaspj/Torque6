@@ -11,7 +11,8 @@ namespace IJWLayer {
    public ref class EventManagerWrapper : SimObjectWrapper
    {
    public:
-      EventManagerWrapper(int ID) : SimObjectWrapper(ID){};
+      static EventManagerWrapper^ Wrap(int ID) { return static_cast<EventManagerWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static EventManagerWrapper^ Wrap(EventManager* obj) { return static_cast<EventManagerWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       EventManager* GetObjectPtr(){
          return static_cast<EventManager*>(mObject);

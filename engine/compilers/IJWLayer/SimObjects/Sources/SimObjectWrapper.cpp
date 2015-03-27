@@ -3,6 +3,7 @@
 #include "../../stdafx.h"
 
 #include "../Headers/SimObjectWrapper.h"
+#include "../Headers/CollectionsWrapper.h"
 
 #include "console/consoleBaseType.h"
 #include <vcclr.h>
@@ -12,22 +13,122 @@
 using namespace System;
 using namespace System::Runtime::InteropServices;
 
-IJWLayer::SimObjectWrapper::SimObjectWrapper(int ID)
+IJWLayer::SimObjectWrapper^ IJWLayer::SimObjectWrapper::Wrap(int ID)
 {
-   mObject = Sim::findObject(ID);
-   mPtr = new SimObjectPtr<SimObject>(mObject);
+   SimObjectWrapper^ wrapper = gcnew SimObjectWrapper();
+   wrapper->mObject = Sim::findObject(ID);
+   wrapper->mPtr = new SimObjectPtr<SimObject>(wrapper->mObject);
+   return wrapper;
 }
 
-IJWLayer::SimObjectWrapper::SimObjectWrapper(SimObject* object)
+IJWLayer::SimObjectWrapper^ IJWLayer::SimObjectWrapper::Wrap(SimObject* object)
 {
-   mObject = object;
-   mPtr = new SimObjectPtr<SimObject>(mObject);
+   SimObjectWrapper^ wrapper = gcnew SimObjectWrapper();
+   wrapper->mObject = object;
+   wrapper->mPtr = new SimObjectPtr<SimObject>(wrapper->mObject);
+   return wrapper;
 }
 
 IJWLayer::SimObjectWrapper::~SimObjectWrapper()
 {
    if (IsAlive())
       delete mPtr;
+}
+
+bool IJWLayer::SimObjectWrapper::CanSaveDynamicFields::get()
+{
+   if (IsAlive())
+      return GetObjectPtr()->getCanSaveDynamicFields();
+   return false;
+}
+
+void IJWLayer::SimObjectWrapper::CanSaveDynamicFields::set(bool val)
+{
+   if (IsAlive())
+      GetObjectPtr()->setCanSaveDynamicFields(val);
+}
+
+String^ IJWLayer::SimObjectWrapper::InternalName::get()
+{
+   if (IsAlive())
+      return gcnew String(GetObjectPtr()->getInternalName());
+   return nullptr;
+}
+
+void IJWLayer::SimObjectWrapper::InternalName::set(String^ val)
+{
+   if (!IsAlive())
+      return;
+
+   char* _val = (char*)Marshal::StringToHGlobalAnsi(val).ToPointer();
+   GetObjectPtr()->setCanSaveDynamicFields(_val);
+}
+
+void IJWLayer::SimObjectWrapper::ParentGroup::set(SimGroupWrapper^ val)
+{
+   if (!IsAlive() || !val->IsAlive())
+      return;
+
+   val->add(this);
+}
+
+String^ IJWLayer::SimObjectWrapper::SuperClass::get()
+{
+   if (IsAlive())
+      return gcnew String(GetObjectPtr()->getSuperClassNamespace());
+   return nullptr;
+}
+
+void IJWLayer::SimObjectWrapper::SuperClass::set(String^ val)
+{
+   if (!IsAlive())
+      return;
+
+   char* _val = (char*)Marshal::StringToHGlobalAnsi(val).ToPointer();
+   GetObjectPtr()->setSuperClassNamespace(_val);
+}
+
+String^ IJWLayer::SimObjectWrapper::Class::get()
+{
+   if (IsAlive())
+      return gcnew String(GetObjectPtr()->getClassNamespace());
+   return nullptr;
+}
+
+void IJWLayer::SimObjectWrapper::Class::set(String^ val)
+{
+   if (!IsAlive())
+      return;
+
+   char* _val = (char*)Marshal::StringToHGlobalAnsi(val).ToPointer();
+   GetObjectPtr()->setClassNamespace(_val);
+}
+
+String^ IJWLayer::SimObjectWrapper::Name::get()
+{
+   if (IsAlive())
+   {
+      const char *ret = mObject->getName();
+      return ret ? gcnew String(ret) : "";
+   }
+   return nullptr;
+}
+
+void IJWLayer::SimObjectWrapper::Name::set(String^ mNewName)
+{
+   if (IsAlive())
+   {
+      IntPtr ptrToNativeString = Marshal::StringToHGlobalAnsi(mNewName);
+      char* nativeString = static_cast<char*>(ptrToNativeString.ToPointer());
+      mObject->assignName(nativeString);
+   }
+}
+
+int IJWLayer::SimObjectWrapper::ID::get()
+{
+   if (IsAlive())
+      return mObject->getId();
+   return -1;
 }
 
 ///-------------------------------------------------------------------------------------------------
@@ -85,121 +186,6 @@ int IJWLayer::SimObjectWrapper::GetID(String^ mName)
    if (object)
       return object->getId();
    return -1;
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary>  Gets the SimObjectID. </summary>
-///
-/// <remarks>  Lukas, 24-03-2015. </remarks>
-///
-/// <returns>  The SimObjectID. </returns>
-///-------------------------------------------------------------------------------------------------
-
-int IJWLayer::SimObjectWrapper::GetID()
-{
-   if (IsAlive())
-      return mObject->getId();
-   return -1;
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary>  Sets the name of the SimObject. </summary>
-///
-/// <remarks>  Lukas, 24-03-2015. </remarks>
-///
-/// <param name="mNewName">   The new name. </param>
-///-------------------------------------------------------------------------------------------------
-
-void IJWLayer::SimObjectWrapper::SetName(String^ mNewName)
-{
-   if (IsAlive())
-   {
-      IntPtr ptrToNativeString = Marshal::StringToHGlobalAnsi(mNewName);
-      char* nativeString = static_cast<char*>(ptrToNativeString.ToPointer());
-      mObject->assignName(nativeString);
-   }
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary>  Gets the name. </summary>
-///
-/// <remarks>  Lukas, 24-03-2015. </remarks>
-///
-/// <returns>  nullptr if it fails, else the name. </returns>
-///-------------------------------------------------------------------------------------------------
-
-String^ IJWLayer::SimObjectWrapper::GetName()
-{
-   if (IsAlive())
-   {
-      const char *ret = mObject->getName();
-      return ret ? gcnew String(ret) : "";
-   }
-   return nullptr;
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary>  Gets class namespace. </summary>
-///
-/// <remarks>  Lukas, 24-03-2015. </remarks>
-///
-/// <returns>  nullptr if it fails, else the class namespace. </returns>
-///-------------------------------------------------------------------------------------------------
-
-String^ IJWLayer::SimObjectWrapper::getClassNamespace()
-{
-   if (IsAlive())
-      return gcnew String(mObject->getClassNamespace());
-   return nullptr;
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary>  Gets super class namespace. </summary>
-///
-/// <remarks>  Lukas, 24-03-2015. </remarks>
-///
-/// <returns>  nullptr if it fails, else the super class namespace. </returns>
-///-------------------------------------------------------------------------------------------------
-
-String^ IJWLayer::SimObjectWrapper::getSuperClassNamespace()
-{
-   if (IsAlive())
-      return gcnew String(mObject->getSuperClassNamespace());
-   return nullptr;
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary>  Sets class namespace. </summary>
-///
-/// <remarks>  Lukas, 24-03-2015. </remarks>
-///
-/// <param name="namespc"> The namespc. </param>
-///-------------------------------------------------------------------------------------------------
-
-void IJWLayer::SimObjectWrapper::setClassNamespace(String^ namespc)
-{
-   if (IsAlive()){
-      IntPtr ptrToNativeString = Marshal::StringToHGlobalAnsi(namespc);
-      char* nativeString = static_cast<char*>(ptrToNativeString.ToPointer());
-      mObject->setSuperClassNamespace(nativeString);
-   }
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary>  Sets super class namespace. </summary>
-///
-/// <remarks>  Lukas, 24-03-2015. </remarks>
-///
-/// <param name="namespc"> The namespace. </param>
-///-------------------------------------------------------------------------------------------------
-
-void IJWLayer::SimObjectWrapper::setSuperClassNamespace(String ^namespc)
-{
-   if (IsAlive()){
-      IntPtr ptrToNativeString = Marshal::StringToHGlobalAnsi(namespc);
-      char* nativeString = static_cast<char*>(ptrToNativeString.ToPointer());
-      mObject->setClassNamespace(nativeString);
-   }
 }
 
 ///-------------------------------------------------------------------------------------------------
@@ -306,22 +292,6 @@ bool IJWLayer::SimObjectWrapper::isMemberOfClass(String^ className)
    }
 
    return false;
-}
-
-///-------------------------------------------------------------------------------------------------
-/// <summary>  Gets class name. </summary>
-///
-/// <remarks>  Lukas, 24-03-2015. </remarks>
-///
-/// <returns>  nullptr if it fails, else the class name. </returns>
-///-------------------------------------------------------------------------------------------------
-
-String^ IJWLayer::SimObjectWrapper::getClassName()
-{
-   if (!IsAlive())
-      return nullptr;
-   const char * ret = mObject->getClassName();
-   return ret ? gcnew String(ret) : "";
 }
 
 ///-------------------------------------------------------------------------------------------------

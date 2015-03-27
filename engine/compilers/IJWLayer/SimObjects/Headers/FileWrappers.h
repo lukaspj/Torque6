@@ -13,7 +13,8 @@ namespace IJWLayer {
    public ref class FileDialogWrapper : SimObjectWrapper
    {
    public:
-      FileDialogWrapper(int ID) : SimObjectWrapper(ID){};
+      static FileDialogWrapper^ Wrap(int ID) { return static_cast<FileDialogWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static FileDialogWrapper^ Wrap(FileDialog* obj) { return static_cast<FileDialogWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       FileDialog* GetObjectPtr(){
          return static_cast<FileDialog*>(mObject);
@@ -25,7 +26,8 @@ namespace IJWLayer {
    public ref class OpenFileDialogWrapper : FileDialogWrapper
    {
    public:
-      OpenFileDialogWrapper(int ID) : FileDialogWrapper(ID){};
+      static OpenFileDialogWrapper^ Wrap(int ID) { return static_cast<OpenFileDialogWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static OpenFileDialogWrapper^ Wrap(OpenFileDialog* obj) { return static_cast<OpenFileDialogWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       OpenFileDialog* GetObjectPtr(){
          return static_cast<OpenFileDialog*>(mObject);
@@ -35,7 +37,8 @@ namespace IJWLayer {
    public ref class OpenFolderDialogWrapper : OpenFileDialogWrapper
    {
    public:
-      OpenFolderDialogWrapper(int ID) : OpenFileDialogWrapper(ID){};
+      static OpenFolderDialogWrapper^ Wrap(int ID) { return static_cast<OpenFolderDialogWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static OpenFolderDialogWrapper^ Wrap(OpenFolderDialog* obj) { return static_cast<OpenFolderDialogWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       OpenFolderDialog* GetObjectPtr(){
          return static_cast<OpenFolderDialog*>(mObject);
@@ -45,7 +48,8 @@ namespace IJWLayer {
    public ref class SaveFileDialogWrapper : FileDialogWrapper
    {
    public:
-      SaveFileDialogWrapper(int ID) : FileDialogWrapper(ID){};
+      static SaveFileDialogWrapper^ Wrap(int ID) { return static_cast<SaveFileDialogWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static SaveFileDialogWrapper^ Wrap(SaveFileDialog* obj) { return static_cast<SaveFileDialogWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       SaveFileDialog* GetObjectPtr(){
          return static_cast<SaveFileDialog*>(mObject);
@@ -55,7 +59,8 @@ namespace IJWLayer {
    public ref class FileObjectWrapper : SimObjectWrapper
    {
    public:
-      FileObjectWrapper(int ID) : SimObjectWrapper(ID){};
+      static FileObjectWrapper^ Wrap(int ID) { return static_cast<FileObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static FileObjectWrapper^ Wrap(FileObject* obj) { return static_cast<FileObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       FileObject* GetObjectPtr(){
          return static_cast<FileObject*>(mObject);
@@ -76,7 +81,8 @@ namespace IJWLayer {
    public ref class ZipObjectWrapper : SimObjectWrapper
    {
    public:
-      ZipObjectWrapper(int ID) : SimObjectWrapper(ID){};
+      static ZipObjectWrapper^ Wrap(int ID) { return static_cast<ZipObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ZipObjectWrapper^ Wrap(ZipObject* obj) { return static_cast<ZipObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       ZipObject* GetObjectPtr(){
          return static_cast<ZipObject*>(mObject);

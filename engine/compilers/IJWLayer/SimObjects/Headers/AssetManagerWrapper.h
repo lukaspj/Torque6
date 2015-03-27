@@ -15,8 +15,8 @@ namespace IJWLayer {
    public ref class AssetTagsManifestWrapper : SimObjectWrapper
    {
    public:
-      AssetTagsManifestWrapper(int ID) : SimObjectWrapper(ID){};
-      AssetTagsManifestWrapper(AssetTagsManifest* object) : SimObjectWrapper(object){};
+      static AssetTagsManifestWrapper^ Wrap(int ID) { return static_cast<AssetTagsManifestWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static AssetTagsManifestWrapper^ Wrap(AssetTagsManifest* obj) { return static_cast<AssetTagsManifestWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       AssetTagsManifest* GetObjectPtr(){
          return static_cast<AssetTagsManifest*>(mObject);
@@ -38,8 +38,8 @@ namespace IJWLayer {
    public ref class AssetQueryWrapper : SimObjectWrapper
    {
    public:
-      AssetQueryWrapper(int ID) : SimObjectWrapper(ID){};
-      AssetQueryWrapper(AssetQuery* object) : SimObjectWrapper(object){};
+      static AssetQueryWrapper^ Wrap(int ID) { return static_cast<AssetQueryWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static AssetQueryWrapper^ Wrap(SimObject* obj) { return static_cast<AssetQueryWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       AssetQuery* GetObjectPtr(){
          return static_cast<AssetQuery*>(mObject);
@@ -54,7 +54,8 @@ namespace IJWLayer {
    public ref class AssetManagerWrapper : SimObjectWrapper
    {
    public:
-      AssetManagerWrapper(int ID) : SimObjectWrapper(ID){};
+      static AssetManagerWrapper^ Wrap(int ID) { return static_cast<AssetManagerWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static AssetManagerWrapper^ Wrap(SimObject* obj) { return static_cast<AssetManagerWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       AssetManager* GetObjectPtr(){
          return static_cast<AssetManager*>(mObject);

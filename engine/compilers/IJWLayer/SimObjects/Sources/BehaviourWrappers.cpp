@@ -15,7 +15,7 @@ IJWLayer::BehaviorInstanceWrapper^ IJWLayer::BehaviorTemplateWrapper::createInst
    if (!IsAlive())
       return nullptr;
    BehaviorInstance* inst = GetObjectPtr()->createInstance();
-   return inst ? gcnew BehaviorInstanceWrapper(inst) : nullptr;
+   return inst ? BehaviorInstanceWrapper::Wrap(inst) : nullptr;
 }
 
 bool IJWLayer::BehaviorTemplateWrapper::addBehaviorField(String^ fieldName, String^ desc, String^ type, String^ defaultValue, String^ userData)

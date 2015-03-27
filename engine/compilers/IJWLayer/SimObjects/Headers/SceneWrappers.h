@@ -15,7 +15,10 @@ namespace IJWLayer {
    public ref class SceneEntityWrapper : SimObjectWrapper
    {
    public:
-      SceneEntityWrapper(int ID) : SimObjectWrapper(ID){};
+      SceneEntityWrapper() : SimObjectWrapper(new Scene::SceneEntity()) {}
+
+      static SceneEntityWrapper^ Wrap(int ID) { return static_cast<SceneEntityWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static SceneEntityWrapper^ Wrap(Scene::SceneEntity* obj) { return static_cast<SceneEntityWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       Scene::SceneEntity* GetObjectPtr(){
          return static_cast<Scene::SceneEntity*>(mObject);
@@ -25,12 +28,29 @@ namespace IJWLayer {
       SimObjectWrapper^ findComponentByType(String^ type);
       String^ getPosition();
       void setPosition(String^ pos);
+
+      property String^ Template{
+         void set(String^ value);
+      }
+      property String^ Position{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ Rotation{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ Scale{
+         String^ get();
+         void set(String^ value);
+      }
    };
 
    public ref class SceneCameraWrapper : SimObjectWrapper
    {
    public:
-      SceneCameraWrapper(int ID) : SimObjectWrapper(ID){};
+      static SceneCameraWrapper^ Wrap(int ID) { return static_cast<SceneCameraWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static SceneCameraWrapper^ Wrap(Scene::SceneCamera* obj) { return static_cast<SceneCameraWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       Scene::SceneCamera* GetObjectPtr(){
          return static_cast<Scene::SceneCamera*>(mObject);

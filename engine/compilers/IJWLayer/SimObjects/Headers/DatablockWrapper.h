@@ -12,8 +12,8 @@ namespace IJWLayer {
    public ref class SimDatablockWrapper : SimObjectWrapper
    {
    public:
-      SimDatablockWrapper(int ID) : SimObjectWrapper(ID){};
-      SimDatablockWrapper(SimDataBlock* object) : SimObjectWrapper(object){};
+      static SimDatablockWrapper^ Wrap(int ID) { return static_cast<SimDatablockWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static SimDatablockWrapper^ Wrap(SimDataBlock* obj) { return static_cast<SimDatablockWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       SimDataBlock* GetObjectPtr(){
          return static_cast<SimDataBlock*>(mObject);

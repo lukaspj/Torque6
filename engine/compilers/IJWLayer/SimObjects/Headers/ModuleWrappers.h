@@ -15,8 +15,8 @@ namespace IJWLayer {
    {
 
    public:
-      ModuleManagerWrapper(int ID) : SimObjectWrapper(ID){};
-      ModuleManagerWrapper(ModuleManager* obj) : SimObjectWrapper(obj){};
+      static ModuleManagerWrapper^ Wrap(int ID) { return static_cast<ModuleManagerWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ModuleManagerWrapper^ Wrap(ModuleManager* obj) { return static_cast<ModuleManagerWrapper ^>(SimObjectWrapper::Wrap(obj)); };
 
       ModuleManager* GetObjectPtr(){
          return static_cast<ModuleManager*>(mObject);
@@ -49,8 +49,8 @@ namespace IJWLayer {
    public ref class ModuleDefinitionWrapper : SimSetWrapper
    {
    public:
-      ModuleDefinitionWrapper(int ID) : SimSetWrapper(ID){};
-      ModuleDefinitionWrapper(ModuleDefinition* object) : SimSetWrapper(object){};
+      static ModuleDefinitionWrapper^ Wrap(int ID) { return static_cast<ModuleDefinitionWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ModuleDefinitionWrapper^ Wrap(ModuleDefinition* obj) { return static_cast<ModuleDefinitionWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       ModuleDefinition* GetObjectPtr(){
          return static_cast<ModuleDefinition*>(mObject);
@@ -68,8 +68,8 @@ namespace IJWLayer {
    {
 
    public:
-      ModuleMergeDefinitionWrapper(int ID) : SimObjectWrapper(ID){};
-      ModuleMergeDefinitionWrapper(ModuleManager* obj) : SimObjectWrapper(obj){};
+      static ModuleMergeDefinitionWrapper^ Wrap(int ID) { return static_cast<ModuleMergeDefinitionWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ModuleMergeDefinitionWrapper^ Wrap(ModuleMergeDefinition* obj) { return static_cast<ModuleMergeDefinitionWrapper ^>(SimObjectWrapper::Wrap(obj)); };
 
       ModuleMergeDefinition* GetObjectPtr(){
          return static_cast<ModuleMergeDefinition*>(mObject);

@@ -14,7 +14,8 @@ namespace IJWLayer {
    public ref class GuiControlProfileWrapper : SimObjectWrapper
    {
    public:
-      GuiControlProfileWrapper(int ID) : SimObjectWrapper(ID){};
+      static GuiControlProfileWrapper^ Wrap(int ID) { return static_cast<GuiControlProfileWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static GuiControlProfileWrapper^ Wrap(GuiControlProfile* obj) { return static_cast<GuiControlProfileWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       GuiControlProfile* GetObjectPtr(){
          return static_cast<GuiControlProfile*>(mObject);
@@ -24,7 +25,8 @@ namespace IJWLayer {
    public ref class GuiCursorWrapper : SimObjectWrapper
    {
    public:
-      GuiCursorWrapper(int ID) : SimObjectWrapper(ID){};
+      static GuiCursorWrapper^ Wrap(int ID) { return static_cast<GuiCursorWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static GuiCursorWrapper^ Wrap(GuiCursor* obj) { return static_cast<GuiCursorWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       GuiCursor* GetObjectPtr(){
          return static_cast<GuiCursor*>(mObject);
@@ -34,7 +36,8 @@ namespace IJWLayer {
    public ref class GuiImageListWrapper : SimObjectWrapper
    {
    public:
-      GuiImageListWrapper(int ID) : SimObjectWrapper(ID){};
+      static GuiImageListWrapper^ Wrap(int ID) { return static_cast<GuiImageListWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static GuiImageListWrapper^ Wrap(GuiImageList* obj) { return static_cast<GuiImageListWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       GuiImageList* GetObjectPtr(){
          return static_cast<GuiImageList*>(mObject);
@@ -44,7 +47,8 @@ namespace IJWLayer {
    public ref class PopupMenuWrapper : SimObjectWrapper
    {
    public:
-      PopupMenuWrapper(int ID) : SimObjectWrapper(ID){};
+      static PopupMenuWrapper^ Wrap(int ID) { return static_cast<PopupMenuWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static PopupMenuWrapper^ Wrap(PopupMenu* obj) { return static_cast<PopupMenuWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       PopupMenu* GetObjectPtr(){
          return static_cast<PopupMenu*>(mObject);

@@ -15,7 +15,8 @@ namespace IJWLayer {
    public ref class NetConnectionWrapper : SimGroupWrapper
    {
    public:
-      NetConnectionWrapper(int ID) : SimGroupWrapper(ID){};
+      static NetConnectionWrapper^ Wrap(int ID) { return static_cast<NetConnectionWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static NetConnectionWrapper^ Wrap(NetConnection* obj) { return static_cast<NetConnectionWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       NetConnection* GetObjectPtr(){
          return static_cast<NetConnection*>(mObject);
@@ -38,8 +39,8 @@ namespace IJWLayer {
    public ref class NetObjectWrapper : SimObjectWrapper
    {
    public:
-      NetObjectWrapper(int ID) : SimObjectWrapper(ID){};
-      NetObjectWrapper(NetObject* object) : SimObjectWrapper(object){};
+      static NetObjectWrapper^ Wrap(int ID) { return static_cast<NetObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static NetObjectWrapper^ Wrap(NetObject* obj) { return static_cast<NetObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       NetObject* GetObjectPtr(){
          return static_cast<NetObject*>(mObject);
@@ -54,7 +55,8 @@ namespace IJWLayer {
    public ref class TCPObjectWrapper : SimObjectWrapper
    {
    public:
-      TCPObjectWrapper(int ID) : SimObjectWrapper(ID){};
+      static TCPObjectWrapper^ Wrap(int ID) { return static_cast<TCPObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static TCPObjectWrapper^ Wrap(TCPObject* obj) { return static_cast<TCPObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       TCPObject* GetObjectPtr(){
          return static_cast<TCPObject*>(mObject);
@@ -71,7 +73,8 @@ namespace IJWLayer {
    public ref class HTTPObjectWrapper : TCPObjectWrapper
    {
    public:
-      HTTPObjectWrapper(int ID) : TCPObjectWrapper(ID){};
+      static HTTPObjectWrapper^ Wrap(int ID) { return static_cast<HTTPObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static HTTPObjectWrapper^ Wrap(HTTPObject* obj) { return static_cast<HTTPObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       HTTPObject* GetObjectPtr(){
          return static_cast<HTTPObject*>(mObject);

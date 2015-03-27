@@ -13,7 +13,8 @@ namespace IJWLayer {
    public ref class DynamicTextureWrapper : SimObjectWrapper
    {
    public:
-      DynamicTextureWrapper(int ID) : SimObjectWrapper(ID){};
+      static DynamicTextureWrapper^ Wrap(int ID) { return static_cast<DynamicTextureWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static DynamicTextureWrapper^ Wrap(DynamicTexture* obj) { return static_cast<DynamicTextureWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       DynamicTexture* GetObjectPtr(){
          return static_cast<DynamicTexture*>(mObject);
@@ -23,7 +24,8 @@ namespace IJWLayer {
    public ref class PNGImageWrapper : SimObjectWrapper
    {
    public:
-      PNGImageWrapper(int ID) : SimObjectWrapper(ID){};
+      static PNGImageWrapper^ Wrap(int ID) { return static_cast<PNGImageWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static PNGImageWrapper^ Wrap(PNGImage* obj) { return static_cast<PNGImageWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       PNGImage* GetObjectPtr(){
          return static_cast<PNGImage*>(mObject);

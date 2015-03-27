@@ -427,5 +427,5 @@ IJWLayer::SimObjectWrapper^ IJWLayer::TamlWrapper::read(String^ filename)
       return nullptr;
    }
 
-   return gcnew SimObjectWrapper(pSimObject);
+   return SimObjectWrapper::Wrap(pSimObject);
 }

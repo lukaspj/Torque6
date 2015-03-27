@@ -1,8 +1,69 @@
 #include "../../Stdafx.h"
 #include "../Headers/SceneWrappers.h"
 #include "../Headers/MarshalHelper.h"
+#include "2d/core/Utility.h"
 
 using namespace System::Runtime::InteropServices;
+
+void IJWLayer::SceneEntityWrapper::Template::set(String^ templatePath)
+{
+   if (!IsAlive())
+      return;
+
+   char* _templatePath = (char*)Marshal::StringToHGlobalAnsi(templatePath).ToPointer();
+   GetObjectPtr()->setTemplate(_templatePath);
+}
+
+void IJWLayer::SceneEntityWrapper::Position::set(String^ position)
+{
+   if (!IsAlive())
+      return;
+
+   char* _position = (char*)Marshal::StringToHGlobalAnsi(position).ToPointer();
+   GetObjectPtr()->mPosition = Utility::mConvertStringToPoint3F(_position);
+}
+
+String^ IJWLayer::SceneEntityWrapper::Position::get()
+{
+   if (!IsAlive())
+      return nullptr;
+
+   return String::Format("{0} {1} {2}", GetObjectPtr()->mPosition.x, GetObjectPtr()->mPosition.y, GetObjectPtr()->mPosition.z);
+}
+
+void IJWLayer::SceneEntityWrapper::Rotation::set(String^ rotation)
+{
+   if (!IsAlive())
+      return;
+
+   char* _rotation = (char*)Marshal::StringToHGlobalAnsi(rotation).ToPointer();
+   GetObjectPtr()->mRotation = Utility::mConvertStringToPoint3F(_rotation);
+}
+
+String^ IJWLayer::SceneEntityWrapper::Rotation::get()
+{
+   if (!IsAlive())
+      return nullptr;
+
+   return String::Format("{0} {1} {2}", GetObjectPtr()->mRotation.x, GetObjectPtr()->mRotation.y, GetObjectPtr()->mRotation.z);
+}
+
+void IJWLayer::SceneEntityWrapper::Scale::set(String^ scale)
+{
+   if (!IsAlive())
+      return;
+
+   char* _scale = (char*)Marshal::StringToHGlobalAnsi(scale).ToPointer();
+   GetObjectPtr()->mScale = Utility::mConvertStringToPoint3F(_scale);
+}
+
+String^ IJWLayer::SceneEntityWrapper::Scale::get()
+{
+   if (!IsAlive())
+      return nullptr;
+
+   return String::Format("{0} {1} {2}", GetObjectPtr()->mScale.x, GetObjectPtr()->mScale.y, GetObjectPtr()->mScale.z);
+}
 
 IJWLayer::SimObjectWrapper^ IJWLayer::SceneEntityWrapper::findComponent(String^ name)
 {
@@ -12,7 +73,7 @@ IJWLayer::SimObjectWrapper^ IJWLayer::SceneEntityWrapper::findComponent(String^ 
    StringTableEntry sName = StringTable->insert(_name);
    SimObject* result = GetObjectPtr()->findComponent(sName);
    if (result)
-      return gcnew SimObjectWrapper(result);
+      return SimObjectWrapper::Wrap(result);
 
    return nullptr;
 }
@@ -24,7 +85,7 @@ IJWLayer::SimObjectWrapper^ IJWLayer::SceneEntityWrapper::findComponentByType(St
    char* _name = (char*)Marshal::StringToHGlobalAnsi(name).ToPointer();
    SimObject* result = GetObjectPtr()->findComponentByType(_name);
    if (result)
-      return gcnew SimObjectWrapper(result);
+      return SimObjectWrapper::Wrap(result);
 
    return nullptr;
 }

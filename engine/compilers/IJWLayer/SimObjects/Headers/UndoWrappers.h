@@ -10,8 +10,8 @@ namespace IJWLayer {
    public ref class UndoManagerWrapper : SimObjectWrapper
    {
    public:
-      UndoManagerWrapper(int ID) : SimObjectWrapper(ID){};
-      UndoManagerWrapper(UndoManager* object) : SimObjectWrapper(object){};
+      static UndoManagerWrapper^ Wrap(int ID) { return static_cast<UndoManagerWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static UndoManagerWrapper^ Wrap(UndoManager* obj) { return static_cast<UndoManagerWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       UndoManager* GetObjectPtr(){
          return static_cast<UndoManager*>(mObject);
@@ -31,8 +31,8 @@ namespace IJWLayer {
    public ref class UndoActionWrapper : SimObjectWrapper
    {
    public:
-      UndoActionWrapper(int ID) : SimObjectWrapper(ID){};
-      UndoActionWrapper(UndoAction* object) : SimObjectWrapper(object){};
+      static UndoActionWrapper^ Wrap(int ID) { return static_cast<UndoActionWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static UndoActionWrapper^ Wrap(UndoAction* obj) { return static_cast<UndoActionWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       UndoAction* GetObjectPtr(){
          return static_cast<UndoAction*>(mObject);

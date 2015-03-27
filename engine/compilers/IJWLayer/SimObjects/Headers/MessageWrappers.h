@@ -16,7 +16,8 @@ namespace IJWLayer {
    public ref class MessageWrapper : SimObjectWrapper
    {
    public:
-      MessageWrapper(int ID) : SimObjectWrapper(ID){};
+      static MessageWrapper^ Wrap(int ID) { return static_cast<MessageWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static MessageWrapper^ Wrap(Message* obj) { return static_cast<MessageWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       Message* GetObjectPtr(){
          return static_cast<Message*>(mObject);
@@ -30,7 +31,8 @@ namespace IJWLayer {
    public ref class ScriptMsgListenerWrapper : SimObjectWrapper
    {
    public:
-      ScriptMsgListenerWrapper(int ID) : SimObjectWrapper(ID){};
+      static ScriptMsgListenerWrapper^ Wrap(int ID) { return static_cast<ScriptMsgListenerWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ScriptMsgListenerWrapper^ Wrap(ScriptMsgListener* obj) { return static_cast<ScriptMsgListenerWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       ScriptMsgListener* GetObjectPtr(){
          return static_cast<ScriptMsgListener*>(mObject);
@@ -40,7 +42,8 @@ namespace IJWLayer {
    public ref class MessageForwarderWrapper : ScriptMsgListenerWrapper
    {
    public:
-      MessageForwarderWrapper(int ID) : ScriptMsgListenerWrapper(ID){};
+      static MessageForwarderWrapper^ Wrap(int ID) { return static_cast<MessageForwarderWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static MessageForwarderWrapper^ Wrap(MessageForwarder* obj) { return static_cast<MessageForwarderWrapper ^>(SimObjectWrapper::Wrap(obj)); };
 
       MessageForwarder* GetObjectPtr(){
          return static_cast<MessageForwarder*>(mObject);
@@ -50,7 +53,8 @@ namespace IJWLayer {
    public ref class MessageVectorWrapper : SimObjectWrapper
    {
    public:
-      MessageVectorWrapper(int ID) : SimObjectWrapper(ID){};
+      static MessageVectorWrapper^ Wrap(int ID) { return static_cast<MessageVectorWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static MessageVectorWrapper^ Wrap(MessageVector* obj) { return static_cast<MessageVectorWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       MessageVector* GetObjectPtr(){
          return static_cast<MessageVector*>(mObject);

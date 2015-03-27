@@ -23,7 +23,9 @@ namespace IJWLayer {
    public ref class DeclaredAssetWrapper : SimObjectWrapper
 	{
    public:
-      DeclaredAssetWrapper(int ID) : SimObjectWrapper(ID){};
+
+      static DeclaredAssetWrapper^ Wrap(int ID) { return static_cast<DeclaredAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static DeclaredAssetWrapper^ Wrap(SimObject* obj) { return static_cast<DeclaredAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       DeclaredAssets* GetObjectPtr(){
          return static_cast<DeclaredAssets*>(mObject);
@@ -33,7 +35,9 @@ namespace IJWLayer {
    public ref class ReferencedAssetsWrapper : SimObjectWrapper
 	{
    public:
-      ReferencedAssetsWrapper(int ID) : SimObjectWrapper(ID){};
+
+      static ReferencedAssetsWrapper^ Wrap(int ID) { return static_cast<ReferencedAssetsWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ReferencedAssetsWrapper^ Wrap(SimObject* obj) { return static_cast<ReferencedAssetsWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       ReferencedAssets* GetObjectPtr(){
          return static_cast<ReferencedAssets*>(mObject);
@@ -43,7 +47,8 @@ namespace IJWLayer {
    public ref class AssetBaseWrapper : SimObjectWrapper
 	{
    public:
-      AssetBaseWrapper(int ID) : SimObjectWrapper(ID){};
+      static AssetBaseWrapper^ Wrap(int ID) { return static_cast<AssetBaseWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static AssetBaseWrapper^ Wrap(SimObject* obj) { return static_cast<AssetBaseWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       AssetBase* GetObjectPtr(){
          return static_cast<AssetBase*>(mObject);
@@ -56,7 +61,8 @@ namespace IJWLayer {
    public ref class AudioAssetWrapper : AssetBaseWrapper
 	{
    public:
-      AudioAssetWrapper(int ID) : AssetBaseWrapper(ID){};
+      static AudioAssetWrapper^ Wrap(int ID) { return static_cast<AudioAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static AudioAssetWrapper^ Wrap(SimObject* obj) { return static_cast<AudioAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       AudioAsset* GetObjectPtr(){
          return static_cast<AudioAsset*>(mObject);
@@ -66,7 +72,8 @@ namespace IJWLayer {
    public ref class BaseMaterialAssetWrapper : AssetBaseWrapper
 	{
    public:
-      BaseMaterialAssetWrapper(int ID) : AssetBaseWrapper(ID){};
+      static BaseMaterialAssetWrapper^ Wrap(int ID) { return static_cast<BaseMaterialAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static BaseMaterialAssetWrapper^ Wrap(SimObject* obj) { return static_cast<BaseMaterialAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       BaseMaterialAsset* GetObjectPtr(){
          return static_cast<BaseMaterialAsset*>(mObject);
@@ -76,7 +83,8 @@ namespace IJWLayer {
    public ref class DeferredMaterialAssetWrapper : BaseMaterialAssetWrapper
 	{
    public:
-      DeferredMaterialAssetWrapper(int ID) : BaseMaterialAssetWrapper(ID){};
+      static DeferredMaterialAssetWrapper^ Wrap(int ID) { return static_cast<DeferredMaterialAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static DeferredMaterialAssetWrapper^ Wrap(SimObject* obj) { return static_cast<DeferredMaterialAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       DeferredMaterialAsset* GetObjectPtr(){
          return static_cast<DeferredMaterialAsset*>(mObject);
@@ -86,7 +94,8 @@ namespace IJWLayer {
    public ref class ForwardMaterialAssetWrapper : BaseMaterialAssetWrapper
 	{
    public:
-      ForwardMaterialAssetWrapper(int ID) : BaseMaterialAssetWrapper(ID){};
+      static ForwardMaterialAssetWrapper^ Wrap(int ID) { return static_cast<ForwardMaterialAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ForwardMaterialAssetWrapper^ Wrap(SimObject* obj) { return static_cast<ForwardMaterialAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       ForwardMaterialAsset* GetObjectPtr(){
          return static_cast<ForwardMaterialAsset*>(mObject);
@@ -96,7 +105,8 @@ namespace IJWLayer {
    public ref class MeshAssetWrapper : AssetBaseWrapper
 	{
    public:
-      MeshAssetWrapper(int ID) : AssetBaseWrapper(ID){};
+      static MeshAssetWrapper^ Wrap(int ID) { return static_cast<MeshAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static MeshAssetWrapper^ Wrap(SimObject* obj) { return static_cast<MeshAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       MeshAsset* GetObjectPtr(){
          return static_cast<MeshAsset*>(mObject);
@@ -106,7 +116,8 @@ namespace IJWLayer {
    public ref class ImageAssetWrapper : AssetBaseWrapper
 	{
    public:
-      ImageAssetWrapper(int ID) : ImageAssetWrapper(ID){};
+      static ImageAssetWrapper^ Wrap(int ID) { return static_cast<ImageAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ImageAssetWrapper^ Wrap(SimObject* obj) { return static_cast<ImageAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       ImageAsset* GetObjectPtr(){
          return static_cast<ImageAsset*>(mObject);
@@ -194,7 +205,8 @@ namespace IJWLayer {
    public ref class PluginAssetWrapper : AssetBaseWrapper
 	{
    public:
-      PluginAssetWrapper(int ID) : PluginAssetWrapper(ID){};
+      static PluginAssetWrapper^ Wrap(int ID) { return static_cast<PluginAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static PluginAssetWrapper^ Wrap(SimObject* obj) { return static_cast<PluginAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       PluginAsset* GetObjectPtr(){
          return static_cast<PluginAsset*>(mObject);
@@ -204,7 +216,8 @@ namespace IJWLayer {
    public ref class ShaderAssetWrapper : AssetBaseWrapper
 	{
    public:
-      ShaderAssetWrapper(int ID) : AssetBaseWrapper(ID){};
+      static ShaderAssetWrapper^ Wrap(int ID) { return static_cast<ShaderAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ShaderAssetWrapper^ Wrap(SimObject* obj) { return static_cast<ShaderAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       Graphics::ShaderAsset* GetObjectPtr(){
          return static_cast<Graphics::ShaderAsset*>(mObject);

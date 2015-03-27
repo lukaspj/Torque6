@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using IJWLayer;
 
 namespace HorribleHackz.Framework
 {
@@ -12,18 +13,18 @@ namespace HorribleHackz.Framework
       public delegate void T6SetCallFunction(IntPtr pFunctionPtr, IntPtr pMethodPtr, IntPtr pIsMethodPtr, IntPtr pMainPtr);
 
       [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl)]
-      public delegate bool IsMethod(string className, string methodName);
+      public delegate bool IsMethod(IntPtr className, IntPtr methodName);
 
       [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl)]
       public delegate void MainEntryPoint();
 
       [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl)]
-      public delegate string CallFunction(string name, IntPtr argv, int argc, [MarshalAs(UnmanagedType.I1)] out bool result);
+      public delegate string CallFunction(IntPtr name, IntPtr argv, int argc, [MarshalAs(UnmanagedType.I1)] out bool result);
 
       [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl)]
-      public delegate string CallMethod(string className
+      public delegate string CallMethod(IntPtr className
                                        , uint obj
-                                       , string name
+                                       , IntPtr name
                                        , IntPtr argv
                                        , int argc
                                        , [MarshalAs(UnmanagedType.I1)] out bool result);
@@ -78,21 +79,35 @@ namespace HorribleHackz.Framework
          main(args.Length, args, IntPtr.Zero);
       }
 
-      public static string CallFunctionDelegate(string name, IntPtr argv, int argc, out bool result)
+      public static string CallFunctionDelegate(IntPtr name, IntPtr argv, int argc, out bool result)
       {
-         string[] strings = CustomMarshalling.IntPtrToStringArray(argv, argc);
-         return EngineCallbacks.CallScriptFunction(name, strings, out result);
+         string _name = Marshal.PtrToStringAnsi(name);
+         string[] strings = null;
+         if (argv != IntPtr.Zero)
+            strings = CustomMarshalling.IntPtrToStringArray(argv, argc);
+         return EngineCallbacks.CallScriptFunction(_name, strings, out result);
       }
 
-      public static string CallMethodDelegate(string className, uint obj, string name, IntPtr argv, int argc, out bool result)
+      public static string CallMethodDelegate(IntPtr className, uint obj, IntPtr name, IntPtr argv, int argc, out bool result)
       {
-         string[] strings = CustomMarshalling.IntPtrToStringArray(argv, argc);
-         return EngineCallbacks.CallScriptMethod(className, obj, name, strings, out result);
+         string _className = Marshal.PtrToStringAnsi(className);
+         string _name = Marshal.PtrToStringAnsi(name);
+
+         SimObjectWrapper objectWrapper = SimObjectWrapper.Wrap((int)obj);
+         string[] strings = null;
+         if(argv != IntPtr.Zero)
+            strings = CustomMarshalling.IntPtrToStringArray(argv, argc);
+         string strRes = EngineCallbacks.CallScriptMethod(objectWrapper.Name, obj, _name, strings, out result);
+         if(!result)
+            strRes = EngineCallbacks.CallScriptMethod(_className, obj, _name, strings, out result);
+         return strRes;
       }
 
-      public static bool IsMethodDelegate(string className, string methodName)
+      public static bool IsMethodDelegate(IntPtr className, IntPtr methodName)
       {
-         return EngineCallbacks.IsMethod(className, methodName);
+         string _className = Marshal.PtrToStringAnsi(className);
+         string _methodName = Marshal.PtrToStringAnsi(methodName);
+         return EngineCallbacks.IsMethod(_className, _methodName);
       }
    }
 }

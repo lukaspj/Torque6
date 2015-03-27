@@ -7,5 +7,7 @@ namespace IJWLayer
    public: 
       static void setLogMode(int mode);
       static void quit();
+      static void print(String^ str);
+      static String^ expandPath(String^ path);
    };
 }

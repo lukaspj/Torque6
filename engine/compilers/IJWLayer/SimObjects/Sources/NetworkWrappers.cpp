@@ -193,7 +193,7 @@ IJWLayer::NetObjectWrapper^ IJWLayer::NetConnectionWrapper::resolveGhostID(int g
    // Safety check
    if (ghostId < 0 || ghostId > NetConnection::MaxGhostCount) return nullptr;
 
-   return gcnew NetObjectWrapper(GetObjectPtr()->resolveGhost(ghostId));
+   return NetObjectWrapper::Wrap(GetObjectPtr()->resolveGhost(ghostId));
 }
 
 IJWLayer::NetObjectWrapper^ IJWLayer::NetConnectionWrapper::resolveObjectFromGhostIndex(int ghostId)
@@ -204,7 +204,7 @@ IJWLayer::NetObjectWrapper^ IJWLayer::NetConnectionWrapper::resolveObjectFromGho
    // Safety check
    if (ghostId < 0 || ghostId > NetConnection::MaxGhostCount) return nullptr;
 
-   return gcnew NetObjectWrapper(GetObjectPtr()->resolveObjectFromGhostIndex(ghostId));
+   return NetObjectWrapper::Wrap(GetObjectPtr()->resolveObjectFromGhostIndex(ghostId));
 }
 
 int IJWLayer::NetConnectionWrapper::getGhostID(IJWLayer::NetObjectWrapper^ object)

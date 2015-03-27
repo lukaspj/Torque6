@@ -15,36 +15,67 @@ class TiXmlElement;
 using System::String;
 
 namespace IJWLayer {
-
+   ref class SimGroupWrapper;
 	public ref class SimObjectWrapper
    {
-   private:
-      void *mPtr;
    protected:
+      void *mPtr;
       SimObject *mObject;
    public:
-      SimObjectWrapper(int ID);
-      SimObjectWrapper(SimObject* obj);
+      SimObjectWrapper() 
+      {
+         SimObjectWrapper(new SimObject());
+      };
+      SimObjectWrapper(SimObject* object)
+      {
+         mObject = object;
+         mPtr = new SimObjectPtr<SimObject>(mObject);
+      }
       ~SimObjectWrapper();
 
       bool IsAlive();
 
       SimObject* GetObjectPtr();
 
+      static SimObjectWrapper^ Wrap(int ID);
+      static SimObjectWrapper^ Wrap(SimObject* obj);
+      bool registerObject() { return mObject->registerObject(); };
+
+      // --
+
+      property bool CanSaveDynamicFields{
+         bool get();
+         void set(bool value);
+      }
+      property String^ InternalName{
+         String^ get();
+         void set(String^ newName);
+      }
+      property SimGroupWrapper^ ParentGroup{
+         void set(SimGroupWrapper^ group);
+      }
+      property String^ SuperClass{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ Class{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ Name{
+         String^ get();
+         void set(String^ value);
+      }
+      property int ID{
+         int get();
+      }
+
       static int GetID(String^ mName);
-      int GetID();
-      void SetName(String^ mNewName);
-      String^ GetName();
-      String^ getClassNamespace();
-      String^ getSuperClassNamespace();
-      void setClassNamespace(String^ namespc);
-      void setSuperClassNamespace(String^ namespc);
       bool isMethod(String^ name);
       String^ call(String^ name, ...array<String^> ^args);
       void dumpClassHierarchy();
       void dump();
       bool isMemberOfClass(String^ className);
-      String^ getClassName();
       String^ getFieldValue(String^ fieldName);
       void setFieldValue(String^ fieldName, String^ value);
       int getDynamicFieldCount();

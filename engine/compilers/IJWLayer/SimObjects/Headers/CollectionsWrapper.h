@@ -12,8 +12,9 @@ namespace IJWLayer {
    public ref class SimSetWrapper : SimObjectWrapper
    {
    public:
-      SimSetWrapper(int ID) : SimObjectWrapper(ID){};
-      SimSetWrapper(SimSet* object) : SimObjectWrapper(object){};
+
+      static SimSetWrapper^ Wrap(int ID) { return static_cast<SimSetWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static SimSetWrapper^ Wrap(SimObject* obj) { return static_cast<SimSetWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       SimSet* GetObjectPtr(){
          return static_cast<SimSet*>(mObject);
@@ -38,8 +39,8 @@ namespace IJWLayer {
    public ref class SimGroupWrapper : SimSetWrapper
    {
    public:
-      SimGroupWrapper(int ID) : SimSetWrapper(ID){};
-      SimGroupWrapper(SimGroup* object) : SimSetWrapper(object){};
+      static SimGroupWrapper^ Wrap(int ID) { return static_cast<SimGroupWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static SimGroupWrapper^ Wrap(SimObject* obj) { return static_cast<SimGroupWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       SimGroup* GetObjectPtr(){
          return static_cast<SimGroup*>(mObject);
@@ -49,8 +50,8 @@ namespace IJWLayer {
    public ref class NameTagsWrapper : SimSetWrapper
    {
    public:
-      NameTagsWrapper(int ID) : SimSetWrapper(ID){};
-      NameTagsWrapper(NameTags* object) : SimSetWrapper(object){};
+      static NameTagsWrapper^ Wrap(int ID) { return static_cast<NameTagsWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static NameTagsWrapper^ Wrap(SimObject* obj) { return static_cast<NameTagsWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       NameTags* GetObjectPtr(){
          return static_cast<NameTags*>(mObject);
@@ -72,8 +73,8 @@ namespace IJWLayer {
    public ref class SimDataBlockGroupWrapper : SimGroupWrapper
    {
    public:
-      SimDataBlockGroupWrapper(int ID) : SimGroupWrapper(ID){};
-      SimDataBlockGroupWrapper(SimDataBlockGroup* object) : SimGroupWrapper(object){};
+      static SimDataBlockGroupWrapper^ Wrap(int ID) { return static_cast<SimDataBlockGroupWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static SimDataBlockGroupWrapper^ Wrap(SimObject* obj) { return static_cast<SimDataBlockGroupWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       SimDataBlockGroup* GetObjectPtr(){
          return static_cast<SimDataBlockGroup*>(mObject);

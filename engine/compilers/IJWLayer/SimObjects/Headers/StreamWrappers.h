@@ -13,8 +13,8 @@ namespace IJWLayer {
    public ref class StreamObjectWrapper : SimObjectWrapper
    {
    public:
-      StreamObjectWrapper(int ID) : SimObjectWrapper(ID){};
-      StreamObjectWrapper(StreamObject* object) : SimObjectWrapper(object){};
+      static StreamObjectWrapper^ Wrap(int ID) { return static_cast<StreamObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static StreamObjectWrapper^ Wrap(StreamObject* obj) { return static_cast<StreamObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       StreamObject* GetObjectPtr(){
          return static_cast<StreamObject*>(mObject);
@@ -42,7 +42,8 @@ namespace IJWLayer {
    {
 
    public:
-      FileStreamObjectWrapper(int ID) : StreamObjectWrapper(ID){};
+      static FileStreamObjectWrapper^ Wrap(int ID) { return static_cast<FileStreamObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static FileStreamObjectWrapper^ Wrap(FileStreamObject* obj) { return static_cast<FileStreamObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       FileStreamObject* GetObjectPtr(){
          return static_cast<FileStreamObject*>(mObject);

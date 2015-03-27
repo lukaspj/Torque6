@@ -122,7 +122,7 @@ IJWLayer::StreamObjectWrapper^ IJWLayer::ZipObjectWrapper::openFileForRead(Strin
       return nullptr;
 
    char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
-   return gcnew StreamObjectWrapper(GetObjectPtr()->openFileForRead(_fileName));
+   return StreamObjectWrapper::Wrap(GetObjectPtr()->openFileForRead(_fileName));
 }
 
 IJWLayer::StreamObjectWrapper^ IJWLayer::ZipObjectWrapper::openFileForWrite(String^ fileName)
@@ -131,7 +131,7 @@ IJWLayer::StreamObjectWrapper^ IJWLayer::ZipObjectWrapper::openFileForWrite(Stri
       return nullptr;
 
    char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
-   return gcnew StreamObjectWrapper(GetObjectPtr()->openFileForWrite(_fileName));
+   return StreamObjectWrapper::Wrap(GetObjectPtr()->openFileForWrite(_fileName));
 }
 
 void IJWLayer::ZipObjectWrapper::closeFile(IJWLayer::StreamObjectWrapper^ stream)

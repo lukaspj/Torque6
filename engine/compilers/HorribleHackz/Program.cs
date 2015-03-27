@@ -4,7 +4,6 @@ namespace HorribleHackz
 {
    class Program
    {
-
       static void Main(string[] args)
       {
          Torque6Main.Libraries libraries = new Torque6Main.Libraries()

@@ -13,8 +13,8 @@ namespace IJWLayer {
    public ref class RemoteDebuggerBaseWrapper : SimObjectWrapper
    {
    public:
-      RemoteDebuggerBaseWrapper(int ID) : SimObjectWrapper(ID){};
-      RemoteDebuggerBaseWrapper(RemoteDebuggerBase* object) : SimObjectWrapper(object){};
+      static RemoteDebuggerBaseWrapper^ Wrap(int ID) { return static_cast<RemoteDebuggerBaseWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static RemoteDebuggerBaseWrapper^ Wrap(RemoteDebuggerBase* obj) { return static_cast<RemoteDebuggerBaseWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       RemoteDebuggerBase* GetObjectPtr(){
          return static_cast<RemoteDebuggerBase*>(mObject);
@@ -24,8 +24,8 @@ namespace IJWLayer {
    public ref class RemoteDebugger1Wrapper : SimObjectWrapper
    {
    public:
-      RemoteDebugger1Wrapper(int ID) : SimObjectWrapper(ID){};
-      RemoteDebugger1Wrapper(RemoteDebugger1* object) : SimObjectWrapper(object){};
+      static RemoteDebugger1Wrapper^ Wrap(int ID) { return static_cast<RemoteDebugger1Wrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static RemoteDebugger1Wrapper^ Wrap(RemoteDebugger1* obj) { return static_cast<RemoteDebugger1Wrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       RemoteDebugger1* GetObjectPtr(){
          return static_cast<RemoteDebugger1*>(mObject);

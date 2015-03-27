@@ -33,8 +33,8 @@
 
 //-----------------------------------------------------------------------------
 
-DefineConsoleType( TypeColorI )
-DefineConsoleType( TypeColorF )
+DLL_PUBLIC DefineConsoleType(TypeColorI)
+DLL_PUBLIC DefineConsoleType( TypeColorF )
 
 
 //-----------------------------------------------------------------------------

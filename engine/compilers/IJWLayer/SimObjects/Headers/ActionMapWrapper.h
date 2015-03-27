@@ -13,7 +13,16 @@ namespace IJWLayer {
    public ref class ActionMapWrapper : SimObjectWrapper
 	{
    public:
-      ActionMapWrapper(int ID) : SimObjectWrapper(ID){};
+      ActionMapWrapper()
+      {
+         mObject = new ActionMap();
+         if (!mObject->registerObject())
+            throw gcnew Exception("Register object failed");
+         mPtr = new SimObjectPtr<SimObject>(mObject);
+      };
+
+      static ActionMapWrapper^ Wrap(int ID) { return static_cast<ActionMapWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ActionMapWrapper^ Wrap(SimObject* obj) { return static_cast<ActionMapWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       ActionMap* GetObjectPtr();
 

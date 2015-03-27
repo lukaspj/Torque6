@@ -100,7 +100,7 @@ IJWLayer::SimObjectWrapper^ IJWLayer::SimSetWrapper::getObject(int index)
       Con::printf("Set::getObject index out of range.");
       return nullptr;
    }
-   return gcnew SimObjectWrapper((*GetObjectPtr())[index]);
+   return SimObjectWrapper::Wrap((*GetObjectPtr())[index]);
 }
 
 bool IJWLayer::SimSetWrapper::isMember(SimObjectWrapper^ object)
@@ -135,7 +135,7 @@ IJWLayer::SimObjectWrapper^ IJWLayer::SimSetWrapper::findObjectByInternalName(St
 
    SimObject* child = GetObjectPtr()->findObjectByInternalName(pcName, searchChildren);
    if (child)
-      return gcnew SimObjectWrapper(child);
+      return SimObjectWrapper::Wrap(child);
    return nullptr;
 }
 IJWLayer::SimObjectWrapper^ IJWLayer::SimSetWrapper::findObjectByInternalName(String^ name)

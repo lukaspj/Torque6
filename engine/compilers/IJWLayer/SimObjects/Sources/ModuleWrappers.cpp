@@ -90,7 +90,7 @@ IJWLayer::ModuleDefinitionWrapper^ IJWLayer::ModuleManagerWrapper::findModule(St
    
    ModuleDefinition* modDef = GetObjectPtr()->findModule(_moduleId, versionId);
 
-   return gcnew ModuleDefinitionWrapper(modDef);
+   return ModuleDefinitionWrapper::Wrap(modDef);
 }
 
 array<IJWLayer::ModuleDefinitionWrapper^>^ IJWLayer::ModuleManagerWrapper::findModules(bool loadedOnly)
@@ -108,7 +108,7 @@ array<IJWLayer::ModuleDefinitionWrapper^>^ IJWLayer::ModuleManagerWrapper::findM
 
    for (int i = 0; i < moduleDefinitions.size(); i++)
    {
-      retArr[i] = gcnew ModuleDefinitionWrapper(const_cast<ModuleDefinition*>(moduleDefinitions[i]));
+      retArr[i] = ModuleDefinitionWrapper::Wrap(const_cast<ModuleDefinition*>(moduleDefinitions[i]));
    }
 
    return retArr;
@@ -138,7 +138,7 @@ array<IJWLayer::ModuleDefinitionWrapper^>^ IJWLayer::ModuleManagerWrapper::findM
 
    for (int i = 0; i < moduleDefinitions.size(); i++)
    {
-      retArr[i] = gcnew ModuleDefinitionWrapper(const_cast<ModuleDefinition*>(moduleDefinitions[i]));
+      retArr[i] = ModuleDefinitionWrapper::Wrap(const_cast<ModuleDefinition*>(moduleDefinitions[i]));
    }
 
    return retArr;
@@ -239,7 +239,7 @@ IJWLayer::ModuleManagerWrapper^ IJWLayer::ModuleDefinitionWrapper::getModuleMana
    // Fetch module manager.
    ModuleManager* pModuleManager = GetObjectPtr()->getModuleManager();
 
-   return pModuleManager != NULL ? gcnew ModuleManagerWrapper(pModuleManager) : nullptr;
+   return pModuleManager != NULL ? ModuleManagerWrapper::Wrap(pModuleManager) : nullptr;
 }
 
 int IJWLayer::ModuleDefinitionWrapper::getDependencyCount()

@@ -14,8 +14,8 @@ namespace IJWLayer {
    public ref class SimXMLDocumentWrapper : SimObjectWrapper
    {
    public:
-      SimXMLDocumentWrapper(int ID) : SimObjectWrapper(ID){};
-      SimXMLDocumentWrapper(SimXMLDocument* object) : SimObjectWrapper(object){};
+      static SimXMLDocumentWrapper^ Wrap(int ID) { return static_cast<SimXMLDocumentWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static SimXMLDocumentWrapper^ Wrap(SimXMLDocument* obj) { return static_cast<SimXMLDocumentWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       SimXMLDocument* GetObjectPtr(){
          return static_cast<SimXMLDocument*>(mObject);
@@ -58,8 +58,8 @@ namespace IJWLayer {
    public ref class TamlWrapper : SimObjectWrapper
    {
    public:
-      TamlWrapper(int ID) : SimObjectWrapper(ID){};
-      TamlWrapper(Taml* object) : SimObjectWrapper(object){};
+      static TamlWrapper^ Wrap(int ID) { return static_cast<TamlWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static TamlWrapper^ Wrap(Taml* obj) { return static_cast<TamlWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       Taml* GetObjectPtr(){
          return static_cast<Taml*>(mObject);

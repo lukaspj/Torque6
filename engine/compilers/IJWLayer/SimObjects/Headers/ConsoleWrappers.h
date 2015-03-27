@@ -12,8 +12,8 @@ namespace IJWLayer {
    public ref class ConsoleLoggerWrapper : SimObjectWrapper
    {
    public:
-      ConsoleLoggerWrapper(int ID) : SimObjectWrapper(ID){};
-      ConsoleLoggerWrapper(ConsoleLogger* object) : SimObjectWrapper(object){};
+      static ConsoleLoggerWrapper^ Wrap(int ID) { return static_cast<ConsoleLoggerWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static ConsoleLoggerWrapper^ Wrap(SimObject* obj) { return static_cast<ConsoleLoggerWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       ConsoleLogger* GetObjectPtr(){
          return static_cast<ConsoleLogger*>(mObject);

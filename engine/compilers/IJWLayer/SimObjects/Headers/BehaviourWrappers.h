@@ -13,8 +13,8 @@ namespace IJWLayer {
    public ref class BehaviorInstanceWrapper : SimObjectWrapper
    {
    public:
-      BehaviorInstanceWrapper(int ID) : SimObjectWrapper(ID){};
-      BehaviorInstanceWrapper(BehaviorInstance* object) : SimObjectWrapper(object){};
+      static BehaviorInstanceWrapper^ Wrap(int ID) { return static_cast<BehaviorInstanceWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static BehaviorInstanceWrapper^ Wrap(BehaviorInstance* obj) { return static_cast<BehaviorInstanceWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       BehaviorInstance* GetObjectPtr(){
          return static_cast<BehaviorInstance*>(mObject);
@@ -26,8 +26,8 @@ namespace IJWLayer {
    public ref class BehaviorTemplateWrapper : SimObjectWrapper
    {
    public:
-      BehaviorTemplateWrapper(int ID) : SimObjectWrapper(ID){};
-      BehaviorTemplateWrapper(BehaviorTemplate* object) : SimObjectWrapper(object){};
+      static BehaviorTemplateWrapper^ Wrap(int ID) { return static_cast<BehaviorTemplateWrapper^>(SimObjectWrapper::Wrap(ID)); };
+      static BehaviorTemplateWrapper^ Wrap(BehaviorTemplate* obj) { return static_cast<BehaviorTemplateWrapper^>(SimObjectWrapper::Wrap(obj)); };
 
       BehaviorTemplate* GetObjectPtr(){
          return static_cast<BehaviorTemplate*>(mObject);
