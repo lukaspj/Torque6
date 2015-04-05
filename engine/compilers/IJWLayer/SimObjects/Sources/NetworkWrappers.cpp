@@ -5,7 +5,7 @@
 using namespace System::Runtime::InteropServices;
 using System::String;
 
-void IJWLayer::NetObjectWrapper::scopeToClient(NetConnectionWrapper^ client)
+void IJWLayer::NetObject::scopeToClient(NetConnection^ client)
 {
    if (!IsAlive())
       return;
@@ -17,7 +17,7 @@ void IJWLayer::NetObjectWrapper::scopeToClient(NetConnectionWrapper^ client)
    client->GetObjectPtr()->objectLocalScopeAlways(GetObjectPtr());
 }
 
-void IJWLayer::NetObjectWrapper::clearScopeToClient(NetConnectionWrapper^ client)
+void IJWLayer::NetObject::clearScopeToClient(NetConnection^ client)
 {
    if (!IsAlive())
       return;
@@ -29,20 +29,20 @@ void IJWLayer::NetObjectWrapper::clearScopeToClient(NetConnectionWrapper^ client
    client->GetObjectPtr()->objectLocalClearAlways(GetObjectPtr());
 }
 
-void IJWLayer::NetObjectWrapper::setScopeAlways()
+void IJWLayer::NetObject::setScopeAlways()
 {
    if (IsAlive())
       GetObjectPtr()->setScopeAlways();
 }
 
-int IJWLayer::NetObjectWrapper::getGhostID()
+int IJWLayer::NetObject::getGhostID()
 {
    if (!IsAlive())
       return -1;
    return GetObjectPtr()->getNetIndex();
 }
 
-void IJWLayer::TCPObjectWrapper::send(...array<String^>^ args)
+void IJWLayer::TCPObject::send(...array<String^>^ args)
 {
    if (!IsAlive())
       return;
@@ -53,13 +53,13 @@ void IJWLayer::TCPObjectWrapper::send(...array<String^>^ args)
    }
 }
 
-void IJWLayer::TCPObjectWrapper::listen(int port)
+void IJWLayer::TCPObject::listen(int port)
 {
    if (IsAlive())
       GetObjectPtr()->listen(port);
 }
 
-void IJWLayer::TCPObjectWrapper::connect(String^ address)
+void IJWLayer::TCPObject::connect(String^ address)
 {
    if (!IsAlive())
       return;
@@ -68,7 +68,7 @@ void IJWLayer::TCPObjectWrapper::connect(String^ address)
    GetObjectPtr()->connect(addr);
 }
 
-void IJWLayer::TCPObjectWrapper::openAndConnect(String^ address)
+void IJWLayer::TCPObject::openAndConnect(String^ address)
 {
    if (!IsAlive())
       return;
@@ -77,7 +77,7 @@ void IJWLayer::TCPObjectWrapper::openAndConnect(String^ address)
    GetObjectPtr()->openAndConnect(addr);
 }
 
-void IJWLayer::TCPObjectWrapper::disconnect()
+void IJWLayer::TCPObject::disconnect()
 {
    if (!IsAlive())
       return;
@@ -85,7 +85,7 @@ void IJWLayer::TCPObjectWrapper::disconnect()
    GetObjectPtr()->disconnect();
 }
 
-String^ IJWLayer::TCPObjectWrapper::URLEncodeString(String^ data)
+String^ IJWLayer::TCPObject::URLEncodeString(String^ data)
 {
    if (!IsAlive())
       return nullptr;
@@ -108,7 +108,7 @@ String^ IJWLayer::TCPObjectWrapper::URLEncodeString(String^ data)
    return gcnew String(pcReturnBuffer);
 }
 
-void IJWLayer::HTTPObjectWrapper::get(String^ address, String^ requestURI, String^ query)
+void IJWLayer::HTTPObject::get(String^ address, String^ requestURI, String^ query)
 {
    if (!IsAlive())
       return;
@@ -122,12 +122,12 @@ void IJWLayer::HTTPObjectWrapper::get(String^ address, String^ requestURI, Strin
    GetObjectPtr()->get(_address, _requestURI, _query);
 }
 
-void IJWLayer::HTTPObjectWrapper::get(String^ address, String^ requestURI)
+void IJWLayer::HTTPObject::get(String^ address, String^ requestURI)
 {
    get(address, requestURI, nullptr);
 }
 
-void IJWLayer::HTTPObjectWrapper::post(String^ address, String^ requestURI, String^ query, String^ post)
+void IJWLayer::HTTPObject::post(String^ address, String^ requestURI, String^ query, String^ post)
 {
    if (!IsAlive())
       return;
@@ -140,7 +140,7 @@ void IJWLayer::HTTPObjectWrapper::post(String^ address, String^ requestURI, Stri
    GetObjectPtr()->post(_address, _requestURI, _query, _post);
 }
 
-String^ IJWLayer::NetConnectionWrapper::getAddress()
+String^ IJWLayer::NetConnection::getAddress()
 {
    if (!IsAlive())
       return nullptr;
@@ -151,33 +151,33 @@ String^ IJWLayer::NetConnectionWrapper::getAddress()
    return gcnew String(buffer);
 }
 
-void IJWLayer::NetConnectionWrapper::setSimulatedNetParams(float packetLoss, int delay)
+void IJWLayer::NetConnection::setSimulatedNetParams(float packetLoss, int delay)
 {
    if (IsAlive())
       GetObjectPtr()->setSimulatedNetParams(packetLoss, delay);
 }
 
-int IJWLayer::NetConnectionWrapper::getPing()
+int IJWLayer::NetConnection::getPing()
 {
    if (IsAlive())
       return GetObjectPtr()->getRoundTripTime();
    return -1;
 }
 
-int IJWLayer::NetConnectionWrapper::getPacketLoss()
+int IJWLayer::NetConnection::getPacketLoss()
 {
    if (IsAlive())
       return 100 * GetObjectPtr()->getPacketLoss();
    return -1;
 }
 
-void IJWLayer::NetConnectionWrapper::checkMaxRate()
+void IJWLayer::NetConnection::checkMaxRate()
 {
    if (IsAlive())
       GetObjectPtr()->checkMaxRate();
 }
 
-void IJWLayer::NetConnectionWrapper::setLogging(bool value)
+void IJWLayer::NetConnection::setLogging(bool value)
 {
 #ifdef TORQUE_DEBUG_NET
    if (IsAlive())
@@ -185,29 +185,29 @@ void IJWLayer::NetConnectionWrapper::setLogging(bool value)
 #endif
 }
 
-IJWLayer::NetObjectWrapper^ IJWLayer::NetConnectionWrapper::resolveGhostID(int ghostId)
+IJWLayer::NetObject^ IJWLayer::NetConnection::resolveGhostID(int ghostId)
 {
    if (!IsAlive())
       return nullptr;
 
    // Safety check
-   if (ghostId < 0 || ghostId > NetConnection::MaxGhostCount) return nullptr;
+   if (ghostId < 0 || ghostId > EngineNetConnection::MaxGhostCount) return nullptr;
 
-   return NetObjectWrapper::Wrap(GetObjectPtr()->resolveGhost(ghostId));
+   return NetObject::Wrap(GetObjectPtr()->resolveGhost(ghostId));
 }
 
-IJWLayer::NetObjectWrapper^ IJWLayer::NetConnectionWrapper::resolveObjectFromGhostIndex(int ghostId)
+IJWLayer::NetObject^ IJWLayer::NetConnection::resolveObjectFromGhostIndex(int ghostId)
 {
    if (!IsAlive())
       return nullptr;
 
    // Safety check
-   if (ghostId < 0 || ghostId > NetConnection::MaxGhostCount) return nullptr;
+   if (ghostId < 0 || ghostId > EngineNetConnection::MaxGhostCount) return nullptr;
 
-   return NetObjectWrapper::Wrap(GetObjectPtr()->resolveObjectFromGhostIndex(ghostId));
+   return NetObject::Wrap(GetObjectPtr()->resolveObjectFromGhostIndex(ghostId));
 }
 
-int IJWLayer::NetConnectionWrapper::getGhostID(IJWLayer::NetObjectWrapper^ object)
+int IJWLayer::NetConnection::getGhostID(IJWLayer::NetObject^ object)
 {
    if (IsAlive() && object->IsAlive())
       return GetObjectPtr()->getGhostIndex(object->GetObjectPtr());
@@ -216,7 +216,7 @@ int IJWLayer::NetConnectionWrapper::getGhostID(IJWLayer::NetObjectWrapper^ objec
    return -1;
 }
 
-void IJWLayer::NetConnectionWrapper::connect(String^ remoteAddress)
+void IJWLayer::NetConnection::connect(String^ remoteAddress)
 {
    if (!IsAlive())
       return;
@@ -231,13 +231,13 @@ void IJWLayer::NetConnectionWrapper::connect(String^ remoteAddress)
    GetObjectPtr()->connect(&addr);
 }
 
-String^ IJWLayer::NetConnectionWrapper::connectLocal()
+String^ IJWLayer::NetConnection::connectLocal()
 {
    if (!IsAlive())
       return nullptr;
    ConsoleObject *co = ConsoleObject::create(GetObjectPtr()->getClassName());
-   NetConnection *client = GetObjectPtr();
-   NetConnection *server = dynamic_cast<NetConnection *>(co);
+   EngineNetConnection *client = GetObjectPtr();
+   EngineNetConnection *server = dynamic_cast<EngineNetConnection *>(co);
    const char *error = NULL;
    BitStream *stream = BitStream::getPacketStream();
 
@@ -270,7 +270,7 @@ String^ IJWLayer::NetConnectionWrapper::connectLocal()
    server->setEstablished();
    client->setConnectSequence(0);
    server->setConnectSequence(0);
-   NetConnection::setLocalClientConnection(server);
+   EngineNetConnection::setLocalClientConnection(server);
    server->assignName("LocalClientConnection");
    return "";
 
@@ -282,7 +282,7 @@ errorOut:
    return gcnew String(error);
 }
 
-int IJWLayer::NetConnectionWrapper::getGhostsActive()
+int IJWLayer::NetConnection::getGhostsActive()
 {
    if (IsAlive())
       return GetObjectPtr()->getGhostsActive();

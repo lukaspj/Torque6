@@ -4,6 +4,10 @@
 
 #include "SimObjectWrapper.h"
 
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "assets/assetBase.h"
 #include "assets/declaredAssets.h"
 #include "assets/referencedAssets.h"
@@ -16,111 +20,204 @@
 #include "plugins/pluginAsset.h"
 #include "graphics/shaders.h"
 
+// #pragma unmanaged
+#pragma managed(pop)
+
 using namespace System;
+
+typedef DeclaredAssets EngineDeclaredAssets;
+typedef ReferencedAssets EngineReferencedAssets;
+typedef AssetBase EngineAssetBase;
+typedef AudioAsset EngineAudioAsset;
+typedef BaseMaterialAsset EngineBaseMaterialAsset;
+typedef DeferredMaterialAsset EngineDeferredMaterialAsset;
+typedef ForwardMaterialAsset EngineForwardMaterialAsset;
+typedef MeshAsset EngineMeshAsset;
+typedef ImageAsset EngineImageAsset;
+typedef PluginAsset EnginePluginAsset;
 
 namespace IJWLayer {
 
-   public ref class DeclaredAssetWrapper : SimObjectWrapper
+   public ref class DeclaredAssets : SimObject
 	{
    public:
 
-      static DeclaredAssetWrapper^ Wrap(int ID) { return static_cast<DeclaredAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static DeclaredAssetWrapper^ Wrap(SimObject* obj) { return static_cast<DeclaredAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static DeclaredAssets^ Wrap(int ID) { return static_cast<DeclaredAssets^>(SimObject::Wrap(ID)); };
+      static DeclaredAssets^ Wrap(EngineDeclaredAssets* obj) { return static_cast<DeclaredAssets^>(SimObject::Wrap(obj)); };
 
-      DeclaredAssets* GetObjectPtr(){
-         return static_cast<DeclaredAssets*>(mObject);
+      EngineDeclaredAssets* GetObjectPtr(){
+         return static_cast<EngineDeclaredAssets*>(mObject);
       };
+
+      property String^ Path{
+         String^ get();
+         void set(String^ val);
+      }
+      property String^ Extension{
+         String^ get();
+         void set(String^ val);
+      }
+      property bool Recurse{
+         bool get();
+         void set(bool val);
+      }
 	};
 
-   public ref class ReferencedAssetsWrapper : SimObjectWrapper
+   public ref class ReferencedAssets : SimObject
 	{
    public:
 
-      static ReferencedAssetsWrapper^ Wrap(int ID) { return static_cast<ReferencedAssetsWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static ReferencedAssetsWrapper^ Wrap(SimObject* obj) { return static_cast<ReferencedAssetsWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static ReferencedAssets^ Wrap(int ID) { return static_cast<ReferencedAssets^>(SimObject::Wrap(ID)); };
+      static ReferencedAssets^ Wrap(EngineReferencedAssets* obj) { return static_cast<ReferencedAssets^>(SimObject::Wrap(obj)); };
 
-      ReferencedAssets* GetObjectPtr(){
-         return static_cast<ReferencedAssets*>(mObject);
+      EngineReferencedAssets* GetObjectPtr(){
+         return static_cast<EngineReferencedAssets*>(mObject);
       };
+
+      property String^ Path{
+         String^ get();
+         void set(String^ val);
+      }
+      property String^ Extension{
+         String^ get();
+         void set(String^ val);
+      }
+      property bool Recurse{
+         bool get();
+         void set(bool val);
+      }
 	};
 
-   public ref class AssetBaseWrapper : SimObjectWrapper
+   public ref class AssetBase : SimObject
 	{
    public:
-      static AssetBaseWrapper^ Wrap(int ID) { return static_cast<AssetBaseWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static AssetBaseWrapper^ Wrap(SimObject* obj) { return static_cast<AssetBaseWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static AssetBase^ Wrap(int ID) { return static_cast<AssetBase^>(SimObject::Wrap(ID)); };
+      static AssetBase^ Wrap(EngineAssetBase* obj) { return static_cast<AssetBase^>(SimObject::Wrap(obj)); };
 
-      AssetBase* GetObjectPtr(){
-         return static_cast<AssetBase*>(mObject);
+      EngineAssetBase* GetObjectPtr(){
+         return static_cast<EngineAssetBase*>(mObject);
       };
+
+      property String^ AssetName{
+         String^ get();
+         void set(String^ val);
+      }
+      property String^ AssetDescription{
+         String^ get();
+         void set(String^ val);
+      }
+      property String^ AssetCategory{
+         String^ get();
+         void set(String^ val);
+      }
+      property bool AutoUnload{
+         bool get();
+         void set(bool val);
+      }
+      property bool Internal{
+         bool get();
+         void set(bool val);
+      }
+      property bool Private{
+         bool get();
+      }
 
       void refreshAsset();
       String^ getAssetId();
 	};
 
-   public ref class AudioAssetWrapper : AssetBaseWrapper
+   public ref class AudioAsset : AssetBase
 	{
    public:
-      static AudioAssetWrapper^ Wrap(int ID) { return static_cast<AudioAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static AudioAssetWrapper^ Wrap(SimObject* obj) { return static_cast<AudioAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static AudioAsset^ Wrap(int ID) { return static_cast<AudioAsset^>(SimObject::Wrap(ID)); };
+      static AudioAsset^ Wrap(EngineAudioAsset* obj) { return static_cast<AudioAsset^>(SimObject::Wrap(obj)); };
 
-      AudioAsset* GetObjectPtr(){
-         return static_cast<AudioAsset*>(mObject);
+      EngineAudioAsset* GetObjectPtr(){
+         return static_cast<EngineAudioAsset*>(mObject);
+      };
+      property String^ AudioFile{
+         String^ get();
+         void set(String^ val);
+      }
+      property float Volume{
+         float get();
+         void set(float val);
+      }
+      property int VolumeChannel{
+         int get();
+         void set(int val);
+      }
+      property bool Looping{
+         bool get();
+         void set(bool val);
+      }
+      property bool Streaming{
+         bool get();
+         void set(bool val);
+      }
+	};
+
+   ref class ShaderAsset;
+   public ref class BaseMaterialAsset : AssetBase
+	{
+   public:
+      static BaseMaterialAsset^ Wrap(int ID) { return static_cast<BaseMaterialAsset^>(SimObject::Wrap(ID)); };
+      static BaseMaterialAsset^ Wrap(EngineBaseMaterialAsset* obj) { return static_cast<BaseMaterialAsset^>(SimObject::Wrap(obj)); };
+
+      EngineBaseMaterialAsset* GetObjectPtr(){
+         return static_cast<EngineBaseMaterialAsset*>(mObject);
+      };
+
+      void setShaderAsset(String^ assetId);
+      ShaderAsset^ getShaderAsset();
+	};
+
+   public ref class DeferredMaterialAsset : BaseMaterialAsset
+	{
+   public:
+      static DeferredMaterialAsset^ Wrap(int ID) { return static_cast<DeferredMaterialAsset^>(SimObject::Wrap(ID)); };
+      static DeferredMaterialAsset^ Wrap(EngineDeferredMaterialAsset* obj) { return static_cast<DeferredMaterialAsset^>(SimObject::Wrap(obj)); };
+
+      EngineDeferredMaterialAsset* GetObjectPtr(){
+         return static_cast<EngineDeferredMaterialAsset*>(mObject);
       };
 	};
 
-   public ref class BaseMaterialAssetWrapper : AssetBaseWrapper
+   public ref class ForwardMaterialAsset : BaseMaterialAsset
 	{
    public:
-      static BaseMaterialAssetWrapper^ Wrap(int ID) { return static_cast<BaseMaterialAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static BaseMaterialAssetWrapper^ Wrap(SimObject* obj) { return static_cast<BaseMaterialAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static ForwardMaterialAsset^ Wrap(int ID) { return static_cast<ForwardMaterialAsset^>(SimObject::Wrap(ID)); };
+      static ForwardMaterialAsset^ Wrap(EngineForwardMaterialAsset* obj) { return static_cast<ForwardMaterialAsset^>(SimObject::Wrap(obj)); };
 
-      BaseMaterialAsset* GetObjectPtr(){
-         return static_cast<BaseMaterialAsset*>(mObject);
+      EngineForwardMaterialAsset* GetObjectPtr(){
+         return static_cast<EngineForwardMaterialAsset*>(mObject);
       };
 	};
 
-   public ref class DeferredMaterialAssetWrapper : BaseMaterialAssetWrapper
-	{
+   public ref class MeshAsset : AssetBase
+   {
    public:
-      static DeferredMaterialAssetWrapper^ Wrap(int ID) { return static_cast<DeferredMaterialAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static DeferredMaterialAssetWrapper^ Wrap(SimObject* obj) { return static_cast<DeferredMaterialAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static MeshAsset^ Wrap(int ID) { return static_cast<MeshAsset^>(SimObject::Wrap(ID)); };
+      static MeshAsset^ Wrap(EngineMeshAsset* obj) { return static_cast<MeshAsset^>(SimObject::Wrap(obj)); };
 
-      DeferredMaterialAsset* GetObjectPtr(){
-         return static_cast<DeferredMaterialAsset*>(mObject);
+      EngineMeshAsset* GetObjectPtr(){
+         return static_cast<EngineMeshAsset*>(mObject);
       };
+
+      property String^ MeshFile{
+         String^ get();
+         void set(String^ val);
+      }
 	};
 
-   public ref class ForwardMaterialAssetWrapper : BaseMaterialAssetWrapper
+   public ref class ImageAsset : AssetBase
 	{
    public:
-      static ForwardMaterialAssetWrapper^ Wrap(int ID) { return static_cast<ForwardMaterialAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static ForwardMaterialAssetWrapper^ Wrap(SimObject* obj) { return static_cast<ForwardMaterialAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static ImageAsset^ Wrap(int ID) { return static_cast<ImageAsset^>(SimObject::Wrap(ID)); };
+      static ImageAsset^ Wrap(EngineImageAsset* obj) { return static_cast<ImageAsset^>(SimObject::Wrap(obj)); };
 
-      ForwardMaterialAsset* GetObjectPtr(){
-         return static_cast<ForwardMaterialAsset*>(mObject);
-      };
-	};
-
-   public ref class MeshAssetWrapper : AssetBaseWrapper
-	{
-   public:
-      static MeshAssetWrapper^ Wrap(int ID) { return static_cast<MeshAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static MeshAssetWrapper^ Wrap(SimObject* obj) { return static_cast<MeshAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
-
-      MeshAsset* GetObjectPtr(){
-         return static_cast<MeshAsset*>(mObject);
-      };
-	};
-
-   public ref class ImageAssetWrapper : AssetBaseWrapper
-	{
-   public:
-      static ImageAssetWrapper^ Wrap(int ID) { return static_cast<ImageAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static ImageAssetWrapper^ Wrap(SimObject* obj) { return static_cast<ImageAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
-
-      ImageAsset* GetObjectPtr(){
-         return static_cast<ImageAsset*>(mObject);
+      EngineImageAsset* GetObjectPtr(){
+         return static_cast<EngineImageAsset*>(mObject);
       };
       property String^ ImageFile{
          String^ get();
@@ -202,25 +299,39 @@ namespace IJWLayer {
       int getExplicitCellIndex(String^ cell);
    };
 
-   public ref class PluginAssetWrapper : AssetBaseWrapper
+   public ref class PluginAsset : AssetBase
 	{
    public:
-      static PluginAssetWrapper^ Wrap(int ID) { return static_cast<PluginAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static PluginAssetWrapper^ Wrap(SimObject* obj) { return static_cast<PluginAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static PluginAsset^ Wrap(int ID) { return static_cast<PluginAsset^>(SimObject::Wrap(ID)); };
+      static PluginAsset^ Wrap(EnginePluginAsset* obj) { return static_cast<PluginAsset^>(SimObject::Wrap(obj)); };
 
-      PluginAsset* GetObjectPtr(){
-         return static_cast<PluginAsset*>(mObject);
+      EnginePluginAsset* GetObjectPtr(){
+         return static_cast<EnginePluginAsset*>(mObject);
       };
+
+      property String^ PluginFile{
+         String^ get();
+         void set(String^ val);
+      }
 	};
 
-   public ref class ShaderAssetWrapper : AssetBaseWrapper
+   public ref class ShaderAsset : AssetBase
 	{
    public:
-      static ShaderAssetWrapper^ Wrap(int ID) { return static_cast<ShaderAssetWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static ShaderAssetWrapper^ Wrap(SimObject* obj) { return static_cast<ShaderAssetWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static ShaderAsset^ Wrap(int ID) { return static_cast<ShaderAsset^>(SimObject::Wrap(ID)); };
+      static ShaderAsset^ Wrap(Graphics::ShaderAsset* obj) { return static_cast<ShaderAsset^>(SimObject::Wrap(obj)); };
 
       Graphics::ShaderAsset* GetObjectPtr(){
          return static_cast<Graphics::ShaderAsset*>(mObject);
       };
+
+      property String^ VertexShaderFile{
+         String^ get();
+         void set(String^ val);
+      }
+      property String^ PixelShaderFile{
+         String^ get();
+         void set(String^ val);
+      }
 	};
 }

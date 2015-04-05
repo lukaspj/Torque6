@@ -82,7 +82,7 @@ class TelnetConsole
    struct TelnetClient
    {
       NetSocket socket;
-      char curLine[Con::MaxLineLength];
+      char curLine[Con::Constants::MaxLineLength];
       S32 curPos;
       S32 state;                       ///< State of the client.
                                        ///  @see TelnetConsole::State

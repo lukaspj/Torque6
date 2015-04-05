@@ -3,23 +3,36 @@
 #pragma once
 
 #include "CollectionsWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "network/netObject.h"
 #include "network/netConnection.h"
 #include "network/tcpObject.h"
 #include "network/httpObject.h"
 
+// #pragma unmanaged
+#pragma managed(pop)
+
+typedef NetConnection EngineNetConnection;
+typedef NetObject EngineNetObject;
+typedef TCPObject EngineTCPObject;
+typedef HTTPObject EngineHTTPObject;
+
 namespace IJWLayer {
 
-   ref class NetObjectWrapper;
+   ref class NetObject;
 
-   public ref class NetConnectionWrapper : SimGroupWrapper
+   public ref class NetConnection : SimGroup
    {
    public:
-      static NetConnectionWrapper^ Wrap(int ID) { return static_cast<NetConnectionWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static NetConnectionWrapper^ Wrap(NetConnection* obj) { return static_cast<NetConnectionWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static NetConnection^ Wrap(int ID) { return static_cast<NetConnection^>(SimObject::Wrap(ID)); };
+      static NetConnection^ Wrap(EngineNetConnection* obj) { return static_cast<NetConnection^>(SimObject::Wrap(obj)); };
 
-      NetConnection* GetObjectPtr(){
-         return static_cast<NetConnection*>(mObject);
+      EngineNetConnection* GetObjectPtr(){
+         return static_cast<EngineNetConnection*>(mObject);
       };
 
       String^ getAddress();
@@ -28,38 +41,38 @@ namespace IJWLayer {
       int getPacketLoss();
       void checkMaxRate();
       void setLogging(bool value);
-      NetObjectWrapper^ resolveGhostID(int ghostID);
-      NetObjectWrapper^ resolveObjectFromGhostIndex(int ghostIdx);
-      int getGhostID(NetObjectWrapper^ object);
+      NetObject^ resolveGhostID(int ghostID);
+      NetObject^ resolveObjectFromGhostIndex(int ghostIdx);
+      int getGhostID(NetObject^ object);
       void connect(String^ remoteAddress);
       String^ connectLocal();
       int getGhostsActive();
    };
 
-   public ref class NetObjectWrapper : SimObjectWrapper
+   public ref class NetObject : SimObject
    {
    public:
-      static NetObjectWrapper^ Wrap(int ID) { return static_cast<NetObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static NetObjectWrapper^ Wrap(NetObject* obj) { return static_cast<NetObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static NetObject^ Wrap(int ID) { return static_cast<NetObject^>(SimObject::Wrap(ID)); };
+      static NetObject^ Wrap(EngineNetObject* obj) { return static_cast<NetObject^>(SimObject::Wrap(obj)); };
 
-      NetObject* GetObjectPtr(){
-         return static_cast<NetObject*>(mObject);
+      EngineNetObject* GetObjectPtr(){
+         return static_cast<EngineNetObject*>(mObject);
       };
 
-      void scopeToClient(NetConnectionWrapper^ client);
-      void clearScopeToClient(NetConnectionWrapper^ client);
+      void scopeToClient(NetConnection^ client);
+      void clearScopeToClient(NetConnection^ client);
       void setScopeAlways();
       int getGhostID();
    };
 
-   public ref class TCPObjectWrapper : SimObjectWrapper
+   public ref class TCPObject : SimObject
    {
    public:
-      static TCPObjectWrapper^ Wrap(int ID) { return static_cast<TCPObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static TCPObjectWrapper^ Wrap(TCPObject* obj) { return static_cast<TCPObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static TCPObject^ Wrap(int ID) { return static_cast<TCPObject^>(SimObject::Wrap(ID)); };
+      static TCPObject^ Wrap(EngineTCPObject* obj) { return static_cast<TCPObject^>(SimObject::Wrap(obj)); };
 
-      TCPObject* GetObjectPtr(){
-         return static_cast<TCPObject*>(mObject);
+      EngineTCPObject* GetObjectPtr(){
+         return static_cast<EngineTCPObject*>(mObject);
       };
 
       void send(...array<String^>^ args);
@@ -70,14 +83,14 @@ namespace IJWLayer {
       String^ URLEncodeString(String^ data);
    };
 
-   public ref class HTTPObjectWrapper : TCPObjectWrapper
+   public ref class HTTPObject : TCPObject
    {
    public:
-      static HTTPObjectWrapper^ Wrap(int ID) { return static_cast<HTTPObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static HTTPObjectWrapper^ Wrap(HTTPObject* obj) { return static_cast<HTTPObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static HTTPObject^ Wrap(int ID) { return static_cast<HTTPObject^>(SimObject::Wrap(ID)); };
+      static HTTPObject^ Wrap(EngineHTTPObject* obj) { return static_cast<HTTPObject^>(SimObject::Wrap(obj)); };
 
-      HTTPObject* GetObjectPtr(){
-         return static_cast<HTTPObject*>(mObject);
+      EngineHTTPObject* GetObjectPtr(){
+         return static_cast<EngineHTTPObject*>(mObject);
       };
 
       void get(String^ address, String^ requestURI, String^ query);

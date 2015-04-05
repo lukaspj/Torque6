@@ -4,56 +4,56 @@
 
 using namespace System::Runtime::InteropServices;
 
-String^ IJWLayer::StreamObjectWrapper::getStatus()
+String^ IJWLayer::StreamObject::getStatus()
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->getStatus());
    return nullptr;
 }
 
-bool IJWLayer::StreamObjectWrapper::isEOS()
+bool IJWLayer::StreamObject::isEOS()
 {
    if (IsAlive())
       return GetObjectPtr()->isEOS();
    return false;
 }
 
-bool IJWLayer::StreamObjectWrapper::isEOF()
+bool IJWLayer::StreamObject::isEOF()
 {
    if (IsAlive())
       return GetObjectPtr()->isEOS();
    return false;
 }
 
-int IJWLayer::StreamObjectWrapper::getPosition()
+int IJWLayer::StreamObject::getPosition()
 {
    if (IsAlive())
       return GetObjectPtr()->getPosition();
    return -1;
 }
 
-bool IJWLayer::StreamObjectWrapper::setPosition(int newPos)
+bool IJWLayer::StreamObject::setPosition(int newPos)
 {
    if (IsAlive())
       return GetObjectPtr()->setPosition(newPos);
    return -1;
 }
 
-int IJWLayer::StreamObjectWrapper::getStreamSize()
+int IJWLayer::StreamObject::getStreamSize()
 {
    if (IsAlive())
       return GetObjectPtr()->getStreamSize();
    return -1;
 }
 
-String^ IJWLayer::StreamObjectWrapper::readLine()
+String^ IJWLayer::StreamObject::readLine()
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->readLine());
    return nullptr;
 }
 
-void IJWLayer::StreamObjectWrapper::writeLine(String^ line)
+void IJWLayer::StreamObject::writeLine(String^ line)
 {
    if (!IsAlive())
       return;
@@ -62,33 +62,33 @@ void IJWLayer::StreamObjectWrapper::writeLine(String^ line)
    GetObjectPtr()->writeLine((U8*)_line);
 }
 
-String^ IJWLayer::StreamObjectWrapper::readSTString(bool caseSensitive)
+String^ IJWLayer::StreamObject::readSTString(bool caseSensitive)
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->readSTString(caseSensitive));
    return nullptr;
 }
 
-String^ IJWLayer::StreamObjectWrapper::readSTString()
+String^ IJWLayer::StreamObject::readSTString()
 {
    return readSTString(false);
 }
 
-String^ IJWLayer::StreamObjectWrapper::readString()
+String^ IJWLayer::StreamObject::readString()
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->readString());
    return nullptr;
 }
 
-String^ IJWLayer::StreamObjectWrapper::readLongString(int maxLength)
+String^ IJWLayer::StreamObject::readLongString(int maxLength)
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->readLongString(maxLength));
    return nullptr;
 }
 
-void IJWLayer::StreamObjectWrapper::writeLongString(int maxLength, String^ string)
+void IJWLayer::StreamObject::writeLongString(int maxLength, String^ string)
 {
    if (!IsAlive())
       return;
@@ -97,7 +97,7 @@ void IJWLayer::StreamObjectWrapper::writeLongString(int maxLength, String^ strin
    GetObjectPtr()->writeLongString(maxLength, _string);
 }
 
-void IJWLayer::StreamObjectWrapper::writeString(String^ string, int maxLength)
+void IJWLayer::StreamObject::writeString(String^ string, int maxLength)
 {
    if (!IsAlive())
       return;
@@ -106,12 +106,12 @@ void IJWLayer::StreamObjectWrapper::writeString(String^ string, int maxLength)
    GetObjectPtr()->writeString(_string, maxLength);
 }
 
-void IJWLayer::StreamObjectWrapper::writeString(String^ string)
+void IJWLayer::StreamObject::writeString(String^ string)
 {
    writeString(string, 255);
 }
 
-bool IJWLayer::StreamObjectWrapper::copyFrom(StreamObjectWrapper^ other)
+bool IJWLayer::StreamObject::copyFrom(StreamObject^ other)
 {
    if (!IsAlive() || !other->IsAlive())
       return false;
@@ -119,7 +119,7 @@ bool IJWLayer::StreamObjectWrapper::copyFrom(StreamObjectWrapper^ other)
    return GetObjectPtr()->copyFrom(other->GetObjectPtr());
 }
 
-bool IJWLayer::FileStreamObjectWrapper::open(String^ fileName, FileMode mode)
+bool IJWLayer::FileStreamObject::open(String^ fileName, FileMode mode)
 {
    if (!IsAlive())
       return false;
@@ -138,7 +138,7 @@ bool IJWLayer::FileStreamObjectWrapper::open(String^ fileName, FileMode mode)
    return GetObjectPtr()->open(buffer, (FileStream::AccessMode)mode);
 }
 
-void IJWLayer::FileStreamObjectWrapper::close()
+void IJWLayer::FileStreamObject::close()
 {
    if (IsAlive())
       GetObjectPtr()->close();

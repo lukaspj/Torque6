@@ -4,7 +4,7 @@
 
 using namespace System::Runtime::InteropServices;
 
-String^ IJWLayer::MessageWrapper::getType()
+String^ IJWLayer::Message::getType()
 {
    if (!IsAlive())
       return nullptr;
@@ -12,25 +12,25 @@ String^ IJWLayer::MessageWrapper::getType()
    GetObjectPtr()->getType();
 }
 
-void IJWLayer::MessageWrapper::addReference()
+void IJWLayer::Message::addReference()
 {
    if (IsAlive())
       GetObjectPtr()->addReference();
 }
 
-void IJWLayer::MessageWrapper::freeReference()
+void IJWLayer::Message::freeReference()
 {
    if (IsAlive())
       GetObjectPtr()->freeReference();
 }
 
-void IJWLayer::MessageVectorWrapper::clear()
+void IJWLayer::MessageVector::clear()
 {
    if (IsAlive())
       GetObjectPtr()->clear();
 }
 
-void IJWLayer::MessageVectorWrapper::pushBackLine(String^ msg, int tag)
+void IJWLayer::MessageVector::pushBackLine(String^ msg, int tag)
 {
    if (!IsAlive())
       return;
@@ -38,12 +38,12 @@ void IJWLayer::MessageVectorWrapper::pushBackLine(String^ msg, int tag)
    GetObjectPtr()->pushBackLine(_msg, tag);
 }
 
-void IJWLayer::MessageVectorWrapper::pushBackLine(String^ msg)
+void IJWLayer::MessageVector::pushBackLine(String^ msg)
 {
    pushBackLine(msg, 0);
 }
 
-bool IJWLayer::MessageVectorWrapper::popBackLine()
+bool IJWLayer::MessageVector::popBackLine()
 {
    if (!IsAlive())
       return false;
@@ -57,7 +57,7 @@ bool IJWLayer::MessageVectorWrapper::popBackLine()
    return true;
 }
 
-void IJWLayer::MessageVectorWrapper::pushFrontLine(String^ msg, int tag)
+void IJWLayer::MessageVector::pushFrontLine(String^ msg, int tag)
 {
    if (!IsAlive())
       return;
@@ -65,12 +65,12 @@ void IJWLayer::MessageVectorWrapper::pushFrontLine(String^ msg, int tag)
    GetObjectPtr()->pushFrontLine(_msg, tag);
 }
 
-void IJWLayer::MessageVectorWrapper::pushFrontLine(String^ msg)
+void IJWLayer::MessageVector::pushFrontLine(String^ msg)
 {
    pushFrontLine(msg, 0);
 }
 
-bool IJWLayer::MessageVectorWrapper::popFrontLine()
+bool IJWLayer::MessageVector::popFrontLine()
 {
    if (!IsAlive())
       return false;
@@ -84,7 +84,7 @@ bool IJWLayer::MessageVectorWrapper::popFrontLine()
    return true;
 }
 
-bool IJWLayer::MessageVectorWrapper::insertLine(int pos, String^ msg, int tag)
+bool IJWLayer::MessageVector::insertLine(int pos, String^ msg, int tag)
 {
    if (!IsAlive())
       return false;
@@ -93,12 +93,12 @@ bool IJWLayer::MessageVectorWrapper::insertLine(int pos, String^ msg, int tag)
    return true;
 }
 
-bool IJWLayer::MessageVectorWrapper::insertLine(int pos, String^ msg)
+bool IJWLayer::MessageVector::insertLine(int pos, String^ msg)
 {
    return insertLine(pos, msg, 0);
 }
 
-bool IJWLayer::MessageVectorWrapper::deleteLine(int lineIndex)
+bool IJWLayer::MessageVector::deleteLine(int lineIndex)
 {
    if (!IsAlive())
       return false;
@@ -110,7 +110,7 @@ bool IJWLayer::MessageVectorWrapper::deleteLine(int lineIndex)
    return true;
 }
 
-void IJWLayer::MessageVectorWrapper::dump(String^ filename, String^ header)
+void IJWLayer::MessageVector::dump(String^ filename, String^ header)
 {
    if (!IsAlive())
       return;
@@ -120,7 +120,7 @@ void IJWLayer::MessageVectorWrapper::dump(String^ filename, String^ header)
    GetObjectPtr()->dump(_filename, _header);
 }
 
-void IJWLayer::MessageVectorWrapper::dump(String^ filename)
+void IJWLayer::MessageVector::dump(String^ filename)
 {
    if (!IsAlive())
       return;
@@ -129,14 +129,14 @@ void IJWLayer::MessageVectorWrapper::dump(String^ filename)
    GetObjectPtr()->dump(_filename);
 }
 
-int IJWLayer::MessageVectorWrapper::getNumLines()
+int IJWLayer::MessageVector::getNumLines()
 {
    if (!IsAlive())
       return -1;
    return GetObjectPtr()->getNumLines();
 }
 
-String^ IJWLayer::MessageVectorWrapper::getLineTextByTag(int tag)
+String^ IJWLayer::MessageVector::getLineTextByTag(int tag)
 {
    if (!IsAlive())
       return nullptr;
@@ -147,7 +147,7 @@ String^ IJWLayer::MessageVectorWrapper::getLineTextByTag(int tag)
    return nullptr;
 }
 
-int IJWLayer::MessageVectorWrapper::getLineIndexByTag(int tag)
+int IJWLayer::MessageVector::getLineIndexByTag(int tag)
 {
    if (!IsAlive())
       return -1;
@@ -158,7 +158,7 @@ int IJWLayer::MessageVectorWrapper::getLineIndexByTag(int tag)
    return -1;
 }
 
-String^ IJWLayer::MessageVectorWrapper::getLineText(int index)
+String^ IJWLayer::MessageVector::getLineText(int index)
 {
    if (!IsAlive())
       return nullptr;
@@ -171,7 +171,7 @@ String^ IJWLayer::MessageVectorWrapper::getLineText(int index)
    return gcnew String(GetObjectPtr()->getLine(index).message);
 }
 
-int IJWLayer::MessageVectorWrapper::getLineTag(int index)
+int IJWLayer::MessageVector::getLineTag(int index)
 {
    if (!IsAlive())
       return -1;

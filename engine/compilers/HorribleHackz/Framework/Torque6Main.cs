@@ -93,7 +93,7 @@ namespace HorribleHackz.Framework
          string _className = Marshal.PtrToStringAnsi(className);
          string _name = Marshal.PtrToStringAnsi(name);
 
-         SimObjectWrapper objectWrapper = SimObjectWrapper.Wrap((int)obj);
+         SimObject objectWrapper = SimObject.Wrap((int)obj);
          string[] strings = null;
          if(argv != IntPtr.Zero)
             strings = CustomMarshalling.IntPtrToStringArray(argv, argc);

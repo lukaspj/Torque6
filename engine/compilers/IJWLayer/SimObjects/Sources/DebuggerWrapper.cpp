@@ -4,7 +4,7 @@
 
 using namespace System::Runtime::InteropServices;
 
-String^ IJWLayer::RemoteDebugger1Wrapper::getCodeFiles()
+String^ IJWLayer::RemoteDebugger1::getCodeFiles()
 {
    if (!IsAlive())
       return nullptr;
@@ -23,7 +23,7 @@ String^ IJWLayer::RemoteDebugger1Wrapper::getCodeFiles()
    return gcnew String(pBuffer);
 }
 
-void IJWLayer::RemoteDebugger1Wrapper::setNextStatementBreak(bool enabled)
+void IJWLayer::RemoteDebugger1::setNextStatementBreak(bool enabled)
 {
    if (IsAlive())
       GetObjectPtr()->setNextStatementBreak(enabled);

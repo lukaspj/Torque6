@@ -2,7 +2,7 @@ using System::String;
 
 namespace IJWLayer
 {
-   public ref class Global
+   public ref class Globals
    {
    public: 
       static String^ GetString(String^ name);

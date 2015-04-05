@@ -1,35 +1,43 @@
-﻿using System;
-using HorribleHackz.CustomAttributes;
+﻿using HorribleHackz.CustomAttributes;
 using IJWLayer;
 
 namespace HorribleHackz
 {
    [ConsoleClass]
-   class AnimatedMeshExample
+   internal class AnimatedMeshExample
    {
       public static void create()
       {
-         SceneEntityWrapper entity1 = new SceneEntityWrapper()
+         // Create some dwarfs!
+         SceneEntity entity1 = new SceneEntity
          {
             Template = "^AnimatedMeshExample/entities/bigDwarfRedDwarf.taml",
-            Position = "0 0 0",
-            Rotation = "0 0 0"
+            Position = Point3F.Zero(),
+            Rotation = Point3F.Zero()
          };
+
+         // Register the object! (Similar to how you do it in C++)
          entity1.registerObject();
-         IJWLayer.Scene.addEntity(entity1, "Dwarf Meshes");
 
-         SceneEntityWrapper light1 = new SceneEntityWrapper()
+         // Add it to the scene!
+         Game.Scene.addEntity(entity1, "Dwarf Meshes");
+
+         // Let there be lights!
+         SceneEntity light1 = new SceneEntity
          {
-            Template = IJWLayer.Con.expandPath("^AnimatedMeshExample/entities/lightTest2.taml"),
-            Position = "0 0 0"
+            Template = "^AnimatedMeshExample/entities/lightTest2.taml",
+            Position = Point3F.Zero()
          };
-         IJWLayer.Scene.addEntity(light1, "Lights");
+         light1.registerObject();
+         Game.Scene.addEntity(light1, "Lights");
 
-         IJWLayer.Scene.setDirectionalLight("1 1 -1", "0.8 0.8 0.8", "0.1 0.1 0.1");
+         // More lights I guess
+         Game.Scene.setDirectionalLight(new Point3F(1, 1, -1), "0.8 0.8 0.8", "0.1 0.1 0.1");
       }
+
       public static void destroy()
       {
-         IJWLayer.Con.print("DESTROYED AnimatedMeshExample MODULE");
+         Engine.Con.print("DESTROYED AnimatedMeshExample MODULE");
       }
    }
 }

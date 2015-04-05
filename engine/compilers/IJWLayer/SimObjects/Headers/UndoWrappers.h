@@ -3,18 +3,29 @@
 #pragma once
 
 #include "SimObjectWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "collection/undo.h"
+
+// #pragma unmanaged
+#pragma managed(pop)
+
+typedef UndoManager EngineUndoManager;
+typedef UndoAction EngineUndoAction;
 
 namespace IJWLayer {
 
-   public ref class UndoManagerWrapper : SimObjectWrapper
+   public ref class UndoManager : SimObject
    {
    public:
-      static UndoManagerWrapper^ Wrap(int ID) { return static_cast<UndoManagerWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static UndoManagerWrapper^ Wrap(UndoManager* obj) { return static_cast<UndoManagerWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static UndoManager^ Wrap(int ID) { return static_cast<UndoManager^>(SimObject::Wrap(ID)); };
+      static UndoManager^ Wrap(EngineUndoManager* obj) { return static_cast<UndoManager^>(SimObject::Wrap(obj)); };
 
-      UndoManager* GetObjectPtr(){
-         return static_cast<UndoManager*>(mObject);
+      EngineUndoManager* GetObjectPtr(){
+         return static_cast<EngineUndoManager*>(mObject);
       };
 
       int getRedoCount();
@@ -28,17 +39,17 @@ namespace IJWLayer {
       String^ getNextRedoName();
    };
 
-   public ref class UndoActionWrapper : SimObjectWrapper
+   public ref class UndoAction : SimObject
    {
    public:
-      static UndoActionWrapper^ Wrap(int ID) { return static_cast<UndoActionWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static UndoActionWrapper^ Wrap(UndoAction* obj) { return static_cast<UndoActionWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static UndoAction^ Wrap(int ID) { return static_cast<UndoAction^>(SimObject::Wrap(ID)); };
+      static UndoAction^ Wrap(EngineUndoAction* obj) { return static_cast<UndoAction^>(SimObject::Wrap(obj)); };
 
-      UndoAction* GetObjectPtr(){
-         return static_cast<UndoAction*>(mObject);
+      EngineUndoAction* GetObjectPtr(){
+         return static_cast<EngineUndoAction*>(mObject);
       };
 
-      void addToManager(UndoManagerWrapper^ undoManager);
+      void addToManager(UndoManager^ undoManager);
       void addToManager();
    };
 

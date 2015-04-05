@@ -2,23 +2,34 @@
 
 #pragma once
 
-#include "persistence/tinyXML/tinyxml.h"
 #include "SimObjectWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
+#include "persistence/tinyXML/tinyxml.h"
 #include "persistence/SimXMLDocument.h"
 #include "persistence/taml/taml.h"
 
+// #pragma unmanaged
+#pragma managed(pop)
+
 using namespace System;
+
+typedef SimXMLDocument EngineSimXMLDocument;
+typedef Taml EngineTaml;
 
 namespace IJWLayer {
 
-   public ref class SimXMLDocumentWrapper : SimObjectWrapper
+   public ref class SimXMLDocument : SimObject
    {
    public:
-      static SimXMLDocumentWrapper^ Wrap(int ID) { return static_cast<SimXMLDocumentWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static SimXMLDocumentWrapper^ Wrap(SimXMLDocument* obj) { return static_cast<SimXMLDocumentWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static SimXMLDocument^ Wrap(int ID) { return static_cast<SimXMLDocument^>(SimObject::Wrap(ID)); };
+      static SimXMLDocument^ Wrap(EngineSimXMLDocument* obj) { return static_cast<SimXMLDocument^>(SimObject::Wrap(obj)); };
 
-      SimXMLDocument* GetObjectPtr(){
-         return static_cast<SimXMLDocument*>(mObject);
+      EngineSimXMLDocument* GetObjectPtr(){
+         return static_cast<EngineSimXMLDocument*>(mObject);
       };
 
       void reset();
@@ -55,14 +66,14 @@ namespace IJWLayer {
       String^ getData();
    };
 
-   public ref class TamlWrapper : SimObjectWrapper
+   public ref class Taml : SimObject
    {
    public:
-      static TamlWrapper^ Wrap(int ID) { return static_cast<TamlWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static TamlWrapper^ Wrap(Taml* obj) { return static_cast<TamlWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static Taml^ Wrap(int ID) { return static_cast<Taml^>(SimObject::Wrap(ID)); };
+      static Taml^ Wrap(EngineTaml* obj) { return static_cast<Taml^>(SimObject::Wrap(obj)); };
 
-      Taml* GetObjectPtr(){
-         return static_cast<Taml*>(mObject);
+      EngineTaml* GetObjectPtr(){
+         return static_cast<EngineTaml*>(mObject);
       };
 
       property String^ Format{
@@ -97,7 +108,7 @@ namespace IJWLayer {
          bool get();
          void set(bool value);
       }
-      bool write(SimObjectWrapper^ object, String^ fileName);
-      SimObjectWrapper^ read(String^ filename);
+      bool write(SimObject^ object, String^ fileName);
+      SimObject^ read(String^ filename);
    };
 }

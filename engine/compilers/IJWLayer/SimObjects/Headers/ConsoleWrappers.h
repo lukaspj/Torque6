@@ -3,20 +3,30 @@
 #pragma once
 
 #include "SimObjectWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "console/consoleLogger.h"
+
+// #pragma unmanaged
+#pragma managed(pop)
 
 using namespace System;
 
+typedef ConsoleLogger EngineConsoleLogger;
+
 namespace IJWLayer {
 
-   public ref class ConsoleLoggerWrapper : SimObjectWrapper
+   public ref class ConsoleLogger : SimObject
    {
    public:
-      static ConsoleLoggerWrapper^ Wrap(int ID) { return static_cast<ConsoleLoggerWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static ConsoleLoggerWrapper^ Wrap(SimObject* obj) { return static_cast<ConsoleLoggerWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static ConsoleLogger^ Wrap(int ID) { return static_cast<ConsoleLogger^>(SimObject::Wrap(ID)); };
+      static ConsoleLogger^ Wrap(EngineConsoleLogger* obj) { return static_cast<ConsoleLogger^>(SimObject::Wrap(obj)); };
 
-      ConsoleLogger* GetObjectPtr(){
-         return static_cast<ConsoleLogger*>(mObject);
+      EngineConsoleLogger* GetObjectPtr(){
+         return static_cast<EngineConsoleLogger*>(mObject);
       };
 
       bool attach();

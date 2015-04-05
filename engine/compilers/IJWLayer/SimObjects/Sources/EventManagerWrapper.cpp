@@ -4,7 +4,7 @@
 
 using namespace System::Runtime::InteropServices;
 
-bool IJWLayer::EventManagerWrapper::registerEvent(String^ eventName)
+bool IJWLayer::EventManager::registerEvent(String^ eventName)
 {
    if (!IsAlive())
       return false;
@@ -13,7 +13,7 @@ bool IJWLayer::EventManagerWrapper::registerEvent(String^ eventName)
    return GetObjectPtr()->registerEvent(_eventName);
 }
 
-void IJWLayer::EventManagerWrapper::unregisterEvent(String^ eventName)
+void IJWLayer::EventManager::unregisterEvent(String^ eventName)
 {
    if (!IsAlive())
       return;
@@ -22,7 +22,7 @@ void IJWLayer::EventManagerWrapper::unregisterEvent(String^ eventName)
    GetObjectPtr()->unregisterEvent(_eventName);
 }
 
-bool IJWLayer::EventManagerWrapper::isRegisteredEvent(String^ eventName)
+bool IJWLayer::EventManager::isRegisteredEvent(String^ eventName)
 {
    if (!IsAlive())
       return false;
@@ -31,7 +31,7 @@ bool IJWLayer::EventManagerWrapper::isRegisteredEvent(String^ eventName)
    return GetObjectPtr()->isRegisteredEvent(_eventName);
 }
 
-bool IJWLayer::EventManagerWrapper::postEvent(String^ eventName, String^ data)
+bool IJWLayer::EventManager::postEvent(String^ eventName, String^ data)
 {
    if (!IsAlive())
       return false;
@@ -41,7 +41,7 @@ bool IJWLayer::EventManagerWrapper::postEvent(String^ eventName, String^ data)
    return GetObjectPtr()->postEvent(_eventName, _data);
 }
 
-bool IJWLayer::EventManagerWrapper::subscribe(SimObjectWrapper^ listener, String^ eventName, String^ callback)
+bool IJWLayer::EventManager::subscribe(SimObject^ listener, String^ eventName, String^ callback)
 {
    if (!IsAlive())
       return false;
@@ -58,12 +58,12 @@ bool IJWLayer::EventManagerWrapper::subscribe(SimObjectWrapper^ listener, String
 }
 
 
-bool IJWLayer::EventManagerWrapper::subscribe(SimObjectWrapper^ listener, String^ eventName)
+bool IJWLayer::EventManager::subscribe(SimObject^ listener, String^ eventName)
 {
    return subscribe(listener, eventName, "on" + eventName);
 }
 
-void IJWLayer::EventManagerWrapper::remove(SimObjectWrapper^ listener, String^ eventName)
+void IJWLayer::EventManager::remove(SimObject^ listener, String^ eventName)
 {
    if (!IsAlive())
       return;
@@ -72,13 +72,13 @@ void IJWLayer::EventManagerWrapper::remove(SimObjectWrapper^ listener, String^ e
    GetObjectPtr()->remove(listener->GetObjectPtr(), _eventName);
 }
 
-void IJWLayer::EventManagerWrapper::dumpEvents()
+void IJWLayer::EventManager::dumpEvents()
 {
    if (IsAlive())
       GetObjectPtr()->dumpEvents();
 }
 
-void IJWLayer::EventManagerWrapper::dumpSubscribers(String^ eventName)
+void IJWLayer::EventManager::dumpSubscribers(String^ eventName)
 {
    if (!IsAlive())
       return;
@@ -86,7 +86,7 @@ void IJWLayer::EventManagerWrapper::dumpSubscribers(String^ eventName)
    GetObjectPtr()->dumpSubscribers(_eventName);
 }
 
-void IJWLayer::EventManagerWrapper::dumpSubscribers()
+void IJWLayer::EventManager::dumpSubscribers()
 {
    if (!IsAlive())
       return;

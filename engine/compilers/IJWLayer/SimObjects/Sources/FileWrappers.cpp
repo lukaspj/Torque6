@@ -4,14 +4,14 @@
 
 using namespace System::Runtime::InteropServices;
 
-bool IJWLayer::FileDialogWrapper::execute()
+bool IJWLayer::FileDialog::execute()
 {
    if (!IsAlive())
       return false;
    GetObjectPtr()->Execute();
 }
 
-bool IJWLayer::FileObjectWrapper::openForRead(String^ filename)
+bool IJWLayer::FileObject::openForRead(String^ filename)
 {
    if (!IsAlive())
       return false;
@@ -19,7 +19,7 @@ bool IJWLayer::FileObjectWrapper::openForRead(String^ filename)
    GetObjectPtr()->readMemory(_filename);
 }
 
-bool IJWLayer::FileObjectWrapper::openForWrite(String^ filename)
+bool IJWLayer::FileObject::openForWrite(String^ filename)
 {
    if (!IsAlive())
       return false;
@@ -27,7 +27,7 @@ bool IJWLayer::FileObjectWrapper::openForWrite(String^ filename)
    GetObjectPtr()->openForWrite(_filename);
 }
 
-bool IJWLayer::FileObjectWrapper::openForAppend(String^ filename)
+bool IJWLayer::FileObject::openForAppend(String^ filename)
 {
    if (!IsAlive())
       return false;
@@ -35,21 +35,21 @@ bool IJWLayer::FileObjectWrapper::openForAppend(String^ filename)
    GetObjectPtr()->openForWrite(_filename, true);
 }
 
-bool IJWLayer::FileObjectWrapper::isEOF()
+bool IJWLayer::FileObject::isEOF()
 {
    if (!IsAlive())
       return false;
    return GetObjectPtr()->isEOF();
 }
 
-String^ IJWLayer::FileObjectWrapper::readLine()
+String^ IJWLayer::FileObject::readLine()
 {
    if (!IsAlive())
       return nullptr;
    return gcnew String((const char*)GetObjectPtr()->readLine());
 }
 
-String^ IJWLayer::FileObjectWrapper::peekLine()
+String^ IJWLayer::FileObject::peekLine()
 {
    if (!IsAlive())
       return nullptr;
@@ -58,7 +58,7 @@ String^ IJWLayer::FileObjectWrapper::peekLine()
    return gcnew String(line);
 }
 
-void IJWLayer::FileObjectWrapper::writeLine(String^ text)
+void IJWLayer::FileObject::writeLine(String^ text)
 {
    if (!IsAlive())
       return;
@@ -67,13 +67,13 @@ void IJWLayer::FileObjectWrapper::writeLine(String^ text)
    GetObjectPtr()->writeLine((const U8 *)_text);
 }
 
-void IJWLayer::FileObjectWrapper::close()
+void IJWLayer::FileObject::close()
 {
    if (IsAlive())
       GetObjectPtr()->close();
 }
 
-void IJWLayer::FileObjectWrapper::writeObject(SimObjectWrapper^ object, String^ text)
+void IJWLayer::FileObject::writeObject(SimObject^ object, String^ text)
 {
    if (!IsAlive())
       return;
@@ -88,105 +88,105 @@ void IJWLayer::FileObjectWrapper::writeObject(SimObjectWrapper^ object, String^ 
    GetObjectPtr()->writeObject(object->GetObjectPtr(), (const U8 *)_text);
 }
 
-void IJWLayer::FileObjectWrapper::writeObject(SimObjectWrapper^ object)
+void IJWLayer::FileObject::writeObject(SimObject^ object)
 {
    writeObject(object, nullptr);
 }
 
-bool IJWLayer::ZipObjectWrapper::openArchive(String^ fileName, IJWLayer::ZipObjectWrapper::AccessMode mode)
-{
-   if (!IsAlive())
-      return false;
-
-   char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
-   char buf[512];
-   Con::expandPath(buf, sizeof(buf), _fileName);
-
-   return GetObjectPtr()->openArchive(buf, (Zip::ZipArchive::AccessMode)mode);
-}
-
-bool IJWLayer::ZipObjectWrapper::openArchive(String^ fileName)
-{
-   return openArchive(fileName, AccessMode::Read);
-}
-
-void IJWLayer::ZipObjectWrapper::closeArchive()
-{
-   if (IsAlive())
-      GetObjectPtr()->closeArchive();
-}
-
-IJWLayer::StreamObjectWrapper^ IJWLayer::ZipObjectWrapper::openFileForRead(String^ fileName)
-{
-   if (!IsAlive())
-      return nullptr;
-
-   char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
-   return StreamObjectWrapper::Wrap(GetObjectPtr()->openFileForRead(_fileName));
-}
-
-IJWLayer::StreamObjectWrapper^ IJWLayer::ZipObjectWrapper::openFileForWrite(String^ fileName)
-{
-   if (!IsAlive())
-      return nullptr;
-
-   char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
-   return StreamObjectWrapper::Wrap(GetObjectPtr()->openFileForWrite(_fileName));
-}
-
-void IJWLayer::ZipObjectWrapper::closeFile(IJWLayer::StreamObjectWrapper^ stream)
-{
-   if (IsAlive() && stream->IsAlive())
-      GetObjectPtr()->closeFile(stream->GetObjectPtr());
-}
-
-bool IJWLayer::ZipObjectWrapper::addFile(String^ fileName, String^ pathInZip, bool replace)
-{
-   if (!IsAlive())
-      return false;
-
-   char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
-   char* _pathInZip = (char*)Marshal::StringToHGlobalAnsi(pathInZip).ToPointer();
-
-   GetObjectPtr()->addFile(_fileName, _pathInZip, replace);
-}
-
-bool IJWLayer::ZipObjectWrapper::addFile(String^ fileName, String^ pathInZip)
-{
-   return addFile(fileName, pathInZip, true);
-}
-
-bool IJWLayer::ZipObjectWrapper::extractFile(String^ fileName, String^ pathInZip)
-{
-   if (!IsAlive())
-      return false;
-
-   char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
-   char* _pathInZip = (char*)Marshal::StringToHGlobalAnsi(pathInZip).ToPointer();
-
-   GetObjectPtr()->extractFile(_fileName, _pathInZip);
-}
-
-bool IJWLayer::ZipObjectWrapper::deleteFile(String^ pathInZip)
-{
-   if (!IsAlive())
-      return false;
-
-   char* _pathInZip = (char*)Marshal::StringToHGlobalAnsi(pathInZip).ToPointer();
-
-   GetObjectPtr()->deleteFile(_pathInZip);
-}
-
-int IJWLayer::ZipObjectWrapper::getFileEntryCount()
-{
-   if (IsAlive())
-      return GetObjectPtr()->getFileEntryCount();
-   return -1;
-}
-
-String^ IJWLayer::ZipObjectWrapper::getFileEntry(int index)
-{
-   if (IsAlive())
-      return gcnew String(GetObjectPtr()->getFileEntry(index));
-   return nullptr;
-}
+//bool IJWLayer::ZipObject::openArchive(String^ fileName, IJWLayer::ZipObject::AccessMode mode)
+//{
+//   if (!IsAlive())
+//      return false;
+//
+//   char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
+//   char buf[512];
+//   Con::expandPath(buf, sizeof(buf), _fileName);
+//
+//   return GetObjectPtr()->openArchive(buf, (Zip::ZipArchive::AccessMode)mode);
+//}
+//
+//bool IJWLayer::ZipObject::openArchive(String^ fileName)
+//{
+//   return openArchive(fileName, AccessMode::Read);
+//}
+//
+//void IJWLayer::ZipObject::closeArchive()
+//{
+//   if (IsAlive())
+//      GetObjectPtr()->closeArchive();
+//}
+//
+//IJWLayer::StreamObject^ IJWLayer::ZipObject::openFileForRead(String^ fileName)
+//{
+//   if (!IsAlive())
+//      return nullptr;
+//
+//   char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
+//   return StreamObject::Wrap(GetObjectPtr()->openFileForRead(_fileName));
+//}
+//
+//IJWLayer::StreamObject^ IJWLayer::ZipObject::openFileForWrite(String^ fileName)
+//{
+//   if (!IsAlive())
+//      return nullptr;
+//
+//   char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
+//   return StreamObject::Wrap(GetObjectPtr()->openFileForWrite(_fileName));
+//}
+//
+//void IJWLayer::ZipObject::closeFile(IJWLayer::StreamObject^ stream)
+//{
+//   if (IsAlive() && stream->IsAlive())
+//      GetObjectPtr()->closeFile(stream->GetObjectPtr());
+//}
+//
+//bool IJWLayer::ZipObject::addFile(String^ fileName, String^ pathInZip, bool replace)
+//{
+//   if (!IsAlive())
+//      return false;
+//
+//   char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
+//   char* _pathInZip = (char*)Marshal::StringToHGlobalAnsi(pathInZip).ToPointer();
+//
+//   GetObjectPtr()->addFile(_fileName, _pathInZip, replace);
+//}
+//
+//bool IJWLayer::ZipObject::addFile(String^ fileName, String^ pathInZip)
+//{
+//   return addFile(fileName, pathInZip, true);
+//}
+//
+//bool IJWLayer::ZipObject::extractFile(String^ fileName, String^ pathInZip)
+//{
+//   if (!IsAlive())
+//      return false;
+//
+//   char* _fileName = (char*)Marshal::StringToHGlobalAnsi(fileName).ToPointer();
+//   char* _pathInZip = (char*)Marshal::StringToHGlobalAnsi(pathInZip).ToPointer();
+//
+//   GetObjectPtr()->extractFile(_fileName, _pathInZip);
+//}
+//
+//bool IJWLayer::ZipObject::deleteFile(String^ pathInZip)
+//{
+//   if (!IsAlive())
+//      return false;
+//
+//   char* _pathInZip = (char*)Marshal::StringToHGlobalAnsi(pathInZip).ToPointer();
+//
+//   GetObjectPtr()->deleteFile(_pathInZip);
+//}
+//
+//int IJWLayer::ZipObject::getFileEntryCount()
+//{
+//   if (IsAlive())
+//      return GetObjectPtr()->getFileEntryCount();
+//   return -1;
+//}
+//
+//String^ IJWLayer::ZipObject::getFileEntry(int index)
+//{
+//   if (IsAlive())
+//      return gcnew String(GetObjectPtr()->getFileEntry(index));
+//   return nullptr;
+//}

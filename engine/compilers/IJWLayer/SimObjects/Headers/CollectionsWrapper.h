@@ -4,57 +4,69 @@
 
 #include "SimObjectWrapper.h"
 
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "sim/simSet.h"
 #include "collection/nameTags.h"
 
+// #pragma unmanaged
+#pragma managed(pop)
+
+typedef SimSet EngineSimSet;
+typedef SimGroup EngineSimGroup;
+typedef NameTags EngineNameTags;
+typedef SimDataBlockGroup EngineSimDataBlockGroup;
+
 namespace IJWLayer {
 
-   public ref class SimSetWrapper : SimObjectWrapper
+   public ref class SimSet : SimObject
    {
    public:
 
-      static SimSetWrapper^ Wrap(int ID) { return static_cast<SimSetWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static SimSetWrapper^ Wrap(SimObject* obj) { return static_cast<SimSetWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static SimSet^ Wrap(int ID) { return static_cast<SimSet^>(SimObject::Wrap(ID)); };
+      static SimSet^ Wrap(EngineSimSet* obj) { return static_cast<SimSet^>(SimObject::Wrap(obj)); };
 
-      SimSet* GetObjectPtr(){
-         return static_cast<SimSet*>(mObject);
+      EngineSimSet* GetObjectPtr(){
+         return static_cast<EngineSimSet*>(mObject);
       };
 
       void listObjects();
-      void add(...array<SimObjectWrapper^>^ objects);
-      void remove(...array<SimObjectWrapper^>^ objects);
+      void add(...array<SimObject^>^ objects);
+      void remove(...array<SimObject^>^ objects);
       void deleteObjects();
       void clear();
       void callOnChildren(String^ method, ...array<String^>^ args);
-      void reorderChild(SimObjectWrapper^ child1, SimObjectWrapper^ child2);
+      void reorderChild(SimObject^ child1, SimObject^ child2);
       int getCount();
-      SimObjectWrapper^ getObject(int index);
-      bool isMember(SimObjectWrapper^ object);
-      SimObjectWrapper^ findObjectByInternalName(String^ name, bool searchChildren);
-      SimObjectWrapper^ findObjectByInternalName(String^ name);
-      void bringToFront(SimObjectWrapper^ object);
-      void pushToBack(SimObjectWrapper^ object);
+      SimObject^ getObject(int index);
+      bool isMember(SimObject^ object);
+      SimObject^ findObjectByInternalName(String^ name, bool searchChildren);
+      SimObject^ findObjectByInternalName(String^ name);
+      void bringToFront(SimObject^ object);
+      void pushToBack(SimObject^ object);
    };
 
-   public ref class SimGroupWrapper : SimSetWrapper
+   public ref class SimGroup : SimSet
    {
    public:
-      static SimGroupWrapper^ Wrap(int ID) { return static_cast<SimGroupWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static SimGroupWrapper^ Wrap(SimObject* obj) { return static_cast<SimGroupWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static SimGroup^ Wrap(int ID) { return static_cast<SimGroup^>(SimObject::Wrap(ID)); };
+      static SimGroup^ Wrap(EngineSimGroup* obj) { return static_cast<SimGroup^>(SimObject::Wrap(obj)); };
 
-      SimGroup* GetObjectPtr(){
-         return static_cast<SimGroup*>(mObject);
+      EngineSimGroup* GetObjectPtr(){
+         return static_cast<EngineSimGroup*>(mObject);
       };
    };
 
-   public ref class NameTagsWrapper : SimSetWrapper
+   public ref class NameTags : SimSet
    {
    public:
-      static NameTagsWrapper^ Wrap(int ID) { return static_cast<NameTagsWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static NameTagsWrapper^ Wrap(SimObject* obj) { return static_cast<NameTagsWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static NameTags^ Wrap(int ID) { return static_cast<NameTags^>(SimObject::Wrap(ID)); };
+      static NameTags^ Wrap(EngineNameTags* obj) { return static_cast<NameTags^>(SimObject::Wrap(obj)); };
 
-      NameTags* GetObjectPtr(){
-         return static_cast<NameTags*>(mObject);
+      EngineNameTags* GetObjectPtr(){
+         return static_cast<EngineNameTags*>(mObject);
       };
 
       int createTag(String^ tagName);
@@ -70,14 +82,14 @@ namespace IJWLayer {
       String^ queryTags(array<int>^ tagIds, bool excluded);
    };
 
-   public ref class SimDataBlockGroupWrapper : SimGroupWrapper
+   public ref class SimDataBlockGroup : SimGroup
    {
    public:
-      static SimDataBlockGroupWrapper^ Wrap(int ID) { return static_cast<SimDataBlockGroupWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static SimDataBlockGroupWrapper^ Wrap(SimObject* obj) { return static_cast<SimDataBlockGroupWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static SimDataBlockGroup^ Wrap(int ID) { return static_cast<SimDataBlockGroup^>(SimObject::Wrap(ID)); };
+      static SimDataBlockGroup^ Wrap(EngineSimDataBlockGroup* obj) { return static_cast<SimDataBlockGroup^>(SimObject::Wrap(obj)); };
 
-      SimDataBlockGroup* GetObjectPtr(){
-         return static_cast<SimDataBlockGroup*>(mObject);
+      EngineSimDataBlockGroup* GetObjectPtr(){
+         return static_cast<EngineSimDataBlockGroup*>(mObject);
       };
    };
 }

@@ -52,7 +52,7 @@ DefineConsoleType( TypeAudioAssetPtr )
 
 //----------------------------------------------------------------------------
 
-class AudioAsset: public AssetBase
+class DLL_PUBLIC AudioAsset : public AssetBase
 {
 private:
    typedef AssetBase Parent;

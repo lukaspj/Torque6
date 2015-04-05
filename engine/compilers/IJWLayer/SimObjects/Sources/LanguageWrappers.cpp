@@ -4,7 +4,7 @@
 
 using namespace System::Runtime::InteropServices;
 
-int IJWLayer::LangTableWrapper::addLanguage(String^ filename, String^ languageName)
+int IJWLayer::LangTable::addLanguage(String^ filename, String^ languageName)
 {
    if (!IsAlive())
       return -1;
@@ -17,12 +17,12 @@ int IJWLayer::LangTableWrapper::addLanguage(String^ filename, String^ languageNa
 }
 
 
-int IJWLayer::LangTableWrapper::addLanguage(String^ filename)
+int IJWLayer::LangTable::addLanguage(String^ filename)
 {
    return addLanguage(filename, nullptr);
 }
 
-String^ IJWLayer::LangTableWrapper::getString(int string)
+String^ IJWLayer::LangTable::getString(int string)
 {
    if (!IsAlive())
       return nullptr;
@@ -40,26 +40,26 @@ String^ IJWLayer::LangTableWrapper::getString(int string)
    return nullptr;
 }
 
-void IJWLayer::LangTableWrapper::setDefaultLanguage(int language)
+void IJWLayer::LangTable::setDefaultLanguage(int language)
 {
    if (IsAlive())
       GetObjectPtr()->setDefaultLanguage(language);
 }
 
-void IJWLayer::LangTableWrapper::setCurrentLanguage(int language)
+void IJWLayer::LangTable::setCurrentLanguage(int language)
 {
    if (IsAlive())
       GetObjectPtr()->setCurrentLanguage(language);
 }
 
-int IJWLayer::LangTableWrapper::getCurrentLanguage()
+int IJWLayer::LangTable::getCurrentLanguage()
 {
    if (IsAlive())
       GetObjectPtr()->getCurrentLanguage();
    return -1;
 }
 
-String^ IJWLayer::LangTableWrapper::getLangName(int language)
+String^ IJWLayer::LangTable::getLangName(int language)
 {
    if (!IsAlive())
       return nullptr;
@@ -77,7 +77,7 @@ String^ IJWLayer::LangTableWrapper::getLangName(int language)
    return nullptr;
 }
 
-int IJWLayer::LangTableWrapper::getNumLang()
+int IJWLayer::LangTable::getNumLang()
 {
    if (!IsAlive())
       return -1;

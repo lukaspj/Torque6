@@ -2,43 +2,49 @@
 
 #pragma once
 
-#define TINYXML_INCLUDED
 
-class TiXmlElement;
-
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
 #pragma managed(push, off)
+
 #include "sim/simObject.h"
 #include "sim/simBase.h"
 #include "sim/simObjectPtr.h"
+
+// #pragma unmanaged
 #pragma managed(pop)
 
+typedef SimObject EngineSimObject;
+
 using System::String;
+using System::Exception;
 
 namespace IJWLayer {
-   ref class SimGroupWrapper;
-	public ref class SimObjectWrapper
+   ref class SimGroup;
+	public ref class SimObject
    {
    protected:
       void *mPtr;
-      SimObject *mObject;
+      EngineSimObject *mObject;
    public:
-      SimObjectWrapper() 
+      SimObject()
       {
-         SimObjectWrapper(new SimObject());
+         SimObject(new EngineSimObject());
       };
-      SimObjectWrapper(SimObject* object)
+      SimObject(EngineSimObject* object)
       {
          mObject = object;
-         mPtr = new SimObjectPtr<SimObject>(mObject);
+         mPtr = new SimObjectPtr<EngineSimObject>(mObject);
       }
-      ~SimObjectWrapper();
+      ~SimObject();
 
       bool IsAlive();
 
-      SimObject* GetObjectPtr();
+      EngineSimObject* GetObjectPtr();
 
-      static SimObjectWrapper^ Wrap(int ID);
-      static SimObjectWrapper^ Wrap(SimObject* obj);
+      static SimObject^ Wrap(int ID);
+      static SimObject^ Wrap(String^ Name);
+      static SimObject^ Wrap(EngineSimObject* obj);
       bool registerObject() { return mObject->registerObject(); };
 
       // --
@@ -51,8 +57,8 @@ namespace IJWLayer {
          String^ get();
          void set(String^ newName);
       }
-      property SimGroupWrapper^ ParentGroup{
-         void set(SimGroupWrapper^ group);
+      property SimGroup^ ParentGroup{
+         void set(SimGroup^ group);
       }
       property String^ SuperClass{
          String^ get();

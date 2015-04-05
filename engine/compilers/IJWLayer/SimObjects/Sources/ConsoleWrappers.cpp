@@ -4,14 +4,14 @@
 
 using namespace System::Runtime::InteropServices;
 
-bool IJWLayer::ConsoleLoggerWrapper::attach()
+bool IJWLayer::ConsoleLogger::attach()
 {
    if (!IsAlive())
       return false;
    return GetObjectPtr()->attach();
 }
 
-bool IJWLayer::ConsoleLoggerWrapper::detach()
+bool IJWLayer::ConsoleLogger::detach()
 {
    if (!IsAlive())
       return false;

@@ -3,24 +3,37 @@
 #pragma once
 
 #include "SimObjectWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "messaging/message.h"
 #include "gui/messageVector.h"
 #include "messaging/scriptMsgListener.h"
 #include "messaging/messageForwarder.h"
 #include "messaging/dispatcher.h"
 
+// #pragma unmanaged
+#pragma managed(pop)
+
 using namespace System;
+
+typedef Message EngineMessage;
+typedef MessageForwarder EngineMessageForwarder;
+typedef ScriptMsgListener EngineScriptMsgListener;
+typedef MessageVector EngineMessageVector;
 
 namespace IJWLayer {
 
-   public ref class MessageWrapper : SimObjectWrapper
+   public ref class Message : SimObject
    {
    public:
-      static MessageWrapper^ Wrap(int ID) { return static_cast<MessageWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static MessageWrapper^ Wrap(Message* obj) { return static_cast<MessageWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static Message^ Wrap(int ID) { return static_cast<Message^>(SimObject::Wrap(ID)); };
+      static Message^ Wrap(EngineMessage* obj) { return static_cast<Message^>(SimObject::Wrap(obj)); };
 
-      Message* GetObjectPtr(){
-         return static_cast<Message*>(mObject);
+      EngineMessage* GetObjectPtr(){
+         return static_cast<EngineMessage*>(mObject);
       };
 
       String^ getType();
@@ -28,36 +41,36 @@ namespace IJWLayer {
       void freeReference();
    };
 
-   public ref class ScriptMsgListenerWrapper : SimObjectWrapper
+   public ref class ScriptMsgListener : SimObject
    {
    public:
-      static ScriptMsgListenerWrapper^ Wrap(int ID) { return static_cast<ScriptMsgListenerWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static ScriptMsgListenerWrapper^ Wrap(ScriptMsgListener* obj) { return static_cast<ScriptMsgListenerWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static ScriptMsgListener^ Wrap(int ID) { return static_cast<ScriptMsgListener^>(SimObject::Wrap(ID)); };
+      static ScriptMsgListener^ Wrap(EngineScriptMsgListener* obj) { return static_cast<ScriptMsgListener^>(SimObject::Wrap(obj)); };
 
-      ScriptMsgListener* GetObjectPtr(){
-         return static_cast<ScriptMsgListener*>(mObject);
+      EngineScriptMsgListener* GetObjectPtr(){
+         return static_cast<EngineScriptMsgListener*>(mObject);
       };
    };
 
-   public ref class MessageForwarderWrapper : ScriptMsgListenerWrapper
+   public ref class MessageForwarder : ScriptMsgListener
    {
    public:
-      static MessageForwarderWrapper^ Wrap(int ID) { return static_cast<MessageForwarderWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static MessageForwarderWrapper^ Wrap(MessageForwarder* obj) { return static_cast<MessageForwarderWrapper ^>(SimObjectWrapper::Wrap(obj)); };
+      static MessageForwarder^ Wrap(int ID) { return static_cast<MessageForwarder^>(SimObject::Wrap(ID)); };
+      static MessageForwarder^ Wrap(EngineMessageForwarder* obj) { return static_cast<MessageForwarder ^>(SimObject::Wrap(obj)); };
 
-      MessageForwarder* GetObjectPtr(){
-         return static_cast<MessageForwarder*>(mObject);
+      EngineMessageForwarder* GetObjectPtr(){
+         return static_cast<EngineMessageForwarder*>(mObject);
       };
    };
 
-   public ref class MessageVectorWrapper : SimObjectWrapper
+   public ref class MessageVector : SimObject
    {
    public:
-      static MessageVectorWrapper^ Wrap(int ID) { return static_cast<MessageVectorWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static MessageVectorWrapper^ Wrap(MessageVector* obj) { return static_cast<MessageVectorWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static MessageVector^ Wrap(int ID) { return static_cast<MessageVector^>(SimObject::Wrap(ID)); };
+      static MessageVector^ Wrap(EngineMessageVector* obj) { return static_cast<MessageVector^>(SimObject::Wrap(obj)); };
 
-      MessageVector* GetObjectPtr(){
-         return static_cast<MessageVector*>(mObject);
+      EngineMessageVector* GetObjectPtr(){
+         return static_cast<EngineMessageVector*>(mObject);
       };
 
       void clear();

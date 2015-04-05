@@ -32,7 +32,7 @@
 #include "2d/core/Utility.h"
 #endif
 
-namespace Scene 
+namespace Scene
 {
 
    ConsoleMethod(SceneCamera, lookAt, ConsoleVoid, 3, 3, (""))
@@ -73,19 +73,19 @@ namespace Scene
 
    ConsoleMethod(SceneCamera, bindMouse, ConsoleVoid, 3, 5, (""))
    {
-      switch(argc)
+      switch (argc)
       {
-         case 3:
-            object->setBindMouse(dAtob(argv[2]));
-            break;
+      case 3:
+         object->setBindMouse(dAtob(argv[2]));
+         break;
 
-         case 4:
-            object->setBindMouse(dAtob(argv[2]), dAtob(argv[3]));
-            break;
+      case 4:
+         object->setBindMouse(dAtob(argv[2]), dAtob(argv[3]));
+         break;
 
-         case 5:
-            object->setBindMouse(dAtob(argv[2]), dAtob(argv[3]), dAtob(argv[4]));
-            break;
+      case 5:
+         object->setBindMouse(dAtob(argv[2]), dAtob(argv[3]), dAtob(argv[4]));
+         break;
       }
    }
 }

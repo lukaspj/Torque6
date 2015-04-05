@@ -1,18 +1,26 @@
 #include "../../Stdafx.h"
 #include "../Headers/GraphicsWrappers.h"
 #include "../Headers/MarshalHelper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "io/fileStream.h"
+
+// #pragma unmanaged
+#pragma managed(pop)
 
 using namespace System::Runtime::InteropServices;
 
-bool IJWLayer::PNGImageWrapper::CreateBaseImage(int width, int height, int imageType)
+bool IJWLayer::PNGImage::CreateBaseImage(int width, int height, int imageType)
 {
    if (IsAlive())
       return GetObjectPtr()->Create(width, height, (PNGImageType)imageType);
    return false;
 }
 
-bool IJWLayer::PNGImageWrapper::MergeOn(int width, int height, String^ imageFile)
+bool IJWLayer::PNGImage::MergeOn(int width, int height, String^ imageFile)
 {
    if (!IsAlive())
       return false;
@@ -27,7 +35,7 @@ bool IJWLayer::PNGImageWrapper::MergeOn(int width, int height, String^ imageFile
       return false;
    }
 
-   PNGImage* newImage = new PNGImage();
+   EnginePNGImage* newImage = new EnginePNGImage();
 
    bool didReadImage = newImage->Read(_imageFile);
 
@@ -49,7 +57,7 @@ bool IJWLayer::PNGImageWrapper::MergeOn(int width, int height, String^ imageFile
    return didMergeOn;
 }
 
-bool IJWLayer::PNGImageWrapper::SaveImage(String^ fileName)
+bool IJWLayer::PNGImage::SaveImage(String^ fileName)
 {
    if (!IsAlive())
       return false;

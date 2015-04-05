@@ -1,27 +1,36 @@
 #include "../../stdafx.h"
-#include "../Headers/Console.h"
+#include "../Headers/Engine.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "console/console.h"
+
+// #pragma unmanaged
+#pragma managed(pop)
 
 using namespace System::Runtime::InteropServices;
 namespace EngineCon = Con;
+typedef Platform EnginePlatform;
 
-void IJWLayer::Con::setLogMode(int mode)
+void IJWLayer::Engine::Con::setLogMode(int mode)
 {
    EngineCon::setLogMode(mode);
 }
 
-void IJWLayer::Con::quit()
+void IJWLayer::Engine::Con::quit()
 {
-   Platform::postQuitMessage(0);
+   EnginePlatform::postQuitMessage(0);
 }
 
-void IJWLayer::Con::print(String^ str)
+void IJWLayer::Engine::Con::print(String^ str)
 {
    char* _str = (char*)Marshal::StringToHGlobalAnsi(str).ToPointer();
    EngineCon::printf(_str);
 }
 
-String^ IJWLayer::Con::expandPath(String^ str)
+String^ IJWLayer::Engine::Con::expandPath(String^ str)
 {
    char* _str = (char*)Marshal::StringToHGlobalAnsi(str).ToPointer();
    char* ret = EngineCon::getReturnBuffer(1024);

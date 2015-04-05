@@ -3,62 +3,75 @@
 #pragma once
 
 #include "SimObjectWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "gui/guiTypes.h"
 #include "gui/editor/guiImageList.h"
 #include "platform/menus/popupMenu.h"
 
+// #pragma unmanaged
+#pragma managed(pop)
+
 using namespace System;
+
+typedef GuiControlProfile EngineGuiControlProfile;
+typedef GuiCursor EngineGuiCursor;
+typedef GuiImageList EngineGuiImageList;
+typedef PopupMenu EnginePopupMenu;
 
 namespace IJWLayer {
 
-   public ref class GuiControlProfileWrapper : SimObjectWrapper
+   public ref class GuiControlProfile : SimObject
    {
    public:
-      static GuiControlProfileWrapper^ Wrap(int ID) { return static_cast<GuiControlProfileWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static GuiControlProfileWrapper^ Wrap(GuiControlProfile* obj) { return static_cast<GuiControlProfileWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static GuiControlProfile^ Wrap(int ID) { return static_cast<GuiControlProfile^>(SimObject::Wrap(ID)); };
+      static GuiControlProfile^ Wrap(EngineGuiControlProfile* obj) { return static_cast<GuiControlProfile^>(SimObject::Wrap(obj)); };
 
-      GuiControlProfile* GetObjectPtr(){
-         return static_cast<GuiControlProfile*>(mObject);
+      EngineGuiControlProfile* GetObjectPtr(){
+         return static_cast<EngineGuiControlProfile*>(mObject);
       };
    };
 
-   public ref class GuiCursorWrapper : SimObjectWrapper
+   public ref class GuiCursor : SimObject
    {
    public:
-      static GuiCursorWrapper^ Wrap(int ID) { return static_cast<GuiCursorWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static GuiCursorWrapper^ Wrap(GuiCursor* obj) { return static_cast<GuiCursorWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static GuiCursor^ Wrap(int ID) { return static_cast<GuiCursor^>(SimObject::Wrap(ID)); };
+      static GuiCursor^ Wrap(EngineGuiCursor* obj) { return static_cast<GuiCursor^>(SimObject::Wrap(obj)); };
 
-      GuiCursor* GetObjectPtr(){
-         return static_cast<GuiCursor*>(mObject);
+      EngineGuiCursor* GetObjectPtr(){
+         return static_cast<EngineGuiCursor*>(mObject);
       };
    };
 
-   public ref class GuiImageListWrapper : SimObjectWrapper
+   public ref class GuiImageList : SimObject
    {
    public:
-      static GuiImageListWrapper^ Wrap(int ID) { return static_cast<GuiImageListWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static GuiImageListWrapper^ Wrap(GuiImageList* obj) { return static_cast<GuiImageListWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static GuiImageList^ Wrap(int ID) { return static_cast<GuiImageList^>(SimObject::Wrap(ID)); };
+      static GuiImageList^ Wrap(EngineGuiImageList* obj) { return static_cast<GuiImageList^>(SimObject::Wrap(obj)); };
 
-      GuiImageList* GetObjectPtr(){
-         return static_cast<GuiImageList*>(mObject);
+      EngineGuiImageList* GetObjectPtr(){
+         return static_cast<EngineGuiImageList*>(mObject);
       };
    };
 
-   public ref class PopupMenuWrapper : SimObjectWrapper
+   public ref class PopupMenu : SimObject
    {
    public:
-      static PopupMenuWrapper^ Wrap(int ID) { return static_cast<PopupMenuWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static PopupMenuWrapper^ Wrap(PopupMenu* obj) { return static_cast<PopupMenuWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static PopupMenu^ Wrap(int ID) { return static_cast<PopupMenu^>(SimObject::Wrap(ID)); };
+      static PopupMenu^ Wrap(EnginePopupMenu* obj) { return static_cast<PopupMenu^>(SimObject::Wrap(obj)); };
 
-      PopupMenu* GetObjectPtr(){
-         return static_cast<PopupMenu*>(mObject);
+      EnginePopupMenu* GetObjectPtr(){
+         return static_cast<EnginePopupMenu*>(mObject);
       };
 
       int insertItem(int pos, String^ title, String^ accelerator);
       int insertItem(int pos, String^ title);
       int insertItem(int pos);
       void removeItem(int pos);
-      int insertSubMenu(int pos, String^ title, PopupMenuWrapper^ menu);
+      int insertSubMenu(int pos, String^ title, PopupMenu^ menu);
       void enableItem(int pos, bool enabled);
       void checkItem(int pos, bool checked);
       void checkRadioItem(int firstPos, int lastPos, int checkPos);

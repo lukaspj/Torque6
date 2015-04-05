@@ -53,7 +53,7 @@ DefineConsoleType( TypeForwardMaterialAssetPtr )
 
 //-----------------------------------------------------------------------------
 
-class ForwardMaterialAsset : public BaseMaterialAsset
+class DLL_PUBLIC ForwardMaterialAsset : public BaseMaterialAsset
 {
 
 private:

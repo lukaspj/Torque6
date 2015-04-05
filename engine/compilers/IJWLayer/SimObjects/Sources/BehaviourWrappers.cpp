@@ -3,22 +3,64 @@
 
 using namespace System::Runtime::InteropServices;
 
-String^ IJWLayer::BehaviorInstanceWrapper::getTemplateName()
+IJWLayer::BehaviorTemplate^ IJWLayer::BehaviorInstance::Template::get()
+{
+   if (IsAlive())
+      return BehaviorTemplate::Wrap(GetObjectPtr()->getTemplate());
+   return nullptr;
+}
+
+IJWLayer::SimObject^ IJWLayer::BehaviorInstance::Owner::get()
+{
+   // TODO should be BehaviorComponent
+   if (IsAlive())
+      return SimObject::Wrap((EngineSimObject*)GetObjectPtr()->getBehaviorOwner());
+}
+
+void IJWLayer::BehaviorInstance::Owner::set(IJWLayer::SimObject^ val)
+{
+   // TODO should be BehaviorComponent
+   if (IsAlive() && val->IsAlive())
+      GetObjectPtr()->setBehaviorOwner((BehaviorComponent*)val->GetObjectPtr());
+}
+
+String^ IJWLayer::BehaviorInstance::getTemplateName()
 {
    if (!IsAlive())
       return nullptr;
    return gcnew String(GetObjectPtr()->getTemplateName());
 }
 
-IJWLayer::BehaviorInstanceWrapper^ IJWLayer::BehaviorTemplateWrapper::createInstance()
+IJWLayer::BehaviorInstance^ IJWLayer::BehaviorTemplate::createInstance()
 {
    if (!IsAlive())
       return nullptr;
-   BehaviorInstance* inst = GetObjectPtr()->createInstance();
-   return inst ? BehaviorInstanceWrapper::Wrap(inst) : nullptr;
+   EngineBehaviorInstance* inst = GetObjectPtr()->createInstance();
+   return inst ? BehaviorInstance::Wrap(inst) : nullptr;
 }
 
-bool IJWLayer::BehaviorTemplateWrapper::addBehaviorField(String^ fieldName, String^ desc, String^ type, String^ defaultValue, String^ userData)
+String^ IJWLayer::BehaviorTemplate::FriendlyName::get()
+{
+   if (IsAlive())
+      return gcnew String(GetObjectPtr()->getFriendlyName());
+   return nullptr;
+}
+
+String^ IJWLayer::BehaviorTemplate::Description::get()
+{
+   if (IsAlive())
+      return gcnew String(GetObjectPtr()->getDescription());
+   return nullptr;
+}
+
+String^ IJWLayer::BehaviorTemplate::BehaviorType::get()
+{
+   if (IsAlive())
+      return gcnew String(GetObjectPtr()->getBehaviorType());
+   return nullptr;
+}
+
+bool IJWLayer::BehaviorTemplate::addBehaviorField(String^ fieldName, String^ desc, String^ type, String^ defaultValue, String^ userData)
 {
    if (!IsAlive())
       return false;
@@ -31,17 +73,17 @@ bool IJWLayer::BehaviorTemplateWrapper::addBehaviorField(String^ fieldName, Stri
    return GetObjectPtr()->addBehaviorField(_fieldName, _desc, _type, _defaultValue, _userData);
 }
 
-bool IJWLayer::BehaviorTemplateWrapper::addBehaviorField(String^ fieldName, String^ desc, String^ type, String^ defaultValue)
+bool IJWLayer::BehaviorTemplate::addBehaviorField(String^ fieldName, String^ desc, String^ type, String^ defaultValue)
 {
    return addBehaviorField(fieldName, desc, type, defaultValue, nullptr);
 }
 
-bool IJWLayer::BehaviorTemplateWrapper::addBehaviorField(String^ fieldName, String^ desc, String^ type)
+bool IJWLayer::BehaviorTemplate::addBehaviorField(String^ fieldName, String^ desc, String^ type)
 {
    return addBehaviorField(fieldName, desc, type, nullptr, nullptr);
 }
 
-int IJWLayer::BehaviorTemplateWrapper::getBehaviorFieldCount()
+int IJWLayer::BehaviorTemplate::getBehaviorFieldCount()
 {
    if (!IsAlive())
       return -1;
@@ -49,13 +91,13 @@ int IJWLayer::BehaviorTemplateWrapper::getBehaviorFieldCount()
    return GetObjectPtr()->getBehaviorFieldCount();
 }
 
-String^ IJWLayer::BehaviorTemplateWrapper::getBehaviorField(int fieldIndex)
+String^ IJWLayer::BehaviorTemplate::getBehaviorField(int fieldIndex)
 {
    if (!IsAlive())
       return nullptr;
 
    // Fetch behavior field.
-   BehaviorTemplate::BehaviorField* pField = GetObjectPtr()->getBehaviorField(fieldIndex);
+   EngineBehaviorTemplate::BehaviorField* pField = GetObjectPtr()->getBehaviorField(fieldIndex);
 
    // Was the field found?
    if (!pField)
@@ -71,13 +113,13 @@ String^ IJWLayer::BehaviorTemplateWrapper::getBehaviorField(int fieldIndex)
    return gcnew String(pBuffer);
 }
 
-String^ IJWLayer::BehaviorTemplateWrapper::getBehaviorFieldUserData(int fieldIndex)
+String^ IJWLayer::BehaviorTemplate::getBehaviorFieldUserData(int fieldIndex)
 {
    if (!IsAlive())
       return nullptr;
 
    // Fetch behavior field.
-   BehaviorTemplate::BehaviorField* pField = GetObjectPtr()->getBehaviorField(fieldIndex);
+   EngineBehaviorTemplate::BehaviorField* pField = GetObjectPtr()->getBehaviorField(fieldIndex);
 
    // Was the field found?
    if (!pField)
@@ -90,13 +132,13 @@ String^ IJWLayer::BehaviorTemplateWrapper::getBehaviorFieldUserData(int fieldInd
    return gcnew String(pField->mUserData);
 }
 
-String^ IJWLayer::BehaviorTemplateWrapper::getBehaviorFieldDescription(int fieldIndex)
+String^ IJWLayer::BehaviorTemplate::getBehaviorFieldDescription(int fieldIndex)
 {
    if (!IsAlive())
       return nullptr;
 
    // Fetch behavior field.
-   BehaviorTemplate::BehaviorField* pField = GetObjectPtr()->getBehaviorField(fieldIndex);
+   EngineBehaviorTemplate::BehaviorField* pField = GetObjectPtr()->getBehaviorField(fieldIndex);
 
    // Was the field found?
    if (!pField)
@@ -109,7 +151,7 @@ String^ IJWLayer::BehaviorTemplateWrapper::getBehaviorFieldDescription(int field
    return gcnew String(pField->mDescription);
 }
 
-bool IJWLayer::BehaviorTemplateWrapper::addBehaviorOutput(String^ outputName, String^ label, String^ description)
+bool IJWLayer::BehaviorTemplate::addBehaviorOutput(String^ outputName, String^ label, String^ description)
 {
    if (!IsAlive())
       return false;
@@ -120,7 +162,7 @@ bool IJWLayer::BehaviorTemplateWrapper::addBehaviorOutput(String^ outputName, St
    return GetObjectPtr()->addBehaviorInput(_outputName, _label, _description);
 }
 
-int IJWLayer::BehaviorTemplateWrapper::getBehaviorOutputCount()
+int IJWLayer::BehaviorTemplate::getBehaviorOutputCount()
 {
    if (!IsAlive())
       return -1;
@@ -128,13 +170,13 @@ int IJWLayer::BehaviorTemplateWrapper::getBehaviorOutputCount()
    return GetObjectPtr()->getBehaviorOutputCount();
 }
 
-String^ IJWLayer::BehaviorTemplateWrapper::getBehaviorOutput(int fieldIndex)
+String^ IJWLayer::BehaviorTemplate::getBehaviorOutput(int fieldIndex)
 {
    if (!IsAlive())
       return nullptr;
 
    // Fetch behavior field.
-   BehaviorTemplate::BehaviorPortOutput* pPortOutput = GetObjectPtr()->getBehaviourOutput(fieldIndex);
+   EngineBehaviorTemplate::BehaviorPortOutput* pPortOutput = GetObjectPtr()->getBehaviourOutput(fieldIndex);
 
    // Was the field found?
    if (!pPortOutput)
@@ -150,7 +192,7 @@ String^ IJWLayer::BehaviorTemplateWrapper::getBehaviorOutput(int fieldIndex)
    return gcnew String(pBuffer);
 }
 
-bool IJWLayer::BehaviorTemplateWrapper::hasBehaviorOutput(String^ outputName)
+bool IJWLayer::BehaviorTemplate::hasBehaviorOutput(String^ outputName)
 {
    if (!IsAlive())
       return false;
@@ -159,7 +201,7 @@ bool IJWLayer::BehaviorTemplateWrapper::hasBehaviorOutput(String^ outputName)
    return GetObjectPtr()->hasBehaviorOutput(_outputName);
 }
 
-bool IJWLayer::BehaviorTemplateWrapper::addBehaviorInput(String^ inputName, String^ label, String^ description)
+bool IJWLayer::BehaviorTemplate::addBehaviorInput(String^ inputName, String^ label, String^ description)
 {
    if (!IsAlive())
       return false;
@@ -170,7 +212,7 @@ bool IJWLayer::BehaviorTemplateWrapper::addBehaviorInput(String^ inputName, Stri
    return GetObjectPtr()->addBehaviorInput(_inputName, _label, _description);
 }
 
-int IJWLayer::BehaviorTemplateWrapper::getBehaviorInputCount()
+int IJWLayer::BehaviorTemplate::getBehaviorInputCount()
 {
    if (!IsAlive())
       return -1;
@@ -178,13 +220,13 @@ int IJWLayer::BehaviorTemplateWrapper::getBehaviorInputCount()
    return GetObjectPtr()->getBehaviorInputCount();
 }
 
-String^ IJWLayer::BehaviorTemplateWrapper::getBehaviorInput(int fieldIndex)
+String^ IJWLayer::BehaviorTemplate::getBehaviorInput(int fieldIndex)
 {
    if (!IsAlive())
       return nullptr;
 
    // Fetch behavior field.
-   BehaviorTemplate::BehaviorPortInput* pPortInput = GetObjectPtr()->getBehaviourInput(fieldIndex);
+   EngineBehaviorTemplate::BehaviorPortInput* pPortInput = GetObjectPtr()->getBehaviourInput(fieldIndex);
 
    // Was the field found?
    if (!pPortInput)
@@ -200,7 +242,7 @@ String^ IJWLayer::BehaviorTemplateWrapper::getBehaviorInput(int fieldIndex)
    return gcnew String(pBuffer);
 }
 
-bool IJWLayer::BehaviorTemplateWrapper::hasBehaviorInput(String^ inputName)
+bool IJWLayer::BehaviorTemplate::hasBehaviorInput(String^ inputName)
 {
    if (!IsAlive())
       return false;

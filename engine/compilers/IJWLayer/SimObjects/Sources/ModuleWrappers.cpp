@@ -4,7 +4,7 @@
 
 using namespace System::Runtime::InteropServices;
 
-bool IJWLayer::ModuleManagerWrapper::setModuleExtension(String^ moduleExtension)
+bool IJWLayer::ModuleManager::setModuleExtension(String^ moduleExtension)
 {
    if (!IsAlive())
       return false;
@@ -12,7 +12,7 @@ bool IJWLayer::ModuleManagerWrapper::setModuleExtension(String^ moduleExtension)
    return GetObjectPtr()->setModuleExtension(_moduleExtension);
 }
 
-bool IJWLayer::ModuleManagerWrapper::scanModules(String^ rootPath, bool rootOnly)
+bool IJWLayer::ModuleManager::scanModules(String^ rootPath, bool rootOnly)
 {
    if (!IsAlive())
       return false;
@@ -21,12 +21,12 @@ bool IJWLayer::ModuleManagerWrapper::scanModules(String^ rootPath, bool rootOnly
    return GetObjectPtr()->scanModules(_rootPath, rootOnly);
 }
 
-bool IJWLayer::ModuleManagerWrapper::scanModules(String^ rootPath)
+bool IJWLayer::ModuleManager::scanModules(String^ rootPath)
 {
    return scanModules(rootPath, false);
 }
 
-bool IJWLayer::ModuleManagerWrapper::unregisterModule(String^ moduleId, int versionId)
+bool IJWLayer::ModuleManager::unregisterModule(String^ moduleId, int versionId)
 {
    if (!IsAlive())
       return false;
@@ -35,12 +35,12 @@ bool IJWLayer::ModuleManagerWrapper::unregisterModule(String^ moduleId, int vers
    return GetObjectPtr()->unregisterModule(_moduleId, versionId);
 }
 
-bool IJWLayer::ModuleManagerWrapper::unregisterModule(String^ moduleId)
+bool IJWLayer::ModuleManager::unregisterModule(String^ moduleId)
 {
    return unregisterModule(moduleId, 0);
 }
 
-bool IJWLayer::ModuleManagerWrapper::loadGroup(String^ moduleGroup)
+bool IJWLayer::ModuleManager::loadGroup(String^ moduleGroup)
 {
    if (!IsAlive())
       return false;
@@ -49,7 +49,7 @@ bool IJWLayer::ModuleManagerWrapper::loadGroup(String^ moduleGroup)
    return GetObjectPtr()->loadModuleGroup(_moduleGroup);
 }
 
-bool IJWLayer::ModuleManagerWrapper::unloadGroup(String^ moduleGroup)
+bool IJWLayer::ModuleManager::unloadGroup(String^ moduleGroup)
 {
    if (!IsAlive())
       return false;
@@ -58,7 +58,7 @@ bool IJWLayer::ModuleManagerWrapper::unloadGroup(String^ moduleGroup)
    return GetObjectPtr()->unloadModuleGroup(_moduleGroup);
 }
 
-bool IJWLayer::ModuleManagerWrapper::loadExplicit(String^ moduleId, int versionId)
+bool IJWLayer::ModuleManager::loadExplicit(String^ moduleId, int versionId)
 {
    if (!IsAlive())
       return false;
@@ -67,12 +67,12 @@ bool IJWLayer::ModuleManagerWrapper::loadExplicit(String^ moduleId, int versionI
    return GetObjectPtr()->loadModuleExplicit(_moduleId, versionId);
 }
 
-bool IJWLayer::ModuleManagerWrapper::loadExplicit(String^ moduleId)
+bool IJWLayer::ModuleManager::loadExplicit(String^ moduleId)
 {
    return loadExplicit(moduleId, 0);
 }
 
-bool IJWLayer::ModuleManagerWrapper::unloadExplicit(String^ moduleId)
+bool IJWLayer::ModuleManager::unloadExplicit(String^ moduleId)
 {
    if (!IsAlive())
       return false;
@@ -81,45 +81,45 @@ bool IJWLayer::ModuleManagerWrapper::unloadExplicit(String^ moduleId)
    return GetObjectPtr()->unloadModuleExplicit(_moduleId);
 }
 
-IJWLayer::ModuleDefinitionWrapper^ IJWLayer::ModuleManagerWrapper::findModule(String^ moduleId, int versionId)
+IJWLayer::ModuleDefinition^ IJWLayer::ModuleManager::findModule(String^ moduleId, int versionId)
 {
    if (!IsAlive())
       return nullptr;
 
    const char* _moduleId = (char*)Marshal::StringToHGlobalAnsi(moduleId).ToPointer();
    
-   ModuleDefinition* modDef = GetObjectPtr()->findModule(_moduleId, versionId);
+   EngineModuleDefinition* modDef = GetObjectPtr()->findModule(_moduleId, versionId);
 
-   return ModuleDefinitionWrapper::Wrap(modDef);
+   return ModuleDefinition::Wrap(modDef);
 }
 
-array<IJWLayer::ModuleDefinitionWrapper^>^ IJWLayer::ModuleManagerWrapper::findModules(bool loadedOnly)
+array<IJWLayer::ModuleDefinition^>^ IJWLayer::ModuleManager::findModules(bool loadedOnly)
 {
    if (!IsAlive())
       return nullptr;
 
    // Find module type definitions.
-   Vector<const ModuleDefinition*> moduleDefinitions;
+   Vector<const EngineModuleDefinition*> moduleDefinitions;
 
    // Find modules.
    GetObjectPtr()->findModules(loadedOnly, moduleDefinitions);
 
-   array<IJWLayer::ModuleDefinitionWrapper^>^ retArr = gcnew array<IJWLayer::ModuleDefinitionWrapper^>(moduleDefinitions.size());
+   array<IJWLayer::ModuleDefinition^>^ retArr = gcnew array<IJWLayer::ModuleDefinition^>(moduleDefinitions.size());
 
    for (int i = 0; i < moduleDefinitions.size(); i++)
    {
-      retArr[i] = ModuleDefinitionWrapper::Wrap(const_cast<ModuleDefinition*>(moduleDefinitions[i]));
+      retArr[i] = ModuleDefinition::Wrap(const_cast<EngineModuleDefinition*>(moduleDefinitions[i]));
    }
 
    return retArr;
 }
 
-array<IJWLayer::ModuleDefinitionWrapper^>^ IJWLayer::ModuleManagerWrapper::findModules()
+array<IJWLayer::ModuleDefinition^>^ IJWLayer::ModuleManager::findModules()
 {
    return findModules(false);
 }
 
-array<IJWLayer::ModuleDefinitionWrapper^>^ IJWLayer::ModuleManagerWrapper::findModuleTypes(String^ moduleType, bool loadedOnly)
+array<IJWLayer::ModuleDefinition^>^ IJWLayer::ModuleManager::findModuleTypes(String^ moduleType, bool loadedOnly)
 {
    if (!IsAlive())
       return nullptr;
@@ -127,29 +127,29 @@ array<IJWLayer::ModuleDefinitionWrapper^>^ IJWLayer::ModuleManagerWrapper::findM
    const char* _moduleType = (char*)Marshal::StringToHGlobalAnsi(moduleType).ToPointer();
 
    // Find module type definitions.
-   Vector<const ModuleDefinition*> moduleDefinitions;
+   Vector<const EngineModuleDefinition*> moduleDefinitions;
 
    // Find modules.
    GetObjectPtr()->findModules(loadedOnly, moduleDefinitions);
 
    GetObjectPtr()->findModuleTypes(_moduleType, loadedOnly, moduleDefinitions);
 
-   array<IJWLayer::ModuleDefinitionWrapper^>^ retArr = gcnew array<IJWLayer::ModuleDefinitionWrapper^>(moduleDefinitions.size());
+   array<IJWLayer::ModuleDefinition^>^ retArr = gcnew array<IJWLayer::ModuleDefinition^>(moduleDefinitions.size());
 
    for (int i = 0; i < moduleDefinitions.size(); i++)
    {
-      retArr[i] = ModuleDefinitionWrapper::Wrap(const_cast<ModuleDefinition*>(moduleDefinitions[i]));
+      retArr[i] = ModuleDefinition::Wrap(const_cast<EngineModuleDefinition*>(moduleDefinitions[i]));
    }
 
    return retArr;
 }
 
-array<IJWLayer::ModuleDefinitionWrapper^>^ IJWLayer::ModuleManagerWrapper::findModuleTypes(String^ moduleType)
+array<IJWLayer::ModuleDefinition^>^ IJWLayer::ModuleManager::findModuleTypes(String^ moduleType)
 {
    return findModuleTypes(moduleType, false);
 }
 
-String^ IJWLayer::ModuleManagerWrapper::copyModule(ModuleDefinitionWrapper^ source, String^ targetId, String^ targetPath, bool useVersionPathing)
+String^ IJWLayer::ModuleManager::copyModule(ModuleDefinition^ source, String^ targetId, String^ targetPath, bool useVersionPathing)
 {
    if (!IsAlive() || !source->IsAlive())
       return nullptr;
@@ -160,7 +160,7 @@ String^ IJWLayer::ModuleManagerWrapper::copyModule(ModuleDefinitionWrapper^ sour
    return gcnew String(GetObjectPtr()->copyModule(source->GetObjectPtr(), _target, _targetPath, useVersionPathing));
 }
 
-bool IJWLayer::ModuleManagerWrapper::synchronizeDependencies(ModuleDefinitionWrapper^ root, String^ targetDependencyPath)
+bool IJWLayer::ModuleManager::synchronizeDependencies(ModuleDefinition^ root, String^ targetDependencyPath)
 {
    if (!IsAlive() || !root->IsAlive())
       return false;
@@ -170,14 +170,14 @@ bool IJWLayer::ModuleManagerWrapper::synchronizeDependencies(ModuleDefinitionWra
    return GetObjectPtr()->synchronizeDependencies(root->GetObjectPtr(), _targetDependencyPath);
 }
 
-bool IJWLayer::ModuleManagerWrapper::isModuleMergeAvailable()
+bool IJWLayer::ModuleManager::isModuleMergeAvailable()
 {
    if (IsAlive())
       return GetObjectPtr()->isModuleMergeAvailable();
    return false;
 }
 
-bool IJWLayer::ModuleManagerWrapper::canMergeModules(String^ mergeSourcePath)
+bool IJWLayer::ModuleManager::canMergeModules(String^ mergeSourcePath)
 {
    if (!IsAlive())
       return false;
@@ -186,7 +186,7 @@ bool IJWLayer::ModuleManagerWrapper::canMergeModules(String^ mergeSourcePath)
    return GetObjectPtr()->canMergeModules(_mergeSourcePath);
 }
 
-bool IJWLayer::ModuleManagerWrapper::mergeModules(String^ mergeTargetPath, bool removeMergeDefinition, bool registerNewModules)
+bool IJWLayer::ModuleManager::mergeModules(String^ mergeTargetPath, bool removeMergeDefinition, bool registerNewModules)
 {
    if (!IsAlive())
       return false;
@@ -195,7 +195,7 @@ bool IJWLayer::ModuleManagerWrapper::mergeModules(String^ mergeTargetPath, bool 
    return GetObjectPtr()->mergeModules(_mergeTargetPath, removeMergeDefinition, registerNewModules);
 }
 
-void IJWLayer::ModuleManagerWrapper::addListener(SimObjectWrapper^ listener)
+void IJWLayer::ModuleManager::addListener(SimObject^ listener)
 {
    if (!IsAlive())
       return;
@@ -210,7 +210,7 @@ void IJWLayer::ModuleManagerWrapper::addListener(SimObjectWrapper^ listener)
    return GetObjectPtr()->addListener(listener->GetObjectPtr());
 }
 
-void IJWLayer::ModuleManagerWrapper::removeListener(SimObjectWrapper^ listener)
+void IJWLayer::ModuleManager::removeListener(SimObject^ listener)
 {
    if (!IsAlive())
       return;
@@ -225,36 +225,36 @@ void IJWLayer::ModuleManagerWrapper::removeListener(SimObjectWrapper^ listener)
    return GetObjectPtr()->removeListener(listener->GetObjectPtr());
 }
 
-bool IJWLayer::ModuleDefinitionWrapper::save()
+bool IJWLayer::ModuleDefinition::save()
 {
    if (IsAlive())
       return GetObjectPtr()->save();
    return false;
 }
 
-IJWLayer::ModuleManagerWrapper^ IJWLayer::ModuleDefinitionWrapper::getModuleManager()
+IJWLayer::ModuleManager^ IJWLayer::ModuleDefinition::getModuleManager()
 {
    if (!IsAlive())
       return nullptr;
    // Fetch module manager.
-   ModuleManager* pModuleManager = GetObjectPtr()->getModuleManager();
+   EngineModuleManager* pModuleManager = GetObjectPtr()->getModuleManager();
 
-   return pModuleManager != NULL ? ModuleManagerWrapper::Wrap(pModuleManager) : nullptr;
+   return pModuleManager != NULL ? ModuleManager::Wrap(pModuleManager) : nullptr;
 }
 
-int IJWLayer::ModuleDefinitionWrapper::getDependencyCount()
+int IJWLayer::ModuleDefinition::getDependencyCount()
 {
    if (IsAlive())
       return GetObjectPtr()->getDependencyCount();
    return -1;
 }
 
-String^ IJWLayer::ModuleDefinitionWrapper::getDependency(int dependencyIndex)
+String^ IJWLayer::ModuleDefinition::getDependency(int dependencyIndex)
 {
    if (!IsAlive())
       return nullptr;
    // Get module dependency.
-   ModuleDefinition::ModuleDependency dependency;
+   EngineModuleDefinition::ModuleDependency dependency;
    if (GetObjectPtr()->getDependency(dependencyIndex, dependency) == false)
       return String::Empty;
 
@@ -265,7 +265,7 @@ String^ IJWLayer::ModuleDefinitionWrapper::getDependency(int dependencyIndex)
    return gcnew String(pReturnBuffer);
 }
 
-bool IJWLayer::ModuleDefinitionWrapper::addDependency(String^ moduleId, int versionId)
+bool IJWLayer::ModuleDefinition::addDependency(String^ moduleId, int versionId)
 {
    if (!IsAlive())
       return false;
@@ -273,7 +273,7 @@ bool IJWLayer::ModuleDefinitionWrapper::addDependency(String^ moduleId, int vers
    GetObjectPtr()->addDependency(_moduleId, versionId);
 }
 
-bool IJWLayer::ModuleDefinitionWrapper::removeDependency(String^ moduleId)
+bool IJWLayer::ModuleDefinition::removeDependency(String^ moduleId)
 {
    if (!IsAlive())
       return false;

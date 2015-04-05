@@ -5,8 +5,12 @@
 
 #include "../Headers/MarshalHelper.h"
 #include "../Headers/ActionMapWrapper.h"
+#include "../Headers/CollectionsWrapper.h"
 
 using namespace System::Runtime::InteropServices;
+
+IJWLayer::ActionMap::ActionMap()
+   : SimObject(new EngineActionMap) { }
 
 ///-------------------------------------------------------------------------------------------------
 /// <summary>  Gets object pointer. </summary>
@@ -16,9 +20,9 @@ using namespace System::Runtime::InteropServices;
 /// <returns>  null if it fails, else the object pointer. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-ActionMap* IJWLayer::ActionMapWrapper::GetObjectPtr()
+EngineActionMap* IJWLayer::ActionMap::GetObjectPtr()
 {
-   return static_cast<ActionMap*>(mObject);
+   return static_cast<EngineActionMap*>(mObject);
 }
 
 ///-------------------------------------------------------------------------------------------------
@@ -32,7 +36,7 @@ ActionMap* IJWLayer::ActionMapWrapper::GetObjectPtr()
 /// <param name="modifiers">  The modifiers. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::bind(String^ device, String^ action, String^ command, ...array<String^> ^modifiers)
+void IJWLayer::ActionMap::bind(String^ device, String^ action, String^ command, ...array<String^> ^modifiers)
 {
    if (!IsAlive())
       return;
@@ -59,7 +63,7 @@ void IJWLayer::ActionMapWrapper::bind(String^ device, String^ action, String^ co
 /// <param name="modifiers">  The modifiers. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::_bindObj(String^ device, String^ action, String^ command, SimObject* object, ...array<String^> ^modifiers)
+void IJWLayer::ActionMap::_bindObj(String^ device, String^ action, String^ command, EngineSimObject* object, ...array<String^> ^modifiers)
 {
    if (!IsAlive())
       return;
@@ -86,7 +90,7 @@ void IJWLayer::ActionMapWrapper::_bindObj(String^ device, String^ action, String
 /// <param name="modifiers">  The modifiers. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::bindObj(String^ device, String^ action, String^ command, SimObjectWrapper ^object, ...array<String^> ^modifiers)
+void IJWLayer::ActionMap::bindObj(String^ device, String^ action, String^ command, SimObject ^object, ...array<String^> ^modifiers)
 {
    if (!IsAlive())
       return;
@@ -105,11 +109,11 @@ void IJWLayer::ActionMapWrapper::bindObj(String^ device, String^ action, String^
 /// <param name="modifiers">  The modifiers. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::bindObj(String^ device, String^ action, String^ command, int objID, ...array<String^> ^modifiers)
+void IJWLayer::ActionMap::bindObj(String^ device, String^ action, String^ command, int objID, ...array<String^> ^modifiers)
 {
    if (!IsAlive())
       return;
-   SimObject* obj = Sim::findObject(objID);
+   EngineSimObject* obj = Sim::findObject(objID);
    _bindObj(device, action, command, obj, modifiers);
 }
 
@@ -124,7 +128,7 @@ void IJWLayer::ActionMapWrapper::bindObj(String^ device, String^ action, String^
 /// <param name="breakCmd">   The break command. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::bindCmd(String^ device, String^ action, String^ makeCmd, String^ breakCmd)
+void IJWLayer::ActionMap::bindCmd(String^ device, String^ action, String^ makeCmd, String^ breakCmd)
 {
    if (!IsAlive())
       return;
@@ -144,7 +148,7 @@ void IJWLayer::ActionMapWrapper::bindCmd(String^ device, String^ action, String^
 /// <param name="action">  The action. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::unbind(String^ device, String^ action)
+void IJWLayer::ActionMap::unbind(String^ device, String^ action)
 {
    if (!IsAlive())
       return;
@@ -163,7 +167,7 @@ void IJWLayer::ActionMapWrapper::unbind(String^ device, String^ action)
 /// <param name="object">  [in,out] If non-null, the object. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::_unbindObj(String^ device, String^ action, SimObject* object)
+void IJWLayer::ActionMap::_unbindObj(String^ device, String^ action, EngineSimObject* object)
 {
    if (!IsAlive())
       return;
@@ -182,11 +186,11 @@ void IJWLayer::ActionMapWrapper::_unbindObj(String^ device, String^ action, SimO
 /// <param name="objectID">   Identifier for the object. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::unbindObj(String^ device, String^ action, int objectID)
+void IJWLayer::ActionMap::unbindObj(String^ device, String^ action, int objectID)
 {
    if (!IsAlive())
       return;
-   SimObject* obj = Sim::findObject(objectID);
+   EngineSimObject* obj = Sim::findObject(objectID);
    _unbindObj(device, action, obj);
 }
 
@@ -200,7 +204,7 @@ void IJWLayer::ActionMapWrapper::unbindObj(String^ device, String^ action, int o
 /// <param name="object">  The object. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::unbindObj(String^ device, String^ action, SimObjectWrapper^ object)
+void IJWLayer::ActionMap::unbindObj(String^ device, String^ action, SimObject^ object)
 {
    if (!IsAlive())
       return;
@@ -216,7 +220,7 @@ void IJWLayer::ActionMapWrapper::unbindObj(String^ device, String^ action, SimOb
 /// <param name="append">     true to append. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::save(String^ fileName, bool append)
+void IJWLayer::ActionMap::save(String^ fileName, bool append)
 {
    if (!IsAlive())
       return;
@@ -240,7 +244,7 @@ void IJWLayer::ActionMapWrapper::save(String^ fileName, bool append)
 /// <param name="fileName">   The file name to save. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::save(String^ fileName)
+void IJWLayer::ActionMap::save(String^ fileName)
 {
    if (!IsAlive())
       return;
@@ -253,7 +257,7 @@ void IJWLayer::ActionMapWrapper::save(String^ fileName)
 /// <remarks>  Lukas, 24-03-2015. </remarks>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::save()
+void IJWLayer::ActionMap::save()
 {
    if (!IsAlive())
       return;
@@ -266,11 +270,11 @@ void IJWLayer::ActionMapWrapper::save()
 /// <remarks>  Lukas, 24-03-2015. </remarks>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::push()
+void IJWLayer::ActionMap::push()
 {
    if (!IsAlive())
       return;
-   SimSet* actionMapSet = Sim::getActiveActionMapSet();
+   EngineSimSet* actionMapSet = Sim::getActiveActionMapSet();
    actionMapSet->pushObject(GetObjectPtr());
 }
 
@@ -280,11 +284,11 @@ void IJWLayer::ActionMapWrapper::push()
 /// <remarks>  Lukas, 24-03-2015. </remarks>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::ActionMapWrapper::pop()
+void IJWLayer::ActionMap::pop()
 {
    if (!IsAlive())
       return;
-   SimSet* actionMapSet = Sim::getActiveActionMapSet();
+   EngineSimSet* actionMapSet = Sim::getActiveActionMapSet();
    actionMapSet->removeObject(GetObjectPtr());
 }
 
@@ -301,7 +305,7 @@ void IJWLayer::ActionMapWrapper::pop()
 /// </returns>
 ///-------------------------------------------------------------------------------------------------
 
-String^ IJWLayer::ActionMapWrapper::getBinding(String^ command)
+String^ IJWLayer::ActionMap::getBinding(String^ command)
 {
    if (!IsAlive())
       return nullptr;
@@ -320,7 +324,7 @@ String^ IJWLayer::ActionMapWrapper::getBinding(String^ command)
 /// <returns>  nullptr if it fails, else the command. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-String^ IJWLayer::ActionMapWrapper::getCommand(String^ device, String^ action)
+String^ IJWLayer::ActionMap::getCommand(String^ device, String^ action)
 {
    if (!IsAlive())
       return nullptr;
@@ -343,7 +347,7 @@ String^ IJWLayer::ActionMapWrapper::getCommand(String^ device, String^ action)
 /// <returns>  true if inverted, false if not. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-bool IJWLayer::ActionMapWrapper::isInverted(String^ device, String^ action)
+bool IJWLayer::ActionMap::isInverted(String^ device, String^ action)
 {
    if (!IsAlive())
       return false;
@@ -363,7 +367,7 @@ bool IJWLayer::ActionMapWrapper::isInverted(String^ device, String^ action)
 /// <returns>  The scale. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-float IJWLayer::ActionMapWrapper::getScale(String^ device, String^ action)
+float IJWLayer::ActionMap::getScale(String^ device, String^ action)
 {
    if (!IsAlive())
       return -1;
@@ -386,7 +390,7 @@ float IJWLayer::ActionMapWrapper::getScale(String^ device, String^ action)
 /// </returns>
 ///-------------------------------------------------------------------------------------------------
 
-String^ IJWLayer::ActionMapWrapper::getDeadZone(String^ device, String^ action)
+String^ IJWLayer::ActionMap::getDeadZone(String^ device, String^ action)
 {
    if (!IsAlive())
       return nullptr;

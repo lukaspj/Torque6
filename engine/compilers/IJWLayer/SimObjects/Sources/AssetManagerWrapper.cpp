@@ -3,13 +3,13 @@
 
 using namespace System::Runtime::InteropServices;
 
-void IJWLayer::AssetQueryWrapper::clear()
+void IJWLayer::AssetQuery::clear()
 {
    if (IsAlive())
       GetObjectPtr()->clear();
 }
 
-bool IJWLayer::AssetQueryWrapper::set(AssetQueryWrapper^ assetQuery)
+bool IJWLayer::AssetQuery::set(AssetQuery^ assetQuery)
 {
    if (!IsAlive())
       return false;
@@ -23,13 +23,13 @@ bool IJWLayer::AssetQueryWrapper::set(AssetQueryWrapper^ assetQuery)
    GetObjectPtr()->set(*assetQuery->GetObjectPtr());
 }
 
-int IJWLayer::AssetQueryWrapper::getCount()
+int IJWLayer::AssetQuery::Count::get()
 {
    if (IsAlive())
       return GetObjectPtr()->size();
 }
 
-String^ IJWLayer::AssetQueryWrapper::getAsset(int resultIndex)
+String^ IJWLayer::AssetQuery::getAsset(int resultIndex)
 {
    if (!IsAlive())
       return nullptr;
@@ -45,7 +45,7 @@ String^ IJWLayer::AssetQueryWrapper::getAsset(int resultIndex)
    return gcnew String(GetObjectPtr()->at(resultIndex));
 }
 
-void IJWLayer::AssetTagsManifestWrapper::createTag(String^ tagName)
+void IJWLayer::AssetTagsManifest::createTag(String^ tagName)
 {
    if (!IsAlive())
       return;
@@ -53,7 +53,7 @@ void IJWLayer::AssetTagsManifestWrapper::createTag(String^ tagName)
    const char* _tagName = (char*)Marshal::StringToHGlobalAnsi(tagName).ToPointer();
    GetObjectPtr()->createTag(_tagName);
 }
-bool IJWLayer::AssetTagsManifestWrapper::renameTag(String^ oldTagName, String^ newTagName)
+bool IJWLayer::AssetTagsManifest::renameTag(String^ oldTagName, String^ newTagName)
 {
    if (!IsAlive())
       return false;
@@ -62,7 +62,7 @@ bool IJWLayer::AssetTagsManifestWrapper::renameTag(String^ oldTagName, String^ n
    const char* _newTagName = (char*)Marshal::StringToHGlobalAnsi(newTagName).ToPointer();
    return GetObjectPtr()->renameTag(_oldTagName, _newTagName);
 }
-bool IJWLayer::AssetTagsManifestWrapper::deleteTag(String^ tagName)
+bool IJWLayer::AssetTagsManifest::deleteTag(String^ tagName)
 {
    if (!IsAlive())
       return false;
@@ -70,7 +70,7 @@ bool IJWLayer::AssetTagsManifestWrapper::deleteTag(String^ tagName)
    const char* _tagName = (char*)Marshal::StringToHGlobalAnsi(tagName).ToPointer();
    return GetObjectPtr()->deleteTag(_tagName);
 }
-bool IJWLayer::AssetTagsManifestWrapper::isTag(String^ tagName)
+bool IJWLayer::AssetTagsManifest::isTag(String^ tagName)
 {
    if (!IsAlive())
       return false;
@@ -78,13 +78,13 @@ bool IJWLayer::AssetTagsManifestWrapper::isTag(String^ tagName)
    const char* _tagName = (char*)Marshal::StringToHGlobalAnsi(tagName).ToPointer();
    return GetObjectPtr()->isTag(_tagName);
 }
-int IJWLayer::AssetTagsManifestWrapper::getTagCount()
+int IJWLayer::AssetTagsManifest::getTagCount()
 {
    if (IsAlive())
       return GetObjectPtr()->getTagCount();
    return -1;
 }
-String^ IJWLayer::AssetTagsManifestWrapper::getTag(int tagIndex)
+String^ IJWLayer::AssetTagsManifest::getTag(int tagIndex)
 {
    if (!IsAlive())
       return nullptr;
@@ -98,7 +98,7 @@ String^ IJWLayer::AssetTagsManifestWrapper::getTag(int tagIndex)
 
    return gcnew String(GetObjectPtr()->getTag(tagIndex));
 }
-int IJWLayer::AssetTagsManifestWrapper::getAssetTagCount(String^ assetId)
+int IJWLayer::AssetTagsManifest::getAssetTagCount(String^ assetId)
 {
    if (!IsAlive())
       return -1;
@@ -106,7 +106,7 @@ int IJWLayer::AssetTagsManifestWrapper::getAssetTagCount(String^ assetId)
    const char* _assetId = (char*)Marshal::StringToHGlobalAnsi(assetId).ToPointer();
    return GetObjectPtr()->getAssetTagCount(_assetId);
 }
-String^ IJWLayer::AssetTagsManifestWrapper::getAssetTag(String^ assetId, int tagIndex)
+String^ IJWLayer::AssetTagsManifest::getAssetTag(String^ assetId, int tagIndex)
 {
    if (!IsAlive())
       return nullptr;
@@ -123,7 +123,7 @@ String^ IJWLayer::AssetTagsManifestWrapper::getAssetTag(String^ assetId, int tag
 
    return gcnew String(GetObjectPtr()->getAssetTag(_assetId, tagIndex));
 }
-bool IJWLayer::AssetTagsManifestWrapper::tag(String^ assetId, String^ tagName)
+bool IJWLayer::AssetTagsManifest::tag(String^ assetId, String^ tagName)
 {
    if (!IsAlive())
       return false;
@@ -133,7 +133,7 @@ bool IJWLayer::AssetTagsManifestWrapper::tag(String^ assetId, String^ tagName)
 
    return GetObjectPtr()->tag(_assetId, _tagName);
 }
-bool IJWLayer::AssetTagsManifestWrapper::untag(String^ assetId, String^ tagName)
+bool IJWLayer::AssetTagsManifest::untag(String^ assetId, String^ tagName)
 {
    if (!IsAlive())
       return false;
@@ -143,7 +143,7 @@ bool IJWLayer::AssetTagsManifestWrapper::untag(String^ assetId, String^ tagName)
 
    return GetObjectPtr()->untag(_assetId, _tagName);
 }
-bool IJWLayer::AssetTagsManifestWrapper::hasTag(String^ assetId, String^ tagName)
+bool IJWLayer::AssetTagsManifest::hasTag(String^ assetId, String^ tagName)
 {
    if (!IsAlive())
       return false;
@@ -154,7 +154,35 @@ bool IJWLayer::AssetTagsManifestWrapper::hasTag(String^ assetId, String^ tagName
    return GetObjectPtr()->hasTag(_assetId, _tagName);
 }
 
-bool IJWLayer::AssetManagerWrapper::compileReferencedAssets(ModuleDefinitionWrapper^ moduleDefinition)
+bool IJWLayer::AssetManager::EchoInfo::get()
+{
+   if (IsAlive())
+      return GetObjectPtr()->getEchoInfo();
+   else
+      return false;
+}
+
+void IJWLayer::AssetManager::EchoInfo::set(bool val)
+{
+   if (IsAlive())
+      GetObjectPtr()->setEchoInfo(val);
+}
+
+bool IJWLayer::AssetManager::IgnoreAutoUnload::get()
+{
+   if (IsAlive())
+      return GetObjectPtr()->getIgnoreAutoUnload();
+   else
+      return false;
+}
+
+void IJWLayer::AssetManager::IgnoreAutoUnload::set(bool val)
+{
+   if (IsAlive())
+      GetObjectPtr()->setIgnoreAutoUnload(val);
+}
+
+bool IJWLayer::AssetManager::compileReferencedAssets(ModuleDefinition^ moduleDefinition)
 {
    if (!IsAlive())
       return false;
@@ -168,7 +196,7 @@ bool IJWLayer::AssetManagerWrapper::compileReferencedAssets(ModuleDefinitionWrap
    return GetObjectPtr()->compileReferencedAssets(moduleDefinition->GetObjectPtr());
 }
  
-bool IJWLayer::AssetManagerWrapper::addModuleDeclaredAssets(ModuleDefinitionWrapper^ moduleDefinition)
+bool IJWLayer::AssetManager::addModuleDeclaredAssets(ModuleDefinition^ moduleDefinition)
 {
    if (!IsAlive())
       return false;
@@ -182,7 +210,7 @@ bool IJWLayer::AssetManagerWrapper::addModuleDeclaredAssets(ModuleDefinitionWrap
    return GetObjectPtr()->addModuleDeclaredAssets(moduleDefinition->GetObjectPtr());
 }
  
-bool IJWLayer::AssetManagerWrapper::addDeclaredAsset(ModuleDefinitionWrapper^ moduleDefinition, String^ assetFilePath)
+bool IJWLayer::AssetManager::addDeclaredAsset(ModuleDefinition^ moduleDefinition, String^ assetFilePath)
 {
    if (!IsAlive())
       return false;
@@ -197,7 +225,7 @@ bool IJWLayer::AssetManagerWrapper::addDeclaredAsset(ModuleDefinitionWrapper^ mo
    return GetObjectPtr()->addDeclaredAsset(moduleDefinition->GetObjectPtr(), _assetFilePath);
 }
 
-String^ IJWLayer::AssetManagerWrapper::addPrivateAsset(AssetBaseWrapper^ assetObject)
+String^ IJWLayer::AssetManager::addPrivateAsset(AssetBase^ assetObject)
 {
    if (!IsAlive())
       return nullptr;
@@ -211,7 +239,7 @@ String^ IJWLayer::AssetManagerWrapper::addPrivateAsset(AssetBaseWrapper^ assetOb
    return gcnew String(GetObjectPtr()->addPrivateAsset(assetObject->GetObjectPtr()));
 }
 
-bool IJWLayer::AssetManagerWrapper::removeDeclaredAssets(ModuleDefinitionWrapper^ moduleDefinition)
+bool IJWLayer::AssetManager::removeDeclaredAssets(ModuleDefinition^ moduleDefinition)
 {
    if (!IsAlive())
       return false;
@@ -225,7 +253,7 @@ bool IJWLayer::AssetManagerWrapper::removeDeclaredAssets(ModuleDefinitionWrapper
    return GetObjectPtr()->removeDeclaredAssets(moduleDefinition->GetObjectPtr());
 }
 
-bool IJWLayer::AssetManagerWrapper::removeDeclaredAsset(String^ assetId)
+bool IJWLayer::AssetManager::removeDeclaredAsset(String^ assetId)
 {
    if (!IsAlive())
       return false;
@@ -234,7 +262,7 @@ bool IJWLayer::AssetManagerWrapper::removeDeclaredAsset(String^ assetId)
    return GetObjectPtr()->removeDeclaredAsset(_assetId);
 }
 
-String^ IJWLayer::AssetManagerWrapper::getAssetName(String^ assetId)
+String^ IJWLayer::AssetManager::getAssetName(String^ assetId)
 {
    if (!IsAlive())
       return nullptr;
@@ -243,7 +271,7 @@ String^ IJWLayer::AssetManagerWrapper::getAssetName(String^ assetId)
    return gcnew String(GetObjectPtr()->getAssetName(_assetId));
 }
 
-String^ IJWLayer::AssetManagerWrapper::getAssetDescription(String^ assetId)
+String^ IJWLayer::AssetManager::getAssetDescription(String^ assetId)
 {
    if (!IsAlive())
       return nullptr;
@@ -252,7 +280,7 @@ String^ IJWLayer::AssetManagerWrapper::getAssetDescription(String^ assetId)
    return gcnew String(GetObjectPtr()->getAssetDescription(_assetId));
 }
 
-String^ IJWLayer::AssetManagerWrapper::getAssetCategory(String^ assetId)
+String^ IJWLayer::AssetManager::getAssetCategory(String^ assetId)
 {
    if (!IsAlive())
       return nullptr;
@@ -261,7 +289,7 @@ String^ IJWLayer::AssetManagerWrapper::getAssetCategory(String^ assetId)
    return gcnew String(GetObjectPtr()->getAssetCategory(_assetId));
 }
 
-String^ IJWLayer::AssetManagerWrapper::getAssetType(String^ assetId)
+String^ IJWLayer::AssetManager::getAssetType(String^ assetId)
 {
    if (!IsAlive())
       return nullptr;
@@ -270,7 +298,7 @@ String^ IJWLayer::AssetManagerWrapper::getAssetType(String^ assetId)
    return gcnew String(GetObjectPtr()->getAssetType(_assetId));
 }
 
-String^ IJWLayer::AssetManagerWrapper::getAssetFilePath(String^ assetId)
+String^ IJWLayer::AssetManager::getAssetFilePath(String^ assetId)
 {
    if (!IsAlive())
       return nullptr;
@@ -279,7 +307,7 @@ String^ IJWLayer::AssetManagerWrapper::getAssetFilePath(String^ assetId)
    return gcnew String(GetObjectPtr()->getAssetFilePath(_assetId));
 }
 
-String^ IJWLayer::AssetManagerWrapper::getAssetPath(String^ assetId)
+String^ IJWLayer::AssetManager::getAssetPath(String^ assetId)
 {
    if (!IsAlive())
       return nullptr;
@@ -288,18 +316,18 @@ String^ IJWLayer::AssetManagerWrapper::getAssetPath(String^ assetId)
    return gcnew String(GetObjectPtr()->getAssetPath(_assetId));
 }
 
-IJWLayer::ModuleDefinitionWrapper^ IJWLayer::AssetManagerWrapper::getAssetModule(String^ assetId)
+IJWLayer::ModuleDefinition^ IJWLayer::AssetManager::getAssetModule(String^ assetId)
 {
    if (!IsAlive())
       return nullptr;
 
    const char* _assetId = (char*)Marshal::StringToHGlobalAnsi(assetId).ToPointer();
-   ModuleDefinition* pModuleDefinition = GetObjectPtr()->getAssetModuleDefinition(_assetId);
+   EngineModuleDefinition* pModuleDefinition = GetObjectPtr()->getAssetModuleDefinition(_assetId);
 
-   return pModuleDefinition == NULL ? nullptr : ModuleDefinitionWrapper::Wrap(pModuleDefinition);
+   return pModuleDefinition == NULL ? nullptr : ModuleDefinition::Wrap(pModuleDefinition);
 }
 
-bool IJWLayer::AssetManagerWrapper::isAssetInternal(String^ assetId)
+bool IJWLayer::AssetManager::isAssetInternal(String^ assetId)
 {
    if (!IsAlive())
       return false;
@@ -308,7 +336,7 @@ bool IJWLayer::AssetManagerWrapper::isAssetInternal(String^ assetId)
    return GetObjectPtr()->isAssetInternal(_assetId);
 }
 
-bool IJWLayer::AssetManagerWrapper::isAssetPrivate(String^ assetId)
+bool IJWLayer::AssetManager::isAssetPrivate(String^ assetId)
 {
    if (!IsAlive())
       return false;
@@ -317,7 +345,7 @@ bool IJWLayer::AssetManagerWrapper::isAssetPrivate(String^ assetId)
    return GetObjectPtr()->isAssetPrivate(_assetId);
 }
 
-bool IJWLayer::AssetManagerWrapper::isAssetAutoUnload(String^ assetId)
+bool IJWLayer::AssetManager::isAssetAutoUnload(String^ assetId)
 {
    if (!IsAlive())
       return false;
@@ -326,7 +354,7 @@ bool IJWLayer::AssetManagerWrapper::isAssetAutoUnload(String^ assetId)
    return GetObjectPtr()->isAssetAutoUnload(_assetId);
 }
 
-bool IJWLayer::AssetManagerWrapper::isAssetLoaded(String^ assetId)
+bool IJWLayer::AssetManager::isAssetLoaded(String^ assetId)
 {
    if (!IsAlive())
       return false;
@@ -335,7 +363,7 @@ bool IJWLayer::AssetManagerWrapper::isAssetLoaded(String^ assetId)
    return GetObjectPtr()->isAssetLoaded(_assetId);
 }
 
-bool IJWLayer::AssetManagerWrapper::isDeclaredAsset(String^ assetId)
+bool IJWLayer::AssetManager::isDeclaredAsset(String^ assetId)
 {
    if (!IsAlive())
       return false;
@@ -344,7 +372,7 @@ bool IJWLayer::AssetManagerWrapper::isDeclaredAsset(String^ assetId)
    return GetObjectPtr()->isDeclaredAsset(_assetId);
 }
 
-bool IJWLayer::AssetManagerWrapper::isReferencedAsset(String^ assetId)
+bool IJWLayer::AssetManager::isReferencedAsset(String^ assetId)
 {
    if (!IsAlive())
       return false;
@@ -353,7 +381,7 @@ bool IJWLayer::AssetManagerWrapper::isReferencedAsset(String^ assetId)
    return GetObjectPtr()->isReferencedAsset(_assetId);
 }
 
-bool IJWLayer::AssetManagerWrapper::renameDeclaredAsset(String^ assetIdFrom, String^ assetIdTo)
+bool IJWLayer::AssetManager::renameDeclaredAsset(String^ assetIdFrom, String^ assetIdTo)
 {
    if (!IsAlive())
       return false;
@@ -363,7 +391,7 @@ bool IJWLayer::AssetManagerWrapper::renameDeclaredAsset(String^ assetIdFrom, Str
    return GetObjectPtr()->renameDeclaredAsset(_assetIdFrom, _assetIdTo);
 }
 
-bool IJWLayer::AssetManagerWrapper::renameReferencedAsset(String^ assetIdFrom, String^ assetIdTo)
+bool IJWLayer::AssetManager::renameReferencedAsset(String^ assetIdFrom, String^ assetIdTo)
 {
    if (!IsAlive())
       return false;
@@ -373,7 +401,7 @@ bool IJWLayer::AssetManagerWrapper::renameReferencedAsset(String^ assetIdFrom, S
    return GetObjectPtr()->renameReferencedAsset(_assetIdFrom, _assetIdTo);
 }
 
-String^ IJWLayer::AssetManagerWrapper::acquireAsset(String^ assetId, bool asPrivate)
+String^ IJWLayer::AssetManager::acquireAsset(String^ assetId, bool asPrivate)
 {
    if (!IsAlive())
       return nullptr;
@@ -381,29 +409,29 @@ String^ IJWLayer::AssetManagerWrapper::acquireAsset(String^ assetId, bool asPriv
    const char* pAssetId = (char*)Marshal::StringToHGlobalAnsi(assetId).ToPointer();
 
    // Reset asset reference.
-   AssetBase* pAssetBase = NULL;
+   EngineAssetBase* pAssetBase = NULL;
 
    // Acquire private asset?
    if (asPrivate)
    {
       // Acquire private asset.
-      pAssetBase = GetObjectPtr()->acquireAsPrivateAsset<AssetBase>(pAssetId);
+      pAssetBase = GetObjectPtr()->acquireAsPrivateAsset<EngineAssetBase>(pAssetId);
    }
    else
    {
       // Acquire public asset.
-      pAssetBase = GetObjectPtr()->acquireAsset<AssetBase>(pAssetId);
+      pAssetBase = GetObjectPtr()->acquireAsset<EngineAssetBase>(pAssetId);
    }
 
    return gcnew String(pAssetBase != NULL ? pAssetBase->getIdString() : StringTable->EmptyString);
 }
 
-String^ IJWLayer::AssetManagerWrapper::acquireAsset(String^ assetId)
+String^ IJWLayer::AssetManager::acquireAsset(String^ assetId)
 {
    return acquireAsset(assetId, false);
 }
 
-bool IJWLayer::AssetManagerWrapper::releaseAsset(String^ assetId)
+bool IJWLayer::AssetManager::releaseAsset(String^ assetId)
 {
    if (!IsAlive())
       return false;
@@ -412,13 +440,13 @@ bool IJWLayer::AssetManagerWrapper::releaseAsset(String^ assetId)
    return GetObjectPtr()->releaseAsset(pAssetId);
 }
 
-void IJWLayer::AssetManagerWrapper::purgeAssets()
+void IJWLayer::AssetManager::purgeAssets()
 {
    if (IsAlive())
       return GetObjectPtr()->purgeAssets();
 }
 
-bool IJWLayer::AssetManagerWrapper::deleteAsset(String^ assetId, bool deleteLooseFiles, bool deleteDependencies)
+bool IJWLayer::AssetManager::deleteAsset(String^ assetId, bool deleteLooseFiles, bool deleteDependencies)
 {
    if (!IsAlive())
       return false;
@@ -429,7 +457,7 @@ bool IJWLayer::AssetManagerWrapper::deleteAsset(String^ assetId, bool deleteLoos
    return GetObjectPtr()->deleteAsset(pAssetId, deleteLooseFiles, deleteDependencies);
 }
 
-void IJWLayer::AssetManagerWrapper::refreshAsset(String^ assetId)
+void IJWLayer::AssetManager::refreshAsset(String^ assetId)
 {
    if (!IsAlive())
       return;
@@ -438,38 +466,38 @@ void IJWLayer::AssetManagerWrapper::refreshAsset(String^ assetId)
    GetObjectPtr()->refreshAsset(pAssetId);
 }
 
-void IJWLayer::AssetManagerWrapper::refreshAllAssets(bool includeUnloaded)
+void IJWLayer::AssetManager::refreshAllAssets(bool includeUnloaded)
 {
    if (IsAlive())
       GetObjectPtr()->refreshAllAssets(includeUnloaded);
 }
 
-bool IJWLayer::AssetManagerWrapper::saveAssetTags()
+bool IJWLayer::AssetManager::saveAssetTags()
 {
    if (IsAlive())
       GetObjectPtr()->saveAssetTags();
    return false;
 }
 
-bool IJWLayer::AssetManagerWrapper::restoreAssetTags()
+bool IJWLayer::AssetManager::restoreAssetTags()
 {
    if (IsAlive())
       GetObjectPtr()->restoreAssetTags();
    return false;
 }
 
-IJWLayer::AssetTagsManifestWrapper^ IJWLayer::AssetManagerWrapper::getAssetTags()
+IJWLayer::AssetTagsManifest^ IJWLayer::AssetManager::getAssetTags()
 {
    if (!IsAlive())
       return nullptr;
 
    // Fetch the asset tags manifest.
-   AssetTagsManifest* pAssetTagsManifest = GetObjectPtr()->getAssetTags();
+   EngineAssetTagsManifest* pAssetTagsManifest = GetObjectPtr()->getAssetTags();
 
-   return pAssetTagsManifest == NULL ? nullptr : AssetTagsManifestWrapper::Wrap(pAssetTagsManifest);
+   return pAssetTagsManifest == NULL ? nullptr : AssetTagsManifest::Wrap(pAssetTagsManifest);
 }
 
-int IJWLayer::AssetManagerWrapper::findAllAssets(AssetQueryWrapper^ assetQuery, bool ignoreInternal, bool ignorePrivate)
+int IJWLayer::AssetManager::findAllAssets(AssetQuery^ assetQuery, bool ignoreInternal, bool ignorePrivate)
 {
    if (!IsAlive())
       return -1;
@@ -486,17 +514,17 @@ int IJWLayer::AssetManagerWrapper::findAllAssets(AssetQueryWrapper^ assetQuery, 
    return GetObjectPtr()->findAllAssets(assetQuery->GetObjectPtr(), ignoreInternal, ignorePrivate);
 }
 
-int IJWLayer::AssetManagerWrapper::findAllAssets(AssetQueryWrapper^ assetQuery, bool ignoreInternal)
+int IJWLayer::AssetManager::findAllAssets(AssetQuery^ assetQuery, bool ignoreInternal)
 {
    return findAllAssets(assetQuery, ignoreInternal, true);
 }
 
-int IJWLayer::AssetManagerWrapper::findAllAssets(AssetQueryWrapper^ assetQuery)
+int IJWLayer::AssetManager::findAllAssets(AssetQuery^ assetQuery)
 {
    return findAllAssets(assetQuery, true, true);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetName(AssetQueryWrapper^ assetQuery, String^ assetName, bool partialName)
+int IJWLayer::AssetManager::findAssetName(AssetQuery^ assetQuery, String^ assetName, bool partialName)
 {
    if (!IsAlive())
       return -1;
@@ -515,12 +543,12 @@ int IJWLayer::AssetManagerWrapper::findAssetName(AssetQueryWrapper^ assetQuery, 
    return GetObjectPtr()->findAssetName(assetQuery->GetObjectPtr(), _assetName, partialName);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetName(AssetQueryWrapper^ assetQuery, String^ assetName)
+int IJWLayer::AssetManager::findAssetName(AssetQuery^ assetQuery, String^ assetName)
 {
    return findAssetName(assetQuery, assetName, false);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetCategory(AssetQueryWrapper^ assetQuery, String^ assetName, bool assetQueryAsSource)
+int IJWLayer::AssetManager::findAssetCategory(AssetQuery^ assetQuery, String^ assetName, bool assetQueryAsSource)
 {
    if (!IsAlive())
       return -1;
@@ -539,12 +567,12 @@ int IJWLayer::AssetManagerWrapper::findAssetCategory(AssetQueryWrapper^ assetQue
    return GetObjectPtr()->findAssetCategory(assetQuery->GetObjectPtr(), _assetName, assetQueryAsSource);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetCategory(AssetQueryWrapper^ assetQuery, String^ assetName)
+int IJWLayer::AssetManager::findAssetCategory(AssetQuery^ assetQuery, String^ assetName)
 {
    return findAssetName(assetQuery, assetName, false);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetAutoUnload(AssetQueryWrapper^ assetQuery, bool assetAutoUnload, bool assetQueryAsSource)
+int IJWLayer::AssetManager::findAssetAutoUnload(AssetQuery^ assetQuery, bool assetAutoUnload, bool assetQueryAsSource)
 {
    if (!IsAlive())
       return -1;
@@ -561,12 +589,12 @@ int IJWLayer::AssetManagerWrapper::findAssetAutoUnload(AssetQueryWrapper^ assetQ
    return GetObjectPtr()->findAssetAutoUnload(assetQuery->GetObjectPtr(), assetAutoUnload, assetQueryAsSource);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetAutoUnload(AssetQueryWrapper^ assetQuery, bool assetAutoUnload)
+int IJWLayer::AssetManager::findAssetAutoUnload(AssetQuery^ assetQuery, bool assetAutoUnload)
 {
    return findAssetAutoUnload(assetQuery, assetAutoUnload, false);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetInternal(AssetQueryWrapper^ assetQuery, bool assetInternal, bool assetQueryAsSource)
+int IJWLayer::AssetManager::findAssetInternal(AssetQuery^ assetQuery, bool assetInternal, bool assetQueryAsSource)
 {
    if (!IsAlive())
       return -1;
@@ -583,12 +611,12 @@ int IJWLayer::AssetManagerWrapper::findAssetInternal(AssetQueryWrapper^ assetQue
    return GetObjectPtr()->findAssetInternal(assetQuery->GetObjectPtr(), assetInternal, assetQueryAsSource);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetInternal(AssetQueryWrapper^ assetQuery, bool assetInternal)
+int IJWLayer::AssetManager::findAssetInternal(AssetQuery^ assetQuery, bool assetInternal)
 {
    return findAssetInternal(assetQuery, assetInternal, false);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetPrivate(AssetQueryWrapper^ assetQuery, bool assetPrivate, bool assetQueryAsSource)
+int IJWLayer::AssetManager::findAssetPrivate(AssetQuery^ assetQuery, bool assetPrivate, bool assetQueryAsSource)
 {
    if (!IsAlive())
       return -1;
@@ -605,12 +633,12 @@ int IJWLayer::AssetManagerWrapper::findAssetPrivate(AssetQueryWrapper^ assetQuer
    return GetObjectPtr()->findAssetPrivate(assetQuery->GetObjectPtr(), assetPrivate, assetQueryAsSource);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetPrivate(AssetQueryWrapper^ assetQuery, bool assetPrivate)
+int IJWLayer::AssetManager::findAssetPrivate(AssetQuery^ assetQuery, bool assetPrivate)
 {
    return findAssetPrivate(assetQuery, assetPrivate, false);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetType(AssetQueryWrapper^ assetQuery, String^ assetType, bool assetQueryAsSource)
+int IJWLayer::AssetManager::findAssetType(AssetQuery^ assetQuery, String^ assetType, bool assetQueryAsSource)
 {
    if (!IsAlive())
       return -1;
@@ -629,12 +657,12 @@ int IJWLayer::AssetManagerWrapper::findAssetType(AssetQueryWrapper^ assetQuery, 
    return GetObjectPtr()->findAssetType(assetQuery->GetObjectPtr(), _assetType, assetQueryAsSource);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetType(AssetQueryWrapper^ assetQuery, String^ assetType)
+int IJWLayer::AssetManager::findAssetType(AssetQuery^ assetQuery, String^ assetType)
 {
    return findAssetType(assetQuery, assetType, false);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetDependsOn(AssetQueryWrapper^ assetQuery, String^ assetId)
+int IJWLayer::AssetManager::findAssetDependsOn(AssetQuery^ assetQuery, String^ assetId)
 {
    if (!IsAlive())
       return -1;
@@ -653,7 +681,7 @@ int IJWLayer::AssetManagerWrapper::findAssetDependsOn(AssetQueryWrapper^ assetQu
    return GetObjectPtr()->findAssetDependsOn(assetQuery->GetObjectPtr(), _assetId);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetIsDependedOn(AssetQueryWrapper^ assetQuery, String^ assetId)
+int IJWLayer::AssetManager::findAssetIsDependedOn(AssetQuery^ assetQuery, String^ assetId)
 {
    if (!IsAlive())
       return -1;
@@ -672,7 +700,7 @@ int IJWLayer::AssetManagerWrapper::findAssetIsDependedOn(AssetQueryWrapper^ asse
    return GetObjectPtr()->findAssetIsDependedOn(assetQuery->GetObjectPtr(), _assetId);
 }
 
-int IJWLayer::AssetManagerWrapper::findInvalidAssetReferences(AssetQueryWrapper^ assetQuery)
+int IJWLayer::AssetManager::findInvalidAssetReferences(AssetQuery^ assetQuery)
 {
    if (!IsAlive())
       return -1;
@@ -689,7 +717,7 @@ int IJWLayer::AssetManagerWrapper::findInvalidAssetReferences(AssetQueryWrapper^
    return GetObjectPtr()->findInvalidAssetReferences(assetQuery->GetObjectPtr());
 }
 
-int IJWLayer::AssetManagerWrapper::findTaggedAssets(AssetQueryWrapper^ assetQuery, String^ assetTagNames, bool assetQueryAsSource)
+int IJWLayer::AssetManager::findTaggedAssets(AssetQuery^ assetQuery, String^ assetTagNames, bool assetQueryAsSource)
 {
    if (!IsAlive())
       return -1;
@@ -708,12 +736,12 @@ int IJWLayer::AssetManagerWrapper::findTaggedAssets(AssetQueryWrapper^ assetQuer
    return GetObjectPtr()->findTaggedAssets(assetQuery->GetObjectPtr(), _assetTagNames, assetQueryAsSource);
 }
 
-int IJWLayer::AssetManagerWrapper::findTaggedAssets(AssetQueryWrapper^ assetQuery, String^ assetTagNames)
+int IJWLayer::AssetManager::findTaggedAssets(AssetQuery^ assetQuery, String^ assetTagNames)
 {
    return findTaggedAssets(assetQuery, assetTagNames, false);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetLooseFile(AssetQueryWrapper^ assetQuery, String^ assetLooseFile, bool assetQueryAsSource)
+int IJWLayer::AssetManager::findAssetLooseFile(AssetQuery^ assetQuery, String^ assetLooseFile, bool assetQueryAsSource)
 {
    if (!IsAlive())
       return -1;
@@ -732,54 +760,54 @@ int IJWLayer::AssetManagerWrapper::findAssetLooseFile(AssetQueryWrapper^ assetQu
    return GetObjectPtr()->findAssetLooseFile(assetQuery->GetObjectPtr(), _assetLooseFile, assetQueryAsSource);
 }
 
-int IJWLayer::AssetManagerWrapper::findAssetLooseFile(AssetQueryWrapper^ assetQuery, String^ assetLooseFile)
+int IJWLayer::AssetManager::findAssetLooseFile(AssetQuery^ assetQuery, String^ assetLooseFile)
 {
    return findAssetLooseFile(assetQuery, assetLooseFile, false);
 }
 
-bool IJWLayer::AssetManagerWrapper::getDeclaredAssetCount()
+bool IJWLayer::AssetManager::getDeclaredAssetCount()
 {
    if (IsAlive())
       return GetObjectPtr()->getDeclaredAssetCount();
    return false;
 }
 
-bool IJWLayer::AssetManagerWrapper::getReferencedAssetCount()
+bool IJWLayer::AssetManager::getReferencedAssetCount()
 {
    if (IsAlive())
       return GetObjectPtr()->getReferencedAssetCount();
    return false;
 }
 
-bool IJWLayer::AssetManagerWrapper::getLoadedInternalAssetCount()
+bool IJWLayer::AssetManager::getLoadedInternalAssetCount()
 {
    if (IsAlive())
       return GetObjectPtr()->getLoadedInternalAssetCount();
    return false;
 }
 
-bool IJWLayer::AssetManagerWrapper::getMaxLoadedInternalAssetCount()
+bool IJWLayer::AssetManager::getMaxLoadedInternalAssetCount()
 {
    if (IsAlive())
       return GetObjectPtr()->getMaxLoadedInternalAssetCount();
    return false;
 }
 
-bool IJWLayer::AssetManagerWrapper::getLoadedExternalAssetCount()
+bool IJWLayer::AssetManager::getLoadedExternalAssetCount()
 {
    if (IsAlive())
       return GetObjectPtr()->getLoadedExternalAssetCount();
    return false;
 }
 
-bool IJWLayer::AssetManagerWrapper::getMaxLoadedExternalAssetCount()
+bool IJWLayer::AssetManager::getMaxLoadedExternalAssetCount()
 {
    if (IsAlive())
       return GetObjectPtr()->getMaxLoadedExternalAssetCount();
    return false;
 }
 
-void IJWLayer::AssetManagerWrapper::dumpDeclaredAssets()
+void IJWLayer::AssetManager::dumpDeclaredAssets()
 {
    if (IsAlive())
       GetObjectPtr()->dumpDeclaredAssets();

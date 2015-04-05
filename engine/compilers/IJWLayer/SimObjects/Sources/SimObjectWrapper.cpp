@@ -4,58 +4,74 @@
 
 #include "../Headers/SimObjectWrapper.h"
 #include "../Headers/CollectionsWrapper.h"
+#include <vcclr.h>
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
 
 #include "console/consoleBaseType.h"
-#include <vcclr.h>
 #include "sim/simObjectTimerEvent.h"
 #include "string/stringTable.h"
+
+// #pragma unmanaged
+#pragma managed(pop)
 
 using namespace System;
 using namespace System::Runtime::InteropServices;
 
-IJWLayer::SimObjectWrapper^ IJWLayer::SimObjectWrapper::Wrap(int ID)
+IJWLayer::SimObject^ IJWLayer::SimObject::Wrap(int ID)
 {
-   SimObjectWrapper^ wrapper = gcnew SimObjectWrapper();
+   SimObject^ wrapper = gcnew SimObject();
    wrapper->mObject = Sim::findObject(ID);
-   wrapper->mPtr = new SimObjectPtr<SimObject>(wrapper->mObject);
+   wrapper->mPtr = new SimObjectPtr<EngineSimObject>(wrapper->mObject);
    return wrapper;
 }
 
-IJWLayer::SimObjectWrapper^ IJWLayer::SimObjectWrapper::Wrap(SimObject* object)
+IJWLayer::SimObject^ IJWLayer::SimObject::Wrap(String^ Name)
 {
-   SimObjectWrapper^ wrapper = gcnew SimObjectWrapper();
-   wrapper->mObject = object;
-   wrapper->mPtr = new SimObjectPtr<SimObject>(wrapper->mObject);
+   SimObject^ wrapper = gcnew SimObject();
+   char* _Name = (char*)Marshal::StringToHGlobalAnsi(Name).ToPointer();
+   wrapper->mObject = Sim::findObject(_Name);
+   wrapper->mPtr = new SimObjectPtr<EngineSimObject>(wrapper->mObject);
    return wrapper;
 }
 
-IJWLayer::SimObjectWrapper::~SimObjectWrapper()
+IJWLayer::SimObject^ IJWLayer::SimObject::Wrap(EngineSimObject* object)
+{
+   SimObject^ wrapper = gcnew SimObject();
+   wrapper->mObject = object;
+   wrapper->mPtr = new SimObjectPtr<EngineSimObject>(wrapper->mObject);
+   return wrapper;
+}
+
+IJWLayer::SimObject::~SimObject()
 {
    if (IsAlive())
       delete mPtr;
 }
 
-bool IJWLayer::SimObjectWrapper::CanSaveDynamicFields::get()
+bool IJWLayer::SimObject::CanSaveDynamicFields::get()
 {
    if (IsAlive())
       return GetObjectPtr()->getCanSaveDynamicFields();
    return false;
 }
 
-void IJWLayer::SimObjectWrapper::CanSaveDynamicFields::set(bool val)
+void IJWLayer::SimObject::CanSaveDynamicFields::set(bool val)
 {
    if (IsAlive())
       GetObjectPtr()->setCanSaveDynamicFields(val);
 }
 
-String^ IJWLayer::SimObjectWrapper::InternalName::get()
+String^ IJWLayer::SimObject::InternalName::get()
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->getInternalName());
    return nullptr;
 }
 
-void IJWLayer::SimObjectWrapper::InternalName::set(String^ val)
+void IJWLayer::SimObject::InternalName::set(String^ val)
 {
    if (!IsAlive())
       return;
@@ -64,7 +80,7 @@ void IJWLayer::SimObjectWrapper::InternalName::set(String^ val)
    GetObjectPtr()->setCanSaveDynamicFields(_val);
 }
 
-void IJWLayer::SimObjectWrapper::ParentGroup::set(SimGroupWrapper^ val)
+void IJWLayer::SimObject::ParentGroup::set(SimGroup^ val)
 {
    if (!IsAlive() || !val->IsAlive())
       return;
@@ -72,14 +88,14 @@ void IJWLayer::SimObjectWrapper::ParentGroup::set(SimGroupWrapper^ val)
    val->add(this);
 }
 
-String^ IJWLayer::SimObjectWrapper::SuperClass::get()
+String^ IJWLayer::SimObject::SuperClass::get()
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->getSuperClassNamespace());
    return nullptr;
 }
 
-void IJWLayer::SimObjectWrapper::SuperClass::set(String^ val)
+void IJWLayer::SimObject::SuperClass::set(String^ val)
 {
    if (!IsAlive())
       return;
@@ -88,14 +104,14 @@ void IJWLayer::SimObjectWrapper::SuperClass::set(String^ val)
    GetObjectPtr()->setSuperClassNamespace(_val);
 }
 
-String^ IJWLayer::SimObjectWrapper::Class::get()
+String^ IJWLayer::SimObject::Class::get()
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->getClassNamespace());
    return nullptr;
 }
 
-void IJWLayer::SimObjectWrapper::Class::set(String^ val)
+void IJWLayer::SimObject::Class::set(String^ val)
 {
    if (!IsAlive())
       return;
@@ -104,7 +120,7 @@ void IJWLayer::SimObjectWrapper::Class::set(String^ val)
    GetObjectPtr()->setClassNamespace(_val);
 }
 
-String^ IJWLayer::SimObjectWrapper::Name::get()
+String^ IJWLayer::SimObject::Name::get()
 {
    if (IsAlive())
    {
@@ -114,7 +130,7 @@ String^ IJWLayer::SimObjectWrapper::Name::get()
    return nullptr;
 }
 
-void IJWLayer::SimObjectWrapper::Name::set(String^ mNewName)
+void IJWLayer::SimObject::Name::set(String^ mNewName)
 {
    if (IsAlive())
    {
@@ -124,7 +140,7 @@ void IJWLayer::SimObjectWrapper::Name::set(String^ mNewName)
    }
 }
 
-int IJWLayer::SimObjectWrapper::ID::get()
+int IJWLayer::SimObject::ID::get()
 {
    if (IsAlive())
       return mObject->getId();
@@ -138,18 +154,18 @@ int IJWLayer::SimObjectWrapper::ID::get()
 ///
 /// <example>
 /// <code>
-///          SimObjectWrapper wrapper = new SimObjectWrapper(42);
-///          if(wrapper.IsAlive())
-///              wrapper.call("foo");
+///          SimObject  = new SimObject(42);
+///          if(.IsAlive())
+///              .call("foo");
 ///          </code>
 ///          </example>
 /// 
 /// <returns>  true if alive, false if not. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-bool IJWLayer::SimObjectWrapper::IsAlive()
+bool IJWLayer::SimObject::IsAlive()
 {
-   return !((SimObjectPtr<SimObject>*)mPtr)->isNull();
+   return !((SimObjectPtr<EngineSimObject>*)mPtr)->isNull();
 }
 
 ///-------------------------------------------------------------------------------------------------
@@ -160,7 +176,7 @@ bool IJWLayer::SimObjectWrapper::IsAlive()
 /// <returns>  null if it fails, else the object pointer. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-SimObject* IJWLayer::SimObjectWrapper::GetObjectPtr()
+SimObject* IJWLayer::SimObject::GetObjectPtr()
 {
    return mObject;
 }
@@ -178,11 +194,11 @@ SimObject* IJWLayer::SimObjectWrapper::GetObjectPtr()
 /// <returns>  The identifier. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-int IJWLayer::SimObjectWrapper::GetID(String^ mName)
+int IJWLayer::SimObject::GetID(String^ mName)
 {
    IntPtr ptrToNativeString = Marshal::StringToHGlobalAnsi(mName);
    char* nativeString = static_cast<char*>(ptrToNativeString.ToPointer());
-   SimObject* object = Sim::findObject(nativeString);
+   EngineSimObject* object = Sim::findObject(nativeString);
    if (object)
       return object->getId();
    return -1;
@@ -198,7 +214,7 @@ int IJWLayer::SimObjectWrapper::GetID(String^ mName)
 /// <returns>  true if defined, false if not. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-bool IJWLayer::SimObjectWrapper::isMethod(String ^methodName)
+bool IJWLayer::SimObject::isMethod(String ^methodName)
 {
    if (IsAlive()){
       IntPtr ptrToNativeString = Marshal::StringToHGlobalAnsi(methodName);
@@ -219,7 +235,7 @@ bool IJWLayer::SimObjectWrapper::isMethod(String ^methodName)
 /// <returns>  nullptr if it fails, else a String^. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-String^ IJWLayer::SimObjectWrapper::call(String^ name, ...array<String^> ^args)
+String^ IJWLayer::SimObject::call(String^ name, ...array<String^> ^args)
 {
    if (IsAlive())
    {
@@ -245,7 +261,7 @@ String^ IJWLayer::SimObjectWrapper::call(String^ name, ...array<String^> ^args)
 /// <remarks>  Lukas, 24-03-2015. </remarks>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::SimObjectWrapper::dumpClassHierarchy()
+void IJWLayer::SimObject::dumpClassHierarchy()
 {
    if (IsAlive())
       mObject->dumpClassHierarchy();
@@ -257,7 +273,7 @@ void IJWLayer::SimObjectWrapper::dumpClassHierarchy()
 /// <remarks>  Lukas, 24-03-2015. </remarks>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::SimObjectWrapper::dump()
+void IJWLayer::SimObject::dump()
 {
    if (IsAlive())
       mObject->dump();
@@ -273,7 +289,7 @@ void IJWLayer::SimObjectWrapper::dump()
 /// <returns>  true if member of class, false if not. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-bool IJWLayer::SimObjectWrapper::isMemberOfClass(String^ className)
+bool IJWLayer::SimObject::isMemberOfClass(String^ className)
 {
    if (!IsAlive())
       return false;
@@ -304,7 +320,7 @@ bool IJWLayer::SimObjectWrapper::isMemberOfClass(String^ className)
 /// <returns>  nullptr if it fails, else the field value. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-String^ IJWLayer::SimObjectWrapper::getFieldValue(String^ fieldName)
+String^ IJWLayer::SimObject::getFieldValue(String^ fieldName)
 {
    if (!IsAlive())
       return nullptr;
@@ -322,7 +338,7 @@ String^ IJWLayer::SimObjectWrapper::getFieldValue(String^ fieldName)
 /// <param name="value">      The value. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::SimObjectWrapper::setFieldValue(String^ fieldName, String^ value)
+void IJWLayer::SimObject::setFieldValue(String^ fieldName, String^ value)
 {
    if (!IsAlive())
       return;
@@ -339,7 +355,7 @@ void IJWLayer::SimObjectWrapper::setFieldValue(String^ fieldName, String^ value)
 /// <returns>  The dynamic field count. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-int IJWLayer::SimObjectWrapper::getDynamicFieldCount()
+int IJWLayer::SimObject::getDynamicFieldCount()
 {
    if (!IsAlive())
       return -1;
@@ -360,7 +376,7 @@ int IJWLayer::SimObjectWrapper::getDynamicFieldCount()
 /// <returns>  nullptr if it fails, else the dynamic field. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-String^ IJWLayer::SimObjectWrapper::getDynamicField(int index)
+String^ IJWLayer::SimObject::getDynamicField(int index)
 {
    if (!IsAlive())
       return nullptr;
@@ -396,7 +412,7 @@ String^ IJWLayer::SimObjectWrapper::getDynamicField(int index)
 /// <returns>  The field count. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-int IJWLayer::SimObjectWrapper::getFieldCount()
+int IJWLayer::SimObject::getFieldCount()
 {
    if (!IsAlive())
       return -1;
@@ -428,7 +444,7 @@ int IJWLayer::SimObjectWrapper::getFieldCount()
 /// <returns>  nullptr if it fails, else the field. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-String^ IJWLayer::SimObjectWrapper::getField(int index)
+String^ IJWLayer::SimObject::getField(int index)
 {
    if (!IsAlive())
       return nullptr;
@@ -468,7 +484,7 @@ String^ IJWLayer::SimObjectWrapper::getField(int index)
 /// <param name="file"> The file. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::SimObjectWrapper::setProgenitorFile(String^ file)
+void IJWLayer::SimObject::setProgenitorFile(String^ file)
 {
    if (!IsAlive())
       return;
@@ -484,7 +500,7 @@ void IJWLayer::SimObjectWrapper::setProgenitorFile(String^ file)
 /// <returns>  nullptr if it fails, else the progenitor file. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-String^ IJWLayer::SimObjectWrapper::getProgenitorFile()
+String^ IJWLayer::SimObject::getProgenitorFile()
 {
    if (!IsAlive())
       return nullptr;
@@ -499,7 +515,7 @@ String^ IJWLayer::SimObjectWrapper::getProgenitorFile()
 /// <returns>  The typemask. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-int IJWLayer::SimObjectWrapper::getType()
+int IJWLayer::SimObject::getType()
 {
    if (!IsAlive())
       return -1;
@@ -516,7 +532,7 @@ int IJWLayer::SimObjectWrapper::getType()
 /// <returns>  nullptr if it fails, else the field type. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-String^ IJWLayer::SimObjectWrapper::getFieldType(String^ fieldName)
+String^ IJWLayer::SimObject::getFieldType(String^ fieldName)
 {
    if (!mObject)
       return nullptr;
@@ -539,7 +555,7 @@ String^ IJWLayer::SimObjectWrapper::getFieldType(String^ fieldName)
 /// <param name="internalName">  Name of the internal. </param>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::SimObjectWrapper::setInternalName(String^ internalName)
+void IJWLayer::SimObject::setInternalName(String^ internalName)
 {
    if (!IsAlive())
       return;
@@ -555,7 +571,7 @@ void IJWLayer::SimObjectWrapper::setInternalName(String^ internalName)
 /// <returns>  nullptr if it fails, else the internal name. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-String^ IJWLayer::SimObjectWrapper::getInternalName()
+String^ IJWLayer::SimObject::getInternalName()
 {
    if (!IsAlive())
       return nullptr;
@@ -572,12 +588,12 @@ String^ IJWLayer::SimObjectWrapper::getInternalName()
 /// <returns>  true if child of group, false if not. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-bool IJWLayer::SimObjectWrapper::isChildOfGroup(int groupID)
+bool IJWLayer::SimObject::isChildOfGroup(int groupID)
 {
    if (!IsAlive())
       return false;
 
-   SimGroup* pGroup = dynamic_cast<SimGroup*>(Sim::findObject(groupID));
+   EngineSimGroup* pGroup = dynamic_cast<EngineSimGroup*>(Sim::findObject(groupID));
    if (pGroup)
    {
       return mObject->isChildOfGroup(pGroup);
@@ -594,11 +610,11 @@ bool IJWLayer::SimObjectWrapper::isChildOfGroup(int groupID)
 /// <returns>  The group. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-int IJWLayer::SimObjectWrapper::getGroup()
+int IJWLayer::SimObject::getGroup()
 {
    if (!IsAlive())
       return -1;
-   SimGroup *grp = mObject->getGroup();
+   EngineSimGroup *grp = mObject->getGroup();
    if (!grp)
       return -1;
    return grp->getId();
@@ -610,11 +626,11 @@ int IJWLayer::SimObjectWrapper::getGroup()
 /// <remarks>  Lukas, 24-03-2015. </remarks>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::SimObjectWrapper::deleteObject()
+void IJWLayer::SimObject::deleteObject()
 {
    if (!IsAlive())
       return;
-   SimObject * obj = mObject;
+   EngineSimObject * obj = mObject;
    obj->deleteObject();
 }
 
@@ -628,13 +644,13 @@ void IJWLayer::SimObjectWrapper::deleteObject()
 /// <returns>  A copy of this object. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-int IJWLayer::SimObjectWrapper::clone(bool copyDynamicFields)
+int IJWLayer::SimObject::clone(bool copyDynamicFields)
 {
    if (!IsAlive())
       return -1;
 
    // Clone Object.
-   SimObject* pClonedObject = mObject->clone(copyDynamicFields);
+   EngineSimObject* pClonedObject = mObject->clone(copyDynamicFields);
 
    // Finish if object was not cloned.
    if (pClonedObject == NULL)
@@ -655,7 +671,7 @@ int IJWLayer::SimObjectWrapper::clone(bool copyDynamicFields)
 /// <returns>  true if it succeeds, false if it fails. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-bool IJWLayer::SimObjectWrapper::startTimer(String^ callbackFunction, float timePeriod, int repeat)
+bool IJWLayer::SimObject::startTimer(String^ callbackFunction, float timePeriod, int repeat)
 {
    if (!IsAlive())
       return false;
@@ -705,7 +721,7 @@ bool IJWLayer::SimObjectWrapper::startTimer(String^ callbackFunction, float time
 /// <remarks>  Lukas, 24-03-2015. </remarks>
 ///-------------------------------------------------------------------------------------------------
 
-void IJWLayer::SimObjectWrapper::stopTimer()
+void IJWLayer::SimObject::stopTimer()
 {
    if (!IsAlive())
       return;
@@ -728,7 +744,7 @@ void IJWLayer::SimObjectWrapper::stopTimer()
 /// <returns>  true if a timer is active, false if not. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-bool IJWLayer::SimObjectWrapper::isTimerActive()
+bool IJWLayer::SimObject::isTimerActive()
 {
    if (IsAlive())
       return mObject->isPeriodicTimerActive();
@@ -747,7 +763,7 @@ bool IJWLayer::SimObjectWrapper::isTimerActive()
 /// <returns>  The ID of the schedule. </returns>
 ///-------------------------------------------------------------------------------------------------
 
-int IJWLayer::SimObjectWrapper::schedule(int time, String^ command, ...array<String^> ^args)
+int IJWLayer::SimObject::schedule(int time, String^ command, ...array<String^> ^args)
 {
    if (!IsAlive())
       return -1;

@@ -4,17 +4,17 @@
 
 using namespace System::Runtime::InteropServices;
 
-void IJWLayer::SimSetWrapper::listObjects()
+void IJWLayer::SimSet::listObjects()
 {
    if (!IsAlive())
       return;
 
    GetObjectPtr()->lock();
-   SimSet::iterator itr;
+   EngineSimSet::iterator itr;
    for (itr = GetObjectPtr()->begin(); itr != GetObjectPtr()->end(); itr++)
    {
-      SimObject *obj = *itr;
-      bool isSet = dynamic_cast<SimSet *>(obj) != 0;
+      EngineSimObject *obj = *itr;
+      bool isSet = dynamic_cast<EngineSimSet *>(obj) != 0;
       const char *name = obj->getName();
       if (name)
          Con::printf("   %d,\"%s\": %s %s", obj->getId(), name,
@@ -26,7 +26,7 @@ void IJWLayer::SimSetWrapper::listObjects()
    GetObjectPtr()->unlock();
 }
 
-void IJWLayer::SimSetWrapper::add(...array<SimObjectWrapper^>^ objects)
+void IJWLayer::SimSet::add(...array<SimObject^>^ objects)
 {
    if (!IsAlive())
       return;
@@ -39,7 +39,7 @@ void IJWLayer::SimSetWrapper::add(...array<SimObjectWrapper^>^ objects)
    }
 }
 
-void IJWLayer::SimSetWrapper::remove(...array<SimObjectWrapper^>^ objects)
+void IJWLayer::SimSet::remove(...array<SimObject^>^ objects)
 {
    if (!IsAlive())
       return;
@@ -54,19 +54,19 @@ void IJWLayer::SimSetWrapper::remove(...array<SimObjectWrapper^>^ objects)
    }
 }
 
-void IJWLayer::SimSetWrapper::deleteObjects()
+void IJWLayer::SimSet::deleteObjects()
 {
    if (IsAlive())
       GetObjectPtr()->deleteObjects();
 }
 
-void IJWLayer::SimSetWrapper::clear()
+void IJWLayer::SimSet::clear()
 {
    if (IsAlive())
       GetObjectPtr()->clear();
 }
 
-void IJWLayer::SimSetWrapper::callOnChildren(String^ method, ...array<String^>^ args)
+void IJWLayer::SimSet::callOnChildren(String^ method, ...array<String^>^ args)
 {
    if (!IsAlive())
       return;
@@ -76,7 +76,7 @@ void IJWLayer::SimSetWrapper::callOnChildren(String^ method, ...array<String^>^ 
    GetObjectPtr()->callOnChildren(_method, args->Length, array_pin);
 }
 
-void IJWLayer::SimSetWrapper::reorderChild(SimObjectWrapper^ obj1, SimObjectWrapper^ obj2)
+void IJWLayer::SimSet::reorderChild(SimObject^ obj1, SimObject^ obj2)
 {
    if (!IsAlive())
       return;
@@ -84,14 +84,14 @@ void IJWLayer::SimSetWrapper::reorderChild(SimObjectWrapper^ obj1, SimObjectWrap
       GetObjectPtr()->reOrder(obj1->GetObjectPtr(), obj2->GetObjectPtr());
 }
 
-int IJWLayer::SimSetWrapper::getCount()
+int IJWLayer::SimSet::getCount()
 {
    if (!IsAlive())
       return -1;
    return GetObjectPtr()->size();
 }
 
-IJWLayer::SimObjectWrapper^ IJWLayer::SimSetWrapper::getObject(int index)
+IJWLayer::SimObject^ IJWLayer::SimSet::getObject(int index)
 {
    if (!IsAlive())
       return nullptr;
@@ -100,10 +100,10 @@ IJWLayer::SimObjectWrapper^ IJWLayer::SimSetWrapper::getObject(int index)
       Con::printf("Set::getObject index out of range.");
       return nullptr;
    }
-   return SimObjectWrapper::Wrap((*GetObjectPtr())[index]);
+   return SimObject::Wrap((*GetObjectPtr())[index]);
 }
 
-bool IJWLayer::SimSetWrapper::isMember(SimObjectWrapper^ object)
+bool IJWLayer::SimSet::isMember(SimObject^ object)
 {
    if (!object->IsAlive())
    {
@@ -112,7 +112,7 @@ bool IJWLayer::SimSetWrapper::isMember(SimObjectWrapper^ object)
    }
 
    GetObjectPtr()->lock();
-   for (SimSet::iterator i = GetObjectPtr()->begin(); i != GetObjectPtr()->end(); i++)
+   for (EngineSimSet::iterator i = GetObjectPtr()->begin(); i != GetObjectPtr()->end(); i++)
    {
       if (*i == object->GetObjectPtr())
       {
@@ -125,7 +125,7 @@ bool IJWLayer::SimSetWrapper::isMember(SimObjectWrapper^ object)
    return false;
 }
 
-IJWLayer::SimObjectWrapper^ IJWLayer::SimSetWrapper::findObjectByInternalName(String^ name, bool searchChildren)
+IJWLayer::SimObject^ IJWLayer::SimSet::findObjectByInternalName(String^ name, bool searchChildren)
 {
    if (!IsAlive())
       return nullptr;
@@ -133,31 +133,31 @@ IJWLayer::SimObjectWrapper^ IJWLayer::SimSetWrapper::findObjectByInternalName(St
 
    StringTableEntry pcName = StringTable->insert(_name);
 
-   SimObject* child = GetObjectPtr()->findObjectByInternalName(pcName, searchChildren);
+   EngineSimObject* child = GetObjectPtr()->findObjectByInternalName(pcName, searchChildren);
    if (child)
-      return SimObjectWrapper::Wrap(child);
+      return SimObject::Wrap(child);
    return nullptr;
 }
-IJWLayer::SimObjectWrapper^ IJWLayer::SimSetWrapper::findObjectByInternalName(String^ name)
+IJWLayer::SimObject^ IJWLayer::SimSet::findObjectByInternalName(String^ name)
 {
    return findObjectByInternalName(name, false);
 }
 
-void IJWLayer::SimSetWrapper::bringToFront(IJWLayer::SimObjectWrapper^ object)
+void IJWLayer::SimSet::bringToFront(IJWLayer::SimObject^ object)
 {
    if (!IsAlive() || !object->IsAlive())
       return;
    GetObjectPtr()->bringObjectToFront(object->GetObjectPtr());
 }
 
-void IJWLayer::SimSetWrapper::pushToBack(IJWLayer::SimObjectWrapper^ object)
+void IJWLayer::SimSet::pushToBack(IJWLayer::SimObject^ object)
 {
    if (!IsAlive() || !object->IsAlive())
       return;
    GetObjectPtr()->pushObjectToBack(object->GetObjectPtr());
 }
 
-int IJWLayer::NameTagsWrapper::createTag(String^ tagName)
+int IJWLayer::NameTags::createTag(String^ tagName)
 {
    if (!IsAlive())
       return -1;
@@ -166,7 +166,7 @@ int IJWLayer::NameTagsWrapper::createTag(String^ tagName)
    return GetObjectPtr()->createTag(_tagName);
 }
 
-int IJWLayer::NameTagsWrapper::renameTag(int tagId, String^ newTagName)
+int IJWLayer::NameTags::renameTag(int tagId, String^ newTagName)
 {
    if (!IsAlive())
       return -1;
@@ -182,7 +182,7 @@ int IJWLayer::NameTagsWrapper::renameTag(int tagId, String^ newTagName)
    return GetObjectPtr()->renameTag(tagId, _newTagName);
 }
 
-int IJWLayer::NameTagsWrapper::deleteTag(int tagId)
+int IJWLayer::NameTags::deleteTag(int tagId)
 {
    if (!IsAlive())
       return -1;
@@ -197,14 +197,14 @@ int IJWLayer::NameTagsWrapper::deleteTag(int tagId)
    return GetObjectPtr()->deleteTag(tagId);
 }
 
-int IJWLayer::NameTagsWrapper::getTagCount()
+int IJWLayer::NameTags::getTagCount()
 {
    if (IsAlive())
       return GetObjectPtr()->getTagCount();
    return -1;
 }
 
-String^ IJWLayer::NameTagsWrapper::getTagName(int tagId)
+String^ IJWLayer::NameTags::getTagName(int tagId)
 {
    if (!IsAlive())
       return nullptr;
@@ -219,7 +219,7 @@ String^ IJWLayer::NameTagsWrapper::getTagName(int tagId)
    return gcnew String(GetObjectPtr()->getTagName(tagId));
 }
 
-int IJWLayer::NameTagsWrapper::getTagId(String^ tagName)
+int IJWLayer::NameTags::getTagId(String^ tagName)
 {
    if (!IsAlive())
       return -1;
@@ -228,7 +228,7 @@ int IJWLayer::NameTagsWrapper::getTagId(String^ tagName)
    return GetObjectPtr()->getTagId(_tagName);
 }
 
-String^ IJWLayer::NameTagsWrapper::getAllTags()
+String^ IJWLayer::NameTags::getAllTags()
 {
    if (!IsAlive())
       return nullptr;
@@ -249,7 +249,7 @@ String^ IJWLayer::NameTagsWrapper::getAllTags()
    return gcnew String(pBuffer);
 }
 
-bool IJWLayer::NameTagsWrapper::tag(int objectId, array<int>^ tagIds)
+bool IJWLayer::NameTags::tag(int objectId, array<int>^ tagIds)
 {
    if (!IsAlive())
       return -1;
@@ -258,7 +258,7 @@ bool IJWLayer::NameTagsWrapper::tag(int objectId, array<int>^ tagIds)
    for (U32 index = 0; index < tagIds->Length; ++index)
    {
       // Fetch tag Id.
-      const NameTags::TagId tagId = tagIds[index];
+      const EngineNameTags::TagId tagId = tagIds[index];
 
       // Sanity!
       if (tagId == 0)
@@ -275,7 +275,7 @@ bool IJWLayer::NameTagsWrapper::tag(int objectId, array<int>^ tagIds)
    return true;
 }
 
-bool IJWLayer::NameTagsWrapper::untag(int objectId, array<int>^ tagIds)
+bool IJWLayer::NameTags::untag(int objectId, array<int>^ tagIds)
 {
    if (!IsAlive())
       return -1;
@@ -284,7 +284,7 @@ bool IJWLayer::NameTagsWrapper::untag(int objectId, array<int>^ tagIds)
    for (U32 index = 0; index < tagIds->Length; ++index)
    {
       // Fetch tag Id.
-      const NameTags::TagId tagId = tagIds[index];
+      const EngineNameTags::TagId tagId = tagIds[index];
 
       // Sanity!
       if (tagId == 0)
@@ -301,7 +301,7 @@ bool IJWLayer::NameTagsWrapper::untag(int objectId, array<int>^ tagIds)
    return true;
 }
 
-bool IJWLayer::NameTagsWrapper::hasTags(int objectId, array<int>^ tagIds)
+bool IJWLayer::NameTags::hasTags(int objectId, array<int>^ tagIds)
 {
    if (!IsAlive())
       return -1;
@@ -310,7 +310,7 @@ bool IJWLayer::NameTagsWrapper::hasTags(int objectId, array<int>^ tagIds)
    for (U32 index = 0; index < tagIds->Length; ++index)
    {
       // Fetch tag Id.
-      const NameTags::TagId tagId = tagIds[index];
+      const EngineNameTags::TagId tagId = tagIds[index];
 
       // Sanity!
       if (tagId == 0)
@@ -327,7 +327,7 @@ bool IJWLayer::NameTagsWrapper::hasTags(int objectId, array<int>^ tagIds)
    return false;
 }
 
-String^ IJWLayer::NameTagsWrapper::queryTags(array<int>^ tagIds, bool excluded)
+String^ IJWLayer::NameTags::queryTags(array<int>^ tagIds, bool excluded)
 {
    if (!IsAlive() || tagIds->Length <= 0)
       return nullptr;
@@ -345,7 +345,7 @@ String^ IJWLayer::NameTagsWrapper::queryTags(array<int>^ tagIds, bool excluded)
    GetObjectPtr()->queryTags(_NLTags);
 
    // Fetch appropriate results.
-   NameTags::queryType results;
+   EngineNameTags::queryType results;
    if (excluded)
    {
       results = GetObjectPtr()->mIncludedQueryMap;
@@ -361,7 +361,7 @@ String^ IJWLayer::NameTagsWrapper::queryTags(array<int>^ tagIds, bool excluded)
    dSprintf(pReturnBuffer, bufferSize * sizeof(char), "%s", "");
    char* pBuffer = pReturnBuffer;
 
-   for (NameTags::queryType::iterator itr = results.begin(); itr != results.end(); ++itr)
+   for (EngineNameTags::queryType::iterator itr = results.begin(); itr != results.end(); ++itr)
    {
       const U32 offset = dSprintf(pBuffer, bufferSize, "%d ", itr->key);
       pBuffer += offset;

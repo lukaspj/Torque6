@@ -53,7 +53,7 @@ DefineConsoleType( TypeDeferredMaterialAssetPtr )
 
 //-----------------------------------------------------------------------------
 
-class DeferredMaterialAsset : public BaseMaterialAsset
+class DLL_PUBLIC DeferredMaterialAsset : public BaseMaterialAsset
 {
 
 private:

@@ -3,23 +3,37 @@
 #pragma once
 
 #include "CollectionsWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "module/moduleManager.h"
 #include "module/moduleMergeDefinition.h"
 
+// #pragma unmanaged
+#pragma managed(pop)
+
+
 using namespace System;
+
+typedef ModuleManager EngineModuleManager;
+typedef ModuleDefinition EngineModuleDefinition;
+typedef ModuleMergeDefinition EngineModuleMergeDefinition;
 
 namespace IJWLayer {
 
-   ref class ModuleDefinitionWrapper;
-   public ref class ModuleManagerWrapper : SimObjectWrapper
+   ref class ModuleDefinition;
+   public ref class ModuleManager : SimObject
    {
 
    public:
-      static ModuleManagerWrapper^ Wrap(int ID) { return static_cast<ModuleManagerWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static ModuleManagerWrapper^ Wrap(ModuleManager* obj) { return static_cast<ModuleManagerWrapper ^>(SimObjectWrapper::Wrap(obj)); };
+      static ModuleManager^ Wrap(int ID) { return static_cast<ModuleManager^>(SimObject::Wrap(ID)); };
+      static ModuleManager^ Wrap(String^ Name) { return static_cast<ModuleManager^>(SimObject::Wrap(Name)); };
+      static ModuleManager^ Wrap(EngineModuleManager* obj) { return static_cast<ModuleManager ^>(SimObject::Wrap(obj)); };
 
-      ModuleManager* GetObjectPtr(){
-         return static_cast<ModuleManager*>(mObject);
+      EngineModuleManager* GetObjectPtr(){
+         return static_cast<EngineModuleManager*>(mObject);
       };
 
       bool setModuleExtension(String^ moduleExtension);
@@ -32,47 +46,49 @@ namespace IJWLayer {
       bool loadExplicit(String^ moduleId, int versionId);
       bool loadExplicit(String^ moduleId);
       bool unloadExplicit(String^ moduleId);
-      ModuleDefinitionWrapper^ findModule(String^ moduleId, int versionId);
-      array<IJWLayer::ModuleDefinitionWrapper^>^ findModules(bool loadedOnly);
-      array<IJWLayer::ModuleDefinitionWrapper^>^ findModules();
-      array<IJWLayer::ModuleDefinitionWrapper^>^ findModuleTypes(String^ moduleType, bool loadedOnly);
-      array<IJWLayer::ModuleDefinitionWrapper^>^ findModuleTypes(String^ moduleType);
-      String^ copyModule(ModuleDefinitionWrapper^ source, String^ targetId, String^ targetPath, bool useVersionPathing);
-      bool synchronizeDependencies(ModuleDefinitionWrapper^ root, String^ targetDependencyPath);
+      ModuleDefinition^ findModule(String^ moduleId, int versionId);
+      array<IJWLayer::ModuleDefinition^>^ findModules(bool loadedOnly);
+      array<IJWLayer::ModuleDefinition^>^ findModules();
+      array<IJWLayer::ModuleDefinition^>^ findModuleTypes(String^ moduleType, bool loadedOnly);
+      array<IJWLayer::ModuleDefinition^>^ findModuleTypes(String^ moduleType);
+      String^ copyModule(ModuleDefinition^ source, String^ targetId, String^ targetPath, bool useVersionPathing);
+      bool synchronizeDependencies(ModuleDefinition^ root, String^ targetDependencyPath);
       bool isModuleMergeAvailable();
       bool canMergeModules(String^ mergeSourcePath);
       bool mergeModules(String^ mergeTargetPath, bool removeMergeDefinition, bool registerNewModules);
-      void addListener(SimObjectWrapper^ listener);
-      void removeListener(SimObjectWrapper^ listener);
+      void addListener(SimObject^ listener);
+      void removeListener(SimObject^ listener);
    };
 
-   public ref class ModuleDefinitionWrapper : SimSetWrapper
+   public ref class ModuleDefinition : SimSet
    {
    public:
-      static ModuleDefinitionWrapper^ Wrap(int ID) { return static_cast<ModuleDefinitionWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static ModuleDefinitionWrapper^ Wrap(ModuleDefinition* obj) { return static_cast<ModuleDefinitionWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static ModuleDefinition^ Wrap(int ID) { return static_cast<ModuleDefinition^>(SimObject::Wrap(ID)); };
+      static ModuleDefinition^ Wrap(String^ Name) { return static_cast<ModuleDefinition^>(SimObject::Wrap(Name)); };
+      static ModuleDefinition^ Wrap(EngineModuleDefinition* obj) { return static_cast<ModuleDefinition^>(SimObject::Wrap(obj)); };
 
-      ModuleDefinition* GetObjectPtr(){
-         return static_cast<ModuleDefinition*>(mObject);
+      EngineModuleDefinition* GetObjectPtr(){
+         return static_cast<EngineModuleDefinition*>(mObject);
       };
 
       bool save();
-      ModuleManagerWrapper^ getModuleManager();
+      ModuleManager^ getModuleManager();
       int getDependencyCount();
       String^ getDependency(int dependencyIndex);
       bool addDependency(String^ moduleId, int versionId);
       bool removeDependency(String^ moduleId);
    };
 
-   public ref class ModuleMergeDefinitionWrapper : SimObjectWrapper
+   public ref class ModuleMergeDefinition : SimObject
    {
 
    public:
-      static ModuleMergeDefinitionWrapper^ Wrap(int ID) { return static_cast<ModuleMergeDefinitionWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static ModuleMergeDefinitionWrapper^ Wrap(ModuleMergeDefinition* obj) { return static_cast<ModuleMergeDefinitionWrapper ^>(SimObjectWrapper::Wrap(obj)); };
+      static ModuleMergeDefinition^ Wrap(int ID) { return static_cast<ModuleMergeDefinition^>(SimObject::Wrap(ID)); };
+      static ModuleMergeDefinition^ Wrap(String^ Name) { return static_cast<ModuleMergeDefinition^>(SimObject::Wrap(Name)); };
+      static ModuleMergeDefinition^ Wrap(EngineModuleMergeDefinition* obj) { return static_cast<ModuleMergeDefinition ^>(SimObject::Wrap(obj)); };
 
-      ModuleMergeDefinition* GetObjectPtr(){
-         return static_cast<ModuleMergeDefinition*>(mObject);
+      EngineModuleMergeDefinition* GetObjectPtr(){
+         return static_cast<EngineModuleMergeDefinition*>(mObject);
       };
 
    };

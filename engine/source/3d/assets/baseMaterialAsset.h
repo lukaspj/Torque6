@@ -57,7 +57,7 @@ DefineConsoleType( TypeBaseMaterialAssetPtr )
 
 //-----------------------------------------------------------------------------
 
-class BaseMaterialAsset : public AssetBase
+class DLL_PUBLIC BaseMaterialAsset : public AssetBase
 {
 
 private:

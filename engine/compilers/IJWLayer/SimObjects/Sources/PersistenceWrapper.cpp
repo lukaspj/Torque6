@@ -4,13 +4,13 @@
 
 using namespace System::Runtime::InteropServices;
 
-void IJWLayer::SimXMLDocumentWrapper::reset()
+void IJWLayer::SimXMLDocument::reset()
 {
    if (IsAlive())
       GetObjectPtr()->reset();
 }
 
-bool IJWLayer::SimXMLDocumentWrapper::loadFile(String^ fileName)
+bool IJWLayer::SimXMLDocument::loadFile(String^ fileName)
 {
    if (!IsAlive())
       return false;
@@ -19,7 +19,7 @@ bool IJWLayer::SimXMLDocumentWrapper::loadFile(String^ fileName)
    return GetObjectPtr()->loadFile(_fileName);
 }
 
-bool IJWLayer::SimXMLDocumentWrapper::saveFile(String^ fileName)
+bool IJWLayer::SimXMLDocument::saveFile(String^ fileName)
 {
    if (!IsAlive())
       return false;
@@ -28,7 +28,7 @@ bool IJWLayer::SimXMLDocumentWrapper::saveFile(String^ fileName)
    return GetObjectPtr()->saveFile(_fileName);
 }
 
-bool IJWLayer::SimXMLDocumentWrapper::parse(String^ textXML)
+bool IJWLayer::SimXMLDocument::parse(String^ textXML)
 {
    if (!IsAlive())
       return false;
@@ -37,13 +37,13 @@ bool IJWLayer::SimXMLDocumentWrapper::parse(String^ textXML)
    return GetObjectPtr()->loadFile(_textXML);
 }
 
-void IJWLayer::SimXMLDocumentWrapper::clear()
+void IJWLayer::SimXMLDocument::clear()
 {
    if (IsAlive())
       GetObjectPtr()->clear();
 }
 
-String^ IJWLayer::SimXMLDocumentWrapper::getErrorDesc()
+String^ IJWLayer::SimXMLDocument::getErrorDesc()
 {
    if (IsAlive())
       return nullptr;
@@ -51,13 +51,13 @@ String^ IJWLayer::SimXMLDocumentWrapper::getErrorDesc()
    return gcnew String(GetObjectPtr()->getErrorDesc());
 }
 
-void IJWLayer::SimXMLDocumentWrapper::clearError()
+void IJWLayer::SimXMLDocument::clearError()
 {
    if (IsAlive())
       GetObjectPtr()->clearError();
 }
 
-bool IJWLayer::SimXMLDocumentWrapper::pushFirstChildElement(String^ name)
+bool IJWLayer::SimXMLDocument::pushFirstChildElement(String^ name)
 {
    if (!IsAlive())
       return false;
@@ -66,7 +66,7 @@ bool IJWLayer::SimXMLDocumentWrapper::pushFirstChildElement(String^ name)
    return GetObjectPtr()->pushFirstChildElement(_name);
 }
 
-bool IJWLayer::SimXMLDocumentWrapper::pushChildElement(int index)
+bool IJWLayer::SimXMLDocument::pushChildElement(int index)
 {
    if (!IsAlive())
       return false;
@@ -74,7 +74,7 @@ bool IJWLayer::SimXMLDocumentWrapper::pushChildElement(int index)
    return GetObjectPtr()->pushChildElement(index);
 }
 
-bool IJWLayer::SimXMLDocumentWrapper::nextSiblingElement(String^ name)
+bool IJWLayer::SimXMLDocument::nextSiblingElement(String^ name)
 {
    if (!IsAlive())
       return false;
@@ -83,20 +83,20 @@ bool IJWLayer::SimXMLDocumentWrapper::nextSiblingElement(String^ name)
    return GetObjectPtr()->nextSiblingElement(_name);
 }
 
-String^ IJWLayer::SimXMLDocumentWrapper::elementValue()
+String^ IJWLayer::SimXMLDocument::elementValue()
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->elementValue());
    return nullptr;
 }
 
-void IJWLayer::SimXMLDocumentWrapper::popElement()
+void IJWLayer::SimXMLDocument::popElement()
 {
    if (IsAlive())
       GetObjectPtr()->popElement();
 }
 
-String^ IJWLayer::SimXMLDocumentWrapper::attribute(String^ attribute)
+String^ IJWLayer::SimXMLDocument::attribute(String^ attribute)
 {
    if (!IsAlive())
       return nullptr;
@@ -105,7 +105,7 @@ String^ IJWLayer::SimXMLDocumentWrapper::attribute(String^ attribute)
    return gcnew String(GetObjectPtr()->attribute(_attribute));
 }
 
-float IJWLayer::SimXMLDocumentWrapper::attributeF32(String^ attribute)
+float IJWLayer::SimXMLDocument::attributeF32(String^ attribute)
 {
    if (!IsAlive())
       return -1;
@@ -114,7 +114,7 @@ float IJWLayer::SimXMLDocumentWrapper::attributeF32(String^ attribute)
    return dAtof(GetObjectPtr()->attribute(_attribute));
 }
 
-int IJWLayer::SimXMLDocumentWrapper::attributeS32(String^ attribute)
+int IJWLayer::SimXMLDocument::attributeS32(String^ attribute)
 {
    if (!IsAlive())
       return -1;
@@ -123,7 +123,7 @@ int IJWLayer::SimXMLDocumentWrapper::attributeS32(String^ attribute)
    return dAtoi(GetObjectPtr()->attribute(_attribute));
 }
 
-bool IJWLayer::SimXMLDocumentWrapper::attributeExists(String^ attribute)
+bool IJWLayer::SimXMLDocument::attributeExists(String^ attribute)
 {
    if (!IsAlive())
       return -1;
@@ -132,7 +132,7 @@ bool IJWLayer::SimXMLDocumentWrapper::attributeExists(String^ attribute)
    return GetObjectPtr()->attributeExists(_attribute);
 }
 
-String^ IJWLayer::SimXMLDocumentWrapper::firstAttribute()
+String^ IJWLayer::SimXMLDocument::firstAttribute()
 {
    if (!IsAlive())
       return nullptr;
@@ -140,7 +140,7 @@ String^ IJWLayer::SimXMLDocumentWrapper::firstAttribute()
    return gcnew String(GetObjectPtr()->firstAttribute());
 }
 
-String^ IJWLayer::SimXMLDocumentWrapper::lastAttribute()
+String^ IJWLayer::SimXMLDocument::lastAttribute()
 {
    if (!IsAlive())
       return nullptr;
@@ -148,7 +148,7 @@ String^ IJWLayer::SimXMLDocumentWrapper::lastAttribute()
    return gcnew String(GetObjectPtr()->lastAttribute());
 }
 
-String^ IJWLayer::SimXMLDocumentWrapper::nextAttribute()
+String^ IJWLayer::SimXMLDocument::nextAttribute()
 {
    if (!IsAlive())
       return nullptr;
@@ -156,7 +156,7 @@ String^ IJWLayer::SimXMLDocumentWrapper::nextAttribute()
    return gcnew String(GetObjectPtr()->nextAttribute());
 }
 
-String^ IJWLayer::SimXMLDocumentWrapper::prevAttribute()
+String^ IJWLayer::SimXMLDocument::prevAttribute()
 {
    if (!IsAlive())
       return nullptr;
@@ -164,7 +164,7 @@ String^ IJWLayer::SimXMLDocumentWrapper::prevAttribute()
    return gcnew String(GetObjectPtr()->prevAttribute());
 }
 
-void IJWLayer::SimXMLDocumentWrapper::setAttribute(String^ attribute, String^ attributeValue)
+void IJWLayer::SimXMLDocument::setAttribute(String^ attribute, String^ attributeValue)
 {
    if (!IsAlive())
       return;
@@ -174,7 +174,7 @@ void IJWLayer::SimXMLDocumentWrapper::setAttribute(String^ attribute, String^ at
    return GetObjectPtr()->setAttribute(_attribute, _attributeValue);
 }
 
-void IJWLayer::SimXMLDocumentWrapper::setObjectAttributes(String^ attributeValue)
+void IJWLayer::SimXMLDocument::setObjectAttributes(String^ attributeValue)
 {
    if (!IsAlive())
       return;
@@ -183,7 +183,7 @@ void IJWLayer::SimXMLDocumentWrapper::setObjectAttributes(String^ attributeValue
    return GetObjectPtr()->setObjectAttributes(_attributeValue);
 }
 
-void IJWLayer::SimXMLDocumentWrapper::pushNewElement(String^ name)
+void IJWLayer::SimXMLDocument::pushNewElement(String^ name)
 {
    if (!IsAlive())
       return;
@@ -192,7 +192,7 @@ void IJWLayer::SimXMLDocumentWrapper::pushNewElement(String^ name)
    return GetObjectPtr()->pushNewElement(_name);
 }
 
-void IJWLayer::SimXMLDocumentWrapper::addNewElement(String^ name)
+void IJWLayer::SimXMLDocument::addNewElement(String^ name)
 {
    if (!IsAlive())
       return;
@@ -201,7 +201,7 @@ void IJWLayer::SimXMLDocumentWrapper::addNewElement(String^ name)
    return GetObjectPtr()->addNewElement(_name);
 }
 
-void IJWLayer::SimXMLDocumentWrapper::addHeader()
+void IJWLayer::SimXMLDocument::addHeader()
 {
    if (!IsAlive())
       return;
@@ -209,7 +209,7 @@ void IJWLayer::SimXMLDocumentWrapper::addHeader()
    return GetObjectPtr()->addHeader();
 }
 
-void IJWLayer::SimXMLDocumentWrapper::addComment(String^ comment)
+void IJWLayer::SimXMLDocument::addComment(String^ comment)
 {
    if (!IsAlive())
       return;
@@ -218,7 +218,7 @@ void IJWLayer::SimXMLDocumentWrapper::addComment(String^ comment)
    GetObjectPtr()->addComment(_comment);
 }
 
-String^ IJWLayer::SimXMLDocumentWrapper::readComment(int index)
+String^ IJWLayer::SimXMLDocument::readComment(int index)
 {
    if (!IsAlive())
       return nullptr;
@@ -226,7 +226,7 @@ String^ IJWLayer::SimXMLDocumentWrapper::readComment(int index)
    return gcnew String(GetObjectPtr()->readComment(index));
 }
 
-void IJWLayer::SimXMLDocumentWrapper::addText(String^ text)
+void IJWLayer::SimXMLDocument::addText(String^ text)
 {
    if (!IsAlive())
       return;
@@ -235,7 +235,7 @@ void IJWLayer::SimXMLDocumentWrapper::addText(String^ text)
    GetObjectPtr()->addText(_text);
 }
 
-String^ IJWLayer::SimXMLDocumentWrapper::getText()
+String^ IJWLayer::SimXMLDocument::getText()
 {
    if (!IsAlive())
       return nullptr;
@@ -243,13 +243,13 @@ String^ IJWLayer::SimXMLDocumentWrapper::getText()
    return gcnew String(GetObjectPtr()->getText());
 }
 
-void IJWLayer::SimXMLDocumentWrapper::removeText()
+void IJWLayer::SimXMLDocument::removeText()
 {
    if (IsAlive())
       GetObjectPtr()->removeText();
 }
 
-void IJWLayer::SimXMLDocumentWrapper::addData(String^ text)
+void IJWLayer::SimXMLDocument::addData(String^ text)
 {
    if (!IsAlive())
       return;
@@ -258,7 +258,7 @@ void IJWLayer::SimXMLDocumentWrapper::addData(String^ text)
    GetObjectPtr()->addData(_text);
 }
 
-String^ IJWLayer::SimXMLDocumentWrapper::getData()
+String^ IJWLayer::SimXMLDocument::getData()
 {
    if (!IsAlive())
       return nullptr;
@@ -266,7 +266,7 @@ String^ IJWLayer::SimXMLDocumentWrapper::getData()
    return gcnew String(GetObjectPtr()->getData());
 }
 
-void IJWLayer::TamlWrapper::Format::set(String^ value)
+void IJWLayer::Taml::Format::set(String^ value)
 {
    if (!IsAlive())
       return;
@@ -274,10 +274,10 @@ void IJWLayer::TamlWrapper::Format::set(String^ value)
    const char* _value = (char*)Marshal::StringToHGlobalAnsi(value).ToPointer();
 
    // Fetch format mode.
-   const Taml::TamlFormatMode formatMode = Taml::getFormatModeEnum(_value);
+   const EngineTaml::TamlFormatMode formatMode = EngineTaml::getFormatModeEnum(_value);
 
    // Was the format valid?
-   if (formatMode == Taml::InvalidFormat)
+   if (formatMode == EngineTaml::InvalidFormat)
    {
       // No, so warn.
       Con::warnf("Taml::setFormat() - Invalid format mode used: '%s'.", _value);
@@ -288,53 +288,53 @@ void IJWLayer::TamlWrapper::Format::set(String^ value)
    GetObjectPtr()->setFormatMode(formatMode);
 }
 
-String^ IJWLayer::TamlWrapper::Format::get()
+String^ IJWLayer::Taml::Format::get()
 {
    if (IsAlive())
-      return gcnew String(Taml::getFormatModeDescription(GetObjectPtr()->getFormatMode()));
+      return gcnew String(EngineTaml::getFormatModeDescription(GetObjectPtr()->getFormatMode()));
    return nullptr;
 }
 
-void IJWLayer::TamlWrapper::AutoFormat::set(bool value)
+void IJWLayer::Taml::AutoFormat::set(bool value)
 {
    if (IsAlive())
       GetObjectPtr()->setAutoFormat(value);
 }
 
-bool IJWLayer::TamlWrapper::AutoFormat::get()
+bool IJWLayer::Taml::AutoFormat::get()
 {
    if (IsAlive())
       return GetObjectPtr()->getAutoFormat();
    return false;
 }
 
-void IJWLayer::TamlWrapper::WriteDefaults::set(bool value)
+void IJWLayer::Taml::WriteDefaults::set(bool value)
 {
    if (IsAlive())
       GetObjectPtr()->setWriteDefaults(value);
 }
 
-bool IJWLayer::TamlWrapper::WriteDefaults::get()
+bool IJWLayer::Taml::WriteDefaults::get()
 {
    if (IsAlive())
       return GetObjectPtr()->getWriteDefaults();
    return false;
 }
 
-void IJWLayer::TamlWrapper::ProgenitorUpdate::set(bool value)
+void IJWLayer::Taml::ProgenitorUpdate::set(bool value)
 {
    if (IsAlive())
       GetObjectPtr()->setProgenitorUpdate(value);
 }
 
-bool IJWLayer::TamlWrapper::ProgenitorUpdate::get()
+bool IJWLayer::Taml::ProgenitorUpdate::get()
 {
    if (IsAlive())
       return GetObjectPtr()->getProgenitorUpdate();
    return false;
 }
 
-void IJWLayer::TamlWrapper::AutoFormatXmlExtension::set(String^ value)
+void IJWLayer::Taml::AutoFormatXmlExtension::set(String^ value)
 {
    if (!IsAlive())
       return;
@@ -343,14 +343,14 @@ void IJWLayer::TamlWrapper::AutoFormatXmlExtension::set(String^ value)
    GetObjectPtr()->setAutoFormatXmlExtension(_value);
 }
 
-String^ IJWLayer::TamlWrapper::AutoFormatXmlExtension::get()
+String^ IJWLayer::Taml::AutoFormatXmlExtension::get()
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->getAutoFormatXmlExtension());
    return nullptr;
 }
 
-void IJWLayer::TamlWrapper::AutoFormatBinaryExtension::set(String^ value)
+void IJWLayer::Taml::AutoFormatBinaryExtension::set(String^ value)
 {
    if (!IsAlive())
       return;
@@ -359,40 +359,40 @@ void IJWLayer::TamlWrapper::AutoFormatBinaryExtension::set(String^ value)
    GetObjectPtr()->setAutoFormatBinaryExtension(_value);
 }
 
-String^ IJWLayer::TamlWrapper::AutoFormatBinaryExtension::get()
+String^ IJWLayer::Taml::AutoFormatBinaryExtension::get()
 {
    if (IsAlive())
       return gcnew String(GetObjectPtr()->getAutoFormatBinaryExtension());
    return nullptr;
 }
 
-void IJWLayer::TamlWrapper::BinaryCompression::set(bool value)
+void IJWLayer::Taml::BinaryCompression::set(bool value)
 {
    if (IsAlive())
       GetObjectPtr()->setBinaryCompression(value);
 }
 
-bool IJWLayer::TamlWrapper::BinaryCompression::get()
+bool IJWLayer::Taml::BinaryCompression::get()
 {
    if (IsAlive())
       return GetObjectPtr()->getBinaryCompression();
    return false;
 }
 
-void IJWLayer::TamlWrapper::JSONStrict::set(bool value)
+void IJWLayer::Taml::JSONStrict::set(bool value)
 {
    if (IsAlive())
       GetObjectPtr()->setJSONStrict(value);
 }
 
-bool IJWLayer::TamlWrapper::JSONStrict::get()
+bool IJWLayer::Taml::JSONStrict::get()
 {
    if (IsAlive())
       return GetObjectPtr()->getJSONStrict();
    return false;
 }
 
-bool IJWLayer::TamlWrapper::write(SimObjectWrapper^ object, String^ filename)
+bool IJWLayer::Taml::write(SimObject^ object, String^ filename)
 {
    if (!IsAlive())
       return false;
@@ -409,7 +409,7 @@ bool IJWLayer::TamlWrapper::write(SimObjectWrapper^ object, String^ filename)
    return GetObjectPtr()->write(object->GetObjectPtr(), _filename);
 }
 
-IJWLayer::SimObjectWrapper^ IJWLayer::TamlWrapper::read(String^ filename)
+IJWLayer::SimObject^ IJWLayer::Taml::read(String^ filename)
 {
    if (!IsAlive())
       return nullptr;
@@ -417,7 +417,7 @@ IJWLayer::SimObjectWrapper^ IJWLayer::TamlWrapper::read(String^ filename)
    const char* _filename = (char*)Marshal::StringToHGlobalAnsi(filename).ToPointer();
 
    // Read object.
-   SimObject* pSimObject = GetObjectPtr()->read(_filename);
+   EngineSimObject* pSimObject = GetObjectPtr()->read(_filename);
 
    // Did we find the object?
    if (pSimObject == NULL)
@@ -427,5 +427,5 @@ IJWLayer::SimObjectWrapper^ IJWLayer::TamlWrapper::read(String^ filename)
       return nullptr;
    }
 
-   return SimObjectWrapper::Wrap(pSimObject);
+   return SimObject::Wrap(pSimObject);
 }

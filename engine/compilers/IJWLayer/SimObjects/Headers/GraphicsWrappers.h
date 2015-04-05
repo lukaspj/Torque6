@@ -3,32 +3,43 @@
 #pragma once
 
 #include "SimObjectWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "graphics/DynamicTexture.h"
 #include "graphics/PNGImage.h"
 
+// #pragma unmanaged
+#pragma managed(pop)
+
 using namespace System;
+
+typedef DynamicTexture EngineDynamicTexture;
+typedef PNGImage EnginePNGImage;
 
 namespace IJWLayer {
 
-   public ref class DynamicTextureWrapper : SimObjectWrapper
+   public ref class DynamicTexture : SimObject
    {
    public:
-      static DynamicTextureWrapper^ Wrap(int ID) { return static_cast<DynamicTextureWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static DynamicTextureWrapper^ Wrap(DynamicTexture* obj) { return static_cast<DynamicTextureWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static DynamicTexture^ Wrap(int ID) { return static_cast<DynamicTexture^>(SimObject::Wrap(ID)); };
+      static DynamicTexture^ Wrap(EngineDynamicTexture* obj) { return static_cast<DynamicTexture^>(SimObject::Wrap(obj)); };
 
-      DynamicTexture* GetObjectPtr(){
-         return static_cast<DynamicTexture*>(mObject);
+      EngineDynamicTexture* GetObjectPtr(){
+         return static_cast<EngineDynamicTexture*>(mObject);
       };
    };
 
-   public ref class PNGImageWrapper : SimObjectWrapper
+   public ref class PNGImage : SimObject
    {
    public:
-      static PNGImageWrapper^ Wrap(int ID) { return static_cast<PNGImageWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static PNGImageWrapper^ Wrap(PNGImage* obj) { return static_cast<PNGImageWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static PNGImage^ Wrap(int ID) { return static_cast<PNGImage^>(SimObject::Wrap(ID)); };
+      static PNGImage^ Wrap(EnginePNGImage* obj) { return static_cast<PNGImage^>(SimObject::Wrap(obj)); };
 
-      PNGImage* GetObjectPtr(){
-         return static_cast<PNGImage*>(mObject);
+      EnginePNGImage* GetObjectPtr(){
+         return static_cast<EnginePNGImage*>(mObject);
       };
 
       bool CreateBaseImage(int width, int height, int imageType);

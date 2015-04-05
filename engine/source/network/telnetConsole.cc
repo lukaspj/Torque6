@@ -267,7 +267,7 @@ void TelnetConsole::process()
                }
             }
          }
-         else if(client->curPos < Con::MaxLineLength-1)
+         else if(client->curPos < Con::Constants::MaxLineLength-1)
          {
             client->curLine[client->curPos++] = recvBuf[i];
             // don't echo password chars...

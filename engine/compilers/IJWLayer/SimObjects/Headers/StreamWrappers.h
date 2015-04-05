@@ -3,21 +3,32 @@
 #pragma once
 
 #include "SimObjectWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "io/streamObject.h"
 #include "io/fileStreamObject.h"
 
+// #pragma managed
+#pragma managed(pop)
+
 using namespace System;
+
+typedef StreamObject EngineStreamObject;
+typedef FileStreamObject EngineFileStreamObject;
 
 namespace IJWLayer {
 
-   public ref class StreamObjectWrapper : SimObjectWrapper
+   public ref class StreamObject : SimObject
    {
    public:
-      static StreamObjectWrapper^ Wrap(int ID) { return static_cast<StreamObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static StreamObjectWrapper^ Wrap(StreamObject* obj) { return static_cast<StreamObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static StreamObject^ Wrap(int ID) { return static_cast<StreamObject^>(SimObject::Wrap(ID)); };
+      static StreamObject^ Wrap(EngineStreamObject* obj) { return static_cast<StreamObject^>(SimObject::Wrap(obj)); };
 
-      StreamObject* GetObjectPtr(){
-         return static_cast<StreamObject*>(mObject);
+      EngineStreamObject* GetObjectPtr(){
+         return static_cast<EngineStreamObject*>(mObject);
       };
 
       String^ getStatus();
@@ -35,18 +46,18 @@ namespace IJWLayer {
       void writeLongString(int maxLength, String^ string);
       void writeString(String^ string, int maxLength);
       void writeString(String^ string);
-      bool copyFrom(StreamObjectWrapper^ other);
+      bool copyFrom(StreamObject^ other);
    };
 
-   public ref class FileStreamObjectWrapper : StreamObjectWrapper
+   public ref class FileStreamObject : StreamObject
    {
 
    public:
-      static FileStreamObjectWrapper^ Wrap(int ID) { return static_cast<FileStreamObjectWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static FileStreamObjectWrapper^ Wrap(FileStreamObject* obj) { return static_cast<FileStreamObjectWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static FileStreamObject^ Wrap(int ID) { return static_cast<FileStreamObject^>(SimObject::Wrap(ID)); };
+      static FileStreamObject^ Wrap(EngineFileStreamObject* obj) { return static_cast<FileStreamObject^>(SimObject::Wrap(obj)); };
 
-      FileStreamObject* GetObjectPtr(){
-         return static_cast<FileStreamObject*>(mObject);
+      EngineFileStreamObject* GetObjectPtr(){
+         return static_cast<EngineFileStreamObject*>(mObject);
       };
 
       enum class FileMode{

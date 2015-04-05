@@ -7,19 +7,31 @@
 #include "AssetWrappers.h"
 #include "ModuleWrappers.h"
 
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "assets/assetManager.h"
+
+// #pragma unmanaged
+#pragma managed(pop)
 
 using namespace System;
 
+typedef AssetTagsManifest EngineAssetTagsManifest;
+typedef AssetQuery EngineAssetQuery;
+typedef AssetManager EngineAssetManager;
+
 namespace IJWLayer {
-   public ref class AssetTagsManifestWrapper : SimObjectWrapper
+   public ref class AssetTagsManifest : SimObject
    {
    public:
-      static AssetTagsManifestWrapper^ Wrap(int ID) { return static_cast<AssetTagsManifestWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static AssetTagsManifestWrapper^ Wrap(AssetTagsManifest* obj) { return static_cast<AssetTagsManifestWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static AssetTagsManifest^ Wrap(int ID) { return static_cast<AssetTagsManifest^>(SimObject::Wrap(ID)); };
+      static AssetTagsManifest^ Wrap(String^ Name) { return static_cast<AssetTagsManifest^>(SimObject::Wrap(Name)); };
+      static AssetTagsManifest^ Wrap(EngineAssetTagsManifest* obj) { return static_cast<AssetTagsManifest^>(SimObject::Wrap(obj)); };
 
-      AssetTagsManifest* GetObjectPtr(){
-         return static_cast<AssetTagsManifest*>(mObject);
+      EngineAssetTagsManifest* GetObjectPtr(){
+         return static_cast<EngineAssetTagsManifest*>(mObject);
       };
 
       void createTag(String^ tagName);
@@ -35,37 +47,51 @@ namespace IJWLayer {
       bool hasTag(String^ assetId, String^ tagName);
    };
 
-   public ref class AssetQueryWrapper : SimObjectWrapper
+   public ref class AssetQuery : SimObject
    {
    public:
-      static AssetQueryWrapper^ Wrap(int ID) { return static_cast<AssetQueryWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static AssetQueryWrapper^ Wrap(SimObject* obj) { return static_cast<AssetQueryWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static AssetQuery^ Wrap(int ID) { return static_cast<AssetQuery^>(SimObject::Wrap(ID)); };
+      static AssetQuery^ Wrap(String^ Name) { return static_cast<AssetQuery^>(SimObject::Wrap(Name)); };
+      static AssetQuery^ Wrap(EngineAssetQuery* obj) { return static_cast<AssetQuery^>(SimObject::Wrap(obj)); };
 
-      AssetQuery* GetObjectPtr(){
-         return static_cast<AssetQuery*>(mObject);
+      EngineAssetQuery* GetObjectPtr(){
+         return static_cast<EngineAssetQuery*>(mObject);
       };
 
       void clear();
-      bool set(AssetQueryWrapper^ assetQuery);
-      int getCount();
+      bool set(AssetQuery^ assetQuery);
       String^ getAsset(int resultIndex);
+      property int Count{
+         int get();
+      }
    };
 
-   public ref class AssetManagerWrapper : SimObjectWrapper
+   public ref class AssetManager : SimObject
    {
    public:
-      static AssetManagerWrapper^ Wrap(int ID) { return static_cast<AssetManagerWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static AssetManagerWrapper^ Wrap(SimObject* obj) { return static_cast<AssetManagerWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static AssetManager^ Wrap(int ID) { return static_cast<AssetManager^>(SimObject::Wrap(ID)); };
+      static AssetManager^ Wrap(String^ Name) { return static_cast<AssetManager^>(SimObject::Wrap(Name)); };
+      static AssetManager^ Wrap(EngineAssetManager* obj) { return static_cast<AssetManager^>(SimObject::Wrap(obj)); };
 
-      AssetManager* GetObjectPtr(){
-         return static_cast<AssetManager*>(mObject);
+      EngineAssetManager* GetObjectPtr(){
+         return static_cast<EngineAssetManager*>(mObject);
       };
 
-      bool compileReferencedAssets(ModuleDefinitionWrapper^ moduleDefinition);
-      bool addModuleDeclaredAssets(ModuleDefinitionWrapper^ moduleDefinition);
-      bool addDeclaredAsset(ModuleDefinitionWrapper^ moduleDefinition, String^ assetFilePath);
-      String^ addPrivateAsset(AssetBaseWrapper^ assetObject);
-      bool removeDeclaredAssets(ModuleDefinitionWrapper^ moduleDefinition);
+      property bool EchoInfo{
+         bool get();
+         void set(bool val);
+      }
+
+      property bool IgnoreAutoUnload{
+         bool get();
+         void set(bool val);
+      }
+
+      bool compileReferencedAssets(ModuleDefinition^ moduleDefinition);
+      bool addModuleDeclaredAssets(ModuleDefinition^ moduleDefinition);
+      bool addDeclaredAsset(ModuleDefinition^ moduleDefinition, String^ assetFilePath);
+      String^ addPrivateAsset(AssetBase^ assetObject);
+      bool removeDeclaredAssets(ModuleDefinition^ moduleDefinition);
       bool removeDeclaredAsset(String^ assetId);
       String^ getAssetName(String^ assetId);
       String^ getAssetDescription(String^ assetId);
@@ -73,7 +99,7 @@ namespace IJWLayer {
       String^ getAssetType(String^ assetId);
       String^ getAssetFilePath(String^ assetId);
       String^ getAssetPath(String^ assetId);
-      ModuleDefinitionWrapper^ getAssetModule(String^ assetId);
+      ModuleDefinition^ getAssetModule(String^ assetId);
       bool isAssetInternal(String^ assetId);
       bool isAssetPrivate(String^ assetId);
       bool isAssetAutoUnload(String^ assetId);
@@ -91,29 +117,29 @@ namespace IJWLayer {
       void refreshAllAssets(bool includeUnloaded);
       bool saveAssetTags();
       bool restoreAssetTags();
-      AssetTagsManifestWrapper^ getAssetTags();
-      int findAllAssets(AssetQueryWrapper^ assetQuery, bool ignoreInternal, bool ignorePrivate);
-      int findAllAssets(AssetQueryWrapper^ assetQuery, bool ignoreInternal);
-      int findAllAssets(AssetQueryWrapper^ assetQuery);
-      int findAssetName(AssetQueryWrapper^ assetQuery, String^ assetName, bool partialName);
-      int findAssetName(AssetQueryWrapper^ assetQuery, String^ assetName);
-      int findAssetCategory(AssetQueryWrapper^ assetQuery, String^ assetCategory, bool assetQueryAsSource);
-      int findAssetCategory(AssetQueryWrapper^ assetQuery, String^ assetCategory);
-      int findAssetAutoUnload(AssetQueryWrapper^ assetQuery, bool assetAutoUnload, bool assetQueryAsSource);
-      int findAssetAutoUnload(AssetQueryWrapper^ assetQuery, bool assetAutoUnload);
-      int findAssetInternal(AssetQueryWrapper^ assetQuery, bool assetInternal, bool assetQueryAsSource);
-      int findAssetInternal(AssetQueryWrapper^ assetQuery, bool assetInternal);
-      int findAssetPrivate(AssetQueryWrapper^ assetQuery, bool assetPrivate, bool assetQueryAsSource);
-      int findAssetPrivate(AssetQueryWrapper^ assetQuery, bool assetPrivate);
-      int findAssetType(AssetQueryWrapper^ assetQuery, String^ assetType, bool assetQueryAsSource);
-      int findAssetType(AssetQueryWrapper^ assetQuery, String^ assetType);
-      int findAssetDependsOn(AssetQueryWrapper^ assetQuery, String^ assetId);
-      int findAssetIsDependedOn(AssetQueryWrapper^ assetQuery, String^ assetId);
-      int findInvalidAssetReferences(AssetQueryWrapper^ assetQuery);
-      int findTaggedAssets(AssetQueryWrapper^ assetQuery, String^ assetTagNames, bool assetQueryAsSource);
-      int findTaggedAssets(AssetQueryWrapper^ assetQuery, String^ assetTagNames);
-      int findAssetLooseFile(AssetQueryWrapper^ assetQuery, String^ assetLooseFile, bool assetQueryAsSource);
-      int findAssetLooseFile(AssetQueryWrapper^ assetQuery, String^ assetLooseFile);
+      AssetTagsManifest^ getAssetTags();
+      int findAllAssets(AssetQuery^ assetQuery, bool ignoreInternal, bool ignorePrivate);
+      int findAllAssets(AssetQuery^ assetQuery, bool ignoreInternal);
+      int findAllAssets(AssetQuery^ assetQuery);
+      int findAssetName(AssetQuery^ assetQuery, String^ assetName, bool partialName);
+      int findAssetName(AssetQuery^ assetQuery, String^ assetName);
+      int findAssetCategory(AssetQuery^ assetQuery, String^ assetCategory, bool assetQueryAsSource);
+      int findAssetCategory(AssetQuery^ assetQuery, String^ assetCategory);
+      int findAssetAutoUnload(AssetQuery^ assetQuery, bool assetAutoUnload, bool assetQueryAsSource);
+      int findAssetAutoUnload(AssetQuery^ assetQuery, bool assetAutoUnload);
+      int findAssetInternal(AssetQuery^ assetQuery, bool assetInternal, bool assetQueryAsSource);
+      int findAssetInternal(AssetQuery^ assetQuery, bool assetInternal);
+      int findAssetPrivate(AssetQuery^ assetQuery, bool assetPrivate, bool assetQueryAsSource);
+      int findAssetPrivate(AssetQuery^ assetQuery, bool assetPrivate);
+      int findAssetType(AssetQuery^ assetQuery, String^ assetType, bool assetQueryAsSource);
+      int findAssetType(AssetQuery^ assetQuery, String^ assetType);
+      int findAssetDependsOn(AssetQuery^ assetQuery, String^ assetId);
+      int findAssetIsDependedOn(AssetQuery^ assetQuery, String^ assetId);
+      int findInvalidAssetReferences(AssetQuery^ assetQuery);
+      int findTaggedAssets(AssetQuery^ assetQuery, String^ assetTagNames, bool assetQueryAsSource);
+      int findTaggedAssets(AssetQuery^ assetQuery, String^ assetTagNames);
+      int findAssetLooseFile(AssetQuery^ assetQuery, String^ assetLooseFile, bool assetQueryAsSource);
+      int findAssetLooseFile(AssetQuery^ assetQuery, String^ assetLooseFile);
       bool getDeclaredAssetCount();
       bool getReferencedAssetCount();
       bool getLoadedInternalAssetCount();

@@ -1,14 +1,23 @@
 #include "../../stdafx.h"
-#include "../Headers/Version.h"
+#include "../Headers/Engine.h"
 #include "../Headers/Globals.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "console/console.h"
 #include "game/version.h"
 #include "string/stringTable.h"
 #include "io/resource/resourceManager.h"
 
-using namespace System::Runtime::InteropServices;
+// #pragma unmanaged
+#pragma managed(pop)
 
-void IJWLayer::EngineVersion::setCompanyAndProduct(String^ company, String^ product)
+using namespace System::Runtime::InteropServices;
+typedef Platform EnginePlatform;
+
+void IJWLayer::Engine::Version::setCompanyAndProduct(String^ company, String^ product)
 {
    char* _company = (char*)Marshal::StringToHGlobalAnsi(company).ToPointer();
    char* _product = (char*)Marshal::StringToHGlobalAnsi(product).ToPointer();
@@ -16,11 +25,11 @@ void IJWLayer::EngineVersion::setCompanyAndProduct(String^ company, String^ prod
    setCompanyName(StringTable->insert(_company));
    setProductName(StringTable->insert(_product));
 
-   Global::SetString("$Game::CompanyName", getCompanyName());
-   Global::SetString("$Game::ProductName", getProductName());
+   Globals::SetString("$Game::CompanyName", getCompanyName());
+   Globals::SetString("$Game::ProductName", getProductName());
 
    char appDataPath[1024];
-   dSprintf(appDataPath, sizeof(appDataPath), "%s/%s/%s", Platform::getUserDataDirectory(), getCompanyName(), getProductName());
+   dSprintf(appDataPath, sizeof(appDataPath), "%s/%s/%s", EnginePlatform::getUserDataDirectory(), getCompanyName(), getProductName());
 
    ResourceManager->addPath(appDataPath);
 }

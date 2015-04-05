@@ -78,7 +78,7 @@ namespace Graphics
 
    //-----------------------------------------------------------------------------
 
-   class ShaderAsset : public AssetBase
+   class DLL_PUBLIC ShaderAsset : public AssetBase
    {
 
    private:
@@ -101,7 +101,9 @@ namespace Graphics
       virtual void copyTo(SimObject* object);
 
       void setPixelShaderPath( const char* pShaderPath );
-      void setVertexShaderPath( const char* pShaderPath );
+      const char* getPixelShaderPath() { return mPixelShaderPath; };
+      void setVertexShaderPath(const char* pShaderPath);
+      const char* getVertexShaderPath() { return mVertexShaderPath; };
 
       // Asset validation.
       virtual bool isAssetValid( void ) const;

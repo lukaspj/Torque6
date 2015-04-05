@@ -3,65 +3,73 @@
 #pragma once
 
 #include "SimObjectWrapper.h"
+#include "../../ConsoleTypes/Headers/Points.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "network/netObject.h"
 #include "network/netConnection.h"
 #include "3d/scene/entity.h"
 #include "3d/scene/camera.h"
 
+// #pragma unmanaged
+#pragma managed(pop)
+
 using namespace System;
+namespace EngineScene = Scene;
 
 namespace IJWLayer {
 
-   public ref class SceneEntityWrapper : SimObjectWrapper
+   public ref class SceneEntity : SimObject
    {
    public:
-      SceneEntityWrapper() : SimObjectWrapper(new Scene::SceneEntity()) {}
+      SceneEntity() : SimObject(new EngineScene::SceneEntity()) {}
 
-      static SceneEntityWrapper^ Wrap(int ID) { return static_cast<SceneEntityWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static SceneEntityWrapper^ Wrap(Scene::SceneEntity* obj) { return static_cast<SceneEntityWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static SceneEntity^ Wrap(int ID) { return static_cast<SceneEntity^>(SimObject::Wrap(ID)); };
+      static SceneEntity^ Wrap(EngineScene::SceneEntity* obj) { return static_cast<SceneEntity^>(SimObject::Wrap(obj)); };
 
-      Scene::SceneEntity* GetObjectPtr(){
-         return static_cast<Scene::SceneEntity*>(mObject);
+      EngineScene::SceneEntity* GetObjectPtr(){
+         return static_cast<EngineScene::SceneEntity*>(mObject);
       };
 
-      SimObjectWrapper^ findComponent(String^ name);
-      SimObjectWrapper^ findComponentByType(String^ type);
-      String^ getPosition();
-      void setPosition(String^ pos);
+      SimObject^ findComponent(String^ name);
+      SimObject^ findComponentByType(String^ type);
 
       property String^ Template{
          void set(String^ value);
       }
-      property String^ Position{
-         String^ get();
-         void set(String^ value);
+      property Point3F^ Position{
+         Point3F^ get();
+         void set(Point3F^ value);
       }
-      property String^ Rotation{
-         String^ get();
-         void set(String^ value);
+      property EulerF^ Rotation{
+         EulerF^ get();
+         void set(EulerF^ value);
       }
-      property String^ Scale{
-         String^ get();
-         void set(String^ value);
+      property VectorF^ Scale{
+         VectorF^ get();
+         void set(VectorF^ value);
       }
    };
 
-   public ref class SceneCameraWrapper : SimObjectWrapper
+   public ref class SceneCamera : SimObject
    {
    public:
-      static SceneCameraWrapper^ Wrap(int ID) { return static_cast<SceneCameraWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static SceneCameraWrapper^ Wrap(Scene::SceneCamera* obj) { return static_cast<SceneCameraWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static SceneCamera^ Wrap(int ID) { return static_cast<SceneCamera^>(SimObject::Wrap(ID)); };
+      static SceneCamera^ Wrap(EngineScene::SceneCamera* obj) { return static_cast<SceneCamera^>(SimObject::Wrap(obj)); };
 
-      Scene::SceneCamera* GetObjectPtr(){
-         return static_cast<Scene::SceneCamera*>(mObject);
+      EngineScene::SceneCamera* GetObjectPtr(){
+         return static_cast<EngineScene::SceneCamera*>(mObject);
       };
 
-      void lookAt(String^ look_at);
-      void translate(String^ translation);
-      void pan(String^ pan);
-      void setPanVelocity(String^ panVel);
-      void setPosition(String^ position);
-      void rotate(String^ rotation);
+      void lookAt(Point3F^ look_at);
+      void translate(Point3F^ translation);
+      void pan(Point3F^ pan);
+      void setPanVelocity(Point3F^ panVel);
+      void setPosition(Point3F^ position);
+      void rotate(Point3F^ rotation);
       void bindMouse(bool value, bool left, bool right);
       void bindMouse(bool value, bool left);
       void bindMouse(bool value);

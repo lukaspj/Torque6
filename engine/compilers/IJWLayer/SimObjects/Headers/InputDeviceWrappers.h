@@ -4,9 +4,20 @@
 
 #include "SimObjectWrapper.h"
 #include "CollectionsWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "platform/platformInput.h"
 
+// #pragma unmanaged
+#pragma managed(pop)
+
 using namespace System;
+
+typedef InputDevice EngineInputDevice;
+typedef InputManager EngineInputManager;
 
 namespace IJWLayer {
 
@@ -28,25 +39,25 @@ namespace IJWLayer {
 
    };
 
-   public ref class InputDeviceWrapper : SimObjectWrapper
+   public ref class InputDevice : SimObject
    {
    public:
-      static InputDeviceWrapper^ Wrap(int ID) { return static_cast<InputDeviceWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static InputDeviceWrapper^ Wrap(InputDevice* obj) { return static_cast<InputDeviceWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static InputDevice^ Wrap(int ID) { return static_cast<InputDevice^>(SimObject::Wrap(ID)); };
+      static InputDevice^ Wrap(EngineInputDevice* obj) { return static_cast<InputDevice^>(SimObject::Wrap(obj)); };
 
-      InputDevice* GetObjectPtr(){
-         return static_cast<InputDevice*>(mObject);
+      EngineInputDevice* GetObjectPtr(){
+         return static_cast<EngineInputDevice*>(mObject);
       };
    };
 
-   public ref class InputManagerWrapper : SimGroupWrapper
+   public ref class InputManager : SimGroup
    {
    public:
-      static InputManagerWrapper^ Wrap(int ID) { return static_cast<InputManagerWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static InputManagerWrapper^ Wrap(InputManager* obj) { return static_cast<InputManagerWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static InputManager^ Wrap(int ID) { return static_cast<InputManager^>(SimObject::Wrap(ID)); };
+      static InputManager^ Wrap(EngineInputManager* obj) { return static_cast<InputManager^>(SimObject::Wrap(obj)); };
 
-      InputManager* GetObjectPtr(){
-         return static_cast<InputManager*>(mObject);
+      EngineInputManager* GetObjectPtr(){
+         return static_cast<EngineInputManager*>(mObject);
       };
    };
 }

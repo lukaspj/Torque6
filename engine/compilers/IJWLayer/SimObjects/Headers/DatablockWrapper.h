@@ -3,20 +3,30 @@
 #pragma once
 
 #include "SimObjectWrapper.h"
+
+// #pragma unmanaged
+// push managed state on to stack and set unmanaged state
+#pragma managed(push, off)
+
 #include "sim/simDatablock.h"
+
+// #pragma unmanaged
+#pragma managed(pop)
 
 using namespace System;
 
+typedef SimDataBlock EngineSimDataBlock;
+
 namespace IJWLayer {
 
-   public ref class SimDatablockWrapper : SimObjectWrapper
+   public ref class SimDataBlock : SimObject
    {
    public:
-      static SimDatablockWrapper^ Wrap(int ID) { return static_cast<SimDatablockWrapper^>(SimObjectWrapper::Wrap(ID)); };
-      static SimDatablockWrapper^ Wrap(SimDataBlock* obj) { return static_cast<SimDatablockWrapper^>(SimObjectWrapper::Wrap(obj)); };
+      static SimDataBlock^ Wrap(int ID) { return static_cast<SimDataBlock^>(SimObject::Wrap(ID)); };
+      static SimDataBlock^ Wrap(EngineSimDataBlock* obj) { return static_cast<SimDataBlock^>(SimObject::Wrap(obj)); };
 
-      SimDataBlock* GetObjectPtr(){
-         return static_cast<SimDataBlock*>(mObject);
+      EngineSimDataBlock* GetObjectPtr(){
+         return static_cast<EngineSimDataBlock*>(mObject);
       };
 
       void deleteDataBlocks();

@@ -4,7 +4,7 @@
 
 using namespace System::Runtime::InteropServices;
 
-int IJWLayer::PopupMenuWrapper::insertItem(int pos, String^ title, String^ accelerator)
+int IJWLayer::PopupMenu::insertItem(int pos, String^ title, String^ accelerator)
 {
    if (!IsAlive())
       return -1;
@@ -13,23 +13,23 @@ int IJWLayer::PopupMenuWrapper::insertItem(int pos, String^ title, String^ accel
    return GetObjectPtr()->insertItem(pos, _title, _accelerator);
 }
 
-int IJWLayer::PopupMenuWrapper::insertItem(int pos, String^ title)
+int IJWLayer::PopupMenu::insertItem(int pos, String^ title)
 {
    return insertItem(pos, title, "");
 }
 
-int IJWLayer::PopupMenuWrapper::insertItem(int pos)
+int IJWLayer::PopupMenu::insertItem(int pos)
 {
    return insertItem(pos, nullptr, "");
 }
 
-void IJWLayer::PopupMenuWrapper::removeItem(int pos)
+void IJWLayer::PopupMenu::removeItem(int pos)
 {
    if (IsAlive())
       GetObjectPtr()->removeItem(pos);
 }
 
-int IJWLayer::PopupMenuWrapper::insertSubMenu(int pos, String^ title, PopupMenuWrapper^ submenu)
+int IJWLayer::PopupMenu::insertSubMenu(int pos, String^ title, PopupMenu^ submenu)
 {
    if (!IsAlive())
       return -1;
@@ -42,32 +42,32 @@ int IJWLayer::PopupMenuWrapper::insertSubMenu(int pos, String^ title, PopupMenuW
    return GetObjectPtr()->insertSubMenu(pos, _title, submenu->GetObjectPtr());
 }
 
-void IJWLayer::PopupMenuWrapper::enableItem(int pos, bool enable)
+void IJWLayer::PopupMenu::enableItem(int pos, bool enable)
 {
    if (IsAlive())
       GetObjectPtr()->enableItem(pos, enable);
 }
 
-void IJWLayer::PopupMenuWrapper::checkItem(int pos, bool checked)
+void IJWLayer::PopupMenu::checkItem(int pos, bool checked)
 {
    if (IsAlive())
       GetObjectPtr()->enableItem(pos, checked);
 }
 
-void IJWLayer::PopupMenuWrapper::checkRadioItem(int firstPos, int lastPos, int checkPos)
+void IJWLayer::PopupMenu::checkRadioItem(int firstPos, int lastPos, int checkPos)
 {
    if (IsAlive())
       GetObjectPtr()->checkRadioItem(firstPos, lastPos, checkPos);
 }
 
-bool IJWLayer::PopupMenuWrapper::isItemChecked(int pos)
+bool IJWLayer::PopupMenu::isItemChecked(int pos)
 {
    if (IsAlive())
       return GetObjectPtr()->isItemChecked(pos);
    return false;
 }
 
-void IJWLayer::PopupMenuWrapper::attachToMenuBar(int pos, String^ title)
+void IJWLayer::PopupMenu::attachToMenuBar(int pos, String^ title)
 {
    if (!IsAlive())
       return;
@@ -76,24 +76,24 @@ void IJWLayer::PopupMenuWrapper::attachToMenuBar(int pos, String^ title)
    GetObjectPtr()->attachToMenuBar(pos, _title);
 }
 
-void IJWLayer::PopupMenuWrapper::removeFromMenuBar()
+void IJWLayer::PopupMenu::removeFromMenuBar()
 {
    if (IsAlive())
       GetObjectPtr()->removeFromMenuBar();
 }
 
-void IJWLayer::PopupMenuWrapper::showPopup(int x, int y)
+void IJWLayer::PopupMenu::showPopup(int x, int y)
 {
    if (IsAlive())
       GetObjectPtr()->showPopup(x,y);
 }
 
-void IJWLayer::PopupMenuWrapper::showPopup(int x)
+void IJWLayer::PopupMenu::showPopup(int x)
 {
    showPopup(x, -1);
 }
 
-void IJWLayer::PopupMenuWrapper::showPopup()
+void IJWLayer::PopupMenu::showPopup()
 {
    showPopup(-1, -1);
 }
