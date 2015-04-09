@@ -17,7 +17,7 @@ typedef ActionMap EngineActionMap;
 
 namespace IJWLayer {
 
-   using namespace System;
+   using System::String;
 
    public ref class ActionMap : SimObject
 	{

@@ -14,7 +14,7 @@
 // #pragma unmanaged
 #pragma managed(pop)
 
-using namespace System;
+using System::String;
 
 typedef DynamicTexture EngineDynamicTexture;
 typedef PNGImage EnginePNGImage;

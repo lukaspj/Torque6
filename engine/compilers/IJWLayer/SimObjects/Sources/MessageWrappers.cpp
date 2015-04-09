@@ -184,3 +184,18 @@ int IJWLayer::MessageVector::getLineTag(int index)
    return GetObjectPtr()->getLine(index).messageTag;
 }
 
+String^ IJWLayer::MessageForwarder::ToQueue::get()
+{
+   if (IsAlive())
+      return gcnew String(GetObjectPtr()->getToQueue());
+   return nullptr;
+}
+
+void IJWLayer::MessageForwarder::ToQueue::set(String^ value)
+{
+   if (!IsAlive())
+      return;
+   char* _value = (char*)Marshal::StringToHGlobalAnsi(value).ToPointer();
+   GetObjectPtr()->setToQueue(_value);
+}
+

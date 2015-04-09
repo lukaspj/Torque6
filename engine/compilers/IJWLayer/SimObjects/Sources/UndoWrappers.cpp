@@ -75,3 +75,32 @@ void IJWLayer::UndoAction::addToManager()
    if (IsAlive())
       GetObjectPtr()->addToManager(NULL);
 }
+
+String^ IJWLayer::UndoAction::ActionName::get()
+{
+   if (IsAlive())
+      return gcnew String(GetObjectPtr()->mActionName);
+   return nullptr;
+}
+
+void IJWLayer::UndoAction::ActionName::set(String^ value)
+{
+   if (!IsAlive())
+      return;
+   char* _value = (char*)Marshal::StringToHGlobalAnsi(value).ToPointer();
+   GetObjectPtr()->mActionName = _value;
+}
+
+int IJWLayer::UndoManager::NumLevels::get()
+{
+   if (IsAlive())
+      return GetObjectPtr()->mNumLevels;
+   return -1;
+}
+
+void IJWLayer::UndoManager::NumLevels::set(int value)
+{
+   if (!IsAlive())
+      return;
+   GetObjectPtr()->mNumLevels = value;
+}

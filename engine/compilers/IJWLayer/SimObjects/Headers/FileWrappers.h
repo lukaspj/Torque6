@@ -11,9 +11,8 @@
 
 #include "platform/nativeDialogs/fileDialog.h"
 #include "io/fileObject.h"
-//#include "io/zip/zipObject.h"
+#include "io/zip/zipObject.h"
 
-//typedef ZipObject EngineZipObject;
 // #pragma managed
 #pragma managed(pop)
 
@@ -22,6 +21,7 @@ typedef OpenFileDialog EngineOpenFileDialog;
 typedef OpenFolderDialog EngineOpenFolderDialog;
 typedef SaveFileDialog EngineSaveFileDialog;
 typedef FileObject EngineFileObject;
+typedef ZipObject EngineZipObject;
 
 namespace IJWLayer {
 
@@ -35,6 +35,36 @@ namespace IJWLayer {
          return static_cast<EngineFileDialog*>(mObject);
       };
 
+      property String^ DefaultPath{
+         String^ get();
+         void set(String^ value);
+      }
+
+      property String^ DefaultFile{
+         String^ get();
+         void set(String^ value);
+      }
+
+      property String^ FileName{
+         String^ get();
+         void set(String^ value);
+      }
+
+      property String^ Filters{
+         String^ get();
+         void set(String^ value);
+      }
+
+      property String^ Title{
+         String^ get();
+         void set(String^ value);
+      }
+
+      property bool ChangePath{
+         bool get();
+         void set(bool value);
+      }
+
       bool execute();
    };
 
@@ -47,6 +77,16 @@ namespace IJWLayer {
       EngineOpenFileDialog* GetObjectPtr(){
          return static_cast<EngineOpenFileDialog*>(mObject);
       };
+
+      property bool MustExist{
+         bool get();
+         void set(bool value);
+      }
+
+      property bool MultipleFiles{
+         bool get();
+         void set(bool value);
+      }
    };
 
    public ref class OpenFolderDialog : OpenFileDialog
@@ -58,6 +98,11 @@ namespace IJWLayer {
       EngineOpenFolderDialog* GetObjectPtr(){
          return static_cast<EngineOpenFolderDialog*>(mObject);
       };
+
+      property String^ FileMustExist{
+         String^ get();
+         void set(String^ value);
+      }
    };
 
    public ref class SaveFileDialog : FileDialog
@@ -69,6 +114,11 @@ namespace IJWLayer {
       EngineSaveFileDialog* GetObjectPtr(){
          return static_cast<EngineSaveFileDialog*>(mObject);
       };
+
+      property bool OverwritePrompt{
+         bool get();
+         void set(bool value);
+      }
    };
 
    public ref class FileObject : SimObject
@@ -92,7 +142,7 @@ namespace IJWLayer {
       void writeObject(SimObject^ object, String^ prepend);
       void writeObject(SimObject^ object);
    };
-/*
+
    public ref class ZipObject : SimObject
    {
    public:
@@ -121,5 +171,5 @@ namespace IJWLayer {
       bool deleteFile(String^ pathInZip);
       int getFileEntryCount();
       String^ getFileEntry(int index);
-   };*/
+   };
 }

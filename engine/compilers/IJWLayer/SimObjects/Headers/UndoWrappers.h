@@ -28,6 +28,11 @@ namespace IJWLayer {
          return static_cast<EngineUndoManager*>(mObject);
       };
 
+      property int NumLevels{
+         int get();
+         void set(int value);
+      }
+
       int getRedoCount();
       void clearAll();
       int getUndoCount();
@@ -48,6 +53,11 @@ namespace IJWLayer {
       EngineUndoAction* GetObjectPtr(){
          return static_cast<EngineUndoAction*>(mObject);
       };
+
+      property String^ ActionName{
+         String^ get();
+         void set(String^ value);
+      }
 
       void addToManager(UndoManager^ undoManager);
       void addToManager();

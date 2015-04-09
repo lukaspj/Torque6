@@ -186,6 +186,20 @@ bool ConsoleLogger::detach()
 
 //-----------------------------------------------------------------------------
 
+void ConsoleLogger::setLogLevel(ConsoleLogEntry::Level level)
+{
+   mLevel = level;
+}
+
+//-----------------------------------------------------------------------------
+
+ConsoleLogEntry::Level ConsoleLogger::getLogLevel() const
+{
+   return mLevel;
+}
+
+//-----------------------------------------------------------------------------
+
 void ConsoleLogger::logCallback( ConsoleLogEntry::Level level, const char *consoleLine )
 {
 

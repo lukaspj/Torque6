@@ -34,14 +34,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimatedMeshExample.cs" />
+    <Compile Include="ExampleRoom.cs" />
     <Compile Include="Framework\Attributes.cs" />
     <Compile Include="Framework\CustomMarshalling.cs" />
     <Compile Include="Framework\DllLoadUtils.cs" />
@@ -50,7 +46,7 @@
     <Compile Include="Framework\Torque6Main.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimObject.cs" />
+    <Compile Include="Main.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

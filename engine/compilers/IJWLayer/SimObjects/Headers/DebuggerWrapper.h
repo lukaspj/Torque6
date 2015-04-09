@@ -14,7 +14,7 @@
 // #pragma unmanaged
 #pragma managed(pop)
 
-using namespace System;
+using System::String;
 
 typedef RemoteDebuggerBase EngineRemoteDebuggerBase;
 typedef RemoteDebugger1 EngineRemoteDebugger1;

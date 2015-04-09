@@ -4,6 +4,20 @@
 
 using namespace System::Runtime::InteropServices;
 
+int IJWLayer::ConsoleLogger::Level::get()
+{
+   if (IsAlive())
+      return GetObjectPtr()->getLogLevel();
+   else
+      return -1;
+}
+
+void IJWLayer::ConsoleLogger::Level::set(int value)
+{
+   if (IsAlive())
+      GetObjectPtr()->setLogLevel((ConsoleLogEntry::Level)value);
+}
+
 bool IJWLayer::ConsoleLogger::attach()
 {
    if (!IsAlive())

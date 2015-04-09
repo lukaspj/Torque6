@@ -46,7 +46,7 @@ enum StringTableConstants
 };
 
 /// Represents an entry in the log.
-struct ConsoleLogEntry
+struct DLL_PUBLIC ConsoleLogEntry
 {
    /// This field indicates the severity of the log entry.
    ///

@@ -36,6 +36,16 @@ namespace IJWLayer {
          return static_cast<EngineModuleManager*>(mObject);
       };
 
+      property bool EnforceDependencies{
+         bool get();
+         void set(bool value);
+      }
+
+      property bool EchoInfo{
+         bool get();
+         void set(bool value);
+      }
+
       bool setModuleExtension(String^ moduleExtension);
       bool scanModules(String^ moduleRootPath, bool rootOnly);
       bool scanModules(String^ moduleRootPath);
@@ -71,6 +81,89 @@ namespace IJWLayer {
          return static_cast<EngineModuleDefinition*>(mObject);
       };
 
+      property String^ ModuleId{
+         String^ get();
+         void set(String^ value);
+      }
+      property int VersionId{
+         int get();
+         void set(int value);
+      }
+      property int BuildId{
+         int get();
+         void set(int value);
+      }
+      property bool Enabled{
+         bool get();
+         void set(bool value);
+      }
+      property bool Synchronized{
+         bool get();
+         void set(bool value);
+      }
+      property bool Deprecated{
+         bool get();
+         void set(bool value);
+      }
+      property bool CriticalMerge{
+         bool get();
+         void set(bool value);
+      }
+      property String^ Description{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ Author{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ Group{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ Type{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ Dependencies{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ ScriptFile{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ CreateFunction{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ DestroyFunction{
+         String^ get();
+         void set(String^ value);
+      }
+      property String^ AssetTagsManifest{
+         String^ get();
+         void set(String^ value);
+      }
+      property int ScopeSet{
+         int get();
+      }
+      property String^ ModulePath{
+         String^ get();
+      }
+      property String^ ModuleFile{
+         String^ get();
+      }
+      property String^ ModuleFilePath{
+         String^ get();
+      }
+      property String^ ModuleScriptFilePath{
+         String^ get();
+      }
+      property String^ Signature{
+         String^ get();
+      }
+
       bool save();
       ModuleManager^ getModuleManager();
       int getDependencyCount();
@@ -91,5 +184,9 @@ namespace IJWLayer {
          return static_cast<EngineModuleMergeDefinition*>(mObject);
       };
 
+      property String^ MergePath{
+         String^ get();
+         void set(String^ value);
+      }
    };
 }

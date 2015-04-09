@@ -16,7 +16,7 @@
 // #pragma unmanaged
 #pragma managed(pop)
 
-using namespace System;
+using System::String;
 
 typedef AssetTagsManifest EngineAssetTagsManifest;
 typedef AssetQuery EngineAssetQuery;

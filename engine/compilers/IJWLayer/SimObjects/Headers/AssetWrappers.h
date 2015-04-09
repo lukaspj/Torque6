@@ -23,7 +23,7 @@
 // #pragma unmanaged
 #pragma managed(pop)
 
-using namespace System;
+using System::String;
 
 typedef DeclaredAssets EngineDeclaredAssets;
 typedef ReferencedAssets EngineReferencedAssets;

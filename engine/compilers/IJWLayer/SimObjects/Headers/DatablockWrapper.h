@@ -13,7 +13,7 @@
 // #pragma unmanaged
 #pragma managed(pop)
 
-using namespace System;
+using System::String;
 
 typedef SimDataBlock EngineSimDataBlock;
 

@@ -4,6 +4,21 @@
 
 using namespace System::Runtime::InteropServices;
 
+String^ IJWLayer::EventManager::Queue::get()
+{
+   if (IsAlive())
+      return gcnew String(GetObjectPtr()->getMessageQueue());
+   return nullptr;
+}
+
+void IJWLayer::EventManager::Queue::set(String^ value)
+{
+   if (!IsAlive())
+      return;
+   char* _value = (char*)Marshal::StringToHGlobalAnsi(value).ToPointer();
+   return GetObjectPtr()->setMessageQueue(_value);
+}
+
 bool IJWLayer::EventManager::registerEvent(String^ eventName)
 {
    if (!IsAlive())

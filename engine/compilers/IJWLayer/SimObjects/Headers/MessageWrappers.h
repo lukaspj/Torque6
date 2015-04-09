@@ -61,6 +61,11 @@ namespace IJWLayer {
       EngineMessageForwarder* GetObjectPtr(){
          return static_cast<EngineMessageForwarder*>(mObject);
       };
+
+      property String^ ToQueue{
+         String^ get();
+         void set(String^ value);
+      }
    };
 
    public ref class MessageVector : SimObject

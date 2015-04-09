@@ -13,7 +13,7 @@
 // #pragma unmanaged
 #pragma managed(pop)
 
-using namespace System;
+using System::String;
 
 typedef ConsoleLogger EngineConsoleLogger;
 
@@ -28,6 +28,11 @@ namespace IJWLayer {
       EngineConsoleLogger* GetObjectPtr(){
          return static_cast<EngineConsoleLogger*>(mObject);
       };
+
+      property int Level{
+         int get();
+         void set(int value);
+      }
 
       bool attach();
       bool detach();

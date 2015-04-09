@@ -16,7 +16,7 @@
 typedef EventManager EngineEventManager;
 
 namespace IJWLayer {
-   using namespace System;
+   using System::String;
 
    public ref class EventManager : SimObject
    {
@@ -27,6 +27,11 @@ namespace IJWLayer {
       EngineEventManager* GetObjectPtr(){
          return static_cast<EngineEventManager*>(mObject);
       };
+
+      property String^ Queue{
+         String^ get();
+         void set(String^ value);
+      }
 
       bool registerEvent(String^ eventName);
       void unregisterEvent(String^ eventName);

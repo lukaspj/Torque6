@@ -1,3 +1,5 @@
+#pragma once
+
 namespace IJWLayer {
 
 // #pragma unmanaged
