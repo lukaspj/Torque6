@@ -55,7 +55,7 @@ namespace Scene
 
    // Entity Management
    extern SimGroup sceneEntityGroup;
-   DLL_PUBLIC void addEntity(SceneEntity* entity, const char* name = "SceneEntity");
+   void addEntity(SceneEntity* entity, const char* name = "SceneEntity");
    void removeEntity(SceneEntity* entity);
    SimGroup* getEntityGroup();
    void refresh();
@@ -64,7 +64,7 @@ namespace Scene
    extern Point3F directionalLightDir;
    extern ColorF  directionalLightColor;
    extern ColorF  directionalLightAmbient;
-   DLL_PUBLIC void setDirectionalLight(Point3F direction, ColorF color, ColorF ambient);
+   void setDirectionalLight(Point3F direction, ColorF color, ColorF ambient);
 }
 
 #endif

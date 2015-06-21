@@ -8,7 +8,7 @@ namespace Torque6_Bridge
    {
       internal struct Internal
       {
-         [DllImport("CInterfaceDLL", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SimObjectGetName")]
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SimObjectGetName")]
          internal static extern IntPtr GetName(IntPtr pObjectPtr);
       }
 
@@ -19,11 +19,19 @@ namespace Torque6_Bridge
          ObjectPtr = Sim.FindObjectWrapper(pId);
       }
 
-      public string GetName()
+      public SimObject(string pName)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
-         var ret = Internal.GetName(ObjectPtr->ObjPtr);
-         return Marshal.PtrToStringAnsi(ret);
+         ObjectPtr = Sim.FindObjectWrapper(pName);
+      }
+
+      public string Name
+      {
+         get
+         {
+            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            var ret = Internal.GetName(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(ret);
+         }
       }
 
       #region IDisposable

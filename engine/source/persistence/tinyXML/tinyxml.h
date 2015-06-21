@@ -1213,7 +1213,7 @@ private:
     you generally want to leave it alone, but you can change the output mode with 
     SetCDATA() and query it with CDATA().
 */
-class DLL_PUBLIC TiXmlText : public TiXmlNode
+class TiXmlText : public TiXmlNode
 {
     friend class TiXmlElement;
 public:
@@ -1355,7 +1355,7 @@ private:
 
     DTD tags get thrown into TiXmlUnknowns.
 */
-class DLL_PUBLIC TiXmlUnknown : public TiXmlNode
+class TiXmlUnknown : public TiXmlNode
 {
 public:
     TiXmlUnknown() : TiXmlNode( TiXmlNode::TINYXML_UNKNOWN )	{}
@@ -1394,7 +1394,7 @@ private:
     XML pieces. It can be saved, loaded, and printed to the screen.
     The 'value' of a document node is the xml file name.
 */
-class DLL_PUBLIC TiXmlDocument : public TiXmlNode
+class TiXmlDocument : public TiXmlNode
 {
 public:
     /// Create an empty document, that has no name.

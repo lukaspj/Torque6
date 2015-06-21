@@ -1084,7 +1084,7 @@
     <ClInclude Include="..\..\source\sim\scriptGroup.h" />
     <ClInclude Include="..\..\source\sim\scriptObject.h" />
     <ClInclude Include="..\..\source\sim\simBase.h" />
-    <ClInclude Include="..\..\source\sim\simBase_ScriptBinding.h" />
+    <ClInclude Include="..\..\source\sim\simBase_Binding.h" />
     <ClInclude Include="..\..\source\sim\simConsoleEvent.h" />
     <ClInclude Include="..\..\source\sim\simConsoleThreadExecEvent.h" />
     <ClInclude Include="..\..\source\sim\simDatablock.h" />
@@ -1097,7 +1097,7 @@
     <ClInclude Include="..\..\source\sim\SimObjectList.h" />
     <ClInclude Include="..\..\source\sim\simObjectPtr.h" />
     <ClInclude Include="..\..\source\sim\simObjectTimerEvent.h" />
-    <ClInclude Include="..\..\source\sim\simObject_ScriptBinding.h" />
+    <ClInclude Include="..\..\source\sim\simObject_Binding.h" />
     <ClInclude Include="..\..\source\sim\simSerialize_ScriptBinding.h" />
     <ClInclude Include="..\..\source\sim\simSet.h" />
     <ClInclude Include="..\..\source\sim\simSet_ScriptBinding.h" />

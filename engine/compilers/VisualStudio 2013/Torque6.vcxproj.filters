@@ -2387,9 +2387,6 @@
     <ClInclude Include="..\..\source\gui\containers\guiGridCtrl.h">
       <Filter>gui\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\sim\simBase_ScriptBinding.h">
-      <Filter>sim</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\input\actionMap_ScriptBinding.h">
       <Filter>input</Filter>
     </ClInclude>
@@ -2416,9 +2413,6 @@
     </ClInclude>
     <ClInclude Include="..\..\source\graphics\color_ScriptBinding.h">
       <Filter>graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\sim\simObject_ScriptBinding.h">
-      <Filter>sim</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\sim\simSet_ScriptBinding.h">
       <Filter>sim</Filter>
@@ -2915,6 +2909,12 @@
     </ClInclude>
     <ClInclude Include="..\..\source\platform\types.clang.h">
       <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\sim\simBase_Binding.h">
+      <Filter>sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\sim\simObject_Binding.h">
+      <Filter>sim</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

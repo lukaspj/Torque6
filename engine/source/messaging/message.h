@@ -88,7 +88,7 @@ class MessageQueue;
 /// messages usually their through dynamic fields, and may be accessed in 
 /// C++ using the SimObject::getDataField() method.
 //////////////////////////////////////////////////////////////////////////
-class DLL_PUBLIC Message : public SimObject
+class Message : public SimObject
 {
    typedef SimObject Parent;
 

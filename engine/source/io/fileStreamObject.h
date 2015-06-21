@@ -26,7 +26,7 @@
 #ifndef _FILESTREAMOBJECT_H_
 #define _FILESTREAMOBJECT_H_
 
-class DLL_PUBLIC FileStreamObject : public StreamObject
+class FileStreamObject : public StreamObject
 {
    typedef StreamObject Parent;
 

@@ -47,7 +47,7 @@ class Point3F;
 class MatrixF;
 class HuffmanProcessor;
 
-class DLL_PUBLIC BitStream : public Stream
+class BitStream : public Stream
 {
 protected:
    U8 *dataPtr;

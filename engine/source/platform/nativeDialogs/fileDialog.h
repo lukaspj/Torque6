@@ -98,7 +98,7 @@ public:
 ///
 ///
 /// @{
-class DLL_PUBLIC FileDialog : public SimObject
+class FileDialog : public SimObject
 {
    typedef SimObject Parent;
 
@@ -138,7 +138,7 @@ public:
 };
 /// @}
 
-class DLL_PUBLIC OpenFileDialog : public FileDialog
+class OpenFileDialog : public FileDialog
 {
    typedef FileDialog Parent;
 
@@ -171,7 +171,7 @@ protected:
    static const char* getMultipleFiles(void* obj, const char* data);
 };
 
-class DLL_PUBLIC OpenFolderDialog : public OpenFileDialog
+class OpenFolderDialog : public OpenFileDialog
 {
    typedef OpenFileDialog Parent;
 
@@ -185,7 +185,7 @@ public:
    static void initPersistFields();
 };
 
-class DLL_PUBLIC SaveFileDialog : public FileDialog
+class SaveFileDialog : public FileDialog
 {
    typedef FileDialog Parent;
 

@@ -250,7 +250,7 @@ class TiXmlString
     }
 
     Rep * rep_;
-    DLL_PUBLIC static Rep nullrep_;
+    static Rep nullrep_;
 
 } ;
 

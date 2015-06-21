@@ -46,7 +46,7 @@ enum StringTableConstants
 };
 
 /// Represents an entry in the log.
-struct DLL_PUBLIC ConsoleLogEntry
+struct ConsoleLogEntry
 {
    /// This field indicates the severity of the log entry.
    ///
@@ -184,7 +184,7 @@ typedef void        (*SetDataFunction)(void *dptr, S32 argc, const char **argv, 
 namespace Con
 {
    /// Various configuration constants.
-   class Constants 
+   enum Constants 
    {
       /// This is the version number associated with DSO files.
       ///
@@ -206,13 +206,9 @@ namespace Con
       //  02/16/07 - PAUP - 41->42 DSOs are read with a pointer before every string(ASTnodes changed). Namespace and HashTable revamped
       //  05/17/10 - Luma - 42-43 Adding proper sceneObject physics flags, fixes in general
       //  02/07/13 - JU   - 43->44 Expanded the width of stringtable entries to  64bits 
-      //DSOVersion = 44,
-      //MaxLineLength = 512,  ///< Maximum length of a line of console input.
-      //MaxDataTypes = 256    ///< Maximum number of registered data types.
-   public:
-      static const U32 DSOVersion = 44;
-      static const U32 MaxLineLength = 512;
-      static const U32 MaxDataTypes = 256;
+      DSOVersion = 44,
+      MaxLineLength = 512,  ///< Maximum length of a line of console input.
+      MaxDataTypes = 256    ///< Maximum number of registered data types.
    };
 
    /// @name Control Functions
@@ -306,7 +302,7 @@ namespace Con
    /// @param  pDstPath    Pointer to string buffer to fill with absolute path.
    /// @param  size        Size of buffer pointed to by pDstPath.
    /// @param  pSrcPath    Original, possibly relative path.
-   DLL_PUBLIC bool expandPath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWorkingDirectoryHint = NULL, const bool ensureTrailingSlash = false );
+   bool expandPath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWorkingDirectoryHint = NULL, const bool ensureTrailingSlash = false );
    void collapsePath( char* pDstPath, U32 size, const char* pSrcPath, const char* pWorkingDirectoryHint = NULL );
    bool isBasePath( const char* SrcPath, const char* pBasePath );
    void ensureTrailingSlash( char* pDstPath, const char* pSrcPath );
@@ -394,39 +390,39 @@ namespace Con
    /// Assign a string value to a global console variable
    /// @param name   Global console variable name to set
    /// @param value  String value to assign to this variable.
-   DLL_PUBLIC void setVariable(const char *name, const char *value);
+   void setVariable(const char *name, const char *value);
 
    /// Retrieve the string value of a global console variable
    /// @param name   Global Console variable name to query
    /// @return       The string value of the variable or "" if the variable does not exist.
-   DLL_PUBLIC const char* getVariable(const char* name);
+   const char* getVariable(const char* name);
 
    /// Same as setVariable(), but for bools.
-   DLL_PUBLIC void setBoolVariable(const char* name, bool var);
+   void setBoolVariable (const char* name,bool var);
 
    /// Same as getVariable(), but for bools.
    ///
    /// @param  name  Name of the variable.
    /// @param  def   Default value to supply if no matching variable is found.
-   DLL_PUBLIC bool getBoolVariable(const char* name, bool def = false);
+   bool getBoolVariable (const char* name,bool def = false);
 
    /// Same as setVariable(), but for ints.
-   DLL_PUBLIC void setIntVariable  (const char* name,S32 var);
+   void setIntVariable  (const char* name,S32 var);
 
    /// Same as getVariable(), but for ints.
    ///
    /// @param  name  Name of the variable.
    /// @param  def   Default value to supply if no matching variable is found.
-   DLL_PUBLIC S32  getIntVariable(const char* name, S32 def = 0);
+   S32  getIntVariable  (const char* name,S32 def = 0);
 
    /// Same as setVariable(), but for floats.
-   DLL_PUBLIC void setFloatVariable(const char* name, F32 var);
+   void setFloatVariable(const char* name,F32 var);
 
    /// Same as getVariable(), but for floats.
    ///
    /// @param  name  Name of the variable.
    /// @param  def   Default value to supply if no matching variable is found.
-   DLL_PUBLIC F32  getFloatVariable(const char* name, F32 def = .0f);
+   F32  getFloatVariable(const char* name,F32 def = .0f);
 
    /// @}
 
@@ -513,17 +509,17 @@ namespace Con
    /// @param _format   A stdlib printf style formatted out put string
    /// @param ...       Variables to be written
    /// @see Con::warnf()
-   void DLL_PUBLIC warnf(ConsoleLogEntry::Type type, const char *_format, ...);
+   void warnf(ConsoleLogEntry::Type type, const char *_format, ...);
 
    /// @note The console window colors warning text as RED.
    /// @param type      Allows you to associate the warning message with an internal module.
    /// @param _format   A stdlib printf style formatted out put string
    /// @param ...       Variables to be written
    /// @see Con::errorf()
-   void DLL_PUBLIC errorf(ConsoleLogEntry::Type type, const char *_format, ...);
+   void errorf(ConsoleLogEntry::Type type, const char *_format, ...);
 
    /// clear the console log
-   void DLL_PUBLIC cls(void);
+   void cls( void );
 
    /// Prints a separator to the console.
    inline void printSeparator( void ) { printf("--------------------------------------------------------------------------------"); }
@@ -572,10 +568,10 @@ namespace Con
    /// @endcode
    // [neo, 5/10/2007 - #3010]
    // Added flag thisCallOnly to bypass dynamic method calls
-   DLL_PUBLIC const char *execute(SimObject *object, S32 argc, const char *argv[], bool thisCallOnly = false);
+   const char *execute(SimObject *object, S32 argc, const char *argv[], bool thisCallOnly = false);
 
    /// @see execute(SimObject *, S32 argc, const char *argv[])
-   DLL_PUBLIC const char *executef(SimObject *, S32 argc, ...);
+   const char *executef(SimObject *, S32 argc, ...);
 
    /// Evaluate an arbitrary chunk of code.
    ///
@@ -601,7 +597,7 @@ namespace Con
    /// @{
 
    ///
-   DLL_PUBLIC char *getReturnBuffer(U32 bufferSize);
+   char *getReturnBuffer(U32 bufferSize);
    char *getReturnBuffer(const char *stringToCopy);
 
    char *getArgBuffer(U32 bufferSize);
@@ -626,7 +622,7 @@ namespace Con
 
    void getLockLog(ConsoleLogEntry * &log, U32 &size);
    void unlockLog(void);
-   DLL_PUBLIC void setLogMode(S32 mode);
+   void setLogMode(S32 mode);
 
    /// @}
 
@@ -642,8 +638,8 @@ namespace Con
    const char *getTypeName(S32 type);
    bool isDatablockType( S32 type ); */
 
-   DLL_PUBLIC void setData(S32 type, void *dptr, S32 index, S32 argc, const char **argv, EnumTable *tbl = NULL, BitSet32 flag = 0);
-   DLL_PUBLIC const char *getData(S32 type, void *dptr, S32 index, EnumTable *tbl = NULL, BitSet32 flag = 0);
+   void setData(S32 type, void *dptr, S32 index, S32 argc, const char **argv, EnumTable *tbl = NULL, BitSet32 flag = 0);
+   const char *getData(S32 type, void *dptr, S32 index, EnumTable *tbl = NULL, BitSet32 flag = 0);
    /// @}
 };
 

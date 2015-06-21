@@ -201,9 +201,9 @@ inline void m_matF_x_vectorF(const F32 *m, const F32 *v, F32 *vresult)
 #endif
 }
 
-DLL_PUBLIC U32 getNextPow2(U32 io_num);
+U32 getNextPow2(U32 io_num);
 
-DLL_PUBLIC U32 getBinLog2(U32 io_num);
+U32 getBinLog2(U32 io_num);
 
 
 /// Determines if the given U32 is some 2^n

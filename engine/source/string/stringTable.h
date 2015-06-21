@@ -163,7 +163,7 @@ private:
    static StringTableEntry EmptyString;
 };
 
-DLL_PUBLIC extern _StringTable *_gStringTable;
+extern _StringTable *_gStringTable;
 
 inline _StringTable* _getStringTable()
 {

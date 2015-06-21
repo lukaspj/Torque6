@@ -400,7 +400,7 @@ public:
 ///      for player and vehicle classes.
 ///
 /// @nosubgrouping
-class DLL_PUBLIC NetConnection : public ConnectionProtocol, public SimGroup
+class NetConnection : public ConnectionProtocol, public SimGroup
 {
     friend class NetInterface;
 

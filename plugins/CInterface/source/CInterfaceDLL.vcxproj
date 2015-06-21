@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CInterface.cpp" />
+    <ClCompile Include="CInterfaceDLL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CInterfaceDLL.h" />

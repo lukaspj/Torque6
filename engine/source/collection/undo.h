@@ -29,7 +29,7 @@
 class UndoManager;
 
 //-----------------------------------------------------------------------------
-class DLL_PUBLIC UndoAction : public SimObject
+class UndoAction : public SimObject
 {
 private:
     // Other actions necessary to support this action of which the user need not be aware	[KNM | 08/10/11 | ITGB-152]
@@ -67,7 +67,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------
-class DLL_PUBLIC UndoManager : public SimObject
+class UndoManager : public SimObject
 {
 private:
    /// Default number of undo & redo levels.

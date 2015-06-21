@@ -11,20 +11,36 @@ namespace Torque6_Bridge.Namespaces
          [FieldOffset(0)] public IntPtr ObjPtr;
       }
 
-      [DllImport("CInterfaceDLL", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SimFindObject")]
-      private static extern IntPtr SimFindObject(int pId);
+      [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+      private static extern IntPtr SimFindObjectById(int pId);
 
       public static IntPtr FindObject(int pId)
       {
-         return SimFindObject(pId);
+         return SimFindObjectById(pId);
       }
 
-      [DllImport("CInterfaceDLL", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SimFindObject")]
-      private static extern IntPtr SimFindObjectWrapper(int pId);
+      [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+      private static extern IntPtr SimFindObjectWrapperById(int pId);
 
       public static SimObjectPtr* FindObjectWrapper(int pId)
       {
-         return (SimObjectPtr*)SimFindObjectWrapper(pId);
+         return (SimObjectPtr*)SimFindObjectWrapperById(pId);
+      }
+
+      [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+      private static extern IntPtr SimFindObjectByName([MarshalAs(UnmanagedType.LPStr)]string pName);
+
+      public static IntPtr FindObject(string pName)
+      {
+         return SimFindObjectByName(pName);
+      }
+
+      [DllImport("Torque6_DEBUG.dll", CallingConvention = CallingConvention.Cdecl)]
+      private static extern IntPtr SimFindObjectWrapperByName([MarshalAs(UnmanagedType.LPStr)]string pName);
+
+      public static SimObjectPtr* FindObjectWrapper(string pName)
+      {
+         return (SimObjectPtr*)SimFindObjectWrapperByName(pName);
       }
    }
 }

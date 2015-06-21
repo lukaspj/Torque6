@@ -30,7 +30,7 @@
 #include "tcpObject.h"
 #endif
 
-class DLL_PUBLIC HTTPObject : public TCPObject
+class HTTPObject : public TCPObject
 {
 private:
    typedef TCPObject Parent;

@@ -27,7 +27,7 @@
 #include "sim/simBase.h"
 #endif
 
-class DLL_PUBLIC TCPObject : public SimObject
+class TCPObject : public SimObject
 {
 public:
    enum State {Disconnected, DNSResolved, Connected, Listening };

@@ -85,7 +85,7 @@ public:
 /// $MyEventManager.postEvent( "SomeCoolEvent", "Data" );
 /// @endcode
 //-----------------------------------------------------------------------------
-class DLL_PUBLIC EventManager : public SimObject
+class EventManager : public SimObject
 {
    typedef SimObject Parent;
 

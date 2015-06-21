@@ -86,7 +86,7 @@ class Point2I;
 
 //------------------------------------------------------------------------------
 
-DLL_PUBLIC struct Platform
+struct Platform
 {
     struct LocalTime
     {
@@ -140,12 +140,12 @@ DLL_PUBLIC struct Platform
     static void shutdown();
     static void sleep(U32 ms);
     static void restartInstance();
-    DLL_PUBLIC static void postQuitMessage(const U32 in_quitVal);
+    static void postQuitMessage(const U32 in_quitVal);
     static void forceShutdown(S32 returnValue);
 
     /// User.
-    DLL_PUBLIC static StringTableEntry getUserHomeDirectory();
-    DLL_PUBLIC static StringTableEntry getUserDataDirectory();
+    static StringTableEntry getUserHomeDirectory();
+    static StringTableEntry getUserDataDirectory();
 
     /// Window.
     static void initWindow(const Point2I &initialSize, const char *name);
@@ -186,12 +186,12 @@ DLL_PUBLIC struct Platform
 
     /// File IO.
     static StringTableEntry getCurrentDirectory();
-    DLL_PUBLIC static bool setCurrentDirectory(StringTableEntry newDir);
+    static bool setCurrentDirectory(StringTableEntry newDir);
     static StringTableEntry getTemporaryDirectory();
     static StringTableEntry getTemporaryFileName();
     static StringTableEntry getExecutableName();
     static StringTableEntry getExecutablePath(); 
-    DLL_PUBLIC static void setMainDotCsDir(const char *dir);
+    static void setMainDotCsDir(const char *dir);
     static StringTableEntry getMainDotCsDir();
     static StringTableEntry getPrefsPath(const char *file = NULL);
     static char *makeFullPathName(const char *path, char *buffer, U32 size, const char *cwd = NULL);
@@ -205,7 +205,7 @@ DLL_PUBLIC struct Platform
     static bool isFile(const char *pFilePath);
     static S32  getFileSize(const char *pFilePath);
     static bool hasExtension(const char* pFilename, const char* pExtension);
-    static DLL_PUBLIC bool isDirectory(const char *pDirPath);
+    static bool isDirectory(const char *pDirPath);
     static bool isSubDirectory(const char *pParent, const char *pDir);
     static void addExcludedDirectory(const char *pDir);
     static void clearExcludedDirectories();

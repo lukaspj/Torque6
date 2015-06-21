@@ -42,7 +42,7 @@
 /// then you will need to implement the Dispatcher::IMessageListener
 /// interface yourself.
 //////////////////////////////////////////////////////////////////////////
-class DLL_PUBLIC ScriptMsgListener : public SimObject, public virtual Dispatcher::IMessageListener
+class ScriptMsgListener : public SimObject, public virtual Dispatcher::IMessageListener
 {
    typedef SimObject Parent;
    typedef IMessageListener IMLParent;

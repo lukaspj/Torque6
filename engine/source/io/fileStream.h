@@ -31,7 +31,7 @@
 #include "io/stream.h"
 #endif
 
-class DLL_PUBLIC FileStream : public Stream
+class FileStream : public Stream
 {
 public:
    enum AccessMode

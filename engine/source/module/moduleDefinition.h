@@ -51,7 +51,7 @@ class ModuleManager;
 
 /// @ingroup moduleGroup
 /// @see moduleGroup
-class DLL_PUBLIC ModuleDefinition : public SimSet
+class ModuleDefinition : public SimSet
 {
     friend class ModuleManager;
 

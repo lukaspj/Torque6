@@ -33,7 +33,7 @@
 
 //-----------------------------------------------------------------------------
 
-class DLL_PUBLIC NameTags : public SimSet
+class NameTags : public SimSet
 {
     typedef SimSet      Parent;
 

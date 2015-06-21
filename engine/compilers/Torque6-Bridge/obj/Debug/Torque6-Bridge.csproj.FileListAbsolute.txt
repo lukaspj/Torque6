@@ -3,3 +3,5 @@ E:\GitHub\Torque6\engine\compilers\Torque6-Bridge\bin\Debug\Torque6-Bridge.pdb
 E:\GitHub\Torque6\engine\compilers\Torque6-Bridge\obj\Debug\Torque6-Bridge.csprojResolveAssemblyReference.cache
 E:\GitHub\Torque6\engine\compilers\Torque6-Bridge\obj\Debug\Torque6-Bridge.dll
 E:\GitHub\Torque6\engine\compilers\Torque6-Bridge\obj\Debug\Torque6-Bridge.pdb
+E:\GitHub\Torque6\build\Torque6-Bridge.dll
+E:\GitHub\Torque6\build\Torque6-Bridge.pdb

@@ -61,7 +61,7 @@ DefineConsoleType( TypeMeshAssetPtr )
 
 //-----------------------------------------------------------------------------
 
-class DLL_PUBLIC MeshAsset : public AssetBase
+class MeshAsset : public AssetBase
 {
    struct SubMesh
    {

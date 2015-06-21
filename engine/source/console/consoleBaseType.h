@@ -26,7 +26,7 @@
 #ifndef _SIMBASE_H_
 #include "sim/simBase.h"
 #endif
-class DLL_PUBLIC ConsoleBaseType;
+
 class ConsoleBaseType
 {
 protected:

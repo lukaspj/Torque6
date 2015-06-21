@@ -43,8 +43,6 @@ struct EventDescriptor
    U16 eventCode;  ///< From event.h
 };
 
-class DLL_PUBLIC ActionMap;
-
 /// Map raw inputs to a variety of actions.  This is used for all keymapping
 /// in the engine.
 /// @see ActionMap::Node

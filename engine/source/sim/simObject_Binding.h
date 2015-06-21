@@ -1019,3 +1019,9 @@ ConsoleMethodWithDocs(SimObject,schedule, ConsoleInt, 4, 0, (time , command , [a
 /*! @} */ // member group Timer Events
 
 ConsoleMethodRootGroupEndWithDocs(SimObject)
+
+
+DLL_PUBLIC StringTableEntry SimObjectGetName(SimObject* obj)
+{
+   return obj->getName();
+}

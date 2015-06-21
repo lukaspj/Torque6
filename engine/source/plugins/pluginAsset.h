@@ -45,7 +45,7 @@ DefineConsoleType( TypePluginAssetPtr )
 
 //-----------------------------------------------------------------------------
 
-class DLL_PUBLIC PluginAsset : public AssetBase
+class PluginAsset : public AssetBase
 {
 
 private:

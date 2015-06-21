@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------
 
-class DLL_PUBLIC ModuleMergeDefinition : public SimObject
+class ModuleMergeDefinition : public SimObject
 {
 private:
     typedef SimObject Parent;

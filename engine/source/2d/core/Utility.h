@@ -78,7 +78,7 @@ const char* mGetStringElement( const char* inString, const U32 index, const bool
 U32 mGetStringElementCount( const char *string );
 U32 mConvertStringToMask( const char* string );
 const char* mConvertMaskToString( const U32 mask );
-DLL_PUBLIC Point3F mConvertStringToPoint3F( const char* pString );
+Point3F mConvertStringToPoint3F( const char* pString );
 
 } // Namespace Utility.
 

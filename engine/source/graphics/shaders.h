@@ -78,7 +78,7 @@ namespace Graphics
 
    //-----------------------------------------------------------------------------
 
-   class DLL_PUBLIC ShaderAsset : public AssetBase
+   class ShaderAsset : public AssetBase
    {
 
    private:

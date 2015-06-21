@@ -3,79 +3,78 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using HorribleHackz.CustomAttributes;
-using IJWLayer;
+//using IJWLayer;
 
 namespace HorribleHackz
 {
    internal class MainClass
    {
-      public static ModuleManager ModuleDatabase;
-      public static AssetManager AssetDatabase;
+      //public static ModuleManager ModuleDatabase;
+      //public static AssetManager AssetDatabase;
 
       [ScriptEntryPoint]
       public static void EntryPoint()
       {
+         Torque6_Bridge.SimObject Test = new Torque6_Bridge.SimObject("ModuleDatabase");
+
          // Mandatory initialization, since these can't be set based on the non-existant main.cs
-         var CSDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-         Engine.Platform.setMainDotCsDir(CSDir);
-         Engine.Platform.setCurrentDirectory(CSDir);
+         //var CSDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+         //Engine.Platform.setMainDotCsDir(CSDir);
+         //Engine.Platform.setCurrentDirectory(CSDir);
 
-         // Logging settings
-         Engine.Con.setLogMode(2);
-         Engine.Script.setScriptExecEcho(false);
-         Engine.Script.trace(false);
+         //// Logging settings
+         //Engine.Con.setLogMode(2);
+         //Engine.Script.setScriptExecEcho(false);
+         //Engine.Script.trace(false);
 
-         // Not really necessary, but shows how globals work
-         Globals.SetBool("Scripts::ignoreDSOs", true);
+         //// Not really necessary, but shows how globals work
+         //Globals.SetBool("Scripts::ignoreDSOs", true);
 
-         // This is my realm!
-         Engine.Version.setCompanyAndProduct("LukasPJ", "Torque6");
+         //// This is my realm!
+         //Engine.Version.setCompanyAndProduct("LukasPJ", "Torque6");
 
-         // Find the Databases by name
-         ModuleDatabase = ModuleManager.Wrap("ModuleDatabase");
-         AssetDatabase = AssetManager.Wrap("AssetDatabase");
+         //// Find the Databases by name
+         //ModuleDatabase = ModuleManager.Wrap("ModuleDatabase");
+         //AssetDatabase = AssetManager.Wrap("AssetDatabase");
 
-         Torque6_Bridge.SimObject Test = new Torque6_Bridge.SimObject(ModuleDatabase.ID);
-         Engine.Con.echo(Test.GetName());
+         //// Make sure they have been created
+         //if (!ModuleDatabase.IsAlive())
+         //   throw new Exception("ModuleDatabase not found");
+         //if (!AssetDatabase.IsAlive())
+         //   throw new Exception("AssetDatabase not found");
 
-         // Make sure they have been created
-         if (!ModuleDatabase.IsAlive())
-            throw new Exception("ModuleDatabase not found");
-         if (!AssetDatabase.IsAlive())
-            throw new Exception("AssetDatabase not found");
+         //// Didn't implement this property yet.
+         //ModuleDatabase.setFieldValue("EchoInfo", "false");
+         //AssetDatabase.EchoInfo = false;
+         //AssetDatabase.IgnoreAutoUnload = true;
 
-         // Didn't implement this property yet.
-         ModuleDatabase.setFieldValue("EchoInfo", "false");
-         AssetDatabase.EchoInfo = false;
-         AssetDatabase.IgnoreAutoUnload = true;
+         //// Scan modules.
+         //ModuleDatabase.scanModules("modules");
 
-         // Scan modules.
-         ModuleDatabase.scanModules("modules");
+         //ModuleDatabase.scanModules("../shared-modules");
 
-         ModuleDatabase.scanModules("../shared-modules");
+         //// Load AppCore module.
+         //ModuleDatabase.loadExplicit("AppCore");
 
-         // Load AppCore module.
-         ModuleDatabase.loadExplicit("AppCore");
+         //// Load the modules needed for this example
+         //ModuleDatabase.loadExplicit("Console");
+         //ModuleDatabase.loadExplicit("FreeViewCamera");
 
-         // Load the modules needed for this example
-         ModuleDatabase.loadExplicit("Console");
-         ModuleDatabase.loadExplicit("FreeViewCamera");
-         
       }
 
       [ConsoleFunction]
       public static void onExit()
       {
          // Unload the AppCore module.
-         ModuleDatabase.unloadExplicit("AppCore");
+         //ModuleDatabase.unloadExplicit("AppCore");
       }
 
       [ConsoleFunction]
       public static void androidBackButton(string val)
       {
          // Quit on button down
-         if (val == "1")
-            Engine.Con.quit();
+         //if (val == "1")
+         //   Engine.Con.quit();
       }
    }
 }

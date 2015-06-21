@@ -33,7 +33,7 @@
 
 enum PNGImageType { PNGTYPE_UNKNOWN = 0, PNGTYPE_RGB, PNGTYPE_RGBA };
 
-class DLL_PUBLIC PNGImage : public SimObject
+class PNGImage : public SimObject
 {
     typedef SimObject Parent;
 

@@ -41,7 +41,7 @@
 
 namespace Scene 
 {
-   class DLL_PUBLIC SceneEntity : public NetObject
+   class SceneEntity : public NetObject
    {
       private:
          typedef SimObject Parent;

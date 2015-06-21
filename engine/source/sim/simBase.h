@@ -142,7 +142,7 @@ typedef U32 SimTime;
 
 namespace Sim
 {
-   DLL_PUBLIC DeclareNamedSet(ActiveActionMapSet)
+   DeclareNamedSet(ActiveActionMapSet)
    DeclareNamedSet(GhostAlwaysSet)
    DeclareNamedSet(BehaviorSet)
    DeclareNamedSet(AchievementSet)
@@ -160,8 +160,8 @@ namespace Sim
    SimDataBlockGroup *getDataBlockGroup();
    SimGroup* getRootGroup();
 
-   DLL_PUBLIC SimObject* findObject(SimObjectId);
-   DLL_PUBLIC SimObject* findObject(const char* name);
+   SimObject* findObject(SimObjectId);
+   SimObject* findObject(const char* name);
    template<class T> inline bool findObject(SimObjectId id,T*&t)
    {
       t = dynamic_cast<T*>(findObject(id));
@@ -183,11 +183,11 @@ namespace Sim
 
    void advanceToTime(SimTime time);
    void advanceTime(SimTime delta);
-   DLL_PUBLIC SimTime getCurrentTime();
+   SimTime getCurrentTime();
    SimTime getTargetTime();
 
    /// a target time of 0 on an event means current event
-   DLL_PUBLIC U32 postEvent(SimObject*, SimEvent*, U32 targetTime);
+   U32 postEvent(SimObject*, SimEvent*, U32 targetTime);
 
    inline U32 postEvent(SimObjectId iD,SimEvent*evt, U32 targetTime)
    {
@@ -210,7 +210,7 @@ namespace Sim
       return postEvent(obj,evt,getCurrentTime());
    }
 
-   DLL_PUBLIC void cancelEvent(U32 eventId);
+   void cancelEvent(U32 eventId);
    bool isEventPending(U32 eventId);
    U32  getEventTimeLeft(U32 eventId);
    U32  getTimeSinceStart(U32 eventId);

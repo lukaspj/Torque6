@@ -39,7 +39,7 @@
 #include "persistence/tinyXML/tinyxml.h"
 #endif
 
-class DLL_PUBLIC SimXMLDocument: public SimObject
+class SimXMLDocument: public SimObject
 {
    // This typedef is required for tie ins with the script language.
    // --------------------------------------------------------------------------

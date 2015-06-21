@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using IJWLayer;
 
 namespace HorribleHackz.Framework
 {
@@ -93,14 +92,17 @@ namespace HorribleHackz.Framework
          string _className = Marshal.PtrToStringAnsi(className);
          string _name = Marshal.PtrToStringAnsi(name);
 
-         SimObject objectWrapper = SimObject.Wrap((int)obj);
+         //todo
+         //SimObject objectWrapper = SimObject.Wrap((int)obj);
          string[] strings = null;
          if(argv != IntPtr.Zero)
             strings = CustomMarshalling.IntPtrToStringArray(argv, argc);
-         string strRes = EngineCallbacks.CallScriptMethod(objectWrapper.Name, obj, _name, strings, out result);
-         if(!result)
-            strRes = EngineCallbacks.CallScriptMethod(_className, obj, _name, strings, out result);
-         return strRes;
+         //string strRes = EngineCallbacks.CallScriptMethod(objectWrapper.Name, obj, _name, strings, out result);
+         //if(!result)
+         //   strRes = EngineCallbacks.CallScriptMethod(_className, obj, _name, strings, out result);
+         //return strRes;
+         result = false;
+         return "";
       }
 
       public static bool IsMethodDelegate(IntPtr className, IntPtr methodName)

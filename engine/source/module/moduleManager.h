@@ -52,7 +52,7 @@
 
 /// @ingroup moduleGroup
 /// @see moduleGroup
-class DLL_PUBLIC ModuleManager : public SimObject
+class ModuleManager : public SimObject
 {
 private:
     typedef SimObject Parent;

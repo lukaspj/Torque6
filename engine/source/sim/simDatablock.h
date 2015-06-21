@@ -111,7 +111,7 @@
 ///      explanation of the basics of datablocks from script. Note that these comments
 ///      mostly apply to GameBaseData and its children.
 /// @nosubgrouping
-class DLL_PUBLIC SimDataBlock: public SimObject
+class SimDataBlock: public SimObject
 {
    typedef SimObject Parent;
 public:

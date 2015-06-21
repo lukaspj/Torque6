@@ -33,7 +33,7 @@
 ///
 /// This allows you to set a console function to be
 /// called at some point in the future.
-class DLL_PUBLIC SimConsoleEvent;
+
 class SimConsoleEvent : public SimEvent
 {
 protected:

@@ -29,7 +29,7 @@
 
 /// A class designed to be used as a console consumer and log
 /// the data it receives to a file.
-class DLL_PUBLIC ConsoleLogger : public SimObject
+class ConsoleLogger : public SimObject
 {
    typedef SimObject Parent;
 

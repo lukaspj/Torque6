@@ -24,6 +24,45 @@
 #include "simBase.h"
 #endif
 
+
+//-----------------------------------------------------------------------------
+
+/*!
+@defgroup ObjectFunctions Object
+@ingroup CInterfaceFunctions
+@{
+*/
+
+//-----------------------------------------------------------------------------
+
+extern "C"{
+   DLL_PUBLIC void* SimFindObjectById(U32 id)
+   {
+      return Sim::findObject(id);
+   }
+
+   DLL_PUBLIC void* SimFindObjectWrapperById(U32 id)
+   {
+      return new SimObjectPtr<SimObject>(Sim::findObject(id));
+   }
+
+   DLL_PUBLIC void* SimFindObjectByName(const char* name)
+   {
+      return Sim::findObject(StringTable->insert(name));
+   }
+
+   DLL_PUBLIC void* SimFindObjectWrapperByName(const char* name)
+   {
+      return new SimObjectPtr<SimObject>(Sim::findObject(StringTable->insert(name)));
+   }
+}
+
+//-----------------------------------------------------------------------------
+
+/*! @} */
+
+//-----------------------------------------------------------------------------
+
 //-----------------------------------------------------------------------------
 
 /*!

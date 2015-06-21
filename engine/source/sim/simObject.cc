@@ -30,7 +30,7 @@
 #include "io/fileObject.h"
 #include "console/ConsoleTypeValidators.h"
 
-#include "simObject_ScriptBinding.h"
+#include "simObject_Binding.h"
 
 #include "c-interface/c-interface.h"
 

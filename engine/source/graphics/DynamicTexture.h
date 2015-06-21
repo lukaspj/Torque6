@@ -37,7 +37,7 @@
 
 //-----------------------------------------------------------------------------
 
-class DynamicTexture : public SimObject
+class DynamicTexture : SimObject
 {
     typedef SimObject Parent;
 

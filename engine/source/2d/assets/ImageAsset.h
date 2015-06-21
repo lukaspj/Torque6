@@ -45,7 +45,7 @@ DefineConsoleType( TypeImageAssetPtr )
 
 //-----------------------------------------------------------------------------
 
-class DLL_PUBLIC ImageAsset : public AssetBase
+class ImageAsset : public AssetBase
 {
 private:
     typedef AssetBase Parent;

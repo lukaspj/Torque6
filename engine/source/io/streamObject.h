@@ -38,7 +38,7 @@
 /// This was mainly intended to allow the \ref zip_group "zip code" to
 /// provide the stream interface to script.
 //////////////////////////////////////////////////////////////////////////
-class DLL_PUBLIC StreamObject : public SimObject
+class StreamObject : public SimObject
 {
    typedef SimObject Parent;
 
