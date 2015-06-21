@@ -25,6 +25,15 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="ConsoleTypes">
+      <UniqueIdentifier>{47895bd8-8db5-455a-bff0-2e2818d242c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ConsoleTypes\Headers">
+      <UniqueIdentifier>{97154d84-207b-4a3b-91d6-d8c183a6a071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ConsoleTypes\Sources">
+      <UniqueIdentifier>{7e977835-6e48-4405-ae28-861226b30614}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -98,22 +107,19 @@
     <ClInclude Include="SimObjects\Headers\UndoWrappers.h">
       <Filter>SimObjects\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Namespaces\Headers\Platform.h">
-      <Filter>Namespaces\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Namespaces\Headers\Console.h">
-      <Filter>Namespaces\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Namespaces\Headers\Script.h">
-      <Filter>Namespaces\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Namespaces\Headers\Globals.h">
       <Filter>Namespaces\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Namespaces\Headers\Version.h">
+    <ClInclude Include="ConsoleTypes\Headers\Points.h">
+      <Filter>ConsoleTypes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Namespaces\Headers\Engine.h">
       <Filter>Namespaces\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Namespaces\Headers\Scene.h">
+    <ClInclude Include="Namespaces\Headers\Game.h">
+      <Filter>Namespaces\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Namespaces\Headers\Audio.h">
       <Filter>Namespaces\Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -202,6 +208,21 @@
       <Filter>Namespaces\Sources</Filter>
     </ClCompile>
     <ClCompile Include="Namespaces\Sources\Scene.cpp">
+      <Filter>Namespaces\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SimObjects\Sources\FileWrapperProperties.cpp">
+      <Filter>SimObjects\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SimObjects\Sources\GuiWrappersProperties.cpp">
+      <Filter>SimObjects\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SimObjects\Sources\ModuleWrapperProperties.cpp">
+      <Filter>SimObjects\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Namespaces\Sources\OpenAL.cpp">
+      <Filter>Namespaces\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Namespaces\Sources\Input.cpp">
       <Filter>Namespaces\Sources</Filter>
     </ClCompile>
   </ItemGroup>

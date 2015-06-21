@@ -56,6 +56,10 @@
       <Project>{165978d1-8c66-4065-8d43-dc382cee9da6}</Project>
       <Name>IJWLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Torque6-Bridge\Torque6-Bridge.csproj">
+      <Project>{feed50b5-3934-471d-9024-49ff23f0762b}</Project>
+      <Name>Torque6-Bridge</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

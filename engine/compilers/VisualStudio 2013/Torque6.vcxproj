@@ -1041,6 +1041,7 @@
     <ClInclude Include="..\..\source\platform\platformVideo_ScriptBinding.h" />
     <ClInclude Include="..\..\source\platform\platform_ScriptBinding.h" />
     <ClInclude Include="..\..\source\platform\Tickable.h" />
+    <ClInclude Include="..\..\source\platform\types.clang.h" />
     <ClInclude Include="..\..\source\platform\types.codewarrior.h" />
     <ClInclude Include="..\..\source\platform\types.gcc.h" />
     <ClInclude Include="..\..\source\platform\types.h" />

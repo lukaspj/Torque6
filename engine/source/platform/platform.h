@@ -205,7 +205,7 @@ DLL_PUBLIC struct Platform
     static bool isFile(const char *pFilePath);
     static S32  getFileSize(const char *pFilePath);
     static bool hasExtension(const char* pFilename, const char* pExtension);
-    static bool isDirectory(const char *pDirPath);
+    static DLL_PUBLIC bool isDirectory(const char *pDirPath);
     static bool isSubDirectory(const char *pParent, const char *pDir);
     static void addExcludedDirectory(const char *pDir);
     static void clearExcludedDirectories();

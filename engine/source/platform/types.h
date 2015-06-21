@@ -79,6 +79,8 @@ static const F32 F32_MAX = F32(3.402823466e+38F);                 ///< Constant 
 // Metrowerks CodeWarrior
 #if defined(__MWERKS__)
 #  include "platform/types.codewarrior.h"
+#elif __clang__
+#  include "platform/types.clang.h"
 // Microsoft Visual C++/Visual.NET
 #elif defined(_MSC_VER)
 #  include "platform/types.visualc.h"

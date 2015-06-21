@@ -152,7 +152,7 @@ public:
 
     static void activatePackage(StringTableEntry name);
     static void deactivatePackage(StringTableEntry name);
-    static void dumpClasses( bool dumpScript = true, bool dumpEngine = true );
+    static DLL_PUBLIC void dumpClasses(bool dumpScript = true, bool dumpEngine = true);
     static void dumpFunctions( bool dumpScript = true, bool dumpEngine = true );
     static void printNamespaceEntries(Namespace * g, bool dumpScript = true, bool dumpEngine = true);
     static void unlinkPackages();

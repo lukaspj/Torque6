@@ -19,6 +19,7 @@
 *.exports
 *.opt
 *.tmp
+*.xdc
 Torque2D.app
 Torque2D_DEBUG.app
 Torque2D.exe

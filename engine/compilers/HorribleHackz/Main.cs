@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using HorribleHackz.CustomAttributes;
@@ -33,6 +34,9 @@ namespace HorribleHackz
          // Find the Databases by name
          ModuleDatabase = ModuleManager.Wrap("ModuleDatabase");
          AssetDatabase = AssetManager.Wrap("AssetDatabase");
+
+         Torque6_Bridge.SimObject Test = new Torque6_Bridge.SimObject(ModuleDatabase.ID);
+         Engine.Con.echo(Test.GetName());
 
          // Make sure they have been created
          if (!ModuleDatabase.IsAlive())

@@ -14,5 +14,10 @@ namespace IJWLayer
       static void SetBool(String^ name, bool val);
       static float GetFloat(String^ name);
       static void SetFloat(String^ name, float val);
+
+      static String^ getPrefsPath(String^ fileName);
+      static bool execPrefs(String^ fileName, bool noCalls, bool journalScript);
+      static void export(String^ wildCard, String^ fileName, bool append);
+      static void deleteVariables(String^ wildCard);
    };
 }

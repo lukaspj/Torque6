@@ -1,0 +1,6 @@
+E:\GitHub\Torque6\build\CPPSharp.exe.config
+E:\GitHub\Torque6\build\CPPSharp.exe
+E:\GitHub\Torque6\build\CPPSharp.pdb
+E:\GitHub\Torque6\engine\compilers\CPPSharp\obj\Debug\CPPSharp.csprojResolveAssemblyReference.cache
+E:\GitHub\Torque6\engine\compilers\CPPSharp\obj\Debug\CPPSharp.exe
+E:\GitHub\Torque6\engine\compilers\CPPSharp\obj\Debug\CPPSharp.pdb

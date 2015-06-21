@@ -1,6 +1,6 @@
 #pragma once
 
-namespace IJWLayer {
+//todo Vector2 console functions
 
 // #pragma unmanaged
 // push managed state on to stack and set unmanaged state
@@ -11,6 +11,8 @@ namespace IJWLayer {
 
 // #pragma unmanaged
 #pragma managed(pop)
+
+namespace IJWLayer {
 
 #define POINT_EPSILON (1e-4) ///< Epsilon for point types.
 

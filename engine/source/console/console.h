@@ -513,7 +513,7 @@ namespace Con
    /// @param _format   A stdlib printf style formatted out put string
    /// @param ...       Variables to be written
    /// @see Con::warnf()
-   void warnf(ConsoleLogEntry::Type type, const char *_format, ...);
+   void DLL_PUBLIC warnf(ConsoleLogEntry::Type type, const char *_format, ...);
 
    /// @note The console window colors warning text as RED.
    /// @param type      Allows you to associate the warning message with an internal module.
@@ -523,7 +523,7 @@ namespace Con
    void DLL_PUBLIC errorf(ConsoleLogEntry::Type type, const char *_format, ...);
 
    /// clear the console log
-   void cls( void );
+   void DLL_PUBLIC cls(void);
 
    /// Prints a separator to the console.
    inline void printSeparator( void ) { printf("--------------------------------------------------------------------------------"); }

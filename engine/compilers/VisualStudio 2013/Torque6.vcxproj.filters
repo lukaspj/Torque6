@@ -2913,6 +2913,9 @@
     <ClInclude Include="..\..\source\c-interface\c-interface.h">
       <Filter>c-interface</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\platform\types.clang.h">
+      <Filter>platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\source\math\mMath_ASM.asm">
