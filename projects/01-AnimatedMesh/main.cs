@@ -61,10 +61,19 @@ ModuleDatabase.scanModules( "../shared-modules" );
 
 // Load AppCore module.
 ModuleDatabase.LoadExplicit( "AppCore" );
+ModuleDatabase.LoadExplicit( "NetworkCore" );
 
 // Load the modules needed for this example
 ModuleDatabase.LoadExplicit( "Console" );
 ModuleDatabase.LoadExplicit( "FreeViewCamera" );
+ModuleDatabase.LoadExplicit( "ExampleRoom" );
+ModuleDatabase.LoadExplicit( "Skybox" );
+
+// Editor is not required, but try to load it anyway.
+ModuleDatabase.LoadExplicit( "Editor" );
+
+// Load the example itself.
+ModuleDatabase.LoadExplicit( "AnimatedMeshExample" );
 
 //-----------------------------------------------------------------------------
 

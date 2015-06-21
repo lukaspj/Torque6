@@ -37,7 +37,7 @@
 /// 2D integer point
 ///
 /// Uses S32 internally.
-class Point2I
+class DLL_PUBLIC Point2I
 {
    //-------------------------------------- Public data
   public:
@@ -154,7 +154,7 @@ public:
 
 //------------------------------------------------------------------------------
 /// 2D floating-point point.
-class Point2F
+class DLL_PUBLIC Point2F
 {
    //-------------------------------------- Public data
   public:
@@ -308,7 +308,7 @@ class Point2D
 
 
 //------------------------------------------------------------------------------
-class Point3F
+class DLL_PUBLIC Point3F
 {
    //-------------------------------------- Public data
   public:
@@ -468,7 +468,7 @@ public:
 /// Uses F32 internally.
 ///
 /// Useful for representing quaternions and other 4d beasties.
-class Point4F
+class DLL_PUBLIC Point4F
 {
    //-------------------------------------- Public data
   public:

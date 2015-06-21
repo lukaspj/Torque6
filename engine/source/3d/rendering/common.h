@@ -36,67 +36,112 @@
 #include <bgfx.h>
 #endif
 
+#ifndef _TEXTURE_OBJECT_H_
+#include "graphics/TextureObject.h"
+#endif
+
+#ifndef _GRAPHICS_CORE_H_
+#include "graphics/core.h"
+#endif
+
 #include "memory/safeDelete.h"
 
 namespace Rendering 
 {
-   struct TextureData
+   struct DLL_PUBLIC TextureData
    {
       bgfx::UniformHandle  uniform;
       bgfx::TextureHandle  handle;
       bool                 isDepthTexture;
+      bool                 isNormalTexture;
 
       TextureData()
       {
          isDepthTexture = false;
+         isNormalTexture = false;
          uniform.idx = bgfx::invalidHandle;
          handle.idx = bgfx::invalidHandle;
       }
    };
 
-   struct UniformData
+   struct DLL_PUBLIC UniformData
    {
       bgfx::UniformHandle  uniform;
-      void*                data;
       U32                  count;
+      void*                _dataPtr;
+      Point4F              _floatValues;
 
       UniformData()
       {
          uniform.idx = bgfx::invalidHandle;
-         data = NULL;
          count = 0;
+         _dataPtr = NULL;
       }
 
-      UniformData(bgfx::UniformHandle _uniform, void* _data = NULL, U32 _count = 1)
+      UniformData(bgfx::UniformHandle _uniform, U32 _count = 1)
       {
          uniform = _uniform;
-         data = _data;
          count = _count;
+         _dataPtr = NULL;
       }
 
       ~UniformData()
       {
-         SAFE_DELETE(data);
+         //
+      }
+
+      void setValue(F32 value)
+      {
+         _floatValues.set(value, 0.0f, 0.0f, 0.0f);
+         _dataPtr = &_floatValues.x;
+      }
+
+      void setValue(Point2F value)
+      {
+         _floatValues.set(value.x, value.y, 0.0f, 0.0f);
+         _dataPtr = &_floatValues.x;
+      }
+
+      void setValue(Point3F value)
+      {
+         _floatValues.set(value.x, value.y, value.z, 0.0f);
+         _dataPtr = &_floatValues.x;
+      }
+
+      void setValue(Point4F value)
+      {
+         _floatValues.set(value.x, value.y, value.z, value.w);
+         _dataPtr = &_floatValues.x;
       }
    };
 
-   struct UniformSet
+   struct DLL_PUBLIC UniformSet
    {
       Vector<UniformData>* uniforms;
+      bool                 _selfMade;
 
       UniformSet()
       {
+         _selfMade = false;
          uniforms = NULL;
       }
 
       ~UniformSet()
       {
-         SAFE_DELETE(uniforms);
+         if ( _selfMade )
+            SAFE_DELETE(uniforms);
       }
 
       void create()
       {
          uniforms = new Vector<UniformData>;
+         _selfMade = true;
+      }
+
+      void clear()
+      {
+         if ( !uniforms ) return;
+         uniforms->clear();
       }
 
       bool isEmpty()
@@ -113,7 +158,7 @@ namespace Rendering
       }
    };
 
-   struct LightData
+   struct DLL_PUBLIC LightData
    {
       Point3F              position;
       F32                  radius;
@@ -124,7 +169,7 @@ namespace Rendering
    extern Vector<LightData> lightList;
    Vector<LightData*> getNearestLights(Point3F position);
 
-   struct InstanceData
+   struct DLL_PUBLIC InstanceData
    {
       Point4F i_data0;
       Point4F i_data1;
@@ -134,13 +179,17 @@ namespace Rendering
    };
 
    // Current Size: 24 Bytes. 65k = ~1.5 MB of Memory
-   struct RenderData
+   struct DLL_PUBLIC RenderData
    {
       bool                             deleted;
       bool                             castShadow;
+      bool                             isDynamic;
 
+      bgfx::DynamicVertexBufferHandle  dynamicVertexBuffer;
+      bgfx::DynamicIndexBufferHandle   dynamicIndexBuffer;
       bgfx::VertexBufferHandle         vertexBuffer;
       bgfx::IndexBufferHandle          indexBuffer;
+
       bgfx::ProgramHandle              shader;
 
       Vector<InstanceData>*            instances;
@@ -149,8 +198,9 @@ namespace Rendering
 
       F32*                             transformTable;
       U8                               transformCount;
-      U8                               view;
+      Graphics::ViewTableEntry*        view;
       U64                              state;
+      U32                              stateRGBA;
 
       TextureData* addTexture()
       {
@@ -162,20 +212,53 @@ namespace Rendering
    extern U32 renderCount;
    RenderData* createRenderData();
 
-   extern bgfx::TextureHandle finalTexture;
-   bgfx::TextureHandle getFinalTexture();
-   extern bgfx::TextureHandle depthTexture;
-   bgfx::TextureHandle getDepthTexture();
+   extern bgfx::FrameBufferHandle   backBuffer; 
+   extern bgfx::TextureHandle       colorTexture;
+   extern bgfx::TextureHandle       normalTexture;
+   extern bgfx::TextureHandle       matInfoTexture;
+   extern bgfx::TextureHandle       depthTexture;
+
+   bgfx::FrameBufferHandle getBackBuffer();
+   bgfx::TextureHandle     getColorTexture();
+   bgfx::TextureHandle     getDepthTexture();
+   bgfx::TextureHandle     getNormalTexture();
+   bgfx::TextureHandle     getMatInfoTexture();
 
    // Canvas Information
    extern bool canvasSizeChanged;
-   extern U32 canvasWidth;
-   extern U32 canvasHeight;
-   extern U32 canvasClearColor;
+   extern U32  canvasWidth;
+   extern U32  canvasHeight;
+   extern U32  canvasClearColor;
+   void        updateCanvas(U32 width, U32 height, U32 clearColor = 0);
 
    // View/Projection
+   extern F32 nearPlane;
+   extern F32 farPlane;
    extern F32 viewMatrix[16];
    extern F32 projectionMatrix[16];
+   extern F32 projectionWidth;
+   extern F32 projectionHeight;
+   extern bgfx::UniformHandle u_camPos;
+   extern bgfx::UniformHandle u_sceneViewMat;
+   extern bgfx::UniformHandle u_sceneInvViewMat;
+   extern bgfx::UniformHandle u_sceneProjMat;
+   extern bgfx::UniformHandle u_sceneInvProjMat;
+   extern bgfx::UniformHandle u_sceneViewProjMat;
+   extern bgfx::UniformHandle u_sceneInvViewProjMat;
+
+
+   // Misc
+   extern bgfx::UniformHandle u_time;
+
+   // Render Layer Views
+   extern Graphics::ViewTableEntry* v_RenderLayer0;
+   extern Graphics::ViewTableEntry* v_RenderLayer1;
+   extern Graphics::ViewTableEntry* v_RenderLayer2;
+   extern Graphics::ViewTableEntry* v_RenderLayer3;
+   extern Graphics::ViewTableEntry* v_RenderLayer4;
+
+   Point2I worldToScreen(Point3F worldPos);
+   Point3F screenToWorld(Point2I screenPos);
 
    // Renderers
    void init();
@@ -183,7 +266,9 @@ namespace Rendering
    void resize();
    
    // Process Frame
-   void render(U32 width, U32 height, U32 clearColor = 0);
+   void preRender();
+   void render();
+   void postRender();
 
    // Debug Functions
    void testGetNearestLights();

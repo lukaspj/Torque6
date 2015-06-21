@@ -10,7 +10,7 @@
 
 #if BX_PLATFORM_WINDOWS
 #	if !BGFX_CONFIG_RENDERER_DIRECT3D9EX
-#		define D3D_DISABLE_9EX
+//#		define D3D_DISABLE_9EX
 #	endif // !BGFX_CONFIG_RENDERER_DIRECT3D9EX
 #	include <d3d9.h>
 
@@ -41,7 +41,7 @@
 #include "renderer.h"
 #include "renderer_d3d.h"
 
-namespace bgfx
+namespace bgfx { namespace d3d9
 {
 #	if defined(D3D_DISABLE_9EX)
 #		define D3DFMT_S8_LOCKABLE D3DFORMAT( 85)
@@ -129,11 +129,13 @@ namespace bgfx
 	{
 		IndexBufferD3D9()
 			: m_ptr(NULL)
+			, m_size(0)
+			, m_flags(BGFX_BUFFER_NONE)
 			, m_dynamic(false)
 		{
 		}
 
-		void create(uint32_t _size, void* _data);
+		void create(uint32_t _size, void* _data, uint16_t _flags);
 		void update(uint32_t _offset, uint32_t _size, void* _data, bool _discard = false)
 		{
 			void* buffer;
@@ -162,6 +164,7 @@ namespace bgfx
 
 		IDirect3DIndexBuffer9* m_ptr;
 		uint32_t m_size;
+		uint16_t m_flags;
 		bool m_dynamic;
 	};
 
@@ -386,6 +389,34 @@ namespace bgfx
 		bool m_needResolve;
 	};
 
-} // namespace bgfx
+	struct TimerQueryD3D9
+	{
+		TimerQueryD3D9()
+			: m_control(BX_COUNTOF(m_frame) )
+		{
+		}
+
+		void postReset();
+		void preReset();
+		void begin();
+		void end();
+		bool get();
+
+		struct Frame
+		{
+			IDirect3DQuery9* m_disjoint;
+			IDirect3DQuery9* m_start;
+			IDirect3DQuery9* m_end;
+			IDirect3DQuery9* m_freq;
+		};
+
+		uint64_t m_elapsed;
+		uint64_t m_frequency;
+
+		Frame m_frame[4];
+		bx::RingBufferControl m_control;
+	};
+
+} /* namespace d3d9 */ } // namespace bgfx
 
 #endif // BGFX_RENDERER_D3D9_H_HEADER_GUARD

@@ -32,6 +32,8 @@
 
 #include <bx/bx.h>
 
+BX_PRAGMA_DIAGNOSTIC_IGNORED_MSVC(4244); // warning C4244: '=' : conversion from '' to '', possible loss of data
+
 namespace
 {
 #include "vs_nanovg_fill.bin.h"
@@ -132,6 +134,7 @@ namespace
 
 		struct GLNVGtexture* textures;
 		float view[2];
+		float surface[2];
 		int ntextures;
 		int ctextures;
 		int textureId;
@@ -256,19 +259,19 @@ namespace
 						, true
 						);
 
-		gl->u_scissorMat      = bgfx::createUniform("u_scissorMat",      bgfx::UniformType::Uniform3x3fv);
-		gl->u_paintMat        = bgfx::createUniform("u_paintMat",        bgfx::UniformType::Uniform3x3fv);
-		gl->u_innerCol        = bgfx::createUniform("u_innerCol",        bgfx::UniformType::Uniform4fv);
-		gl->u_outerCol        = bgfx::createUniform("u_outerCol",        bgfx::UniformType::Uniform4fv);
-		gl->u_viewSize        = bgfx::createUniform("u_viewSize",        bgfx::UniformType::Uniform2fv);
-		gl->u_scissorExtScale = bgfx::createUniform("u_scissorExtScale", bgfx::UniformType::Uniform4fv);
-		gl->u_extentRadius    = bgfx::createUniform("u_extentRadius",    bgfx::UniformType::Uniform4fv);
-		gl->u_params          = bgfx::createUniform("u_params",          bgfx::UniformType::Uniform4fv);
-		gl->s_tex             = bgfx::createUniform("s_tex",             bgfx::UniformType::Uniform1i);
+		gl->u_scissorMat      = bgfx::createUniform("u_scissorMat",      bgfx::UniformType::Mat3);
+		gl->u_paintMat        = bgfx::createUniform("u_paintMat",        bgfx::UniformType::Mat3);
+		gl->u_innerCol        = bgfx::createUniform("u_innerCol",        bgfx::UniformType::Vec4);
+		gl->u_outerCol        = bgfx::createUniform("u_outerCol",        bgfx::UniformType::Vec4);
+		gl->u_viewSize        = bgfx::createUniform("u_viewSize",        bgfx::UniformType::Vec4);
+		gl->u_scissorExtScale = bgfx::createUniform("u_scissorExtScale", bgfx::UniformType::Vec4);
+		gl->u_extentRadius    = bgfx::createUniform("u_extentRadius",    bgfx::UniformType::Vec4);
+		gl->u_params          = bgfx::createUniform("u_params",          bgfx::UniformType::Vec4);
+		gl->s_tex             = bgfx::createUniform("s_tex",             bgfx::UniformType::Int1);
 
 		if (bgfx::getRendererType() == bgfx::RendererType::Direct3D9)
 		{
-			gl->u_halfTexel   = bgfx::createUniform("u_halfTexel",       bgfx::UniformType::Uniform4fv);
+			gl->u_halfTexel   = bgfx::createUniform("u_halfTexel",       bgfx::UniformType::Vec4);
 		}
 		else
 		{
@@ -308,14 +311,13 @@ namespace
 		const bgfx::Memory* mem = NULL;
 		if (NULL != _rgba)
 		{
-			mem = bgfx::alloc(tex->height * pitch);
-			bgfx::imageSwizzleBgra8(tex->width, tex->height, pitch, _rgba, mem->data);
+			mem = bgfx::copy(_rgba, tex->height * pitch);
 		}
 
 		tex->id = bgfx::createTexture2D(tex->width
 						, tex->height
 						, 1
-						, NVG_TEXTURE_RGBA == _type ? bgfx::TextureFormat::BGRA8 : bgfx::TextureFormat::R8
+						, NVG_TEXTURE_RGBA == _type ? bgfx::TextureFormat::RGBA8 : bgfx::TextureFormat::R8
 						, BGFX_TEXTURE_NONE
 						, mem
 						);
@@ -516,11 +518,13 @@ namespace
 		gl->th = handle;
 	}
 
-	static void nvgRenderViewport(void* _userPtr, int width, int height)
+	static void nvgRenderViewport(void* _userPtr, int width, int height, int surfaceWidth, int surfaceHeight)
 	{
 		struct GLNVGcontext* gl = (struct GLNVGcontext*)_userPtr;
 		gl->view[0] = (float)width;
 		gl->view[1] = (float)height;
+		gl->surface[0] = (float)surfaceWidth;
+		gl->surface[1] = (float)surfaceHeight;
 		bgfx::setViewRect(gl->viewid, 0, 0, width, height);
 	}
 
@@ -720,7 +724,7 @@ namespace
 								);
 			}
 
-			bgfx::setUniform(gl->u_viewSize, gl->view);
+			bgfx::setUniform(gl->u_viewSize, gl->surface);
 
 			for (uint32_t ii = 0, num = gl->ncalls; ii < num; ++ii)
 			{
@@ -1051,7 +1055,34 @@ error:
 	return NULL;
 }
 
+void nvgViewId(struct NVGcontext* ctx, unsigned char viewid)
+{
+	struct NVGparams* params = nvgInternalParams(ctx);
+	struct GLNVGcontext* gl = (struct GLNVGcontext*)params->userPtr;
+	gl->viewid = uint8_t(viewid);
+}
+
 void nvgDelete(struct NVGcontext* ctx)
 {
 	nvgDeleteInternal(ctx);
+}
+
+// andrewmac:
+int nvgCreateImageBGFX(struct NVGcontext* ctx, int w, int h, int imageFlags, bgfx::TextureHandle texture)
+{
+	struct NVGparams* params = nvgInternalParams(ctx);
+	struct GLNVGcontext* gl = (struct GLNVGcontext*)params->userPtr;
+   struct GLNVGtexture* tex = glnvg__allocTexture(gl);
+
+   if (tex == NULL)
+   {
+	   return 0;
+   }
+
+   tex->width  = w;
+   tex->height = h;
+   tex->type   = NVG_TEXTURE_RGBA;
+   tex->flags  = imageFlags;
+   tex->id = texture;
+   return tex->id.idx;
 }

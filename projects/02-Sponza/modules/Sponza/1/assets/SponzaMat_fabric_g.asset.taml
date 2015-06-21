@@ -1,5 +1,5 @@
-<ForwardMaterialAsset
+<MaterialAsset
     AssetName="SponzaMat_fabric_g"
-    ShaderAsset="Sponza:forwardShader"
+    TemplateFile="sponzaMaterial.taml"
     Texture0="./models/textures/sponza_curtain_blue_diff.dds"
 />

@@ -1,5 +1,5 @@
-<ForwardMaterialAsset
+<MaterialAsset
     AssetName="SponzaMat_arch"
-    ShaderAsset="Sponza:forwardShader"
+    TemplateFile="sponzaMaterial.taml"
     Texture0="./models/textures/sponza_arch_diff.png"
 />

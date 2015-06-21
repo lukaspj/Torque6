@@ -27,10 +27,6 @@
 #include "platform/event.h"
 #endif
 
-#ifndef _WINDOWS_
-#include <windows.h> 
-#endif
-
 #ifndef _TICKABLE_H_
 #include "platform/Tickable.h"
 #endif
@@ -48,9 +44,9 @@ namespace Plugins
    class Plugin : public virtual Tickable, public virtual Renderable
    {
       protected:
-         bool        mLoaded;
-         HINSTANCE   mHInst;
-         char        mPath[1024];
+         bool              mLoaded;
+         LIBRARY_HANDLE    mHInst;
+         char              mPath[1024];
 
       public:
          Plugin();
@@ -68,7 +64,7 @@ namespace Plugins
          virtual void postRender();
 
          // Function Pointers
-         PLUGIN_FUNC_PTR(create, PluginLink link)
+         PLUGIN_FUNC_PTR(create)
          PLUGIN_FUNC_PTR(destroy)
 
          PLUGIN_FUNC_PTR(interpolateTick, F32 delta)
@@ -80,13 +76,17 @@ namespace Plugins
          PLUGIN_FUNC_PTR(postRender)
    };
 
-   extern Vector<Plugin> pluginList;
+   extern Vector<Plugin> _pluginList;
 
    // 
    void init();
    void destroy();
 
    bool load(const char* path);
+
+   void addPluginAPI(PluginAPI* api);
+   PluginAPI* getPluginAPI(const char* name);
+   void requestPluginAPI(const char* name, void (*requestCallback)(PluginAPI* api));
 }
 
 #endif // _PLUGINS_H_

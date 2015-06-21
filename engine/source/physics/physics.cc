@@ -24,7 +24,7 @@
 
 #include "console/consoleInternal.h"
 #include "graphics/shaders.h"
-#include "graphics/utilities.h"
+#include "graphics/core.h"
 #include "3d/rendering/common.h"
 #include "3d/rendering/renderable.h"
 
@@ -35,16 +35,40 @@
 
 namespace Physics
 {
+   bool paused = false;
    PhysicsEngine* engine = NULL;
 
    // Init/Destroy
    void init()
    {
-      engine = new PhysicsEngine();
+      engine = new BulletPhysicsEngine();
+      engine->setRunning(true);
    }
 
    void destroy()
    {
       SAFE_DELETE(engine);
+   }
+
+   void pause()
+   {
+      paused = true;
+      engine->setRunning(false);
+   }
+
+   void resume()
+   {
+      paused = false;
+      engine->setRunning(true);
+   }
+
+   PhysicsObject* getPhysicsObject(void* _user)
+   {
+      return engine->getPhysicsObject(_user);
+   }
+
+   void deletePhysicsObject(PhysicsObject* _obj)
+   {
+      engine->deletePhysicsObject(_obj);
    }
 }

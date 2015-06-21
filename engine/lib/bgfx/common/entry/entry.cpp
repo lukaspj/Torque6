@@ -29,10 +29,165 @@ namespace entry
 #if ENTRY_CONFIG_IMPLEMENT_DEFAULT_ALLOCATOR
 	bx::ReallocatorI* getDefaultAllocator()
 	{
+BX_PRAGMA_DIAGNOSTIC_PUSH();
+BX_PRAGMA_DIAGNOSTIC_IGNORED_MSVC(4459); // warning C4459: declaration of 's_allocator' hides global declaration
+BX_PRAGMA_DIAGNOSTIC_IGNORED_CLANG_GCC("-Wshadow");
 		static bx::CrtAllocator s_allocator;
 		return &s_allocator;
+BX_PRAGMA_DIAGNOSTIC_POP();
 	}
 #endif // ENTRY_CONFIG_IMPLEMENT_DEFAULT_ALLOCATOR
+
+	static const char* s_keyName[] =
+	{
+		"None",
+		"Esc",
+		"Return",
+		"Tab",
+		"Space",
+		"Backspace",
+		"Up",
+		"Down",
+		"Left",
+		"Right",
+		"Insert",
+		"Delete",
+		"Home",
+		"End",
+		"PageUp",
+		"PageDown",
+		"Print",
+		"Plus",
+		"Minus",
+		"LeftBracket",
+		"RightBracket",
+		"Semicolon",
+		"Quote",
+		"Comma",
+		"Period",
+		"Slash",
+		"Backslash",
+		"Tilde",
+		"F1",
+		"F2",
+		"F3",
+		"F4",
+		"F5",
+		"F6",
+		"F7",
+		"F8",
+		"F9",
+		"F10",
+		"F11",
+		"F12",
+		"NumPad0",
+		"NumPad1",
+		"NumPad2",
+		"NumPad3",
+		"NumPad4",
+		"NumPad5",
+		"NumPad6",
+		"NumPad7",
+		"NumPad8",
+		"NumPad9",
+		"Key0",
+		"Key1",
+		"Key2",
+		"Key3",
+		"Key4",
+		"Key5",
+		"Key6",
+		"Key7",
+		"Key8",
+		"Key9",
+		"KeyA",
+		"KeyB",
+		"KeyC",
+		"KeyD",
+		"KeyE",
+		"KeyF",
+		"KeyG",
+		"KeyH",
+		"KeyI",
+		"KeyJ",
+		"KeyK",
+		"KeyL",
+		"KeyM",
+		"KeyN",
+		"KeyO",
+		"KeyP",
+		"KeyQ",
+		"KeyR",
+		"KeyS",
+		"KeyT",
+		"KeyU",
+		"KeyV",
+		"KeyW",
+		"KeyX",
+		"KeyY",
+		"KeyZ",
+		"GamepadA",
+		"GamepadB",
+		"GamepadX",
+		"GamepadY",
+		"GamepadThumbL",
+		"GamepadThumbR",
+		"GamepadShoulderL",
+		"GamepadShoulderR",
+		"GamepadUp",
+		"GamepadDown",
+		"GamepadLeft",
+		"GamepadRight",
+		"GamepadBack",
+		"GamepadStart",
+		"GamepadGuide",
+	};
+	BX_STATIC_ASSERT(Key::Count == BX_COUNTOF(s_keyName) );
+
+	const char* getName(Key::Enum _key)
+	{
+		BX_CHECK(_key < Key::Count, "Invalid key %d.", _key);
+		return s_keyName[_key];
+	}
+
+	char keyToAscii(Key::Enum _key, uint8_t _modifiers)
+	{
+		const bool isAscii = (Key::Key0 <= _key && _key <= Key::KeyZ)
+						  || (Key::Esc  <= _key && _key <= Key::Minus);
+		if (!isAscii)
+		{
+			return '\0';
+		}
+
+		const bool isNumber = (Key::Key0 <= _key && _key <= Key::Key9);
+		if (isNumber)
+		{
+			return '0' + (_key - Key::Key0);
+		}
+
+		const bool isChar = (Key::KeyA <= _key && _key <= Key::KeyZ);
+		if (isChar)
+		{
+			enum { ShiftMask = Modifier::LeftShift|Modifier::RightShift };
+
+			const bool shift = !!(_modifiers&ShiftMask);
+			return (shift ? 'A' : 'a') + (_key - Key::KeyA);
+		}
+
+		switch (_key)
+		{
+		case Key::Esc:       return 0x1b;
+		case Key::Return:    return '\n';
+		case Key::Tab:       return '\t';
+		case Key::Space:     return ' ';
+		case Key::Backspace: return 0x08;
+		case Key::Plus:      return '+';
+		case Key::Minus:     return '-';
+		default:             break;
+		}
+
+		return '\0';
+	}
 
 	bool setOrToggle(uint32_t& _flags, const char* _name, uint32_t _bit, int _first, int _argc, char const* const* _argv)
 	{
@@ -55,11 +210,6 @@ namespace entry
 		return false;
 	}
 
-	void cmd(const void* _userData)
-	{
-		cmdExec( (const char*)_userData);
-	}
-
 	int cmdMouseLock(CmdContext* /*_context*/, void* /*_userData*/, int _argc, char const* const* _argv)
 	{
 		if (_argc > 1)
@@ -75,12 +225,15 @@ namespace entry
 	{
 		if (_argc > 1)
 		{
-			if (setOrToggle(s_reset, "vsync",       BGFX_RESET_VSYNC,         1, _argc, _argv)
-			||  setOrToggle(s_reset, "maxaniso",    BGFX_RESET_MAXANISOTROPY, 1, _argc, _argv)
-			||  setOrToggle(s_reset, "hmd",         BGFX_RESET_HMD,           1, _argc, _argv)
-			||  setOrToggle(s_reset, "hmddbg",      BGFX_RESET_HMD_DEBUG,     1, _argc, _argv)
-			||  setOrToggle(s_reset, "hmdrecenter", BGFX_RESET_HMD_RECENTER,  1, _argc, _argv)
-			||  setOrToggle(s_reset, "msaa",        BGFX_RESET_MSAA_X16,      1, _argc, _argv) )
+			if (setOrToggle(s_reset, "vsync",       BGFX_RESET_VSYNC,              1, _argc, _argv)
+			||  setOrToggle(s_reset, "maxaniso",    BGFX_RESET_MAXANISOTROPY,      1, _argc, _argv)
+			||  setOrToggle(s_reset, "hmd",         BGFX_RESET_HMD,                1, _argc, _argv)
+			||  setOrToggle(s_reset, "hmddbg",      BGFX_RESET_HMD_DEBUG,          1, _argc, _argv)
+			||  setOrToggle(s_reset, "hmdrecenter", BGFX_RESET_HMD_RECENTER,       1, _argc, _argv)
+			||  setOrToggle(s_reset, "msaa",        BGFX_RESET_MSAA_X16,           1, _argc, _argv)
+			||  setOrToggle(s_reset, "flush",       BGFX_RESET_FLUSH_AFTER_RENDER, 1, _argc, _argv)
+			||  setOrToggle(s_reset, "flip",        BGFX_RESET_FLIP_AFTER_RENDER,  1, _argc, _argv)
+			   )
 			{
 				return 0;
 			}
@@ -110,6 +263,12 @@ namespace entry
 
 				return 0;
 			}
+			else if (0 == strcmp(_argv[1], "fullscreen") )
+			{
+				WindowHandle window = { 0 };
+				toggleFullscreen(window);
+				return 0;
+			}
 		}
 
 		return 1;
@@ -123,17 +282,22 @@ namespace entry
 
 	static const InputBinding s_bindings[] =
 	{
-		{ entry::Key::KeyQ,         entry::Modifier::LeftCtrl,  1, cmd, "exit"                              },
-		{ entry::Key::F1,           entry::Modifier::None,      1, cmd, "graphics stats"                    },
-		{ entry::Key::GamepadStart, entry::Modifier::None,      1, cmd, "graphics stats"                    },
-		{ entry::Key::F1,           entry::Modifier::LeftShift, 1, cmd, "graphics stats 0\ngraphics text 0" },
-		{ entry::Key::F3,           entry::Modifier::None,      1, cmd, "graphics wireframe"                },
-		{ entry::Key::F4,           entry::Modifier::None,      1, cmd, "graphics hmd"                      },
-		{ entry::Key::F4,           entry::Modifier::LeftShift, 1, cmd, "graphics hmdrecenter"              },
-		{ entry::Key::F4,           entry::Modifier::LeftCtrl,  1, cmd, "graphics hmddbg"                   },
-		{ entry::Key::F7,           entry::Modifier::None,      1, cmd, "graphics vsync"                    },
-		{ entry::Key::F8,           entry::Modifier::None,      1, cmd, "graphics msaa"                     },
-		{ entry::Key::Print,        entry::Modifier::None,      1, cmd, "graphics screenshot"               },
+		{ entry::Key::KeyQ,         entry::Modifier::LeftCtrl,  1, NULL, "exit"                              },
+		{ entry::Key::KeyQ,         entry::Modifier::RightCtrl, 1, NULL, "exit"                              },
+		{ entry::Key::KeyF,         entry::Modifier::LeftCtrl,  1, NULL, "graphics fullscreen"               },
+		{ entry::Key::KeyF,         entry::Modifier::RightCtrl, 1, NULL, "graphics fullscreen"               },
+		{ entry::Key::F11,          entry::Modifier::None,      1, NULL, "graphics fullscreen"               },
+		{ entry::Key::F1,           entry::Modifier::None,      1, NULL, "graphics stats"                    },
+		{ entry::Key::GamepadStart, entry::Modifier::None,      1, NULL, "graphics stats"                    },
+		{ entry::Key::F1,           entry::Modifier::LeftShift, 1, NULL, "graphics stats 0\ngraphics text 0" },
+		{ entry::Key::F3,           entry::Modifier::None,      1, NULL, "graphics wireframe"                },
+		{ entry::Key::F4,           entry::Modifier::None,      1, NULL, "graphics hmd"                      },
+		{ entry::Key::F4,           entry::Modifier::LeftShift, 1, NULL, "graphics hmdrecenter"              },
+		{ entry::Key::F4,           entry::Modifier::LeftCtrl,  1, NULL, "graphics hmddbg"                   },
+		{ entry::Key::F7,           entry::Modifier::None,      1, NULL, "graphics vsync"                    },
+		{ entry::Key::F8,           entry::Modifier::None,      1, NULL, "graphics msaa"                     },
+		{ entry::Key::F9,           entry::Modifier::None,      1, NULL, "graphics flush"                    },
+		{ entry::Key::Print,        entry::Modifier::None,      1, NULL, "graphics screenshot"               },
 
 		INPUT_BINDING_END
 	};

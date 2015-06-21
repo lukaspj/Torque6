@@ -37,31 +37,11 @@ namespace Graphics
 
    extern bgfx::VertexBufferHandle cubeVB;
    extern bgfx::IndexBufferHandle  cubeIB;
+   extern bgfx::VertexBufferHandle planeVB;
+   extern bgfx::IndexBufferHandle  planeIB;
 
    void initUtilities();
    void destroyUtilities();
-
-   enum ViewTable
-   {
-      TorqueGUIBottom,
-
-      ShadowMap,
-
-      DeferredGeometry,
-      DeferredLight,
-      DeferredCombined,
-      Forward,
-
-      RenderLayer0,
-      RenderLayer1,
-      RenderLayer2,
-      RenderLayer3,
-      RenderLayer4,
-
-      TorqueGUITop,
-      SysGUI,
-      COUNT
-   };
 
    // Vertex Layout
    struct PosUVVertex
@@ -78,6 +58,30 @@ namespace Graphics
 			   .begin()
 			   .add(bgfx::Attrib::Position,  3, bgfx::AttribType::Float)
 			   .add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float)
+			   .end();
+	   }
+
+	   static bgfx::VertexDecl ms_decl;
+   };
+
+   struct PosUVNormalVertex
+   {
+	   F32 m_x;
+	   F32 m_y;
+	   F32 m_z;
+	   F32 m_u;
+	   F32 m_v;
+      F32 m_normal_x;
+      F32 m_normal_y;
+      F32 m_normal_z;
+
+	   static void init()
+	   {
+		   ms_decl
+			   .begin()
+			   .add(bgfx::Attrib::Position,  3, bgfx::AttribType::Float)
+			   .add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float)
+            .add(bgfx::Attrib::Normal,    3, bgfx::AttribType::Float)
 			   .end();
 	   }
 

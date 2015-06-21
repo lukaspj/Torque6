@@ -48,6 +48,7 @@ namespace Graphics
          Shader();
          ~Shader();
 
+         bool loaded;
          bool load(const char* vertex_shader_path, const char* fragment_shader_path);
          void unload();
 
@@ -63,13 +64,12 @@ namespace Graphics
          bgfx::ProgramHandle mProgram;
 
          static bgfx::UniformHandle textureUniforms[16];
-         static bgfx::UniformHandle getShadowmapUniform();
+         static bgfx::UniformHandle getShadowMapUniform(U32 cascade = 0);
          static bgfx::UniformHandle getTextureUniform(U32 slot);
          static HashMap<const char*, bgfx::UniformHandle> uniformMap;
          static bgfx::UniformHandle getUniform(const char* name, bgfx::UniformType::Enum type, U32 count = 1);
-         static bgfx::UniformHandle getUniformVec3(const char* name, U32 count = 1);
          static bgfx::UniformHandle getUniformVec4(const char* name, U32 count = 1);
-         static bgfx::UniformHandle getUniform4x4Matrix(const char* name, U32 count = 1);
+         static bgfx::UniformHandle getUniformMat4(const char* name, U32 count = 1);
    };
 
    //-----------------------------------------------------------------------------
@@ -127,7 +127,8 @@ namespace Graphics
    extern char shaderVaryingPath[1024];
    extern Shader shaderList[256];
    extern U32 shaderCount;
-   Shader* getShader(const char* vertex_shader_path, const char* fragment_shader_path);
+   void destroyShader(Shader* shader);
+   Shader* getShader(const char* vertex_shader_path, const char* fragment_shader_path, bool defaultPath = true);
    ShaderAsset* getShaderAsset(const char* id);
 
    void initUniforms();

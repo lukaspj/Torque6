@@ -19,10 +19,10 @@ BX_PRAGMA_DIAGNOSTIC_IGNORED_GCC("-Wpragmas");
 BX_PRAGMA_DIAGNOSTIC_IGNORED_MSVC(4005) // warning C4005: '' : macro redefinition
 #define D3D11_NO_HELPERS
 #if BX_PLATFORM_WINRT
-#include <d3d11_2.h>
+#	include <d3d11_2.h>
 #else
-#include <d3d11.h>
-#endif
+#	include <d3d11.h>
+#endif // BX_PLATFORM_WINRT
 BX_PRAGMA_DIAGNOSTIC_POP()
 
 #include "renderer.h"
@@ -49,28 +49,57 @@ BX_PRAGMA_DIAGNOSTIC_POP()
 #	define D3D_FEATURE_LEVEL_11_1 D3D_FEATURE_LEVEL(0xb100)
 #endif // D3D_FEATURE_LEVEL_11_1
 
+#if defined(__MINGW32__)
 // MinGW Linux/Wine missing defines...
-#ifndef D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT
-#	define D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT 8
-#endif // D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT
+#	ifndef D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT
+#		define D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT 8
+#	endif // D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT
 
-#ifndef D3D11_PS_CS_UAV_REGISTER_COUNT
-#	define D3D11_PS_CS_UAV_REGISTER_COUNT 8
-#endif // D3D11_PS_CS_UAV_REGISTER_COUNT
+#	ifndef D3D11_PS_CS_UAV_REGISTER_COUNT
+#		define D3D11_PS_CS_UAV_REGISTER_COUNT 8
+#	endif // D3D11_PS_CS_UAV_REGISTER_COUNT
 
-#ifndef D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT
-#	define D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT 8
-#endif
+#	ifndef D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT
+#		define D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT 8
+#	endif
 
-#ifndef D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT
-#	define D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT 8
-#endif // D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT
+#	ifndef D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT
+#		define D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT 8
+#	endif // D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT
 
-#ifndef D3D11_APPEND_ALIGNED_ELEMENT
-#	define D3D11_APPEND_ALIGNED_ELEMENT UINT32_MAX
-#endif // D3D11_APPEND_ALIGNED_ELEMENT
+#	ifndef D3D11_APPEND_ALIGNED_ELEMENT
+#		define D3D11_APPEND_ALIGNED_ELEMENT UINT32_MAX
+#	endif // D3D11_APPEND_ALIGNED_ELEMENT
 
-namespace bgfx
+#	ifndef D3D11_REQ_MAXANISOTROPY
+#		define	D3D11_REQ_MAXANISOTROPY	16
+#	endif // D3D11_REQ_MAXANISOTROPY
+
+typedef void ID3D11InfoQueue;
+
+#endif // __MINGW32__
+
+#ifndef D3D_FL9_1_REQ_TEXTURE2D_U_OR_V_DIMENSION
+#	define D3D_FL9_1_REQ_TEXTURE2D_U_OR_V_DIMENSION 2048
+#endif // D3D_FL9_1_REQ_TEXTURE2D_U_OR_V_DIMENSION
+
+#ifndef D3D_FL9_3_REQ_TEXTURE2D_U_OR_V_DIMENSION
+#	define D3D_FL9_3_REQ_TEXTURE2D_U_OR_V_DIMENSION 4096
+#endif // D3D_FL9_3_REQ_TEXTURE2D_U_OR_V_DIMENSION
+
+#ifndef D3D_FL9_1_SIMULTANEOUS_RENDER_TARGET_COUNT
+#	define D3D_FL9_1_SIMULTANEOUS_RENDER_TARGET_COUNT 1
+#endif // D3D_FL9_1_SIMULTANEOUS_RENDER_TARGET_COUNT
+
+#ifndef D3D_FL9_3_SIMULTANEOUS_RENDER_TARGET_COUNT
+#	define D3D_FL9_3_SIMULTANEOUS_RENDER_TARGET_COUNT 4
+#endif // D3D_FL9_3_SIMULTANEOUS_RENDER_TARGET_COUNT
+
+#ifndef D3D_FL9_1_DEFAULT_MAX_ANISOTROPY
+#	define D3D_FL9_1_DEFAULT_MAX_ANISOTROPY 2
+#endif // D3D_FL9_1_DEFAULT_MAX_ANISOTROPY
+
+namespace bgfx { namespace d3d11
 {
 	struct BufferD3D11
 	{
@@ -78,11 +107,12 @@ namespace bgfx
 			: m_ptr(NULL)
 			, m_srv(NULL)
 			, m_uav(NULL)
+			, m_flags(BGFX_BUFFER_NONE)
 			, m_dynamic(false)
 		{
 		}
 
-		void create(uint32_t _size, void* _data, uint8_t _flags, uint16_t _stride = 0, bool _vertex = true);
+		void create(uint32_t _size, void* _data, uint16_t _flags, uint16_t _stride = 0, bool _vertex = false);
 		void update(uint32_t _offset, uint32_t _size, void* _data, bool _discard = false);
 
 		void destroy()
@@ -101,6 +131,7 @@ namespace bgfx
 		ID3D11ShaderResourceView*  m_srv;
 		ID3D11UnorderedAccessView* m_uav;
 		uint32_t m_size;
+		uint16_t m_flags;
 		bool m_dynamic;
 	};
 
@@ -113,7 +144,7 @@ namespace bgfx
 		{
 		}
 
-		void create(uint32_t _size, void* _data, VertexDeclHandle _declHandle, uint8_t _flags);
+		void create(uint32_t _size, void* _data, VertexDeclHandle _declHandle, uint16_t _flags);
 
 		VertexDeclHandle m_decl;
 	};
@@ -261,14 +292,18 @@ namespace bgfx
 	struct FrameBufferD3D11
 	{
 		FrameBufferD3D11()
-			: m_denseIdx(UINT16_MAX)
+			: m_dsv(NULL)
+			, m_denseIdx(UINT16_MAX)
 			, m_num(0)
+			, m_numTh(0)
 		{
 		}
 
 		void create(uint8_t _num, const TextureHandle* _handles);
 		void create(uint16_t _denseIdx, void* _nwh, uint32_t _width, uint32_t _height, TextureFormat::Enum _depthFormat);
 		uint16_t destroy();
+		void preReset();
+		void postReset();
 		void resolve();
 		void clear(const Clear& _clear, const float _palette[][4]);
 
@@ -278,8 +313,37 @@ namespace bgfx
 		IDXGISwapChain* m_swapChain;
 		uint16_t m_denseIdx;
 		uint8_t m_num;
+		uint8_t m_numTh;
+		TextureHandle m_th[BGFX_CONFIG_MAX_FRAME_BUFFER_ATTACHMENTS];
 	};
 
-} // namespace bgfx
+	struct TimerQueryD3D11
+	{
+		TimerQueryD3D11()
+			: m_control(BX_COUNTOF(m_frame) )
+		{
+		}
+
+		void postReset();
+		void preReset();
+		void begin();
+		void end();
+		bool get();
+
+		struct Frame
+		{
+			ID3D11Query* m_disjoint;
+			ID3D11Query* m_start;
+			ID3D11Query* m_end;
+		};
+
+		uint64_t m_elapsed;
+		uint64_t m_frequency;
+
+		Frame m_frame[4];
+		bx::RingBufferControl m_control;
+	};
+
+} /*  namespace d3d11 */ } // namespace bgfx
 
 #endif // BGFX_RENDERER_D3D11_H_HEADER_GUARD

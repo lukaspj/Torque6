@@ -504,6 +504,9 @@ int main(int _argc, const char* _argv[])
 				Triangle triangle;
 				memset(&triangle, 0, sizeof(Triangle) );
 
+				const int numNormals   = (int)normals.size();
+				const int numTexcoords = (int)texcoords.size();
+				const int numPositions = (int)positions.size();
 				for (uint32_t edge = 0, numEdges = argc-1; edge < numEdges; ++edge)
 				{
 					Index3 index;
@@ -521,13 +524,20 @@ int main(int _argc, const char* _argv[])
 						if (NULL != normal)
 						{
 							*normal++ = '\0';
-							index.m_normal = atoi(normal)-1;
+							const int nn = atoi(normal);
+							index.m_normal = (nn < 0) ? nn+numNormals : nn-1;
 						}
 
-						index.m_texcoord = atoi(texcoord)-1;
+						// https://en.wikipedia.org/wiki/Wavefront_.obj_file#Vertex_Normal_Indices_Without_Texture_Coordinate_Indices
+						if(*texcoord != '\0')
+						{
+							const int tex = atoi(texcoord);
+							index.m_texcoord = (tex < 0) ? tex+numTexcoords : tex-1;
+						}
 					}
 
-					index.m_position = atoi(vertex)-1;
+					const int pos = atoi(vertex);
+					index.m_position = (pos < 0) ? pos+numPositions : pos-1;
 
 					uint64_t hash0 = index.m_position;
 					uint64_t hash1 = uint64_t(index.m_texcoord)<<20;
@@ -710,7 +720,7 @@ int main(int _argc, const char* _argv[])
 	bool hasTexcoord;
 	{
 		Index3Map::const_iterator it = indexMap.begin();
-		hasNormal = -1 != it->second.m_normal;
+		hasNormal   = -1 != it->second.m_normal;
 		hasTexcoord = -1 != it->second.m_texcoord;
 
 		if (!hasTexcoord
@@ -718,9 +728,9 @@ int main(int _argc, const char* _argv[])
 		{
 			hasTexcoord = true;
 
-			for (Index3Map::iterator it = indexMap.begin(), itEnd = indexMap.end(); it != itEnd; ++it)
+			for (Index3Map::iterator jt = indexMap.begin(), jtEnd = indexMap.end(); jt != jtEnd; ++jt)
 			{
-				it->second.m_texcoord = it->second.m_position;
+				jt->second.m_texcoord = jt->second.m_position;
 			}
 		}
 
@@ -729,9 +739,9 @@ int main(int _argc, const char* _argv[])
 		{
 			hasNormal = true;
 
-			for (Index3Map::iterator it = indexMap.begin(), itEnd = indexMap.end(); it != itEnd; ++it)
+			for (Index3Map::iterator jt = indexMap.begin(), jtEnd = indexMap.end(); jt != jtEnd; ++jt)
 			{
-				it->second.m_normal = it->second.m_position;
+				jt->second.m_normal = jt->second.m_position;
 			}
 		}
 	}
@@ -842,14 +852,14 @@ int main(int _argc, const char* _argv[])
 				triReorderElapsed -= bx::getHPCounter();
 				for (PrimitiveArray::const_iterator primIt = primitives.begin(); primIt != primitives.end(); ++primIt)
 				{
-					const Primitive& prim = *primIt;
-					triangleReorder(indexData + prim.m_startIndex, prim.m_numIndices, numVertices, 32);
+					const Primitive& prim1 = *primIt;
+					triangleReorder(indexData + prim1.m_startIndex, prim1.m_numIndices, numVertices, 32);
 					if (compress)
 					{
 						triangleCompress(&memWriter
-							, indexData  + prim.m_startIndex
-							, prim.m_numIndices
-							, vertexData + prim.m_startVertex
+							, indexData  + prim1.m_startIndex
+							, prim1.m_numIndices
+							, vertexData + prim1.m_startVertex
 							, numVertices
 							, stride
 							);
@@ -962,14 +972,14 @@ int main(int _argc, const char* _argv[])
 		triReorderElapsed -= bx::getHPCounter();
 		for (PrimitiveArray::const_iterator primIt = primitives.begin(); primIt != primitives.end(); ++primIt)
 		{
-			const Primitive& prim = *primIt;
-			triangleReorder(indexData + prim.m_startIndex, prim.m_numIndices, numVertices, 32);
+			const Primitive& prim1 = *primIt;
+			triangleReorder(indexData + prim1.m_startIndex, prim1.m_numIndices, numVertices, 32);
 			if (compress)
 			{
 				triangleCompress(&memWriter
-					, indexData  + prim.m_startIndex
-					, prim.m_numIndices
-					, vertexData + prim.m_startVertex
+					, indexData  + prim1.m_startIndex
+					, prim1.m_numIndices
+					, vertexData + prim1.m_startVertex
 					, numVertices
 					, stride
 					);

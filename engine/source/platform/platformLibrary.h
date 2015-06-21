@@ -23,9 +23,16 @@
 #ifndef _PLATFORM_LIBRARY_H_
 #define _PLATFORM_LIBRARY_H_
 
+#include <cstring>
+
 //------------------------------------------------------------------------------
 
 #if defined _WIN32 || defined __CYGWIN__
+
+  #include <windows.h>
+  #define LIBRARY_HANDLE HMODULE
+  #define LIBRARY_FUNC FARPROC WINAPI
+
   #ifndef TORQUE_PLUGIN
     #ifdef __GNUC__
       #define DLL_PUBLIC __attribute__ ((dllexport))
@@ -44,7 +51,13 @@
     #endif
   #endif
   #define DLL_LOCAL
+
 #else
+
+  #include <dlfcn.h>
+  #define LIBRARY_HANDLE void*
+  #define LIBRARY_FUNC void*
+
   #if __GNUC__ >= 4
     #define DLL_PUBLIC __attribute__ ((visibility ("default")))
     #define DLL_LOCAL  __attribute__ ((visibility ("hidden")))
@@ -55,5 +68,10 @@
     #define DLL_PUBLIC_EXPORT
   #endif
 #endif
+
+// Library Functions
+DLL_PUBLIC LIBRARY_HANDLE  openLibrary(const char* name, const char* path = "");
+DLL_PUBLIC LIBRARY_FUNC    getLibraryFunc(LIBRARY_HANDLE lib, const char* func);
+DLL_PUBLIC void            closeLibrary(LIBRARY_HANDLE lib);
 
 #endif // _PLATFORM_LIBRARY_H_

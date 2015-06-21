@@ -25,8 +25,8 @@
 
 #include "console/consoleInternal.h"
 #include "graphics/shaders.h"
-#include "graphics/utilities.h"
-#include "3d/rendering/forwardRendering.h"
+#include "graphics/core.h"
+#include "3d/rendering/common.h"
 #include "platform/event.h"
 #include "gui/guiCanvas.h"
 
@@ -41,18 +41,36 @@ namespace Scene
 
    SceneCamera::SceneCamera()
    {
+      mHorizontalAngle = 0.0f;
+      mVerticalAngle = 0.0f;
+
+      mDirection = Point3F::Zero;
+      mLookAt = Point3F::Zero;
+      mUp = Point3F::Zero;
+      mPosition = Point3F::Zero;
       mPanVelocity = Point3F::Zero;
+
       mActive = false;
-	   setProcessTicks(false);
+      setProcessTicks(false);
       mBindMouse = false;
       mBindMouseLeftBtn = false;
       mBindMouseRightBtn = false;
-      Con::printf("Scene Camera Created!");
+      //Con::printf("Scene Camera Created!");
    }
 
    SceneCamera::~SceneCamera()
    {
-      Con::printf("Scene Camera Destroyed!");
+      //Con::printf("Scene Camera Destroyed!");
+   }
+
+   void SceneCamera::initPersistFields()
+   {
+       // Call parent.
+       Parent::initPersistFields();
+
+       addField("Position",         TypePoint3F,   Offset(mPosition, SceneCamera), "");
+       addField("HorizontalAngle",  TypeF32,       Offset(mHorizontalAngle, SceneCamera), "");
+       addField("VerticalAngle",    TypeF32,       Offset(mVerticalAngle, SceneCamera), "");
    }
 
    void SceneCamera::setActive(bool val)
@@ -97,8 +115,8 @@ namespace Scene
 			0,
 			mCos(mHorizontalAngle - bx::piHalf));
 
-      mPosition -= (direction * panDirection.z);
-      mPosition += (right * panDirection.x);
+      mPosition -= (direction * panDirection.z) * 0.1f;
+      mPosition += (right * panDirection.x) * 0.1f;
       refreshAngles();
    }
 
@@ -149,27 +167,6 @@ namespace Scene
 
    void SceneCamera::onMouseDownEvent(const GuiEvent &event)
    {
-      F32 x = (2.0f * event.mousePoint.x) / Rendering::canvasWidth - 1.0f;
-      F32 y = 1.0f - (2.0f * event.mousePoint.y) / Rendering::canvasHeight;
-      F32 z = -1.0f;
-      Point4F ray_clip(x, y, z, 1.0);
-
-      F32 invProjMtx[16];
-      bx::mtxInverse(invProjMtx, Rendering::projectionMatrix);
-
-      Point4F ray_eye;
-      bx::vec4MulMtx(ray_eye, ray_clip, invProjMtx);
-
-      F32 invViewMtx[16];
-      bx::mtxInverse(invViewMtx, Rendering::viewMatrix);
-
-      Point4F ray_wor;
-      bx::vec4MulMtx(ray_wor, ray_eye, invViewMtx);
-      Point3F ray_final(ray_wor.x, ray_wor.y, ray_wor.z);
-      ray_final.normalize();
-
-      Con::printf("Ray Vector: %f %f %f", ray_final.x, ray_final.y, ray_final.z);
-
       mMouseStartPosition.set(event.mousePoint.x, event.mousePoint.y);
    }
 
@@ -206,6 +203,18 @@ namespace Scene
    {  
       if ( mPanVelocity.len() > 0 )
 	      pan(mPanVelocity * timeDelta * 100.0f);
+   }
+
+   void SceneCamera::copy(SceneCamera* cam)
+   {
+      mHorizontalAngle = cam->mHorizontalAngle;
+      mVerticalAngle = cam->mVerticalAngle;
+      mDirection = cam->mDirection;
+      mLookAt = cam->mLookAt;
+      mUp = cam->mUp;
+      mPosition = cam->mPosition;
+      mPanVelocity = cam->mPanVelocity;
+      refreshAngles();
    }
 
 }

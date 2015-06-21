@@ -108,6 +108,8 @@ GuiCanvas::GuiCanvas()
    mUseBackgroundColor = true;
 
    // Initialize
+   Graphics::init();
+   Physics::init();
    Rendering::init();
    Scene::init();
 }
@@ -120,6 +122,8 @@ GuiCanvas::~GuiCanvas()
    // Destroy
    Scene::destroy();
    Rendering::destroy();
+   Physics::destroy();
+   Graphics::destroy();
 }
 
 
@@ -1299,7 +1303,8 @@ void GuiCanvas::renderFrame(bool preRenderOnly, bool bufferSwap /* = true */)
       }
 
       // Render 3D
-      Rendering::render(size.x, size.y, canvasClearColor);
+      Rendering::updateCanvas(size.x, size.y, canvasClearColor);
+      Rendering::render();
 
       // Need to wrap nanovg calls in begin/end.
       dglBeginFrame();

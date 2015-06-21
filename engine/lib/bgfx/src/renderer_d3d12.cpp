@@ -6,19 +6,19 @@
 #include "bgfx_p.h"
 
 #if BGFX_CONFIG_RENDERER_DIRECT3D12
-#	include "../../d3d12/src/renderer_d3d12.cpp"
+#	include "../../bgfx-ext/src/renderer_d3d12.cpp"
 #else
 
-namespace bgfx
+namespace bgfx { namespace d3d12
 {
-	RendererContextI* rendererCreateD3D12()
+	RendererContextI* rendererCreate()
 	{
 		return NULL;
 	}
 
-	void rendererDestroyD3D12()
+	void rendererDestroy()
 	{
 	}
-} // namespace bgfx
+} /* namespace d3d12 */ } // namespace bgfx
 
 #endif // BGFX_CONFIG_RENDERER_DIRECT3D12

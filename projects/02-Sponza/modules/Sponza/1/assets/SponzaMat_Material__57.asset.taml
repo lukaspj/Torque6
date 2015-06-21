@@ -1,5 +1,5 @@
-<ForwardMaterialAsset
+<MaterialAsset
     AssetName="SponzaMat_Material__57"
-    ShaderAsset="Sponza:forwardShader"
+    TemplateFile="sponzaMaterial.taml"
     Texture0="./models/textures/vase_plant.png"
 />

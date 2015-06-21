@@ -35,14 +35,9 @@
 #define BX_WARN  _BX_WARN
 #define BX_CHECK _BX_CHECK
 
-#ifndef SHADERC_CONFIG_DIRECT3D9
-#	define SHADERC_CONFIG_DIRECT3D9 BX_PLATFORM_WINDOWS
-#endif // SHADERC_CONFIG_DIRECT3D9
-
-#ifndef SHADERC_CONFIG_DIRECT3D11
-//#	define SHADERC_CONFIG_DIRECT3D11 BX_PLATFORM_WINDOWS
-#	define SHADERC_CONFIG_DIRECT3D11 0
-#endif // SHADERC_CONFIG_DIRECT3D11
+#ifndef SHADERC_CONFIG_HLSL
+#	define SHADERC_CONFIG_HLSL BX_PLATFORM_WINDOWS
+#endif // SHADERC_CONFIG_HLSL
 
 extern bool g_verbose;
 
@@ -66,21 +61,55 @@ extern bool g_verbose;
 #include <bx/hash.h>
 #include "../../src/vertexdecl.h"
 
+class LineReader
+{
+public:
+	LineReader(const char* _str)
+		: m_str(_str)
+		, m_pos(0)
+		, m_size((uint32_t)strlen(_str))
+	{
+	}
+
+	std::string getLine()
+	{
+		const char* str = &m_str[m_pos];
+		skipLine();
+
+		const char* eol = &m_str[m_pos];
+
+		std::string tmp;
+		tmp.assign(str, eol - str);
+		return tmp;
+	}
+
+	bool isEof() const
+	{
+		return m_str[m_pos] == '\0';
+	}
+
+	void skipLine()
+	{
+		const char* str = &m_str[m_pos];
+		const char* nl = bx::strnl(str);
+		m_pos += (uint32_t)(nl - str);
+	}
+
+	const char* m_str;
+	uint32_t m_pos;
+	uint32_t m_size;
+};
+
 struct UniformType
 {
 	enum Enum
 	{
-		Uniform1i,
-		Uniform1f,
+		Int1,
 		End,
 
-		Uniform1iv,
-		Uniform1fv,
-		Uniform2fv,
-		Uniform3fv,
-		Uniform4fv,
-		Uniform3x3fv,
-		Uniform4x4fv,
+		Vec4,
+		Mat3,
+		Mat4,
 
 		Count
 	};
@@ -107,26 +136,11 @@ void strreplace(char* _str, const char* _find, const char* _replace);
 int32_t writef(bx::WriterI* _writer, const char* _format, ...);
 void writeFile(const char* _filePath, const void* _data, int32_t _size);
 
-bool compileHLSLShaderDx9(bx::CommandLine& _cmdLine, const std::string& _code, bx::WriterI* _writer);
-bool compileHLSLShaderDx11(bx::CommandLine& _cmdLine, const std::string& _code, bx::WriterI* _writer);
+bool compileHLSLShader(bx::CommandLine& _cmdLine, uint32_t _d3d, const std::string& _code, bx::WriterI* _writer, bool firstPass = true);
 bool compileGLSLShader(bx::CommandLine& _cmdLine, uint32_t _gles, const std::string& _code, bx::WriterI* _writer);
 
-// andremwac: Compile Function
-int preprocessAndCompile(bx::CommandLine& cmdLine);
-
-#define BGFX_SHADERC_DEBUG                  UINT64_C(0x0000000000000001)
-#define BGFX_SHADERC_OPTIMIZE               UINT64_C(0x0000000000000002)
-#define BGFX_SHADERC_RAW                    UINT64_C(0x0000000000000004)
-#define BGFX_SHADERC_DEPENDS                UINT64_C(0x0000000000000008)
-#define BGFX_SHADERC_PREPROCESSONLY         UINT64_C(0x0000000000000010)
-#define BGFX_SHADERC_DISASSEMBLEASM         UINT64_C(0x0000000000000020)
-#define BGFX_SHADERC_AVOIDFLOWCONTROL       UINT64_C(0x0000000000000040)
-#define BGFX_SHADERC_NOPRESHADER            UINT64_C(0x0000000000000080)
-#define BGFX_SHADERC_PARTIALPRECISION       UINT64_C(0x0000000000000100)
-#define BGFX_SHADERC_PREFERFLOWCONTROL      UINT64_C(0x0000000000000200)
-#define BGFX_SHADERC_BACKWARDCOMPAT         UINT64_C(0x0000000000000400)
-#define BGFX_SHADERC_WARNINGSAREERRORS      UINT64_C(0x0000000000000800)
-
+// andrewmac:
+// -----------
 namespace bgfx
 {
 

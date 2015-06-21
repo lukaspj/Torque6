@@ -28,7 +28,7 @@
 #endif
 
 #ifndef _SCENEENTITY_H_
-#include "entity.h"
+#include <3d/entity/entity.h>
 #endif
 
 #ifndef _SCENECAMERA_H_
@@ -39,11 +39,19 @@
 #include <physics/physics.h>
 #endif
 
+#ifndef _NETCONNECTION_H_
+#include "network/netConnection.h"
+#endif
+
 namespace Scene
 {
    // Init/Destroy
    void init();
    void destroy();
+
+   void clear();
+   void load();
+   void save();
 
    // Camera
    extern Vector<SceneCamera*> activeCameraList;
@@ -51,6 +59,7 @@ namespace Scene
    SceneCamera* getActiveCamera();
    void pushActiveCamera(const char* name);
    void popActiveCamera();
+   void addCamera(const char* name, SceneCamera* cam);
    SceneCamera* getCamera(const char* name);
 
    // Entity Management
@@ -59,12 +68,16 @@ namespace Scene
    void removeEntity(SceneEntity* entity);
    SimGroup* getEntityGroup();
    void refresh();
+   SceneEntity* raycast(Point3F start, Point3F end);
 
    // Directional Light
    extern Point3F directionalLightDir;
    extern ColorF  directionalLightColor;
    extern ColorF  directionalLightAmbient;
    void setDirectionalLight(Point3F direction, ColorF color, ColorF ambient);
+
+   // Networking
+   void onCameraScopeQuery(NetConnection *cr, CameraScopeQuery *camInfo);
 }
 
 #endif

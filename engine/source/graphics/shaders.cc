@@ -51,7 +51,7 @@ namespace Graphics
             bgfx::destroyUniform(Shader::textureUniforms[n]);
       }
 
-      typedef HashMap<const char *, bgfx::UniformHandle, HashTable<const char *, bgfx::UniformHandle>>::iterator it_type;
+      typedef HashMap<const char *, bgfx::UniformHandle, HashTable< const char *, bgfx::UniformHandle> >::iterator it_type;
       for(it_type iterator = Shader::uniformMap.begin(); iterator != Shader::uniformMap.end(); iterator++) 
       {
          if ( iterator->value.idx != bgfx::invalidHandle )
@@ -77,7 +77,7 @@ namespace Graphics
       {
          char uniformName[32];
          dSprintf(uniformName, 32, "Texture%d", slot);
-         textureUniforms[slot] = bgfx::createUniform(uniformName, bgfx::UniformType::Uniform1i);
+         textureUniforms[slot] = bgfx::createUniform(uniformName, bgfx::UniformType::Int1);
       }
       return textureUniforms[slot];
    }
@@ -93,39 +93,65 @@ namespace Graphics
       return uniformMap[name];
    }
 
-   bgfx::UniformHandle Shader::getShadowmapUniform()
+   bgfx::UniformHandle Shader::getShadowMapUniform(U32 cascade)
    {
-      return getUniform("ShadowMap", bgfx::UniformType::Uniform1i, 1);
-   }
-
-   bgfx::UniformHandle Shader::getUniformVec3(const char* name, U32 count)
-   {
-      return getUniform(name, bgfx::UniformType::Uniform3fv, count);
+      char shadowMapName[32];
+      dSprintf(shadowMapName, 32, "s_shadowMap%d", cascade);
+      return getUniform(shadowMapName, bgfx::UniformType::Int1, 1);
    }
 
    bgfx::UniformHandle Shader::getUniformVec4(const char* name, U32 count)
    {
-      return getUniform(name, bgfx::UniformType::Uniform4fv, count);
+      return getUniform(name, bgfx::UniformType::Vec4, count);
    }
 
-   bgfx::UniformHandle Shader::getUniform4x4Matrix(const char* name, U32 count)
+   bgfx::UniformHandle Shader::getUniformMat4(const char* name, U32 count)
    {
-      return getUniform(name, bgfx::UniformType::Uniform4x4fv, count);
+      return getUniform(name, bgfx::UniformType::Mat4, count);
    }
 
-   Shader* getShader(const char* vertex_shader_path, const char* fragment_shader_path)
+   void destroyShader(Shader* shader)
+   {
+      if ( shader == NULL )
+         return;
+
+      shader->unload();
+   }
+
+   Shader* getShader(const char* vertex_shader_path, const char* fragment_shader_path, bool defaultPath)
    {
       // Create full shader paths
       char full_vs_path[512];
-      dSprintf(full_vs_path, 512, "%s%s", shaderPath, vertex_shader_path);
       char full_fs_path[512];
-      dSprintf(full_fs_path, 512, "%s%s", shaderPath, fragment_shader_path);
+
+      if ( defaultPath )
+      {
+         dSprintf(full_vs_path, 512, "%s%s", shaderPath, vertex_shader_path);
+         dSprintf(full_fs_path, 512, "%s%s", shaderPath, fragment_shader_path);
+      } else {
+         dSprintf(full_vs_path, 512, "%s", vertex_shader_path);
+         dSprintf(full_fs_path, 512, "%s", fragment_shader_path);
+      }
 
       for ( U32 n = 0; n < shaderCount; ++n )
       {
          Shader* s = &shaderList[n];
+         if ( !s->loaded )
+            continue;
+
          if ( dStrcmp(s->mVertexShaderPath, full_vs_path) == 0 && dStrcmp(s->mPixelShaderPath, full_fs_path) == 0 )
             return s;
+      }
+
+      // Try to fill an unloaded spot.
+      for ( U32 n = 0; n < shaderCount; ++n )
+      {
+         Shader* s = &shaderList[n];
+         if ( !s->loaded )
+         {
+            s->load(full_vs_path, full_fs_path);
+            return s;
+         }
       }
 
       if ( shaderList[shaderCount].load(full_vs_path, full_fs_path) )
@@ -147,6 +173,8 @@ namespace Graphics
 
    Shader::Shader()
    {
+      loaded = false;
+
       mVertexShaderFile = NULL;
       mPixelShaderFile = NULL;
 
@@ -181,7 +209,6 @@ namespace Graphics
          bgfx::compileShader(0, vertex_shader_path, vertex_compiled_path, "v", "windows", "vs_3_0", NULL, Graphics::shaderIncludePath, Graphics::shaderVaryingPath, shader_output);
       else
          bgfx::compileShader(0, vertex_shader_path, vertex_compiled_path, "v", "linux", NULL, NULL, Graphics::shaderIncludePath, Graphics::shaderVaryingPath, shader_output);
-
       Con::printf("Compile Vertex Shader %s Output: %s", vertex_shader_path, shader_output);
 
       mVertexShaderFile = new FileObject();
@@ -212,6 +239,7 @@ namespace Graphics
       if ( mPixelShader.idx != bgfx::invalidHandle && mVertexShader.idx != bgfx::invalidHandle )
       {
          mProgram = bgfx::createProgram(mVertexShader, mPixelShader, true);
+         loaded = true;
          return bgfx::isValid(mProgram);
       }
 
@@ -220,6 +248,9 @@ namespace Graphics
 
    void Shader::unload()
    {
+      mVertexShaderPath = StringTable->EmptyString;
+      mPixelShaderPath = StringTable->EmptyString;
+
       if ( mVertexShaderFile != NULL )
       {
          delete mVertexShaderFile;
@@ -244,6 +275,7 @@ namespace Graphics
       mPixelShader.idx = bgfx::invalidHandle;
       mVertexShader.idx = bgfx::invalidHandle;
       mProgram.idx = bgfx::invalidHandle;
+      loaded = false;
    }
 
    //------------------------------------------------------------------------------

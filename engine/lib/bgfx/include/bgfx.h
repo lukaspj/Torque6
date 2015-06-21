@@ -47,6 +47,7 @@ namespace bgfx
 			Direct3D9,    //!< Direct3D 9.0
 			Direct3D11,   //!< Direct3D 11.0
 			Direct3D12,   //!< Direct3D 12.0
+			Metal,        //!< Metal
 			OpenGLES,     //!< OpenGL ES 2.0+
 			OpenGL,       //!< OpenGL 2.1+
 			Vulkan,       //!< Vulkan
@@ -173,17 +174,27 @@ namespace bgfx
 	{
 		enum Enum
 		{
-			Uniform1i,
-			Uniform1f,
+			Int1,
 			End,
 
-			Uniform1iv,
-			Uniform1fv,
-			Uniform2fv,
-			Uniform3fv,
-			Uniform4fv,
-			Uniform3x3fv,
-			Uniform4x4fv,
+			Vec4,
+			Mat3,
+			Mat4,
+
+			Count
+		};
+	};
+
+	struct BackbufferRatio
+	{
+		enum Enum
+		{
+			Equal,
+			Half,
+			Quarter,
+			Eighth,
+			Sixteenth,
+			Double,
 
 			Count
 		};
@@ -195,6 +206,7 @@ namespace bgfx
 	BGFX_HANDLE(DynamicVertexBufferHandle);
 	BGFX_HANDLE(FrameBufferHandle);
 	BGFX_HANDLE(IndexBufferHandle);
+	BGFX_HANDLE(IndirectBufferHandle);
 	BGFX_HANDLE(ProgramHandle);
 	BGFX_HANDLE(ShaderHandle);
 	BGFX_HANDLE(TextureHandle);
@@ -279,6 +291,9 @@ namespace bgfx
 	}
 
 	///
+	typedef void (*ReleaseFn)(void* _ptr, void* _userData);
+
+	///
 	struct Memory
 	{
 		uint8_t* data;
@@ -311,10 +326,21 @@ namespace bgfx
 		///
 		uint64_t supported;
 
+		uint32_t maxDrawCalls;     ///< Maximum draw calls.
 		uint16_t maxTextureSize;   ///< Maximum texture size.
 		uint16_t maxViews;         ///< Maximum views.
-		uint16_t maxDrawCalls;     ///< Maximum draw calls.
 		uint8_t  maxFBAttachments; ///< Maximum frame buffer attachments.
+		uint8_t  numGPUs;          ///< Number of enumerated GPUs.
+		uint16_t vendorId;         ///< Selected GPU vendor id.
+		uint16_t deviceId;         ///< Selected GPU device id.
+
+		struct GPU
+		{
+			uint16_t vendorId;
+			uint16_t deviceId;
+		};
+
+		GPU gpu[4]; ///< Enumerated GPUs.
 
 		/// Supported texture formats.
 		///   - `BGFX_CAPS_FORMAT_TEXTURE_NONE` - not supported
@@ -389,8 +415,11 @@ namespace bgfx
 		};
 
 		Eye eye[2];
-		uint16_t width;  //!< Framebuffer width.
-		uint16_t height; //!< Framebuffer width.
+		uint16_t width;        //!< Framebuffer width.
+		uint16_t height;       //!< Framebuffer width.
+		uint32_t deviceWidth;  //!< Device resolution width
+		uint32_t deviceHeight; //!< Device resolution height
+		uint8_t flags;         //!< Status flags
 	};
 
 	/// Vertex declaration.
@@ -508,6 +537,15 @@ namespace bgfx
 	///   default rendering backend will be selected.
 	///   See: `bgfx::RendererType`
 	///
+	/// @param _vendorId Vendor PCI id. If set to BGFX_PCI_ID_NONE it will select the first device.
+	///   - `BGFX_PCI_ID_NONE` - autoselect.
+	///   - `BGFX_PCI_ID_AMD` - AMD.
+	///   - `BGFX_PCI_ID_INTEL` - Intel.
+	///   - `BGFX_PCI_ID_NVIDIA` - nVidia.
+	///
+	/// @param _deviceId Device id. If set to 0 it will select first device, or device with
+	///   matching id.
+	///
 	/// @param _callback Provide application specific callback interface.
 	///   See: `bgfx::CallbackI`
 	///
@@ -517,7 +555,7 @@ namespace bgfx
 	///
 	/// @attention C99 equivalent is `bgfx_init`.
 	///
-	void init(RendererType::Enum _type = RendererType::Count, CallbackI* _callback = NULL, bx::ReallocatorI* _reallocator = NULL);
+	void init(RendererType::Enum _type = RendererType::Count, uint16_t _vendorId = BGFX_PCI_ID_NONE, uint16_t _deviceId = 0, CallbackI* _callback = NULL, bx::ReallocatorI* _reallocator = NULL);
 
 	/// Shutdown bgfx library.
 	///
@@ -525,16 +563,26 @@ namespace bgfx
 	///
 	void shutdown();
 
-	/// Reset graphic settings.
+	/// Reset graphic settings and back-buffer size.
 	///
-	/// @param _width Main window width.
-	/// @param _height Main window height.
+	/// @param _width Back-buffer width.
+	/// @param _height Back-buffer height.
 	/// @param _flags
 	///   - `BGFX_RESET_NONE` - No reset flags.
 	///   - `BGFX_RESET_FULLSCREEN` - Not supported yet.
 	///   - `BGFX_RESET_MSAA_X[2/4/8/16]` - Enable 2, 4, 8 or 16 x MSAA.
 	///   - `BGFX_RESET_VSYNC` - Enable V-Sync.
+	///   - `BGFX_RESET_MAXANISOTROPY` - Turn on/off max anisotropy.
 	///   - `BGFX_RESET_CAPTURE` - Begin screen capture.
+	///   - `BGFX_RESET_HMD` - HMD stereo rendering.
+	///   - `BGFX_RESET_HMD_DEBUG` - HMD stereo rendering debug mode.
+	///   - `BGFX_RESET_HMD_RECENTER` - HMD calibration.
+	///   - `BGFX_RESET_FLIP_AFTER_RENDER` - This flag  specifies where flip
+	///     occurs. Default behavior is that flip occurs before rendering new
+	///     frame. This flag only has effect when `BGFX_CONFIG_MULTITHREADED=0`.
+	///
+	/// @attention This call doesn't actually change window size, it just
+	///   resizes back-buffer. Windowing code has to change window size.
 	///
 	/// @attention C99 equivalent is `bgfx_reset`.
 	///
@@ -573,18 +621,33 @@ namespace bgfx
 	const Caps* getCaps();
 
 	/// Returns HMD info.
+	///
+	/// @attention C99 equivalent is `bgfx_get_hmd`.
+	///
 	const HMD* getHMD();
 
 	/// Allocate buffer to pass to bgfx calls. Data will be freed inside bgfx.
+	///
+	/// @attention C99 equivalent is `bgfx_alloc`.
+	///
 	const Memory* alloc(uint32_t _size);
 
 	/// Allocate buffer and copy data into it. Data will be freed inside bgfx.
+	///
+	/// @attention C99 equivalent is `bgfx_copy`.
+	///
 	const Memory* copy(const void* _data, uint32_t _size);
 
 	/// Make reference to data to pass to bgfx. Unlike `bgfx::alloc` this call
 	/// doesn't allocate memory for data. It just copies pointer to data. You
-	/// must make sure data is available for at least 2 `bgfx::frame` calls.
-	const Memory* makeRef(const void* _data, uint32_t _size);
+	/// can pass `ReleaseFn` function pointer to release this memory after it's
+	/// consumed, or you must make sure data is available for at least 2
+	/// `bgfx::frame` calls. `ReleaseFn` function must be able to be called
+	/// called from any thread.
+	///
+	/// @attention C99 equivalent are `bgfx_make_ref`, `bgfx_make_ref_release`.
+	///
+	const Memory* makeRef(const void* _data, uint32_t _size, ReleaseFn _releaseFn = NULL, void* _userData = NULL);
 
 	/// Set debug flags.
 	///
@@ -597,12 +660,20 @@ namespace bgfx
 	///   - `BGFX_DEBUG_WIREFRAME` - Wireframe rendering. All rendering
 	///     primitives will be rendered as lines.
 	///
+	/// @attention C99 equivalent is `bgfx_set_debug`.
+	///
 	void setDebug(uint32_t _debug);
 
 	/// Clear internal debug text buffer.
+	///
+	/// @attention C99 equivalent is `bgfx_dbg_text_clear`.
+	///
 	void dbgTextClear(uint8_t _attr = 0, bool _small = false);
 
 	/// Print into internal debug text buffer.
+	///
+	/// @attention C99 equivalent is `bgfx_dbg_text_printf`.
+	///
 	void dbgTextPrintf(uint16_t _x, uint16_t _y, uint8_t _attr, const char* _format, ...);
 
 	/// Draw image into internal debug text buffer.
@@ -614,16 +685,34 @@ namespace bgfx
 	/// @param _data   Raw image data (character/attribute raw encoding).
 	/// @param _pitch  Image pitch in bytes.
 	///
+	/// @attention C99 equivalent is `bgfx_dbg_text_image`.
+	///
 	void dbgTextImage(uint16_t _x, uint16_t _y, uint16_t _width, uint16_t _height, const void* _data, uint16_t _pitch);
 
 	/// Create static index buffer.
 	///
-	/// @remarks
-	///   Only 16-bit index buffer is supported.
+	/// @param _mem Index buffer data.
+	/// @param _flags Buffer creation flags.
+	///   - `BGFX_BUFFER_NONE` - No flags.
+	///   - `BGFX_BUFFER_COMPUTE_READ` - Buffer will be read from by compute shader.
+	///   - `BGFX_BUFFER_COMPUTE_WRITE` - Buffer will be written into by compute shader. When buffer
+	///       is created with `BGFX_BUFFER_COMPUTE_WRITE` flag it cannot be updated from CPU.
+	///   - `BGFX_BUFFER_COMPUTE_READ_WRITE` - Buffer will be used for read/write by compute shader.
+	///   - `BGFX_BUFFER_ALLOW_RESIZE` - Buffer will resize on buffer update if different amount of
+	///       data is passed. If this flag is not specified if more data is passed on update buffer
+	///       will be trimmed to fit existing buffer size. This flag has effect only on dynamic
+	///       buffers.
+	///   - `BGFX_BUFFER_INDEX32` - Buffer is using 32-bit indices. This flag has effect only on
+	///       index buffers.
 	///
-	IndexBufferHandle createIndexBuffer(const Memory* _mem, uint8_t _flags = BGFX_BUFFER_NONE);
+	/// @attention C99 equivalent is `bgfx_create_index_buffer`.
+	///
+	IndexBufferHandle createIndexBuffer(const Memory* _mem, uint16_t _flags = BGFX_BUFFER_NONE);
 
 	/// Destroy static index buffer.
+	///
+	/// @attention C99 equivalent is `bgfx_destroy_index_buffer`.
+	///
 	void destroyIndexBuffer(IndexBufferHandle _handle);
 
 	/// Create static vertex buffer.
@@ -632,11 +721,15 @@ namespace bgfx
 	/// @param _decl Vertex declaration.
 	/// @returns Static vertex buffer handle.
 	///
-	VertexBufferHandle createVertexBuffer(const Memory* _mem, const VertexDecl& _decl, uint8_t _flags = BGFX_BUFFER_NONE);
+	/// @attention C99 equivalent is `bgfx_create_vertex_buffer`.
+	///
+	VertexBufferHandle createVertexBuffer(const Memory* _mem, const VertexDecl& _decl, uint16_t _flags = BGFX_BUFFER_NONE);
 
 	/// Destroy static vertex buffer.
 	///
 	/// @param _handle Static vertex buffer handle.
+	///
+	/// @attention C99 equivalent is `bgfx_destroy_vertex_buffer`.
 	///
 	void destroyVertexBuffer(VertexBufferHandle _handle);
 
@@ -644,37 +737,56 @@ namespace bgfx
 	///
 	/// @param _num Number of indices.
 	/// @param _flags Buffer creation flags.
-	///   `BGFX_BUFFER_COMPUTE_READ` - compute shader will read buffer.
-	///   `BGFX_BUFFER_COMPUTE_WRITE` - compute shader will write into buffer.
-	///   `BGFX_BUFFER_ALLOW_RESIZE` buffer can be resized if updated with different size buffer.
+	///   - `BGFX_BUFFER_NONE` - No flags.
+	///   - `BGFX_BUFFER_COMPUTE_READ` - Buffer will be read from by compute shader.
+	///   - `BGFX_BUFFER_COMPUTE_WRITE` - Buffer will be written into by compute shader. When buffer
+	///       is created with `BGFX_BUFFER_COMPUTE_WRITE` flag it cannot be updated from CPU.
+	///   - `BGFX_BUFFER_COMPUTE_READ_WRITE` - Buffer will be used for read/write by compute shader.
+	///   - `BGFX_BUFFER_ALLOW_RESIZE` - Buffer will resize on buffer update if different amount of
+	///       data is passed. If this flag is not specified if more data is passed on update buffer
+	///       will be trimmed to fit existing buffer size. This flag has effect only on dynamic
+	///       buffers.
+	///   - `BGFX_BUFFER_INDEX32` - Buffer is using 32-bit indices. This flag has effect only on
+	///       index buffers.
 	///
-	/// @remarks
-	///   1. Only 16-bit index buffer is supported.
+	/// @attention C99 equivalent is `bgfx_create_dynamic_index_buffer`.
 	///
-	///   2. When buffer is created with `BGFX_BUFFER_COMPUTE_WRITE` flag it cannot be updated
-	///      from CPU.
-	///
-	DynamicIndexBufferHandle createDynamicIndexBuffer(uint32_t _num, uint8_t _flags = BGFX_BUFFER_NONE);
+	DynamicIndexBufferHandle createDynamicIndexBuffer(uint32_t _num, uint16_t _flags = BGFX_BUFFER_NONE);
 
 	/// Create dynamic index buffer and initialized it.
 	///
 	/// @param _mem Index buffer data.
+	/// @param _flags Buffer creation flags.
+	///   - `BGFX_BUFFER_NONE` - No flags.
+	///   - `BGFX_BUFFER_COMPUTE_READ` - Buffer will be read from by compute shader.
+	///   - `BGFX_BUFFER_COMPUTE_WRITE` - Buffer will be written into by compute shader. When buffer
+	///       is created with `BGFX_BUFFER_COMPUTE_WRITE` flag it cannot be updated from CPU.
+	///   - `BGFX_BUFFER_COMPUTE_READ_WRITE` - Buffer will be used for read/write by compute shader.
+	///   - `BGFX_BUFFER_ALLOW_RESIZE` - Buffer will resize on buffer update if different amount of
+	///       data is passed. If this flag is not specified if more data is passed on update buffer
+	///       will be trimmed to fit existing buffer size. This flag has effect only on dynamic
+	///       buffers.
+	///   - `BGFX_BUFFER_INDEX32` - Buffer is using 32-bit indices. This flag has effect only on
+	///       index buffers.
 	///
-	/// @remarks
-	///   Only 16-bit index buffer is supported.
+	/// @attention C99 equivalent is `bgfx_create_dynamic_index_buffer_mem`.
 	///
-	DynamicIndexBufferHandle createDynamicIndexBuffer(const Memory* _mem, uint8_t _flags = BGFX_BUFFER_NONE);
+	DynamicIndexBufferHandle createDynamicIndexBuffer(const Memory* _mem, uint16_t _flags = BGFX_BUFFER_NONE);
 
 	/// Update dynamic index buffer.
 	///
 	/// @param _handle Dynamic index buffer handle.
 	/// @param _mem Index buffer data.
 	///
+	/// @attention C99 equivalent is `bgfx_update_dynamic_index_buffer`.
+	///
 	void updateDynamicIndexBuffer(DynamicIndexBufferHandle _handle, const Memory* _mem);
 
 	/// Destroy dynamic index buffer.
 	///
 	/// @param _handle Dynamic index buffer handle.
+	///
+	/// @attention C99 equivalent is `bgfx_destroy_dynamic_index_buffer`.
 	///
 	void destroyDynamicIndexBuffer(DynamicIndexBufferHandle _handle);
 
@@ -683,32 +795,60 @@ namespace bgfx
 	/// @param _num Number of vertices.
 	/// @param _decl Vertex declaration.
 	/// @param _flags Buffer creation flags.
-	///   `BGFX_BUFFER_COMPUTE_READ` - compute shader will read buffer.
-	///   `BGFX_BUFFER_COMPUTE_WRITE` - compute shader will write into buffer.
-	///   `BGFX_BUFFER_ALLOW_RESIZE` buffer can be resized if updated with different size buffer.
+	///   - `BGFX_BUFFER_NONE` - No flags.
+	///   - `BGFX_BUFFER_COMPUTE_READ` - Buffer will be read from by compute shader.
+	///   - `BGFX_BUFFER_COMPUTE_WRITE` - Buffer will be written into by compute shader. When buffer
+	///       is created with `BGFX_BUFFER_COMPUTE_WRITE` flag it cannot be updated from CPU.
+	///   - `BGFX_BUFFER_COMPUTE_READ_WRITE` - Buffer will be used for read/write by compute shader.
+	///   - `BGFX_BUFFER_ALLOW_RESIZE` - Buffer will resize on buffer update if different amount of
+	///       data is passed. If this flag is not specified if more data is passed on update buffer
+	///       will be trimmed to fit existing buffer size. This flag has effect only on dynamic
+	///       buffers.
+	///   - `BGFX_BUFFER_INDEX32` - Buffer is using 32-bit indices. This flag has effect only on
+	///       index buffers.
 	///
-	/// @remarks
-	///   When buffer is created with `BGFX_BUFFER_COMPUTE_WRITE` flag it cannot be updated
-	///   from CPU.
+	/// @attention C99 equivalent is `bgfx_create_dynamic_vertex_buffer`.
 	///
-	DynamicVertexBufferHandle createDynamicVertexBuffer(uint32_t _num, const VertexDecl& _decl, uint8_t _flags = BGFX_BUFFER_NONE);
+	DynamicVertexBufferHandle createDynamicVertexBuffer(uint32_t _num, const VertexDecl& _decl, uint16_t _flags = BGFX_BUFFER_NONE);
 
 	/// Create dynamic vertex buffer and initialize it.
 	///
 	/// @param _mem Vertex buffer data.
 	/// @param _decl Vertex declaration.
+	/// @param _flags Buffer creation flags.
+	///   - `BGFX_BUFFER_NONE` - No flags.
+	///   - `BGFX_BUFFER_COMPUTE_READ` - Buffer will be read from by compute shader.
+	///   - `BGFX_BUFFER_COMPUTE_WRITE` - Buffer will be written into by compute shader. When buffer
+	///       is created with `BGFX_BUFFER_COMPUTE_WRITE` flag it cannot be updated from CPU.
+	///   - `BGFX_BUFFER_COMPUTE_READ_WRITE` - Buffer will be used for read/write by compute shader.
+	///   - `BGFX_BUFFER_ALLOW_RESIZE` - Buffer will resize on buffer update if different amount of
+	///       data is passed. If this flag is not specified if more data is passed on update buffer
+	///       will be trimmed to fit existing buffer size. This flag has effect only on dynamic
+	///       buffers.
+	///   - `BGFX_BUFFER_INDEX32` - Buffer is using 32-bit indices. This flag has effect only on
+	///       index buffers.
 	///
-	DynamicVertexBufferHandle createDynamicVertexBuffer(const Memory* _mem, const VertexDecl& _decl, uint8_t _flags = BGFX_BUFFER_NONE);
+	/// @attention C99 equivalent is `bgfx_create_dynamic_vertex_buffer_mem`.
+	///
+	DynamicVertexBufferHandle createDynamicVertexBuffer(const Memory* _mem, const VertexDecl& _decl, uint16_t _flags = BGFX_BUFFER_NONE);
 
 	/// Update dynamic vertex buffer.
+	///
+	/// @attention C99 equivalent is `bgfx_update_dynamic_vertex_buffer`.
+	///
 	void updateDynamicVertexBuffer(DynamicVertexBufferHandle _handle, const Memory* _mem);
 
 	/// Destroy dynamic vertex buffer.
+	///
+	/// @attention C99 equivalent is `bgfx_destroy_dynamic_vertex_buffer`.
+	///
 	void destroyDynamicVertexBuffer(DynamicVertexBufferHandle _handle);
 
 	/// Returns true if internal transient index buffer has enough space.
 	///
 	/// @param _num Number of indices.
+	///
+	/// @attention C99 equivalent is `bgfx_check_avail_transient_index_buffer`.
 	///
 	bool checkAvailTransientIndexBuffer(uint32_t _num);
 
@@ -717,12 +857,16 @@ namespace bgfx
 	/// @param _num Number of vertices.
 	/// @param _decl Vertex declaration.
 	///
+	/// @attention C99 equivalent is `bgfx_check_avail_transient_vertex_buffer`.
+	///
 	bool checkAvailTransientVertexBuffer(uint32_t _num, const VertexDecl& _decl);
 
 	/// Returns true if internal instance data buffer has enough space.
 	///
 	/// @param _num Number of instances.
 	/// @param _stride Stride per instance.
+	///
+	/// @attention C99 equivalent is `bgfx_check_avail_instance_data_buffer`.
 	///
 	bool checkAvailInstanceDataBuffer(uint32_t _num, uint16_t _stride);
 
@@ -732,6 +876,8 @@ namespace bgfx
 	/// @param _numVertices Number of vertices.
 	/// @param _decl Vertex declaration.
 	/// @param _numIndices Number of indices.
+	///
+	/// @attention C99 equivalent is `bgfx_check_avail_transient_buffers`.
 	///
 	bool checkAvailTransientBuffers(uint32_t _numVertices, const VertexDecl& _decl, uint32_t _numIndices);
 
@@ -747,6 +893,8 @@ namespace bgfx
 	///      leak.
 	///   2. Only 16-bit index buffer is supported.
 	///
+	/// @attention C99 equivalent is `bgfx_alloc_transient_index_buffer`.
+	///
 	void allocTransientIndexBuffer(TransientIndexBuffer* _tib, uint32_t _num);
 
 	/// Allocate transient vertex buffer.
@@ -761,6 +909,8 @@ namespace bgfx
 	///   You must call setVertexBuffer after alloc in order to avoid memory
 	///   leak.
 	///
+	/// @attention C99 equivalent is `bgfx_alloc_transient_vertex_buffer`.
+	///
 	void allocTransientVertexBuffer(TransientVertexBuffer* _tvb, uint32_t _num, const VertexDecl& _decl);
 
 	/// Check for required space and allocate transient vertex and index
@@ -770,6 +920,8 @@ namespace bgfx
 	/// @remarks
 	///   Only 16-bit index buffer is supported.
 	///
+	/// @attention C99 equivalent is `bgfx_alloc_transient_buffers`.
+	///
 	bool allocTransientBuffers(TransientVertexBuffer* _tvb, const VertexDecl& _decl, uint32_t _numVertices, TransientIndexBuffer* _tib, uint32_t _numIndices);
 
 	/// Allocate instance data buffer.
@@ -778,9 +930,26 @@ namespace bgfx
 	///   You must call setInstanceDataBuffer after alloc in order to avoid
 	///   memory leak.
 	///
+	/// @attention C99 equivalent is `bgfx_alloc_instance_data_buffer`.
+	///
 	const InstanceDataBuffer* allocInstanceDataBuffer(uint32_t _num, uint16_t _stride);
 
+	/// Create draw indirect buffer.
+	///
+	/// @attention C99 equivalent is `bgfx_create_indirect_buffer`.
+	///
+	IndirectBufferHandle createIndirectBuffer(uint32_t _num);
+
+	/// Destroy draw indirect buffer.
+	///
+	/// @attention C99 equivalent is `bgfx_destroy_indirect_buffer`.
+	///
+	void destroyIndirectBuffer(IndirectBufferHandle _handle);
+
 	/// Create shader from memory buffer.
+	///
+	/// @attention C99 equivalent is `bgfx_create_shader`.
+	///
 	ShaderHandle createShader(const Memory* _mem);
 
 	/// Returns num of uniforms, and uniform handles used inside shader.
@@ -793,10 +962,15 @@ namespace bgfx
 	/// @remarks
 	///   Only non-predefined uniforms are returned.
 	///
+	/// @attention C99 equivalent is `bgfx_get_shader_uniforms`.
+	///
 	uint16_t getShaderUniforms(ShaderHandle _handle, UniformHandle* _uniforms = NULL, uint16_t _max = 0);
 
 	/// Destroy shader. Once program is created with shader it is safe to
 	/// destroy shader.
+	///
+	/// @attention C99 equivalent is `bgfx_destroy_shader`.
+	///
 	void destroyShader(ShaderHandle _handle);
 
 	/// Create program with vertex and fragment shaders.
@@ -808,6 +982,8 @@ namespace bgfx
 	/// @returns Program handle if vertex shader output and fragment shader
 	///   input are matching, otherwise returns invalid program handle.
 	///
+	/// @attention C99 equivalent is `bgfx_create_program`.
+	///
 	ProgramHandle createProgram(ShaderHandle _vsh, ShaderHandle _fsh, bool _destroyShaders = false);
 
 	/// Create program with compute shader.
@@ -817,12 +993,20 @@ namespace bgfx
 	///   program is destroyed.
 	/// @returns Program handle.
 	///
+	/// @attention C99 equivalent is `bgfx_create_compute_program`.
+	///
 	ProgramHandle createProgram(ShaderHandle _csh, bool _destroyShader = false);
 
 	/// Destroy program.
+	///
+	/// @attention C99 equivalent is `bgfx_destroy_program`.
+	///
 	void destroyProgram(ProgramHandle _handle);
 
 	/// Calculate amount of memory required for texture.
+	///
+	/// @attention C99 equivalent is `bgfx_calc_texture_size`.
+	///
 	void calcTextureSize(TextureInfo& _info, uint16_t _width, uint16_t _height, uint16_t _depth, bool _cubeMap, uint8_t _numMips, TextureFormat::Enum _format);
 
 	/// Create texture from memory buffer.
@@ -839,6 +1023,8 @@ namespace bgfx
 	/// @param[out] _info When non-`NULL` is specified it returns parsed texture information.
 	/// @returns Texture handle.
 	///
+	/// @attention C99 equivalent is `bgfx_create_texture`.
+	///
 	TextureHandle createTexture(const Memory* _mem, uint32_t _flags = BGFX_TEXTURE_NONE, uint8_t _skip = 0, TextureInfo* _info = NULL);
 
 	/// Create 2D texture.
@@ -850,7 +1036,14 @@ namespace bgfx
 	/// @param _flags
 	/// @param _mem
 	///
+	/// @attention C99 equivalent is `bgfx_create_texture_2d`.
+	///
 	TextureHandle createTexture2D(uint16_t _width, uint16_t _height, uint8_t _numMips, TextureFormat::Enum _format, uint32_t _flags = BGFX_TEXTURE_NONE, const Memory* _mem = NULL);
+
+	///
+	/// @attention C99 equivalent is `bgfx_create_texture_2d_scaled`.
+	///
+	TextureHandle createTexture2D(BackbufferRatio::Enum _ratio, uint8_t _numMips, TextureFormat::Enum _format, uint32_t _flags = BGFX_TEXTURE_NONE);
 
 	/// Create 3D texture.
 	///
@@ -862,6 +1055,8 @@ namespace bgfx
 	/// @param _flags
 	/// @param _mem
 	///
+	/// @attention C99 equivalent is `bgfx_create_texture_3d`.
+	///
 	TextureHandle createTexture3D(uint16_t _width, uint16_t _height, uint16_t _depth, uint8_t _numMips, TextureFormat::Enum _format, uint32_t _flags = BGFX_TEXTURE_NONE, const Memory* _mem = NULL);
 
 	/// Create Cube texture.
@@ -871,6 +1066,8 @@ namespace bgfx
 	/// @param _format
 	/// @param _flags
 	/// @param _mem
+	///
+	/// @attention C99 equivalent is `bgfx_create_texture_cube`.
 	///
 	TextureHandle createTextureCube(uint16_t _size, uint8_t _numMips, TextureFormat::Enum _format, uint32_t _flags = BGFX_TEXTURE_NONE, const Memory* _mem = NULL);
 
@@ -886,6 +1083,8 @@ namespace bgfx
 	/// @param _pitch Pitch of input image (bytes). When _pitch is set to
 	///   UINT16_MAX, it will be calculated internally based on _width.
 	///
+	/// @attention C99 equivalent is `bgfx_update_texture_2d`.
+	///
 	void updateTexture2D(TextureHandle _handle, uint8_t _mip, uint16_t _x, uint16_t _y, uint16_t _width, uint16_t _height, const Memory* _mem, uint16_t _pitch = UINT16_MAX);
 
 	/// Update 3D texture.
@@ -899,6 +1098,8 @@ namespace bgfx
 	/// @param _height
 	/// @param _depth
 	/// @param _mem
+	///
+	/// @attention C99 equivalent is `bgfx_update_texture_3d`.
 	///
 	void updateTexture3D(TextureHandle _handle, uint8_t _mip, uint16_t _x, uint16_t _y, uint16_t _z, uint16_t _width, uint16_t _height, uint16_t _depth, const Memory* _mem);
 
@@ -934,9 +1135,14 @@ namespace bgfx
 	/// @param _pitch Pitch of input image (bytes). When _pitch is set to
 	///   UINT16_MAX, it will be calculated internally based on _width.
 	///
+	/// @attention C99 equivalent is `bgfx_update_texture_cube`.
+	///
 	void updateTextureCube(TextureHandle _handle, uint8_t _side, uint8_t _mip, uint16_t _x, uint16_t _y, uint16_t _width, uint16_t _height, const Memory* _mem, uint16_t _pitch = UINT16_MAX);
 
 	/// Destroy texture.
+	///
+	/// @attention C99 equivalent is `bgfx_destroy_texture`.
+	///
 	void destroyTexture(TextureHandle _handle);
 
 	/// Create frame buffer (simple).
@@ -946,7 +1152,14 @@ namespace bgfx
 	/// @param _format Texture format.
 	/// @param _textureFlags Texture flags.
 	///
+	/// @attention C99 equivalent is `bgfx_create_frame_buffer`.
+	///
 	FrameBufferHandle createFrameBuffer(uint16_t _width, uint16_t _height, TextureFormat::Enum _format, uint32_t _textureFlags = BGFX_TEXTURE_U_CLAMP|BGFX_TEXTURE_V_CLAMP);
+
+	///
+	/// @attention C99 equivalent is `bgfx_create_frame_buffer_scaled`.
+	///
+	FrameBufferHandle createFrameBuffer(BackbufferRatio::Enum _ratio, TextureFormat::Enum _format, uint32_t _textureFlags = BGFX_TEXTURE_U_CLAMP|BGFX_TEXTURE_V_CLAMP);
 
 	/// Create frame buffer.
 	///
@@ -954,6 +1167,8 @@ namespace bgfx
 	/// @param _handles Texture attachments.
 	/// @param _destroyTextures If true, textures will be destroyed when
 	///   frame buffer is destroyed.
+	///
+	/// @attention C99 equivalent is `bgfx_create_frame_buffer_from_handles`.
 	///
 	FrameBufferHandle createFrameBuffer(uint8_t _num, TextureHandle* _handles, bool _destroyTextures = false);
 
@@ -969,9 +1184,14 @@ namespace bgfx
 	/// @remarks
 	///   Frame buffer cannnot be used for sampling.
 	///
+	/// @attention C99 equivalent is `bgfx_create_frame_buffer_from_nwh`.
+	///
 	FrameBufferHandle createFrameBuffer(void* _nwh, uint16_t _width, uint16_t _height, TextureFormat::Enum _depthFormat = TextureFormat::UnknownDepth);
 
 	/// Destroy frame buffer.
+	///
+	/// @attention C99 equivalent is `bgfx_destroy_frame_buffer`.
+	///
 	void destroyFrameBuffer(FrameBufferHandle _handle);
 
 	/// Create shader uniform parameter.
@@ -1000,11 +1220,15 @@ namespace bgfx
 	///   - `u_modelViewProj mat4` - concatenated model view projection matrix.
 	///   - `u_alphaRef float` - alpha reference value for alpha test.
 	///
+	/// @attention C99 equivalent is `bgfx_create_uniform`.
+	///
 	UniformHandle createUniform(const char* _name, UniformType::Enum _type, uint16_t _num = 1);
 
 	/// Destroy shader uniform parameter.
 	///
 	/// @param _handle Handle to uniform object.
+	///
+	/// @attention C99 equivalent is `bgfx_destroy_uniform`.
 	///
 	void destroyUniform(UniformHandle _handle);
 
@@ -1013,6 +1237,8 @@ namespace bgfx
 	/// @param _index Index into palette.
 	/// @param _rgba Packed 32-bit RGBA value.
 	///
+	/// @attention C99 equivalent is ``.
+	///
 	void setClearColor(uint8_t _index, uint32_t _rgba);
 
 	/// Set clear color palette value.
@@ -1020,12 +1246,16 @@ namespace bgfx
 	/// @param _index Index into palette.
 	/// @param _r, _g, _b, _a RGBA floating point values.
 	///
+	/// @attention C99 equivalent is ``.
+	///
 	void setClearColor(uint8_t _index, float _r, float _g, float _b, float _a);
 
 	/// Set clear color palette value.
 	///
 	/// @param _index Index into palette.
 	/// @param _rgba RGBA floating point value.
+	///
+	/// @attention C99 equivalent is `bgfx_set_clear_color`.
 	///
 	void setClearColor(uint8_t _index, const float _rgba[4]);
 
@@ -1037,6 +1267,16 @@ namespace bgfx
 	/// @remarks
 	///   This is debug only feature.
 	///
+	///   In graphics debugger view name will appear as:
+	///
+	///     "nnnce <view name>"
+	///      ^  ^^ ^
+	///      |  |+-- eye (L/R)
+	///      |  +-- compute (C)
+	///      +-- view id
+	///
+	/// @attention C99 equivalent is `bgfx_set_view_name`.
+	///
 	void setViewName(uint8_t _id, const char* _name);
 
 	/// Set view rectangle. Draw primitive outside view will be clipped.
@@ -1046,6 +1286,8 @@ namespace bgfx
 	/// @param _y Position y from the top corner of the window.
 	/// @param _width Width of view port region.
 	/// @param _height Height of view port region.
+	///
+	/// @attention C99 equivalent is `bgfx_set_view_rect`.
 	///
 	void setViewRect(uint8_t _id, uint16_t _x, uint16_t _y, uint16_t _width, uint16_t _height);
 
@@ -1057,6 +1299,8 @@ namespace bgfx
 	/// @param _width Width of scissor region.
 	/// @param _height Height of scissor region.
 	///
+	/// @attention C99 equivalent is `bgfx_set_view_scissor`.
+	///
 	void setViewScissor(uint8_t _id, uint16_t _x = 0, uint16_t _y = 0, uint16_t _width = 0, uint16_t _height = 0);
 
 	/// Set view clear flags.
@@ -1067,6 +1311,8 @@ namespace bgfx
 	/// @param _rgba Color clear value.
 	/// @param _depth Depth clear value.
 	/// @param _stencil Stencil clear value.
+	///
+	/// @attention C99 equivalent is `bgfx_set_view_clear`.
 	///
 	void setViewClear(uint8_t _id, uint16_t _flags, uint32_t _rgba = 0x000000ff, float _depth = 1.0f, uint8_t _stencil = 0);
 
@@ -1080,10 +1326,15 @@ namespace bgfx
 	/// @param _depth Depth clear value.
 	/// @param _stencil Stencil clear value.
 	///
+	/// @attention C99 equivalent is `bgfx_set_view_clear_mrt`.
+	///
 	void setViewClear(uint8_t _id, uint16_t _flags, float _depth, uint8_t _stencil, uint8_t _0 = UINT8_MAX, uint8_t _1 = UINT8_MAX, uint8_t _2 = UINT8_MAX, uint8_t _3 = UINT8_MAX, uint8_t _4 = UINT8_MAX, uint8_t _5 = UINT8_MAX, uint8_t _6 = UINT8_MAX, uint8_t _7 = UINT8_MAX);
 
 	/// Set view into sequential mode. Draw calls will be sorted in the same
 	/// order in which submit calls were called.
+	///
+	/// @attention C99 equivalent is `bgfx_set_view_seq`.
+	///
 	void setViewSeq(uint8_t _id, bool _enabled);
 
 	/// Set view frame buffer.
@@ -1096,10 +1347,25 @@ namespace bgfx
 	/// @remarks
 	///   Not persistent after `bgfx::reset` call.
 	///
+	/// @attention C99 equivalent is `bgfx_set_view_frame_buffer`.
+	///
 	void setViewFrameBuffer(uint8_t _id, FrameBufferHandle _handle);
 
 	/// Set view view and projection matrices, all draw primitives in this
 	/// view will use these matrices.
+	///
+	/// @param _id View id.
+	/// @param _view View matrix.
+	/// @param _projL Projection matrix. When using stereo rendering this projection matrix
+	///   represent projection matrix for left eye.
+	/// @param _flags View flags. Use
+	///   - `BGFX_VIEW_NONE` - View will be rendered only once if stereo mode is enabled.
+	///   - `BGFX_VIEW_STEREO` - View will be rendered for both eyes if stereo mode is enabled. When
+	///     stereo mode is disabled this flag doesn't have effect.
+	/// @param _projR Projection matrix for right eye in stereo mode.
+	///
+	/// @attention C99 equivalent are `bgfx_set_view_transform`, `bgfx_set_view_transform_stereo`.
+	///
 	void setViewTransform(uint8_t _id, const void* _view, const void* _projL, uint8_t _flags = BGFX_VIEW_STEREO, const void* _projR = NULL);
 
 	/// Post submit view reordering.
@@ -1109,9 +1375,14 @@ namespace bgfx
 	/// @param _remap View remap id table. Passing `NULL` will reset view ids
 	///   to default state.
 	///
+	/// @attention C99 equivalent is ``.
+	///
 	void setViewRemap(uint8_t _id = 0, uint8_t _num = UINT8_MAX, const void* _remap = NULL);
 
 	/// Sets debug marker.
+	///
+	/// @attention C99 equivalent is `bgfx_set_marker`.
+	///
 	void setMarker(const char* _marker);
 
 	/// Set render states for draw primitive.
@@ -1137,6 +1408,8 @@ namespace bgfx
 	///   2. `BGFX_STATE_BLEND_EQUATION_ADD` is set when no other blend
 	///      equation is specified.
 	///
+	/// @attention C99 equivalent is `bgfx_set_state`.
+	///
 	void setState(uint64_t _state, uint32_t _rgba = 0);
 
 	/// Set stencil test state.
@@ -1144,6 +1417,8 @@ namespace bgfx
 	/// @param _fstencil Front stencil state.
 	/// @param _bstencil Back stencil state. If back is set to `BGFX_STENCIL_NONE`
 	///   _fstencil is applied to both front and back facing primitives.
+	///
+	/// @attention C99 equivalent is `bgfx_set_stencil`.
 	///
 	void setStencil(uint32_t _fstencil, uint32_t _bstencil = BGFX_STENCIL_NONE);
 
@@ -1156,12 +1431,16 @@ namespace bgfx
 	/// @param _height Height of scissor region.
 	/// @returns Scissor cache index.
 	///
+	/// @attention C99 equivalent is `bgfx_set_scissor`.
+	///
 	uint16_t setScissor(uint16_t _x, uint16_t _y, uint16_t _width, uint16_t _height);
 
 	/// Set scissor from cache for draw primitive.
 	///
 	/// @param _cache Index in scissor cache. Passing UINT16_MAX unset primitive
 	///   scissor and primitive will use view scissor instead.
+	///
+	/// @attention C99 equivalent is `bgfx_set_scissor_cached`.
 	///
 	void setScissor(uint16_t _cache = UINT16_MAX);
 
@@ -1173,6 +1452,8 @@ namespace bgfx
 	/// @returns index into matrix cache in case the same model matrix has
 	///   to be used for other draw primitive call.
 	///
+	/// @attention C99 equivalent is `bgfx_set_transform`.
+	///
 	uint32_t setTransform(const void* _mtx, uint16_t _num = 1);
 
 	/// Reserve `_num` matrices in internal matrix cache. Pointer returned
@@ -1182,6 +1463,8 @@ namespace bgfx
 	/// @param _num Number of matrices.
 	/// @returns index into matrix cache.
 	///
+	/// @attention C99 equivalent is `bgfx_alloc_transform`.
+	///
 	uint32_t allocTransform(Transform* _transform, uint16_t _num);
 
 	/// Set model matrix from matrix cache for draw primitive.
@@ -1189,48 +1472,92 @@ namespace bgfx
 	/// @param _cache Index in matrix cache.
 	/// @param _num Number of matrices from cache.
 	///
+	/// @attention C99 equivalent is `bgfx_set_transform_cached`.
+	///
 	void setTransform(uint32_t _cache, uint16_t _num = 1);
 
 	/// Set shader uniform parameter for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_uniform`.
+	///
 	void setUniform(UniformHandle _handle, const void* _value, uint16_t _num = 1);
 
 	/// Set index buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_index_buffer`.
+	///
 	void setIndexBuffer(IndexBufferHandle _handle, uint32_t _firstIndex = 0, uint32_t _numIndices = UINT32_MAX);
 
 	/// Set index buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_dynamic_index_buffer`.
+	///
 	void setIndexBuffer(DynamicIndexBufferHandle _handle, uint32_t _firstIndex = 0, uint32_t _numIndices = UINT32_MAX);
 
 	/// Set index buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is ``.
+	///
 	void setIndexBuffer(const TransientIndexBuffer* _tib);
 
 	/// Set index buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_transient_index_buffer`.
+	///
 	void setIndexBuffer(const TransientIndexBuffer* _tib, uint32_t _firstIndex, uint32_t _numIndices);
 
 	/// Set vertex buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is ``.
+	///
 	void setVertexBuffer(VertexBufferHandle _handle);
 
 	/// Set vertex buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_vertex_buffer`.
+	///
 	void setVertexBuffer(VertexBufferHandle _handle, uint32_t _startVertex, uint32_t _numVertices);
 
 	/// Set vertex buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_dynamic_vertex_buffer`.
+	///
 	void setVertexBuffer(DynamicVertexBufferHandle _handle, uint32_t _numVertices = UINT32_MAX);
 
 	/// Set vertex buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is ``.
+	///
 	void setVertexBuffer(const TransientVertexBuffer* _tvb);
 
 	/// Set vertex buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_transient_vertex_buffer`.
+	///
 	void setVertexBuffer(const TransientVertexBuffer* _tvb, uint32_t _startVertex, uint32_t _numVertices);
 
 	/// Set instance data buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_instance_data_buffer`.
+	///
 	void setInstanceDataBuffer(const InstanceDataBuffer* _idb, uint32_t _num = UINT32_MAX);
 
 	/// Set instance data buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_instance_data_from_vertex_buffer`.
+	///
 	void setInstanceDataBuffer(VertexBufferHandle _handle, uint32_t _startVertex, uint32_t _num);
 
 	/// Set instance data buffer for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_instance_data_from_dynamic_vertex_buffer`.
+	///
 	void setInstanceDataBuffer(DynamicVertexBufferHandle _handle, uint32_t _startVertex, uint32_t _num);
 
 	/// Set program for draw primitive.
+	///
+	/// @attention C99 equivalent is `bgfx_set_program`.
+	///
 	void setProgram(ProgramHandle _handle);
 
 	/// Set texture stage for draw primitive.
@@ -1248,6 +1575,8 @@ namespace bgfx
 	/// @param _flags Texture sampler filtering flags. UINT32_MAX use the
 	///   sampler filtering mode set by texture.
 	///
+	/// @attention C99 equivalent is `bgfx_set_texture`.
+	///
 	void setTexture(uint8_t _stage, UniformHandle _sampler, TextureHandle _handle, uint32_t _flags = UINT32_MAX);
 
 	/// Set texture stage for draw primitive.
@@ -1263,38 +1592,85 @@ namespace bgfx
 	///   - `BGFX_TEXTURE_[MIN/MAG/MIP]_[POINT/ANISOTROPIC]` - Point or anisotropic
 	///     sampling.
 	///
+	/// @attention C99 equivalent is `bgfx_set_texture_from_frame_buffer`.
+	///
 	void setTexture(uint8_t _stage, UniformHandle _sampler, FrameBufferHandle _handle, uint8_t _attachment = 0, uint32_t _flags = UINT32_MAX);
 
-	/// Submit primitive for rendering into single view.
+	/// Submit primitive for rendering.
 	///
 	/// @param _id View id.
 	/// @param _depth Depth for sorting.
 	/// @returns Number of draw calls.
 	///
+	/// @attention C99 equivalent is `bgfx_submit`.
+	///
 	uint32_t submit(uint8_t _id, int32_t _depth = 0);
 
+	/// Submit primitive for rendering with index and instance data info from
+	/// indirect buffer.
+	///
+	/// @attention C99 equivalent is `bgfx_submit_indirect`.
+	///
+	uint32_t submit(uint8_t _id, IndirectBufferHandle _indirectHandle, uint16_t _start = 0, uint16_t _num = 1, int32_t _depth = 0);
+
+	///
+	///
+	/// @attention C99 equivalent is `bgfx_set_compute_index_buffer`.
 	///
 	void setBuffer(uint8_t _stage, IndexBufferHandle _handle, Access::Enum _access);
 
 	///
+	///
+	/// @attention C99 equivalent is `bgfx_set_compute_vertex_buffer`.
+	///
 	void setBuffer(uint8_t _stage, VertexBufferHandle _handle, Access::Enum _access);
 
+	///
+	///
+	/// @attention C99 equivalent is `bgfx_set_compute_dynamic_index_buffer`.
 	///
 	void setBuffer(uint8_t _stage, DynamicIndexBufferHandle _handle, Access::Enum _access);
 
 	///
+	///
+	/// @attention C99 equivalent is `bgfx_set_compute_dynamic_vertex_buffer`.
+	///
 	void setBuffer(uint8_t _stage, DynamicVertexBufferHandle _handle, Access::Enum _access);
 
 	///
+	///
+	/// @attention C99 equivalent is `bgfx_set_compute_indirect_buffer`.
+	///
+	void setBuffer(uint8_t _stage, IndirectBufferHandle _handle, Access::Enum _access);
+
+	/// Set compute image from texture.
+	///
+	/// @attention C99 equivalent is `bgfx_set_image`.
+	///
 	void setImage(uint8_t _stage, UniformHandle _sampler, TextureHandle _handle, uint8_t _mip, Access::Enum _access, TextureFormat::Enum _format = TextureFormat::Count);
 
+	/// Set compute image from frame buffer texture.
+	///
+	/// @attention C99 equivalent is `bgfx_set_image_from_frame_buffer`.
 	///
 	void setImage(uint8_t _stage, UniformHandle _sampler, FrameBufferHandle _handle, uint8_t _attachment, Access::Enum _access, TextureFormat::Enum _format = TextureFormat::Count);
 
 	/// Dispatch compute.
-	void dispatch(uint8_t _id, ProgramHandle _handle, uint16_t _numX = 1, uint16_t _numY = 1, uint16_t _numZ = 1, uint8_t _flags = BGFX_SUBMIT_EYE_FIRST);
+	///
+	/// @attention C99 equivalent is `bgfx_dispatch`.
+	///
+	uint32_t dispatch(uint8_t _id, ProgramHandle _handle, uint16_t _numX = 1, uint16_t _numY = 1, uint16_t _numZ = 1, uint8_t _flags = BGFX_SUBMIT_EYE_FIRST);
+
+	/// Dispatch compute indirect.
+	///
+	/// @attention C99 equivalent is `bgfx_dispatch_indirect`.
+	///
+	uint32_t dispatch(uint8_t _id, ProgramHandle _handle, IndirectBufferHandle _indirectHandle, uint16_t _start = 0, uint16_t _num = 1, uint8_t _flags = BGFX_SUBMIT_EYE_FIRST);
 
 	/// Discard all previously set state for draw or compute call.
+	///
+	/// @attention C99 equivalent is `bgfx_discard`.
+	///
 	void discard();
 
 	/// Request screen shot.
@@ -1303,6 +1679,8 @@ namespace bgfx
 	///
 	/// @remarks
 	///   `bgfx::CallbackI::screenShot` must be implemented.
+	///
+	/// @attention C99 equivalent is `bgfx_save_screen_shot`.
 	///
 	void saveScreenShot(const char* _filePath);
 

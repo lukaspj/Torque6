@@ -27,18 +27,25 @@
 #include "console/consoleInternal.h"
 #endif
 
-#ifndef _PHYSICS_THREAD_H
-#include "physicsThread.h"
+#ifndef _BULLET_H
+#include "bullet.h"
 #endif
 
 namespace Physics
 {
    // 
+   extern bool paused;
    extern PhysicsEngine* engine;
 
    // Init/Destroy
    void init();
    void destroy();
+
+   void pause();
+   void resume();
+
+   PhysicsObject* getPhysicsObject(void* _user = NULL);
+   void deletePhysicsObject(PhysicsObject* _obj);
 }
 
 #endif

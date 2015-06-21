@@ -42,38 +42,60 @@
 
 namespace Rendering 
 {
-   class ShadowMapping : public virtual Renderable
+   // Cascaded Shadow Mapping
+   // Based On: https://github.com/bkaradzic/bgfx/blob/master/examples/16-shadowmaps/
+
+   class CascadedShadowMapping : public virtual Renderable
    {
       protected:
-	      bgfx::FrameBufferHandle    shadowMapBuffer;
-         Graphics::Shader*          shadowmapShader; 
-         Graphics::Shader*          shadowmapSkinnedShader; 
+         F32                        mLightView[16];
+		   F32                        mLightProj[4][16];
 
-         F32                        lightView[16];
-		   F32                        lightProj[16];
+         // Cascades
+         U16                        mCascadeSize;
+         bgfx::TextureHandle        mCascadeTextures[4];
+	      bgfx::FrameBufferHandle    mCascadeBuffers[4];
+         Graphics::ViewTableEntry*  mCascadeViews[4];
+         bgfx::UniformHandle        mCascadeMtxUniforms[4];
+         F32                        mCascadeMtx[4][16];
 
-         void refreshProjections();
+         // Blur
+         bgfx::FrameBufferHandle    mBlurBuffer;
+         Graphics::Shader*          mHBlurShader; 
+         Graphics::Shader*          mVBlurShader; 
+         bgfx::UniformHandle        mBlurParamsUniform;
+         Point4F                    mBlurParams;
+         Graphics::ViewTableEntry*  mVBlurViews[4];
+         Graphics::ViewTableEntry*  mHBlurViews[4];
+
+         // Variance Shadow Map Shaders
+         Graphics::Shader*          mVSMShader; 
+         Graphics::Shader*          mVSMSkinnedShader; 
+         
          void initBuffers();
          void destroyBuffers();
 
+         void worldSpaceFrustumCorners(F32* _corners24f, F32 _near, F32 _far, F32 _projWidth, F32 _projHeight, const F32* __restrict _invViewMtx);
+         void splitFrustum(F32* _splits, U8 _numSplits, F32 _near, F32 _far, F32 _splitWeight = 0.75f);
+
       public:
-         U16                        shadowMapSize;
-         bgfx::TextureHandle        shadowMapTexture;
+         CascadedShadowMapping();
+         ~CascadedShadowMapping();
 
-         ShadowMapping();
-         ~ShadowMapping();
-
-         void getShadowSampleMatrix(F32* result);
+         void refresh();
+         bgfx::TextureHandle getCascadeTexture(U8 cascade = 0);
 
          virtual void preRender();
          virtual void render();
          virtual void postRender();
    };
 
-   extern ShadowMapping* _shadowMappingInst;
+   // Generic Shadow Functions
+   extern CascadedShadowMapping* _shadowsInst;
    void shadowsInit();
    void shadowsDestroy();
    void applyShadowMap(RenderData* renderData);
+   bgfx::TextureHandle getShadowMap(U32 cascade = 0);
 }
 
 #endif

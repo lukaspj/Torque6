@@ -5,19 +5,19 @@
 
 #include "bgfx_p.h"
 #if BGFX_CONFIG_RENDERER_VULKAN
-#	include "../../vk/src/renderer_vk.cpp"
+#	include "../../bgfx-ext/src/renderer_vk.cpp"
 #else
 
-namespace bgfx
+namespace bgfx { namespace vk
 {
-	RendererContextI* rendererCreateVK()
+	RendererContextI* rendererCreate()
 	{
 		return NULL;
 	}
 
-	void rendererDestroyVK()
+	void rendererDestroy()
 	{
 	}
-} // namespace bgfx
+} /* namespace vk */ } // namespace bgfx
 
 #endif // BGFX_CONFIG_RENDERER_VULKAN

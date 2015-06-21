@@ -1,5 +1,5 @@
-<DeferredMaterialAsset
+<MaterialAsset
     AssetName="axeMaterial"
-    ShaderAsset="AnimatedMeshExample:dwarfShader"
-    Texture0="./models/axe.png"
+    TemplateFile="axeMaterial.taml"
+    Texture0="^AnimatedMeshExample/models/axe.png"
 />

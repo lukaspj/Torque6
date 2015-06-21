@@ -356,7 +356,10 @@ GBitmap* TextureManager::createPowerOfTwoBitmap(GBitmap* pBitmap)
 
 void TextureManager::freeTexture( TextureObject* pTextureObject )
 {
-    if((mDGLRender || mManagerState == Resurrecting) && pTextureObject->mGLTextureName)
+    //if ( bgfx::isValid(pTextureObject->mBGFXTexture) )
+   //    bgfx::destroyTexture(pTextureObject->mBGFXTexture);
+
+    /*if((mDGLRender || mManagerState == Resurrecting) && pTextureObject->mGLTextureName)
     {
         glDeleteTextures(1, (const GLuint*)&pTextureObject->mGLTextureName);
 
@@ -366,7 +369,7 @@ void TextureManager::freeTexture( TextureObject* pTextureObject )
         pTextureObject->mTextureResidentSize = 0;
         mTextureResidentWasteSize -= pTextureObject->mTextureResidentWasteSize;
         pTextureObject->mTextureResidentWasteSize = 0;
-    }
+    }*/
 
     if ( pTextureObject->mpBitmap != NULL )
     {
@@ -640,7 +643,7 @@ void TextureManager::refresh( TextureObject* pTextureObject )
     }
     else
     {
-       if ( pNewBitmap->getFormat() == GBitmap::BitmapFormat::RGBA )
+       if ( pNewBitmap->getFormat() == GBitmap::RGBA )
        {
           // Convert to BGRA
           U32 count = pNewBitmap->getWidth() * pNewBitmap->getHeight();
@@ -650,25 +653,15 @@ void TextureManager::refresh( TextureObject* pTextureObject )
 		    U32 bytesPerPixel = 4;
 		    U32 pitch = pNewBitmap->getWidth() * bytesPerPixel;
 
-		    const bgfx::Memory* mem = NULL;
-			 mem = bgfx::alloc(pNewBitmap->getHeight() * pitch);
-			 bgfx::imageSwizzleBgra8(pNewBitmap->getWidth(), pNewBitmap->getHeight(), pitch, bits, mem->data);
-
-          // Load texture into bgfx.
-		    pTextureObject->mBGFXTexture = bgfx::createTexture2D(pNewBitmap->getWidth()
-						   , pNewBitmap->getHeight()
-						   , 1
-						   , bgfx::TextureFormat::BGRA8
-						   , BGFX_TEXTURE_NONE
-						   , mem
-						   );
+          // TODO: We don't need to generate mips for literally every texture.
+          pTextureObject->mBGFXTexture = generateMipMappedTexture(pNewBitmap->getWidth(), pNewBitmap->getHeight(), bits);
        }
 
        // TODO: Finish texture loading in all its glorious forms.
-       if ( pNewBitmap->getFormat() == GBitmap::BitmapFormat::Alpha )
+       if ( pNewBitmap->getFormat() == GBitmap::Alpha )
           pTextureObject->mBGFXTexture = bgfx::createTexture2D(pNewBitmap->getWidth(), pNewBitmap->getHeight(), 0, bgfx::TextureFormat::R8, BGFX_TEXTURE_MIN_POINT|BGFX_TEXTURE_MAG_POINT|BGFX_TEXTURE_MIP_POINT);
 
-       if ( pNewBitmap->getFormat() == GBitmap::BitmapFormat::RGB )
+       if ( pNewBitmap->getFormat() == GBitmap::RGB )
        {
           // Convert to BGRA
           U32 count = pNewBitmap->getWidth() * pNewBitmap->getHeight();
@@ -678,21 +671,13 @@ void TextureManager::refresh( TextureObject* pTextureObject )
 		    U32 bytesPerPixel = 4;
 		    U32 pitch = pNewBitmap->getWidth() * bytesPerPixel;
 
-		    const bgfx::Memory* mem = NULL;
-			 mem = bgfx::alloc(pNewBitmap->getHeight() * pitch);
-			 swizzleRGBtoBGRA(pNewBitmap->getWidth(), pNewBitmap->getHeight(), bits, mem->data);
-
-          // Load texture into bgfx.
-		    pTextureObject->mBGFXTexture = bgfx::createTexture2D(pNewBitmap->getWidth()
-						   , pNewBitmap->getHeight()
-						   , 1
-						   , bgfx::TextureFormat::BGRA8
-						   , BGFX_TEXTURE_NONE
-						   , mem
-						   );
+          U8* rgba_data = new U8[pNewBitmap->getHeight() * pitch];
+          swizzleRGBtoRGBA(pNewBitmap->getWidth(), pNewBitmap->getHeight(), bits, rgba_data);
+          pTextureObject->mBGFXTexture = generateMipMappedTexture(pNewBitmap->getWidth(), pNewBitmap->getHeight(), rgba_data);
+          SAFE_DELETE(rgba_data);
        }
 
-       if ( pNewBitmap->getFormat() == GBitmap::BitmapFormat::DDS )
+       if ( pNewBitmap->getFormat() == GBitmap::DDS )
        {
           Con::printf("Asking to load DDS!");
           const bgfx::Memory* mem = NULL;
@@ -706,6 +691,12 @@ void TextureManager::refresh( TextureObject* pTextureObject )
 
        if ( pTextureObject->mBGFXTexture.idx == bgfx::invalidHandle )
           Con::printf("Failed to load BGFX texture.");
+       else
+       {
+          // This loads the texture into NanoVG (it doesn't create a second copy on the GPU)
+          // This is nessicary in order to use textures in NanoVG calls.
+          nvgCreateImageBGFX(dglGetNVGContext(), pNewBitmap->getWidth(), pNewBitmap->getHeight(), NVG_TEXTURE_RGBA, pTextureObject->mBGFXTexture);
+       }
     }
 
     // TODO: Translate into BGFX.
@@ -747,6 +738,83 @@ void TextureManager::swizzleRGBtoBGRA(U32 width, U32 height, const U8* src, U8* 
       dest[dest_pos + 3] = 255; // A
       dest_pos += 4;
    }
+}
+
+void TextureManager::swizzleRGBtoRGBA(U32 width, U32 height, const U8* src, U8* dest)
+{
+   U32 count = width * height * 3;
+   U32 dest_pos = 0;
+   for (U32 n = 0; n < count; n += 3)
+   {
+      dest[dest_pos] = src[n]; // R
+      dest[dest_pos + 1] = src[n + 1]; // G
+      dest[dest_pos + 2] = src[n + 2]; // B
+      dest[dest_pos + 3] = 255; // A
+      dest_pos += 4;
+   }
+}
+
+bgfx::TextureHandle TextureManager::generateMipMappedTexture(U32 _width, U32 _height, const U8* _src, bool _swizzleToBGRA)
+{
+   //Con::printf("Generating Mips for %d x %d Texture.", _width, _height);
+
+   // Allocate more than we'll need
+   U32 byte_count = 0;
+   U8* out_data = new U8[_width * _height * 4 * 2];
+
+   U8* data = new U8[_width * _height * 4];
+   dMemcpy(data, _src, _width * _height * 4);
+
+   if ( _swizzleToBGRA )
+      bgfx::imageSwizzleBgra8(_width, _height, _width * 4, _src, out_data);
+   else
+      dMemcpy(out_data, _src, _width * _height * 4);
+   
+   byte_count += _width * _height * 4;
+
+   U32 width = _width;
+	U32 height = _height;
+	U32 pitch = _width * 4;
+
+	// Generate mip maps.
+	U32 mip = 1;
+	for (; 2 <= width && 2 <= height; ++mip)
+	{
+		bgfx::imageRgba8Downsample2x2(width, height, pitch, data, data);
+
+		width >>= 1;
+		height >>= 1;
+		pitch = width*4;
+
+      //Con::printf("  Mip %d: %d x %d", mip, width, height);
+
+      if ( _swizzleToBGRA )
+         bgfx::imageSwizzleBgra8(width, height, width * 4, data, &out_data[byte_count]);
+      else
+         dMemcpy(&out_data[byte_count], data, width * height * 4);
+
+      byte_count += width * height * 4;
+	}
+
+   //Con::printf("  Final Byte Count: %d/%d", byte_count, _width * _height * 4 * 2);
+
+   const bgfx::Memory* mem = NULL;
+	mem = bgfx::alloc(byte_count);
+   dMemcpy(mem->data, out_data, byte_count);
+
+   bgfx::TextureHandle result = BGFX_INVALID_HANDLE;
+   result = bgfx::createTexture2D(_width
+						   , _height
+						   , mip
+						   , bgfx::TextureFormat::BGRA8
+						   , BGFX_TEXTURE_NONE
+						   , mem
+						   );
+
+   SAFE_DELETE(data);
+   SAFE_DELETE(out_data);
+
+   return result;
 }
 
 //--------------------------------------------------------------------------------------------------------------------

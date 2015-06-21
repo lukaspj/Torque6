@@ -12,6 +12,7 @@
 #endif // BX_PLATFORM_WINDOWS
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_syswm.h>
 #include <bgfxplatform.h>
 
 #include <stdio.h>
@@ -179,6 +180,7 @@ namespace entry
 		SDL_USER_WINDOW_SET_POS,
 		SDL_USER_WINDOW_SET_SIZE,
 		SDL_USER_WINDOW_TOGGLE_FRAME,
+		SDL_USER_WINDOW_TOGGLE_FULL_SCREEN,
 		SDL_USER_WINDOW_MOUSE_LOCK,
 	};
 
@@ -191,7 +193,7 @@ namespace entry
 		union { void* p; WindowHandle h; } cast;
 		cast.h = _handle;
 		uev.data1 = cast.p;
-		
+
 		uev.data2 = _msg;
 		uev.code = _code;
 		SDL_PushEvent(&event);
@@ -210,7 +212,11 @@ namespace entry
 			: m_width(ENTRY_DEFAULT_WIDTH)
 			, m_height(ENTRY_DEFAULT_HEIGHT)
 			, m_aspectRatio(16.0f/9.0f)
+			, m_mx(0)
+			, m_my(0)
+			, m_mz(0)
 			, m_mouseLock(false)
+			, m_fullscreen(false)
 		{
 			memset(s_translateKey, 0, sizeof(s_translateKey) );
 			initTranslateKey(SDL_SCANCODE_ESCAPE,       Key::Esc);
@@ -314,7 +320,7 @@ namespace entry
 			initTranslateGamepadAxis(SDL_CONTROLLER_AXIS_TRIGGERRIGHT, GamepadAxis::RightZ);
 		}
 
-		void run(int _argc, char** _argv)
+		int run(int _argc, char** _argv)
 		{
 			m_mte.m_argc = _argc;
 			m_mte.m_argv = _argv;
@@ -374,10 +380,13 @@ namespace entry
 					case SDL_MOUSEMOTION:
 						{
 							const SDL_MouseMotionEvent& mev = event.motion;
+							m_mx = mev.x;
+							m_my = mev.y;
+
 							WindowHandle handle = findHandle(mev.windowID);
 							if (isValid(handle) )
 							{
-								m_eventQueue.postMouseEvent(handle, mev.x, mev.y, 0);
+								m_eventQueue.postMouseEvent(handle, m_mx, m_my, m_mz);
 							}
 						}
 						break;
@@ -409,7 +418,65 @@ namespace entry
 						}
 						break;
 
+					case SDL_MOUSEWHEEL:
+						{
+							const SDL_MouseWheelEvent& mev = event.wheel;
+							m_mz += mev.y;
+
+							WindowHandle handle = findHandle(mev.windowID);
+							if (isValid(handle) )
+							{
+								m_eventQueue.postMouseEvent(handle, m_mx, m_my, m_mz);
+							}
+						}
+						break;
+
+					case SDL_TEXTINPUT:
+						{
+							const SDL_TextInputEvent& tev = event.text;
+							WindowHandle handle = findHandle(tev.windowID);
+							if (isValid(handle) )
+							{
+								m_eventQueue.postCharEvent(handle, 1, (const uint8_t*)tev.text);
+							}
+						}
+						break;
+
 					case SDL_KEYDOWN:
+						{
+							const SDL_KeyboardEvent& kev = event.key;
+							WindowHandle handle = findHandle(kev.windowID);
+							if (isValid(handle) )
+							{
+								uint8_t modifiers = translateKeyModifiers(kev.keysym.mod);
+								Key::Enum key = translateKey(kev.keysym.scancode);
+
+								// TODO: These keys are not captured by SDL_TEXTINPUT. Should be probably handled by SDL_TEXTEDITING. This is a workaround for now.
+								if (key == 1) // Escape
+								{
+									uint8_t pressedChar[4];
+									pressedChar[0] = 0x1b;
+									m_eventQueue.postCharEvent(handle, 1, pressedChar);
+								}
+								else if (key == 2) // Enter
+								{
+									uint8_t pressedChar[4];
+									pressedChar[0] = 0x0d;
+									m_eventQueue.postCharEvent(handle, 1, pressedChar);
+								}
+								else if (key == 5) // Backspace
+								{
+									uint8_t pressedChar[4];
+									pressedChar[0] = 0x08;
+									m_eventQueue.postCharEvent(handle, 1, pressedChar);
+								}
+								else
+								{
+								    m_eventQueue.postKeyEvent(handle, key, modifiers, kev.state == SDL_PRESSED);
+								}
+							}
+						}
+						break;
 					case SDL_KEYUP:
 						{
 							const SDL_KeyboardEvent& kev = event.key;
@@ -615,6 +682,14 @@ namespace entry
 								}
 								break;
 
+							case SDL_USER_WINDOW_TOGGLE_FULL_SCREEN:
+								{
+									WindowHandle handle = getWindowHandle(uev);
+									m_fullscreen = !m_fullscreen;
+									SDL_SetWindowFullscreen(m_window[handle.idx], m_fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+								}
+								break;
+
 							case SDL_USER_WINDOW_MOUSE_LOCK:
 								{
 									SDL_SetRelativeMouseMode(!!uev.code ? SDL_TRUE : SDL_FALSE);
@@ -635,6 +710,8 @@ namespace entry
 
 			SDL_DestroyWindow(m_window[0]);
 			SDL_Quit();
+
+			return m_thread.getExitCode();
 		}
 
 		WindowHandle findHandle(uint32_t _windowId)
@@ -668,19 +745,6 @@ namespace entry
 			{
 				m_width  = _width;
 				m_height = _height;
-
-				if (m_width < m_height)
-				{
-					float aspectRatio = 1.0f/m_aspectRatio;
-					m_width = bx::uint32_max(ENTRY_DEFAULT_WIDTH/4, m_width);
-					m_height = uint32_t(float(m_width)*aspectRatio);
-				}
-				else
-				{
-					float aspectRatio = m_aspectRatio;
-					m_height = bx::uint32_max(ENTRY_DEFAULT_HEIGHT/4, m_height);
-					m_width = uint32_t(float(m_height)*aspectRatio);
-				}
 
 				SDL_SetWindowSize(m_window[_handle.idx], m_width, m_height);
 				m_eventQueue.postSizeEvent(_handle, m_width, m_height);
@@ -722,7 +786,9 @@ namespace entry
 
 		int32_t m_mx;
 		int32_t m_my;
+		int32_t m_mz;
 		bool m_mouseLock;
+		bool m_fullscreen;
 	};
 
 	static Context s_ctx;
@@ -805,6 +871,11 @@ namespace entry
 		sdlPostEvent(SDL_USER_WINDOW_TOGGLE_FRAME, _handle);
 	}
 
+	void toggleFullscreen(WindowHandle _handle)
+	{
+		sdlPostEvent(SDL_USER_WINDOW_TOGGLE_FULL_SCREEN, _handle);
+	}
+
 	void setMouseLock(WindowHandle _handle, bool _lock)
 	{
 		sdlPostEvent(SDL_USER_WINDOW_MOUSE_LOCK, _handle, NULL, _lock);
@@ -827,8 +898,7 @@ namespace entry
 int main(int _argc, char** _argv)
 {
 	using namespace entry;
-	s_ctx.run(_argc, _argv);
-	return 0;
+	return s_ctx.run(_argc, _argv);
 }
 
 #endif // ENTRY_CONFIG_USE_SDL

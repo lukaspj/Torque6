@@ -63,6 +63,11 @@ namespace entry
 
 	struct Joystick
 	{
+		Joystick()
+			: m_fd(-1)
+		{
+		}
+
 		void init()
 		{
 			m_fd = open("/dev/input/js0", O_RDONLY | O_NONBLOCK);
@@ -80,7 +85,7 @@ namespace entry
 
 		void shutdown()
 		{
-			if (0 != m_fd)
+			if (-1 != m_fd)
 			{
 				close(m_fd);
 			}
@@ -99,7 +104,7 @@ namespace entry
 
 		bool update(EventQueue& _eventQueue)
 		{
-			if (0 == m_fd)
+			if (-1 == m_fd)
 			{
 				return false;
 			}
@@ -202,13 +207,24 @@ namespace entry
 			initTranslateKey(XK_Down,         Key::Down);
 			initTranslateKey(XK_Left,         Key::Left);
 			initTranslateKey(XK_Right,        Key::Right);
-			initTranslateKey(XK_Page_Up,      Key::PageUp);
-			initTranslateKey(XK_Page_Down,    Key::PageUp);
+			initTranslateKey(XK_Insert,       Key::Insert);
+			initTranslateKey(XK_Delete,       Key::Delete);
 			initTranslateKey(XK_Home,         Key::Home);
 			initTranslateKey(XK_KP_End,       Key::End);
+			initTranslateKey(XK_Page_Up,      Key::PageUp);
+			initTranslateKey(XK_Page_Down,    Key::PageDown);
 			initTranslateKey(XK_Print,        Key::Print);
 			initTranslateKey(XK_equal,        Key::Plus);
 			initTranslateKey(XK_minus,        Key::Minus);
+			initTranslateKey(XK_bracketleft,  Key::LeftBracket);
+			initTranslateKey(XK_bracketright, Key::RightBracket);
+			initTranslateKey(XK_semicolon,    Key::Semicolon);
+			initTranslateKey(XK_apostrophe,   Key::Quote);
+			initTranslateKey(XK_comma,        Key::Comma);
+			initTranslateKey(XK_period,       Key::Period);
+			initTranslateKey(XK_slash,        Key::Slash);
+			initTranslateKey(XK_backslash,    Key::Backslash);
+			initTranslateKey(XK_grave,        Key::Tilde);
 			initTranslateKey(XK_F1,           Key::F1);
 			initTranslateKey(XK_F2,           Key::F2);
 			initTranslateKey(XK_F3,           Key::F3);
@@ -294,7 +310,6 @@ namespace entry
 					| KeyPressMask
 					| KeyReleaseMask
 					| PointerMotionMask
-					| ResizeRedirectMask
 					| StructureNotifyMask
 					;
 
@@ -355,9 +370,6 @@ namespace entry
 					switch (event.type)
 					{
 						case Expose:
-							break;
-
-						case ConfigureNotify:
 							break;
 
 						case ClientMessage:
@@ -449,14 +461,13 @@ namespace entry
 							}
 							break;
 
-						case ResizeRequest:
+						case ConfigureNotify:
 							{
-								const XResizeRequestEvent& xresize = event.xresizerequest;
-								XResizeWindow(xresize.display, xresize.window, xresize.width, xresize.height);
-								WindowHandle handle = findHandle(xresize.window);
+								const XConfigureEvent& xev = event.xconfigure;
+								WindowHandle handle = findHandle(xev.window);
 								if (isValid(handle) )
 								{
-									m_eventQueue.postSizeEvent(handle, xresize.width, xresize.height);
+									m_eventQueue.postSizeEvent(handle, xev.width, xev.height);
 								}
 							}
 							break;
@@ -471,7 +482,7 @@ namespace entry
 			XUnmapWindow(m_display, m_window[0]);
 			XDestroyWindow(m_display, m_window[0]);
 
-			return EXIT_SUCCESS;
+			return thread.getExitCode();
 		}
 
 		void setModifier(Modifier::Enum _modifier, bool _set)
@@ -660,6 +671,11 @@ namespace entry
 	}
 
 	void toggleWindowFrame(WindowHandle _handle)
+	{
+		BX_UNUSED(_handle);
+	}
+
+	void toggleFullscreen(WindowHandle _handle)
 	{
 		BX_UNUSED(_handle);
 	}

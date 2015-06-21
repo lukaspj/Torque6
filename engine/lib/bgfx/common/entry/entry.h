@@ -84,13 +84,24 @@ namespace entry
 			Down,
 			Left,
 			Right,
-			PageUp,
-			PageDown,
+			Insert,
+			Delete,
 			Home,
 			End,
+			PageUp,
+			PageDown,
 			Print,
 			Plus,
 			Minus,
+			LeftBracket,
+			RightBracket,
+			Semicolon,
+			Quote,
+			Comma,
+			Period,
+			Slash,
+			Backslash,
+			Tilde,
 			F1,
 			F2,
 			F3,
@@ -170,6 +181,8 @@ namespace entry
 		};
 	};
 
+	const char* getName(Key::Enum _key);
+
 	struct MouseState
 	{
 		MouseState()
@@ -211,6 +224,7 @@ namespace entry
 	void setWindowSize(WindowHandle _handle, uint32_t _width, uint32_t _height);
 	void setWindowTitle(WindowHandle _handle, const char* _title);
 	void toggleWindowFrame(WindowHandle _handle);
+	void toggleFullscreen(WindowHandle _handle);
 	void setMouseLock(WindowHandle _handle, bool _lock);
 
 	struct WindowState

@@ -28,7 +28,7 @@
 #endif
 
 #ifndef _SCENEENTITY_H_
-#include "entity.h"
+#include <3d/entity/entity.h>
 #endif
 
 #ifndef _ASSET_PTR_H_
@@ -36,7 +36,7 @@
 #endif
 
 #ifndef _MESH_ASSET_H_
-#include "3d/assets/meshAsset.h"
+#include "3d/entity/meshAsset.h"
 #endif
 
 #ifndef _TICKABLE_H_
@@ -49,7 +49,7 @@
 
 namespace Scene
 {
-   class SceneCamera : public SimObject, public virtual Tickable
+   class DLL_PUBLIC SceneCamera : public SimObject, public virtual Tickable
    {
       private:
          typedef SimObject Parent;
@@ -74,6 +74,7 @@ namespace Scene
          ~SceneCamera();
 		  
          void setActive(bool val);
+         Point3F getPosition() { return mPosition; }
          Point3F getDirection() { return mDirection; }
          void lookAt(Point3F look_at_position);
          void translate(Point3F translation);
@@ -92,15 +93,19 @@ namespace Scene
             mBindMouseRightBtn = right;
          }
 
-         void onMouseDownEvent(const GuiEvent &event);
-         void onMouseMoveEvent(const GuiEvent &event);
-         void onMouseDraggedEvent(const GuiEvent &event);
-         void onRightMouseDownEvent(const GuiEvent &event);
-         void onRightMouseDraggedEvent(const GuiEvent &event);
+         virtual void onMouseDownEvent(const GuiEvent &event);
+         virtual void onMouseMoveEvent(const GuiEvent &event);
+         virtual void onMouseDraggedEvent(const GuiEvent &event);
+         virtual void onRightMouseDownEvent(const GuiEvent &event);
+         virtual void onRightMouseDraggedEvent(const GuiEvent &event);
 
          virtual void interpolateTick( F32 delta );
          virtual void processTick();
          virtual void advanceTime( F32 timeDelta );
+
+         virtual void copy(SceneCamera* cam);
+
+         static void initPersistFields();
 
          DECLARE_CONOBJECT(SceneCamera);
    };

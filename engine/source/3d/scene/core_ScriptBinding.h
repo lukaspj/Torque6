@@ -25,7 +25,7 @@
 #endif
 
 #ifndef _ENTITY_TEMPLATE_H_
-#include "3d/templates/entityTemplate.h"
+#include "3d/entity/entityTemplate.h"
 #endif
 
 #ifndef _UTILITY_H_
@@ -35,6 +35,28 @@
 #ifndef _SCENECORE_H_
 #include "core.h"
 #endif
+
+#include <3d/material/materialAsset.h>
+
+ConsoleNamespaceFunction( Scene, clear, ConsoleVoid, 1, 1, (""))
+{
+   Scene::clear();
+}
+
+ConsoleNamespaceFunction( Scene, load, ConsoleVoid, 1, 1, (""))
+{
+   Scene::load();
+}
+
+ConsoleNamespaceFunction( Scene, save, ConsoleVoid, 1, 1, (""))
+{
+   Scene::save();
+}
+
+ConsoleNamespaceFunction( Scene, refresh, ConsoleVoid, 1, 1, (""))
+{
+   Scene::refresh();
+}
 
 ConsoleNamespaceFunction( Scene, addEntity, ConsoleVoid, 2, 3, (""))
 {

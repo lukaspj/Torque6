@@ -31,7 +31,7 @@
 #endif
 
 #ifndef NANOVG_H
-#include <nanovg/nanovg.h>
+#include <../common/nanovg/nanovg.h>
 #endif
 
 #ifndef _FILEOBJECT_H_
@@ -190,9 +190,9 @@ U32 dglDrawTextN(GFont *font, const Point2I &ptDraw, const UTF8  *in_string, U32
 /// @{
 
 /// draws a line from x1,y1 to x2,y2 in the specified color
-void dglDrawLine(S32 x1, S32 y1, S32 x2, S32 y2, const ColorI &color);
+void dglDrawLine(S32 x1, S32 y1, S32 x2, S32 y2, const ColorI &color, F32 lineWidth = 1.0f);
 /// draws a line from startPt to endPt in specified color
-void dglDrawLine(const Point2I &startPt, const Point2I &endPt, const ColorI &color);
+void dglDrawLine(const Point2I &startPt, const Point2I &endPt, const ColorI &color, F32 lineWidth = 1.0f);
 /// draws a wireframe rectangle from upperL to lowerR in specified color and optional line width
 void dglDrawRect(const Point2I &upperL, const Point2I &lowerR, const ColorI &color, const float &lineWidth = 1.0f);
 /// draws a wireframe rectangle in "rect" in specified color and optional line width
@@ -376,12 +376,24 @@ extern NVGcontext* nvgContext;
 NVGcontext* dglGetNVGContext();
 
 extern Graphics::Shader* dglGUIShader;
+extern Graphics::Shader* dglGUIColorShader;
 
+namespace Graphics
+{
+   struct ViewTableEntry;
+}
+extern Graphics::ViewTableEntry* v_TorqueGUITop;
+
+void dglInit();
+void dglDestroy();
 void dglBeginFrame();
 void dglEndFrame();
-void dglScreenQuad(U32 _x, U32 _y, U32 _width, U32 _height, bool _originBottomLeft = false);
-void dglScreenQuadSrc(U32 _x, U32 _y, U32 _width, U32 _height, F32 _srcx, F32 _srcy, F32 _srcwidth, F32 _srcheight, F32 _srcimgwidth, F32 _srcimgheight, bool _originBottomLeft = false);
-void fullScreenQuad(float _textureWidth, float _textureHeight);
+void dglScreenQuad(U32 _x, U32 _y, U32 _width, U32 _height);
+void dglScreenQuadSrc(U32 _x, U32 _y, U32 _width, U32 _height, F32 _srcx, F32 _srcy, F32 _srcwidth, F32 _srcheight, F32 _srcimgwidth, F32 _srcimgheight);
+void fullScreenQuad(F32 _textureWidth, F32 _textureHeight, F32 _z = 0.0f);
+void drawLine3D(Point3F start, Point3F end, ColorI color, F32 lineWidth = 1.0f);
+void drawBox3D(Box3F box, ColorI color, F32 lineWidth = 1.0f);
+void screenSpaceQuad(F32 _x, F32 _y, F32 _width, F32 _height, F32 _targetWidth, F32 _targetHeight);
 
 struct PosUvVertex
 {
