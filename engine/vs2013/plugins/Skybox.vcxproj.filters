@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="plugins">
+      <UniqueIdentifier>{1A8EB88F-4E1F-5247-BF58-51DEF5E7958D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins\Skybox">
+      <UniqueIdentifier>{AD09F290-035E-9F4D-88BB-CB19635DF8A7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\plugins\Skybox\SkyboxDLL.h">
+      <Filter>plugins\Skybox</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\plugins\Skybox\SkyboxDLL.cpp">
+      <Filter>plugins\Skybox</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

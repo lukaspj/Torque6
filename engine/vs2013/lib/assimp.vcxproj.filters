@@ -1,0 +1,1311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{3319150E-0A32-EA4E-B925-C61D1AB941E5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib">
+      <UniqueIdentifier>{7E2A328D-9CC0-0F44-8DA7-B6056045F01C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp">
+      <UniqueIdentifier>{EE05A54E-E108-9944-B860-F02D22AE4B27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\code">
+      <UniqueIdentifier>{5E46FC52-4F29-A04E-801A-115931D45BB6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\code\res">
+      <UniqueIdentifier>{76448C49-22D6-4E42-A9F6-6C9F265F88E4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\contrib">
+      <UniqueIdentifier>{8F7AEA24-E30D-4842-8AA8-5732C84A7CF8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\contrib\clipper">
+      <UniqueIdentifier>{058FF3D6-3BCA-874C-AC14-5F0690281FEF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\contrib\ConvertUTF">
+      <UniqueIdentifier>{83EFF1E0-84B8-6942-B726-E7E057C3B81B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\contrib\irrXML">
+      <UniqueIdentifier>{D851F291-6029-6C43-B365-BAEE26E8F49C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\contrib\poly2tri">
+      <UniqueIdentifier>{88A22AF5-0BCA-524A-A59E-79EA1F119220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\contrib\poly2tri\poly2tri">
+      <UniqueIdentifier>{4A6EAA1B-EF1A-2744-87B8-E232999F500D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\contrib\poly2tri\poly2tri\common">
+      <UniqueIdentifier>{587D1A63-3C68-F345-81EF-08F40C80C96B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\contrib\poly2tri\poly2tri\sweep">
+      <UniqueIdentifier>{68053BD6-BED5-7841-B12D-54B909F1D521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\contrib\unzip">
+      <UniqueIdentifier>{7A1670F9-E89F-8B49-91B2-B8E6A4C53FD0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\contrib\zlib">
+      <UniqueIdentifier>{E1D06765-E284-E14D-AB95-49785094597C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\include">
+      <UniqueIdentifier>{53BAD241-5CC1-144E-90B0-51A675442A51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\include\assimp">
+      <UniqueIdentifier>{88CE8F1D-93C5-1241-BC73-DC38E1A54654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\include\assimp\Compiler">
+      <UniqueIdentifier>{45DEA825-0CDB-3247-82B0-B4BB7FDC301A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\include\assimp\port">
+      <UniqueIdentifier>{01FEA771-EB33-D046-AFD0-18D5EA212FF4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\assimp\include\assimp\port\AndroidJNI">
+      <UniqueIdentifier>{B966466A-C9AA-1341-B5DB-82A04782D83C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\3DSExporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\3DSHelper.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\3DSLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ACLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ASELoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ASEParser.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\AssbinExporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\AssbinLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\assbin_chunks.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\AssimpPCH.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\AssxmlExporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\B3DImporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BaseImporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BaseProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Bitmap.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderBMesh.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderDNA.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderIntermediate.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderModifier.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderScene.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderSceneGen.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderTessellator.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlobIOSystem.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BVHLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ByteSwap.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\CalcTangentsProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\CInterfaceIOWrapper.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\COBLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\COBScene.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ColladaExporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ColladaHelper.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ColladaLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ColladaParser.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ComputeUVMappingProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ConvertToLHProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\CSMLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DeboneProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DefaultIOStream.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DefaultIOSystem.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DefaultProgressHandler.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DXFHelper.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DXFLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Exceptional.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\fast_atof.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXCompileConfig.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXConverter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXDocument.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXDocumentUtil.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXImporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXImportSettings.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXParser.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXProperties.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXTokenizer.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXUtil.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FileLogStream.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FileSystemFilter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FindDegenerates.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FindInstancesProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FindInvalidDataProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FixNormalsStep.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\GenericProperty.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\GenFaceNormalsProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\GenVertexNormalsProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\HalfLifeFileData.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Hash.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\HMPFileData.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\HMPLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IFCLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IFCReaderGen.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IFCUtil.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IFF.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Importer.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ImproveCacheLocality.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IRRLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IRRMeshLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IRRShared.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\irrXMLWrapper.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\JoinVerticesProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LimitBoneWeightsProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LineSplitter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LogAux.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LWOAnimation.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LWOFileData.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LWOLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LWSLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MakeVerboseFormat.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MaterialSystem.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD2FileData.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD2Loader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD2NormalTable.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD3FileData.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD3Loader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD4FileData.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD5Loader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD5Parser.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDCFileData.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDCLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDCNormalTable.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDLDefaultColorMap.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDLFileData.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDLLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MemoryIOWrapper.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MS3DLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\NDOLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\NFFLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjExporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjFileData.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjFileImporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjFileMtlImporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjFileParser.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjTools.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OFFLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OgreBinarySerializer.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OgreImporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OgreParsingUtils.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OgreStructs.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OgreXmlSerializer.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OptimizeGraph.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OptimizeMeshes.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ParsingUtils.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\PlyExporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\PlyLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\PlyParser.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\PolyTools.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\PretransformVertices.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ProcessHelper.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Profiler.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Q3BSPFileData.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Q3BSPFileImporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Q3BSPFileParser.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Q3BSPZipArchive.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Q3DLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\qnan.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\RawLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\RemoveComments.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\RemoveRedundantMaterials.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\RemoveVCProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SceneCombiner.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ScenePreprocessor.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ScenePrivate.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SGSpatialSort.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SkeletonMeshBuilder.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SMDLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SmoothingGroups.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SortByPTypeProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SpatialSort.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SplitByBoneCountProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SplitLargeMeshes.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\StandardShapes.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\StdOStreamLogStream.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\STEPFile.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\STEPFileEncoding.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\STEPFileReader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\STLExporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\STLLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\StreamReader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\StreamWriter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\StringComparison.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Subdivision.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\TargetAnimation.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\TerragenLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\TextureTransform.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\TinyFormatter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\TriangulateProcess.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\UnrealLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ValidateDataStructure.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Vertex.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\VertexTriangleAdjacency.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Win32DebugLogStream.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XFileExporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XFileHelper.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XFileImporter.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XFileParser.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XGLLoader.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XMLTools.h">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\res\resource.h">
+      <Filter>engine\lib\assimp\code\res</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\clipper\clipper.hpp">
+      <Filter>engine\lib\assimp\contrib\clipper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\ConvertUTF\ConvertUTF.h">
+      <Filter>engine\lib\assimp\contrib\ConvertUTF</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\CXMLReaderImpl.h">
+      <Filter>engine\lib\assimp\contrib\irrXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\heapsort.h">
+      <Filter>engine\lib\assimp\contrib\irrXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\irrArray.h">
+      <Filter>engine\lib\assimp\contrib\irrXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\irrString.h">
+      <Filter>engine\lib\assimp\contrib\irrXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\irrTypes.h">
+      <Filter>engine\lib\assimp\contrib\irrXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\irrXML.h">
+      <Filter>engine\lib\assimp\contrib\irrXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\common\shapes.h">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\common\utils.h">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\advancing_front.h">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\sweep</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\cdt.h">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\sweep</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\sweep.h">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\sweep</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\sweep_context.h">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\sweep</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\poly2tri.h">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\unzip\crypt.h">
+      <Filter>engine\lib\assimp\contrib\unzip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\unzip\ioapi.h">
+      <Filter>engine\lib\assimp\contrib\unzip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\unzip\unzip.h">
+      <Filter>engine\lib\assimp\contrib\unzip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\crc32.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\deflate.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\gzguts.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\inffast.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\inffixed.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\inflate.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\inftrees.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\trees.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\zconf.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\zconf.in.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\zlib.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\zutil.h">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\DefaultLogger.hpp">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Exporter.hpp">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Importer.hpp">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\IOStream.hpp">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\IOSystem.hpp">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Logger.hpp">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\LogStream.hpp">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\NullLogger.hpp">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\ProgressHandler.hpp">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\ai_assert.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\anim.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\camera.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\cexport.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\cfileio.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\cimport.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\color4.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\config.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\defs.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\importerdesc.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\light.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\material.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\matrix3x3.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\matrix4x4.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\mesh.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\metadata.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\postprocess.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\quaternion.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\scene.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\texture.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\types.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\vector2.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\vector3.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\version.h">
+      <Filter>engine\lib\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Compiler\poppack1.h">
+      <Filter>engine\lib\assimp\include\assimp\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Compiler\pstdint.h">
+      <Filter>engine\lib\assimp\include\assimp\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Compiler\pushpack1.h">
+      <Filter>engine\lib\assimp\include\assimp\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h">
+      <Filter>engine\lib\assimp\include\assimp\port\AndroidJNI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\3DSConverter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\3DSExporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\3DSLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ACLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ASELoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ASEParser.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\AssbinExporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\AssbinLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Assimp.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\AssimpCExport.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\AssimpPCH.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\AssxmlExporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\B3DImporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BaseImporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BaseProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Bitmap.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderBMesh.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderDNA.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderModifier.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderScene.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderTessellator.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BVHLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\CalcTangentsProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\COBLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ColladaExporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ColladaLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ColladaParser.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ComputeUVMappingProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ConvertToLHProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\CSMLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\DeboneProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\DefaultIOStream.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\DefaultIOSystem.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\DefaultLogger.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\DXFLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Exporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXAnimation.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXBinaryTokenizer.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXConverter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXDeformer.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXDocument.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXDocumentUtil.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXImporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXMaterial.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXMeshGeometry.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXModel.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXNodeAttribute.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXParser.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXProperties.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXTokenizer.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXUtil.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FindDegenerates.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FindInstancesProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FindInvalidDataProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FixNormalsStep.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\GenFaceNormalsProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\GenVertexNormalsProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\HMPLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCBoolean.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCCurve.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCGeometry.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCMaterial.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCOpenings.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCProfile.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCReaderGen.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCUtil.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Importer.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ImporterRegistry.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ImproveCacheLocality.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IRRLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IRRMeshLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IRRShared.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\JoinVerticesProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LimitBoneWeightsProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LWOAnimation.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LWOBLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LWOLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LWOMaterial.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LWSLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MakeVerboseFormat.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MaterialSystem.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MD2Loader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MD3Loader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MD5Loader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MD5Parser.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MDCLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MDLLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MDLMaterialLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MS3DLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\NDOLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\NFFLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ObjExporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ObjFileImporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ObjFileMtlImporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ObjFileParser.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OFFLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OgreBinarySerializer.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OgreImporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OgreMaterial.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OgreStructs.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OgreXmlSerializer.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OptimizeGraph.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OptimizeMeshes.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\PlyExporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\PlyLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\PlyParser.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\PostStepRegistry.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\PretransformVertices.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ProcessHelper.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Q3BSPFileImporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Q3BSPFileParser.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Q3BSPZipArchive.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Q3DLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\RawLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\RemoveComments.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\RemoveRedundantMaterials.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\RemoveVCProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SceneCombiner.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ScenePreprocessor.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SGSpatialSort.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SkeletonMeshBuilder.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SMDLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SortByPTypeProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SpatialSort.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SplitByBoneCountProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SplitLargeMeshes.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\StandardShapes.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\STEPFileEncoding.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\STEPFileReader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\STLExporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\STLLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Subdivision.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\TargetAnimation.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\TerragenLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\TextureTransform.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\TriangulateProcess.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\UnrealLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ValidateDataStructure.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\VertexTriangleAdjacency.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\XFileExporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\XFileImporter.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\XFileParser.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\XGLLoader.cpp">
+      <Filter>engine\lib\assimp\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\clipper\clipper.cpp">
+      <Filter>engine\lib\assimp\contrib\clipper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\ConvertUTF\ConvertUTF.c">
+      <Filter>engine\lib\assimp\contrib\ConvertUTF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\irrXML\irrXML.cpp">
+      <Filter>engine\lib\assimp\contrib\irrXML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\common\shapes.cc">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\advancing_front.cc">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\cdt.cc">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\sweep.cc">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\sweep_context.cc">
+      <Filter>engine\lib\assimp\contrib\poly2tri\poly2tri\sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\unzip\ioapi.c">
+      <Filter>engine\lib\assimp\contrib\unzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\unzip\unzip.c">
+      <Filter>engine\lib\assimp\contrib\unzip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\adler32.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\compress.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\crc32.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\deflate.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\gzclose.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\gzlib.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\gzread.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\gzwrite.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\infback.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\inffast.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\inflate.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\inftrees.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\trees.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\uncompr.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\zutil.c">
+      <Filter>engine\lib\assimp\contrib\zlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -45,6 +45,9 @@ engine/Link/
 *.unsuccessfulbuild
 *.manifest
 *.tlog
+*.lib
+*.exe
+*.dll
 
 # Logs and databases #
 ######################

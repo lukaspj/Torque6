@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="plugins">
+      <UniqueIdentifier>{E5A86F1E-CA56-9F49-BE8F-1276963585B6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins\Terrain">
+      <UniqueIdentifier>{C0208BED-6EAA-F848-82CD-5A21D4ABA105}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\plugins\Terrain\Terrain.h">
+      <Filter>plugins\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\plugins\Terrain\TerrainCell.h">
+      <Filter>plugins\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\plugins\Terrain\TerrainEditor.h">
+      <Filter>plugins\Terrain</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\plugins\Terrain\Terrain.cpp">
+      <Filter>plugins\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\plugins\Terrain\TerrainCell.cpp">
+      <Filter>plugins\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\plugins\Terrain\TerrainEditor.cpp">
+      <Filter>plugins\Terrain</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -55,6 +55,11 @@ extern "C"{
    {
       return new SimObjectPtr<SimObject>(Sim::findObject(StringTable->insert(name)));
    }
+
+   DLL_PUBLIC void* SimWrapObject(SimObject* obj)
+   {
+      return new SimObjectPtr<SimObject>(obj);
+   }
 }
 
 //-----------------------------------------------------------------------------

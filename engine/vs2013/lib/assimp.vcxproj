@@ -1,0 +1,968 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{724885F2-5EEA-AFC8-47A5-C31C33E63619}</ProjectGuid>
+    <RootNamespace>assimp</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\bin\windows\</OutDir>
+    <IntDir>obj\x32\Release\assimp\</IntDir>
+    <TargetName>assimp</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\x64\Release\assimp\</IntDir>
+    <TargetName>assimp</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\..\bin\windows\</OutDir>
+    <IntDir>obj\x32\Debug\assimp\</IntDir>
+    <TargetName>assimp</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\x64\Debug\assimp\</IntDir>
+    <TargetName>assimp</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\engine\source;..\..\..\engine\lib\assimp\code\BoostWorkaround;..\..\..\engine\lib\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\engine\source;..\..\..\engine\lib\assimp\code\BoostWorkaround;..\..\..\engine\lib\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)assimp.lib</OutputFile>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\engine\source;..\..\..\engine\lib\assimp\code\BoostWorkaround;..\..\..\engine\lib\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\engine\source;..\..\..\engine\lib\assimp\code\BoostWorkaround;..\..\..\engine\lib\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)assimp.lib</OutputFile>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\engine\source;..\..\..\engine\lib\assimp\code\BoostWorkaround;..\..\..\engine\lib\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TORQUE_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)assimp.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>TORQUE_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\engine\source;..\..\..\engine\lib\assimp\code\BoostWorkaround;..\..\..\engine\lib\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)assimp.lib</OutputFile>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\engine\source;..\..\..\engine\lib\assimp\code\BoostWorkaround;..\..\..\engine\lib\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TORQUE_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)assimp.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>TORQUE_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\engine\source;..\..\..\engine\lib\assimp\code\BoostWorkaround;..\..\..\engine\lib\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)assimp.lib</OutputFile>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\3DSExporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\3DSHelper.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\3DSLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ACLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ASELoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ASEParser.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\AssbinExporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\AssbinLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\assbin_chunks.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\AssimpPCH.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\AssxmlExporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\B3DImporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BaseImporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BaseProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Bitmap.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderBMesh.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderDNA.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderIntermediate.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderModifier.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderScene.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderSceneGen.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlenderTessellator.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BlobIOSystem.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\BVHLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ByteSwap.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\CalcTangentsProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\CInterfaceIOWrapper.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\COBLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\COBScene.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ColladaExporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ColladaHelper.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ColladaLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ColladaParser.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ComputeUVMappingProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ConvertToLHProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\CSMLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DeboneProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DefaultIOStream.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DefaultIOSystem.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DefaultProgressHandler.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DXFHelper.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\DXFLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Exceptional.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\fast_atof.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXCompileConfig.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXConverter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXDocument.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXDocumentUtil.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXImporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXImportSettings.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXParser.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXProperties.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXTokenizer.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FBXUtil.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FileLogStream.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FileSystemFilter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FindDegenerates.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FindInstancesProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FindInvalidDataProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\FixNormalsStep.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\GenericProperty.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\GenFaceNormalsProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\GenVertexNormalsProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\HalfLifeFileData.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Hash.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\HMPFileData.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\HMPLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IFCLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IFCReaderGen.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IFCUtil.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IFF.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Importer.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ImproveCacheLocality.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IRRLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IRRMeshLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\IRRShared.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\irrXMLWrapper.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\JoinVerticesProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LimitBoneWeightsProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LineSplitter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LogAux.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LWOAnimation.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LWOFileData.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LWOLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\LWSLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MakeVerboseFormat.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MaterialSystem.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD2FileData.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD2Loader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD2NormalTable.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD3FileData.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD3Loader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD4FileData.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD5Loader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MD5Parser.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDCFileData.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDCLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDCNormalTable.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDLDefaultColorMap.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDLFileData.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MDLLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MemoryIOWrapper.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\MS3DLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\NDOLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\NFFLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjExporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjFileData.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjFileImporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjFileMtlImporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjFileParser.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ObjTools.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OFFLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OgreBinarySerializer.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OgreImporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OgreParsingUtils.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OgreStructs.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OgreXmlSerializer.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OptimizeGraph.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\OptimizeMeshes.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ParsingUtils.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\PlyExporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\PlyLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\PlyParser.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\PolyTools.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\PretransformVertices.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ProcessHelper.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Profiler.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Q3BSPFileData.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Q3BSPFileImporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Q3BSPFileParser.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Q3BSPZipArchive.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Q3DLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\qnan.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\RawLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\RemoveComments.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\RemoveRedundantMaterials.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\RemoveVCProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SceneCombiner.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ScenePreprocessor.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ScenePrivate.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SGSpatialSort.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SkeletonMeshBuilder.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SMDLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SmoothingGroups.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SortByPTypeProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SpatialSort.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SplitByBoneCountProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\SplitLargeMeshes.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\StandardShapes.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\StdOStreamLogStream.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\STEPFile.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\STEPFileEncoding.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\STEPFileReader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\STLExporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\STLLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\StreamReader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\StreamWriter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\StringComparison.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Subdivision.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\TargetAnimation.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\TerragenLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\TextureTransform.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\TinyFormatter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\TriangulateProcess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\UnrealLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\ValidateDataStructure.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Vertex.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\VertexTriangleAdjacency.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\Win32DebugLogStream.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XFileExporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XFileHelper.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XFileImporter.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XFileParser.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XGLLoader.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\XMLTools.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\code\res\resource.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\clipper\clipper.hpp" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\ConvertUTF\ConvertUTF.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\CXMLReaderImpl.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\heapsort.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\irrArray.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\irrString.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\irrTypes.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\irrXML\irrXML.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\common\shapes.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\common\utils.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\advancing_front.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\cdt.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\sweep.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\sweep_context.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\poly2tri.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\unzip\crypt.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\unzip\ioapi.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\unzip\unzip.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\crc32.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\deflate.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\gzguts.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\inffast.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\inffixed.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\inflate.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\inftrees.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\trees.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\zconf.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\zconf.in.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\zlib.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\contrib\zlib\zutil.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\DefaultLogger.hpp" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Exporter.hpp" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Importer.hpp" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\IOStream.hpp" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\IOSystem.hpp" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Logger.hpp" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\LogStream.hpp" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\NullLogger.hpp" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\ProgressHandler.hpp" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\ai_assert.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\anim.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\camera.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\cexport.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\cfileio.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\cimport.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\color4.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\config.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\defs.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\importerdesc.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\light.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\material.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\matrix3x3.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\matrix4x4.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\mesh.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\metadata.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\postprocess.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\quaternion.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\scene.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\texture.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\types.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\vector2.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\vector3.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\version.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Compiler\poppack1.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Compiler\pstdint.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\Compiler\pushpack1.h" />
+    <ClInclude Include="..\..\..\engine\lib\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\3DSConverter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\3DSConverter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\3DSExporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\3DSExporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\3DSLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\3DSLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ACLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ACLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ASELoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ASELoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ASEParser.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ASEParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\AssbinExporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\AssbinExporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\AssbinLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\AssbinLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Assimp.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\Assimp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\AssimpCExport.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\AssimpCExport.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\AssimpPCH.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\AssimpPCH.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\AssxmlExporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\AssxmlExporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\B3DImporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\B3DImporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BaseImporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\BaseImporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BaseProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\BaseProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Bitmap.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\Bitmap.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderBMesh.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\BlenderBMesh.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderDNA.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\BlenderDNA.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\BlenderLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderModifier.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\BlenderModifier.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderScene.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\BlenderScene.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BlenderTessellator.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\BlenderTessellator.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\BVHLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\BVHLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\CalcTangentsProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\CalcTangentsProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\COBLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\COBLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ColladaExporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ColladaExporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ColladaLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ColladaLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ColladaParser.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ColladaParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ComputeUVMappingProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ComputeUVMappingProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ConvertToLHProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ConvertToLHProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\CSMLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\CSMLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\DeboneProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\DeboneProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\DefaultIOStream.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\DefaultIOStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\DefaultIOSystem.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\DefaultIOSystem.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\DefaultLogger.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\DefaultLogger.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\DXFLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\DXFLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Exporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\Exporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXAnimation.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXAnimation.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXBinaryTokenizer.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXBinaryTokenizer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXConverter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXConverter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXDeformer.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXDeformer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXDocument.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXDocument.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXDocumentUtil.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXDocumentUtil.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXImporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXImporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXMaterial.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXMaterial.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXMeshGeometry.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXMeshGeometry.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXModel.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXModel.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXNodeAttribute.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXNodeAttribute.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXParser.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXProperties.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXProperties.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXTokenizer.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXTokenizer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FBXUtil.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FBXUtil.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FindDegenerates.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FindDegenerates.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FindInstancesProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FindInstancesProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FindInvalidDataProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FindInvalidDataProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\FixNormalsStep.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\FixNormalsStep.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\GenFaceNormalsProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\GenFaceNormalsProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\GenVertexNormalsProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\GenVertexNormalsProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\HMPLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\HMPLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCBoolean.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IFCBoolean.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCCurve.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IFCCurve.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCGeometry.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IFCGeometry.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IFCLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCMaterial.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IFCMaterial.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCOpenings.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IFCOpenings.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCProfile.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IFCProfile.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCReaderGen.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IFCReaderGen.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IFCUtil.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IFCUtil.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Importer.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\Importer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ImporterRegistry.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ImporterRegistry.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ImproveCacheLocality.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ImproveCacheLocality.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IRRLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IRRLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IRRMeshLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IRRMeshLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\IRRShared.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\IRRShared.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\JoinVerticesProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\JoinVerticesProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LimitBoneWeightsProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\LimitBoneWeightsProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LWOAnimation.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\LWOAnimation.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LWOBLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\LWOBLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LWOLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\LWOLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LWOMaterial.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\LWOMaterial.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\LWSLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\LWSLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MakeVerboseFormat.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\MakeVerboseFormat.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MaterialSystem.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\MaterialSystem.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MD2Loader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\MD2Loader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MD3Loader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\MD3Loader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MD5Loader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\MD5Loader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MD5Parser.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\MD5Parser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MDCLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\MDCLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MDLLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\MDLLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MDLMaterialLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\MDLMaterialLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\MS3DLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\MS3DLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\NDOLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\NDOLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\NFFLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\NFFLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ObjExporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ObjExporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ObjFileImporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ObjFileImporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ObjFileMtlImporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ObjFileMtlImporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ObjFileParser.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ObjFileParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OFFLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\OFFLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OgreBinarySerializer.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\OgreBinarySerializer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OgreImporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\OgreImporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OgreMaterial.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\OgreMaterial.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OgreStructs.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\OgreStructs.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OgreXmlSerializer.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\OgreXmlSerializer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OptimizeGraph.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\OptimizeGraph.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\OptimizeMeshes.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\OptimizeMeshes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\PlyExporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\PlyExporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\PlyLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\PlyLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\PlyParser.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\PlyParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\PostStepRegistry.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\PostStepRegistry.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\PretransformVertices.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\PretransformVertices.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ProcessHelper.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ProcessHelper.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Q3BSPFileImporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\Q3BSPFileImporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Q3BSPFileParser.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\Q3BSPFileParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Q3BSPZipArchive.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\Q3BSPZipArchive.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Q3DLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\Q3DLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\RawLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\RawLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\RemoveComments.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\RemoveComments.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\RemoveRedundantMaterials.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\RemoveRedundantMaterials.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\RemoveVCProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\RemoveVCProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SceneCombiner.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\SceneCombiner.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ScenePreprocessor.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ScenePreprocessor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SGSpatialSort.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\SGSpatialSort.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SkeletonMeshBuilder.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\SkeletonMeshBuilder.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SMDLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\SMDLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SortByPTypeProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\SortByPTypeProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SpatialSort.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\SpatialSort.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SplitByBoneCountProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\SplitByBoneCountProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\SplitLargeMeshes.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\SplitLargeMeshes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\StandardShapes.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\StandardShapes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\STEPFileEncoding.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\STEPFileEncoding.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\STEPFileReader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\STEPFileReader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\STLExporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\STLExporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\STLLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\STLLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\Subdivision.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\Subdivision.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\TargetAnimation.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\TargetAnimation.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\TerragenLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\TerragenLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\TextureTransform.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\TextureTransform.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\TriangulateProcess.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\TriangulateProcess.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\UnrealLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\UnrealLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\ValidateDataStructure.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\ValidateDataStructure.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\VertexTriangleAdjacency.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\VertexTriangleAdjacency.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\XFileExporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\XFileExporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\XFileImporter.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\XFileImporter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\XFileParser.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\XFileParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\code\XGLLoader.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\code\XGLLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\clipper\clipper.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\clipper\clipper.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\ConvertUTF\ConvertUTF.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\ConvertUTF\ConvertUTF.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\irrXML\irrXML.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\irrXML\irrXML.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\common\shapes.cc">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\poly2tri\poly2tri\common\shapes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\advancing_front.cc">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\advancing_front.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\cdt.cc">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\cdt.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\sweep.cc">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\sweep.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\sweep_context.cc">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\poly2tri\poly2tri\sweep\sweep_context.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\unzip\ioapi.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\unzip\ioapi.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\unzip\unzip.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\unzip\unzip.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\adler32.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\adler32.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\compress.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\compress.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\crc32.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\crc32.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\deflate.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\deflate.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\gzclose.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\gzclose.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\gzlib.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\gzlib.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\gzread.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\gzread.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\gzwrite.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\gzwrite.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\infback.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\infback.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\inffast.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\inffast.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\inflate.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\inflate.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\inftrees.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\inftrees.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\trees.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\trees.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\uncompr.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\uncompr.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\assimp\contrib\zlib\zutil.c">
+      <ObjectFileName>$(IntDir)engine\lib\assimp\contrib\zlib\zutil.obj</ObjectFileName>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

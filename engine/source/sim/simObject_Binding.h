@@ -1020,8 +1020,311 @@ ConsoleMethodWithDocs(SimObject,schedule, ConsoleInt, 4, 0, (time , command , [a
 
 ConsoleMethodRootGroupEndWithDocs(SimObject)
 
+extern "C"{
+   DLL_PUBLIC bool SimObjectGetCanSaveDynamicFields(SimObject* obj)
+   {
+      return obj->getCanSaveDynamicFields();
+   }
 
-DLL_PUBLIC StringTableEntry SimObjectGetName(SimObject* obj)
-{
-   return obj->getName();
+   DLL_PUBLIC void SimObjectSetCanSaveDynamicFields(SimObject* obj, bool val)
+   {
+      obj->setCanSaveDynamicFields(val);
+   }
+
+   DLL_PUBLIC StringTableEntry SimObjectGetInternalName(SimObject* obj)
+   {
+      return obj->getInternalName();
+   }
+
+   DLL_PUBLIC void SimObjectSetInternalName(SimObject* obj, const char* val)
+   {
+      obj->setInternalName(val);
+   }
+
+   DLL_PUBLIC void SimObjectSetParentGroup(SimObject* obj, SimGroup* parent)
+   {
+      parent->addObject(obj);
+   }
+
+   DLL_PUBLIC StringTableEntry SimObjectGetSuperClass(SimObject* obj)
+   {
+      return obj->getSuperClassNamespace();
+   }
+
+   DLL_PUBLIC void SimObjectSetSuperClass(SimObject* obj, const char* val)
+   {
+      obj->setSuperClassNamespace(val);
+   }
+
+   DLL_PUBLIC StringTableEntry SimObjectGetClass(SimObject* obj)
+   {
+      return obj->getClassNamespace();
+   }
+
+   DLL_PUBLIC void SimObjectSetClass(SimObject* obj, const char* val)
+   {
+      obj->setClassNamespace(val);
+   }
+
+   DLL_PUBLIC StringTableEntry SimObjectGetName(SimObject* obj)
+   {
+      return obj->getName();
+   }
+
+   DLL_PUBLIC void SimObjectSetName(SimObject* obj, const char* val)
+   {
+      obj->assignName(val);
+   }
+
+   DLL_PUBLIC U32 SimObjectGetID(SimObject* obj)
+   {
+      return obj->getId();
+   }
+
+   DLL_PUBLIC bool SimObjectIsMethod(SimObject* obj, const char* val)
+   {
+      return obj->isMethod(val);
+   }
+
+   DLL_PUBLIC bool SimObjectCall(SimObject* obj, int argc, const char** argv)
+   {
+      return Con::execute(obj, argc, argv);
+   }
+
+   DLL_PUBLIC void SimObjectDumpClassHierarchy(SimObject* obj)
+   {
+      obj->dumpClassHierarchy();
+   }
+
+   DLL_PUBLIC void SimObjectDump(SimObject* obj)
+   {
+      obj->dump();
+   }
+
+   DLL_PUBLIC bool SimObjectIsMemberOfClass(SimObject* obj, const char* className)
+   {
+      AbstractClassRep* pRep = obj->getClassRep();
+      while (pRep)
+      {
+         //todo should className be inserted into stringtable instead?
+         if (!dStricmp(pRep->getClassName(), className))
+         {
+            //matches
+            return true;
+         }
+         pRep = pRep->getParentClass();
+      }
+      return false;
+   }
+
+   DLL_PUBLIC const char* SimObjectGetFieldValue(SimObject* obj, const char* fieldName)
+   {
+      return obj->getDataField(StringTable->insert(fieldName), NULL);
+   }
+
+   DLL_PUBLIC void SimObjectSetFieldValue(SimObject* obj, const char* fieldName, const char* value)
+   {
+      obj->setDataField(fieldName, NULL, value);
+   }
+
+   DLL_PUBLIC int SimObjectGetDynamicFieldCount(SimObject* obj)
+   {
+      int count = 0;
+      SimFieldDictionary *fieldDictionary = obj->getFieldDictionary();
+      for (SimFieldDictionaryIterator itr(fieldDictionary); *itr; ++itr)
+         count++;
+      return count;
+   }
+
+   DLL_PUBLIC const char* SimObjectGetDynamicField(SimObject* obj, int index)
+   {
+
+      SimFieldDictionary *fieldDictionary = obj->getFieldDictionary();
+      SimFieldDictionaryIterator itr(fieldDictionary);
+      for (S32 i = 0; i < index; i++)
+      {
+         if (!(*itr))
+         {
+            Con::warnf("Invalid dynamic field index passed to SimObject::getDynamicField!");
+            return nullptr;
+         }
+         ++itr;
+      }
+
+      char* buffer = Con::getReturnBuffer(256);
+      if (*itr)
+      {
+         SimFieldDictionary::Entry* entry = *itr;
+         dSprintf(buffer, 256, "%s", entry->slotName);
+         return buffer;
+      }
+
+      Con::warnf("Invalid dynamic field index passed to SimObject::getDynamicField!");
+      return NULL;
+   }
+
+   DLL_PUBLIC int SimObjectGetFieldCount(SimObject* obj)
+   {
+      const AbstractClassRep::FieldList &list = obj->getFieldList();
+      const AbstractClassRep::Field* f;
+      U32 numDummyEntries = 0;
+      for (int i = 0; i < list.size(); i++)
+      {
+         f = &list[i];
+
+         if (f->type == AbstractClassRep::DepricatedFieldType ||
+            f->type == AbstractClassRep::StartGroupFieldType ||
+            f->type == AbstractClassRep::EndGroupFieldType)
+         {
+            numDummyEntries++;
+         }
+      }
+
+      return list.size() - numDummyEntries;
+   }
+
+   DLL_PUBLIC const char* SimObjectGetField(SimObject* obj, int index)
+   {
+      const AbstractClassRep::FieldList &list = obj->getFieldList();
+      if ((index < 0) || (index >= list.size()))
+         return "";
+
+      const AbstractClassRep::Field* f;
+      S32 currentField = 0;
+      for (int i = 0; i < list.size() && currentField <= index; i++)
+      {
+         f = &list[i];
+
+         // skip any dummy fields   
+         if (f->type == AbstractClassRep::DepricatedFieldType ||
+            f->type == AbstractClassRep::StartGroupFieldType ||
+            f->type == AbstractClassRep::EndGroupFieldType)
+         {
+            continue;
+         }
+
+         if (currentField == index)
+            return f->pFieldname;
+
+         currentField++;
+      }
+
+      // if we found nada, return nada.
+      return NULL;
+   }
+
+   DLL_PUBLIC const char* SimObjectGetProgenitorFile(SimObject* obj)
+   {
+      return obj->getProgenitorFile();
+   }
+
+   DLL_PUBLIC void SimObjectSetProgenitorFile(SimObject* obj, const char* file)
+   {
+      obj->setProgenitorFile(file);
+   }
+
+   DLL_PUBLIC int SimObjectGetType(SimObject* obj)
+   {
+      return obj->getType();
+   }
+
+   DLL_PUBLIC const char* SimObjectGetFieldType(SimObject* obj, const char* fieldName)
+   {
+      U32 typeID = obj->getDataFieldType(StringTable->insert(fieldName), NULL);
+      ConsoleBaseType* type = ConsoleBaseType::getType(typeID);
+
+      if (type)
+         return type->getTypeClassName();
+
+      return NULL;
+   }
+
+   DLL_PUBLIC bool SimObjectIsChildOfGroup(SimObject* obj, SimGroup* group)
+   {
+      if (group)
+      {
+         return obj->isChildOfGroup(group);
+      }
+
+      return false;
+   }
+
+   DLL_PUBLIC SimGroup* SimObjectGetGroup(SimObject* obj)
+   {
+      return obj->getGroup();
+   }
+
+   DLL_PUBLIC void SimObjectDeleteObject(SimObject* obj)
+   {
+      obj->deleteObject();
+   }
+
+   DLL_PUBLIC SimObject* SimObjectClone(SimObject* obj, bool copyDynamicFields)
+   {
+      return obj->clone(copyDynamicFields);
+   }
+
+   DLL_PUBLIC bool SimObjectStartTimer(SimObject* obj, const char* callbackFunction, float timePeriod, int repeat)
+   {
+      // Is the periodic timer running?
+      if (obj->getPeriodicTimerID() != 0)
+      {
+         // Yes, so cancel it.
+         Sim::cancelEvent(obj->getPeriodicTimerID());
+
+         // Reset Timer ID.
+         obj->setPeriodicTimerID(0);
+      }
+
+      // Fetch the callback function.
+      StringTableEntry __callbackFunction = StringTable->insert(callbackFunction);
+
+      // Does the function exist?
+      if (!obj->isMethod(__callbackFunction))
+      {
+         // No, so warn.
+         Con::warnf("SimObject::startTimer() - The callback function of '%s' does not exist.", callbackFunction);
+         return false;
+      }
+
+      // Is the time period valid?
+      if (timePeriod < 1)
+      {
+         // No, so warn.
+         Con::warnf("SimObject::startTimer() - The time period of '%d' is invalid.", timePeriod);
+         return false;
+      }
+
+      // Create Timer Event.
+      SimObjectTimerEvent* pEvent = new SimObjectTimerEvent(callbackFunction, (U32)timePeriod, (U32)repeat);
+
+      // Post Event.
+      obj->setPeriodicTimerID(Sim::postEvent(obj, pEvent, Sim::getCurrentTime() + timePeriod));
+
+      return true;
+   }
+
+   DLL_PUBLIC void SimObjectStopTimer(SimObject* obj)
+   {
+      // Finish if the periodic timer isn't running.
+      if (obj->getPeriodicTimerID() == 0)
+         return;
+
+      // Cancel It.
+      Sim::cancelEvent(obj->getPeriodicTimerID());
+
+      // Reset Timer ID.
+      obj->setPeriodicTimerID(0);
+   }
+
+   DLL_PUBLIC bool SimObjectIsTimerActive(SimObject* obj)
+   {
+      return obj->isPeriodicTimerActive();
+   }
+
+   DLL_PUBLIC int SimObjectSchedule(SimObject* obj, int time, int argc, const char** argv)
+   {
+      SimConsoleEvent *evt = new SimConsoleEvent(argc, argv, true);
+      return Sim::postEvent(obj, evt, Sim::getCurrentTime() + time);
+   }
 }

@@ -1,0 +1,1190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6C90947C-58C7-950D-01B4-7B10EDC9110F}</ProjectGuid>
+    <RootNamespace>bgfx</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\bin\windows\</OutDir>
+    <IntDir>obj\x32\Release\bgfx\</IntDir>
+    <TargetName>bgfx</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\x64\Release\bgfx\</IntDir>
+    <TargetName>bgfx</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\..\bin\windows\</OutDir>
+    <IntDir>obj\x32\Debug\bgfx\</IntDir>
+    <TargetName>bgfx</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\x64\Debug\bgfx\</IntDir>
+    <TargetName>bgfx</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/wd4996 /wd4291  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\engine\lib\bgfx\include;..\..\..\engine\lib\bgfx\3rdparty;..\..\..\engine\lib\bgfx\3rdparty\khronos;..\..\..\engine\lib\bgfx\3rdparty\fcpp;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\include;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mapi;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\getopt;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src;..\..\..\engine\lib\bgfx\3rdparty\scintilla\include;..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib;..\..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DISABLED_SCI_NAMESPACE;DISABLED_SCI_LEXER;_CRT_SECURE_NO_WARNINGS;__STDC_FORMAT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DISABLED_SCI_NAMESPACE;DISABLED_SCI_LEXER;_CRT_SECURE_NO_WARNINGS;__STDC_FORMAT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\engine\lib\bgfx\include;..\..\..\engine\lib\bgfx\3rdparty;..\..\..\engine\lib\bgfx\3rdparty\khronos;..\..\..\engine\lib\bgfx\3rdparty\fcpp;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\include;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mapi;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\getopt;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src;..\..\..\engine\lib\bgfx\3rdparty\scintilla\include;..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib;..\..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)bgfx.lib</OutputFile>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>/wd4996 /wd4291  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\engine\lib\bgfx\include;..\..\..\engine\lib\bgfx\3rdparty;..\..\..\engine\lib\bgfx\3rdparty\khronos;..\..\..\engine\lib\bgfx\3rdparty\fcpp;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\include;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mapi;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\getopt;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src;..\..\..\engine\lib\bgfx\3rdparty\scintilla\include;..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib;..\..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DISABLED_SCI_NAMESPACE;DISABLED_SCI_LEXER;_CRT_SECURE_NO_WARNINGS;__STDC_FORMAT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DISABLED_SCI_NAMESPACE;DISABLED_SCI_LEXER;_CRT_SECURE_NO_WARNINGS;__STDC_FORMAT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\engine\lib\bgfx\include;..\..\..\engine\lib\bgfx\3rdparty;..\..\..\engine\lib\bgfx\3rdparty\khronos;..\..\..\engine\lib\bgfx\3rdparty\fcpp;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\include;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mapi;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\getopt;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src;..\..\..\engine\lib\bgfx\3rdparty\scintilla\include;..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib;..\..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)bgfx.lib</OutputFile>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/wd4996 /wd4291  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\engine\lib\bgfx\include;..\..\..\engine\lib\bgfx\3rdparty;..\..\..\engine\lib\bgfx\3rdparty\khronos;..\..\..\engine\lib\bgfx\3rdparty\fcpp;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\include;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mapi;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\getopt;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src;..\..\..\engine\lib\bgfx\3rdparty\scintilla\include;..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib;..\..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DISABLED_SCI_NAMESPACE;DISABLED_SCI_LEXER;TORQUE_DEBUG;BGFX_CONFIG_DEBUG=1;_CRT_SECURE_NO_WARNINGS;__STDC_FORMAT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)bgfx.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DISABLED_SCI_NAMESPACE;DISABLED_SCI_LEXER;TORQUE_DEBUG;BGFX_CONFIG_DEBUG=1;_CRT_SECURE_NO_WARNINGS;__STDC_FORMAT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\engine\lib\bgfx\include;..\..\..\engine\lib\bgfx\3rdparty;..\..\..\engine\lib\bgfx\3rdparty\khronos;..\..\..\engine\lib\bgfx\3rdparty\fcpp;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\include;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mapi;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\getopt;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src;..\..\..\engine\lib\bgfx\3rdparty\scintilla\include;..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib;..\..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)bgfx.lib</OutputFile>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions>/wd4996 /wd4291  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\engine\lib\bgfx\include;..\..\..\engine\lib\bgfx\3rdparty;..\..\..\engine\lib\bgfx\3rdparty\khronos;..\..\..\engine\lib\bgfx\3rdparty\fcpp;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\include;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mapi;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\getopt;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src;..\..\..\engine\lib\bgfx\3rdparty\scintilla\include;..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib;..\..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DISABLED_SCI_NAMESPACE;DISABLED_SCI_LEXER;TORQUE_DEBUG;BGFX_CONFIG_DEBUG=1;_CRT_SECURE_NO_WARNINGS;__STDC_FORMAT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)bgfx.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DISABLED_SCI_NAMESPACE;DISABLED_SCI_LEXER;TORQUE_DEBUG;BGFX_CONFIG_DEBUG=1;_CRT_SECURE_NO_WARNINGS;__STDC_FORMAT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\engine\lib\bgfx\include;..\..\..\engine\lib\bgfx\3rdparty;..\..\..\engine\lib\bgfx\3rdparty\khronos;..\..\..\engine\lib\bgfx\3rdparty\fcpp;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\include;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mapi;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\getopt;..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src;..\..\..\engine\lib\bgfx\3rdparty\scintilla\include;..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib;..\..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)bgfx.lib</OutputFile>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\bgfx_p.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\charset.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\config.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\glcontext_eagl.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\glcontext_egl.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\glcontext_glx.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\glcontext_nsgl.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\glcontext_ppapi.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\glcontext_wgl.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\glimports.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\image.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\ovr.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\renderdoc.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\renderer.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\renderer_d3d.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\renderer_d3d11.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\renderer_d3d9.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\renderer_gl.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\src\vertexdecl.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\ocornut-imgui\imconfig.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\ocornut-imgui\imgui.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\ocornut-imgui\stb_rect_pack.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\ocornut-imgui\stb_textedit.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\ocornut-imgui\stb_truetype.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\common\cube_atlas.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\common\font\font_manager.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\common\font\text_buffer_manager.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\common\font\text_metrics.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\common\font\utf8.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\common\imgui\imgui.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\common\imgui\ocornut_imgui.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\common\imgui\scintilla.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\common\nanovg\fontstash.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\common\nanovg\nanovg.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\include\bgfx.c99.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\include\bgfx.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\include\bgfxdefines.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\include\bgfxplatform.c99.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\include\bgfxplatform.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\tools\shaderc\shaderc.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\cpp.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\cppadd.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\cppdef.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\fpp.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\FPPBase.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\fpp_pragmas.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\FPP_protos.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\compiler.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\config.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\context.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\core.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\dd.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\errors.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\glheader.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\glminimal.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\imports.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\macros.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\mtypes.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\simple_list.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\program\hash_table.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\program\prog_instruction.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\program\prog_parameter.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\program\prog_statevars.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\program\symbol_table.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\builtin_type_macros.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_optimizer.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_parser.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_parser_extras.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_symbol_table.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_types.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_basic_block.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_builder.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_expression_flattening.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_function_inlining.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_hierarchical_visitor.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_optimization.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_print_glsl_visitor.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_print_metal_visitor.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_print_visitor.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_rvalue_visitor.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_stats.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_uniform.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_unused_structs.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_variable_refcount.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_visitor.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\linker.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_uniform_block_active_visitor.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_varyings.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\list.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\loop_analysis.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\program.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\standalone_scaffolding.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\strtod.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\s_expression.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glcpp\glcpp-parse.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glcpp\glcpp.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\util\hash_table.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\util\macros.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\util\ralloc.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\AutoComplete.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\CallTip.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\CaseConvert.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\CaseFolder.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Catalogue.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\CellBuffer.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\CharClassify.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\ContractionState.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Decoration.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Document.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\EditModel.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Editor.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\EditView.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\ExternalLexer.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\FontQuality.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Indicator.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\KeyMap.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\LineMarker.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\MarginView.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Partitioning.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\PerLine.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\PositionCache.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\RESearch.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\RunStyles.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\ScintillaBase.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Selection.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\SplitVector.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Style.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\UnicodeFromUTF8.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\UniConversion.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\ViewStyle.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\XPM.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\Accessor.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\CharacterCategory.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\CharacterSet.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\LexAccessor.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerBase.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerModule.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerNoExceptions.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerSimple.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\OptionSet.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\PropSetSimple.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\SparseState.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\StringCopy.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\StyleContext.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\SubStyles.h" />
+    <ClInclude Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\WordList.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\bgfx.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\bgfx.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\glcontext_egl.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\glcontext_egl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\glcontext_glx.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\glcontext_glx.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\glcontext_ppapi.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\glcontext_ppapi.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\glcontext_wgl.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\glcontext_wgl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\image.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\image.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\ovr.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\ovr.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\renderdoc.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\renderdoc.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\renderer_d3d11.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\renderer_d3d11.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\renderer_d3d12.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\renderer_d3d12.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\renderer_d3d9.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\renderer_d3d9.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\renderer_gl.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\renderer_gl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\renderer_mtl.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\renderer_mtl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\renderer_null.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\renderer_null.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\renderer_vk.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\renderer_vk.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\src\vertexdecl.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\src\vertexdecl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\ocornut-imgui\imgui.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\ocornut-imgui\imgui.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\common\cube_atlas.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\common\cube_atlas.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\common\font\font_manager.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\common\font\font_manager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\common\font\text_buffer_manager.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\common\font\text_buffer_manager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\common\font\text_metrics.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\common\font\text_metrics.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\common\font\utf8.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\common\font\utf8.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\common\imgui\imgui.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\common\imgui\imgui.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\common\imgui\ocornut_imgui.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\common\imgui\ocornut_imgui.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\common\imgui\scintilla.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\common\imgui\scintilla.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\common\nanovg\nanovg.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\common\nanovg\nanovg.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\common\nanovg\nanovg_bgfx.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\common\nanovg\nanovg_bgfx.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\tools\shaderc\shaderc.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\tools\shaderc\shaderc.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\tools\shaderc\shaderc_glsl.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\tools\shaderc\shaderc_glsl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\tools\shaderc\shaderc_hlsl.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\tools\shaderc\shaderc_hlsl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\cpp1.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\fcpp\cpp1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\cpp2.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\fcpp\cpp2.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\cpp3.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\fcpp\cpp3.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\cpp4.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\fcpp\cpp4.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\cpp5.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\fcpp\cpp5.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\fcpp\cpp6.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\fcpp\cpp6.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\imports.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\main\imports.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\program\prog_hash_table.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\program\prog_hash_table.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\program\symbol_table.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\mesa\program\symbol_table.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast_array_index.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast_array_index.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast_expr.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast_expr.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast_function.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast_function.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast_to_hir.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast_to_hir.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast_type.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ast_type.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\builtin_functions.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\builtin_functions.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\builtin_types.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\builtin_types.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\builtin_variables.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\builtin_variables.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_lexer.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_lexer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_optimizer.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_optimizer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_parser.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_parser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_parser_extras.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_parser_extras.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_symbol_table.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_symbol_table.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_types.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glsl_types.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\hir_field_selection.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\hir_field_selection.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_basic_block.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_basic_block.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_builder.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_builder.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_clone.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_clone.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_constant_expression.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_constant_expression.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_equals.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_equals.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_expression_flattening.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_expression_flattening.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_function.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_function.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_function_can_inline.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_function_can_inline.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_function_detect_recursion.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_function_detect_recursion.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_hierarchical_visitor.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_hierarchical_visitor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_hv_accept.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_hv_accept.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_import_prototypes.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_import_prototypes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_print_glsl_visitor.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_print_glsl_visitor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_print_metal_visitor.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_print_metal_visitor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_print_visitor.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_print_visitor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_rvalue_visitor.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_rvalue_visitor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_stats.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_stats.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_unused_structs.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_unused_structs.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_validate.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_validate.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_variable_refcount.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\ir_variable_refcount.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\linker.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\linker.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_atomics.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_atomics.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_functions.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_functions.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_interface_blocks.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_interface_blocks.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_uniforms.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_uniforms.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_uniform_blocks.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_uniform_blocks.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_uniform_block_active_visitor.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_uniform_block_active_visitor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_uniform_initializers.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_uniform_initializers.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_varyings.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\link_varyings.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\loop_analysis.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\loop_analysis.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\loop_controls.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\loop_controls.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\loop_unroll.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\loop_unroll.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_clip_distance.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_clip_distance.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_discard.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_discard.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_discard_flow.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_discard_flow.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_if_to_cond_assign.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_if_to_cond_assign.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_instructions.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_instructions.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_jumps.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_jumps.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_mat_op_to_vec.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_mat_op_to_vec.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_named_interface_blocks.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_named_interface_blocks.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_noise.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_noise.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_offset_array.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_offset_array.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_output_reads.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_output_reads.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_packed_varyings.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_packed_varyings.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_packing_builtins.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_packing_builtins.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_ubo_reference.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_ubo_reference.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_variable_index_to_cond_assign.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_variable_index_to_cond_assign.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_vector.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_vector.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_vector_insert.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_vector_insert.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_vec_index_to_cond_assign.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_vec_index_to_cond_assign.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_vec_index_to_swizzle.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_vec_index_to_swizzle.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_vertex_id.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\lower_vertex_id.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_algebraic.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_algebraic.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_array_splitting.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_array_splitting.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_constant_folding.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_constant_folding.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_constant_propagation.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_constant_propagation.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_constant_variable.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_constant_variable.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_copy_propagation.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_copy_propagation.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_copy_propagation_elements.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_copy_propagation_elements.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_cse.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_cse.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_dead_builtin_variables.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_dead_builtin_variables.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_dead_builtin_varyings.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_dead_builtin_varyings.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_dead_code.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_dead_code.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_dead_code_local.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_dead_code_local.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_dead_functions.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_dead_functions.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_flatten_nested_if_blocks.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_flatten_nested_if_blocks.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_flip_matrices.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_flip_matrices.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_function_inlining.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_function_inlining.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_if_simplification.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_if_simplification.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_minmax.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_minmax.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_noop_swizzle.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_noop_swizzle.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_rebalance_tree.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_rebalance_tree.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_redundant_jumps.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_redundant_jumps.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_structure_splitting.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_structure_splitting.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_swizzle_swizzle.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_swizzle_swizzle.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_tree_grafting.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_tree_grafting.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_vectorize.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_vectorize.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_vector_splitting.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\opt_vector_splitting.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\standalone_scaffolding.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\standalone_scaffolding.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\s_expression.cpp">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\s_expression.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\strtod.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\strtod.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glcpp\glcpp-lex.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glcpp\glcpp-lex.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glcpp\glcpp-parse.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glcpp\glcpp-parse.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glcpp\pp.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\glsl\glcpp\pp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\util\hash_table.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\util\hash_table.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\glsl-optimizer\src\util\ralloc.c">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\glsl-optimizer\src\util\ralloc.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\AutoComplete.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\AutoComplete.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\CallTip.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\CallTip.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\CaseConvert.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\CaseConvert.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\CaseFolder.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\CaseFolder.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Catalogue.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\Catalogue.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\CellBuffer.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\CellBuffer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\CharClassify.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\CharClassify.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\ContractionState.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\ContractionState.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Decoration.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\Decoration.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Document.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\Document.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\EditModel.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\EditModel.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Editor.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\Editor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\EditView.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\EditView.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\ExternalLexer.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\ExternalLexer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Indicator.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\Indicator.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\KeyMap.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\KeyMap.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\LineMarker.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\LineMarker.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\MarginView.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\MarginView.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\PerLine.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\PerLine.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\PositionCache.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\PositionCache.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\RESearch.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\RESearch.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\RunStyles.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\RunStyles.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\ScintillaBase.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\ScintillaBase.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Selection.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\Selection.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\Style.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\Style.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\UniConversion.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\UniConversion.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\ViewStyle.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\ViewStyle.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\src\XPM.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\src\XPM.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\Accessor.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexlib\Accessor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\CharacterCategory.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexlib\CharacterCategory.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\CharacterSet.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexlib\CharacterSet.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerBase.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerBase.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerModule.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerModule.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerNoExceptions.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerNoExceptions.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerSimple.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexlib\LexerSimple.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\PropSetSimple.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexlib\PropSetSimple.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\StyleContext.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexlib\StyleContext.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexlib\WordList.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexlib\WordList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexA68k.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexA68k.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexAbaqus.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexAbaqus.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexAda.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexAda.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexAPDL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexAPDL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexAsm.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexAsm.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexAsn1.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexAsn1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexASY.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexASY.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexAU3.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexAU3.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexAVE.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexAVE.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexAVS.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexAVS.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexBaan.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexBaan.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexBash.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexBash.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexBasic.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexBasic.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexBibTeX.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexBibTeX.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexBullant.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexBullant.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexCaml.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexCaml.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexCLW.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexCLW.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexCmake.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexCmake.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexCOBOL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexCOBOL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexCoffeeScript.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexCoffeeScript.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexConf.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexConf.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexCPP.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexCPP.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexCrontab.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexCrontab.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexCsound.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexCsound.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexCSS.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexCSS.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexD.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexD.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexDMAP.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexDMAP.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexDMIS.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexDMIS.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexECL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexECL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexEiffel.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexEiffel.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexErlang.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexErlang.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexEScript.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexEScript.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexFlagship.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexFlagship.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexForth.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexForth.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexFortran.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexFortran.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexGAP.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexGAP.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexGui4Cli.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexGui4Cli.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexHaskell.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexHaskell.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexHex.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexHex.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexHTML.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexHTML.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexInno.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexInno.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexKix.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexKix.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexKVIrc.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexKVIrc.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexLaTeX.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexLaTeX.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexLisp.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexLisp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexLout.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexLout.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexLua.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexLua.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexMagik.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexMagik.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexMarkdown.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexMarkdown.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexMatlab.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexMatlab.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexMetapost.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexMetapost.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexMMIXAL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexMMIXAL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexModula.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexModula.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexMPT.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexMPT.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexMSSQL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexMSSQL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexMySQL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexMySQL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexNimrod.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexNimrod.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexNsis.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexNsis.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexOpal.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexOpal.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexOScript.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexOScript.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexOthers.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexOthers.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexPascal.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexPascal.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexPB.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexPB.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexPerl.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexPerl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexPLM.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexPLM.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexPO.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexPO.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexPOV.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexPOV.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexPowerPro.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexPowerPro.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexPowerShell.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexPowerShell.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexProgress.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexProgress.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexPS.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexPS.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexPython.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexPython.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexR.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexR.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexRebol.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexRebol.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexRegistry.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexRegistry.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexRuby.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexRuby.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexRust.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexRust.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexScriptol.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexScriptol.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexSmalltalk.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexSmalltalk.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexSML.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexSML.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexSorcus.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexSorcus.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexSpecman.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexSpecman.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexSpice.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexSpice.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexSQL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexSQL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexSTTXT.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexSTTXT.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexTACL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexTACL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexTADS3.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexTADS3.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexTAL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexTAL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexTCL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexTCL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexTCMD.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexTCMD.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexTeX.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexTeX.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexTxt2tags.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexTxt2tags.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexVB.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexVB.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexVerilog.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexVerilog.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexVHDL.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexVHDL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexVisualProlog.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexVisualProlog.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\bgfx\3rdparty\scintilla\lexers\LexYAML.cxx">
+      <ObjectFileName>$(IntDir)engine\lib\bgfx\3rdparty\scintilla\lexers\LexYAML.obj</ObjectFileName>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

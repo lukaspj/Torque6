@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="plugins">
+      <UniqueIdentifier>{0476A9E4-5FD3-0942-BDBB-1B0A29914168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins\Editor">
+      <UniqueIdentifier>{577B32FC-299E-3944-85D4-F55EC8188D58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins\Editor\MaterialEditor">
+      <UniqueIdentifier>{B39E2002-7022-8E49-A866-696BBF1063A1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins\Editor\SceneEditor">
+      <UniqueIdentifier>{CBF37CFF-7A7D-A047-920C-4A578C8E75B0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\plugins\Editor\Editor.h">
+      <Filter>plugins\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\plugins\Editor\Editor_pluginAPI.h">
+      <Filter>plugins\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\plugins\Editor\MaterialEditor\MaterialEditor.h">
+      <Filter>plugins\Editor\MaterialEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\plugins\Editor\MaterialEditor\MaterialEditorNodes.h">
+      <Filter>plugins\Editor\MaterialEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\plugins\Editor\SceneEditor\Gizmo.h">
+      <Filter>plugins\Editor\SceneEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\plugins\Editor\SceneEditor\SceneEditor.h">
+      <Filter>plugins\Editor\SceneEditor</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\plugins\Editor\Editor.cpp">
+      <Filter>plugins\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\plugins\Editor\MaterialEditor\MaterialEditor.cpp">
+      <Filter>plugins\Editor\MaterialEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\plugins\Editor\SceneEditor\Gizmo.cpp">
+      <Filter>plugins\Editor\SceneEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\plugins\Editor\SceneEditor\SceneEditor.cpp">
+      <Filter>plugins\Editor\SceneEditor</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

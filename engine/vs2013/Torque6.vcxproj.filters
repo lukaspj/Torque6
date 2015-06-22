@@ -1,0 +1,3036 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{A4AE9C00-0EB9-5548-B490-2FD7A4F9F314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source">
+      <UniqueIdentifier>{05FB2469-30C6-7E4A-9776-D62B97690B50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\2d">
+      <UniqueIdentifier>{F0E9D35E-2BDF-2541-A490-44BF8913BD6E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\2d\assets">
+      <UniqueIdentifier>{4C644BA9-54D3-9044-B10F-5A452991E347}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\2d\core">
+      <UniqueIdentifier>{7DA2D651-C1BD-2F4B-8DBB-6ED1C640A7D3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\2d\gui">
+      <UniqueIdentifier>{247F86D7-0007-124C-9861-71E367134E40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\3d">
+      <UniqueIdentifier>{2649F885-1EAF-EC4F-B799-54255040503E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\3d\entity">
+      <UniqueIdentifier>{05E9A09F-EE4A-E34C-91A9-280BEC89F598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\3d\entity\components">
+      <UniqueIdentifier>{5099BC10-B2F8-C84C-85CF-32E83AA43CC2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\3d\material">
+      <UniqueIdentifier>{082599A7-DDDD-2C4D-9D73-D907CF91C21A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\3d\material\nodes">
+      <UniqueIdentifier>{C927EB1E-750B-F64C-9CAD-0EF4C0B8F3D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\3d\rendering">
+      <UniqueIdentifier>{C297E1B7-807D-B841-9D09-54DBBB2963A7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\3d\rendering\postFX">
+      <UniqueIdentifier>{2608C9FD-4777-CF40-85C7-9BC91E01A781}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\3d\scene">
+      <UniqueIdentifier>{26269670-332A-B443-94EB-F90770AE2C04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\algorithm">
+      <UniqueIdentifier>{936F0132-C496-324C-BEC9-3B202AB77B25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\assets">
+      <UniqueIdentifier>{6B3A3495-38D9-4247-A608-B2ADAAF83D68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\audio">
+      <UniqueIdentifier>{F19132F1-1452-CA4B-AF50-C3864E349D53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\c-interface">
+      <UniqueIdentifier>{31919DEF-FD02-CC4C-8356-7F8D00BF3F55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\collection">
+      <UniqueIdentifier>{B0DD74D0-F86F-7546-A080-86F3B0D270EA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\collision">
+      <UniqueIdentifier>{1262642B-5D01-1249-80DF-1BFAABEECF9A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\component">
+      <UniqueIdentifier>{AE839C8C-C5CD-EE4D-9062-CCA4C1331E7B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\component\behaviors">
+      <UniqueIdentifier>{61BF39BE-40A9-9E44-8232-0880611FE864}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\console">
+      <UniqueIdentifier>{4185697B-6831-2F4A-9E93-AD689825D3EC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\debug">
+      <UniqueIdentifier>{87C2B43B-A12B-6B4F-A966-B70B9FE6BCCD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\debug\remote">
+      <UniqueIdentifier>{E0E1CF38-9528-584A-8A1A-7BDF3D654EBB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\delegates">
+      <UniqueIdentifier>{538569C6-82CA-5E4D-B4E1-E91F5E7436B1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\game">
+      <UniqueIdentifier>{81C8D654-EFAF-5E4A-BD10-65817AB9CA23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\graphics">
+      <UniqueIdentifier>{C47C697A-65FC-0C4D-A849-87FF3265173D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\gui">
+      <UniqueIdentifier>{D2EE8D96-CF28-124E-BF2B-45586520E71C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\gui\buttons">
+      <UniqueIdentifier>{A75987AB-5B23-5A45-949B-37A6F64BE453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\gui\containers">
+      <UniqueIdentifier>{D118ABC5-C9E2-4F4C-AF22-BFC6D0887EEA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\gui\editor">
+      <UniqueIdentifier>{D92F65CC-94D1-B54A-B8C1-A7B1822E6074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\gui\language">
+      <UniqueIdentifier>{B33BBD99-8C1B-7C4D-8531-EE0B8B01D3D3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\input">
+      <UniqueIdentifier>{F4FBC4D8-E7E2-5D47-9F49-C1D89DC3B124}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\input\leapMotion">
+      <UniqueIdentifier>{980BF7C6-6931-1B47-9600-391E7D78260F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\io">
+      <UniqueIdentifier>{7D4B55F4-3E34-5F45-BE6D-8DAEA28F9AE9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\io\resource">
+      <UniqueIdentifier>{C36FD174-3F67-0B48-B454-EB2BFB8647D3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\io\zip">
+      <UniqueIdentifier>{3875A483-D561-294E-9B45-EF2E57DAF1F6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\math">
+      <UniqueIdentifier>{49E2D397-215A-BE49-A66F-BEC7649AAAD4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\memory">
+      <UniqueIdentifier>{F371ECE0-5909-9240-B0FA-CC031AFDD3A3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\messaging">
+      <UniqueIdentifier>{F32306C2-54FC-6149-9610-5A3DDB0C5CB2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\module">
+      <UniqueIdentifier>{3283FD62-22F3-E545-84C9-0BED6655D7F5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\network">
+      <UniqueIdentifier>{3AA03256-B456-B34F-9130-1A16064227C5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\persistence">
+      <UniqueIdentifier>{627DAEDF-D0F9-774E-94B6-C74B0B2CED85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\persistence\rapidjson">
+      <UniqueIdentifier>{21E28FC3-8D43-3E4A-9428-E0B8454A30FF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\persistence\rapidjson\include">
+      <UniqueIdentifier>{3172FF44-858B-6241-8424-1D925B7C3FFA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\persistence\rapidjson\include\rapidjson">
+      <UniqueIdentifier>{B74DA2F9-A28A-2A4C-9686-8779F93BBBE8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\persistence\rapidjson\include\rapidjson\internal">
+      <UniqueIdentifier>{D974A443-047D-9249-8E8E-C6A741B5F967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\persistence\taml">
+      <UniqueIdentifier>{13D6850F-2755-9B4E-AB71-A61520C0D942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\persistence\taml\binary">
+      <UniqueIdentifier>{BC40747B-A860-184E-ADB0-FCE4D0B5B2FF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\persistence\taml\json">
+      <UniqueIdentifier>{35BB6BC5-72B6-724E-A729-AE152029FEBA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\persistence\taml\xml">
+      <UniqueIdentifier>{08CBBF6D-2EE7-FC42-8784-9552CC8CA98F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\persistence\tinyXML">
+      <UniqueIdentifier>{1CF59FF5-EA6F-8042-BD32-810CF6D3AB9D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\physics">
+      <UniqueIdentifier>{56F5C3CC-88C6-714A-9F47-7EF982EF8060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\platform">
+      <UniqueIdentifier>{0BF35AB7-C5F9-FA4B-9B0F-2B31F0F297E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\platform\menus">
+      <UniqueIdentifier>{6045F530-D2AA-D946-AEDB-8915338BCC20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\platform\nativeDialogs">
+      <UniqueIdentifier>{EE53E05C-AA64-754D-8080-69525CEC3DA3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\platform\threads">
+      <UniqueIdentifier>{35333E27-D0E2-B643-B452-C9D9C79B7581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\platformWin32">
+      <UniqueIdentifier>{09975C5D-703B-DB4D-8CBB-2E8ECA66DD4B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\platformWin32\nativeDialogs">
+      <UniqueIdentifier>{D6635EF2-A5F5-F448-88B1-FA1B7262C3B4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\plugins">
+      <UniqueIdentifier>{23277D17-2155-8441-AAB0-8DD436339482}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\sim">
+      <UniqueIdentifier>{B96AD712-827A-DA47-8C3D-AEACAECD3F61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\spine">
+      <UniqueIdentifier>{9EAC1EEE-BB80-A44E-B023-9257708FB2BE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\string">
+      <UniqueIdentifier>{E0738EAC-9BB4-F34D-94E7-D2D62D4EF3AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\sysgui">
+      <UniqueIdentifier>{59D4280F-EBA7-9148-8340-CB62F02AF3CC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\testing">
+      <UniqueIdentifier>{4DCDB383-8E4D-2847-8088-7C24376EE321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\platformWin32\menus">
+      <UniqueIdentifier>{9A234228-6B65-D24B-A5B9-F9E1B6750950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\platformWin32\threads">
+      <UniqueIdentifier>{16429230-3D47-F646-84B3-7CA266A18EF5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\source\testing\tests">
+      <UniqueIdentifier>{3FF7ABD2-7CED-1A4A-9E79-68CA253574D7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\engine\source\torqueConfig.h">
+      <Filter>engine\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\assets\ImageAsset.h">
+      <Filter>engine\source\2d\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\assets\ImageAsset_ScriptBinding.h">
+      <Filter>engine\source\2d\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\core\BatchRender.h">
+      <Filter>engine\source\2d\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\core\CoreMath.h">
+      <Filter>engine\source\2d\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\core\ImageFrameProvider.h">
+      <Filter>engine\source\2d\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\core\ImageFrameProviderCore.h">
+      <Filter>engine\source\2d\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\core\Utility.h">
+      <Filter>engine\source\2d\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\core\Utility_ScriptBinding.h">
+      <Filter>engine\source\2d\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\core\Vector2.h">
+      <Filter>engine\source\2d\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\core\Vector2_ScriptBinding.h">
+      <Filter>engine\source\2d\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\gui\guiImageButtonCtrl.h">
+      <Filter>engine\source\2d\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\gui\guiImageButtonCtrl_ScriptBindings.h">
+      <Filter>engine\source\2d\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\gui\guiSpriteCtrl.h">
+      <Filter>engine\source\2d\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\2d\gui\guiSpriteCtrl_ScriptBindings.h">
+      <Filter>engine\source\2d\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\entity.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplate.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplateAsset.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplateAsset_ScriptBinding.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplate_ScriptBinding.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\entity_ScriptBinding.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\meshAsset.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\meshAsset_ScriptBinding.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent_ScriptBinding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\baseComponent.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\baseComponent_ScriptBinding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\lightComponent.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\lightComponent_ScriptBinding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\meshComponent.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\meshComponent_ScriptBinding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\physicsComponent.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\physicsComponent_ScriptBinding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\textComponent.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\entity\components\textComponent_ScriptBinding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\materialAsset.h">
+      <Filter>engine\source\3d\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\materialAsset_ScriptBinding.h">
+      <Filter>engine\source\3d\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\materialTemplate.h">
+      <Filter>engine\source\3d\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\materialTemplate_ScriptBinding.h">
+      <Filter>engine\source\3d\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\deferredNode.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\floatNode.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\forwardNode.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\multiplyNode.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\rootNode.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\sinNode.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\textureNode.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\timeNode.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\vec3Node.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\rendering\common.h">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\rendering\deferredRendering.h">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\rendering\postRendering.h">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\rendering\renderable.h">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\rendering\shadows.h">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\rendering\transparency.h">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\rendering\postFX\hdr.h">
+      <Filter>engine\source\3d\rendering\postFX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\rendering\postFX\ssr.h">
+      <Filter>engine\source\3d\rendering\postFX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\scene\camera.h">
+      <Filter>engine\source\3d\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\scene\camera_ScriptBinding.h">
+      <Filter>engine\source\3d\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\scene\core.h">
+      <Filter>engine\source\3d\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\3d\scene\core_ScriptBinding.h">
+      <Filter>engine\source\3d\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\algorithm\crc.h">
+      <Filter>engine\source\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\algorithm\crctab.h">
+      <Filter>engine\source\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\algorithm\hashFunction.h">
+      <Filter>engine\source\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\algorithm\md5.h">
+      <Filter>engine\source\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetBase.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetBase_ScriptBinding.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetDefinition.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetFieldTypes.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetManager.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetManager_ScriptBinding.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetPtr.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetQuery.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetQuery_ScriptBinding.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetTagsManifest.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\assetTagsManifest_ScriptBinding.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\declaredAssets.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\referencedAssets.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\tamlAssetDeclaredUpdateVisitor.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\tamlAssetDeclaredVisitor.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\tamlAssetReferencedUpdateVisitor.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\assets\tamlAssetReferencedVisitor.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\audio\audio.h">
+      <Filter>engine\source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\audio\AudioAsset.h">
+      <Filter>engine\source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\audio\audioBuffer.h">
+      <Filter>engine\source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\audio\audioDataBlock.h">
+      <Filter>engine\source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\audio\audioStreamSource.h">
+      <Filter>engine\source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\audio\audioStreamSourceFactory.h">
+      <Filter>engine\source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\audio\wavStreamSource.h">
+      <Filter>engine\source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\c-interface\c-interface.h">
+      <Filter>engine\source\c-interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\bitMatrix.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\bitSet.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\bitTables.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\bitVector.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\bitVectorW.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\findIterator.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\hashTable.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\linkedList.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\nameTags.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\nameTags_ScriptBinding.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\simpleHashTable.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\sparseArray.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\tFixedSizeVector.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\tUnmanagedVector.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\tVectorSpecializations.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\undo.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\undo_ScriptBinding.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\vector.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\vector2d.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\vectorHeap.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collection\vectorQueue.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\abstractPolyList.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\boxConvex.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\clippedPolyList.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\collision.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\concretePolyList.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\convex.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\depthSortList.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\earlyOutPolyList.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\extrudedPolyList.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\gjk.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\optimizedPolyList.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\planeExtractor.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\polytope.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\collision\vertexPolyList.h">
+      <Filter>engine\source\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\dynamicConsoleMethodComponent.h">
+      <Filter>engine\source\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\dynamicConsoleMethodComponent_ScriptBinding.h">
+      <Filter>engine\source\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\simComponent.h">
+      <Filter>engine\source\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\simComponent_ScriptBinding.h">
+      <Filter>engine\source\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponent.h">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponentRaiseEvent.h">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponent_ScriptBinding.h">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorInstance.h">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorInstance_ScriptBinding.h">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorTemplate.h">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorTemplate_ScriptBinding.h">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\ast.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\astNodeSizes.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\cmdgram.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\codeBlock.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\compiler.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\console.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleBaseType.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleDictionary.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleDoc.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleDoc_ScriptBinding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleExprEvalState.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleExprEvalState_ScriptBinding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleInternal.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleLogger.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleLogger_ScriptBinding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleNamespace.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleNamespace_ScriptBinding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleObject.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleParser.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\consoleTypes.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\ConsoleTypeValidators.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\expando_ScriptBinding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\inputManagement_ScriptBinding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\output_ScriptBinding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\Package.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\runtimeClassRep.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\console\taggedStrings_ScriptBinding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\debug\profiler.h">
+      <Filter>engine\source\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\debug\profiler_ScriptBinding.h">
+      <Filter>engine\source\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\debug\telnetDebugger.h">
+      <Filter>engine\source\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\debug\telnetDebugger_ScriptBinding.h">
+      <Filter>engine\source\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebugger1.h">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebugger1_ScriptBinding.h">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBase.h">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBase_ScriptBinding.h">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBridge.h">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBridge_ScriptBinding.h">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\delegates\delegate.h">
+      <Filter>engine\source\delegates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\delegates\delegateSignal.h">
+      <Filter>engine\source\delegates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\delegates\FastDelegate.h">
+      <Filter>engine\source\delegates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\game\defaultGame.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\game\gameConnection.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\game\gameConnection_ScriptBinding.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\game\gameInterface.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\game\gameInterface_ScriptBinding.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\game\resource.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\game\version.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\game\version_ScriptBinding.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\color.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\color_ScriptBinding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\core.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\dgl.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\dglMac_ScriptBinding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\dgl_ScriptBinding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\DynamicTexture.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\gBitmap.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\gFont.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\gFont_ScriptBinding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\gPalette.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\PNGImage.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\PNGImage_ScriptBinding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\shaders.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\shaders_ScriptBinding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\splineUtil.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\TextureDictionary.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\TextureHandle.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\TextureManager.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\TextureManager_ScriptBinding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\TextureObject.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\utilities.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\graphics\viewTable.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiArrayCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiBackgroundCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiBitmapCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiBubbleTextCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiCanvas.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiCanvas_ScriptBinding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiColorPicker.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiConsole.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiConsoleEditCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiConsoleTextCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiControl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiControl_ScriptBinding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiCurveCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiDefaultControlRender.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiInputCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiListBoxCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiMessageVectorCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiMLTextCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiMLTextEditCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiMouseEventCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiPopUpCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiPopUpCtrlEx.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiProgressCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiScriptNotifyControl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiSliderCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiTabPageCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiTextCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiTextEditCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiTextEditSliderCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiTextListCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiTickCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiTreeViewCtrl.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\guiTypes.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\messageVector.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiBitmapButtonCtrl.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiButtonBaseCtrl.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiButtonCtrl.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiCheckBoxCtrl.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiIconButtonCtrl.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiRadioCtrl.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiToolboxButtonCtrl.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiAutoScrollCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiCtrlArrayCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiDragAndDropCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiDynamicCtrlArrayCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiFormCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiFrameCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiGridCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiPaneCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiRolloutCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiScrollCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiStackCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiTabBookCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\containers\guiWindowCtrl.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\editor\guiDebugger.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\editor\guiEditCtrl.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\editor\guiFilterCtrl.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\editor\guiGraphCtrl.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\editor\guiImageList.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\editor\guiInspector.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\editor\guiInspectorTypes.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\editor\guiMenuBar.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\editor\guiSeparatorCtrl.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\gui\language\lang.h">
+      <Filter>engine\source\gui\language</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\input\actionMap.h">
+      <Filter>engine\source\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\input\actionMap_ScriptBinding.h">
+      <Filter>engine\source\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionConstants.h">
+      <Filter>engine\source\input\leapMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionManager.h">
+      <Filter>engine\source\input\leapMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\input\leapMotion\LeapMotionManager_ScriptBinding.h">
+      <Filter>engine\source\input\leapMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionUtil.h">
+      <Filter>engine\source\input\leapMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\bitStream.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\bufferStream.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\fileObject.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\fileObject_ScriptBinding.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\fileStream.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\fileStreamObject.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\fileStreamObject_ScriptBinding.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\filterStream.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\memstream.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\resizeStream.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\stream.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\streamObject.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\streamObject_ScriptBinding.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\resource\resourceManager.h">
+      <Filter>engine\source\io\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\resource\resourceManager_ScriptBinding.h">
+      <Filter>engine\source\io\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\centralDir.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\compressor.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\extraField.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\fileHeader.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\zipArchive.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\zipCryptStream.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\zipObject.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\zipObject_ScriptBinding.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\zipStatFilter.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\zipSubStream.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\io\zip\zipTempStream.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\box_ScriptBinding.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mathIO.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mathTypes.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mathUtils.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\matrix_ScriptBinding.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mBox.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mBoxBase.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mConstants.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mMath.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mMathFn.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mMatrix.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mOrientedBox.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mPlane.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mPlaneSet.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mPlaneTransformer.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mPoint.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mPolyhedron.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mPolyhedron.impl.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mQuadPatch.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mQuat.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mRandom.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mRect.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mSphere.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\mSplinePatch.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\random_ScriptBinding.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\rectClipper.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\math\vector_ScriptBinding.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\memory\dataChunker.h">
+      <Filter>engine\source\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\memory\factoryCache.h">
+      <Filter>engine\source\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\memory\frameAllocator.h">
+      <Filter>engine\source\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\memory\safeDelete.h">
+      <Filter>engine\source\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\memory\tempAlloc.h">
+      <Filter>engine\source\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\messaging\dispatcher.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\messaging\dispatcher_ScriptBinding.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\messaging\eventManager.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\messaging\eventManager_ScriptBinding.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\messaging\message.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\messaging\messageForwarder.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\messaging\message_ScriptBinding.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\messaging\scriptMsgListener.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\module\moduleCallbacks.h">
+      <Filter>engine\source\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\module\moduleDefinition.h">
+      <Filter>engine\source\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\module\moduleDefinition_ScriptBinding.h">
+      <Filter>engine\source\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\module\moduleManager.h">
+      <Filter>engine\source\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\module\moduleManager_ScriptBinding.h">
+      <Filter>engine\source\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\module\moduleMergeDefinition.h">
+      <Filter>engine\source\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\module\tamlModuleIdUpdateVisitor.h">
+      <Filter>engine\source\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\connectionProtocol.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\connectionProtocol_ScriptBinding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\connectionStringTable.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\httpObject.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\httpObject_ScriptBinding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\netConnection.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\netConnection_ScriptBinding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\netInterface.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\netInterface_ScriptBinding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\netObject.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\netObject_ScriptBinding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\netStringTable.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\netStringTable_ScriptBinding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\networkProcessList.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\RemoteCommandEvent.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\RemoteCommandEvent_ScriptBinding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\serverQuery.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\serverQuery_ScriptBinding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\tcpObject.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\tcpObject_ScriptBinding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\telnetConsole.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\network\telnetConsole_ScriptBinding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\SimXMLDocument.h">
+      <Filter>engine\source\persistence</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\SimXMLDocument_ScriptBinding.h">
+      <Filter>engine\source\persistence</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\allocators.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\document.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\encodedstream.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\encodings.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\filereadstream.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\filestream.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\filewritestream.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\prettywriter.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\rapidjson.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\reader.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\stringbuffer.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\writer.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\internal\pow10.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\internal\stack.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\internal\strfunc.h">
+      <Filter>engine\source\persistence\rapidjson\include\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\taml.h">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlCallbacks.h">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlChildren.h">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlCustom.h">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlParser.h">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlVisitor.h">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlWriteNode.h">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\taml_ScriptBinding.h">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\binary\tamlBinaryReader.h">
+      <Filter>engine\source\persistence\taml\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\binary\tamlBinaryWriter.h">
+      <Filter>engine\source\persistence\taml\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\json\tamlJSONParser.h">
+      <Filter>engine\source\persistence\taml\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\json\tamlJSONReader.h">
+      <Filter>engine\source\persistence\taml\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\json\tamlJSONWriter.h">
+      <Filter>engine\source\persistence\taml\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\xml\tamlXmlParser.h">
+      <Filter>engine\source\persistence\taml\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\xml\tamlXmlReader.h">
+      <Filter>engine\source\persistence\taml\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\taml\xml\tamlXmlWriter.h">
+      <Filter>engine\source\persistence\taml\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\tinyXML\tinystr.h">
+      <Filter>engine\source\persistence\tinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\persistence\tinyXML\tinyxml.h">
+      <Filter>engine\source\persistence\tinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\physics\bullet.h">
+      <Filter>engine\source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\physics\physics.h">
+      <Filter>engine\source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\physics\physicsEngine.h">
+      <Filter>engine\source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\physics\physicsThread.h">
+      <Filter>engine\source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\physics\physics_ScriptBinding.h">
+      <Filter>engine\source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\CursorManager_ScriptBinding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\eaxtypes.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\event.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\GLCoreFunc.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\GLExtFunc.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\GLUFunc.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platform.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformAL.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformAssert.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformAssert_ScriptBinding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformAudio.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformCPU.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformEndian.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformFileIO.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformFileIO_ScriptBinding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformFont.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformGL.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformInput.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformInput_ScriptBinding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformLibrary.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformMath.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformMemory.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformNetAsync.unix.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformNetwork.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformSemaphore.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformString.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformString_ScriptBinding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformTimeManager.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformTLS.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformVFS.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformVideo.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platformVideo_ScriptBinding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\platform_ScriptBinding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\Tickable.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\types.arm.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\types.clang.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\types.codewarrior.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\types.gcc.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\types.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\types.posix.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\types.ppc.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\types.visualc.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\types.win32.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\typesLinux.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\typesPPC.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\typesWin32.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\typesX86UNIX.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\menus\popupMenu.h">
+      <Filter>engine\source\platform\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\menus\popupMenu_ScriptBinding.h">
+      <Filter>engine\source\platform\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\fileDialog.h">
+      <Filter>engine\source\platform\nativeDialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\fileDialog_ScriptBinding.h">
+      <Filter>engine\source\platform\nativeDialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\msgBox.h">
+      <Filter>engine\source\platform\nativeDialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\msgBox_ScriptBinding.h">
+      <Filter>engine\source\platform\nativeDialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\threads\mutex.h">
+      <Filter>engine\source\platform\threads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\threads\semaphore.h">
+      <Filter>engine\source\platform\threads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platform\threads\thread.h">
+      <Filter>engine\source\platform\threads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\cardProfile_ScriptBinding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\GLWinExtFunc.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\GLWinFunc.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\gl_types.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\platformGL.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\platformWin32.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\VFSRes.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\win32NPatch.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winBGFXVideo.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winConsole.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winConsole_ScriptBinding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winDInputDevice.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winDirectInput.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winExec_ScriptBinding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winFont.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winGLSpecial_ScriptBinding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winInput_ScriptBinding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winMath_ScriptBinding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winOGLVideo.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winOGLVideo_ScriptBinding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winVideo.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\winWindow.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\win_common_prefix.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\win_debug_prefix.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\win_release_prefix.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\platformWin32\nativeDialogs\win32DirectoryResolver.h">
+      <Filter>engine\source\platformWin32\nativeDialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\plugins\pluginAsset.h">
+      <Filter>engine\source\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\plugins\pluginAsset_ScriptBinding.h">
+      <Filter>engine\source\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\plugins\plugins.h">
+      <Filter>engine\source\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\plugins\plugins_ScriptBinding.h">
+      <Filter>engine\source\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\plugins\plugins_shared.h">
+      <Filter>engine\source\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\scriptGroup.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\scriptObject.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simBase.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simBase_Binding.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simConsoleEvent.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simConsoleThreadExecEvent.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simDatablock.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simDatablockGroup.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simDatablock_ScriptBinding.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simDictionary.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simEvent.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simFieldDictionary.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simObject.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\SimObjectList.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simObjectPtr.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simObjectTimerEvent.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simObject_Binding.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simSerialize_ScriptBinding.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simSet.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sim\simSet_ScriptBinding.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\Animation.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\AnimationState.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\AnimationStateData.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\Atlas.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\AtlasAttachmentLoader.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\Attachment.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\AttachmentLoader.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\Bone.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\BoneData.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\BoundingBoxAttachment.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\Event.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\EventData.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\extension.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\Json.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\RegionAttachment.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\Skeleton.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\SkeletonBounds.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\SkeletonData.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\SkeletonJson.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\Skin.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\Slot.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\SlotData.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\spine\spine.h">
+      <Filter>engine\source\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\string\findMatch.h">
+      <Filter>engine\source\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\string\stringBuffer.h">
+      <Filter>engine\source\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\string\stringBuffer_ScriptBinding.h">
+      <Filter>engine\source\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\string\stringStack.h">
+      <Filter>engine\source\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\string\stringTable.h">
+      <Filter>engine\source\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\string\stringUnit.h">
+      <Filter>engine\source\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\string\stringUnit_ScriptBinding.h">
+      <Filter>engine\source\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\string\unicode.h">
+      <Filter>engine\source\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sysgui\sysgui.h">
+      <Filter>engine\source\sysgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\sysgui\sysgui_ScriptBinding.h">
+      <Filter>engine\source\sysgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\testing\unitTesting.h">
+      <Filter>engine\source\testing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\source\testing\unitTesting_ScriptBinding.h">
+      <Filter>engine\source\testing</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\engine\source\2d\assets\ImageAsset.cc">
+      <Filter>engine\source\2d\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\BatchRender.cc">
+      <Filter>engine\source\2d\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\CoreMath.cc">
+      <Filter>engine\source\2d\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\ImageFrameProvider.cc">
+      <Filter>engine\source\2d\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\ImageFrameProviderCore.cc">
+      <Filter>engine\source\2d\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\Utility.cc">
+      <Filter>engine\source\2d\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\Vector2.cc">
+      <Filter>engine\source\2d\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\gui\guiImageButtonCtrl.cc">
+      <Filter>engine\source\2d\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\gui\guiSpriteCtrl.cc">
+      <Filter>engine\source\2d\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\entity.cc">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\entityTemplate.cc">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\entityTemplateAsset.cc">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\meshAsset.cc">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\animationComponent.cc">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\baseComponent.cc">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\lightComponent.cc">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\meshComponent.cc">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\physicsComponent.cc">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\textComponent.cc">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\materialAsset.cc">
+      <Filter>engine\source\3d\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\materialTemplate.cc">
+      <Filter>engine\source\3d\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\deferredNode.cc">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\floatNode.cc">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\forwardNode.cc">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\multiplyNode.cc">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\rootNode.cc">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\sinNode.cc">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\textureNode.cc">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\timeNode.cc">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\vec3Node.cc">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\common.cc">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\deferredRendering.cc">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\postRendering.cc">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\renderable.cc">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\shadows.cc">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\transparency.cc">
+      <Filter>engine\source\3d\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\postFX\hdr.cc">
+      <Filter>engine\source\3d\rendering\postFX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\postFX\ssr.cc">
+      <Filter>engine\source\3d\rendering\postFX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\scene\camera.cc">
+      <Filter>engine\source\3d\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\scene\core.cc">
+      <Filter>engine\source\3d\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\algorithm\crc.cc">
+      <Filter>engine\source\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\algorithm\hashFunction.cc">
+      <Filter>engine\source\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\assetBase.cc">
+      <Filter>engine\source\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\assetFieldTypes.cc">
+      <Filter>engine\source\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\assetManager.cc">
+      <Filter>engine\source\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\assetQuery.cc">
+      <Filter>engine\source\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\assetTagsManifest.cc">
+      <Filter>engine\source\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\declaredAssets.cc">
+      <Filter>engine\source\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\referencedAssets.cc">
+      <Filter>engine\source\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\audio.cc">
+      <Filter>engine\source\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\AudioAsset.cc">
+      <Filter>engine\source\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\audioBuffer.cc">
+      <Filter>engine\source\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\audioDataBlock.cc">
+      <Filter>engine\source\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\audioStreamSourceFactory.cc">
+      <Filter>engine\source\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\audio_ScriptBinding.cc">
+      <Filter>engine\source\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\wavStreamSource.cc">
+      <Filter>engine\source\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collection\bitTables.cc">
+      <Filter>engine\source\collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collection\hashTable.cc">
+      <Filter>engine\source\collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collection\undo.cc">
+      <Filter>engine\source\collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collection\vector.cc">
+      <Filter>engine\source\collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\astAlloc.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\astNodes.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\cmdgram.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\CMDscan.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\codeBlock.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\compiledEval.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\compiler.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\console.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleBaseType.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleDictionary.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleDoc.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleExprEvalState.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleFunctions.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleLogger.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleNamespace.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleObject.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleParser.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleTypes.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\ConsoleTypeValidators.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\metaScripting_ScriptBinding.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\Package.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\debug\profiler.cc">
+      <Filter>engine\source\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\debug\telnetDebugger.cc">
+      <Filter>engine\source\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\debug\remote\RemoteDebugger1.cc">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\debug\remote\RemoteDebuggerBase.cc">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\debug\remote\RemoteDebuggerBridge.cc">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\game\defaultGame.cc">
+      <Filter>engine\source\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\game\gameConnection.cc">
+      <Filter>engine\source\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\game\gameInterface.cc">
+      <Filter>engine\source\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\game\version.cc">
+      <Filter>engine\source\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\bitmapBmp.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\bitmapDDS.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\bitmapJpeg.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\bitmapPng.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\bitmapTga.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\color.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\core.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\dgl.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\dglMatrix.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\DynamicTexture.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\gBitmap.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\gFont.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\gPalette.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\shaders.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\splineUtil.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\TextureDictionary.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\TextureHandle.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\TextureManager.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\utilities.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\viewTable.cc">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiArrayCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiBackgroundCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiBitmapBorderCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiBitmapCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiBubbleTextCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiCanvas.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiColorPicker.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiConsole.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiConsoleEditCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiConsoleTextCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiControl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiCurveCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiDefaultControlRender.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiFadeinBitmapCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiInputCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiListBoxCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiMessageVectorCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiMLTextCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiMLTextEditCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiMouseEventCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiPopUpCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiPopUpCtrlEx.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiProgressCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiScriptNotifyControl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiSliderCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTabPageCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTextCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTextEditCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTextEditSliderCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTextListCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTickCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTreeViewCtrl.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTypes.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\messageVector.cc">
+      <Filter>engine\source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiBitmapButtonCtrl.cc">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiBorderButton.cc">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiButtonBaseCtrl.cc">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiButtonCtrl.cc">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiCheckBoxCtrl.cc">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiIconButtonCtrl.cc">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiRadioCtrl.cc">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiToolboxButtonCtrl.cc">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiAutoScrollCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiCtrlArrayCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiDragAndDropCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiDynamicCtrlArrayCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiFormCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiFrameCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiGridCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiPaneCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiRolloutCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiScrollCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiStackCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiTabBookCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiWindowCtrl.cc">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiControlListPopup.cc">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiDebugger.cc">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiEditCtrl.cc">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiFilterCtrl.cc">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiGraphCtrl.cc">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiImageList.cc">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiInspector.cc">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiInspectorTypes.cc">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiMenuBar.cc">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiSeparatorCtrl.cc">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\language\lang.cc">
+      <Filter>engine\source\gui\language</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\input\actionMap.cc">
+      <Filter>engine\source\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\input\leapMotion\leapMotionManager.cc">
+      <Filter>engine\source\input\leapMotion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\bitStream.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\bufferStream.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\fileObject.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\fileStream.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\fileStreamObject.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\fileSystem_ScriptBinding.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\filterStream.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\memStream.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\nStream.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\resizeStream.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\streamObject.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\resource\resourceDictionary.cc">
+      <Filter>engine\source\io\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\resource\resourceManager.cc">
+      <Filter>engine\source\io\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\centralDir.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\compressor.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\deflate.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\extraField.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\fileHeader.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\stored.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\zipArchive.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\zipCryptStream.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\zipObject.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\zipSubStream.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\zipTempStream.cc">
+      <Filter>engine\source\io\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mathTypes.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mathUtils.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\math_ScriptBinding.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mMathAltivec.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mMathFn.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mMath_C.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mMatrix.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mPlaneTransformer.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mQuadPatch.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mQuat.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mRandom.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mSolver.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mSplinePatch.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\memory\dataChunker.cc">
+      <Filter>engine\source\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\memory\frameAllocator_ScriptBinding.cc">
+      <Filter>engine\source\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\messaging\dispatcher.cc">
+      <Filter>engine\source\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\messaging\eventManager.cc">
+      <Filter>engine\source\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\messaging\message.cc">
+      <Filter>engine\source\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\messaging\messageForwarder.cc">
+      <Filter>engine\source\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\messaging\scriptMsgListener.cc">
+      <Filter>engine\source\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\module\moduleDefinition.cc">
+      <Filter>engine\source\module</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\module\moduleManager.cc">
+      <Filter>engine\source\module</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\module\moduleMergeDefinition.cc">
+      <Filter>engine\source\module</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\connectionProtocol.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\connectionStringTable.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\httpObject.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netConnection.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netDownload.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netEvent.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netGhost.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netInterface.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netObject.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netStringTable.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netTest.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\networkProcessList.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\RemoteCommandEvent.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\serverQuery.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\tcpObject.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\telnetConsole.cc">
+      <Filter>engine\source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\taml.cc">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\tamlCustom.cc">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\tamlWriteNode.cc">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\binary\tamlBinaryReader.cc">
+      <Filter>engine\source\persistence\taml\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\binary\tamlBinaryWriter.cc">
+      <Filter>engine\source\persistence\taml\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\json\tamlJSONParser.cc">
+      <Filter>engine\source\persistence\taml\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\json\tamlJSONReader.cc">
+      <Filter>engine\source\persistence\taml\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\json\tamlJSONWriter.cc">
+      <Filter>engine\source\persistence\taml\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\xml\tamlXmlParser.cc">
+      <Filter>engine\source\persistence\taml\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\xml\tamlXmlReader.cc">
+      <Filter>engine\source\persistence\taml\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\xml\tamlXmlWriter.cc">
+      <Filter>engine\source\persistence\taml\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\physics\physics.cc">
+      <Filter>engine\source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\CursorManager.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platform.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformAssert.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformCPU.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformFileIO.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformFont.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformMemory.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformNetwork_ScriptBinding.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformString.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformVideo.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\Tickable.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\menus\popupMenu.cc">
+      <Filter>engine\source\platform\menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\nativeDialogs\fileDialog.cc">
+      <Filter>engine\source\platform\nativeDialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winAsmBlit.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winBGFXVideo.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winConsole.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winCPUInfo.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winDInputDevice.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winDirectInput.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winExec.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winFileio.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winFont.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winGL.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winGLSpecial.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winInput.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winMath.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winMath_ASM.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winMemory.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winNet.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winOGLVideo.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winOpenAL.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winProcessControl.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winSemaphore.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winStrings.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winTime.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winTLS.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winUser.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winVFS.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winVideo.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winWindow.cc">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\menus\popupMenuWin32.cc">
+      <Filter>engine\source\platformWin32\menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\nativeDialogs\win32FileDialog.cc">
+      <Filter>engine\source\platformWin32\nativeDialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\threads\mutex.cc">
+      <Filter>engine\source\platformWin32\threads</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\threads\thread.cc">
+      <Filter>engine\source\platformWin32\threads</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\plugins\pluginAsset.cc">
+      <Filter>engine\source\plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\plugins\plugins.cc">
+      <Filter>engine\source\plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\scriptGroup.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\scriptObject.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simBase.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simConsoleEvent.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simConsoleThreadExecEvent.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simDatablock.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simDictionary.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simFieldDictionary.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simManager.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simObject.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\SimObjectList.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simSet.cc">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\findMatch.cc">
+      <Filter>engine\source\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\stringBuffer.cc">
+      <Filter>engine\source\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\stringStack.cc">
+      <Filter>engine\source\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\stringTable.cc">
+      <Filter>engine\source\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\unicode.cc">
+      <Filter>engine\source\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sysgui\sysgui.cc">
+      <Filter>engine\source\sysgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\testing\unitTesting.cc">
+      <Filter>engine\source\testing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\testing\tests\platformFileIoTests.cc">
+      <Filter>engine\source\testing\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\testing\tests\platformMemoryTests.cc">
+      <Filter>engine\source\testing\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\testing\tests\platformStringTests.cc">
+      <Filter>engine\source\testing\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\c-interface\c-interface.cpp">
+      <Filter>engine\source\c-interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collection\nameTags.cpp">
+      <Filter>engine\source\collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\abstractPolyList.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\boxConvex.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\clippedPolyList.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\concretePolyList.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\convex.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\depthSortList.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\earlyOutPolyList.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\extrudedPolyList.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\gjk.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\optimizedPolyList.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\planeExtractor.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\polytope.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\vertexPolyList.cpp">
+      <Filter>engine\source\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\component\dynamicConsoleMethodComponent.cpp">
+      <Filter>engine\source\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\component\simComponent.cpp">
+      <Filter>engine\source\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\component\behaviors\behaviorComponent.cpp">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\component\behaviors\behaviorInstance.cpp">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\component\behaviors\behaviorTemplate.cpp">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\delegates\delegateSignal.cpp">
+      <Filter>engine\source\delegates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\PNGImage.cpp">
+      <Filter>engine\source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\input\leapMotion\leapMotionUtil.cpp">
+      <Filter>engine\source\input\leapMotion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mBox.cpp">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mOrientedBox.cpp">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mPlane.cpp">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mPoint.cpp">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mPolyhedron.cpp">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\rectClipper.cpp">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\SimXMLDocument.cpp">
+      <Filter>engine\source\persistence</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\tinyXML\tinystr.cpp">
+      <Filter>engine\source\persistence\tinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\tinyXML\tinyxml.cpp">
+      <Filter>engine\source\persistence\tinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\tinyXML\tinyxmlerror.cpp">
+      <Filter>engine\source\persistence\tinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\tinyXML\tinyxmlparser.cpp">
+      <Filter>engine\source\persistence\tinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\physics\bullet.cpp">
+      <Filter>engine\source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\physics\physicsEngine.cpp">
+      <Filter>engine\source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\physics\physicsThread.cpp">
+      <Filter>engine\source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformLibrary.cpp">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\nativeDialogs\msgBox.cpp">
+      <Filter>engine\source\platform\nativeDialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\cardProfile.cpp">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\nativeDialogs\win32DirectoryResolver.cpp">
+      <Filter>engine\source\platformWin32\nativeDialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\nativeDialogs\win32MsgBox.cpp">
+      <Filter>engine\source\platformWin32\nativeDialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simSerialize.cpp">
+      <Filter>engine\source\sim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\stringUnit.cpp">
+      <Filter>engine\source\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Animation.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\AnimationState.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\AnimationStateData.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Atlas.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\AtlasAttachmentLoader.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Attachment.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\AttachmentLoader.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Bone.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\BoneData.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\BoundingBoxAttachment.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Event.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\EventData.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\extension.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Json.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\RegionAttachment.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Skeleton.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\SkeletonBounds.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\SkeletonData.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\SkeletonJson.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Skin.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Slot.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\SlotData.c">
+      <Filter>engine\source\spine</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

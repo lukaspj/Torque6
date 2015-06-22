@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{6E72CD25-A6AF-0047-9896-FC5B37677DA1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib">
+      <UniqueIdentifier>{2CBED655-5845-5946-84B1-ADE4727CF59C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\lpng">
+      <UniqueIdentifier>{E80D4DFE-697C-6A40-91E4-95719F480F67}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\engine\lib\lpng\png.h">
+      <Filter>engine\lib\lpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\lpng\pngconf.h">
+      <Filter>engine\lib\lpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\lpng\pngdebug.h">
+      <Filter>engine\lib\lpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\lpng\pnginfo.h">
+      <Filter>engine\lib\lpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\lpng\pnglibconf.h">
+      <Filter>engine\lib\lpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\lpng\pngpriv.h">
+      <Filter>engine\lib\lpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\lpng\pngstruct.h">
+      <Filter>engine\lib\lpng</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\engine\lib\lpng\png.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngerror.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngget.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngmem.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngpread.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngread.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngrio.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngrtran.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngrutil.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngset.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngtrans.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngwio.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngwrite.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngwtran.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\lpng\pngwutil.c">
+      <Filter>engine\lib\lpng</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1964 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BB091751-27E9-95EC-3001-21C39C5FFC4D}</ProjectGuid>
+    <RootNamespace>Torque6</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\bin\windows\</OutDir>
+    <IntDir>obj\x32\Release\Torque6\</IntDir>
+    <TargetName>Torque6</TargetName>
+    <TargetExt>.dll</TargetExt>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\bin\windows\</OutDir>
+    <IntDir>obj\x64\Release\Torque6\</IntDir>
+    <TargetName>Torque6</TargetName>
+    <TargetExt>.dll</TargetExt>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\bin\windows\</OutDir>
+    <IntDir>obj\x32\Debug\Torque6\</IntDir>
+    <TargetName>Torque6_DEBUG</TargetName>
+    <TargetExt>.dll</TargetExt>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\bin\windows\</OutDir>
+    <IntDir>obj\x64\Debug\Torque6\</IntDir>
+    <TargetName>Torque6_DEBUG</TargetName>
+    <TargetExt>.dll</TargetExt>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/wd4100 /wd4800  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\engine\lib\assimp\include;..\..\engine\lib\bgfx\include;..\..\engine\lib\bullet;..\..\engine\lib\bgfx\3rdparty;..\..\engine\lib\bgfx\common;..\..\engine\lib\LeapSDK\include;..\..\engine\lib\zlib;..\..\engine\lib\lpng;..\..\engine\lib\ljpeg;..\..\engine\lib\openal\win32;..\..\engine\source;..\..\engine\source\persistence\rapidjson\include;..\..\engine\source\persistence\libjson;..\..\engine\source\testing\googleTest;..\..\engine\source\testing\googleTest\include;..\..\engine\source\spine;..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\engine\lib\assimp\include;..\..\engine\lib\bgfx\include;..\..\engine\lib\bullet;..\..\engine\lib\bgfx\3rdparty;..\..\engine\lib\bgfx\common;..\..\engine\lib\LeapSDK\include;..\..\engine\lib\zlib;..\..\engine\lib\lpng;..\..\engine\lib\ljpeg;..\..\engine\lib\openal\win32;..\..\engine\source;..\..\engine\source\persistence\rapidjson\include;..\..\engine\source\persistence\libjson;..\..\engine\source\testing\googleTest;..\..\engine\source\testing\googleTest\include;..\..\engine\source\spine;..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>Leapd.lib;COMCTL32.lib;COMDLG32.lib;USER32.lib;ADVAPI32.lib;GDI32.lib;RPCRT4.lib;WINMM.lib;WSOCK32.lib;vfw32.lib;Imm32.lib;unicows.lib;shell32.lib;shlwapi.lib;ole32.lib;psapi.lib;d3dcompiler.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Torque6.dll</OutputFile>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)\Lib\x86;..\..\engine\lib\LeapSDK\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>..\bin\windows\Torque6.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>/wd4100 /wd4800  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\engine\lib\assimp\include;..\..\engine\lib\bgfx\include;..\..\engine\lib\bullet;..\..\engine\lib\bgfx\3rdparty;..\..\engine\lib\bgfx\common;..\..\engine\lib\LeapSDK\include;..\..\engine\lib\zlib;..\..\engine\lib\lpng;..\..\engine\lib\ljpeg;..\..\engine\lib\openal\win32;..\..\engine\source;..\..\engine\source\persistence\rapidjson\include;..\..\engine\source\persistence\libjson;..\..\engine\source\testing\googleTest;..\..\engine\source\testing\googleTest\include;..\..\engine\source\spine;..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\engine\lib\assimp\include;..\..\engine\lib\bgfx\include;..\..\engine\lib\bullet;..\..\engine\lib\bgfx\3rdparty;..\..\engine\lib\bgfx\common;..\..\engine\lib\LeapSDK\include;..\..\engine\lib\zlib;..\..\engine\lib\lpng;..\..\engine\lib\ljpeg;..\..\engine\lib\openal\win32;..\..\engine\source;..\..\engine\source\persistence\rapidjson\include;..\..\engine\source\persistence\libjson;..\..\engine\source\testing\googleTest;..\..\engine\source\testing\googleTest\include;..\..\engine\source\spine;..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>Leapd.lib;COMCTL32.lib;COMDLG32.lib;USER32.lib;ADVAPI32.lib;GDI32.lib;RPCRT4.lib;WINMM.lib;WSOCK32.lib;vfw32.lib;Imm32.lib;unicows.lib;shell32.lib;shlwapi.lib;ole32.lib;psapi.lib;d3dcompiler.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Torque6.dll</OutputFile>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)\Lib\x86;..\..\engine\lib\LeapSDK\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>..\bin\windows\Torque6.lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/wd4100 /wd4800  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\engine\lib\assimp\include;..\..\engine\lib\bgfx\include;..\..\engine\lib\bullet;..\..\engine\lib\bgfx\3rdparty;..\..\engine\lib\bgfx\common;..\..\engine\lib\LeapSDK\include;..\..\engine\lib\zlib;..\..\engine\lib\lpng;..\..\engine\lib\ljpeg;..\..\engine\lib\openal\win32;..\..\engine\source;..\..\engine\source\persistence\rapidjson\include;..\..\engine\source\persistence\libjson;..\..\engine\source\testing\googleTest;..\..\engine\source\testing\googleTest\include;..\..\engine\source\spine;..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TORQUE_DEBUG;TORQUE_ENABLE_PROFILER;TORQUE_DEBUG_GUARD;_CRT_SECURE_NO_WARNINGS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)Torque6_DEBUG.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>TORQUE_DEBUG;TORQUE_ENABLE_PROFILER;TORQUE_DEBUG_GUARD;_CRT_SECURE_NO_WARNINGS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\engine\lib\assimp\include;..\..\engine\lib\bgfx\include;..\..\engine\lib\bullet;..\..\engine\lib\bgfx\3rdparty;..\..\engine\lib\bgfx\common;..\..\engine\lib\LeapSDK\include;..\..\engine\lib\zlib;..\..\engine\lib\lpng;..\..\engine\lib\ljpeg;..\..\engine\lib\openal\win32;..\..\engine\source;..\..\engine\source\persistence\rapidjson\include;..\..\engine\source\persistence\libjson;..\..\engine\source\testing\googleTest;..\..\engine\source\testing\googleTest\include;..\..\engine\source\spine;..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Leapd.lib;COMCTL32.lib;COMDLG32.lib;USER32.lib;ADVAPI32.lib;GDI32.lib;RPCRT4.lib;WINMM.lib;WSOCK32.lib;vfw32.lib;Imm32.lib;unicows.lib;shell32.lib;shlwapi.lib;ole32.lib;psapi.lib;d3dcompiler.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Torque6_DEBUG.dll</OutputFile>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)\Lib\x86;..\..\engine\lib\LeapSDK\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>..\bin\windows\Torque6_DEBUG.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions>/wd4100 /wd4800  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\engine\lib\assimp\include;..\..\engine\lib\bgfx\include;..\..\engine\lib\bullet;..\..\engine\lib\bgfx\3rdparty;..\..\engine\lib\bgfx\common;..\..\engine\lib\LeapSDK\include;..\..\engine\lib\zlib;..\..\engine\lib\lpng;..\..\engine\lib\ljpeg;..\..\engine\lib\openal\win32;..\..\engine\source;..\..\engine\source\persistence\rapidjson\include;..\..\engine\source\persistence\libjson;..\..\engine\source\testing\googleTest;..\..\engine\source\testing\googleTest\include;..\..\engine\source\spine;..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TORQUE_DEBUG;TORQUE_ENABLE_PROFILER;TORQUE_DEBUG_GUARD;_CRT_SECURE_NO_WARNINGS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)Torque6_DEBUG.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>TORQUE_DEBUG;TORQUE_ENABLE_PROFILER;TORQUE_DEBUG_GUARD;_CRT_SECURE_NO_WARNINGS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\engine\lib\assimp\include;..\..\engine\lib\bgfx\include;..\..\engine\lib\bullet;..\..\engine\lib\bgfx\3rdparty;..\..\engine\lib\bgfx\common;..\..\engine\lib\LeapSDK\include;..\..\engine\lib\zlib;..\..\engine\lib\lpng;..\..\engine\lib\ljpeg;..\..\engine\lib\openal\win32;..\..\engine\source;..\..\engine\source\persistence\rapidjson\include;..\..\engine\source\persistence\libjson;..\..\engine\source\testing\googleTest;..\..\engine\source\testing\googleTest\include;..\..\engine\source\spine;..\..\engine\lib\bgfx\include\compat\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Leapd.lib;COMCTL32.lib;COMDLG32.lib;USER32.lib;ADVAPI32.lib;GDI32.lib;RPCRT4.lib;WINMM.lib;WSOCK32.lib;vfw32.lib;Imm32.lib;unicows.lib;shell32.lib;shlwapi.lib;ole32.lib;psapi.lib;d3dcompiler.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Torque6_DEBUG.dll</OutputFile>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)\Lib\x86;..\..\engine\lib\LeapSDK\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>..\bin\windows\Torque6_DEBUG.lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\engine\source\torqueConfig.h" />
+    <ClInclude Include="..\..\engine\source\2d\assets\ImageAsset.h" />
+    <ClInclude Include="..\..\engine\source\2d\assets\ImageAsset_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\2d\core\BatchRender.h" />
+    <ClInclude Include="..\..\engine\source\2d\core\CoreMath.h" />
+    <ClInclude Include="..\..\engine\source\2d\core\ImageFrameProvider.h" />
+    <ClInclude Include="..\..\engine\source\2d\core\ImageFrameProviderCore.h" />
+    <ClInclude Include="..\..\engine\source\2d\core\Utility.h" />
+    <ClInclude Include="..\..\engine\source\2d\core\Utility_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\2d\core\Vector2.h" />
+    <ClInclude Include="..\..\engine\source\2d\core\Vector2_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\2d\gui\guiImageButtonCtrl.h" />
+    <ClInclude Include="..\..\engine\source\2d\gui\guiImageButtonCtrl_ScriptBindings.h" />
+    <ClInclude Include="..\..\engine\source\2d\gui\guiSpriteCtrl.h" />
+    <ClInclude Include="..\..\engine\source\2d\gui\guiSpriteCtrl_ScriptBindings.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\entity.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplate.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplateAsset.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplateAsset_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplate_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\entity_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\meshAsset.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\meshAsset_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\baseComponent.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\baseComponent_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\lightComponent.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\lightComponent_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\meshComponent.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\meshComponent_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\physicsComponent.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\physicsComponent_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\textComponent.h" />
+    <ClInclude Include="..\..\engine\source\3d\entity\components\textComponent_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\materialAsset.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\materialAsset_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\materialTemplate.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\materialTemplate_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\deferredNode.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\floatNode.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\forwardNode.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\multiplyNode.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\rootNode.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\sinNode.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\textureNode.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\timeNode.h" />
+    <ClInclude Include="..\..\engine\source\3d\material\nodes\vec3Node.h" />
+    <ClInclude Include="..\..\engine\source\3d\rendering\common.h" />
+    <ClInclude Include="..\..\engine\source\3d\rendering\deferredRendering.h" />
+    <ClInclude Include="..\..\engine\source\3d\rendering\postRendering.h" />
+    <ClInclude Include="..\..\engine\source\3d\rendering\renderable.h" />
+    <ClInclude Include="..\..\engine\source\3d\rendering\shadows.h" />
+    <ClInclude Include="..\..\engine\source\3d\rendering\transparency.h" />
+    <ClInclude Include="..\..\engine\source\3d\rendering\postFX\hdr.h" />
+    <ClInclude Include="..\..\engine\source\3d\rendering\postFX\ssr.h" />
+    <ClInclude Include="..\..\engine\source\3d\scene\camera.h" />
+    <ClInclude Include="..\..\engine\source\3d\scene\camera_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\3d\scene\core.h" />
+    <ClInclude Include="..\..\engine\source\3d\scene\core_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\algorithm\crc.h" />
+    <ClInclude Include="..\..\engine\source\algorithm\crctab.h" />
+    <ClInclude Include="..\..\engine\source\algorithm\hashFunction.h" />
+    <ClInclude Include="..\..\engine\source\algorithm\md5.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetBase.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetBase_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetDefinition.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetFieldTypes.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetManager.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetManager_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetPtr.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetQuery.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetQuery_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetTagsManifest.h" />
+    <ClInclude Include="..\..\engine\source\assets\assetTagsManifest_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\assets\declaredAssets.h" />
+    <ClInclude Include="..\..\engine\source\assets\referencedAssets.h" />
+    <ClInclude Include="..\..\engine\source\assets\tamlAssetDeclaredUpdateVisitor.h" />
+    <ClInclude Include="..\..\engine\source\assets\tamlAssetDeclaredVisitor.h" />
+    <ClInclude Include="..\..\engine\source\assets\tamlAssetReferencedUpdateVisitor.h" />
+    <ClInclude Include="..\..\engine\source\assets\tamlAssetReferencedVisitor.h" />
+    <ClInclude Include="..\..\engine\source\audio\audio.h" />
+    <ClInclude Include="..\..\engine\source\audio\AudioAsset.h" />
+    <ClInclude Include="..\..\engine\source\audio\audioBuffer.h" />
+    <ClInclude Include="..\..\engine\source\audio\audioDataBlock.h" />
+    <ClInclude Include="..\..\engine\source\audio\audioStreamSource.h" />
+    <ClInclude Include="..\..\engine\source\audio\audioStreamSourceFactory.h" />
+    <ClInclude Include="..\..\engine\source\audio\wavStreamSource.h" />
+    <ClInclude Include="..\..\engine\source\c-interface\c-interface.h" />
+    <ClInclude Include="..\..\engine\source\collection\bitMatrix.h" />
+    <ClInclude Include="..\..\engine\source\collection\bitSet.h" />
+    <ClInclude Include="..\..\engine\source\collection\bitTables.h" />
+    <ClInclude Include="..\..\engine\source\collection\bitVector.h" />
+    <ClInclude Include="..\..\engine\source\collection\bitVectorW.h" />
+    <ClInclude Include="..\..\engine\source\collection\findIterator.h" />
+    <ClInclude Include="..\..\engine\source\collection\hashTable.h" />
+    <ClInclude Include="..\..\engine\source\collection\linkedList.h" />
+    <ClInclude Include="..\..\engine\source\collection\nameTags.h" />
+    <ClInclude Include="..\..\engine\source\collection\nameTags_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\collection\simpleHashTable.h" />
+    <ClInclude Include="..\..\engine\source\collection\sparseArray.h" />
+    <ClInclude Include="..\..\engine\source\collection\tFixedSizeVector.h" />
+    <ClInclude Include="..\..\engine\source\collection\tUnmanagedVector.h" />
+    <ClInclude Include="..\..\engine\source\collection\tVectorSpecializations.h" />
+    <ClInclude Include="..\..\engine\source\collection\undo.h" />
+    <ClInclude Include="..\..\engine\source\collection\undo_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\collection\vector.h" />
+    <ClInclude Include="..\..\engine\source\collection\vector2d.h" />
+    <ClInclude Include="..\..\engine\source\collection\vectorHeap.h" />
+    <ClInclude Include="..\..\engine\source\collection\vectorQueue.h" />
+    <ClInclude Include="..\..\engine\source\collision\abstractPolyList.h" />
+    <ClInclude Include="..\..\engine\source\collision\boxConvex.h" />
+    <ClInclude Include="..\..\engine\source\collision\clippedPolyList.h" />
+    <ClInclude Include="..\..\engine\source\collision\collision.h" />
+    <ClInclude Include="..\..\engine\source\collision\concretePolyList.h" />
+    <ClInclude Include="..\..\engine\source\collision\convex.h" />
+    <ClInclude Include="..\..\engine\source\collision\depthSortList.h" />
+    <ClInclude Include="..\..\engine\source\collision\earlyOutPolyList.h" />
+    <ClInclude Include="..\..\engine\source\collision\extrudedPolyList.h" />
+    <ClInclude Include="..\..\engine\source\collision\gjk.h" />
+    <ClInclude Include="..\..\engine\source\collision\optimizedPolyList.h" />
+    <ClInclude Include="..\..\engine\source\collision\planeExtractor.h" />
+    <ClInclude Include="..\..\engine\source\collision\polytope.h" />
+    <ClInclude Include="..\..\engine\source\collision\vertexPolyList.h" />
+    <ClInclude Include="..\..\engine\source\component\dynamicConsoleMethodComponent.h" />
+    <ClInclude Include="..\..\engine\source\component\dynamicConsoleMethodComponent_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\component\simComponent.h" />
+    <ClInclude Include="..\..\engine\source\component\simComponent_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponent.h" />
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponentRaiseEvent.h" />
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponent_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorInstance.h" />
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorInstance_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorTemplate.h" />
+    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorTemplate_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\console\ast.h" />
+    <ClInclude Include="..\..\engine\source\console\astNodeSizes.h" />
+    <ClInclude Include="..\..\engine\source\console\cmdgram.h" />
+    <ClInclude Include="..\..\engine\source\console\codeBlock.h" />
+    <ClInclude Include="..\..\engine\source\console\compiler.h" />
+    <ClInclude Include="..\..\engine\source\console\console.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleBaseType.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleDictionary.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleDoc.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleDoc_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleExprEvalState.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleExprEvalState_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleInternal.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleLogger.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleLogger_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleNamespace.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleNamespace_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleObject.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleParser.h" />
+    <ClInclude Include="..\..\engine\source\console\consoleTypes.h" />
+    <ClInclude Include="..\..\engine\source\console\ConsoleTypeValidators.h" />
+    <ClInclude Include="..\..\engine\source\console\expando_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\console\inputManagement_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\console\output_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\console\Package.h" />
+    <ClInclude Include="..\..\engine\source\console\runtimeClassRep.h" />
+    <ClInclude Include="..\..\engine\source\console\taggedStrings_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\debug\profiler.h" />
+    <ClInclude Include="..\..\engine\source\debug\profiler_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\debug\telnetDebugger.h" />
+    <ClInclude Include="..\..\engine\source\debug\telnetDebugger_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebugger1.h" />
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebugger1_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBase.h" />
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBase_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBridge.h" />
+    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBridge_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\delegates\delegate.h" />
+    <ClInclude Include="..\..\engine\source\delegates\delegateSignal.h" />
+    <ClInclude Include="..\..\engine\source\delegates\FastDelegate.h" />
+    <ClInclude Include="..\..\engine\source\game\defaultGame.h" />
+    <ClInclude Include="..\..\engine\source\game\gameConnection.h" />
+    <ClInclude Include="..\..\engine\source\game\gameConnection_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\game\gameInterface.h" />
+    <ClInclude Include="..\..\engine\source\game\gameInterface_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\game\resource.h" />
+    <ClInclude Include="..\..\engine\source\game\version.h" />
+    <ClInclude Include="..\..\engine\source\game\version_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\graphics\color.h" />
+    <ClInclude Include="..\..\engine\source\graphics\color_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\graphics\core.h" />
+    <ClInclude Include="..\..\engine\source\graphics\dgl.h" />
+    <ClInclude Include="..\..\engine\source\graphics\dglMac_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\graphics\dgl_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\graphics\DynamicTexture.h" />
+    <ClInclude Include="..\..\engine\source\graphics\gBitmap.h" />
+    <ClInclude Include="..\..\engine\source\graphics\gFont.h" />
+    <ClInclude Include="..\..\engine\source\graphics\gFont_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\graphics\gPalette.h" />
+    <ClInclude Include="..\..\engine\source\graphics\PNGImage.h" />
+    <ClInclude Include="..\..\engine\source\graphics\PNGImage_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\graphics\shaders.h" />
+    <ClInclude Include="..\..\engine\source\graphics\shaders_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\graphics\splineUtil.h" />
+    <ClInclude Include="..\..\engine\source\graphics\TextureDictionary.h" />
+    <ClInclude Include="..\..\engine\source\graphics\TextureHandle.h" />
+    <ClInclude Include="..\..\engine\source\graphics\TextureManager.h" />
+    <ClInclude Include="..\..\engine\source\graphics\TextureManager_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\graphics\TextureObject.h" />
+    <ClInclude Include="..\..\engine\source\graphics\utilities.h" />
+    <ClInclude Include="..\..\engine\source\graphics\viewTable.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiArrayCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiBackgroundCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiBitmapCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiBubbleTextCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiCanvas.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiCanvas_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiColorPicker.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiConsole.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiConsoleEditCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiConsoleTextCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiControl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiControl_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiCurveCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiDefaultControlRender.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiInputCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiListBoxCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiMessageVectorCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiMLTextCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiMLTextEditCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiMouseEventCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiPopUpCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiPopUpCtrlEx.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiProgressCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiScriptNotifyControl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiSliderCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiTabPageCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiTextCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiTextEditCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiTextEditSliderCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiTextListCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiTickCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiTreeViewCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\guiTypes.h" />
+    <ClInclude Include="..\..\engine\source\gui\messageVector.h" />
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiBitmapButtonCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiButtonBaseCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiButtonCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiCheckBoxCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiIconButtonCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiRadioCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\buttons\guiToolboxButtonCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiAutoScrollCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiCtrlArrayCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiDragAndDropCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiDynamicCtrlArrayCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiFormCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiFrameCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiGridCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiPaneCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiRolloutCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiScrollCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiStackCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiTabBookCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\containers\guiWindowCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\editor\guiDebugger.h" />
+    <ClInclude Include="..\..\engine\source\gui\editor\guiEditCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\editor\guiFilterCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\editor\guiGraphCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\editor\guiImageList.h" />
+    <ClInclude Include="..\..\engine\source\gui\editor\guiInspector.h" />
+    <ClInclude Include="..\..\engine\source\gui\editor\guiInspectorTypes.h" />
+    <ClInclude Include="..\..\engine\source\gui\editor\guiMenuBar.h" />
+    <ClInclude Include="..\..\engine\source\gui\editor\guiSeparatorCtrl.h" />
+    <ClInclude Include="..\..\engine\source\gui\language\lang.h" />
+    <ClInclude Include="..\..\engine\source\input\actionMap.h" />
+    <ClInclude Include="..\..\engine\source\input\actionMap_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionConstants.h" />
+    <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionManager.h" />
+    <ClInclude Include="..\..\engine\source\input\leapMotion\LeapMotionManager_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionUtil.h" />
+    <ClInclude Include="..\..\engine\source\io\bitStream.h" />
+    <ClInclude Include="..\..\engine\source\io\bufferStream.h" />
+    <ClInclude Include="..\..\engine\source\io\fileObject.h" />
+    <ClInclude Include="..\..\engine\source\io\fileObject_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\io\fileStream.h" />
+    <ClInclude Include="..\..\engine\source\io\fileStreamObject.h" />
+    <ClInclude Include="..\..\engine\source\io\fileStreamObject_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\io\filterStream.h" />
+    <ClInclude Include="..\..\engine\source\io\memstream.h" />
+    <ClInclude Include="..\..\engine\source\io\resizeStream.h" />
+    <ClInclude Include="..\..\engine\source\io\stream.h" />
+    <ClInclude Include="..\..\engine\source\io\streamObject.h" />
+    <ClInclude Include="..\..\engine\source\io\streamObject_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\io\resource\resourceManager.h" />
+    <ClInclude Include="..\..\engine\source\io\resource\resourceManager_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\centralDir.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\compressor.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\extraField.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\fileHeader.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\zipArchive.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\zipCryptStream.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\zipObject.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\zipObject_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\zipStatFilter.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\zipSubStream.h" />
+    <ClInclude Include="..\..\engine\source\io\zip\zipTempStream.h" />
+    <ClInclude Include="..\..\engine\source\math\box_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\math\mathIO.h" />
+    <ClInclude Include="..\..\engine\source\math\mathTypes.h" />
+    <ClInclude Include="..\..\engine\source\math\mathUtils.h" />
+    <ClInclude Include="..\..\engine\source\math\matrix_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\math\mBox.h" />
+    <ClInclude Include="..\..\engine\source\math\mBoxBase.h" />
+    <ClInclude Include="..\..\engine\source\math\mConstants.h" />
+    <ClInclude Include="..\..\engine\source\math\mMath.h" />
+    <ClInclude Include="..\..\engine\source\math\mMathFn.h" />
+    <ClInclude Include="..\..\engine\source\math\mMatrix.h" />
+    <ClInclude Include="..\..\engine\source\math\mOrientedBox.h" />
+    <ClInclude Include="..\..\engine\source\math\mPlane.h" />
+    <ClInclude Include="..\..\engine\source\math\mPlaneSet.h" />
+    <ClInclude Include="..\..\engine\source\math\mPlaneTransformer.h" />
+    <ClInclude Include="..\..\engine\source\math\mPoint.h" />
+    <ClInclude Include="..\..\engine\source\math\mPolyhedron.h" />
+    <ClInclude Include="..\..\engine\source\math\mPolyhedron.impl.h" />
+    <ClInclude Include="..\..\engine\source\math\mQuadPatch.h" />
+    <ClInclude Include="..\..\engine\source\math\mQuat.h" />
+    <ClInclude Include="..\..\engine\source\math\mRandom.h" />
+    <ClInclude Include="..\..\engine\source\math\mRect.h" />
+    <ClInclude Include="..\..\engine\source\math\mSphere.h" />
+    <ClInclude Include="..\..\engine\source\math\mSplinePatch.h" />
+    <ClInclude Include="..\..\engine\source\math\random_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\math\rectClipper.h" />
+    <ClInclude Include="..\..\engine\source\math\vector_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\memory\dataChunker.h" />
+    <ClInclude Include="..\..\engine\source\memory\factoryCache.h" />
+    <ClInclude Include="..\..\engine\source\memory\frameAllocator.h" />
+    <ClInclude Include="..\..\engine\source\memory\safeDelete.h" />
+    <ClInclude Include="..\..\engine\source\memory\tempAlloc.h" />
+    <ClInclude Include="..\..\engine\source\messaging\dispatcher.h" />
+    <ClInclude Include="..\..\engine\source\messaging\dispatcher_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\messaging\eventManager.h" />
+    <ClInclude Include="..\..\engine\source\messaging\eventManager_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\messaging\message.h" />
+    <ClInclude Include="..\..\engine\source\messaging\messageForwarder.h" />
+    <ClInclude Include="..\..\engine\source\messaging\message_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\messaging\scriptMsgListener.h" />
+    <ClInclude Include="..\..\engine\source\module\moduleCallbacks.h" />
+    <ClInclude Include="..\..\engine\source\module\moduleDefinition.h" />
+    <ClInclude Include="..\..\engine\source\module\moduleDefinition_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\module\moduleManager.h" />
+    <ClInclude Include="..\..\engine\source\module\moduleManager_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\module\moduleMergeDefinition.h" />
+    <ClInclude Include="..\..\engine\source\module\tamlModuleIdUpdateVisitor.h" />
+    <ClInclude Include="..\..\engine\source\network\connectionProtocol.h" />
+    <ClInclude Include="..\..\engine\source\network\connectionProtocol_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\network\connectionStringTable.h" />
+    <ClInclude Include="..\..\engine\source\network\httpObject.h" />
+    <ClInclude Include="..\..\engine\source\network\httpObject_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\network\netConnection.h" />
+    <ClInclude Include="..\..\engine\source\network\netConnection_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\network\netInterface.h" />
+    <ClInclude Include="..\..\engine\source\network\netInterface_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\network\netObject.h" />
+    <ClInclude Include="..\..\engine\source\network\netObject_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\network\netStringTable.h" />
+    <ClInclude Include="..\..\engine\source\network\netStringTable_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\network\networkProcessList.h" />
+    <ClInclude Include="..\..\engine\source\network\RemoteCommandEvent.h" />
+    <ClInclude Include="..\..\engine\source\network\RemoteCommandEvent_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\network\serverQuery.h" />
+    <ClInclude Include="..\..\engine\source\network\serverQuery_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\network\tcpObject.h" />
+    <ClInclude Include="..\..\engine\source\network\tcpObject_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\network\telnetConsole.h" />
+    <ClInclude Include="..\..\engine\source\network\telnetConsole_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\persistence\SimXMLDocument.h" />
+    <ClInclude Include="..\..\engine\source\persistence\SimXMLDocument_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\allocators.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\document.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\encodedstream.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\encodings.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\filereadstream.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\filestream.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\filewritestream.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\prettywriter.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\rapidjson.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\reader.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\stringbuffer.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\writer.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\internal\pow10.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\internal\stack.h" />
+    <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\internal\strfunc.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\taml.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlCallbacks.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlChildren.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlCustom.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlParser.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlVisitor.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\tamlWriteNode.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\taml_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\binary\tamlBinaryReader.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\binary\tamlBinaryWriter.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\json\tamlJSONParser.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\json\tamlJSONReader.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\json\tamlJSONWriter.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\xml\tamlXmlParser.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\xml\tamlXmlReader.h" />
+    <ClInclude Include="..\..\engine\source\persistence\taml\xml\tamlXmlWriter.h" />
+    <ClInclude Include="..\..\engine\source\persistence\tinyXML\tinystr.h" />
+    <ClInclude Include="..\..\engine\source\persistence\tinyXML\tinyxml.h" />
+    <ClInclude Include="..\..\engine\source\physics\bullet.h" />
+    <ClInclude Include="..\..\engine\source\physics\physics.h" />
+    <ClInclude Include="..\..\engine\source\physics\physicsEngine.h" />
+    <ClInclude Include="..\..\engine\source\physics\physicsThread.h" />
+    <ClInclude Include="..\..\engine\source\physics\physics_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\CursorManager_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\eaxtypes.h" />
+    <ClInclude Include="..\..\engine\source\platform\event.h" />
+    <ClInclude Include="..\..\engine\source\platform\GLCoreFunc.h" />
+    <ClInclude Include="..\..\engine\source\platform\GLExtFunc.h" />
+    <ClInclude Include="..\..\engine\source\platform\GLUFunc.h" />
+    <ClInclude Include="..\..\engine\source\platform\platform.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformAL.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformAssert.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformAssert_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformAudio.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformCPU.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformEndian.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformFileIO.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformFileIO_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformFont.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformGL.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformInput.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformInput_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformLibrary.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformMath.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformMemory.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformNetAsync.unix.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformNetwork.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformSemaphore.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformString.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformString_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformTimeManager.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformTLS.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformVFS.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformVideo.h" />
+    <ClInclude Include="..\..\engine\source\platform\platformVideo_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\platform_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\Tickable.h" />
+    <ClInclude Include="..\..\engine\source\platform\types.arm.h" />
+    <ClInclude Include="..\..\engine\source\platform\types.clang.h" />
+    <ClInclude Include="..\..\engine\source\platform\types.codewarrior.h" />
+    <ClInclude Include="..\..\engine\source\platform\types.gcc.h" />
+    <ClInclude Include="..\..\engine\source\platform\types.h" />
+    <ClInclude Include="..\..\engine\source\platform\types.posix.h" />
+    <ClInclude Include="..\..\engine\source\platform\types.ppc.h" />
+    <ClInclude Include="..\..\engine\source\platform\types.visualc.h" />
+    <ClInclude Include="..\..\engine\source\platform\types.win32.h" />
+    <ClInclude Include="..\..\engine\source\platform\typesLinux.h" />
+    <ClInclude Include="..\..\engine\source\platform\typesPPC.h" />
+    <ClInclude Include="..\..\engine\source\platform\typesWin32.h" />
+    <ClInclude Include="..\..\engine\source\platform\typesX86UNIX.h" />
+    <ClInclude Include="..\..\engine\source\platform\menus\popupMenu.h" />
+    <ClInclude Include="..\..\engine\source\platform\menus\popupMenu_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\fileDialog.h" />
+    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\fileDialog_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\msgBox.h" />
+    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\msgBox_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platform\threads\mutex.h" />
+    <ClInclude Include="..\..\engine\source\platform\threads\semaphore.h" />
+    <ClInclude Include="..\..\engine\source\platform\threads\thread.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\cardProfile_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\GLWinExtFunc.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\GLWinFunc.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\gl_types.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\platformGL.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\platformWin32.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\VFSRes.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\win32NPatch.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winBGFXVideo.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winConsole.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winConsole_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winDInputDevice.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winDirectInput.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winExec_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winFont.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winGLSpecial_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winInput_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winMath_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winOGLVideo.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winOGLVideo_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winVideo.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\winWindow.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\win_common_prefix.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\win_debug_prefix.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\win_release_prefix.h" />
+    <ClInclude Include="..\..\engine\source\platformWin32\nativeDialogs\win32DirectoryResolver.h" />
+    <ClInclude Include="..\..\engine\source\plugins\pluginAsset.h" />
+    <ClInclude Include="..\..\engine\source\plugins\pluginAsset_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\plugins\plugins.h" />
+    <ClInclude Include="..\..\engine\source\plugins\plugins_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\plugins\plugins_shared.h" />
+    <ClInclude Include="..\..\engine\source\sim\scriptGroup.h" />
+    <ClInclude Include="..\..\engine\source\sim\scriptObject.h" />
+    <ClInclude Include="..\..\engine\source\sim\simBase.h" />
+    <ClInclude Include="..\..\engine\source\sim\simBase_Binding.h" />
+    <ClInclude Include="..\..\engine\source\sim\simConsoleEvent.h" />
+    <ClInclude Include="..\..\engine\source\sim\simConsoleThreadExecEvent.h" />
+    <ClInclude Include="..\..\engine\source\sim\simDatablock.h" />
+    <ClInclude Include="..\..\engine\source\sim\simDatablockGroup.h" />
+    <ClInclude Include="..\..\engine\source\sim\simDatablock_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\sim\simDictionary.h" />
+    <ClInclude Include="..\..\engine\source\sim\simEvent.h" />
+    <ClInclude Include="..\..\engine\source\sim\simFieldDictionary.h" />
+    <ClInclude Include="..\..\engine\source\sim\simObject.h" />
+    <ClInclude Include="..\..\engine\source\sim\SimObjectList.h" />
+    <ClInclude Include="..\..\engine\source\sim\simObjectPtr.h" />
+    <ClInclude Include="..\..\engine\source\sim\simObjectTimerEvent.h" />
+    <ClInclude Include="..\..\engine\source\sim\simObject_Binding.h" />
+    <ClInclude Include="..\..\engine\source\sim\simSerialize_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\sim\simSet.h" />
+    <ClInclude Include="..\..\engine\source\sim\simSet_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\spine\Animation.h" />
+    <ClInclude Include="..\..\engine\source\spine\AnimationState.h" />
+    <ClInclude Include="..\..\engine\source\spine\AnimationStateData.h" />
+    <ClInclude Include="..\..\engine\source\spine\Atlas.h" />
+    <ClInclude Include="..\..\engine\source\spine\AtlasAttachmentLoader.h" />
+    <ClInclude Include="..\..\engine\source\spine\Attachment.h" />
+    <ClInclude Include="..\..\engine\source\spine\AttachmentLoader.h" />
+    <ClInclude Include="..\..\engine\source\spine\Bone.h" />
+    <ClInclude Include="..\..\engine\source\spine\BoneData.h" />
+    <ClInclude Include="..\..\engine\source\spine\BoundingBoxAttachment.h" />
+    <ClInclude Include="..\..\engine\source\spine\Event.h" />
+    <ClInclude Include="..\..\engine\source\spine\EventData.h" />
+    <ClInclude Include="..\..\engine\source\spine\extension.h" />
+    <ClInclude Include="..\..\engine\source\spine\Json.h" />
+    <ClInclude Include="..\..\engine\source\spine\RegionAttachment.h" />
+    <ClInclude Include="..\..\engine\source\spine\Skeleton.h" />
+    <ClInclude Include="..\..\engine\source\spine\SkeletonBounds.h" />
+    <ClInclude Include="..\..\engine\source\spine\SkeletonData.h" />
+    <ClInclude Include="..\..\engine\source\spine\SkeletonJson.h" />
+    <ClInclude Include="..\..\engine\source\spine\Skin.h" />
+    <ClInclude Include="..\..\engine\source\spine\Slot.h" />
+    <ClInclude Include="..\..\engine\source\spine\SlotData.h" />
+    <ClInclude Include="..\..\engine\source\spine\spine.h" />
+    <ClInclude Include="..\..\engine\source\string\findMatch.h" />
+    <ClInclude Include="..\..\engine\source\string\stringBuffer.h" />
+    <ClInclude Include="..\..\engine\source\string\stringBuffer_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\string\stringStack.h" />
+    <ClInclude Include="..\..\engine\source\string\stringTable.h" />
+    <ClInclude Include="..\..\engine\source\string\stringUnit.h" />
+    <ClInclude Include="..\..\engine\source\string\stringUnit_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\string\unicode.h" />
+    <ClInclude Include="..\..\engine\source\sysgui\sysgui.h" />
+    <ClInclude Include="..\..\engine\source\sysgui\sysgui_ScriptBinding.h" />
+    <ClInclude Include="..\..\engine\source\testing\unitTesting.h" />
+    <ClInclude Include="..\..\engine\source\testing\unitTesting_ScriptBinding.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\engine\source\2d\assets\ImageAsset.cc">
+      <ObjectFileName>$(IntDir)engine\source\2d\assets\ImageAsset.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\BatchRender.cc">
+      <ObjectFileName>$(IntDir)engine\source\2d\core\BatchRender.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\CoreMath.cc">
+      <ObjectFileName>$(IntDir)engine\source\2d\core\CoreMath.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\ImageFrameProvider.cc">
+      <ObjectFileName>$(IntDir)engine\source\2d\core\ImageFrameProvider.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\ImageFrameProviderCore.cc">
+      <ObjectFileName>$(IntDir)engine\source\2d\core\ImageFrameProviderCore.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\Utility.cc">
+      <ObjectFileName>$(IntDir)engine\source\2d\core\Utility.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\core\Vector2.cc">
+      <ObjectFileName>$(IntDir)engine\source\2d\core\Vector2.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\gui\guiImageButtonCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\2d\gui\guiImageButtonCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\2d\gui\guiSpriteCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\2d\gui\guiSpriteCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\entity.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\entity\entity.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\entityTemplate.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\entity\entityTemplate.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\entityTemplateAsset.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\entity\entityTemplateAsset.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\meshAsset.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\entity\meshAsset.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\animationComponent.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\entity\components\animationComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\baseComponent.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\entity\components\baseComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\lightComponent.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\entity\components\lightComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\meshComponent.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\entity\components\meshComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\physicsComponent.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\entity\components\physicsComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\entity\components\textComponent.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\entity\components\textComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\materialAsset.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\materialAsset.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\materialTemplate.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\materialTemplate.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\deferredNode.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\nodes\deferredNode.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\floatNode.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\nodes\floatNode.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\forwardNode.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\nodes\forwardNode.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\multiplyNode.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\nodes\multiplyNode.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\rootNode.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\nodes\rootNode.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\sinNode.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\nodes\sinNode.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\textureNode.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\nodes\textureNode.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\timeNode.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\nodes\timeNode.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\material\nodes\vec3Node.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\material\nodes\vec3Node.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\common.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\rendering\common.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\deferredRendering.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\rendering\deferredRendering.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\postRendering.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\rendering\postRendering.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\renderable.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\rendering\renderable.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\shadows.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\rendering\shadows.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\transparency.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\rendering\transparency.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\postFX\hdr.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\rendering\postFX\hdr.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\rendering\postFX\ssr.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\rendering\postFX\ssr.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\scene\camera.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\scene\camera.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\3d\scene\core.cc">
+      <ObjectFileName>$(IntDir)engine\source\3d\scene\core.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\algorithm\crc.cc">
+      <ObjectFileName>$(IntDir)engine\source\algorithm\crc.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\algorithm\hashFunction.cc">
+      <ObjectFileName>$(IntDir)engine\source\algorithm\hashFunction.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\assetBase.cc">
+      <ObjectFileName>$(IntDir)engine\source\assets\assetBase.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\assetFieldTypes.cc">
+      <ObjectFileName>$(IntDir)engine\source\assets\assetFieldTypes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\assetManager.cc">
+      <ObjectFileName>$(IntDir)engine\source\assets\assetManager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\assetQuery.cc">
+      <ObjectFileName>$(IntDir)engine\source\assets\assetQuery.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\assetTagsManifest.cc">
+      <ObjectFileName>$(IntDir)engine\source\assets\assetTagsManifest.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\declaredAssets.cc">
+      <ObjectFileName>$(IntDir)engine\source\assets\declaredAssets.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\assets\referencedAssets.cc">
+      <ObjectFileName>$(IntDir)engine\source\assets\referencedAssets.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\audio.cc">
+      <ObjectFileName>$(IntDir)engine\source\audio\audio.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\AudioAsset.cc">
+      <ObjectFileName>$(IntDir)engine\source\audio\AudioAsset.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\audioBuffer.cc">
+      <ObjectFileName>$(IntDir)engine\source\audio\audioBuffer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\audioDataBlock.cc">
+      <ObjectFileName>$(IntDir)engine\source\audio\audioDataBlock.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\audioStreamSourceFactory.cc">
+      <ObjectFileName>$(IntDir)engine\source\audio\audioStreamSourceFactory.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\audio_ScriptBinding.cc">
+      <ObjectFileName>$(IntDir)engine\source\audio\audio_ScriptBinding.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\audio\wavStreamSource.cc">
+      <ObjectFileName>$(IntDir)engine\source\audio\wavStreamSource.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collection\bitTables.cc">
+      <ObjectFileName>$(IntDir)engine\source\collection\bitTables.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collection\hashTable.cc">
+      <ObjectFileName>$(IntDir)engine\source\collection\hashTable.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collection\undo.cc">
+      <ObjectFileName>$(IntDir)engine\source\collection\undo.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collection\vector.cc">
+      <ObjectFileName>$(IntDir)engine\source\collection\vector.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\astAlloc.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\astAlloc.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\astNodes.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\astNodes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\cmdgram.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\cmdgram.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\CMDscan.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\CMDscan.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\codeBlock.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\codeBlock.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\compiledEval.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\compiledEval.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\compiler.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\compiler.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\console.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\console.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleBaseType.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\consoleBaseType.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleDictionary.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\consoleDictionary.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleDoc.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\consoleDoc.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleExprEvalState.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\consoleExprEvalState.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleFunctions.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\consoleFunctions.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleLogger.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\consoleLogger.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleNamespace.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\consoleNamespace.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleObject.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\consoleObject.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleParser.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\consoleParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\consoleTypes.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\consoleTypes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\ConsoleTypeValidators.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\ConsoleTypeValidators.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\metaScripting_ScriptBinding.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\metaScripting_ScriptBinding.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\console\Package.cc">
+      <ObjectFileName>$(IntDir)engine\source\console\Package.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\debug\profiler.cc">
+      <ObjectFileName>$(IntDir)engine\source\debug\profiler.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\debug\telnetDebugger.cc">
+      <ObjectFileName>$(IntDir)engine\source\debug\telnetDebugger.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\debug\remote\RemoteDebugger1.cc">
+      <ObjectFileName>$(IntDir)engine\source\debug\remote\RemoteDebugger1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\debug\remote\RemoteDebuggerBase.cc">
+      <ObjectFileName>$(IntDir)engine\source\debug\remote\RemoteDebuggerBase.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\debug\remote\RemoteDebuggerBridge.cc">
+      <ObjectFileName>$(IntDir)engine\source\debug\remote\RemoteDebuggerBridge.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\game\defaultGame.cc">
+      <ObjectFileName>$(IntDir)engine\source\game\defaultGame.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\game\gameConnection.cc">
+      <ObjectFileName>$(IntDir)engine\source\game\gameConnection.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\game\gameInterface.cc">
+      <ObjectFileName>$(IntDir)engine\source\game\gameInterface.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\game\version.cc">
+      <ObjectFileName>$(IntDir)engine\source\game\version.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\bitmapBmp.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\bitmapBmp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\bitmapDDS.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\bitmapDDS.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\bitmapJpeg.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\bitmapJpeg.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\bitmapPng.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\bitmapPng.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\bitmapTga.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\bitmapTga.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\color.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\color.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\core.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\core.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\dgl.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\dgl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\dglMatrix.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\dglMatrix.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\DynamicTexture.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\DynamicTexture.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\gBitmap.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\gBitmap.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\gFont.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\gFont.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\gPalette.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\gPalette.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\shaders.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\shaders.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\splineUtil.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\splineUtil.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\TextureDictionary.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\TextureDictionary.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\TextureHandle.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\TextureHandle.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\TextureManager.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\TextureManager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\utilities.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\utilities.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\viewTable.cc">
+      <ObjectFileName>$(IntDir)engine\source\graphics\viewTable.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiArrayCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiArrayCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiBackgroundCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiBackgroundCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiBitmapBorderCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiBitmapBorderCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiBitmapCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiBitmapCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiBubbleTextCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiBubbleTextCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiCanvas.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiCanvas.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiColorPicker.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiColorPicker.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiConsole.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiConsole.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiConsoleEditCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiConsoleEditCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiConsoleTextCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiConsoleTextCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiControl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiControl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiCurveCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiCurveCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiDefaultControlRender.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiDefaultControlRender.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiFadeinBitmapCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiFadeinBitmapCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiInputCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiInputCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiListBoxCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiListBoxCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiMessageVectorCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiMessageVectorCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiMLTextCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiMLTextCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiMLTextEditCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiMLTextEditCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiMouseEventCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiMouseEventCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiPopUpCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiPopUpCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiPopUpCtrlEx.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiPopUpCtrlEx.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiProgressCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiProgressCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiScriptNotifyControl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiScriptNotifyControl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiSliderCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiSliderCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTabPageCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiTabPageCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTextCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiTextCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTextEditCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiTextEditCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTextEditSliderCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiTextEditSliderCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTextListCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiTextListCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTickCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiTickCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTreeViewCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiTreeViewCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\guiTypes.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\guiTypes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\messageVector.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\messageVector.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiBitmapButtonCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\buttons\guiBitmapButtonCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiBorderButton.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\buttons\guiBorderButton.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiButtonBaseCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\buttons\guiButtonBaseCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiButtonCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\buttons\guiButtonCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiCheckBoxCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\buttons\guiCheckBoxCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiIconButtonCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\buttons\guiIconButtonCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiRadioCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\buttons\guiRadioCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\buttons\guiToolboxButtonCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\buttons\guiToolboxButtonCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiAutoScrollCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiAutoScrollCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiCtrlArrayCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiCtrlArrayCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiDragAndDropCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiDragAndDropCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiDynamicCtrlArrayCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiDynamicCtrlArrayCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiFormCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiFormCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiFrameCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiFrameCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiGridCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiGridCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiPaneCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiPaneCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiRolloutCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiRolloutCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiScrollCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiScrollCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiStackCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiStackCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiTabBookCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiTabBookCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\containers\guiWindowCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\containers\guiWindowCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiControlListPopup.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\editor\guiControlListPopup.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiDebugger.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\editor\guiDebugger.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiEditCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\editor\guiEditCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiFilterCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\editor\guiFilterCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiGraphCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\editor\guiGraphCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiImageList.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\editor\guiImageList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiInspector.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\editor\guiInspector.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiInspectorTypes.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\editor\guiInspectorTypes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiMenuBar.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\editor\guiMenuBar.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\editor\guiSeparatorCtrl.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\editor\guiSeparatorCtrl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\gui\language\lang.cc">
+      <ObjectFileName>$(IntDir)engine\source\gui\language\lang.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\input\actionMap.cc">
+      <ObjectFileName>$(IntDir)engine\source\input\actionMap.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\input\leapMotion\leapMotionManager.cc">
+      <ObjectFileName>$(IntDir)engine\source\input\leapMotion\leapMotionManager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\bitStream.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\bitStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\bufferStream.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\bufferStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\fileObject.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\fileObject.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\fileStream.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\fileStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\fileStreamObject.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\fileStreamObject.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\fileSystem_ScriptBinding.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\fileSystem_ScriptBinding.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\filterStream.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\filterStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\memStream.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\memStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\nStream.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\nStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\resizeStream.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\resizeStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\streamObject.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\streamObject.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\resource\resourceDictionary.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\resource\resourceDictionary.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\resource\resourceManager.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\resource\resourceManager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\centralDir.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\centralDir.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\compressor.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\compressor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\deflate.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\deflate.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\extraField.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\extraField.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\fileHeader.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\fileHeader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\stored.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\stored.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\zipArchive.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\zipArchive.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\zipCryptStream.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\zipCryptStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\zipObject.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\zipObject.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\zipSubStream.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\zipSubStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\io\zip\zipTempStream.cc">
+      <ObjectFileName>$(IntDir)engine\source\io\zip\zipTempStream.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mathTypes.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mathTypes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mathUtils.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mathUtils.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\math_ScriptBinding.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\math_ScriptBinding.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mMathAltivec.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mMathAltivec.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mMathFn.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mMathFn.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mMath_C.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mMath_C.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mMatrix.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mMatrix.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mPlaneTransformer.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mPlaneTransformer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mQuadPatch.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mQuadPatch.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mQuat.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mQuat.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mRandom.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mRandom.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mSolver.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mSolver.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mSplinePatch.cc">
+      <ObjectFileName>$(IntDir)engine\source\math\mSplinePatch.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\memory\dataChunker.cc">
+      <ObjectFileName>$(IntDir)engine\source\memory\dataChunker.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\memory\frameAllocator_ScriptBinding.cc">
+      <ObjectFileName>$(IntDir)engine\source\memory\frameAllocator_ScriptBinding.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\messaging\dispatcher.cc">
+      <ObjectFileName>$(IntDir)engine\source\messaging\dispatcher.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\messaging\eventManager.cc">
+      <ObjectFileName>$(IntDir)engine\source\messaging\eventManager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\messaging\message.cc">
+      <ObjectFileName>$(IntDir)engine\source\messaging\message.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\messaging\messageForwarder.cc">
+      <ObjectFileName>$(IntDir)engine\source\messaging\messageForwarder.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\messaging\scriptMsgListener.cc">
+      <ObjectFileName>$(IntDir)engine\source\messaging\scriptMsgListener.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\module\moduleDefinition.cc">
+      <ObjectFileName>$(IntDir)engine\source\module\moduleDefinition.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\module\moduleManager.cc">
+      <ObjectFileName>$(IntDir)engine\source\module\moduleManager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\module\moduleMergeDefinition.cc">
+      <ObjectFileName>$(IntDir)engine\source\module\moduleMergeDefinition.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\connectionProtocol.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\connectionProtocol.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\connectionStringTable.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\connectionStringTable.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\httpObject.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\httpObject.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netConnection.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\netConnection.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netDownload.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\netDownload.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netEvent.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\netEvent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netGhost.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\netGhost.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netInterface.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\netInterface.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netObject.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\netObject.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netStringTable.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\netStringTable.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\netTest.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\netTest.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\networkProcessList.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\networkProcessList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\RemoteCommandEvent.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\RemoteCommandEvent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\serverQuery.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\serverQuery.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\tcpObject.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\tcpObject.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\network\telnetConsole.cc">
+      <ObjectFileName>$(IntDir)engine\source\network\telnetConsole.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\taml.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\taml.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\tamlCustom.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\tamlCustom.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\tamlWriteNode.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\tamlWriteNode.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\binary\tamlBinaryReader.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\binary\tamlBinaryReader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\binary\tamlBinaryWriter.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\binary\tamlBinaryWriter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\json\tamlJSONParser.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\json\tamlJSONParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\json\tamlJSONReader.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\json\tamlJSONReader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\json\tamlJSONWriter.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\json\tamlJSONWriter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\xml\tamlXmlParser.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\xml\tamlXmlParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\xml\tamlXmlReader.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\xml\tamlXmlReader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\taml\xml\tamlXmlWriter.cc">
+      <ObjectFileName>$(IntDir)engine\source\persistence\taml\xml\tamlXmlWriter.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\physics\physics.cc">
+      <ObjectFileName>$(IntDir)engine\source\physics\physics.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\CursorManager.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\CursorManager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platform.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\platform.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformAssert.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\platformAssert.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformCPU.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\platformCPU.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformFileIO.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\platformFileIO.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformFont.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\platformFont.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformMemory.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\platformMemory.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformNetwork_ScriptBinding.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\platformNetwork_ScriptBinding.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformString.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\platformString.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformVideo.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\platformVideo.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\Tickable.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\Tickable.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\menus\popupMenu.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\menus\popupMenu.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\nativeDialogs\fileDialog.cc">
+      <ObjectFileName>$(IntDir)engine\source\platform\nativeDialogs\fileDialog.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winAsmBlit.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winAsmBlit.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winBGFXVideo.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winBGFXVideo.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winConsole.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winConsole.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winCPUInfo.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winCPUInfo.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winDInputDevice.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winDInputDevice.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winDirectInput.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winDirectInput.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winExec.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winExec.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winFileio.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winFileio.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winFont.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winFont.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winGL.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winGL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winGLSpecial.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winGLSpecial.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winInput.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winInput.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winMath.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winMath.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winMath_ASM.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winMath_ASM.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winMemory.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winMemory.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winNet.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winNet.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winOGLVideo.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winOGLVideo.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winOpenAL.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winOpenAL.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winProcessControl.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winProcessControl.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winSemaphore.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winSemaphore.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winStrings.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winStrings.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winTime.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winTime.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winTLS.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winTLS.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winUser.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winUser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winVFS.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winVFS.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winVideo.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winVideo.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\winWindow.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\winWindow.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\menus\popupMenuWin32.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\menus\popupMenuWin32.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\nativeDialogs\win32FileDialog.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\nativeDialogs\win32FileDialog.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\threads\mutex.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\threads\mutex.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\threads\thread.cc">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\threads\thread.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\plugins\pluginAsset.cc">
+      <ObjectFileName>$(IntDir)engine\source\plugins\pluginAsset.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\plugins\plugins.cc">
+      <ObjectFileName>$(IntDir)engine\source\plugins\plugins.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\scriptGroup.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\scriptGroup.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\scriptObject.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\scriptObject.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simBase.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\simBase.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simConsoleEvent.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\simConsoleEvent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simConsoleThreadExecEvent.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\simConsoleThreadExecEvent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simDatablock.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\simDatablock.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simDictionary.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\simDictionary.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simFieldDictionary.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\simFieldDictionary.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simManager.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\simManager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simObject.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\simObject.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\SimObjectList.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\SimObjectList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simSet.cc">
+      <ObjectFileName>$(IntDir)engine\source\sim\simSet.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\findMatch.cc">
+      <ObjectFileName>$(IntDir)engine\source\string\findMatch.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\stringBuffer.cc">
+      <ObjectFileName>$(IntDir)engine\source\string\stringBuffer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\stringStack.cc">
+      <ObjectFileName>$(IntDir)engine\source\string\stringStack.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\stringTable.cc">
+      <ObjectFileName>$(IntDir)engine\source\string\stringTable.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\unicode.cc">
+      <ObjectFileName>$(IntDir)engine\source\string\unicode.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sysgui\sysgui.cc">
+      <ObjectFileName>$(IntDir)engine\source\sysgui\sysgui.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\testing\unitTesting.cc">
+      <ObjectFileName>$(IntDir)engine\source\testing\unitTesting.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\testing\tests\platformFileIoTests.cc">
+      <ObjectFileName>$(IntDir)engine\source\testing\tests\platformFileIoTests.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\testing\tests\platformMemoryTests.cc">
+      <ObjectFileName>$(IntDir)engine\source\testing\tests\platformMemoryTests.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\testing\tests\platformStringTests.cc">
+      <ObjectFileName>$(IntDir)engine\source\testing\tests\platformStringTests.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\c-interface\c-interface.cpp">
+      <ObjectFileName>$(IntDir)engine\source\c-interface\c-interface.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collection\nameTags.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collection\nameTags.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\abstractPolyList.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\abstractPolyList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\boxConvex.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\boxConvex.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\clippedPolyList.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\clippedPolyList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\concretePolyList.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\concretePolyList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\convex.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\convex.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\depthSortList.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\depthSortList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\earlyOutPolyList.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\earlyOutPolyList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\extrudedPolyList.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\extrudedPolyList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\gjk.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\gjk.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\optimizedPolyList.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\optimizedPolyList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\planeExtractor.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\planeExtractor.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\polytope.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\polytope.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\collision\vertexPolyList.cpp">
+      <ObjectFileName>$(IntDir)engine\source\collision\vertexPolyList.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\component\dynamicConsoleMethodComponent.cpp">
+      <ObjectFileName>$(IntDir)engine\source\component\dynamicConsoleMethodComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\component\simComponent.cpp">
+      <ObjectFileName>$(IntDir)engine\source\component\simComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\component\behaviors\behaviorComponent.cpp">
+      <ObjectFileName>$(IntDir)engine\source\component\behaviors\behaviorComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\component\behaviors\behaviorInstance.cpp">
+      <ObjectFileName>$(IntDir)engine\source\component\behaviors\behaviorInstance.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\component\behaviors\behaviorTemplate.cpp">
+      <ObjectFileName>$(IntDir)engine\source\component\behaviors\behaviorTemplate.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\delegates\delegateSignal.cpp">
+      <ObjectFileName>$(IntDir)engine\source\delegates\delegateSignal.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\graphics\PNGImage.cpp">
+      <ObjectFileName>$(IntDir)engine\source\graphics\PNGImage.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\input\leapMotion\leapMotionUtil.cpp">
+      <ObjectFileName>$(IntDir)engine\source\input\leapMotion\leapMotionUtil.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mBox.cpp">
+      <ObjectFileName>$(IntDir)engine\source\math\mBox.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mOrientedBox.cpp">
+      <ObjectFileName>$(IntDir)engine\source\math\mOrientedBox.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mPlane.cpp">
+      <ObjectFileName>$(IntDir)engine\source\math\mPlane.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mPoint.cpp">
+      <ObjectFileName>$(IntDir)engine\source\math\mPoint.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\mPolyhedron.cpp">
+      <ObjectFileName>$(IntDir)engine\source\math\mPolyhedron.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\math\rectClipper.cpp">
+      <ObjectFileName>$(IntDir)engine\source\math\rectClipper.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\SimXMLDocument.cpp">
+      <ObjectFileName>$(IntDir)engine\source\persistence\SimXMLDocument.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\tinyXML\tinystr.cpp">
+      <ObjectFileName>$(IntDir)engine\source\persistence\tinyXML\tinystr.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\tinyXML\tinyxml.cpp">
+      <ObjectFileName>$(IntDir)engine\source\persistence\tinyXML\tinyxml.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\tinyXML\tinyxmlerror.cpp">
+      <ObjectFileName>$(IntDir)engine\source\persistence\tinyXML\tinyxmlerror.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\persistence\tinyXML\tinyxmlparser.cpp">
+      <ObjectFileName>$(IntDir)engine\source\persistence\tinyXML\tinyxmlparser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\physics\bullet.cpp">
+      <ObjectFileName>$(IntDir)engine\source\physics\bullet.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\physics\physicsEngine.cpp">
+      <ObjectFileName>$(IntDir)engine\source\physics\physicsEngine.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\physics\physicsThread.cpp">
+      <ObjectFileName>$(IntDir)engine\source\physics\physicsThread.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\platformLibrary.cpp">
+      <ObjectFileName>$(IntDir)engine\source\platform\platformLibrary.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platform\nativeDialogs\msgBox.cpp">
+      <ObjectFileName>$(IntDir)engine\source\platform\nativeDialogs\msgBox.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\cardProfile.cpp">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\cardProfile.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\nativeDialogs\win32DirectoryResolver.cpp">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\nativeDialogs\win32DirectoryResolver.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\platformWin32\nativeDialogs\win32MsgBox.cpp">
+      <ObjectFileName>$(IntDir)engine\source\platformWin32\nativeDialogs\win32MsgBox.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\sim\simSerialize.cpp">
+      <ObjectFileName>$(IntDir)engine\source\sim\simSerialize.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\string\stringUnit.cpp">
+      <ObjectFileName>$(IntDir)engine\source\string\stringUnit.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Animation.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\Animation.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\AnimationState.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\AnimationState.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\AnimationStateData.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\AnimationStateData.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Atlas.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\Atlas.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\AtlasAttachmentLoader.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\AtlasAttachmentLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Attachment.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\Attachment.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\AttachmentLoader.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\AttachmentLoader.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Bone.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\Bone.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\BoneData.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\BoneData.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\BoundingBoxAttachment.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\BoundingBoxAttachment.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Event.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\Event.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\EventData.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\EventData.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\extension.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\extension.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Json.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\Json.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\RegionAttachment.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\RegionAttachment.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Skeleton.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\Skeleton.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\SkeletonBounds.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\SkeletonBounds.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\SkeletonData.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\SkeletonData.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\SkeletonJson.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\SkeletonJson.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Skin.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\Skin.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\Slot.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\Slot.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\source\spine\SlotData.c">
+      <ObjectFileName>$(IntDir)engine\source\spine\SlotData.obj</ObjectFileName>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="lib\assimp.vcxproj">
+      <Project>{724885F2-5EEA-AFC8-47A5-C31C33E63619}</Project>
+    </ProjectReference>
+    <ProjectReference Include="lib\bgfx.vcxproj">
+      <Project>{6C90947C-58C7-950D-01B4-7B10EDC9110F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="lib\bullet.vcxproj">
+      <Project>{2DD7FAF4-1979-25CB-0234-391FEE74AC1B}</Project>
+    </ProjectReference>
+    <ProjectReference Include="lib\ljpeg.vcxproj">
+      <Project>{9760DD0F-0375-05C1-CCF6-A82038CA01F2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="lib\lpng.vcxproj">
+      <Project>{76339A7C-626A-9B0D-0B57-8110F76C170F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="lib\zlib.vcxproj">
+      <Project>{16CFA17C-0206-A30D-ABF2-881097081F0F}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

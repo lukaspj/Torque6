@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{FA721352-1DCA-1E4A-A4D0-ACC1D1C1D7B5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib">
+      <UniqueIdentifier>{10CD24E3-40C4-0C4D-B83C-EEA9706C6573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\zlib">
+      <UniqueIdentifier>{D2C3D447-0658-DE43-AEBA-C55011DB9733}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\engine\lib\zlib\crc32.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\zlib\deflate.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\zlib\gzguts.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\zlib\inffast.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\zlib\inffixed.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\zlib\inflate.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\zlib\inftrees.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\zlib\trees.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\zlib\zconf.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\zlib\zlib.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\zlib\zutil.h">
+      <Filter>engine\lib\zlib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\engine\lib\zlib\adler32.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\compress.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\crc32.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\deflate.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\gzclose.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\gzlib.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\gzread.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\gzwrite.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\infback.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\inffast.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\inflate.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\inftrees.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\trees.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\uncompr.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\zlib\zutil.c">
+      <Filter>engine\lib\zlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

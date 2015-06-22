@@ -126,7 +126,7 @@ namespace Torque6_Bridge
          ObjectPtr = Sim.FindObjectWrapper(pName);
       }
 
-      private SimObject(IntPtr pObjPtr)
+      public SimObject(IntPtr pObjPtr)
       {
          ObjectPtr = Sim.WrapObject(pObjPtr);
       }
@@ -310,7 +310,7 @@ namespace Torque6_Bridge
          Internal.SimObjectSetProgenitorFile(ObjectPtr->ObjPtr, pFile);
       }
 
-      public int GetType()
+      public int GetTypeMask()
       {
          if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
          return Internal.SimObjectGetType(ObjectPtr->ObjPtr);
@@ -325,13 +325,13 @@ namespace Torque6_Bridge
       public bool IsChildOfGroup(SimGroup pGroup)
       {
          if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
-         return Internal.SimObjectIsChildOfGroup(ObjectPtr->ObjPtr, pGroup);
+         return Internal.SimObjectIsChildOfGroup(ObjectPtr->ObjPtr, pGroup.ObjectPtr->ObjPtr);
       }
 
       public SimGroup GetGroup()
       {
          if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
-         return Internal.SimObjectGetGroup(ObjectPtr->ObjPtr);
+         return new SimGroup(Internal.SimObjectGetGroup(ObjectPtr->ObjPtr));
       }
 
       public void DeleteObject()

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{A817AFCD-E4BC-DF40-B233-BEB662790247}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib">
+      <UniqueIdentifier>{7BDC3B16-E1FC-8748-AD9F-424F061E7D9D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\lib\ljpeg">
+      <UniqueIdentifier>{A46643A1-4562-4441-B010-BE3E8EE3A7BB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jchuff.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jconfig.cw.win.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jconfig.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jconfig.vc.win.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jdct.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jdhuff.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jerror.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jinclude.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jmemsys.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jmorecfg.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jpegint.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jpeglib.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\engine\lib\ljpeg\jversion.h">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcapimin.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcapistd.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jccoefct.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jccolor.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcdctmgr.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jchuff.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcinit.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcmainct.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcmarker.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcmaster.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcomapi.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcparam.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcphuff.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcprepct.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jcsample.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jctrans.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdapimin.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdapistd.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdatadst.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdatasrc.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdcoefct.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdcolor.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jddctmgr.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdhuff.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdinput.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdmainct.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdmarker.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdmaster.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdmerge.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdphuff.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdpostct.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdsample.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jdtrans.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jerror.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jfdctflt.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jfdctfst.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jfdctint.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jidctflt.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jidctfst.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jidctint.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jidctred.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jmemmgr.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jmemnobs.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jquant1.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jquant2.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\engine\lib\ljpeg\jutils.c">
+      <Filter>engine\lib\ljpeg</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

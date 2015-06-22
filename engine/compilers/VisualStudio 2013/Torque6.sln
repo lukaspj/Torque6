@@ -2,12 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Torque6", "Torque6.vcxproj", "{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E8A52B53-E5F1-442A-9F6D-F8CBD4ECA44F} = {E8A52B53-E5F1-442A-9F6D-F8CBD4ECA44F}
-		{CCCF0F77-554F-4D63-B69C-288D7A05DFE7} = {CCCF0F77-554F-4D63-B69C-288D7A05DFE7}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ljpeg", "ljpeg.vcxproj", "{0B07BA94-AA53-4FD4-ADB4-79EC2DA53B36}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lpng", "lpng.vcxproj", "{AF1179E3-A838-46A3-A427-1E62AA4C52F4}"
@@ -46,6 +40,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CInterfaceDLL", "..\..\..\p
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TerrainDLL", "..\..\..\plugins\Terrain\source\TerrainDLL.vcxproj", "{3876547D-9795-449A-A99A-9F5F79499050}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Torque6", "Torque6.vcxproj", "{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,21 +55,6 @@ Global
 		Shipping|Win32 = Shipping|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Debug|Mixed Platforms.Build.0 = Debug|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Debug|Win32.ActiveCfg = Debug|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Debug|Win32.Build.0 = Debug|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Release|Any CPU.ActiveCfg = Release|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Release|Mixed Platforms.Build.0 = Release|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Release|Win32.ActiveCfg = Release|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Release|Win32.Build.0 = Release|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Shipping|Any CPU.ActiveCfg = Shipping|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Shipping|Mixed Platforms.ActiveCfg = Shipping|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Shipping|Mixed Platforms.Build.0 = Shipping|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Shipping|Win32.ActiveCfg = Shipping|Win32
-		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Shipping|Win32.Build.0 = Shipping|Win32
 		{0B07BA94-AA53-4FD4-ADB4-79EC2DA53B36}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{0B07BA94-AA53-4FD4-ADB4-79EC2DA53B36}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{0B07BA94-AA53-4FD4-ADB4-79EC2DA53B36}.Debug|Mixed Platforms.Build.0 = Debug|Win32
@@ -284,6 +265,21 @@ Global
 		{3876547D-9795-449A-A99A-9F5F79499050}.Shipping|Mixed Platforms.Build.0 = Release|Win32
 		{3876547D-9795-449A-A99A-9F5F79499050}.Shipping|Win32.ActiveCfg = Release|Win32
 		{3876547D-9795-449A-A99A-9F5F79499050}.Shipping|Win32.Build.0 = Release|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Debug|Win32.Build.0 = Debug|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Release|Any CPU.ActiveCfg = Release|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Release|Win32.ActiveCfg = Release|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Release|Win32.Build.0 = Release|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Shipping|Any CPU.ActiveCfg = Shipping|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Shipping|Mixed Platforms.ActiveCfg = Shipping|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Shipping|Mixed Platforms.Build.0 = Shipping|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Shipping|Win32.ActiveCfg = Shipping|Win32
+		{1564A07D-230E-4C90-AEE6-52AC9A58D6C9}.Shipping|Win32.Build.0 = Shipping|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
