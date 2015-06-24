@@ -1,46 +1,41 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using Torque6_Bridge;
+using Torque6_Bridge.SimObjects;
 
 namespace HorribleHackz.Framework
 {
    public static class Torque6Main
    {
-      [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl)]
-      public delegate int T6Main(int pArgc, string[] pArgv, IntPtr pHInstance);
+      [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+      public delegate string CallFunction(
+         IntPtr name, IntPtr argv, int argc, [MarshalAs(UnmanagedType.I1)] out bool result);
 
-      [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl)]
-      public delegate void T6SetCallFunction(IntPtr pFunctionPtr, IntPtr pMethodPtr, IntPtr pIsMethodPtr, IntPtr pMainPtr);
+      [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+      public delegate string CallMethod(IntPtr className
+         , uint obj
+         , IntPtr name
+         , IntPtr argv
+         , int argc
+         , [MarshalAs(UnmanagedType.I1)] out bool result);
 
-      [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl)]
+      [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
       public delegate bool IsMethod(IntPtr className, IntPtr methodName);
 
-      [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl)]
+      [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
       public delegate void MainEntryPoint();
 
-      [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl)]
-      public delegate string CallFunction(IntPtr name, IntPtr argv, int argc, [MarshalAs(UnmanagedType.I1)] out bool result);
+      [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+      public delegate int T6Main(int pArgc, string[] pArgv, IntPtr pHInstance);
 
-      [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl)]
-      public delegate string CallMethod(IntPtr className
-                                       , uint obj
-                                       , IntPtr name
-                                       , IntPtr argv
-                                       , int argc
-                                       , [MarshalAs(UnmanagedType.I1)] out bool result);
-
-      public struct Libraries
-      {
-         public string Windows32bit;
-         public string Windows64bit;
-         public string Linux32bit;
-         public string Linux64bit;
-      }
+      [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+      public delegate void T6SetCallFunction(
+         IntPtr pFunctionPtr, IntPtr pMethodPtr, IntPtr pIsMethodPtr, IntPtr pMainPtr);
 
       public static void InitializeTorque6(string[] args, Libraries libraryNames)
       {
-         IDllLoadUtils dllLoadUtils = Platform.IsLinux() ? (IDllLoadUtils)new DllLoadUtilsLinux()
-                                                                                             : new DllLoadUtilsWindows();
+         IDllLoadUtils dllLoadUtils = Platform.IsLinux()
+            ? (IDllLoadUtils) new DllLoadUtilsLinux()
+            : new DllLoadUtilsWindows();
          string libraryName;
 
          if (Platform.IsLinux())
@@ -56,11 +51,11 @@ namespace HorribleHackz.Framework
          var mainHandle = dllLoadUtils.GetProcAddress(dllHandle, "main");
          var setCallbacksHandle = dllLoadUtils.GetProcAddress(dllHandle, "SetCallbacks");
 
-         var setCallbacks = (T6SetCallFunction)Marshal.GetDelegateForFunctionPointer(
-                        setCallbacksHandle, typeof(T6SetCallFunction));
+         var setCallbacks = (T6SetCallFunction) Marshal.GetDelegateForFunctionPointer(
+            setCallbacksHandle, typeof (T6SetCallFunction));
 
-         var main = (T6Main)Marshal.GetDelegateForFunctionPointer(
-                        mainHandle, typeof(T6Main));
+         var main = (T6Main) Marshal.GetDelegateForFunctionPointer(
+            mainHandle, typeof (T6Main));
 
          Initializer.InitializeTypeDictionaries();
 
@@ -69,7 +64,9 @@ namespace HorribleHackz.Framework
          IsMethod isMethodDelegate = IsMethodDelegate;
          IntPtr mainEntryPointPtr = IntPtr.Zero;
          if (Initializer.GetScriptEntry() != null)
-            mainEntryPointPtr = Marshal.GetFunctionPointerForDelegate((MainEntryPoint)Initializer.GetScriptEntry().CreateDelegate(typeof(MainEntryPoint)));
+            mainEntryPointPtr =
+               Marshal.GetFunctionPointerForDelegate(
+                  (MainEntryPoint) Initializer.GetScriptEntry().CreateDelegate(typeof (MainEntryPoint)));
 
          setCallbacks(Marshal.GetFunctionPointerForDelegate(callDelegate)
             , Marshal.GetFunctionPointerForDelegate(methodDelegate)
@@ -88,17 +85,18 @@ namespace HorribleHackz.Framework
          return EngineCallbacks.CallScriptFunction(_name, strings, out result);
       }
 
-      public static string CallMethodDelegate(IntPtr className, uint obj, IntPtr name, IntPtr argv, int argc, out bool result)
+      public static string CallMethodDelegate(IntPtr className, uint obj, IntPtr name, IntPtr argv, int argc,
+         out bool result)
       {
          string _className = Marshal.PtrToStringAnsi(className);
          string _name = Marshal.PtrToStringAnsi(name);
 
          SimObject objectWrapper = new SimObject(obj);
          string[] strings = null;
-         if(argv != IntPtr.Zero)
+         if (argv != IntPtr.Zero)
             strings = CustomMarshalling.IntPtrToStringArray(argv, argc);
          string strRes = EngineCallbacks.CallScriptMethod(objectWrapper.Name, objectWrapper, _name, strings, out result);
-         if(!result)
+         if (!result)
             strRes = EngineCallbacks.CallScriptMethod(_className, objectWrapper, _name, strings, out result);
          return strRes;
       }
@@ -108,6 +106,14 @@ namespace HorribleHackz.Framework
          string _className = Marshal.PtrToStringAnsi(className);
          string _methodName = Marshal.PtrToStringAnsi(methodName);
          return EngineCallbacks.IsMethod(_className, _methodName);
+      }
+
+      public struct Libraries
+      {
+         public string Linux32bit;
+         public string Linux64bit;
+         public string Windows32bit;
+         public string Windows64bit;
       }
    }
 }

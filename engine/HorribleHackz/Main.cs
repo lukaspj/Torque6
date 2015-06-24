@@ -1,5 +1,6 @@
 ﻿using HorribleHackz.CustomAttributes;
 using Torque6_Bridge;
+using Torque6_Bridge.SimObjects;
 
 //using IJWLayer;
 
@@ -13,6 +14,17 @@ namespace HorribleHackz
       [ScriptEntryPoint]
       public static void EntryPoint()
       {
+         SimObject testSimObject = new SimObject()
+         {
+            CanSaveDynamicFields = true,
+            Name = "Fisk",
+            Class = "TestClass"
+         };
+         testSimObject.RegisterObject();
+         testSimObject.Dump();
+         testSimObject.Call("Test", "Fisk1", "Fisk2", "", "Fisk 3");
+         testSimObject.DeleteObject();
+         testSimObject.Dump(); // Throws an exception
          // Mandatory initialization, since these can't be set based on the non-existant main.cs
          //var CSDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
          //Engine.Platform.setMainDotCsDir(CSDir);

@@ -394,3 +394,133 @@ ConsoleMethodWithDocs(SimSet, pushToBack, ConsoleVoid, 3, 3, (object))
 }
 
 ConsoleMethodGroupEndWithDocs(SimSet)
+
+
+
+//-----------------------------------------------------------------------------
+
+/*!
+@defgroup ObjectFunctions Object
+@ingroup CInterfaceFunctions
+@{
+*/
+
+//-----------------------------------------------------------------------------
+
+extern "C"{
+   DLL_PUBLIC SimSet* SimSetCreateInstance()
+   {
+      return new SimSet();
+   }
+
+   DLL_PUBLIC SimGroup* SimGroupCreateInstance()
+   {
+      return new SimGroup();
+   }
+
+   DLL_PUBLIC void SimSetListObjects(SimSet* set)
+   {
+      set->lock();
+      SimSet::iterator itr;
+      for (itr = set->begin(); itr != set->end(); itr++)
+      {
+         SimObject *obj = *itr;
+         bool isSet = dynamic_cast<SimSet *>(obj) != 0;
+         const char *name = obj->getName();
+         if (name)
+            Con::printf("   %d,\"%s\": %s %s", obj->getId(), name,
+            obj->getClassName(), isSet ? "(g)" : "");
+         else
+            Con::printf("   %d: %s %s", obj->getId(), obj->getClassName(),
+            isSet ? "(g)" : "");
+      }
+      set->unlock();
+   }
+
+   DLL_PUBLIC void SimSetAddObject(SimSet* set, SimObject* obj)
+   {
+      set->addObject(obj);
+   }
+
+   DLL_PUBLIC void SimSetRemoveObject(SimSet* set, SimObject* obj)
+   {
+      set->removeObject(obj);
+   }
+
+   DLL_PUBLIC void SimSetDeleteObjects(SimSet* set)
+   {
+      set->deleteObjects();
+   }
+
+   DLL_PUBLIC void SimSetClear(SimSet* set)
+   {
+      set->clear();
+   }
+
+   DLL_PUBLIC void SimSetCallOnChildren(SimSet* set, const char* method, int argc, const char** argv)
+   {
+      set->callOnChildren(method, argc, argv);
+   }
+
+   DLL_PUBLIC void SimSetReorderChild(SimSet* set, SimObject* obj1, SimObject* obj2)
+   {
+      set->reOrder(obj1, obj2);
+   }
+
+   DLL_PUBLIC int SimSetGetCount(SimSet* set)
+   {
+      return set->size();
+   }
+
+   DLL_PUBLIC SimObject* SimSetGetObject(SimSet* set, int index)
+   {
+      if (index < 0 || index >= S32(set->size()))
+      {
+         Con::printf("Set::getObject index out of range.");
+         return NULL;
+      }
+      return set->at(index);
+   }
+
+   DLL_PUBLIC bool SimSetIsMember(SimSet* set, SimObject* obj)
+   {
+      set->lock();
+      for (SimSet::iterator i = set->begin(); i != set->end(); i++)
+      {
+         if (*i == obj)
+         {
+            set->unlock();
+            return true;
+         }
+      }
+      set->unlock();
+
+      return false;
+   }
+
+   DLL_PUBLIC SimObject* SimSetFindObjectByInternalName(SimSet* set, const char* name, bool searchChildren)
+   {
+      StringTableEntry pcName = StringTable->insert(name);
+
+      SimObject* child = set->findObjectByInternalName(pcName, searchChildren);
+      if (child)
+         return child;
+      return NULL;
+   }
+
+   DLL_PUBLIC void SimSetBringToFront(SimSet* set, SimObject* obj)
+   {
+      set->bringObjectToFront(obj);
+   }
+
+   DLL_PUBLIC void SimSetPushToBack(SimSet* set, SimObject* obj)
+   {
+      set->pushObjectToBack(obj);
+   }
+}
+
+//-----------------------------------------------------------------------------
+
+/*! @} */
+
+//-----------------------------------------------------------------------------

@@ -1,13 +1,67 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.SimObjects.SimSets;
 
-namespace Torque6_Bridge
+namespace Torque6_Bridge.SimObjects
 {
+   public class SimObjectPointerInvalidException : Exception
+   {
+      public SimObjectPointerInvalidException()
+      :base("The SimObject was invalid, this usually happens if you try to use an object after it has been deleted.")
+      {
+      }
+
+      public SimObjectPointerInvalidException(string message)
+         : base(message)
+      {
+      }
+
+      public SimObjectPointerInvalidException(string message, Exception inner)
+         : base(message, inner)
+      {
+      }
+   }
+
    public unsafe class SimObject : IDisposable
    {
+      public SimObject()
+      {
+         ObjectPtr = Sim.WrapObject(Internal.SimObjectCreateInstance());
+      }
+
+      public SimObject(uint pId)
+      {
+         ObjectPtr = Sim.FindObjectWrapper(pId);
+      }
+
+      public SimObject(string pName)
+      {
+         ObjectPtr = Sim.FindObjectWrapper(pName);
+      }
+
+      public SimObject(IntPtr pObjPtr)
+      {
+         ObjectPtr = Sim.WrapObject(pObjPtr);
+      }
+
+      public SimObject(Sim.SimObjectPtr* pObjPtr)
+      {
+         ObjectPtr = pObjPtr;
+      }
+
+      public Sim.SimObjectPtr* ObjectPtr { get; protected set; }
+
+      #region UnsafeNativeMethods
+
       internal struct Internal
       {
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern IntPtr SimObjectCreateInstance();
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern bool SimObjectRegisterObject(IntPtr pObjectPtr);
+
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool SimObjectGetCanSaveDynamicFields(IntPtr pObjectPtr);
 
@@ -102,46 +156,33 @@ namespace Torque6_Bridge
          internal static extern IntPtr SimObjectClone(IntPtr pObjectPtr, bool pCopyDynamicFields);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimObjectStartTimer(IntPtr pObjectPtr, string pCallbackFunction, float pTimePeriod, int pRepeat);
+         internal static extern bool SimObjectStartTimer(IntPtr pObjectPtr, string pCallbackFunction, float pTimePeriod,
+            int pRepeat);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimObjectStopTimer(IntPtr pObjectPtr);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool SimObjectIsTimerActive(IntPtr pObjectPtr);
-         
+
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int SimObjectSchedule(IntPtr pObjectPtr, int pTime, int pArgc, string[] pArgv);
       }
 
-      public Sim.SimObjectPtr* ObjectPtr { get; protected set; }
-
-      public SimObject(uint pId)
-      {
-         ObjectPtr = Sim.FindObjectWrapper(pId);
-      }
-
-      public SimObject(string pName)
-      {
-         ObjectPtr = Sim.FindObjectWrapper(pName);
-      }
-
-      public SimObject(IntPtr pObjPtr)
-      {
-         ObjectPtr = Sim.WrapObject(pObjPtr);
-      }
+      #endregion
 
       #region Properties
+
       public bool CanSaveDynamicFields
       {
          get
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             return Internal.SimObjectGetCanSaveDynamicFields(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             Internal.SimObjectSetCanSaveDynamicFields(ObjectPtr->ObjPtr, value);
          }
       }
@@ -150,25 +191,22 @@ namespace Torque6_Bridge
       {
          get
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             return Internal.SimObjectGetInternalName(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             Internal.SimObjectSetInternalName(ObjectPtr->ObjPtr, value);
          }
       }
 
       public SimObject ParentGroup
       {
-         get
-         {
-            throw new Exception("Eh?");
-         }
+         get { throw new Exception("Eh?"); }
          set
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             Internal.SimObjectSetParentGroup(ObjectPtr->ObjPtr, value.ObjectPtr->ObjPtr);
          }
       }
@@ -177,12 +215,12 @@ namespace Torque6_Bridge
       {
          get
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             return Internal.SimObjectGetSuperClass(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             Internal.SimObjectSetSuperClass(ObjectPtr->ObjPtr, value);
          }
       }
@@ -191,12 +229,12 @@ namespace Torque6_Bridge
       {
          get
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             return Internal.SimObjectGetClass(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             Internal.SimObjectSetClass(ObjectPtr->ObjPtr, value);
          }
       }
@@ -205,12 +243,12 @@ namespace Torque6_Bridge
       {
          get
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             return Internal.SimObjectGetName(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             Internal.SimObjectSetName(ObjectPtr->ObjPtr, value);
          }
       }
@@ -219,23 +257,35 @@ namespace Torque6_Bridge
       {
          get
          {
-            if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+            if (IsDead()) throw new SimObjectPointerInvalidException();
             return Internal.SimObjectGetID(ObjectPtr->ObjPtr);
          }
       }
+
       #endregion
 
       #region Methods
 
+      public bool IsDead()
+      {
+         return ObjectPtr->ObjPtr == IntPtr.Zero;
+      }
+
+      public bool RegisterObject()
+      {
+         if (IsDead()) throw new SimObjectPointerInvalidException();
+         return Internal.SimObjectRegisterObject(ObjectPtr->ObjPtr);
+      }
+
       public bool IsMethod(string pMethodName)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectIsMethod(ObjectPtr->ObjPtr, pMethodName);
       }
 
       public string Call(string pMethodName, params string[] pArgs)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          string[] newParams = new string[pArgs.Length + 2];
          for (int i = 0; i < pArgs.Length; i++)
             newParams[i + 2] = pArgs[i];
@@ -246,127 +296,127 @@ namespace Torque6_Bridge
 
       public void DumpClassHierarchy()
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          Internal.SimObjectDumpClassHierarchy(ObjectPtr->ObjPtr);
       }
 
       public void Dump()
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          Internal.SimObjectDump(ObjectPtr->ObjPtr);
       }
 
       public bool IsMemberOfClass(string pClassName)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectIsMemberOfClass(ObjectPtr->ObjPtr, pClassName);
       }
 
       public string GetFieldValue(string pFieldName)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectGetFieldValue(ObjectPtr->ObjPtr, pFieldName);
       }
 
       public void SetFieldValue(string pFieldName, string pValue)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          Internal.SimObjectSetFieldValue(ObjectPtr->ObjPtr, pFieldName, pValue);
       }
 
       public int GetDynamicFieldCount()
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectGetDynamicFieldCount(ObjectPtr->ObjPtr);
       }
 
       public string GetDynamicField(int pIndex)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectGetDynamicField(ObjectPtr->ObjPtr, pIndex);
       }
 
       public int GetFieldCount()
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectGetFieldCount(ObjectPtr->ObjPtr);
       }
 
       public string GetField(int pIndex)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectGetField(ObjectPtr->ObjPtr, pIndex);
       }
 
       public string GetProgenitorFile()
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectGetProgenitorFile(ObjectPtr->ObjPtr);
       }
 
       public void SetProgenitorFile(string pFile)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          Internal.SimObjectSetProgenitorFile(ObjectPtr->ObjPtr, pFile);
       }
 
       public int GetTypeMask()
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectGetType(ObjectPtr->ObjPtr);
       }
 
       public string GetFieldType(string pFieldName)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectGetFieldType(ObjectPtr->ObjPtr, pFieldName);
       }
 
       public bool IsChildOfGroup(SimGroup pGroup)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectIsChildOfGroup(ObjectPtr->ObjPtr, pGroup.ObjectPtr->ObjPtr);
       }
 
       public SimGroup GetGroup()
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return new SimGroup(Internal.SimObjectGetGroup(ObjectPtr->ObjPtr));
       }
 
       public void DeleteObject()
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          Internal.SimObjectDeleteObject(ObjectPtr->ObjPtr);
       }
 
       public SimObject Clone(bool pCopyDynamicFields)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return new SimObject(Internal.SimObjectClone(ObjectPtr->ObjPtr, pCopyDynamicFields));
       }
 
       public bool StartTimer(string pCallbackFunction, float pTimePeriod, int pRepeat)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectStartTimer(ObjectPtr->ObjPtr, pCallbackFunction, pTimePeriod, pRepeat);
       }
 
       public void StopTimer()
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          Internal.SimObjectStopTimer(ObjectPtr->ObjPtr);
       }
 
       public bool IsTimerActive()
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          return Internal.SimObjectIsTimerActive(ObjectPtr->ObjPtr);
       }
 
       public string Schedule(int pTime, string pCommand, params string[] pArgs)
       {
-         if (ObjectPtr->ObjPtr == IntPtr.Zero) throw new Exception("Object has been deleted.");
+         if (IsDead()) throw new SimObjectPointerInvalidException();
          string[] newParams = new string[pArgs.Length + 2];
          for (int i = 0; i < pArgs.Length; i++)
             newParams[i + 2] = pArgs[i];
@@ -378,6 +428,7 @@ namespace Torque6_Bridge
       #endregion
 
       #region IDisposable
+
       public void Dispose()
       {
          Dispose(true);
@@ -388,7 +439,7 @@ namespace Torque6_Bridge
       {
          if (ObjectPtr->ObjPtr != IntPtr.Zero)
          {
-            Marshal.FreeHGlobal((IntPtr)ObjectPtr);
+            Marshal.FreeHGlobal((IntPtr) ObjectPtr);
          }
       }
 
@@ -396,6 +447,7 @@ namespace Torque6_Bridge
       {
          Dispose(false);
       }
+
       #endregion
    }
 }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="engine">
@@ -1023,9 +1023,6 @@
     <ClInclude Include="..\..\engine\source\input\actionMap.h">
       <Filter>engine\source\input</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\input\actionMap_ScriptBinding.h">
-      <Filter>engine\source\input</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionConstants.h">
       <Filter>engine\source\input\leapMotion</Filter>
     </ClInclude>
@@ -1761,9 +1758,6 @@
     <ClInclude Include="..\..\engine\source\sim\simSet.h">
       <Filter>engine\source\sim</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\sim\simSet_ScriptBinding.h">
-      <Filter>engine\source\sim</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\spine\Animation.h">
       <Filter>engine\source\spine</Filter>
     </ClInclude>
@@ -1868,6 +1862,12 @@
     </ClInclude>
     <ClInclude Include="..\..\engine\source\testing\unitTesting_ScriptBinding.h">
       <Filter>engine\source\testing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sim\simSet_Binding.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\input\actionMap_Binding.h">
+      <Filter>engine\source\input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -197,3 +197,144 @@ ConsoleMethodWithDocs( ActionMap, getDeadZone, ConsoleString, 4, 4, ( device , a
 }
 
 ConsoleMethodGroupEndWithDocs(ActionMap)
+
+extern "C" {
+   DLL_PUBLIC ActionMap* ActionMapCreateInstance()
+   {
+      return new ActionMap();
+   }
+
+   //------------------------------------------------------------------------------
+   /*! 
+   @param argc Amount of arguments
+   @param argv 1st element is device, 2nd is action, 3rd is command, rest are modifiers.
+   @sa bindCmd
+   */
+   DLL_PUBLIC void ActionMapBind(ActionMap* map, int argc, const char** argv)
+   {
+      map->processBind(argc, argv);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @param argc Amount of arguments
+   @param argv 1st element is device, 2nd is action, 3rd is command, rest are modifiers.
+   @param obj The object to invoke the method on.
+   @sa bindCmd
+   */
+   DLL_PUBLIC void ActionMapBindObj(ActionMap* map, int argc, const char** argv, SimObject* obj)
+   {
+      map->processBind(argc, argv, obj);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   */
+   DLL_PUBLIC void ActionMapBindCmd(ActionMap* map, const char* device, const char* action, const char* makeCmd, const char* breakCmd)
+   {
+      map->processBindCmd(device, action, makeCmd, breakCmd);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   */
+   DLL_PUBLIC void ActionMapUnbind(ActionMap* map, const char* device, const char* action)
+   {
+      map->processUnbind(device, action);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   */
+   DLL_PUBLIC void ActionMapUnbindObj(ActionMap* map, const char* device, const char* action, SimObject* obj)
+   {
+      map->processUnbind(device, action, obj);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   filename default: null
+   append default: false
+   */
+   DLL_PUBLIC void ActionMapSave(ActionMap* map, const char* fileName, bool append)
+   {
+      char buffer[1024];
+
+      if (fileName)
+      {
+         if (Con::expandPath(buffer, sizeof(buffer), fileName))
+            fileName = buffer;
+      }
+
+      map->dumpActionMap(fileName, append);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   */
+   DLL_PUBLIC void ActionMapPush(ActionMap* map)
+   {
+      SimSet* actionMapSet = Sim::getActiveActionMapSet();
+      actionMapSet->pushObject(map);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   */
+   DLL_PUBLIC void ActionMapPop(ActionMap* map)
+   {
+      SimSet* actionMapSet = Sim::getActiveActionMapSet();
+      actionMapSet->removeObject(map);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   */
+   DLL_PUBLIC const char* ActionMapGetBinding(ActionMap* map, const char* command)
+   {
+      return map->getBinding(command);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   */
+   DLL_PUBLIC const char* ActionMapGetCommand(ActionMap* map, const char* device, const char* action)
+   {
+      return map->getCommand(device, action);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   */
+   DLL_PUBLIC bool ActionMapIsInverted(ActionMap* map, const char* device, const char* action)
+   {
+      return map->isInverted(device, action);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   */
+   DLL_PUBLIC float ActionMapGetScale(ActionMap* map, const char* device, const char* action)
+   {
+      return map->getScale(device, action);
+   }
+
+   //------------------------------------------------------------------------------
+   /*!
+   @sa bindCmd
+   */
+   DLL_PUBLIC const char* ActionMapGetDeadZone(ActionMap* map, const char* device, const char* action)
+   {
+      return map->getDeadZone(device, action);
+   }
+}

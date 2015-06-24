@@ -1021,6 +1021,16 @@ ConsoleMethodWithDocs(SimObject,schedule, ConsoleInt, 4, 0, (time , command , [a
 ConsoleMethodRootGroupEndWithDocs(SimObject)
 
 extern "C"{
+   DLL_PUBLIC SimObject* SimObjectCreateInstance()
+   {
+      return new SimObject();
+   }
+
+   DLL_PUBLIC bool SimObjectRegisterObject(SimObject* obj)
+   {
+      return obj->registerObject();
+   }
+
    DLL_PUBLIC bool SimObjectGetCanSaveDynamicFields(SimObject* obj)
    {
       return obj->getCanSaveDynamicFields();
