@@ -88,3 +88,38 @@ ConsoleMethodWithDocs(AssetQuery, getAsset, ConsoleString, 3, 3, (int resultInde
 }
 
 ConsoleMethodGroupEndWithDocs(AssetQuery)
+
+extern "C"{
+   DLL_PUBLIC AssetQuery* AssetQueryCreateInstance()
+   {
+      return new AssetQuery();
+   }
+
+   DLL_PUBLIC void AssetQueryClear(AssetQuery* assetQuery)
+   {
+      assetQuery->clear();
+   }
+
+   DLL_PUBLIC void AssetQuerySet(AssetQuery* assetQuery, AssetQuery* setAssetQuery)
+   {
+      assetQuery->set(*setAssetQuery);
+   }
+
+   DLL_PUBLIC int AssetQueryGetCount(AssetQuery* assetQuery)
+   {
+      return assetQuery->size();
+   }
+
+   DLL_PUBLIC const char* AssetQueryGetAsset(AssetQuery* assetQuery, int resultIndex)
+   {
+      // Is index within bounds?
+      if (resultIndex >= assetQuery->size())
+      {
+         // No, so warn.
+         Con::warnf("AssetQuery::getAsset() - Result index '%s' is out of bounds.", "TODO, implement references");
+         return nullptr;
+      }
+
+      return assetQuery->at(resultIndex);
+   }
+}

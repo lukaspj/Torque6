@@ -20,8 +20,25 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-ConsoleMethodGroupBeginWithDocs(MaterialAsset, AssetBase)
+ConsoleMethodGroupBeginWithDocs(EntityTemplateAsset, AssetBase)
 
 // Nothing Yet
 
-ConsoleMethodGroupEndWithDocs(MaterialAsset)
+ConsoleMethodGroupEndWithDocs(EntityTemplateAsset)
+
+extern "C"{
+   DLL_PUBLIC EntityTemplateAsset* EntityTemplateAssetCreateInstance()
+   {
+      return new EntityTemplateAsset();
+   }
+
+   DLL_PUBLIC const char* EntityTemplateAssetGetTemplateFile(EntityTemplateAsset* entityTemplateAsset)
+   {
+      return entityTemplateAsset->getTemplateFile();
+   }
+
+   DLL_PUBLIC void EntityTemplateAssetSetTemplateFile(EntityTemplateAsset* entityTemplateAsset, const char* file)
+   {
+      entityTemplateAsset->setTemplateFile(file);
+   }
+}

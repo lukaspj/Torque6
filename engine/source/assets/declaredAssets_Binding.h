@@ -1,5 +1,5 @@
-﻿//-----------------------------------------------------------------------------
-// Copyright (c) 2015 Andrew Mac
+//-----------------------------------------------------------------------------
+// Copyright (c) 2013 GarageGames, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
@@ -20,8 +20,39 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-ConsoleMethodGroupBeginWithDocs(EntityTemplateAsset, AssetBase)
+extern "C" {
+   DLL_PUBLIC DeclaredAssets* DeclaredAssetsCreateInstance()
+   {
+      return new DeclaredAssets();
+   }
 
-// Nothing Yet
+   DLL_PUBLIC const char* DeclaredAssetsGetPath(DeclaredAssets* assets)
+   {
+      return assets->getPath();
+   }
 
-ConsoleMethodGroupEndWithDocs(EntityTemplateAsset)
+   DLL_PUBLIC void DeclaredAssetsSetPath(DeclaredAssets* assets, const char* path)
+   {
+      assets->setPath(path);
+   }
+
+   DLL_PUBLIC const char* DeclaredAssetsGetExtension(DeclaredAssets* assets)
+   {
+      return assets->getExtension();
+   }
+
+   DLL_PUBLIC void DeclaredAssetsSetExtension(DeclaredAssets* assets, const char* path)
+   {
+      assets->setExtension(path);
+   }
+
+   DLL_PUBLIC bool DeclaredAssetsGetRecurse(DeclaredAssets* assets)
+   {
+      return assets->getRecurse();
+   }
+
+   DLL_PUBLIC void DeclaredAssetsSetRecurse(DeclaredAssets* assets, bool value)
+   {
+      assets->setRecurse(value);
+   }
+}

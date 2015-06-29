@@ -8,7 +8,7 @@ namespace Torque6_Bridge.SimObjects.Assets
    {
       public DeclaredAssets()
       {
-         ObjectPtr = Sim.WrapObject(Internal.DeclaredAssetsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.DeclaredAssetsCreateInstance());
       }
 
       public DeclaredAssets(uint pId) : base(pId)
@@ -26,18 +26,77 @@ namespace Torque6_Bridge.SimObjects.Assets
       public DeclaredAssets(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
       {
       }
-      #region Properties
-      public string Path { get; set; }
-      public string Extension { get; set; }
-      public bool Recurse { get; set; }
-      #endregion
 
       #region UnsafeNativeMethods
 
-      new internal struct Internal
+      new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr DeclaredAssetsCreateInstance();
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string DeclaredAssetsGetPath(IntPtr pDeclaredAssetsPtr);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void DeclaredAssetsSetPath(IntPtr pDeclaredAssetsPtr, string pPath);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string DeclaredAssetsGetExtension(IntPtr pDeclaredAssetsPtr);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void DeclaredAssetsSetExtension(IntPtr pDeclaredAssetsPtr, string pExtension);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern bool DeclaredAssetsGetRecurse(IntPtr pDeclaredAssetsPtr);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void DeclaredAssetsSetRecurse(IntPtr pDeclaredAssetsPtr, bool pRecurse);
+      }
+
+      #endregion
+
+      #region Properties
+
+      public string Path
+      {
+         get
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            return InternalUnsafeMethods.DeclaredAssetsGetPath(ObjectPtr->ObjPtr);
+         }
+         set
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            InternalUnsafeMethods.DeclaredAssetsSetPath(ObjectPtr->ObjPtr, value);
+         }
+      }
+
+      public string Extension
+      {
+         get
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            return InternalUnsafeMethods.DeclaredAssetsGetExtension(ObjectPtr->ObjPtr);
+         }
+         set
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            InternalUnsafeMethods.DeclaredAssetsSetExtension(ObjectPtr->ObjPtr, value);
+         }
+      }
+
+      public bool Recurse
+      {
+         get
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            return InternalUnsafeMethods.DeclaredAssetsGetRecurse(ObjectPtr->ObjPtr);
+         }
+         set
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            InternalUnsafeMethods.DeclaredAssetsSetRecurse(ObjectPtr->ObjPtr, value);
+         }
       }
 
       #endregion

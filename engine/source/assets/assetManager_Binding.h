@@ -950,3 +950,299 @@ ConsoleMethodWithDocs( AssetManager, dumpDeclaredAssets, ConsoleVoid, 2, 2, ())
 }
 
 ConsoleMethodGroupEndWithDocs(AssetManager)
+
+extern "C"{
+   DLL_PUBLIC bool AssetManagerGetEchoInfo(AssetManager* assetManager)
+   {
+      return assetManager->getEchoInfo();
+   }
+
+   DLL_PUBLIC void AssetManagerSetEchoInfo(AssetManager* assetManager, bool val)
+   {
+      assetManager->setEchoInfo(val);
+   }
+
+   DLL_PUBLIC bool AssetManagerGetIgnoreAutoUnload(AssetManager* assetManager)
+   {
+      return assetManager->getIgnoreAutoUnload();
+   }
+
+   DLL_PUBLIC void AssetManagerSetIgnoreAutoUnload(AssetManager* assetManager, bool val)
+   {
+      assetManager->setIgnoreAutoUnload(val);
+   }
+
+   DLL_PUBLIC bool AssetManagerCompileReferencedAssets(AssetManager* assetManager, ModuleDefinition* moduleDefinition)
+   {
+      return assetManager->compileReferencedAssets(moduleDefinition);
+   }
+
+   DLL_PUBLIC bool AssetManagerAddModuleDeclaredAssets(AssetManager* assetManager, ModuleDefinition* moduleDefinition)
+   {
+      return assetManager->addModuleDeclaredAssets(moduleDefinition);
+   }
+
+   DLL_PUBLIC bool AssetManagerAddDeclaredAsset(AssetManager* assetManager, ModuleDefinition* moduleDefinition, const char* assetFilePath)
+   {
+      return assetManager->addDeclaredAsset(moduleDefinition, assetFilePath);
+   }
+
+   DLL_PUBLIC const char* AssetManagerAddPrivateAsset(AssetManager* assetManager, AssetBase* assetObject)
+   {
+      return assetManager->addPrivateAsset(assetObject);
+   }
+
+   DLL_PUBLIC bool AssetManagerRemoveDeclaredAssets(AssetManager* assetManager, ModuleDefinition* moduleDefinition)
+   {
+      return assetManager->removeDeclaredAssets(moduleDefinition);
+   }
+
+   DLL_PUBLIC bool AssetManagerRemoveDeclaredAsset(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->removeDeclaredAsset(assetId);
+   }
+
+   DLL_PUBLIC const char* AssetManagerGetAssetName(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->getAssetName(assetId);
+   }
+
+   DLL_PUBLIC const char* AssetManagerGetAssetDescription(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->getAssetDescription(assetId);
+   }
+
+   DLL_PUBLIC const char* AssetManagerGetAssetCategory(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->getAssetCategory(assetId);
+   }
+
+   DLL_PUBLIC const char* AssetManagerGetAssetType(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->getAssetType(assetId);
+   }
+
+   DLL_PUBLIC const char* AssetManagerGetAssetFilePath(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->getAssetFilePath(assetId);
+   }
+
+   DLL_PUBLIC const char* AssetManagerGetAssetPath(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->getAssetPath(assetId);
+   }
+
+   DLL_PUBLIC ModuleDefinition* AssetManagerGetAssetModule(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->getAssetModuleDefinition(assetId);
+   }
+
+   DLL_PUBLIC bool AssetManagerIsAssetInternal(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->isAssetInternal(assetId);
+   }
+
+   DLL_PUBLIC bool AssetManagerIsAssetPrivate(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->isAssetPrivate(assetId);
+   }
+
+   DLL_PUBLIC bool AssetManagerIsAssetAutoUnload(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->isAssetAutoUnload(assetId);
+   }
+
+   DLL_PUBLIC bool AssetManagerIsAssetLoaded(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->isAssetLoaded(assetId);
+   }
+
+   DLL_PUBLIC bool AssetManagerIsDeclaredAsset(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->isDeclaredAsset(assetId);
+   }
+
+   DLL_PUBLIC bool AssetManagerIsReferencedAsset(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->isReferencedAsset(assetId);
+   }
+
+   DLL_PUBLIC bool AssetManagerRenameDeclaredAsset(AssetManager* assetManager, const char* assetIdFrom, const char* assetIdTo)
+   {
+      return assetManager->renameDeclaredAsset(assetIdFrom, assetIdTo);
+   }
+
+   DLL_PUBLIC bool AssetManagerRenameReferencedAsset(AssetManager* assetManager, const char* assetIdFrom, const char* assetIdTo)
+   {
+      return assetManager->renameReferencedAsset(assetIdFrom, assetIdTo);
+   }
+
+   DLL_PUBLIC const char* AssetManagerAcquireAsset(AssetManager* assetManager, const char* assetId, bool asPrivate)
+   {
+      // Reset asset reference.
+      AssetBase* pAssetBase = NULL;
+
+      // Acquire private asset?
+      if (asPrivate)
+      {
+         // Acquire private asset.
+         pAssetBase = assetManager->acquireAsPrivateAsset<AssetBase>(assetId);
+      }
+      else
+      {
+         // Acquire public asset.
+         pAssetBase = assetManager->acquireAsset<AssetBase>(assetId);
+      }
+
+      return pAssetBase != NULL ? pAssetBase->getIdString() : StringTable->EmptyString;
+   }
+
+   DLL_PUBLIC bool AssetManagerReleaseAsset(AssetManager* assetManager, const char* assetId)
+   {
+      return assetManager->releaseAsset(assetId);
+   }
+
+   DLL_PUBLIC void AssetManagerPurgeAssets(AssetManager* assetManager)
+   {
+      assetManager->purgeAssets();
+   }
+
+   DLL_PUBLIC bool AssetManagerDeleteAsset(AssetManager* assetManager, const char* assetId, bool deleteLooseFiles, bool deleteDependencies)
+   {
+      // Delete asset.
+      return assetManager->deleteAsset(assetId, deleteLooseFiles, deleteDependencies);
+   }
+
+   DLL_PUBLIC void AssetManagerRefreshAsset(AssetManager* assetManager, const char* assetId)
+   {
+      assetManager->refreshAsset(assetId);
+   }
+
+   DLL_PUBLIC void AssetManagerRefreshAllAssets(AssetManager* assetManager, bool includeUnloaded)
+   {
+      assetManager->refreshAllAssets(includeUnloaded);
+   }
+
+   DLL_PUBLIC bool AssetManagerSaveAssetTags(AssetManager* assetManager)
+   {
+      return assetManager->saveAssetTags();
+   }
+
+   DLL_PUBLIC bool AssetManagerRestoreAssetTags(AssetManager* assetManager)
+   {
+      return assetManager->restoreAssetTags();
+   }
+
+   DLL_PUBLIC AssetTagsManifest* AssetManagerGetAssetTags(AssetManager* assetManager)
+   {
+      // Fetch the asset tags manifest.
+      return assetManager->getAssetTags();
+   }
+
+   DLL_PUBLIC int AssetManagerFindAllAssets(AssetManager* assetManager, AssetQuery* assetQuery, bool ignoreInternal, bool ignorePrivate)
+   {
+      // Perform query.
+      return assetManager->findAllAssets(assetQuery, ignoreInternal, ignorePrivate);
+   }
+
+   DLL_PUBLIC int AssetManagerFindAssetName(AssetManager* assetManager, AssetQuery* assetQuery, const char* assetName, bool partialName)
+   {
+      // Perform query.
+      return assetManager->findAssetName(assetQuery, assetName, partialName);
+   }
+
+   DLL_PUBLIC int AssetManagerFindAssetCategory(AssetManager* assetManager, AssetQuery* assetQuery, const char* assetName, bool assetQueryAsSource)
+   {
+      // Perform query.
+      return assetManager->findAssetCategory(assetQuery, assetName, assetQueryAsSource);
+   }
+
+   DLL_PUBLIC int AssetManagerFindAssetAutoUnload(AssetManager* assetManager, AssetQuery* assetQuery, bool assetAutoUnload, bool assetQueryAsSource)
+   {
+      // Perform query.
+      return assetManager->findAssetAutoUnload(assetQuery, assetAutoUnload, assetQueryAsSource);
+   }
+
+   DLL_PUBLIC int AssetManagerFindAssetInternal(AssetManager* assetManager, AssetQuery* assetQuery, bool assetInternal, bool assetQueryAsSource)
+   {
+      // Perform query.
+      return assetManager->findAssetInternal(assetQuery, assetInternal, assetQueryAsSource);
+   }
+
+   DLL_PUBLIC int AssetManagerFindAssetPrivate(AssetManager* assetManager, AssetQuery* assetQuery, bool assetPrivate, bool assetQueryAsSource)
+   {
+      // Perform query.
+      return assetManager->findAssetPrivate(assetQuery, assetPrivate, assetQueryAsSource);
+   }
+
+   DLL_PUBLIC int AssetManagerFindAssetType(AssetManager* assetManager, AssetQuery* assetQuery, const char* assetType, bool assetQueryAsSource)
+   {
+      // Perform query.
+      return assetManager->findAssetType(assetQuery, assetType, assetQueryAsSource);
+   }
+
+   DLL_PUBLIC int AssetManagerFindAssetDependsOn(AssetManager* assetManager, AssetQuery* assetQuery, const char* assetId)
+   {
+      // Perform query.
+      return assetManager->findAssetDependsOn(assetQuery, assetId);
+   }
+
+   DLL_PUBLIC int AssetManagerFindAssetIsDependedOn(AssetManager* assetManager, AssetQuery* assetQuery, const char* assetId)
+   {
+      // Perform query.
+      return assetManager->findAssetIsDependedOn(assetQuery, assetId);
+   }
+
+   DLL_PUBLIC int AssetManagerFindInvalidAssetReferences(AssetManager* assetManager, AssetQuery* assetQuery)
+   {
+      // Perform query.
+      return assetManager->findInvalidAssetReferences(assetQuery);
+   }
+
+   DLL_PUBLIC int AssetManagerFindTaggedAssets(AssetManager* assetManager, AssetQuery* assetQuery, const char* assetTagNames, bool assetQueryAsSource)
+   {
+      // Perform query.
+      return assetManager->findTaggedAssets(assetQuery, assetTagNames, assetQueryAsSource);
+   }
+
+   DLL_PUBLIC int AssetManagerFindAssetLooseFile(AssetManager* assetManager, AssetQuery* assetQuery, const char* assetLooseFile, bool assetQueryAsSource)
+   {
+      // Perform query.
+      return assetManager->findAssetLooseFile(assetQuery, assetLooseFile, assetQueryAsSource);
+   }
+
+   DLL_PUBLIC bool AssetManagerGetDeclaredAssetCount(AssetManager* assetManager)
+   {
+      return assetManager->getDeclaredAssetCount();
+   }
+
+   DLL_PUBLIC bool AssetManagerGetReferencedAssetCount(AssetManager* assetManager)
+   {
+      return assetManager->getReferencedAssetCount();
+   }
+
+   DLL_PUBLIC bool AssetManagerGetLoadedInternalAssetCount(AssetManager* assetManager)
+   {
+      return assetManager->getLoadedInternalAssetCount();
+   }
+
+   DLL_PUBLIC bool AssetManagerGetMaxLoadedInternalAssetCount(AssetManager* assetManager)
+   {
+      return assetManager->getMaxLoadedInternalAssetCount();
+   }
+
+   DLL_PUBLIC bool AssetManagerGetLoadedExternalAssetCount(AssetManager* assetManager)
+   {
+      return assetManager->getLoadedExternalAssetCount();
+   }
+
+   DLL_PUBLIC bool AssetManagerGetMaxLoadedExternalAssetCount(AssetManager* assetManager)
+   {
+      return assetManager->getMaxLoadedExternalAssetCount();
+   }
+
+   DLL_PUBLIC void AssetManagerDumpDeclaredAssets(AssetManager* assetManager)
+   {
+      assetManager->dumpDeclaredAssets();
+   }
+}

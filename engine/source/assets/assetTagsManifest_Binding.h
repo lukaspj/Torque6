@@ -171,3 +171,81 @@ ConsoleMethodWithDocs( AssetTagsManifest, hasTag, ConsoleBool, 4, 4, (assetId, t
 }
 
 ConsoleMethodGroupEndWithDocs(AssetTagsManifest)
+
+extern "C"{
+   DLL_PUBLIC AssetTagsManifest* AssetTagsManifestCreateInstance()
+   {
+      return new AssetTagsManifest();
+   }
+
+   DLL_PUBLIC void AssetTagsManifestCreateTag(AssetTagsManifest* assetTagsManifest, const char* tagName)
+   {
+      assetTagsManifest->createTag(tagName);
+   }
+
+   DLL_PUBLIC bool AssetTagsManifestRenameTag(AssetTagsManifest* assetTagsManifest, const char* oldTagName, const char* newTagName)
+   {
+      return assetTagsManifest->renameTag(oldTagName, newTagName);
+   }
+
+   DLL_PUBLIC bool AssetTagsManifestDeleteTag(AssetTagsManifest* assetTagsManifest, const char* tagName)
+   {
+      return assetTagsManifest->deleteTag(tagName);
+   }
+
+   DLL_PUBLIC bool AssetTagsManifestIsTag(AssetTagsManifest* assetTagsManifest, const char* tagName)
+   {
+      return assetTagsManifest->isTag(tagName);
+   }
+
+   DLL_PUBLIC int AssetTagsManifestGetTagCount(AssetTagsManifest* assetTagsManifest)
+   {
+      return assetTagsManifest->getTagCount();
+   }
+
+   DLL_PUBLIC const char* AssetTagsManifestGetTag(AssetTagsManifest* assetTagsManifest, int tagIndex)
+   {
+      // Is the tag index out-of-bounds?
+      if (tagIndex >= assetTagsManifest->getTagCount())
+      {
+         // Yes, so warn.
+         Con::warnf("AssetTagsManifest: Asset tag index '%d' is out of bounds.  Asset tag count is '%d'", tagIndex, assetTagsManifest->getTagCount());
+         return nullptr;
+      }
+
+      return assetTagsManifest->getTag(tagIndex);
+   }
+
+   DLL_PUBLIC int AssetTagsManifestGetAssetTagCount(AssetTagsManifest* assetTagsManifest, const char* assetId)
+   {
+      return assetTagsManifest->getAssetTagCount(assetId);
+   }
+
+   DLL_PUBLIC const char* AssetTagsManifestGetAssetTag(AssetTagsManifest* assetTagsManifest, const char* assetId, int tagIndex)
+   {
+      // Is the tag index out-of-bounds?
+      if (tagIndex >= assetTagsManifest->getAssetTagCount(assetId))
+      {
+         // Yes, so warn.
+         Con::warnf("AssetTagsManifest: Asset tag index '%d' is out of bounds.  Asset tag count is '%d'", tagIndex, assetTagsManifest->getTagCount());
+         return nullptr;
+      }
+
+      return assetTagsManifest->getAssetTag(assetId, tagIndex);
+   }
+
+   DLL_PUBLIC bool AssetTagsManifestTag(AssetTagsManifest* assetTagsManifest, const char* assetId, const char* tagName)
+   {
+      return assetTagsManifest->tag(assetId, tagName);
+   }
+
+   DLL_PUBLIC bool AssetTagsManifestUntag(AssetTagsManifest* assetTagsManifest, const char* assetId, const char* tagName)
+   {
+      return assetTagsManifest->untag(assetId, tagName);
+   }
+
+   DLL_PUBLIC bool AssetTagsManifestHasTag(AssetTagsManifest* assetTagsManifest, const char* assetId, const char* tagName)
+   {
+      return assetTagsManifest->hasTag(assetId, tagName);
+   }
+}

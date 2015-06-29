@@ -223,7 +223,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\engine\source\torqueConfig.h" />
     <ClInclude Include="..\..\engine\source\2d\assets\ImageAsset.h" />
-    <ClInclude Include="..\..\engine\source\2d\assets\ImageAsset_ScriptBinding.h" />
+    <ClInclude Include="..\source\2d\assets\ImageAsset_Binding.h" />
     <ClInclude Include="..\..\engine\source\2d\core\BatchRender.h" />
     <ClInclude Include="..\..\engine\source\2d\core\CoreMath.h" />
     <ClInclude Include="..\..\engine\source\2d\core\ImageFrameProvider.h" />
@@ -239,11 +239,11 @@
     <ClInclude Include="..\..\engine\source\3d\entity\entity.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\entityTemplate.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\entityTemplateAsset.h" />
-    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplateAsset_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\entity\entityTemplateAsset_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\entityTemplate_ScriptBinding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\entity_ScriptBinding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\meshAsset.h" />
-    <ClInclude Include="..\..\engine\source\3d\entity\meshAsset_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\entity\meshAsset_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent_ScriptBinding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\components\baseComponent.h" />
@@ -257,7 +257,7 @@
     <ClInclude Include="..\..\engine\source\3d\entity\components\textComponent.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\components\textComponent_ScriptBinding.h" />
     <ClInclude Include="..\..\engine\source\3d\material\materialAsset.h" />
-    <ClInclude Include="..\..\engine\source\3d\material\materialAsset_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\material\materialAsset_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\material\materialTemplate.h" />
     <ClInclude Include="..\..\engine\source\3d\material\materialTemplate_ScriptBinding.h" />
     <ClInclude Include="..\..\engine\source\3d\material\nodes\deferredNode.h" />
@@ -286,16 +286,16 @@
     <ClInclude Include="..\..\engine\source\algorithm\hashFunction.h" />
     <ClInclude Include="..\..\engine\source\algorithm\md5.h" />
     <ClInclude Include="..\..\engine\source\assets\assetBase.h" />
-    <ClInclude Include="..\..\engine\source\assets\assetBase_ScriptBinding.h" />
+    <ClInclude Include="..\source\assets\assetBase_Binding.h" />
     <ClInclude Include="..\..\engine\source\assets\assetDefinition.h" />
     <ClInclude Include="..\..\engine\source\assets\assetFieldTypes.h" />
     <ClInclude Include="..\..\engine\source\assets\assetManager.h" />
-    <ClInclude Include="..\..\engine\source\assets\assetManager_ScriptBinding.h" />
+    <ClInclude Include="..\source\assets\assetManager_Binding.h" />
     <ClInclude Include="..\..\engine\source\assets\assetPtr.h" />
     <ClInclude Include="..\..\engine\source\assets\assetQuery.h" />
-    <ClInclude Include="..\..\engine\source\assets\assetQuery_ScriptBinding.h" />
+    <ClInclude Include="..\source\assets\assetQuery_Binding.h" />
     <ClInclude Include="..\..\engine\source\assets\assetTagsManifest.h" />
-    <ClInclude Include="..\..\engine\source\assets\assetTagsManifest_ScriptBinding.h" />
+    <ClInclude Include="..\source\assets\assetTagsManifest_Binding.h" />
     <ClInclude Include="..\..\engine\source\assets\declaredAssets.h" />
     <ClInclude Include="..\..\engine\source\assets\referencedAssets.h" />
     <ClInclude Include="..\..\engine\source\assets\tamlAssetDeclaredUpdateVisitor.h" />
@@ -418,7 +418,7 @@
     <ClInclude Include="..\..\engine\source\graphics\PNGImage.h" />
     <ClInclude Include="..\..\engine\source\graphics\PNGImage_ScriptBinding.h" />
     <ClInclude Include="..\..\engine\source\graphics\shaders.h" />
-    <ClInclude Include="..\..\engine\source\graphics\shaders_ScriptBinding.h" />
+    <ClInclude Include="..\source\graphics\shaders_Binding.h" />
     <ClInclude Include="..\..\engine\source\graphics\splineUtil.h" />
     <ClInclude Include="..\..\engine\source\graphics\TextureDictionary.h" />
     <ClInclude Include="..\..\engine\source\graphics\TextureHandle.h" />
@@ -492,6 +492,9 @@
     <ClInclude Include="..\..\engine\source\gui\editor\guiSeparatorCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\language\lang.h" />
     <ClInclude Include="..\..\engine\source\input\actionMap.h" />
+    <ClInclude Include="..\source\assets\declaredAssets_Binding.h" />
+    <ClInclude Include="..\source\assets\referencedAssets_Binding.h" />
+    <ClInclude Include="..\source\audio\AudioAsset_Binding.h" />
     <ClInclude Include="..\source\input\actionMap_Binding.h" />
     <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionConstants.h" />
     <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionManager.h" />
@@ -715,7 +718,7 @@
     <ClInclude Include="..\..\engine\source\platformWin32\win_release_prefix.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\nativeDialogs\win32DirectoryResolver.h" />
     <ClInclude Include="..\..\engine\source\plugins\pluginAsset.h" />
-    <ClInclude Include="..\..\engine\source\plugins\pluginAsset_ScriptBinding.h" />
+    <ClInclude Include="..\source\plugins\pluginAsset_Binding.h" />
     <ClInclude Include="..\..\engine\source\plugins\plugins.h" />
     <ClInclude Include="..\..\engine\source\plugins\plugins_ScriptBinding.h" />
     <ClInclude Include="..\..\engine\source\plugins\plugins_shared.h" />

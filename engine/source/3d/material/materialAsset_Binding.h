@@ -1,5 +1,5 @@
-//-----------------------------------------------------------------------------
-// Copyright (c) 2013 GarageGames, LLC
+﻿//-----------------------------------------------------------------------------
+// Copyright (c) 2015 Andrew Mac
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
@@ -20,28 +20,25 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-#ifndef _DECLARED_ASSETS_H_
-#include "assets/declaredAssets.h"
-#endif
+ConsoleMethodGroupBeginWithDocs(MaterialAsset, AssetBase)
 
-#ifndef _CONSOLETYPES_H_
-#include "console/consoleTypes.h"
-#endif
+// Nothing Yet
 
-#include "declaredAssets_Binding.h"
+ConsoleMethodGroupEndWithDocs(MaterialAsset)
 
-//-----------------------------------------------------------------------------
+extern "C"{
+   DLL_PUBLIC MaterialAsset* MaterialAssetCreateInstance()
+   {
+      return new MaterialAsset();
+   }
 
-IMPLEMENT_CONOBJECT( DeclaredAssets );
+   DLL_PUBLIC const char* MaterialAssetGetTemplateFile(MaterialAsset* materialAsset)
+   {
+      return materialAsset->getTemplateFile();
+   }
 
-//-----------------------------------------------------------------------------
-
-void DeclaredAssets::initPersistFields()
-{
-    // Call Parent.
-    Parent::initPersistFields();
-        
-    addField("Path", TypeString, Offset(mPath, DeclaredAssets), "" );
-    addField("Extension", TypeString, Offset(mExtension, DeclaredAssets), "" );
-    addField("Recurse", TypeBool, Offset(mRecurse, DeclaredAssets), "" );
+   DLL_PUBLIC void MaterialAssetSetTemplateFile(MaterialAsset* materialAsset, const char* file)
+   {
+      materialAsset->setTemplateFile(file);
+   }
 }

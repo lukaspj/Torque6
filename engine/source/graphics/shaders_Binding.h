@@ -1,5 +1,5 @@
-﻿//-----------------------------------------------------------------------------
-// Copyright (c) 2013 GarageGames, LLC
+//-----------------------------------------------------------------------------
+// Copyright (c) 2015 Andrew Mac
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
@@ -20,24 +20,36 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-ConsoleMethodGroupBeginWithDocs(AssetBase, SimObject)
-
-/*! Refresh the asset.
-    @return No return value.
-*/
-ConsoleMethodWithDocs( AssetBase, refreshAsset, ConsoleVoid, 2, 2, ())
+ConsoleNamespaceFunction( Graphics, setDefaultShaderPath, ConsoleVoid, 2, 2, (""))
 {
-    object->refreshAsset();
+   dSprintf(Graphics::shaderPath, 1024, "%s/", argv[1]);
+   dSprintf(Graphics::shaderIncludePath, 1024, "%s/includes/", argv[1]);
+   dSprintf(Graphics::shaderVaryingPath, 1024, "%s/includes/varying.def.sc", argv[1]);
 }
 
-//-----------------------------------------------------------------------------
+extern "C"{
+   DLL_PUBLIC Graphics::ShaderAsset* ShaderAssetCreateInstance()
+   {
+      return new Graphics::ShaderAsset();
+   }
 
-/*! Gets the assets' Asset Id.  This is only available if the asset was acquired from the asset manager.
-    @return The assets' Asset Id.
-*/
-ConsoleMethodWithDocs( AssetBase, getAssetId, ConsoleString, 2, 2, ())
-{
-    return object->getAssetId();
+   DLL_PUBLIC const char* ShaderAssetGetVertexShaderFile(Graphics::ShaderAsset* shaderAsset)
+   {
+      return shaderAsset->getVertexShaderPath();
+   }
+
+   DLL_PUBLIC void ShaderAssetSetVertexShaderFile(Graphics::ShaderAsset* shaderAsset, const char* val)
+   {
+      shaderAsset->setVertexShaderPath(val);
+   }
+
+   DLL_PUBLIC const char* ShaderAssetGetPixelShaderFile(Graphics::ShaderAsset* shaderAsset)
+   {
+      return shaderAsset->getPixelShaderPath();
+   }
+
+   DLL_PUBLIC void ShaderAssetSetPixelShaderFile(Graphics::ShaderAsset* shaderAsset, const char* val)
+   {
+      shaderAsset->setPixelShaderPath(val);
+   }
 }
-
-ConsoleMethodGroupEndWithDocs(AssetBase)

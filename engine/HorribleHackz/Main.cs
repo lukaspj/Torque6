@@ -1,6 +1,6 @@
-﻿using HorribleHackz.CustomAttributes;
-using Torque6_Bridge;
-using Torque6_Bridge.SimObjects;
+﻿using System;
+using HorribleHackz.CustomAttributes;
+using Torque6_Bridge.SimObjects.Assets;
 
 //using IJWLayer;
 
@@ -9,22 +9,11 @@ namespace HorribleHackz
    internal class MainClass
    {
       //public static ModuleManager ModuleDatabase;
-      //public static AssetManager AssetDatabase;
+      public static AssetManager AssetDatabase;
 
       [ScriptEntryPoint]
       public static void EntryPoint()
       {
-         SimObject testSimObject = new SimObject()
-         {
-            CanSaveDynamicFields = true,
-            Name = "Fisk",
-            Class = "TestClass"
-         };
-         testSimObject.RegisterObject();
-         testSimObject.Dump();
-         testSimObject.Call("Test", "Fisk1", "Fisk2", "", "Fisk 3");
-         testSimObject.DeleteObject();
-         testSimObject.Dump(); // Throws an exception
          // Mandatory initialization, since these can't be set based on the non-existant main.cs
          //var CSDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
          //Engine.Platform.setMainDotCsDir(CSDir);
@@ -43,18 +32,18 @@ namespace HorribleHackz
 
          //// Find the Databases by name
          //ModuleDatabase = ModuleManager.Wrap("ModuleDatabase");
-         //AssetDatabase = AssetManager.Wrap("AssetDatabase");
+         AssetDatabase = new AssetManager("AssetDatabase");
 
          //// Make sure they have been created
          //if (!ModuleDatabase.IsAlive())
          //   throw new Exception("ModuleDatabase not found");
-         //if (!AssetDatabase.IsAlive())
-         //   throw new Exception("AssetDatabase not found");
+         if (AssetDatabase.IsDead())
+            throw new Exception("AssetDatabase not found");
 
          //// Didn't implement this property yet.
          //ModuleDatabase.setFieldValue("EchoInfo", "false");
-         //AssetDatabase.EchoInfo = false;
-         //AssetDatabase.IgnoreAutoUnload = true;
+         AssetDatabase.EchoInfo = false;
+         AssetDatabase.IgnoreAutoUnload = true;
 
          //// Scan modules.
          //ModuleDatabase.scanModules("modules");

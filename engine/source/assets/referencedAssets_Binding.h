@@ -1,5 +1,5 @@
-﻿//-----------------------------------------------------------------------------
-// Copyright (c) 2015 Andrew Mac
+//-----------------------------------------------------------------------------
+// Copyright (c) 2013 GarageGames, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
@@ -20,8 +20,39 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-ConsoleMethodGroupBeginWithDocs(MeshAsset, AssetBase)
+extern "C" {
+   DLL_PUBLIC ReferencedAssets* ReferencedAssetsCreateInstance()
+   {
+      return new ReferencedAssets();
+   }
 
-// Nothing Yet
+   DLL_PUBLIC const char* ReferencedAssetsGetPath(ReferencedAssets* assets)
+   {
+      return assets->getPath();
+   }
 
-ConsoleMethodGroupEndWithDocs(MeshAsset)
+   DLL_PUBLIC void ReferencedAssetsSetPath(ReferencedAssets* assets, const char* path)
+   {
+      assets->setPath(path);
+   }
+
+   DLL_PUBLIC const char* ReferencedAssetsGetExtension(ReferencedAssets* assets)
+   {
+      return assets->getExtension();
+   }
+
+   DLL_PUBLIC void ReferencedAssetsSetExtension(ReferencedAssets* assets, const char* path)
+   {
+      assets->setExtension(path);
+   }
+
+   DLL_PUBLIC bool ReferencedAssetsGetRecurse(ReferencedAssets* assets)
+   {
+      return assets->getRecurse();
+   }
+
+   DLL_PUBLIC void ReferencedAssetsSetRecurse(ReferencedAssets* assets, bool value)
+   {
+      assets->setRecurse(value);
+   }
+}

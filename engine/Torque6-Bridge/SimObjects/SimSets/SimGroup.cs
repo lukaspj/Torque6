@@ -8,7 +8,7 @@ namespace Torque6_Bridge.SimObjects.SimSets
    {
       public SimGroup()
       {
-         ObjectPtr = Sim.WrapObject(Internal.SimGroupCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimGroupCreateInstance());
       }
 
       public SimGroup(uint pId) : base(pId)
@@ -26,7 +26,7 @@ namespace Torque6_Bridge.SimObjects.SimSets
 
       #region UnsafeNativeMethods
 
-      internal new struct Internal
+      new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr SimGroupCreateInstance();

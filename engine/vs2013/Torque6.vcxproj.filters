@@ -216,9 +216,6 @@
     <ClInclude Include="..\..\engine\source\2d\assets\ImageAsset.h">
       <Filter>engine\source\2d\assets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\2d\assets\ImageAsset_ScriptBinding.h">
-      <Filter>engine\source\2d\assets</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\2d\core\BatchRender.h">
       <Filter>engine\source\2d\core</Filter>
     </ClInclude>
@@ -264,9 +261,6 @@
     <ClInclude Include="..\..\engine\source\3d\entity\entityTemplateAsset.h">
       <Filter>engine\source\3d\entity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplateAsset_ScriptBinding.h">
-      <Filter>engine\source\3d\entity</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\entityTemplate_ScriptBinding.h">
       <Filter>engine\source\3d\entity</Filter>
     </ClInclude>
@@ -274,9 +268,6 @@
       <Filter>engine\source\3d\entity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\meshAsset.h">
-      <Filter>engine\source\3d\entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\entity\meshAsset_ScriptBinding.h">
       <Filter>engine\source\3d\entity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent.h">
@@ -316,9 +307,6 @@
       <Filter>engine\source\3d\entity\components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\material\materialAsset.h">
-      <Filter>engine\source\3d\material</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\material\materialAsset_ScriptBinding.h">
       <Filter>engine\source\3d\material</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\material\materialTemplate.h">
@@ -405,9 +393,6 @@
     <ClInclude Include="..\..\engine\source\assets\assetBase.h">
       <Filter>engine\source\assets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\assets\assetBase_ScriptBinding.h">
-      <Filter>engine\source\assets</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\assets\assetDefinition.h">
       <Filter>engine\source\assets</Filter>
     </ClInclude>
@@ -417,22 +402,13 @@
     <ClInclude Include="..\..\engine\source\assets\assetManager.h">
       <Filter>engine\source\assets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\assets\assetManager_ScriptBinding.h">
-      <Filter>engine\source\assets</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\assets\assetPtr.h">
       <Filter>engine\source\assets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\assets\assetQuery.h">
       <Filter>engine\source\assets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\assets\assetQuery_ScriptBinding.h">
-      <Filter>engine\source\assets</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\assets\assetTagsManifest.h">
-      <Filter>engine\source\assets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\assets\assetTagsManifest_ScriptBinding.h">
       <Filter>engine\source\assets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\assets\declaredAssets.h">
@@ -799,9 +775,6 @@
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\shaders.h">
-      <Filter>engine\source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\graphics\shaders_ScriptBinding.h">
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\splineUtil.h">
@@ -1689,9 +1662,6 @@
     <ClInclude Include="..\..\engine\source\plugins\pluginAsset.h">
       <Filter>engine\source\plugins</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\plugins\pluginAsset_ScriptBinding.h">
-      <Filter>engine\source\plugins</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\plugins\plugins.h">
       <Filter>engine\source\plugins</Filter>
     </ClInclude>
@@ -1868,6 +1838,45 @@
     </ClInclude>
     <ClInclude Include="..\source\input\actionMap_Binding.h">
       <Filter>engine\source\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\assets\declaredAssets_Binding.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\assets\referencedAssets_Binding.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\assets\assetBase_Binding.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\audio\AudioAsset_Binding.h">
+      <Filter>engine\source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\material\materialAsset_Binding.h">
+      <Filter>engine\source\3d\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\entity\meshAsset_Binding.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\2d\assets\ImageAsset_Binding.h">
+      <Filter>engine\source\2d\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\plugins\pluginAsset_Binding.h">
+      <Filter>engine\source\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\graphics\shaders_Binding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\assets\assetManager_Binding.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\assets\assetQuery_Binding.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\assets\assetTagsManifest_Binding.h">
+      <Filter>engine\source\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\entity\entityTemplateAsset_Binding.h">
+      <Filter>engine\source\3d\entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

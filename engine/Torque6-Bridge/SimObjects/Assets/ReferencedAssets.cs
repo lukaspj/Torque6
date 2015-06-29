@@ -8,7 +8,7 @@ namespace Torque6_Bridge.SimObjects.Assets
    {
       public ReferencedAssets()
       {
-         ObjectPtr = Sim.WrapObject(Internal.ReferencedAssetsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ReferencedAssetsCreateInstance());
       }
 
       public ReferencedAssets(uint pId) : base(pId)
@@ -27,18 +27,76 @@ namespace Torque6_Bridge.SimObjects.Assets
       {
       }
 
-      #region Properties
-      public string Path { get; set; }
-      public string Extension { get; set; }
-      public bool Recurse { get; set; }
-      #endregion
-
       #region UnsafeNativeMethods
 
-      new internal struct Internal
+      new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr ReferencedAssetsCreateInstance();
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string ReferencedAssetsGetPath(IntPtr pReferencedAssetsPtr);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void ReferencedAssetsSetPath(IntPtr pReferencedAssetsPtr, string pPath);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string ReferencedAssetsGetExtension(IntPtr pReferencedAssetsPtr);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void ReferencedAssetsSetExtension(IntPtr pReferencedAssetsPtr, string pExtension);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern bool ReferencedAssetsGetRecurse(IntPtr pReferencedAssetsPtr);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void ReferencedAssetsSetRecurse(IntPtr pReferencedAssetsPtr, bool pRecurse);
+      }
+
+      #endregion
+
+      #region Properties
+
+      public string Path
+      {
+         get
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            return InternalUnsafeMethods.ReferencedAssetsGetPath(ObjectPtr->ObjPtr);
+         }
+         set
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            InternalUnsafeMethods.ReferencedAssetsSetPath(ObjectPtr->ObjPtr, value);
+         }
+      }
+
+      public string Extension
+      {
+         get
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            return InternalUnsafeMethods.ReferencedAssetsGetExtension(ObjectPtr->ObjPtr);
+         }
+         set
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            InternalUnsafeMethods.ReferencedAssetsSetExtension(ObjectPtr->ObjPtr, value);
+         }
+      }
+
+      public bool Recurse
+      {
+         get
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            return InternalUnsafeMethods.ReferencedAssetsGetRecurse(ObjectPtr->ObjPtr);
+         }
+         set
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            InternalUnsafeMethods.ReferencedAssetsSetRecurse(ObjectPtr->ObjPtr, value);
+         }
       }
 
       #endregion

@@ -20,8 +20,25 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-ConsoleMethodGroupBeginWithDocs(ShaderAsset, AssetBase)
+ConsoleMethodGroupBeginWithDocs(MeshAsset, AssetBase)
 
 // Nothing Yet
 
-ConsoleMethodGroupEndWithDocs(ShaderAsset)
+ConsoleMethodGroupEndWithDocs(MeshAsset)
+
+extern "C"{
+   DLL_PUBLIC MeshAsset* MeshAssetCreateInstance()
+   {
+      return new MeshAsset();
+   }
+
+   DLL_PUBLIC const char* MeshAssetGetMeshFile(MeshAsset* meshAsset)
+   {
+      return meshAsset->getMeshFile();
+   }
+
+   DLL_PUBLIC void MeshAssetSetMeshFile(MeshAsset* meshAsset, const char* val)
+   {
+      meshAsset->setMeshFile(val);
+   }
+}

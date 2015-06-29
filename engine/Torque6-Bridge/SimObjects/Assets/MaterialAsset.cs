@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Torque6_Bridge.SimObjects.Assets
 {
-   class BaseMaterialAsset
+   class MaterialAsset
    {
    }
 }

@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // Copyright (c) 2015 Andrew Mac
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,9 +20,25 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-ConsoleNamespaceFunction( Graphics, setDefaultShaderPath, ConsoleVoid, 2, 2, (""))
-{
-   dSprintf(Graphics::shaderPath, 1024, "%s/", argv[1]);
-   dSprintf(Graphics::shaderIncludePath, 1024, "%s/includes/", argv[1]);
-   dSprintf(Graphics::shaderVaryingPath, 1024, "%s/includes/varying.def.sc", argv[1]);
+ConsoleMethodGroupBeginWithDocs(ShaderAsset, AssetBase)
+
+// Nothing Yet
+
+ConsoleMethodGroupEndWithDocs(ShaderAsset)
+
+extern "C"{
+   DLL_PUBLIC PluginAsset* PluginAssetCreateInstance()
+   {
+      return new PluginAsset();
+   }
+
+   DLL_PUBLIC const char* PluginAssetGetPluginFile(PluginAsset* pluginAsset)
+   {
+      return pluginAsset->getPluginPath();
+   }
+
+   DLL_PUBLIC void PluginAssetSetPluginFile(PluginAsset* pluginAsset, const char* val)
+   {
+      pluginAsset->setPluginPath(val);
+   }
 }

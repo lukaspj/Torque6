@@ -47,12 +47,12 @@
     <Compile Include="SimObjects\Assets\AssetQuery.cs" />
     <Compile Include="SimObjects\Assets\AssetTagsManifest.cs" />
     <Compile Include="SimObjects\Assets\AudioAsset.cs" />
-    <Compile Include="SimObjects\Assets\BaseMaterialAsset.cs" />
+    <Compile Include="SimObjects\Assets\EntityTemplateAsset.cs" />
+    <Compile Include="SimObjects\Assets\MaterialAsset.cs" />
     <Compile Include="SimObjects\Assets\DeclaredAssets.cs" />
-    <Compile Include="SimObjects\Assets\DeferredMaterialAsset.cs" />
-    <Compile Include="SimObjects\Assets\ForwardMaterialAsset.cs" />
     <Compile Include="SimObjects\Assets\ImageAsset.cs" />
     <Compile Include="SimObjects\Assets\MeshAsset.cs" />
+    <Compile Include="SimObjects\ModuleDefinition.cs" />
     <Compile Include="SimObjects\Assets\PluginAsset.cs" />
     <Compile Include="SimObjects\Assets\ReferencedAssets.cs" />
     <Compile Include="SimObjects\Assets\ShaderAsset.cs" />
