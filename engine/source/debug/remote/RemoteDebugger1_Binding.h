@@ -57,3 +57,32 @@ ConsoleMethodWithDocs( RemoteDebugger1, setNextStatementBreak, ConsoleVoid, 3, 3
 }
 
 ConsoleMethodGroupEndWithDocs(RemoteDebugger1)
+
+extern "C"{
+   DLL_PUBLIC RemoteDebugger1* RemoteDebugger1CreateInstance()
+   {
+      return new RemoteDebugger1();
+   }
+
+   DLL_PUBLIC const char* RemoteDebugger1GetCodeFiles(RemoteDebugger1* debugger1)
+   {
+      // Fetch a return buffer.  This may be excessive but it avoids reallocation code.
+      S32 bufferSize = 1024 * 65;
+      char* pBuffer = Con::getReturnBuffer(bufferSize);
+
+      // Get the code files.
+      if (!debugger1->getCodeFiles(pBuffer, bufferSize))
+      {
+         // Warn.
+         Con::warnf("Fetching code files resulted in a buffer overflow.");
+         return nullptr;
+      }
+
+      return pBuffer;
+   }
+
+   DLL_PUBLIC void RemoteDebugger1SetNextStatementBreak(RemoteDebugger1* debugger1, bool enabled)
+   {
+      debugger1->setNextStatementBreak(enabled);
+   }
+}

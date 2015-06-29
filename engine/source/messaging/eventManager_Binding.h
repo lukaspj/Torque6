@@ -116,3 +116,65 @@ ConsoleMethodWithDocs( EventManager, dumpSubscribers, ConsoleVoid, 2, 3, ( Strin
 }
 
 ConsoleMethodGroupEndWithDocs(EventManager)
+
+extern "C" {
+   DLL_PUBLIC EventManager* EventManagerCreateInstance()
+   {
+      return new EventManager();
+   }
+
+   DLL_PUBLIC const char* EventManagerGetQueue(EventManager* eventManager)
+   {
+      return eventManager->getMessageQueue();
+   }
+
+   DLL_PUBLIC void EventManagerSetQueue(EventManager* eventManager, const char* value)
+   {
+      eventManager->setMessageQueue(value);
+   }
+
+   DLL_PUBLIC bool EventManagerRegisterEvent(EventManager* eventManager, const char* eventName)
+   {
+      return eventManager->registerEvent(eventName);
+   }
+
+   DLL_PUBLIC void EventManagerUnregisterEvent(EventManager* eventManager, const char* eventName)
+   {
+      eventManager->unregisterEvent(eventName);
+   }
+
+   DLL_PUBLIC bool EventManagerIsRegisteredEvent(EventManager* eventManager, const char* eventName)
+   {
+      return eventManager->isRegisteredEvent(eventName);
+   }
+
+   DLL_PUBLIC bool EventManagerPostEvent(EventManager* eventManager, const char* eventName, const char* data)
+   {
+      return eventManager->postEvent(eventName, data);
+   }
+
+   DLL_PUBLIC bool EventManagerSubscribe(EventManager* eventManager, SimObject* listener, const char* eventName, const char* callback)
+   {
+      return eventManager->subscribe(listener, eventName, callback);
+   }
+
+   DLL_PUBLIC void EventManagerRemove(EventManager* eventManager, SimObject* listener, const char* eventName)
+   {
+      eventManager->remove(listener, eventName);
+   }
+
+   DLL_PUBLIC void EventManagerDumpEvents(EventManager* eventManager)
+   {
+      eventManager->dumpEvents();
+   }
+
+   DLL_PUBLIC void EventManagerDumpSubscribers(EventManager* eventManager, const char* eventName)
+   {
+      eventManager->dumpSubscribers(eventName);
+   }
+
+   DLL_PUBLIC void EventManagerDumpSubscribers(EventManager* eventManager)
+   {
+      eventManager->dumpSubscribers();
+   }
+}

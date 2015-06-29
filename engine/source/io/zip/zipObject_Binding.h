@@ -166,3 +166,63 @@ ConsoleMethodWithDocs(ZipObject, getFileEntry, ConsoleString, 3, 3, (index))
 }
 
 ConsoleMethodGroupEndWithDocs(ZipObject)
+
+extern "C" {
+   DLL_PUBLIC ZipObject* ZipObjectCreateInstance()
+   {
+      return new ZipObject();
+   }
+
+   DLL_PUBLIC bool ZipObjectOpenArchive(ZipObject* zipObj, const char* fileName, int mode)
+   {
+      char buf[512];
+      Con::expandPath(buf, sizeof(buf), fileName);
+
+      return zipObj->openArchive(buf, (Zip::ZipArchive::AccessMode)mode);
+   }
+
+   DLL_PUBLIC void ZipObjectCloseArchive(ZipObject* zipObj)
+   {
+      zipObj->closeArchive();
+   }
+
+   DLL_PUBLIC StreamObject* ZipObjectOpenFileForRead(ZipObject* zipObj, const char* fileName)
+   {
+      return zipObj->openFileForRead(fileName);
+   }
+
+   DLL_PUBLIC StreamObject* ZipObjectOpenFileForWrite(ZipObject* zipObj, const char* fileName)
+   {
+      return zipObj->openFileForWrite(fileName);
+   }
+
+   DLL_PUBLIC void ZipObjectCloseFile(ZipObject* zipObj, StreamObject* stream)
+   {
+      zipObj->closeFile(stream);
+   }
+
+   DLL_PUBLIC bool ZipObjectAddFile(ZipObject* zipObj, const char* fileName, const char* pathInZip, bool replace)
+   {
+      return zipObj->addFile(fileName, pathInZip, replace);
+   }
+
+   DLL_PUBLIC bool ZipObjectExtractFile(ZipObject* zipObj, const char* fileName, const char* pathInZip)
+   {
+      return zipObj->extractFile(fileName, pathInZip);
+   }
+
+   DLL_PUBLIC bool ZipObjectDeleteFile(ZipObject* zipObj, const char* pathInZip)
+   {
+      return zipObj->deleteFile(pathInZip);
+   }
+
+   DLL_PUBLIC int ZipObjectGetFileEntryCount(ZipObject* zipObj)
+   {
+      return zipObj->getFileEntryCount();
+   }
+
+   DLL_PUBLIC const char* ZipObjectGetFileEntry(ZipObject* zipObj, int index)
+   {
+      return zipObj->getFileEntry(index);
+   }
+}

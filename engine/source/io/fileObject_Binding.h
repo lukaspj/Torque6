@@ -118,3 +118,62 @@ ConsoleMethodWithDocs( FileObject, writeObject, ConsoleVoid, 3, 4, (SimObject, o
 }
 
 ConsoleMethodGroupEndWithDocs(FileObject)
+
+extern "C" {
+   DLL_PUBLIC FileObject* FileObjectCreateInstance()
+   {
+      return new FileObject();
+   }
+
+   DLL_PUBLIC bool FileObjectOpenForRead(FileObject* fileObj, const char* filename)
+   {
+      return fileObj->readMemory(filename);
+   }
+
+   DLL_PUBLIC bool FileObjectOpenForWrite(FileObject* fileObj, const char* filename)
+   {
+      return fileObj->openForWrite(filename);
+   }
+
+   DLL_PUBLIC bool FileObjectOpenForAppend(FileObject* fileObj, const char* filename)
+   {
+      return fileObj->openForWrite(filename, true);
+   }
+
+   DLL_PUBLIC bool FileObjectIsEOF(FileObject* fileObj)
+   {
+      return fileObj->isEOF();
+   }
+
+   DLL_PUBLIC const char* FileObjectReadLine(FileObject* fileObj)
+   {
+      return (const char*)fileObj->readLine();
+   }
+
+   DLL_PUBLIC const char* FileObjectPeekLine(FileObject* fileObj)
+   {
+      char *line = Con::getReturnBuffer(512);
+      fileObj->peekLine((U8*)line, 512);
+      return line;
+   }
+
+   DLL_PUBLIC void FileObjectWriteLine(FileObject* fileObj, const char* text)
+   {
+      fileObj->writeLine((const U8 *)text);
+   }
+
+   DLL_PUBLIC void FileObjectClose(FileObject* fileObj)
+   {
+      fileObj->close();
+   }
+
+   DLL_PUBLIC void FileObjectWriteObject(FileObject* fileObj, SimObject* object, const char* text)
+   {
+      fileObj->writeObject(object, (const U8 *)text);
+   }
+
+   DLL_PUBLIC void FileObjectWriteObject(FileObject* fileObj, SimObject* object)
+   {
+      fileObj->writeObject(object, nullptr);
+   }
+}

@@ -310,4 +310,179 @@ ConsoleMethodWithDocs(NameTags, queryTags, ConsoleString, 3, 4, (tagIds, [exclud
 
 ConsoleMethodGroupEndWithDocs(NameTags)
 
+extern "C" {
+   DLL_PUBLIC NameTags* NameTagsCreateInstance()
+   {
+      return new NameTags();
+   }
+
+   DLL_PUBLIC int NameTagsRenameTag(NameTags* nameTags, int tagId, const char* newTagName)
+   {
+      // Sanity!
+      if (tagId == 0)
+      {
+         Con::warnf("Invalid tag Id.\n");
+         return 0;
+      }
+
+      return nameTags->renameTag(tagId, newTagName);
+   }
+
+   DLL_PUBLIC int NameTagsDeleteTag(NameTags* nameTags, int tagId)
+   {
+      // Sanity!
+      if (tagId == 0)
+      {
+         Con::warnf("Invalid tag Id.\n");
+         return NULL;
+      }
+
+      return nameTags->deleteTag(tagId);
+   }
+
+   DLL_PUBLIC int NameTagsGetTagCount(NameTags* nameTags)
+   {
+      return nameTags->getTagCount();
+   }
+
+   DLL_PUBLIC const char* NameTagsGetTagName(NameTags* nameTags, int tagId)
+   {
+      // Sanity!
+      if (tagId == 0)
+      {
+         Con::warnf("Invalid tag Id.\n");
+         return nullptr;
+      }
+
+      return nameTags->getTagName(tagId);
+   }
+
+   DLL_PUBLIC int NameTagsGetTagId(NameTags* nameTags, const char* tagName)
+   {
+      return nameTags->getTagId(tagName);
+   }
+
+   DLL_PUBLIC const char* NameTagsGetAllTags(NameTags* nameTags)
+   {
+      // Get buffer.
+      const U32 bufferLength = 4096;
+      char* pBuffer = Con::getReturnBuffer(bufferLength);
+
+      // Format tags.
+      const S32 bufferUsed = nameTags->formatTags(pBuffer, bufferLength);
+
+      // Sanity!
+      if (bufferUsed < 0)
+      {
+         Con::warnf("Buffer overflow when formatting all tags.  All tags will not be returned.\n");
+      }
+
+      return pBuffer;
+   }
+
+   DLL_PUBLIC bool NameTagsTag(NameTags* nameTags, int objectId, int tagIdsC, int* tagIdsV)
+   {
+      // Iterate tags.
+      for (U32 index = 0; index < tagIdsC; ++index)
+      {
+         // Fetch tag Id.
+         const NameTags::TagId tagId = tagIdsV[index];
+
+         // Sanity!
+         if (tagId == 0)
+         {
+            Con::warnf("Invalid tag Id.\n");
+            return false;
+         }
+
+         // Tag.
+         if (!nameTags->tag(objectId, tagId))
+            return false;
+      }
+
+      return true;
+   }
+
+   DLL_PUBLIC bool NameTagsUntag(NameTags* nameTags, int objectId, int tagIdsC, int* tagIdsV)
+   {
+      // Iterate tags.
+      for (U32 index = 0; index < tagIdsC; ++index)
+      {
+         // Fetch tag Id.
+         const NameTags::TagId tagId = tagIdsV[index];
+
+         // Sanity!
+         if (tagId == 0)
+         {
+            Con::warnf("Invalid tag Id.\n");
+            return false;
+         }
+
+         // Tag.
+         if (!nameTags->untag(objectId, tagId))
+            return false;
+      }
+
+      return true;
+   }
+
+   DLL_PUBLIC bool NameTagsHasTags(NameTags* nameTags, int objectId, int tagIdsC, int* tagIdsV)
+   {
+      // Iterate tags.
+      for (U32 index = 0; index < tagIdsC; ++index)
+      {
+         // Fetch tag Id.
+         const NameTags::TagId tagId = tagIdsV[index];
+
+         // Sanity!
+         if (tagId == 0)
+         {
+            Con::warnf("Invalid tag Id.\n");
+            return false;
+         }
+
+         // Tag.
+         if (nameTags->hasTag(objectId, tagId))
+            return true;
+      }
+
+      return false;
+   }
+
+   DLL_PUBLIC const char* NameTagsQueryTags(NameTags* nameTags, int tagIdsC, int* tagIdsV, bool excluded)
+   {
+      if (tagIdsC <= 0)
+         return NULL;
+
+      // Query tags.
+      nameTags->queryTags(tagIdsC, tagIdsV);
+
+      // Fetch appropriate results.
+      NameTags::queryType results;
+      if (excluded)
+      {
+         results = nameTags->mIncludedQueryMap;
+      }
+      else
+      {
+         results = nameTags->mExcludedQueryMap;
+      }
+
+      // Format results.
+      U32 bufferSize = 8192;
+      char* pReturnBuffer = Con::getReturnBuffer(bufferSize);
+      dSprintf(pReturnBuffer, bufferSize * sizeof(char), "%s", "");
+      char* pBuffer = pReturnBuffer;
+
+      for (NameTags::queryType::iterator itr = results.begin(); itr != results.end(); ++itr)
+      {
+         const U32 offset = dSprintf(pBuffer, bufferSize, "%d ", itr->key);
+         pBuffer += offset;
+         bufferSize -= offset;
+      }
+
+      return pReturnBuffer;
+   }
+}
+
 #endif // _NAMETAGS_SCRIPTBINDING_H_

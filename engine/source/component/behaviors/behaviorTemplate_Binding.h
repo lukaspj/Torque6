@@ -254,3 +254,181 @@ ConsoleMethodWithDocs(BehaviorTemplate, hasBehaviorInput, ConsoleBool, 3, 3, (in
 }
 
 ConsoleMethodGroupEndWithDocs(BehaviorTemplate)
+
+
+extern "C"{
+   DLL_PUBLIC BehaviorTemplate* BehaviorTemplateCreateInstance()
+   {
+      return new BehaviorTemplate();
+   }
+
+   DLL_PUBLIC BehaviorTemplate* BehaviorInstanceGetTemplate(BehaviorInstance* instance)
+   {
+      return instance->getTemplate();
+   }
+
+   DLL_PUBLIC BehaviorComponent* BehaviorInstanceGetOwner(BehaviorInstance* instance)
+   {
+      return instance->getBehaviorOwner();
+   }
+
+   DLL_PUBLIC void BehaviorInstanceSetOwner(BehaviorInstance* instance, BehaviorComponent* val)
+   {
+      instance->setBehaviorOwner(val);
+   }
+
+   DLL_PUBLIC const char* BehaviorInstanceGetTemplateName(BehaviorInstance* instance)
+   {
+      return instance->getTemplateName();
+   }
+
+   DLL_PUBLIC BehaviorInstance* BehaviorTemplateCreateInstance(BehaviorTemplate* instance)
+   {
+      BehaviorInstance* inst = instance->createInstance();
+      return inst;
+   }
+
+   DLL_PUBLIC const char* BehaviorTemplateGetFriendlyName(BehaviorTemplate* instance)
+   {
+      return instance->getFriendlyName();
+   }
+
+   DLL_PUBLIC const char* BehaviorTemplateGetDescription(BehaviorTemplate* instance)
+   {
+      return instance->getDescription();
+   }
+
+   DLL_PUBLIC const char* BehaviorTemplateGetBehaviorType(BehaviorTemplate* instance)
+   {
+      return instance->getBehaviorType();
+   }
+
+   DLL_PUBLIC bool BehaviorTemplateAddBehaviorField(BehaviorTemplate* instance, const char* fieldName, const char* desc, const char* type, const char* defaultValue, const char* userData)
+   {
+      return instance->addBehaviorField(fieldName, desc, type, defaultValue, userData);
+   }
+
+   DLL_PUBLIC int BehaviorTemplateGetBehaviorFieldCount(BehaviorTemplate* instance)
+   {
+      return instance->getBehaviorFieldCount();
+   }
+
+   DLL_PUBLIC const char* BehaviorTemplateGetBehaviorField(BehaviorTemplate* instance, int fieldIndex)
+   {
+      // Fetch behavior field.
+      BehaviorTemplate::BehaviorField* pField = instance->getBehaviorField(fieldIndex);
+
+      // Was the field found?
+      if (!pField)
+      {
+         // No, so warn.
+         Con::warnf("getBehaviorField() - Could not find the behavior field '%i' on behavior '%s'", fieldIndex, instance->getFriendlyName());
+         return NULL;
+      }
+
+      // Format and return behavior field.
+      char* pBuffer = Con::getReturnBuffer(1024);
+      dSprintf(pBuffer, 1024, "%s\t%s\t%s", pField->mName, pField->mType, pField->mDefaultValue);
+      return pBuffer;
+   }
+
+   DLL_PUBLIC const char* BehaviorTemplateGetBehaviorFieldUserData(BehaviorTemplate* instance, int fieldIndex)
+   {
+      // Fetch behavior field.
+      BehaviorTemplate::BehaviorField* pField = instance->getBehaviorField(fieldIndex);
+
+      // Was the field found?
+      if (!pField)
+      {
+         // No, so warn.
+         Con::warnf("getBehaviorFieldUserData() - Could not find the behavior field '%i' on behavior '%s'", fieldIndex, instance->getFriendlyName());
+         return nullptr;
+      }
+
+      return pField->mUserData;
+   }
+
+   DLL_PUBLIC const char* BehaviorTemplateGetBehaviorFieldDescription(BehaviorTemplate* instance, int fieldIndex)
+   {
+      // Fetch behavior field.
+      BehaviorTemplate::BehaviorField* pField = instance->getBehaviorField(fieldIndex);
+
+      // Was the field found?
+      if (!pField)
+      {
+         // No, so warn.
+         Con::warnf("getBehaviorFieldDescription() - Could not find the behavior field '%i' on behavior '%s'", fieldIndex, instance->getFriendlyName());
+         return nullptr;
+      }
+
+      return pField->mDescription;
+   }
+
+   DLL_PUBLIC bool BehaviorTemplateAddBehaviorOutput(BehaviorTemplate* instance, const char* outputName, const char* label, const char* description)
+   {
+      return instance->addBehaviorInput(outputName, label, description);
+   }
+
+   DLL_PUBLIC int BehaviorTemplateGetBehaviorOutputCount(BehaviorTemplate* instance)
+   {
+      return instance->getBehaviorOutputCount();
+   }
+
+   DLL_PUBLIC const char* BehaviorTemplateGetBehaviorOutput(BehaviorTemplate* instance, int fieldIndex)
+   {
+      // Fetch behavior field.
+      BehaviorTemplate::BehaviorPortOutput* pPortOutput = instance->getBehaviourOutput(fieldIndex);
+
+      // Was the field found?
+      if (!pPortOutput)
+      {
+         // No, so warn.
+         Con::warnf("getBehaviorField() - Could not find the behavior output '%i' on behavior '%s'", fieldIndex, instance->getFriendlyName());
+         return nullptr;
+      }
+
+      // Format and return behavior field.
+      char* pBuffer = Con::getReturnBuffer(1024);
+      dSprintf(pBuffer, 1024, "%s\t%s\t%s", pPortOutput->mName, pPortOutput->mLabel, pPortOutput->mDescription);
+      return pBuffer;
+   }
+
+   DLL_PUBLIC bool BehaviorTemplateHasBehaviorOutput(BehaviorTemplate* instance, const char* outputName)
+   {
+      return instance->hasBehaviorOutput(outputName);
+   }
+
+   DLL_PUBLIC bool BehaviorTemplateAddBehaviorInput(BehaviorTemplate* instance, const char* inputName, const char* label, const char* description)
+   {
+      return instance->addBehaviorInput(inputName, label, description);
+   }
+
+   DLL_PUBLIC int BehaviorTemplateGetBehaviorInputCount(BehaviorTemplate* instance)
+   {
+      return instance->getBehaviorInputCount();
+   }
+
+   DLL_PUBLIC const char* BehaviorTemplateGetBehaviorInput(BehaviorTemplate* instance, int fieldIndex)
+   {
+      // Fetch behavior field.
+      BehaviorTemplate::BehaviorPortInput* pPortInput = instance->getBehaviourInput(fieldIndex);
+
+      // Was the field found?
+      if (!pPortInput)
+      {
+         // No, so warn.
+         Con::warnf("getBehaviorOutput() - Could not find the behavior input '%i' on behavior '%s'", fieldIndex, instance->getFriendlyName());
+         return nullptr;
+      }
+
+      // Format and return behavior field.
+      char* pBuffer = Con::getReturnBuffer(1024);
+      dSprintf(pBuffer, 1024, "%s\t%s\t%s", pPortInput->mName, pPortInput->mLabel, pPortInput->mDescription);
+      return pBuffer;
+   }
+
+   DLL_PUBLIC bool BehaviorTemplateHasBehaviorInput(BehaviorTemplate* instance, const char* inputName)
+   {
+      return instance->hasBehaviorInput(inputName);
+   }
+}

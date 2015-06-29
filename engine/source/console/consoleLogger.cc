@@ -22,7 +22,7 @@
 #include "console/consoleLogger.h"
 #include "console/consoleTypes.h"
 
-#include "consoleLogger_ScriptBinding.h"
+#include "consoleLogger_Binding.h"
 
 Vector<ConsoleLogger *> ConsoleLogger::mActiveLoggers;
 bool ConsoleLogger::smInitialized = false;

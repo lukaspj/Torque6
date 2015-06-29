@@ -43,3 +43,32 @@ ConsoleMethodWithDocs( ConsoleLogger, detach, ConsoleBool, 2, 2, ())
 }
 
 ConsoleMethodGroupEndWithDocs(ConsoleLogger)
+
+extern "C" {
+   DLL_PUBLIC ConsoleLogger* ConsoleLoggerCreateInstance()
+   {
+      return new ConsoleLogger();
+   }
+
+   DLL_PUBLIC int ConsoleLoggerGetLevel(ConsoleLogger* logger)
+   {
+      return logger->getLogLevel();
+   }
+
+   DLL_PUBLIC void ConsoleLoggerSetLevel(ConsoleLogger* logger, int value)
+   {
+      logger->setLogLevel((ConsoleLogEntry::Level)value);
+   }
+
+   DLL_PUBLIC bool ConsoleLoggerAttach(ConsoleLogger* logger)
+   {
+      return logger->attach();
+   }
+
+   DLL_PUBLIC bool ConsoleLoggerDetach(ConsoleLogger* logger)
+   {
+      return logger->detach();
+   }
+
+
+}
