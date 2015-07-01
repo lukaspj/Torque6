@@ -23,6 +23,8 @@
 #include "gui/messageVector.h"
 #include "io/fileObject.h"
 
+#include "gui/messageVector_Binding.h"
+
 IMPLEMENT_CONOBJECT(MessageVector);
 
 //-------------------------------------- Console functions

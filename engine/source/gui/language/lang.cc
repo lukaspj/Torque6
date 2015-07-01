@@ -31,6 +31,7 @@
 #include "memory/safeDelete.h"
 
 #include "gui/language/lang.h"
+#include "gui/language/lang_Binding.h"
 
 //////////////////////////////////////////////////////////////////////////
 // LangFile Class

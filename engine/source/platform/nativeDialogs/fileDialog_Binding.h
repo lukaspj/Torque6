@@ -105,7 +105,7 @@ extern "C"{
 
    DLL_PUBLIC bool FileDialogExecute(FileDialog* fileDialog)
    {
-      fileDialog->Execute();
+      return fileDialog->Execute();
    }
 
    DLL_PUBLIC OpenFileDialog* OpenFileDialogCreateInstance()

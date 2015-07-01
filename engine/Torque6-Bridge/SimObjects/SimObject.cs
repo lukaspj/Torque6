@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
-using Torque6_Bridge.SimObjects.SimSets;
+using Torque6_Bridge.SimObjects.Assets;
 
 namespace Torque6_Bridge.SimObjects
 {
    public class SimObjectPointerInvalidException : Exception
    {
       public SimObjectPointerInvalidException()
-      :base("The SimObject was invalid, this usually happens if you try to use an object after it has been deleted.")
+         : base("The SimObject was invalid, this usually happens if you try to use an object after it has been deleted.")
       {
       }
 
@@ -439,7 +439,7 @@ namespace Torque6_Bridge.SimObjects
       {
          if (ObjectPtr->ObjPtr != IntPtr.Zero)
          {
-            Marshal.FreeHGlobal((IntPtr) ObjectPtr);
+            Marshal.FreeHGlobal((IntPtr)ObjectPtr);
          }
       }
 

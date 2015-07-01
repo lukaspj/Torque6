@@ -167,13 +167,8 @@ extern "C" {
       fileObj->close();
    }
 
-   DLL_PUBLIC void FileObjectWriteObject(FileObject* fileObj, SimObject* object, const char* text)
+   DLL_PUBLIC void FileObjectWriteObject(FileObject* fileObj, SimObject* simObj, const char* text)
    {
-      fileObj->writeObject(object, (const U8 *)text);
-   }
-
-   DLL_PUBLIC void FileObjectWriteObject(FileObject* fileObj, SimObject* object)
-   {
-      fileObj->writeObject(object, nullptr);
+      fileObj->writeObject(simObj, (const U8 *)text);
    }
 }

@@ -32,6 +32,8 @@
 #include "2d/core/Utility.h"
 #endif
 
+#include "c-interface/c-interface.h"
+
 namespace Scene
 {
 
@@ -86,6 +88,48 @@ namespace Scene
       case 5:
          object->setBindMouse(dAtob(argv[2]), dAtob(argv[3]), dAtob(argv[4]));
          break;
+      }
+   }
+
+   extern "C" {
+      DLL_PUBLIC SceneCamera* SceneCameraCreateInstance()
+      {
+         return new SceneCamera();
+      }
+
+      DLL_PUBLIC void SceneCameraLookAt(SceneCamera* camera, CInterface::Point3FParam look_at)
+      {
+         camera->lookAt(look_at);
+      }
+
+      DLL_PUBLIC void SceneCameraTranslate(SceneCamera* camera, CInterface::Point3FParam translation)
+      {
+         camera->translate(translation);
+      }
+
+      DLL_PUBLIC void SceneCameraPan(SceneCamera* camera, CInterface::Point3FParam pan)
+      {
+         camera->pan(pan);
+      }
+
+      DLL_PUBLIC void SceneCameraSetPanVelocity(SceneCamera* camera, CInterface::Point3FParam panVel)
+      {
+         camera->setPanVelocity(panVel);
+      }
+
+      DLL_PUBLIC void SceneCameraSetPosition(SceneCamera* camera, CInterface::Point3FParam position)
+      {
+         camera->setPosition(position);
+      }
+
+      DLL_PUBLIC void SceneCameraRotate(SceneCamera* camera, CInterface::Point3FParam rotation)
+      {
+         camera->rotate(rotation);
+      }
+
+      DLL_PUBLIC void SceneCameraBindMouse(SceneCamera* camera, bool value, bool left, bool right)
+      {
+         camera->setBindMouse(value, left, right);
       }
    }
 }

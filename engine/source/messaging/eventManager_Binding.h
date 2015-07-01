@@ -172,9 +172,4 @@ extern "C" {
    {
       eventManager->dumpSubscribers(eventName);
    }
-
-   DLL_PUBLIC void EventManagerDumpSubscribers(EventManager* eventManager)
-   {
-      eventManager->dumpSubscribers();
-   }
 }

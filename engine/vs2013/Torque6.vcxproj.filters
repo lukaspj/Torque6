@@ -480,9 +480,6 @@
     <ClInclude Include="..\..\engine\source\collection\nameTags.h">
       <Filter>engine\source\collection</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\collection\nameTags_ScriptBinding.h">
-      <Filter>engine\source\collection</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\collection\simpleHashTable.h">
       <Filter>engine\source\collection</Filter>
     </ClInclude>
@@ -499,9 +496,6 @@
       <Filter>engine\source\collection</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\collection\undo.h">
-      <Filter>engine\source\collection</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\collection\undo_ScriptBinding.h">
       <Filter>engine\source\collection</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\collection\vector.h">
@@ -588,9 +582,6 @@
     <ClInclude Include="..\..\engine\source\component\behaviors\behaviorTemplate.h">
       <Filter>engine\source\component\behaviors</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorTemplate_ScriptBinding.h">
-      <Filter>engine\source\component\behaviors</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\console\ast.h">
       <Filter>engine\source\console</Filter>
     </ClInclude>
@@ -631,9 +622,6 @@
       <Filter>engine\source\console</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\console\consoleLogger.h">
-      <Filter>engine\source\console</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\console\consoleLogger_ScriptBinding.h">
       <Filter>engine\source\console</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\console\consoleNamespace.h">
@@ -685,9 +673,6 @@
       <Filter>engine\source\debug</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebugger1.h">
-      <Filter>engine\source\debug\remote</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebugger1_ScriptBinding.h">
       <Filter>engine\source\debug\remote</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBase.h">
@@ -769,9 +754,6 @@
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\PNGImage.h">
-      <Filter>engine\source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\graphics\PNGImage_ScriptBinding.h">
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\shaders.h">
@@ -1017,16 +999,10 @@
     <ClInclude Include="..\..\engine\source\io\fileObject.h">
       <Filter>engine\source\io</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\io\fileObject_ScriptBinding.h">
-      <Filter>engine\source\io</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\io\fileStream.h">
       <Filter>engine\source\io</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\io\fileStreamObject.h">
-      <Filter>engine\source\io</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\io\fileStreamObject_ScriptBinding.h">
       <Filter>engine\source\io</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\io\filterStream.h">
@@ -1042,9 +1018,6 @@
       <Filter>engine\source\io</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\io\streamObject.h">
-      <Filter>engine\source\io</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\io\streamObject_ScriptBinding.h">
       <Filter>engine\source\io</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\io\resource\resourceManager.h">
@@ -1072,9 +1045,6 @@
       <Filter>engine\source\io\zip</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\io\zip\zipObject.h">
-      <Filter>engine\source\io\zip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\io\zip\zipObject_ScriptBinding.h">
       <Filter>engine\source\io\zip</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\io\zip\zipStatFilter.h">
@@ -1191,16 +1161,10 @@
     <ClInclude Include="..\..\engine\source\messaging\eventManager.h">
       <Filter>engine\source\messaging</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\messaging\eventManager_ScriptBinding.h">
-      <Filter>engine\source\messaging</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\messaging\message.h">
       <Filter>engine\source\messaging</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\messaging\messageForwarder.h">
-      <Filter>engine\source\messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\messaging\message_ScriptBinding.h">
       <Filter>engine\source\messaging</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\messaging\scriptMsgListener.h">
@@ -1212,13 +1176,7 @@
     <ClInclude Include="..\..\engine\source\module\moduleDefinition.h">
       <Filter>engine\source\module</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\module\moduleDefinition_ScriptBinding.h">
-      <Filter>engine\source\module</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\module\moduleManager.h">
-      <Filter>engine\source\module</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\module\moduleManager_ScriptBinding.h">
       <Filter>engine\source\module</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\module\moduleMergeDefinition.h">
@@ -1239,13 +1197,7 @@
     <ClInclude Include="..\..\engine\source\network\httpObject.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\network\httpObject_ScriptBinding.h">
-      <Filter>engine\source\network</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\network\netConnection.h">
-      <Filter>engine\source\network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\network\netConnection_ScriptBinding.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\network\netInterface.h">
@@ -1255,9 +1207,6 @@
       <Filter>engine\source\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\network\netObject.h">
-      <Filter>engine\source\network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\network\netObject_ScriptBinding.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\network\netStringTable.h">
@@ -1284,9 +1233,6 @@
     <ClInclude Include="..\..\engine\source\network\tcpObject.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\network\tcpObject_ScriptBinding.h">
-      <Filter>engine\source\network</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\network\telnetConsole.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
@@ -1294,9 +1240,6 @@
       <Filter>engine\source\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\persistence\SimXMLDocument.h">
-      <Filter>engine\source\persistence</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\persistence\SimXMLDocument_ScriptBinding.h">
       <Filter>engine\source\persistence</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\allocators.h">
@@ -1363,9 +1306,6 @@
       <Filter>engine\source\persistence\taml</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\persistence\taml\tamlWriteNode.h">
-      <Filter>engine\source\persistence\taml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\persistence\taml\taml_ScriptBinding.h">
       <Filter>engine\source\persistence\taml</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\persistence\taml\binary\tamlBinaryReader.h">
@@ -1557,13 +1497,7 @@
     <ClInclude Include="..\..\engine\source\platform\menus\popupMenu.h">
       <Filter>engine\source\platform\menus</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\platform\menus\popupMenu_ScriptBinding.h">
-      <Filter>engine\source\platform\menus</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\nativeDialogs\fileDialog.h">
-      <Filter>engine\source\platform\nativeDialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\fileDialog_ScriptBinding.h">
       <Filter>engine\source\platform\nativeDialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\nativeDialogs\msgBox.h">
@@ -1877,6 +1811,87 @@
     </ClInclude>
     <ClInclude Include="..\source\3d\entity\entityTemplateAsset_Binding.h">
       <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\component\behaviors\behaviorTemplate_Binding.h">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\collection\nameTags_Binding.h">
+      <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\console\consoleLogger_Binding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\debug\remote\RemoteDebugger1_Binding.h">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\messaging\eventManager_Binding.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platform\nativeDialogs\fileDialog_Binding.h">
+      <Filter>engine\source\platform\nativeDialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\io\fileObject_Binding.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\io\zip\zipObject_Binding.h">
+      <Filter>engine\source\io\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platform\menus\popupMenu_Binding.h">
+      <Filter>engine\source\platform\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\graphics\PNGImage_Binding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiTypes_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\language\lang_Binding.h">
+      <Filter>engine\source\gui\language</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\messaging\message_Binding.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\messageVector_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\messaging\messageForwarder_Binding.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\module\moduleManager_Binding.h">
+      <Filter>engine\source\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\module\moduleDefinition_Binding.h">
+      <Filter>engine\source\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\module\moduleMergeDefinition_Binding.h">
+      <Filter>engine\source\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\netObject_Binding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\tcpObject_Binding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\httpObject_Binding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\netConnection_Binding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\persistence\SimXMLDocument_Binding.h">
+      <Filter>engine\source\persistence</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\persistence\taml\taml_Binding.h">
+      <Filter>engine\source\persistence\taml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\io\streamObject_Binding.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\io\fileStreamObject_Binding.h">
+      <Filter>engine\source\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\collection\undo_Binding.h">
+      <Filter>engine\source\collection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,7 @@
 
 #include "platform/platform.h"
 #include "sim/simObject.h"
+#include "graphics/color.h"
 
 extern "C" {
    DLL_PUBLIC void SetCallbacks(void* ptr, void* methodPtr, void* isMethodPtr, void *mainPtr);
@@ -41,6 +42,84 @@ public:
    void SetCallMethodCallback(void* ptr) { mMethodCallback = (CallMethodCallback)ptr; };
    void SetCallIsMethodCallback(void* ptr) { mIsMethodCallback = (IsMethodCallback)ptr; };
    void SetMainCallback(void* ptr) { mMainCallback = (CallMainCallback)ptr; };
+
+   struct ColorParam{
+   public:
+      int r;
+      int g;
+      int b;
+      int a;
+      ColorParam(const ColorI& copyCol)
+      {
+         r = copyCol.red;
+         g = copyCol.green;
+         b = copyCol.blue;
+         a = copyCol.alpha;
+      }
+      operator ColorI() const{
+         return ColorI(r, g, b, a);
+      }
+   };
+
+   struct Point2IParam{
+   public:
+      S32 x;
+      S32 y;
+      Point2IParam(const Point2I& copyPoint)
+      {
+         x = copyPoint.x;
+         y = copyPoint.y;
+      }
+      operator Point2I() const{
+         return Point2I(x, y);
+      }
+   };
+
+   struct Point2FParam{
+   public:
+      F32 x;
+      F32 y;
+      Point2FParam(const Point2F& copyPoint)
+      {
+         x = copyPoint.x;
+         y = copyPoint.y;
+      }
+      operator Point2F() const{
+         return Point2F(x, y);
+      }
+   };
+
+   struct Point3IParam{
+   public:
+      S32 x;
+      S32 y;
+      S32 z;
+      Point3IParam(const Point3I& copyPoint)
+      {
+         x = copyPoint.x;
+         y = copyPoint.y;
+         z = copyPoint.z;
+      }
+      operator Point3I() const{
+         return Point3I(x, y, z);
+      }
+   };
+
+   struct Point3FParam{
+   public:
+      F32 x;
+      F32 y;
+      F32 z;
+      Point3FParam(const Point3F& copyPoint)
+      {
+         x = copyPoint.x;
+         y = copyPoint.y;
+         z = copyPoint.z;
+      }
+      operator Point3F() const{
+         return Point3F(x, y, z);
+      }
+   };
 };
 
 #endif // C-INTERFACE_H

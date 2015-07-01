@@ -952,6 +952,11 @@ ConsoleMethodWithDocs( AssetManager, dumpDeclaredAssets, ConsoleVoid, 2, 2, ())
 ConsoleMethodGroupEndWithDocs(AssetManager)
 
 extern "C"{
+   DLL_PUBLIC AssetManager* AssetManagerCreateInstance()
+   {
+      return new AssetManager();
+   }
+
    DLL_PUBLIC bool AssetManagerGetEchoInfo(AssetManager* assetManager)
    {
       return assetManager->getEchoInfo();

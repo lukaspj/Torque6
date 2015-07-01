@@ -39,7 +39,7 @@
 #endif
 
 // Script bindings.
-#include "moduleManager_ScriptBinding.h"
+#include "moduleManager_Binding.h"
 #include "c-interface/c-interface.h"
 
 //-----------------------------------------------------------------------------

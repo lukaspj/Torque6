@@ -282,7 +282,7 @@ extern "C"{
       return instance->getTemplateName();
    }
 
-   DLL_PUBLIC BehaviorInstance* BehaviorTemplateCreateInstance(BehaviorTemplate* instance)
+   DLL_PUBLIC BehaviorInstance* BehaviorTemplateCreateBehaviorInstance(BehaviorTemplate* instance)
    {
       BehaviorInstance* inst = instance->createInstance();
       return inst;

@@ -1,5 +1,6 @@
 ﻿using System;
 using HorribleHackz.CustomAttributes;
+using Torque6_Bridge.SimObjects;
 using Torque6_Bridge.SimObjects.Assets;
 
 //using IJWLayer;
@@ -8,7 +9,7 @@ namespace HorribleHackz
 {
    internal class MainClass
    {
-      //public static ModuleManager ModuleDatabase;
+      public static ModuleManager ModuleDatabase;
       public static AssetManager AssetDatabase;
 
       [ScriptEntryPoint]
@@ -31,38 +32,38 @@ namespace HorribleHackz
          //Engine.Version.setCompanyAndProduct("LukasPJ", "Torque6");
 
          //// Find the Databases by name
-         //ModuleDatabase = ModuleManager.Wrap("ModuleDatabase");
+         ModuleDatabase = new ModuleManager("ModuleDatabase");
          AssetDatabase = new AssetManager("AssetDatabase");
 
          //// Make sure they have been created
-         //if (!ModuleDatabase.IsAlive())
-         //   throw new Exception("ModuleDatabase not found");
+         if (ModuleDatabase.IsDead())
+            throw new Exception("ModuleDatabase not found");
          if (AssetDatabase.IsDead())
             throw new Exception("AssetDatabase not found");
 
          //// Didn't implement this property yet.
-         //ModuleDatabase.setFieldValue("EchoInfo", "false");
+         ModuleDatabase.SetFieldValue("EchoInfo", "false");
          AssetDatabase.EchoInfo = false;
          AssetDatabase.IgnoreAutoUnload = true;
 
          //// Scan modules.
-         //ModuleDatabase.scanModules("modules");
+         ModuleDatabase.ScanModules("modules", true);
 
-         //ModuleDatabase.scanModules("../shared-modules");
+         ModuleDatabase.ScanModules("../shared-modules", true);
 
          //// Load AppCore module.
-         //ModuleDatabase.loadExplicit("AppCore");
+         ModuleDatabase.LoadExplicit("AppCore", -1);
 
          //// Load the modules needed for this example
-         //ModuleDatabase.loadExplicit("Console");
-         //ModuleDatabase.loadExplicit("FreeViewCamera");
+         ModuleDatabase.LoadExplicit("Console", -1);
+         ModuleDatabase.LoadExplicit("FreeViewCamera", -1);
       }
 
       [ConsoleFunction]
       public static void onExit()
       {
          // Unload the AppCore module.
-         //ModuleDatabase.unloadExplicit("AppCore");
+         ModuleDatabase.UnloadExplicit("AppCore");
       }
 
       [ConsoleFunction]
