@@ -24,7 +24,7 @@
 #include "console/consoleInternal.h"
 #include "components/baseComponent.h"
 
-#include "entity_ScriptBinding.h"
+#include "entity_Binding.h"
 
 namespace Scene
 {

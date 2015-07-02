@@ -23,7 +23,7 @@
 #include "baseComponent.h"
 
 // Script bindings.
-#include "baseComponent_ScriptBinding.h"
+#include "baseComponent_Binding.h"
 
 // bgfx/bx
 #include <bgfx.h>

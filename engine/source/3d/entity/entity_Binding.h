@@ -36,6 +36,8 @@
 #include <3d/scene/core.h>
 #endif
 
+#include "c-interface/c-interface.h"
+
 namespace Scene
 {
 
@@ -72,4 +74,56 @@ namespace Scene
       object->refresh();
    }
 
+   extern "C" {
+      DLL_PUBLIC SceneEntity* SceneEntityCreateInstance()
+      {
+         return new SceneEntity();
+      }
+
+      DLL_PUBLIC void SceneEntitySetTemplate(SceneEntity* sceneEntity, const char* templatePath)
+      {
+         sceneEntity->setTemplateAsset(templatePath);
+      }
+
+      DLL_PUBLIC void SceneEntitySetPosition(SceneEntity* sceneEntity, CInterface::Point3FParam position)
+      {
+         sceneEntity->mPosition = position;
+         sceneEntity->refresh();
+      }
+
+      DLL_PUBLIC void SceneEntityGetPosition(SceneEntity* sceneEntity, CInterface::Point3FParam* outPoint)
+      {
+         *outPoint = CInterface::Point3FParam(sceneEntity->mPosition);
+      }
+
+      DLL_PUBLIC void SceneEntitySetRotation(SceneEntity* sceneEntity, CInterface::Point3FParam rotation)
+      {
+         sceneEntity->mRotation = rotation;
+      }
+
+      DLL_PUBLIC void SceneEntityGetRotation(SceneEntity* sceneEntity, CInterface::Point3FParam* outRotation)
+      {
+         *outRotation = CInterface::Point3FParam(sceneEntity->mRotation);
+      }
+
+      DLL_PUBLIC void SceneEntitySetScale(SceneEntity* sceneEntity, CInterface::Point3FParam scale)
+      {
+         sceneEntity->mScale = scale;
+      }
+
+      DLL_PUBLIC void SceneEntityGetScale(SceneEntity* sceneEntity, CInterface::Point3FParam* outScale)
+      {
+         *outScale = CInterface::Point3FParam(sceneEntity->mScale);
+      }
+
+      DLL_PUBLIC SimObject* SceneEntityFindComponent(SceneEntity* sceneEntity, const char* name)
+      {
+         return sceneEntity->findComponent(StringTable->insert(name));
+      }
+
+      DLL_PUBLIC SimObject* SceneEntityFindComponentByType(SceneEntity* sceneEntity, const char* name)
+      {
+         return sceneEntity->findComponentByType(StringTable->insert(name));
+      }
+   }
 }

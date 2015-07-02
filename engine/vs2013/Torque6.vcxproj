@@ -229,37 +229,37 @@
     <ClInclude Include="..\..\engine\source\2d\core\ImageFrameProvider.h" />
     <ClInclude Include="..\..\engine\source\2d\core\ImageFrameProviderCore.h" />
     <ClInclude Include="..\..\engine\source\2d\core\Utility.h" />
-    <ClInclude Include="..\..\engine\source\2d\core\Utility_ScriptBinding.h" />
+    <ClInclude Include="..\source\2d\core\Utility_Binding.h" />
     <ClInclude Include="..\..\engine\source\2d\core\Vector2.h" />
-    <ClInclude Include="..\..\engine\source\2d\core\Vector2_ScriptBinding.h" />
+    <ClInclude Include="..\source\2d\core\Vector2_Binding.h" />
     <ClInclude Include="..\..\engine\source\2d\gui\guiImageButtonCtrl.h" />
-    <ClInclude Include="..\..\engine\source\2d\gui\guiImageButtonCtrl_ScriptBindings.h" />
+    <ClInclude Include="..\source\2d\gui\guiImageButtonCtrl_Bindings.h" />
     <ClInclude Include="..\..\engine\source\2d\gui\guiSpriteCtrl.h" />
-    <ClInclude Include="..\..\engine\source\2d\gui\guiSpriteCtrl_ScriptBindings.h" />
+    <ClInclude Include="..\source\2d\gui\guiSpriteCtrl_Bindings.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\entity.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\entityTemplate.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\entityTemplateAsset.h" />
     <ClInclude Include="..\source\3d\entity\entityTemplateAsset_Binding.h" />
-    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplate_ScriptBinding.h" />
-    <ClInclude Include="..\..\engine\source\3d\entity\entity_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\entity\entityTemplate_Binding.h" />
+    <ClInclude Include="..\source\3d\entity\entity_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\meshAsset.h" />
     <ClInclude Include="..\source\3d\entity\meshAsset_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent.h" />
-    <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\entity\components\animationComponent_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\components\baseComponent.h" />
-    <ClInclude Include="..\..\engine\source\3d\entity\components\baseComponent_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\entity\components\baseComponent_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\components\lightComponent.h" />
-    <ClInclude Include="..\..\engine\source\3d\entity\components\lightComponent_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\entity\components\lightComponent_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\components\meshComponent.h" />
-    <ClInclude Include="..\..\engine\source\3d\entity\components\meshComponent_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\entity\components\meshComponent_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\components\physicsComponent.h" />
-    <ClInclude Include="..\..\engine\source\3d\entity\components\physicsComponent_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\entity\components\physicsComponent_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\entity\components\textComponent.h" />
-    <ClInclude Include="..\..\engine\source\3d\entity\components\textComponent_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\entity\components\textComponent_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\material\materialAsset.h" />
     <ClInclude Include="..\source\3d\material\materialAsset_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\material\materialTemplate.h" />
-    <ClInclude Include="..\..\engine\source\3d\material\materialTemplate_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\material\materialTemplate_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\material\nodes\deferredNode.h" />
     <ClInclude Include="..\..\engine\source\3d\material\nodes\floatNode.h" />
     <ClInclude Include="..\..\engine\source\3d\material\nodes\forwardNode.h" />
@@ -278,9 +278,9 @@
     <ClInclude Include="..\..\engine\source\3d\rendering\postFX\hdr.h" />
     <ClInclude Include="..\..\engine\source\3d\rendering\postFX\ssr.h" />
     <ClInclude Include="..\..\engine\source\3d\scene\camera.h" />
-    <ClInclude Include="..\..\engine\source\3d\scene\camera_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\scene\camera_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\scene\core.h" />
-    <ClInclude Include="..\..\engine\source\3d\scene\core_ScriptBinding.h" />
+    <ClInclude Include="..\source\3d\scene\core_Binding.h" />
     <ClInclude Include="..\..\engine\source\algorithm\crc.h" />
     <ClInclude Include="..\..\engine\source\algorithm\crctab.h" />
     <ClInclude Include="..\..\engine\source\algorithm\hashFunction.h" />
@@ -346,14 +346,14 @@
     <ClInclude Include="..\..\engine\source\collision\polytope.h" />
     <ClInclude Include="..\..\engine\source\collision\vertexPolyList.h" />
     <ClInclude Include="..\..\engine\source\component\dynamicConsoleMethodComponent.h" />
-    <ClInclude Include="..\..\engine\source\component\dynamicConsoleMethodComponent_ScriptBinding.h" />
+    <ClInclude Include="..\source\component\dynamicConsoleMethodComponent_Binding.h" />
     <ClInclude Include="..\..\engine\source\component\simComponent.h" />
-    <ClInclude Include="..\..\engine\source\component\simComponent_ScriptBinding.h" />
+    <ClInclude Include="..\source\component\simComponent_Binding.h" />
     <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponent.h" />
     <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponentRaiseEvent.h" />
-    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponent_ScriptBinding.h" />
+    <ClInclude Include="..\source\component\behaviors\behaviorComponent_Binding.h" />
     <ClInclude Include="..\..\engine\source\component\behaviors\behaviorInstance.h" />
-    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorInstance_ScriptBinding.h" />
+    <ClInclude Include="..\source\component\behaviors\behaviorInstance_Binding.h" />
     <ClInclude Include="..\..\engine\source\component\behaviors\behaviorTemplate.h" />
     <ClInclude Include="..\source\component\behaviors\behaviorTemplate_Binding.h" />
     <ClInclude Include="..\..\engine\source\console\ast.h" />
@@ -365,55 +365,55 @@
     <ClInclude Include="..\..\engine\source\console\consoleBaseType.h" />
     <ClInclude Include="..\..\engine\source\console\consoleDictionary.h" />
     <ClInclude Include="..\..\engine\source\console\consoleDoc.h" />
-    <ClInclude Include="..\..\engine\source\console\consoleDoc_ScriptBinding.h" />
+    <ClInclude Include="..\source\console\consoleDoc_Binding.h" />
     <ClInclude Include="..\..\engine\source\console\consoleExprEvalState.h" />
-    <ClInclude Include="..\..\engine\source\console\consoleExprEvalState_ScriptBinding.h" />
+    <ClInclude Include="..\source\console\consoleExprEvalState_Binding.h" />
     <ClInclude Include="..\..\engine\source\console\consoleInternal.h" />
     <ClInclude Include="..\..\engine\source\console\consoleLogger.h" />
     <ClInclude Include="..\source\console\consoleLogger_Binding.h" />
     <ClInclude Include="..\..\engine\source\console\consoleNamespace.h" />
-    <ClInclude Include="..\..\engine\source\console\consoleNamespace_ScriptBinding.h" />
+    <ClInclude Include="..\source\console\consoleNamespace_Binding.h" />
     <ClInclude Include="..\..\engine\source\console\consoleObject.h" />
     <ClInclude Include="..\..\engine\source\console\consoleParser.h" />
     <ClInclude Include="..\..\engine\source\console\consoleTypes.h" />
     <ClInclude Include="..\..\engine\source\console\ConsoleTypeValidators.h" />
-    <ClInclude Include="..\..\engine\source\console\expando_ScriptBinding.h" />
-    <ClInclude Include="..\..\engine\source\console\inputManagement_ScriptBinding.h" />
-    <ClInclude Include="..\..\engine\source\console\output_ScriptBinding.h" />
+    <ClInclude Include="..\source\console\expando_Binding.h" />
+    <ClInclude Include="..\source\console\inputManagement_Binding.h" />
+    <ClInclude Include="..\source\console\output_Binding.h" />
     <ClInclude Include="..\..\engine\source\console\Package.h" />
     <ClInclude Include="..\..\engine\source\console\runtimeClassRep.h" />
-    <ClInclude Include="..\..\engine\source\console\taggedStrings_ScriptBinding.h" />
+    <ClInclude Include="..\source\console\taggedStrings_Binding.h" />
     <ClInclude Include="..\..\engine\source\debug\profiler.h" />
-    <ClInclude Include="..\..\engine\source\debug\profiler_ScriptBinding.h" />
+    <ClInclude Include="..\source\debug\profiler_Binding.h" />
     <ClInclude Include="..\..\engine\source\debug\telnetDebugger.h" />
-    <ClInclude Include="..\..\engine\source\debug\telnetDebugger_ScriptBinding.h" />
+    <ClInclude Include="..\source\debug\telnetDebugger_Binding.h" />
     <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebugger1.h" />
     <ClInclude Include="..\source\debug\remote\RemoteDebugger1_Binding.h" />
     <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBase.h" />
-    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBase_ScriptBinding.h" />
+    <ClInclude Include="..\source\debug\remote\RemoteDebuggerBase_Binding.h" />
     <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBridge.h" />
-    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBridge_ScriptBinding.h" />
+    <ClInclude Include="..\source\debug\remote\RemoteDebuggerBridge_Binding.h" />
     <ClInclude Include="..\..\engine\source\delegates\delegate.h" />
     <ClInclude Include="..\..\engine\source\delegates\delegateSignal.h" />
     <ClInclude Include="..\..\engine\source\delegates\FastDelegate.h" />
     <ClInclude Include="..\..\engine\source\game\defaultGame.h" />
     <ClInclude Include="..\..\engine\source\game\gameConnection.h" />
-    <ClInclude Include="..\..\engine\source\game\gameConnection_ScriptBinding.h" />
+    <ClInclude Include="..\source\game\gameConnection_Binding.h" />
     <ClInclude Include="..\..\engine\source\game\gameInterface.h" />
-    <ClInclude Include="..\..\engine\source\game\gameInterface_ScriptBinding.h" />
+    <ClInclude Include="..\source\game\gameInterface_Binding.h" />
     <ClInclude Include="..\..\engine\source\game\resource.h" />
     <ClInclude Include="..\..\engine\source\game\version.h" />
-    <ClInclude Include="..\..\engine\source\game\version_ScriptBinding.h" />
+    <ClInclude Include="..\source\game\version_Binding.h" />
     <ClInclude Include="..\..\engine\source\graphics\color.h" />
-    <ClInclude Include="..\..\engine\source\graphics\color_ScriptBinding.h" />
+    <ClInclude Include="..\source\graphics\color_Binding.h" />
     <ClInclude Include="..\..\engine\source\graphics\core.h" />
     <ClInclude Include="..\..\engine\source\graphics\dgl.h" />
-    <ClInclude Include="..\..\engine\source\graphics\dglMac_ScriptBinding.h" />
-    <ClInclude Include="..\..\engine\source\graphics\dgl_ScriptBinding.h" />
+    <ClInclude Include="..\source\graphics\dglMac_Binding.h" />
+    <ClInclude Include="..\source\graphics\dgl_Binding.h" />
     <ClInclude Include="..\..\engine\source\graphics\DynamicTexture.h" />
     <ClInclude Include="..\..\engine\source\graphics\gBitmap.h" />
     <ClInclude Include="..\..\engine\source\graphics\gFont.h" />
-    <ClInclude Include="..\..\engine\source\graphics\gFont_ScriptBinding.h" />
+    <ClInclude Include="..\source\graphics\gFont_Binding.h" />
     <ClInclude Include="..\..\engine\source\graphics\gPalette.h" />
     <ClInclude Include="..\..\engine\source\graphics\PNGImage.h" />
     <ClInclude Include="..\source\graphics\PNGImage_Binding.h" />
@@ -423,7 +423,7 @@
     <ClInclude Include="..\..\engine\source\graphics\TextureDictionary.h" />
     <ClInclude Include="..\..\engine\source\graphics\TextureHandle.h" />
     <ClInclude Include="..\..\engine\source\graphics\TextureManager.h" />
-    <ClInclude Include="..\..\engine\source\graphics\TextureManager_ScriptBinding.h" />
+    <ClInclude Include="..\source\graphics\TextureManager_Binding.h" />
     <ClInclude Include="..\..\engine\source\graphics\TextureObject.h" />
     <ClInclude Include="..\..\engine\source\graphics\utilities.h" />
     <ClInclude Include="..\..\engine\source\graphics\viewTable.h" />
@@ -432,13 +432,13 @@
     <ClInclude Include="..\..\engine\source\gui\guiBitmapCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiBubbleTextCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiCanvas.h" />
-    <ClInclude Include="..\..\engine\source\gui\guiCanvas_ScriptBinding.h" />
+    <ClInclude Include="..\source\gui\guiCanvas_Binding.h" />
     <ClInclude Include="..\..\engine\source\gui\guiColorPicker.h" />
     <ClInclude Include="..\..\engine\source\gui\guiConsole.h" />
     <ClInclude Include="..\..\engine\source\gui\guiConsoleEditCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiConsoleTextCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiControl.h" />
-    <ClInclude Include="..\..\engine\source\gui\guiControl_ScriptBinding.h" />
+    <ClInclude Include="..\source\gui\guiControl_Binding.h" />
     <ClInclude Include="..\..\engine\source\gui\guiCurveCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiDefaultControlRender.h" />
     <ClInclude Include="..\..\engine\source\gui\guiInputCtrl.h" />
@@ -501,7 +501,7 @@
     <ClInclude Include="..\source\input\actionMap_Binding.h" />
     <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionConstants.h" />
     <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionManager.h" />
-    <ClInclude Include="..\..\engine\source\input\leapMotion\LeapMotionManager_ScriptBinding.h" />
+    <ClInclude Include="..\source\input\leapMotion\LeapMotionManager_Binding.h" />
     <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionUtil.h" />
     <ClInclude Include="..\..\engine\source\io\bitStream.h" />
     <ClInclude Include="..\..\engine\source\io\bufferStream.h" />
@@ -517,7 +517,7 @@
     <ClInclude Include="..\..\engine\source\io\streamObject.h" />
     <ClInclude Include="..\source\io\streamObject_Binding.h" />
     <ClInclude Include="..\..\engine\source\io\resource\resourceManager.h" />
-    <ClInclude Include="..\..\engine\source\io\resource\resourceManager_ScriptBinding.h" />
+    <ClInclude Include="..\source\io\resource\resourceManager_Binding.h" />
     <ClInclude Include="..\..\engine\source\io\zip\centralDir.h" />
     <ClInclude Include="..\..\engine\source\io\zip\compressor.h" />
     <ClInclude Include="..\..\engine\source\io\zip\extraField.h" />
@@ -529,11 +529,11 @@
     <ClInclude Include="..\..\engine\source\io\zip\zipStatFilter.h" />
     <ClInclude Include="..\..\engine\source\io\zip\zipSubStream.h" />
     <ClInclude Include="..\..\engine\source\io\zip\zipTempStream.h" />
-    <ClInclude Include="..\..\engine\source\math\box_ScriptBinding.h" />
+    <ClInclude Include="..\source\math\box_Binding.h" />
     <ClInclude Include="..\..\engine\source\math\mathIO.h" />
     <ClInclude Include="..\..\engine\source\math\mathTypes.h" />
     <ClInclude Include="..\..\engine\source\math\mathUtils.h" />
-    <ClInclude Include="..\..\engine\source\math\matrix_ScriptBinding.h" />
+    <ClInclude Include="..\source\math\matrix_Binding.h" />
     <ClInclude Include="..\..\engine\source\math\mBox.h" />
     <ClInclude Include="..\..\engine\source\math\mBoxBase.h" />
     <ClInclude Include="..\..\engine\source\math\mConstants.h" />
@@ -553,16 +553,16 @@
     <ClInclude Include="..\..\engine\source\math\mRect.h" />
     <ClInclude Include="..\..\engine\source\math\mSphere.h" />
     <ClInclude Include="..\..\engine\source\math\mSplinePatch.h" />
-    <ClInclude Include="..\..\engine\source\math\random_ScriptBinding.h" />
+    <ClInclude Include="..\source\math\random_Binding.h" />
     <ClInclude Include="..\..\engine\source\math\rectClipper.h" />
-    <ClInclude Include="..\..\engine\source\math\vector_ScriptBinding.h" />
+    <ClInclude Include="..\source\math\vector_Binding.h" />
     <ClInclude Include="..\..\engine\source\memory\dataChunker.h" />
     <ClInclude Include="..\..\engine\source\memory\factoryCache.h" />
     <ClInclude Include="..\..\engine\source\memory\frameAllocator.h" />
     <ClInclude Include="..\..\engine\source\memory\safeDelete.h" />
     <ClInclude Include="..\..\engine\source\memory\tempAlloc.h" />
     <ClInclude Include="..\..\engine\source\messaging\dispatcher.h" />
-    <ClInclude Include="..\..\engine\source\messaging\dispatcher_ScriptBinding.h" />
+    <ClInclude Include="..\source\messaging\dispatcher_Binding.h" />
     <ClInclude Include="..\..\engine\source\messaging\eventManager.h" />
     <ClInclude Include="..\source\messaging\eventManager_Binding.h" />
     <ClInclude Include="..\..\engine\source\messaging\message.h" />
@@ -578,27 +578,27 @@
     <ClInclude Include="..\..\engine\source\module\moduleMergeDefinition.h" />
     <ClInclude Include="..\..\engine\source\module\tamlModuleIdUpdateVisitor.h" />
     <ClInclude Include="..\..\engine\source\network\connectionProtocol.h" />
-    <ClInclude Include="..\..\engine\source\network\connectionProtocol_ScriptBinding.h" />
+    <ClInclude Include="..\source\network\connectionProtocol_Binding.h" />
     <ClInclude Include="..\..\engine\source\network\connectionStringTable.h" />
     <ClInclude Include="..\..\engine\source\network\httpObject.h" />
     <ClInclude Include="..\source\network\httpObject_Binding.h" />
     <ClInclude Include="..\..\engine\source\network\netConnection.h" />
     <ClInclude Include="..\source\network\netConnection_Binding.h" />
     <ClInclude Include="..\..\engine\source\network\netInterface.h" />
-    <ClInclude Include="..\..\engine\source\network\netInterface_ScriptBinding.h" />
+    <ClInclude Include="..\source\network\netInterface_Binding.h" />
     <ClInclude Include="..\..\engine\source\network\netObject.h" />
     <ClInclude Include="..\source\network\netObject_Binding.h" />
     <ClInclude Include="..\..\engine\source\network\netStringTable.h" />
-    <ClInclude Include="..\..\engine\source\network\netStringTable_ScriptBinding.h" />
+    <ClInclude Include="..\source\network\netStringTable_Binding.h" />
     <ClInclude Include="..\..\engine\source\network\networkProcessList.h" />
     <ClInclude Include="..\..\engine\source\network\RemoteCommandEvent.h" />
-    <ClInclude Include="..\..\engine\source\network\RemoteCommandEvent_ScriptBinding.h" />
+    <ClInclude Include="..\source\network\RemoteCommandEvent_Binding.h" />
     <ClInclude Include="..\..\engine\source\network\serverQuery.h" />
-    <ClInclude Include="..\..\engine\source\network\serverQuery_ScriptBinding.h" />
+    <ClInclude Include="..\source\network\serverQuery_Binding.h" />
     <ClInclude Include="..\..\engine\source\network\tcpObject.h" />
     <ClInclude Include="..\source\network\tcpObject_Binding.h" />
     <ClInclude Include="..\..\engine\source\network\telnetConsole.h" />
-    <ClInclude Include="..\..\engine\source\network\telnetConsole_ScriptBinding.h" />
+    <ClInclude Include="..\source\network\telnetConsole_Binding.h" />
     <ClInclude Include="..\..\engine\source\persistence\SimXMLDocument.h" />
     <ClInclude Include="..\source\persistence\SimXMLDocument_Binding.h" />
     <ClInclude Include="..\..\engine\source\persistence\rapidjson\include\rapidjson\allocators.h" />
@@ -638,8 +638,8 @@
     <ClInclude Include="..\..\engine\source\physics\physics.h" />
     <ClInclude Include="..\..\engine\source\physics\physicsEngine.h" />
     <ClInclude Include="..\..\engine\source\physics\physicsThread.h" />
-    <ClInclude Include="..\..\engine\source\physics\physics_ScriptBinding.h" />
-    <ClInclude Include="..\..\engine\source\platform\CursorManager_ScriptBinding.h" />
+    <ClInclude Include="..\source\physics\physics_Binding.h" />
+    <ClInclude Include="..\source\platform\CursorManager_Binding.h" />
     <ClInclude Include="..\..\engine\source\platform\eaxtypes.h" />
     <ClInclude Include="..\..\engine\source\platform\event.h" />
     <ClInclude Include="..\..\engine\source\platform\GLCoreFunc.h" />
@@ -648,16 +648,16 @@
     <ClInclude Include="..\..\engine\source\platform\platform.h" />
     <ClInclude Include="..\..\engine\source\platform\platformAL.h" />
     <ClInclude Include="..\..\engine\source\platform\platformAssert.h" />
-    <ClInclude Include="..\..\engine\source\platform\platformAssert_ScriptBinding.h" />
+    <ClInclude Include="..\source\platform\platformAssert_Binding.h" />
     <ClInclude Include="..\..\engine\source\platform\platformAudio.h" />
     <ClInclude Include="..\..\engine\source\platform\platformCPU.h" />
     <ClInclude Include="..\..\engine\source\platform\platformEndian.h" />
     <ClInclude Include="..\..\engine\source\platform\platformFileIO.h" />
-    <ClInclude Include="..\..\engine\source\platform\platformFileIO_ScriptBinding.h" />
+    <ClInclude Include="..\source\platform\platformFileIO_Binding.h" />
     <ClInclude Include="..\..\engine\source\platform\platformFont.h" />
     <ClInclude Include="..\..\engine\source\platform\platformGL.h" />
     <ClInclude Include="..\..\engine\source\platform\platformInput.h" />
-    <ClInclude Include="..\..\engine\source\platform\platformInput_ScriptBinding.h" />
+    <ClInclude Include="..\source\platform\platformInput_Binding.h" />
     <ClInclude Include="..\..\engine\source\platform\platformLibrary.h" />
     <ClInclude Include="..\..\engine\source\platform\platformMath.h" />
     <ClInclude Include="..\..\engine\source\platform\platformMemory.h" />
@@ -665,13 +665,13 @@
     <ClInclude Include="..\..\engine\source\platform\platformNetwork.h" />
     <ClInclude Include="..\..\engine\source\platform\platformSemaphore.h" />
     <ClInclude Include="..\..\engine\source\platform\platformString.h" />
-    <ClInclude Include="..\..\engine\source\platform\platformString_ScriptBinding.h" />
+    <ClInclude Include="..\source\platform\platformString_Binding.h" />
     <ClInclude Include="..\..\engine\source\platform\platformTimeManager.h" />
     <ClInclude Include="..\..\engine\source\platform\platformTLS.h" />
     <ClInclude Include="..\..\engine\source\platform\platformVFS.h" />
     <ClInclude Include="..\..\engine\source\platform\platformVideo.h" />
-    <ClInclude Include="..\..\engine\source\platform\platformVideo_ScriptBinding.h" />
-    <ClInclude Include="..\..\engine\source\platform\platform_ScriptBinding.h" />
+    <ClInclude Include="..\source\platform\platformVideo_Binding.h" />
+    <ClInclude Include="..\source\platform\platform_Binding.h" />
     <ClInclude Include="..\..\engine\source\platform\Tickable.h" />
     <ClInclude Include="..\..\engine\source\platform\types.arm.h" />
     <ClInclude Include="..\..\engine\source\platform\types.clang.h" />
@@ -692,11 +692,11 @@
     <ClInclude Include="..\..\engine\source\platform\nativeDialogs\fileDialog.h" />
     <ClInclude Include="..\source\platform\nativeDialogs\fileDialog_Binding.h" />
     <ClInclude Include="..\..\engine\source\platform\nativeDialogs\msgBox.h" />
-    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\msgBox_ScriptBinding.h" />
+    <ClInclude Include="..\source\platform\nativeDialogs\msgBox_Binding.h" />
     <ClInclude Include="..\..\engine\source\platform\threads\mutex.h" />
     <ClInclude Include="..\..\engine\source\platform\threads\semaphore.h" />
     <ClInclude Include="..\..\engine\source\platform\threads\thread.h" />
-    <ClInclude Include="..\..\engine\source\platformWin32\cardProfile_ScriptBinding.h" />
+    <ClInclude Include="..\source\platformWin32\cardProfile_Binding.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\GLWinExtFunc.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\GLWinFunc.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\gl_types.h" />
@@ -706,16 +706,16 @@
     <ClInclude Include="..\..\engine\source\platformWin32\win32NPatch.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\winBGFXVideo.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\winConsole.h" />
-    <ClInclude Include="..\..\engine\source\platformWin32\winConsole_ScriptBinding.h" />
+    <ClInclude Include="..\source\platformWin32\winConsole_Binding.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\winDInputDevice.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\winDirectInput.h" />
-    <ClInclude Include="..\..\engine\source\platformWin32\winExec_ScriptBinding.h" />
+    <ClInclude Include="..\source\platformWin32\winExec_Binding.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\winFont.h" />
-    <ClInclude Include="..\..\engine\source\platformWin32\winGLSpecial_ScriptBinding.h" />
-    <ClInclude Include="..\..\engine\source\platformWin32\winInput_ScriptBinding.h" />
-    <ClInclude Include="..\..\engine\source\platformWin32\winMath_ScriptBinding.h" />
+    <ClInclude Include="..\source\platformWin32\winGLSpecial_Binding.h" />
+    <ClInclude Include="..\source\platformWin32\winInput_Binding.h" />
+    <ClInclude Include="..\source\platformWin32\winMath_Binding.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\winOGLVideo.h" />
-    <ClInclude Include="..\..\engine\source\platformWin32\winOGLVideo_ScriptBinding.h" />
+    <ClInclude Include="..\source\platformWin32\winOGLVideo_Binding.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\winVideo.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\winWindow.h" />
     <ClInclude Include="..\..\engine\source\platformWin32\win_common_prefix.h" />
@@ -725,7 +725,7 @@
     <ClInclude Include="..\..\engine\source\plugins\pluginAsset.h" />
     <ClInclude Include="..\source\plugins\pluginAsset_Binding.h" />
     <ClInclude Include="..\..\engine\source\plugins\plugins.h" />
-    <ClInclude Include="..\..\engine\source\plugins\plugins_ScriptBinding.h" />
+    <ClInclude Include="..\source\plugins\plugins_Binding.h" />
     <ClInclude Include="..\..\engine\source\plugins\plugins_shared.h" />
     <ClInclude Include="..\..\engine\source\sim\scriptGroup.h" />
     <ClInclude Include="..\..\engine\source\sim\scriptObject.h" />
@@ -735,7 +735,7 @@
     <ClInclude Include="..\..\engine\source\sim\simConsoleThreadExecEvent.h" />
     <ClInclude Include="..\..\engine\source\sim\simDatablock.h" />
     <ClInclude Include="..\..\engine\source\sim\simDatablockGroup.h" />
-    <ClInclude Include="..\..\engine\source\sim\simDatablock_ScriptBinding.h" />
+    <ClInclude Include="..\source\sim\simDatablock_Binding.h" />
     <ClInclude Include="..\..\engine\source\sim\simDictionary.h" />
     <ClInclude Include="..\..\engine\source\sim\simEvent.h" />
     <ClInclude Include="..\..\engine\source\sim\simFieldDictionary.h" />
@@ -744,7 +744,7 @@
     <ClInclude Include="..\..\engine\source\sim\simObjectPtr.h" />
     <ClInclude Include="..\..\engine\source\sim\simObjectTimerEvent.h" />
     <ClInclude Include="..\..\engine\source\sim\simObject_Binding.h" />
-    <ClInclude Include="..\..\engine\source\sim\simSerialize_ScriptBinding.h" />
+    <ClInclude Include="..\source\sim\simSerialize_Binding.h" />
     <ClInclude Include="..\..\engine\source\sim\simSet.h" />
     <ClInclude Include="..\source\sim\simSet_Binding.h" />
     <ClInclude Include="..\..\engine\source\spine\Animation.h" />
@@ -772,16 +772,16 @@
     <ClInclude Include="..\..\engine\source\spine\spine.h" />
     <ClInclude Include="..\..\engine\source\string\findMatch.h" />
     <ClInclude Include="..\..\engine\source\string\stringBuffer.h" />
-    <ClInclude Include="..\..\engine\source\string\stringBuffer_ScriptBinding.h" />
+    <ClInclude Include="..\source\string\stringBuffer_Binding.h" />
     <ClInclude Include="..\..\engine\source\string\stringStack.h" />
     <ClInclude Include="..\..\engine\source\string\stringTable.h" />
     <ClInclude Include="..\..\engine\source\string\stringUnit.h" />
-    <ClInclude Include="..\..\engine\source\string\stringUnit_ScriptBinding.h" />
+    <ClInclude Include="..\source\string\stringUnit_Binding.h" />
     <ClInclude Include="..\..\engine\source\string\unicode.h" />
     <ClInclude Include="..\..\engine\source\sysgui\sysgui.h" />
-    <ClInclude Include="..\..\engine\source\sysgui\sysgui_ScriptBinding.h" />
+    <ClInclude Include="..\source\sysgui\sysgui_Binding.h" />
     <ClInclude Include="..\..\engine\source\testing\unitTesting.h" />
-    <ClInclude Include="..\..\engine\source\testing\unitTesting_ScriptBinding.h" />
+    <ClInclude Include="..\source\testing\unitTesting_Binding.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\engine\source\2d\assets\ImageAsset.cc">
@@ -946,7 +946,7 @@
     <ClCompile Include="..\..\engine\source\audio\audioStreamSourceFactory.cc">
       <ObjectFileName>$(IntDir)engine\source\audio\audioStreamSourceFactory.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\engine\source\audio\audio_ScriptBinding.cc">
+    <ClCompile Include="..\source\audio\audio_Binding.cc">
       <ObjectFileName>$(IntDir)engine\source\audio\audio_ScriptBinding.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\audio\wavStreamSource.cc">
@@ -1021,7 +1021,7 @@
     <ClCompile Include="..\..\engine\source\console\ConsoleTypeValidators.cc">
       <ObjectFileName>$(IntDir)engine\source\console\ConsoleTypeValidators.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\engine\source\console\metaScripting_ScriptBinding.cc">
+    <ClCompile Include="..\source\console\metaScripting_Binding.cc">
       <ObjectFileName>$(IntDir)engine\source\console\metaScripting_ScriptBinding.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\console\Package.cc">
@@ -1333,7 +1333,7 @@
     <ClCompile Include="..\..\engine\source\io\fileStreamObject.cc">
       <ObjectFileName>$(IntDir)engine\source\io\fileStreamObject.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\engine\source\io\fileSystem_ScriptBinding.cc">
+    <ClCompile Include="..\source\io\fileSystem_Binding.cc">
       <ObjectFileName>$(IntDir)engine\source\io\fileSystem_ScriptBinding.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\io\filterStream.cc">
@@ -1396,7 +1396,7 @@
     <ClCompile Include="..\..\engine\source\math\mathUtils.cc">
       <ObjectFileName>$(IntDir)engine\source\math\mathUtils.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\engine\source\math\math_ScriptBinding.cc">
+    <ClCompile Include="..\source\math\math_Binding.cc">
       <ObjectFileName>$(IntDir)engine\source\math\math_ScriptBinding.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\math\mMathAltivec.cc">
@@ -1432,7 +1432,7 @@
     <ClCompile Include="..\..\engine\source\memory\dataChunker.cc">
       <ObjectFileName>$(IntDir)engine\source\memory\dataChunker.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\engine\source\memory\frameAllocator_ScriptBinding.cc">
+    <ClCompile Include="..\source\memory\frameAllocator_Binding.cc">
       <ObjectFileName>$(IntDir)engine\source\memory\frameAllocator_ScriptBinding.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\messaging\dispatcher.cc">
@@ -1564,7 +1564,7 @@
     <ClCompile Include="..\..\engine\source\platform\platformMemory.cc">
       <ObjectFileName>$(IntDir)engine\source\platform\platformMemory.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\engine\source\platform\platformNetwork_ScriptBinding.cc">
+    <ClCompile Include="..\source\platform\platformNetwork_Binding.cc">
       <ObjectFileName>$(IntDir)engine\source\platform\platformNetwork_ScriptBinding.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\platform\platformString.cc">

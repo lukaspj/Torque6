@@ -2712,4 +2712,4 @@ static void APIENTRY perfDrawElements(GLenum mode, GLsizei count, GLenum type, c
    dllglDrawElements( mode, count, type, indices );
 }
 
-#include "winGLSpecial_ScriptBinding.h"
+#include "winGLSpecial_Binding.h"

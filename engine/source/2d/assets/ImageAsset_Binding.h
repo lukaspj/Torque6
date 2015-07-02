@@ -637,12 +637,12 @@ extern "C"{
       imageAsset->setExplicitMode(value);
    }
 
-   DLL_PUBLIC bool ImageAssetGetForce16bit(ImageAsset* imageAsset)
+   DLL_PUBLIC bool ImageAssetGetForce16Bit(ImageAsset* imageAsset)
    {
       return imageAsset->getForce16Bit();
    }
 
-   DLL_PUBLIC void ImageAssetSetForce16bit(ImageAsset* imageAsset, bool value)
+   DLL_PUBLIC void ImageAssetSetForce16Bit(ImageAsset* imageAsset, bool value)
    {
       imageAsset->setForce16Bit(value);
    }

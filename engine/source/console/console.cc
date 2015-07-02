@@ -39,8 +39,8 @@
 #include "memory/safeDelete.h"
 #include <stdarg.h>
 
-#include "output_ScriptBinding.h"
-#include "expando_ScriptBinding.h"
+#include "output_Binding.h"
+#include "expando_Binding.h"
 
 #ifndef _HASHTABLE_H
 #include "collection/hashTable.h"

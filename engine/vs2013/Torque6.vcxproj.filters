@@ -231,25 +231,13 @@
     <ClInclude Include="..\..\engine\source\2d\core\Utility.h">
       <Filter>engine\source\2d\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\2d\core\Utility_ScriptBinding.h">
-      <Filter>engine\source\2d\core</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\2d\core\Vector2.h">
-      <Filter>engine\source\2d\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\2d\core\Vector2_ScriptBinding.h">
       <Filter>engine\source\2d\core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\2d\gui\guiImageButtonCtrl.h">
       <Filter>engine\source\2d\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\2d\gui\guiImageButtonCtrl_ScriptBindings.h">
-      <Filter>engine\source\2d\gui</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\2d\gui\guiSpriteCtrl.h">
-      <Filter>engine\source\2d\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\2d\gui\guiSpriteCtrl_ScriptBindings.h">
       <Filter>engine\source\2d\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\entity.h">
@@ -261,58 +249,31 @@
     <ClInclude Include="..\..\engine\source\3d\entity\entityTemplateAsset.h">
       <Filter>engine\source\3d\entity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\entity\entityTemplate_ScriptBinding.h">
-      <Filter>engine\source\3d\entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\entity\entity_ScriptBinding.h">
-      <Filter>engine\source\3d\entity</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\meshAsset.h">
       <Filter>engine\source\3d\entity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent.h">
       <Filter>engine\source\3d\entity\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\entity\components\animationComponent_ScriptBinding.h">
-      <Filter>engine\source\3d\entity\components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\components\baseComponent.h">
-      <Filter>engine\source\3d\entity\components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\entity\components\baseComponent_ScriptBinding.h">
       <Filter>engine\source\3d\entity\components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\components\lightComponent.h">
       <Filter>engine\source\3d\entity\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\entity\components\lightComponent_ScriptBinding.h">
-      <Filter>engine\source\3d\entity\components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\components\meshComponent.h">
-      <Filter>engine\source\3d\entity\components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\entity\components\meshComponent_ScriptBinding.h">
       <Filter>engine\source\3d\entity\components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\components\physicsComponent.h">
       <Filter>engine\source\3d\entity\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\entity\components\physicsComponent_ScriptBinding.h">
-      <Filter>engine\source\3d\entity\components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\entity\components\textComponent.h">
-      <Filter>engine\source\3d\entity\components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\entity\components\textComponent_ScriptBinding.h">
       <Filter>engine\source\3d\entity\components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\material\materialAsset.h">
       <Filter>engine\source\3d\material</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\material\materialTemplate.h">
-      <Filter>engine\source\3d\material</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\material\materialTemplate_ScriptBinding.h">
       <Filter>engine\source\3d\material</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\material\nodes\deferredNode.h">
@@ -369,13 +330,7 @@
     <ClInclude Include="..\..\engine\source\3d\scene\camera.h">
       <Filter>engine\source\3d\scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\scene\camera_ScriptBinding.h">
-      <Filter>engine\source\3d\scene</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\3d\scene\core.h">
-      <Filter>engine\source\3d\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\3d\scene\core_ScriptBinding.h">
       <Filter>engine\source\3d\scene</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\algorithm\crc.h">
@@ -555,13 +510,7 @@
     <ClInclude Include="..\..\engine\source\component\dynamicConsoleMethodComponent.h">
       <Filter>engine\source\component</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\component\dynamicConsoleMethodComponent_ScriptBinding.h">
-      <Filter>engine\source\component</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\component\simComponent.h">
-      <Filter>engine\source\component</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\component\simComponent_ScriptBinding.h">
       <Filter>engine\source\component</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponent.h">
@@ -570,13 +519,7 @@
     <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponentRaiseEvent.h">
       <Filter>engine\source\component\behaviors</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorComponent_ScriptBinding.h">
-      <Filter>engine\source\component\behaviors</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\component\behaviors\behaviorInstance.h">
-      <Filter>engine\source\component\behaviors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\component\behaviors\behaviorInstance_ScriptBinding.h">
       <Filter>engine\source\component\behaviors</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\component\behaviors\behaviorTemplate.h">
@@ -609,13 +552,7 @@
     <ClInclude Include="..\..\engine\source\console\consoleDoc.h">
       <Filter>engine\source\console</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\console\consoleDoc_ScriptBinding.h">
-      <Filter>engine\source\console</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\console\consoleExprEvalState.h">
-      <Filter>engine\source\console</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\console\consoleExprEvalState_ScriptBinding.h">
       <Filter>engine\source\console</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\console\consoleInternal.h">
@@ -625,9 +562,6 @@
       <Filter>engine\source\console</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\console\consoleNamespace.h">
-      <Filter>engine\source\console</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\console\consoleNamespace_ScriptBinding.h">
       <Filter>engine\source\console</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\console\consoleObject.h">
@@ -642,34 +576,16 @@
     <ClInclude Include="..\..\engine\source\console\ConsoleTypeValidators.h">
       <Filter>engine\source\console</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\console\expando_ScriptBinding.h">
-      <Filter>engine\source\console</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\console\inputManagement_ScriptBinding.h">
-      <Filter>engine\source\console</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\console\output_ScriptBinding.h">
-      <Filter>engine\source\console</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\console\Package.h">
       <Filter>engine\source\console</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\console\runtimeClassRep.h">
       <Filter>engine\source\console</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\console\taggedStrings_ScriptBinding.h">
-      <Filter>engine\source\console</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\debug\profiler.h">
       <Filter>engine\source\debug</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\debug\profiler_ScriptBinding.h">
-      <Filter>engine\source\debug</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\debug\telnetDebugger.h">
-      <Filter>engine\source\debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\debug\telnetDebugger_ScriptBinding.h">
       <Filter>engine\source\debug</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebugger1.h">
@@ -678,13 +594,7 @@
     <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBase.h">
       <Filter>engine\source\debug\remote</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBase_ScriptBinding.h">
-      <Filter>engine\source\debug\remote</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBridge.h">
-      <Filter>engine\source\debug\remote</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\debug\remote\RemoteDebuggerBridge_ScriptBinding.h">
       <Filter>engine\source\debug\remote</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\delegates\delegate.h">
@@ -702,13 +612,7 @@
     <ClInclude Include="..\..\engine\source\game\gameConnection.h">
       <Filter>engine\source\game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\game\gameConnection_ScriptBinding.h">
-      <Filter>engine\source\game</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\game\gameInterface.h">
-      <Filter>engine\source\game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\game\gameInterface_ScriptBinding.h">
       <Filter>engine\source\game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\game\resource.h">
@@ -717,25 +621,13 @@
     <ClInclude Include="..\..\engine\source\game\version.h">
       <Filter>engine\source\game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\game\version_ScriptBinding.h">
-      <Filter>engine\source\game</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\color.h">
-      <Filter>engine\source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\graphics\color_ScriptBinding.h">
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\core.h">
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\dgl.h">
-      <Filter>engine\source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\graphics\dglMac_ScriptBinding.h">
-      <Filter>engine\source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\graphics\dgl_ScriptBinding.h">
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\DynamicTexture.h">
@@ -745,9 +637,6 @@
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\gFont.h">
-      <Filter>engine\source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\graphics\gFont_ScriptBinding.h">
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\gPalette.h">
@@ -769,9 +658,6 @@
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\TextureManager.h">
-      <Filter>engine\source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\graphics\TextureManager_ScriptBinding.h">
       <Filter>engine\source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\graphics\TextureObject.h">
@@ -798,9 +684,6 @@
     <ClInclude Include="..\..\engine\source\gui\guiCanvas.h">
       <Filter>engine\source\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\gui\guiCanvas_ScriptBinding.h">
-      <Filter>engine\source\gui</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\gui\guiColorPicker.h">
       <Filter>engine\source\gui</Filter>
     </ClInclude>
@@ -814,9 +697,6 @@
       <Filter>engine\source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\gui\guiControl.h">
-      <Filter>engine\source\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\gui\guiControl_ScriptBinding.h">
       <Filter>engine\source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\gui\guiCurveCtrl.h">
@@ -984,9 +864,6 @@
     <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionManager.h">
       <Filter>engine\source\input\leapMotion</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\input\leapMotion\LeapMotionManager_ScriptBinding.h">
-      <Filter>engine\source\input\leapMotion</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\input\leapMotion\leapMotionUtil.h">
       <Filter>engine\source\input\leapMotion</Filter>
     </ClInclude>
@@ -1023,9 +900,6 @@
     <ClInclude Include="..\..\engine\source\io\resource\resourceManager.h">
       <Filter>engine\source\io\resource</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\io\resource\resourceManager_ScriptBinding.h">
-      <Filter>engine\source\io\resource</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\io\zip\centralDir.h">
       <Filter>engine\source\io\zip</Filter>
     </ClInclude>
@@ -1056,9 +930,6 @@
     <ClInclude Include="..\..\engine\source\io\zip\zipTempStream.h">
       <Filter>engine\source\io\zip</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\math\box_ScriptBinding.h">
-      <Filter>engine\source\math</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\math\mathIO.h">
       <Filter>engine\source\math</Filter>
     </ClInclude>
@@ -1066,9 +937,6 @@
       <Filter>engine\source\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\math\mathUtils.h">
-      <Filter>engine\source\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\math\matrix_ScriptBinding.h">
       <Filter>engine\source\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\math\mBox.h">
@@ -1128,13 +996,7 @@
     <ClInclude Include="..\..\engine\source\math\mSplinePatch.h">
       <Filter>engine\source\math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\math\random_ScriptBinding.h">
-      <Filter>engine\source\math</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\math\rectClipper.h">
-      <Filter>engine\source\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\math\vector_ScriptBinding.h">
       <Filter>engine\source\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\memory\dataChunker.h">
@@ -1153,9 +1015,6 @@
       <Filter>engine\source\memory</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\messaging\dispatcher.h">
-      <Filter>engine\source\messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\messaging\dispatcher_ScriptBinding.h">
       <Filter>engine\source\messaging</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\messaging\eventManager.h">
@@ -1188,9 +1047,6 @@
     <ClInclude Include="..\..\engine\source\network\connectionProtocol.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\network\connectionProtocol_ScriptBinding.h">
-      <Filter>engine\source\network</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\network\connectionStringTable.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
@@ -1203,16 +1059,10 @@
     <ClInclude Include="..\..\engine\source\network\netInterface.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\network\netInterface_ScriptBinding.h">
-      <Filter>engine\source\network</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\network\netObject.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\network\netStringTable.h">
-      <Filter>engine\source\network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\network\netStringTable_ScriptBinding.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\network\networkProcessList.h">
@@ -1221,22 +1071,13 @@
     <ClInclude Include="..\..\engine\source\network\RemoteCommandEvent.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\network\RemoteCommandEvent_ScriptBinding.h">
-      <Filter>engine\source\network</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\network\serverQuery.h">
-      <Filter>engine\source\network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\network\serverQuery_ScriptBinding.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\network\tcpObject.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\network\telnetConsole.h">
-      <Filter>engine\source\network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\network\telnetConsole_ScriptBinding.h">
       <Filter>engine\source\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\persistence\SimXMLDocument.h">
@@ -1350,12 +1191,6 @@
     <ClInclude Include="..\..\engine\source\physics\physicsThread.h">
       <Filter>engine\source\physics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\physics\physics_ScriptBinding.h">
-      <Filter>engine\source\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\platform\CursorManager_ScriptBinding.h">
-      <Filter>engine\source\platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\eaxtypes.h">
       <Filter>engine\source\platform</Filter>
     </ClInclude>
@@ -1380,9 +1215,6 @@
     <ClInclude Include="..\..\engine\source\platform\platformAssert.h">
       <Filter>engine\source\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\platform\platformAssert_ScriptBinding.h">
-      <Filter>engine\source\platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\platformAudio.h">
       <Filter>engine\source\platform</Filter>
     </ClInclude>
@@ -1395,9 +1227,6 @@
     <ClInclude Include="..\..\engine\source\platform\platformFileIO.h">
       <Filter>engine\source\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\platform\platformFileIO_ScriptBinding.h">
-      <Filter>engine\source\platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\platformFont.h">
       <Filter>engine\source\platform</Filter>
     </ClInclude>
@@ -1405,9 +1234,6 @@
       <Filter>engine\source\platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\platformInput.h">
-      <Filter>engine\source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\platform\platformInput_ScriptBinding.h">
       <Filter>engine\source\platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\platformLibrary.h">
@@ -1431,9 +1257,6 @@
     <ClInclude Include="..\..\engine\source\platform\platformString.h">
       <Filter>engine\source\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\platform\platformString_ScriptBinding.h">
-      <Filter>engine\source\platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\platformTimeManager.h">
       <Filter>engine\source\platform</Filter>
     </ClInclude>
@@ -1444,12 +1267,6 @@
       <Filter>engine\source\platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\platformVideo.h">
-      <Filter>engine\source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\platform\platformVideo_ScriptBinding.h">
-      <Filter>engine\source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\platform\platform_ScriptBinding.h">
       <Filter>engine\source\platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\Tickable.h">
@@ -1503,9 +1320,6 @@
     <ClInclude Include="..\..\engine\source\platform\nativeDialogs\msgBox.h">
       <Filter>engine\source\platform\nativeDialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\platform\nativeDialogs\msgBox_ScriptBinding.h">
-      <Filter>engine\source\platform\nativeDialogs</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\threads\mutex.h">
       <Filter>engine\source\platform\threads</Filter>
     </ClInclude>
@@ -1514,9 +1328,6 @@
     </ClInclude>
     <ClInclude Include="..\..\engine\source\platform\threads\thread.h">
       <Filter>engine\source\platform\threads</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\platformWin32\cardProfile_ScriptBinding.h">
-      <Filter>engine\source\platformWin32</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\platformWin32\GLWinExtFunc.h">
       <Filter>engine\source\platformWin32</Filter>
@@ -1545,34 +1356,16 @@
     <ClInclude Include="..\..\engine\source\platformWin32\winConsole.h">
       <Filter>engine\source\platformWin32</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\platformWin32\winConsole_ScriptBinding.h">
-      <Filter>engine\source\platformWin32</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\platformWin32\winDInputDevice.h">
       <Filter>engine\source\platformWin32</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\platformWin32\winDirectInput.h">
       <Filter>engine\source\platformWin32</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\platformWin32\winExec_ScriptBinding.h">
-      <Filter>engine\source\platformWin32</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\platformWin32\winFont.h">
       <Filter>engine\source\platformWin32</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\platformWin32\winGLSpecial_ScriptBinding.h">
-      <Filter>engine\source\platformWin32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\platformWin32\winInput_ScriptBinding.h">
-      <Filter>engine\source\platformWin32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\platformWin32\winMath_ScriptBinding.h">
-      <Filter>engine\source\platformWin32</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\platformWin32\winOGLVideo.h">
-      <Filter>engine\source\platformWin32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\platformWin32\winOGLVideo_ScriptBinding.h">
       <Filter>engine\source\platformWin32</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\platformWin32\winVideo.h">
@@ -1597,9 +1390,6 @@
       <Filter>engine\source\plugins</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\plugins\plugins.h">
-      <Filter>engine\source\plugins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\plugins\plugins_ScriptBinding.h">
       <Filter>engine\source\plugins</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\plugins\plugins_shared.h">
@@ -1629,9 +1419,6 @@
     <ClInclude Include="..\..\engine\source\sim\simDatablockGroup.h">
       <Filter>engine\source\sim</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\sim\simDatablock_ScriptBinding.h">
-      <Filter>engine\source\sim</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\sim\simDictionary.h">
       <Filter>engine\source\sim</Filter>
     </ClInclude>
@@ -1654,9 +1441,6 @@
       <Filter>engine\source\sim</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\sim\simObject_Binding.h">
-      <Filter>engine\source\sim</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\sim\simSerialize_ScriptBinding.h">
       <Filter>engine\source\sim</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\sim\simSet.h">
@@ -1737,9 +1521,6 @@
     <ClInclude Include="..\..\engine\source\string\stringBuffer.h">
       <Filter>engine\source\string</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\string\stringBuffer_ScriptBinding.h">
-      <Filter>engine\source\string</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\string\stringStack.h">
       <Filter>engine\source\string</Filter>
     </ClInclude>
@@ -1749,22 +1530,13 @@
     <ClInclude Include="..\..\engine\source\string\stringUnit.h">
       <Filter>engine\source\string</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\string\stringUnit_ScriptBinding.h">
-      <Filter>engine\source\string</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\string\unicode.h">
       <Filter>engine\source\string</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\source\sysgui\sysgui.h">
       <Filter>engine\source\sysgui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\source\sysgui\sysgui_ScriptBinding.h">
-      <Filter>engine\source\sysgui</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\source\testing\unitTesting.h">
-      <Filter>engine\source\testing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\engine\source\testing\unitTesting_ScriptBinding.h">
       <Filter>engine\source\testing</Filter>
     </ClInclude>
     <ClInclude Include="..\source\sim\simSet_Binding.h">
@@ -1892,6 +1664,234 @@
     </ClInclude>
     <ClInclude Include="..\source\collection\undo_Binding.h">
       <Filter>engine\source\collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\scene\camera_Binding.h">
+      <Filter>engine\source\3d\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\material\materialTemplate_Binding.h">
+      <Filter>engine\source\3d\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\entity\entity_Binding.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\entity\entityTemplate_Binding.h">
+      <Filter>engine\source\3d\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\entity\components\animationComponent_Binding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\entity\components\baseComponent_Binding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\entity\components\lightComponent_Binding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\entity\components\meshComponent_Binding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\entity\components\physicsComponent_Binding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\entity\components\textComponent_Binding.h">
+      <Filter>engine\source\3d\entity\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\scene\core_Binding.h">
+      <Filter>engine\source\3d\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sysgui\sysgui_Binding.h">
+      <Filter>engine\source\sysgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\physics\physics_Binding.h">
+      <Filter>engine\source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\graphics\dgl_Binding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\graphics\dglMac_Binding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameConnection_Binding.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\gameInterface_Binding.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\game\version_Binding.h">
+      <Filter>engine\source\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\console\consoleExprEvalState_Binding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\console\consoleNamespace_Binding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\console\expando_Binding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\console\inputManagement_Binding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\console\output_Binding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\console\taggedStrings_Binding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\console\consoleDoc_Binding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\testing\unitTesting_Binding.h">
+      <Filter>engine\source\testing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\string\stringBuffer_Binding.h">
+      <Filter>engine\source\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\string\stringUnit_Binding.h">
+      <Filter>engine\source\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sim\simDatablock_Binding.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sim\simSerialize_Binding.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\plugins\plugins_Binding.h">
+      <Filter>engine\source\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platformWin32\cardProfile_Binding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platformWin32\winConsole_Binding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platformWin32\winExec_Binding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platformWin32\winGLSpecial_Binding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platformWin32\winInput_Binding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platformWin32\winMath_Binding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platformWin32\winOGLVideo_Binding.h">
+      <Filter>engine\source\platformWin32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platform\CursorManager_Binding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platform\platform_Binding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platform\platformAssert_Binding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platform\platformFileIO_Binding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platform\platformInput_Binding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platform\platformString_Binding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platform\platformVideo_Binding.h">
+      <Filter>engine\source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\platform\nativeDialogs\msgBox_Binding.h">
+      <Filter>engine\source\platform\nativeDialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\connectionProtocol_Binding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\netInterface_Binding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\netStringTable_Binding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\RemoteCommandEvent_Binding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\serverQuery_Binding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\network\telnetConsole_Binding.h">
+      <Filter>engine\source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\messaging\dispatcher_Binding.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\math\box_Binding.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\math\matrix_Binding.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\math\random_Binding.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\math\vector_Binding.h">
+      <Filter>engine\source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\io\resource\resourceManager_Binding.h">
+      <Filter>engine\source\io\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\input\leapMotion\LeapMotionManager_Binding.h">
+      <Filter>engine\source\input\leapMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiCanvas_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiControl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\graphics\color_Binding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\graphics\gFont_Binding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\graphics\TextureManager_Binding.h">
+      <Filter>engine\source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\debug\telnetDebugger_Binding.h">
+      <Filter>engine\source\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\debug\profiler_Binding.h">
+      <Filter>engine\source\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\debug\remote\RemoteDebuggerBridge_Binding.h">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\debug\remote\RemoteDebuggerBase_Binding.h">
+      <Filter>engine\source\debug\remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\component\dynamicConsoleMethodComponent_Binding.h">
+      <Filter>engine\source\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\component\simComponent_Binding.h">
+      <Filter>engine\source\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\component\behaviors\behaviorComponent_Binding.h">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\component\behaviors\behaviorInstance_Binding.h">
+      <Filter>engine\source\component\behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\2d\gui\guiImageButtonCtrl_Bindings.h">
+      <Filter>engine\source\2d\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\2d\gui\guiSpriteCtrl_Bindings.h">
+      <Filter>engine\source\2d\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\2d\core\Vector2_Binding.h">
+      <Filter>engine\source\2d\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\2d\core\Utility_Binding.h">
+      <Filter>engine\source\2d\core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -2057,9 +2057,6 @@
     <ClCompile Include="..\..\engine\source\audio\audioStreamSourceFactory.cc">
       <Filter>engine\source\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\engine\source\audio\audio_ScriptBinding.cc">
-      <Filter>engine\source\audio</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\engine\source\audio\wavStreamSource.cc">
       <Filter>engine\source\audio</Filter>
     </ClCompile>
@@ -2130,9 +2127,6 @@
       <Filter>engine\source\console</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\console\ConsoleTypeValidators.cc">
-      <Filter>engine\source\console</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine\source\console\metaScripting_ScriptBinding.cc">
       <Filter>engine\source\console</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\console\Package.cc">
@@ -2444,9 +2438,6 @@
     <ClCompile Include="..\..\engine\source\io\fileStreamObject.cc">
       <Filter>engine\source\io</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\engine\source\io\fileSystem_ScriptBinding.cc">
-      <Filter>engine\source\io</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\engine\source\io\filterStream.cc">
       <Filter>engine\source\io</Filter>
     </ClCompile>
@@ -2507,9 +2498,6 @@
     <ClCompile Include="..\..\engine\source\math\mathUtils.cc">
       <Filter>engine\source\math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\engine\source\math\math_ScriptBinding.cc">
-      <Filter>engine\source\math</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\engine\source\math\mMathAltivec.cc">
       <Filter>engine\source\math</Filter>
     </ClCompile>
@@ -2541,9 +2529,6 @@
       <Filter>engine\source\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\memory\dataChunker.cc">
-      <Filter>engine\source\memory</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine\source\memory\frameAllocator_ScriptBinding.cc">
       <Filter>engine\source\memory</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\messaging\dispatcher.cc">
@@ -2673,9 +2658,6 @@
       <Filter>engine\source\platform</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\platform\platformMemory.cc">
-      <Filter>engine\source\platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\engine\source\platform\platformNetwork_ScriptBinding.cc">
       <Filter>engine\source\platform</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\source\platform\platformString.cc">
@@ -3055,6 +3037,24 @@
     </ClCompile>
     <ClCompile Include="..\..\engine\source\spine\SlotData.c">
       <Filter>engine\source\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\console\metaScripting_Binding.cc">
+      <Filter>engine\source\console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\platform\platformNetwork_Binding.cc">
+      <Filter>engine\source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\memory\frameAllocator_Binding.cc">
+      <Filter>engine\source\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\math\math_Binding.cc">
+      <Filter>engine\source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\io\fileSystem_Binding.cc">
+      <Filter>engine\source\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\audio\audio_Binding.cc">
+      <Filter>engine\source\audio</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
