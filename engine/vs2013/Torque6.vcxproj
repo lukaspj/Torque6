@@ -278,6 +278,15 @@
     <ClInclude Include="..\..\engine\source\3d\rendering\postFX\hdr.h" />
     <ClInclude Include="..\..\engine\source\3d\rendering\postFX\ssr.h" />
     <ClInclude Include="..\..\engine\source\3d\scene\camera.h" />
+    <ClInclude Include="..\source\3d\material\nodes\deferredNode_Binding.h" />
+    <ClInclude Include="..\source\3d\material\nodes\floatNode_Binding.h" />
+    <ClInclude Include="..\source\3d\material\nodes\forwardNode_Binding.h" />
+    <ClInclude Include="..\source\3d\material\nodes\multiplyNode_Binding.h" />
+    <ClInclude Include="..\source\3d\material\nodes\rootNode_Binding.h" />
+    <ClInclude Include="..\source\3d\material\nodes\sinNode_Binding.h" />
+    <ClInclude Include="..\source\3d\material\nodes\textureNode_Binding.h" />
+    <ClInclude Include="..\source\3d\material\nodes\timeNode_Binding.h" />
+    <ClInclude Include="..\source\3d\material\nodes\vec3Node_Binding.h" />
     <ClInclude Include="..\source\3d\scene\camera_Binding.h" />
     <ClInclude Include="..\..\engine\source\3d\scene\core.h" />
     <ClInclude Include="..\source\3d\scene\core_Binding.h" />
@@ -572,6 +581,7 @@
     <ClInclude Include="..\..\engine\source\messaging\scriptMsgListener.h" />
     <ClInclude Include="..\..\engine\source\module\moduleCallbacks.h" />
     <ClInclude Include="..\..\engine\source\module\moduleDefinition.h" />
+    <ClInclude Include="..\source\messaging\scriptMsgListener_Binding.h" />
     <ClInclude Include="..\source\module\moduleDefinition_Binding.h" />
     <ClInclude Include="..\..\engine\source\module\moduleManager.h" />
     <ClInclude Include="..\source\module\moduleManager_Binding.h" />
@@ -735,6 +745,8 @@
     <ClInclude Include="..\..\engine\source\sim\simConsoleThreadExecEvent.h" />
     <ClInclude Include="..\..\engine\source\sim\simDatablock.h" />
     <ClInclude Include="..\..\engine\source\sim\simDatablockGroup.h" />
+    <ClInclude Include="..\source\sim\scriptGroup_Binding.h" />
+    <ClInclude Include="..\source\sim\scriptObject_Binding.h" />
     <ClInclude Include="..\source\sim\simDatablock_Binding.h" />
     <ClInclude Include="..\..\engine\source\sim\simDictionary.h" />
     <ClInclude Include="..\..\engine\source\sim\simEvent.h" />
@@ -946,6 +958,7 @@
     <ClCompile Include="..\..\engine\source\audio\audioStreamSourceFactory.cc">
       <ObjectFileName>$(IntDir)engine\source\audio\audioStreamSourceFactory.obj</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\source\audio\audioDataBlock_Binding.h" />
     <ClCompile Include="..\source\audio\audio_Binding.cc">
       <ObjectFileName>$(IntDir)engine\source\audio\audio_ScriptBinding.obj</ObjectFileName>
     </ClCompile>

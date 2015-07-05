@@ -100,3 +100,48 @@ ConsoleFunctionWithDocs( purgeResources, ConsoleVoid, 1, 1, ())
    ResourceManager->purge();
 }
 */
+
+extern "C" {
+   DLL_PUBLIC GameConnection* GameConnectionCreateInstance()
+   {
+      return new GameConnection();
+   }
+
+   DLL_PUBLIC void GameConnectionSetJoinPassword(GameConnection* connection, const char* password)
+   {
+      connection->setJoinPassword(password);
+   }
+
+   DLL_PUBLIC void GameConnectionSetConnectArgs(GameConnection* connection, const char* password)
+   {
+      //TODO handle this
+   }
+
+   DLL_PUBLIC void GameConnectionActivateGhosting(GameConnection* connection)
+   {
+      connection->activateGhosting();
+   }
+
+   DLL_PUBLIC void GameConnectionResetGhosting(GameConnection* connection)
+   {
+      connection->resetGhosting();
+   }
+
+   DLL_PUBLIC void GameConnectionDelete(GameConnection* connection, const char* reason)
+   {
+      if (reason != NULL)
+         connection->setDisconnectReason(reason);
+      connection->deleteObject();
+   }
+
+   DLL_PUBLIC NetConnection* GameConnectionGetServerConnection(GameConnection* connection)
+   {
+      if (GameConnection::getConnectionToServer())
+         return GameConnection::getConnectionToServer();
+      else
+      {
+         Con::errorf("GameConnection::getServerConnection - no connection available.");
+         return NULL;
+      }
+   }
+}

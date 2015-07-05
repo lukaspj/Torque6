@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class PopupMenu : SimObject
    {
@@ -69,9 +71,8 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void PopupMenuShowPopup(IntPtr popupMenu, int x, int y);
-
-
       }
+      
       #endregion
 
       #region Properties
@@ -89,7 +90,7 @@ namespace Torque6_Bridge.SimObjects.Assets
             InternalUnsafeMethods.PopupMenuSetIsPopup(ObjectPtr->ObjPtr, value);
          }
       }
-
+      
       #endregion
       
       #region Methods
@@ -153,7 +154,7 @@ namespace Torque6_Bridge.SimObjects.Assets
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.PopupMenuShowPopup(ObjectPtr->ObjPtr, x, y);
       }
-
+      
       #endregion
    }
 }

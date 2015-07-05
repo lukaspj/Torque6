@@ -1,7 +1,9 @@
 ﻿using System;
 using HorribleHackz.CustomAttributes;
+using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.SimObjects;
-using Torque6_Bridge.SimObjects.Assets;
+using Console = Torque6_Bridge.Namespaces.Console;
+using Version = Torque6_Bridge.Namespaces.Version;
 
 //using IJWLayer;
 
@@ -20,41 +22,39 @@ namespace HorribleHackz
          //Engine.Platform.setMainDotCsDir(CSDir);
          //Engine.Platform.setCurrentDirectory(CSDir);
 
-         //// Logging settings
-         //Engine.Con.setLogMode(2);
-         //Engine.Script.setScriptExecEcho(false);
+         // Logging settings
+         Console.SetLogMode(2);
+         Console.PrintEchoFileLoads(false);
          //Engine.Script.trace(false);
 
-         //// Not really necessary, but shows how globals work
+         // Not really necessary, but shows how globals work
          //Globals.SetBool("Scripts::ignoreDSOs", true);
 
-         //// This is my realm!
-         //Engine.Version.setCompanyAndProduct("LukasPJ", "Torque6");
+         // This is my realm!
+         Version.SetCompanyAndProduct("LukasPJ", "Torque6");
 
-         //// Find the Databases by name
+         // Find the Databases by name
          ModuleDatabase = new ModuleManager("ModuleDatabase");
          AssetDatabase = new AssetManager("AssetDatabase");
 
-         //// Make sure they have been created
+         // Make sure they have been created
          if (ModuleDatabase.IsDead())
             throw new Exception("ModuleDatabase not found");
          if (AssetDatabase.IsDead())
             throw new Exception("AssetDatabase not found");
 
-         //// Didn't implement this property yet.
-         ModuleDatabase.SetFieldValue("EchoInfo", "false");
          AssetDatabase.EchoInfo = false;
          AssetDatabase.IgnoreAutoUnload = true;
 
-         //// Scan modules.
+         // Scan modules.
          ModuleDatabase.ScanModules("modules", true);
 
          ModuleDatabase.ScanModules("../shared-modules", true);
 
-         //// Load AppCore module.
+         // Load AppCore module.
          ModuleDatabase.LoadExplicit("AppCore", -1);
 
-         //// Load the modules needed for this example
+         // Load the modules needed for this example
          ModuleDatabase.LoadExplicit("Console", -1);
          ModuleDatabase.LoadExplicit("FreeViewCamera", -1);
       }
@@ -70,8 +70,8 @@ namespace HorribleHackz
       public static void androidBackButton(string val)
       {
          // Quit on button down
-         //if (val == "1")
-         //   Engine.Con.quit();
+         if (val == "1")
+            Engine.Quit();
       }
    }
 }

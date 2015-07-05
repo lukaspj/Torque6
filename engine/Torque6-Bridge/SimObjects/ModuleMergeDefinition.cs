@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ModuleMergeDefinition : SimObject
    {
@@ -39,9 +41,8 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr ModuleMergeDefinitionCreateInstance();
-
-
       }
+      
       #endregion
 
       #region Properties
@@ -59,11 +60,13 @@ namespace Torque6_Bridge.SimObjects.Assets
             InternalUnsafeMethods.ModuleMergeDefinitionSetMergePath(ObjectPtr->ObjPtr, value);
          }
       }
-
+      
       #endregion
       
       #region Methods
 
+      
+      
       #endregion
    }
 }

@@ -437,12 +437,12 @@ extern "C"{
       set->unlock();
    }
 
-   DLL_PUBLIC void SimSetAddObject(SimSet* set, SimObject* obj)
+   DLL_PUBLIC void SimSetAdd(SimSet* set, SimObject* obj)
    {
       set->addObject(obj);
    }
 
-   DLL_PUBLIC void SimSetRemoveObject(SimSet* set, SimObject* obj)
+   DLL_PUBLIC void SimSetRemove(SimSet* set, SimObject* obj)
    {
       set->removeObject(obj);
    }

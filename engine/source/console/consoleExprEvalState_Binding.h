@@ -59,3 +59,31 @@ ConsoleFunctionWithDocs(backtrace, ConsoleVoid, 1, 1, ())
 }
 
 /*! @} */ // group Callstack
+
+extern "C"{
+   DLL_PUBLIC void Script_Backtrace()
+   {
+      U32 totalSize = 1;
+
+      for (U32 i = 0; i < (U32)gEvalState.stack.size(); i++)
+      {
+         totalSize += dStrlen(gEvalState.stack[i]->scopeName) + 3;
+         if (gEvalState.stack[i]->scopeNamespace && gEvalState.stack[i]->scopeNamespace->mName)
+            totalSize += dStrlen(gEvalState.stack[i]->scopeNamespace->mName) + 2;
+      }
+
+      char *buf = Con::getReturnBuffer(totalSize);
+      buf[0] = 0;
+      for (U32 i = 0; i < (U32)gEvalState.stack.size(); i++)
+      {
+         dStrcat(buf, "->");
+         if (gEvalState.stack[i]->scopeNamespace && gEvalState.stack[i]->scopeNamespace->mName)
+         {
+            dStrcat(buf, gEvalState.stack[i]->scopeNamespace->mName);
+            dStrcat(buf, "::");
+         }
+         dStrcat(buf, gEvalState.stack[i]->scopeName);
+      }
+      Con::printf("BackTrace: %s", buf);
+   }
+}

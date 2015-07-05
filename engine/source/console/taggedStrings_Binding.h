@@ -82,3 +82,15 @@ ConsoleFunctionGroupEnd( TaggedStrings );
 /*! @} */ // group TaggedStrings
 
 
+extern "C" {
+   DLL_PUBLIC const char* Engine_Detag(S32 tagId)
+   {
+      AssertWarn(false, "Not implemented yet");
+      return NULL;
+   }
+   DLL_PUBLIC const char* Engine_GetTag(const char* taggedString)
+   {
+      AssertWarn(false, "Not implemented yet");
+      return NULL;
+   }
+}

@@ -41,7 +41,7 @@ namespace Torque6_Bridge.Utility
       {
          get
          {
-            if (_OwnerObject.IsDead()) throw new SimObjectPointerInvalidException();
+            if (_OwnerObject.IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             if (index >= _Count)
                throw new IndexOutOfRangeException();
             if (_GetterFunction != null)
@@ -52,7 +52,7 @@ namespace Torque6_Bridge.Utility
          }
          set
          {
-            if (_OwnerObject.IsDead()) throw new SimObjectPointerInvalidException();
+            if (_OwnerObject.IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             if (index >= _Count)
                throw new IndexOutOfRangeException();
             _SetterFunction(_OwnerObject.ObjectPtr->ObjPtr, index, value);

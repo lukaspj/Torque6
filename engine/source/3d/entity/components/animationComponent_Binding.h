@@ -25,3 +25,42 @@ ConsoleMethodGroupBeginWithDocs(AnimationComponent, BaseComponent)
 // Nothing Yet
 
 ConsoleMethodGroupEndWithDocs(AnimationComponent)
+
+namespace Scene{
+   extern "C" {
+      DLL_PUBLIC AnimationComponent* AnimationComponentCreateInstance()
+      {
+         return new AnimationComponent();
+      }
+
+      DLL_PUBLIC F32 AnimationComponentGetSpeed(AnimationComponent* animationComponent)
+      {
+         return animationComponent->getSpeed();
+      }
+
+      DLL_PUBLIC void AnimationComponentSetSpeed(AnimationComponent* animationComponent, F32 val)
+      {
+         animationComponent->setSpeed(val);
+      }
+
+      DLL_PUBLIC MeshComponent* AnimationComponentGetTarget(AnimationComponent* animationComponent)
+      {
+         return animationComponent->getTarget();
+      }
+
+      DLL_PUBLIC void AnimationComponentSetTarget(AnimationComponent* animationComponent, MeshComponent* val)
+      {
+         animationComponent->setTarget(val);
+      }
+
+      DLL_PUBLIC const char* AnimationComponentGetMeshAsset(AnimationComponent* animationComponent)
+      {
+         return animationComponent->getMesh().getAssetId();
+      }
+
+      DLL_PUBLIC void AnimationComponentSetMeshAsset(AnimationComponent* animationComponent, const char* meshAssetId)
+      {
+         animationComponent->setMesh(meshAssetId);
+      }
+   }
+}

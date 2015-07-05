@@ -25,3 +25,22 @@ ConsoleMethodGroupBeginWithDocs(MeshComponent, BaseComponent)
 // Nothing Yet
 
 ConsoleMethodGroupEndWithDocs(MeshComponent)
+
+namespace Scene{
+   extern "C" {
+      DLL_PUBLIC MeshComponent* MeshComponentCreateInstance()
+      {
+         return new MeshComponent();
+      }
+
+      DLL_PUBLIC const char* MeshComponentGetMeshAsset(MeshComponent* MeshComponent)
+      {
+         return MeshComponent->getMesh().getAssetId();
+      }
+
+      DLL_PUBLIC void MeshComponentSetMeshAsset(MeshComponent* MeshComponent, const char* meshAssetId)
+      {
+         MeshComponent->setMesh(meshAssetId);
+      }
+   }
+}

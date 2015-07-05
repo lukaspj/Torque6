@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class SimGroup : SimSet
    {
@@ -33,18 +35,20 @@ namespace Torque6_Bridge.SimObjects.Assets
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr SimGroupCreateInstance();
-
-
       }
+      
       #endregion
 
       #region Properties
 
-
+      
+      
       #endregion
       
       #region Methods
 
+      
+      
       #endregion
    }
 }

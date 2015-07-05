@@ -233,27 +233,27 @@ ConsoleFunctionWithDocs(isObject, ConsoleBool, 2, 2, ( handle ) )
 //-----------------------------------------------------------------------------
 
 extern "C"{
-   DLL_PUBLIC void* SimFindObjectById(U32 id)
+   DLL_PUBLIC SimObject* Sim_FindObjectById(U32 id)
    {
       return Sim::findObject(id);
    }
 
-   DLL_PUBLIC void* SimFindObjectWrapperById(U32 id)
+   DLL_PUBLIC SimObjectPtr<SimObject>* Sim_FindObjectWrapperById(U32 id)
    {
       return new SimObjectPtr<SimObject>(Sim::findObject(id));
    }
 
-   DLL_PUBLIC void* SimFindObjectByName(const char* name)
+   DLL_PUBLIC SimObject* Sim_FindObjectByName(const char* name)
    {
       return Sim::findObject(StringTable->insert(name));
    }
 
-   DLL_PUBLIC void* SimFindObjectWrapperByName(const char* name)
+   DLL_PUBLIC SimObjectPtr<SimObject>* Sim_FindObjectWrapperByName(const char* name)
    {
       return new SimObjectPtr<SimObject>(Sim::findObject(StringTable->insert(name)));
    }
 
-   DLL_PUBLIC void* SimWrapObject(SimObject* obj)
+   DLL_PUBLIC SimObjectPtr<SimObject>* Sim_WrapObject(SimObject* obj)
    {
       return new SimObjectPtr<SimObject>(obj);
    }

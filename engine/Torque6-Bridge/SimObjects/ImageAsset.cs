@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ImageAsset : AssetBase
    {
@@ -38,10 +40,10 @@ namespace Torque6_Bridge.SimObjects.Assets
          internal static extern void ImageAssetSetImageFile(IntPtr imageAsset, string imageFile);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ImageAssetGetForce16bit(IntPtr imageAsset);
+         internal static extern bool ImageAssetGetForce16Bit(IntPtr imageAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ImageAssetSetForce16bit(IntPtr imageAsset, bool value);
+         internal static extern void ImageAssetSetForce16Bit(IntPtr imageAsset, bool value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern string ImageAssetGetFilterMode(IntPtr imageAsset);
@@ -171,9 +173,8 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int ImageAssetGetExplicitCellIndex(IntPtr imageAsset, string cellName);
-
-
       }
+      
       #endregion
 
       #region Properties
@@ -196,12 +197,12 @@ namespace Torque6_Bridge.SimObjects.Assets
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ImageAssetGetForce16bit(ObjectPtr->ObjPtr);
+            return InternalUnsafeMethods.ImageAssetGetForce16Bit(ObjectPtr->ObjPtr);
          }
          set
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            InternalUnsafeMethods.ImageAssetSetForce16bit(ObjectPtr->ObjPtr, value);
+            InternalUnsafeMethods.ImageAssetSetForce16Bit(ObjectPtr->ObjPtr, value);
          }
       }
       public string FilterMode
@@ -347,7 +348,7 @@ namespace Torque6_Bridge.SimObjects.Assets
             InternalUnsafeMethods.ImageAssetSetCellHeight(ObjectPtr->ObjPtr, value);
          }
       }
-
+      
       #endregion
       
       #region Methods
@@ -471,7 +472,7 @@ namespace Torque6_Bridge.SimObjects.Assets
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.ImageAssetGetExplicitCellIndex(ObjectPtr->ObjPtr, cellName);
       }
-
+      
       #endregion
    }
 }

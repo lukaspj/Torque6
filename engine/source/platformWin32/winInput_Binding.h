@@ -66,3 +66,16 @@ ConsoleFunctionWithDocs( getJoystickCount, ConsoleInt, 1, 1, ())
 }
 
 /*! @} */ // end group WindowsPlatform
+
+extern "C" {
+   DLL_PUBLIC DInputDevice* DInputDeviceCreateInstance()
+   {
+      AssertWarn(false, "Not implemented yet");
+      return NULL;
+   }
+   DLL_PUBLIC DInputManager* DInputManagerCreateInstance()
+   {
+      AssertWarn(false, "Not implemented yet");
+      return NULL;
+   }
+}

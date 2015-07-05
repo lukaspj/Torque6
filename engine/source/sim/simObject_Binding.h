@@ -1056,6 +1056,11 @@ extern "C"{
       parent->addObject(obj);
    }
 
+   DLL_PUBLIC SimGroup* SimObjectGetParentGroup(SimObject* obj)
+   {
+      return obj->getGroup();
+   }
+
    DLL_PUBLIC StringTableEntry SimObjectGetSuperClass(SimObject* obj)
    {
       return obj->getSuperClassNamespace();
@@ -1125,6 +1130,11 @@ extern "C"{
          pRep = pRep->getParentClass();
       }
       return false;
+   }
+
+   DLL_PUBLIC const char* SimObjectGetClassName(SimObject* obj)
+   {
+      return obj->getClassName();
    }
 
    DLL_PUBLIC const char* SimObjectGetFieldValue(SimObject* obj, const char* fieldName)
@@ -1264,7 +1274,7 @@ extern "C"{
       return obj->getGroup();
    }
 
-   DLL_PUBLIC void SimObjectDeleteObject(SimObject* obj)
+   DLL_PUBLIC void SimObjectDelete(SimObject* obj)
    {
       obj->deleteObject();
    }

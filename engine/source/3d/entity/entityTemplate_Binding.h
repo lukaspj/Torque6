@@ -19,9 +19,17 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
+namespace Scene{
+   ConsoleMethodGroupBeginWithDocs(EntityTemplate, SimGroup)
 
-ConsoleMethodGroupBeginWithDocs(EntityTemplate, SimGroup)
+   // Nothing Yet
 
-// Nothing Yet
+   ConsoleMethodGroupEndWithDocs(EntityTemplate)
 
-ConsoleMethodGroupEndWithDocs(EntityTemplate)
+   extern "C" {
+      DLL_PUBLIC EntityTemplate* EntityTemplateCreateInstance()
+      {
+         return new EntityTemplate();
+      }
+   }
+}

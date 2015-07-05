@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ModuleManager : SimObject
    {
@@ -71,10 +73,10 @@ namespace Torque6_Bridge.SimObjects.Assets
          internal static extern IntPtr ModuleManagerFindModule(IntPtr moduleManager, string moduleId, uint versionId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ModuleManagerFindModules(IntPtr moduleManager, bool loadedOnly);
+         internal static extern IntPtr[] ModuleManagerFindModules(IntPtr moduleManager, bool loadedOnly);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ModuleManagerFindModuleTypes(IntPtr moduleManager, string moduleType, bool loadedOnly);
+         internal static extern IntPtr[] ModuleManagerFindModuleTypes(IntPtr moduleManager, string moduleType, bool loadedOnly);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern string ModuleManagerCopyModule(IntPtr moduleManager, IntPtr sourceModuleDefinition, string targetModuleId, string targetPath, bool useVersionPathing);
@@ -96,9 +98,8 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleManagerRemoveListener(IntPtr moduleManager, IntPtr listenerObject);
-
-
       }
+      
       #endregion
 
       #region Properties
@@ -129,7 +130,7 @@ namespace Torque6_Bridge.SimObjects.Assets
             InternalUnsafeMethods.ModuleManagerSetEchoInfo(ObjectPtr->ObjPtr, value);
          }
       }
-
+      
       #endregion
       
       #region Methods
@@ -235,7 +236,7 @@ namespace Torque6_Bridge.SimObjects.Assets
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.ModuleManagerRemoveListener(ObjectPtr->ObjPtr, listenerObject.ObjectPtr->ObjPtr);
       }
-
+      
       #endregion
    }
 }

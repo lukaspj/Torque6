@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 namespace Scene
 {
    ConsoleMethod(BaseComponent, setUniformVec4, ConsoleVoid, 4, 4, (""))
@@ -28,5 +30,46 @@ namespace Scene
       Con::setData(TypePoint4F, value, 0, 1, &argv[3]);
 
       object->setUniformVec4(argv[2], value);
+   }
+   extern "C"{
+      DLL_PUBLIC BaseComponent* BaseComponentCreateInstance()
+      {
+         return new BaseComponent();
+      }
+
+      DLL_PUBLIC void BaseComponentGetPosition(BaseComponent* baseComponent, CInterface::Point3FParam* outPos)
+      {
+         *outPos = baseComponent->getPosition();
+      }
+
+      DLL_PUBLIC void BaseComponentSetPosition(BaseComponent* baseComponent, CInterface::Point3FParam pos)
+      {
+         baseComponent->setPosition(pos);
+      }
+
+      DLL_PUBLIC void BaseComponentGetRotation(BaseComponent* baseComponent, CInterface::Point3FParam* outRotation)
+      {
+         *outRotation = baseComponent->getRotation();
+      }
+
+      DLL_PUBLIC void BaseComponentSetRotation(BaseComponent* baseComponent, CInterface::Point3FParam rotation)
+      {
+         baseComponent->setRotation(rotation);
+      }
+
+      DLL_PUBLIC void BaseComponentGetScale(BaseComponent* baseComponent, CInterface::Point3FParam* outScale)
+      {
+         *outScale = baseComponent->getScale();
+      }
+
+      DLL_PUBLIC void BaseComponentSetScale(BaseComponent* baseComponent, CInterface::Point3FParam scale)
+      {
+         baseComponent->setScale(scale);
+      }
+
+      DLL_PUBLIC void BaseComponentSetUniformVec4(BaseComponent* baseComponent, const char* name, CInterface::Point4FParam value)
+      {
+         baseComponent->setUniformVec4(name, value);
+      }
    }
 }

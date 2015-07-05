@@ -1893,6 +1893,42 @@
     <ClInclude Include="..\source\2d\core\Utility_Binding.h">
       <Filter>engine\source\2d\core</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\3d\material\nodes\sinNode_Binding.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\material\nodes\textureNode_Binding.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\material\nodes\timeNode_Binding.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\material\nodes\vec3Node_Binding.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\material\nodes\deferredNode_Binding.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\material\nodes\floatNode_Binding.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\material\nodes\forwardNode_Binding.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\material\nodes\multiplyNode_Binding.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\3d\material\nodes\rootNode_Binding.h">
+      <Filter>engine\source\3d\material\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sim\scriptGroup_Binding.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\messaging\scriptMsgListener_Binding.h">
+      <Filter>engine\source\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sim\scriptObject_Binding.h">
+      <Filter>engine\source\sim</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\engine\source\2d\assets\ImageAsset.cc">
@@ -3054,6 +3090,9 @@
       <Filter>engine\source\io</Filter>
     </ClCompile>
     <ClCompile Include="..\source\audio\audio_Binding.cc">
+      <Filter>engine\source\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\audio\audioDataBlock_Binding.h">
       <Filter>engine\source\audio</Filter>
     </ClCompile>
   </ItemGroup>

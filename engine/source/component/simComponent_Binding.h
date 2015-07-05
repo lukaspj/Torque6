@@ -99,3 +99,52 @@ ConsoleMethodWithDocs(SimComponent, isEnabled, ConsoleBool, 2, 2, ())
 }
 
 ConsoleMethodGroupEndWithDocs(SimComponent)
+
+extern "C"{
+   DLL_PUBLIC SimComponent* SimComponentCreateInstance()
+   {
+      return new SimComponent();
+   }
+
+   DLL_PUBLIC bool SimComponentGetEnabled(SimComponent* component)
+   {
+      return component->isEnabled();
+   }
+
+   DLL_PUBLIC void SimComponentSetEnabled(SimComponent* component, bool isEnabled)
+   {
+      component->setEnabled(isEnabled);
+   }
+
+   DLL_PUBLIC bool SimComponentAddComponents(SimComponent* component, S32 argc, SimComponent** argv)
+   {
+      for (S32 i = 0; i < argc; i++)
+         component->addComponent(argv[i]);
+      return true;
+   }
+
+   DLL_PUBLIC bool SimComponentRemoveComponents(SimComponent* component, S32 argc, SimComponent** argv)
+   {
+      for (S32 i = 0; i < argc; i++)
+         component->removeComponent(argv[i]);
+      return true;
+   }
+
+   DLL_PUBLIC int SimComponentGetComponentCount(SimComponent* component)
+   {
+      return component->getComponentCount();
+   }
+
+   DLL_PUBLIC SimComponent* SimComponentGetComponent(SimComponent* component, S32 index)
+   {
+      if (index < 0 || index >= (S32)component->getComponentCount())
+      {
+         Con::errorf("SimComponent::getComponent - Invalid index %d", index);
+         return 0;
+      }
+
+      return component->getComponent(index);
+   }
+
+   
+}

@@ -24,3 +24,9 @@ ConsoleMethodGroupBeginWithDocs(RemoteDebuggerBase, SimObject)
 
 ConsoleMethodGroupEndWithDocs(RemoteDebuggerBase)
 
+extern "C"{
+   DLL_PUBLIC RemoteDebuggerBase* RemoteDebuggerBaseCreateInstance()
+   {
+      return new RemoteDebuggerBase;
+   }
+}

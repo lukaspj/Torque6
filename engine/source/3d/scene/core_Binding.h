@@ -37,6 +37,7 @@
 #endif
 
 #include <3d/material/materialAsset.h>
+#include "c-interface/c-interface.h"
 
 ConsoleNamespaceFunction( Scene, clear, ConsoleVoid, 1, 1, (""))
 {
@@ -117,4 +118,65 @@ ConsoleNamespaceFunction( Scene, setDirectionalLight, ConsoleVoid, 4, 4, (""))
    Con::setData(TypeColorF, &ambient, 0, 1, &argv[3]);
 
    Scene::setDirectionalLight(direction, color, ambient);
+}
+
+namespace Scene{
+   extern "C" {
+      DLL_PUBLIC void Scene_Clear()
+      {
+         Scene::clear();
+      }
+
+      DLL_PUBLIC void Scene_Load()
+      {
+         Scene::load();
+      }
+
+      DLL_PUBLIC void Scene_Save()
+      {
+         Scene::save();
+      }
+
+      DLL_PUBLIC void Scene_Refresh()
+      {
+         Scene::refresh();
+      }
+
+      DLL_PUBLIC void Scene_AddEntity(SceneEntity* entity, const char* name)
+      {
+         if (name != NULL)
+            Scene::addEntity(entity, name);
+         Scene::addEntity(entity);
+      }
+
+      DLL_PUBLIC void Scene_RemoveEntity(SceneEntity* entity, const char* name)
+      {
+         Scene::addEntity(entity);
+      }
+
+      DLL_PUBLIC SceneCamera* Scene_GetActiveCamera()
+      {
+         return Scene::getActiveCamera();
+      }
+
+      DLL_PUBLIC void Scene_PushActiveCamera(const char* name)
+      {
+         Scene::pushActiveCamera(name);
+      }
+
+      DLL_PUBLIC void Scene_PopActiveCamera()
+      {
+         Scene::popActiveCamera();
+      }
+
+      DLL_PUBLIC SceneCamera* Scene_GetCamera(const char* name)
+      {
+         return Scene::getCamera(name);
+      }
+
+      DLL_PUBLIC void Scene_SetDirectionalLight(CInterface::Point3FParam direction, CInterface::ColorParam color, CInterface::ColorParam ambient)
+      {
+         Scene::setDirectionalLight(direction, color, ambient);
+      }
+   }
 }

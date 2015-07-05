@@ -367,3 +367,138 @@ ConsoleMethodWithDocs( BehaviorComponent, getBehaviorConnection, ConsoleString, 
 }
 
 ConsoleMethodGroupEndWithDocs(BehaviorComponent)
+
+extern "C" {
+   DLL_PUBLIC BehaviorComponent* BehaviorComponentCreateInstance()
+   {
+      return new BehaviorComponent();
+   }
+
+   DLL_PUBLIC bool BehaviorComponentAddBehavior(BehaviorComponent* component, BehaviorInstance* inst)
+   {
+      return component->addBehavior(inst);
+   }
+
+   DLL_PUBLIC bool BehaviorComponentRemoveBehavior(BehaviorComponent* component, BehaviorInstance* inst)
+   {
+      return component->removeBehavior(inst);
+   }
+
+   DLL_PUBLIC void BehaviorComponentClearBehaviors(BehaviorComponent* component)
+   {
+      component->clearBehaviors();
+   }
+
+   DLL_PUBLIC int BehaviorComponentGetBehaviorCount(BehaviorComponent* component)
+   {
+      return component->getBehaviorCount();
+   }
+
+   DLL_PUBLIC BehaviorInstance* BehaviorComponentGetBehavior(BehaviorComponent* component, const char* name)
+   {
+      return component->getBehavior(name);
+   }
+
+   DLL_PUBLIC BehaviorInstance* BehaviorComponentGetBehaviorByIndex(BehaviorComponent* component, U32 index)
+   {
+      return component->getBehavior(index);
+   }
+
+   DLL_PUBLIC bool BehaviorComponentReOrder(BehaviorComponent* component, BehaviorInstance* inst, U32 index)
+   {
+      return component->reOrder(inst, index);
+   }
+
+   DLL_PUBLIC bool BehaviorComponentConnect(BehaviorComponent* component, BehaviorInstance* outputBehavior, const char* outputName, BehaviorInstance* inputBehavior, const char* inputName)
+   {
+      // Fetch port names.
+      StringTableEntry pOutputName = StringTable->insert(outputName);
+      StringTableEntry pInputName = StringTable->insert(inputName);
+
+      // Perform the connection.
+      return component->connect(outputBehavior, inputBehavior, pOutputName, pInputName);
+   }
+
+   DLL_PUBLIC bool BehaviorComponentDisconnect(BehaviorComponent* component, BehaviorInstance* outputBehavior, const char* outputName, BehaviorInstance* inputBehavior, const char* inputName)
+   {
+      // Fetch port names.
+      StringTableEntry pOutputName = StringTable->insert(outputName);
+      StringTableEntry pInputName = StringTable->insert(inputName);
+
+      // Perform the disconnection.
+      return component->disconnect(outputBehavior, inputBehavior, pOutputName, pInputName);
+   }
+
+   DLL_PUBLIC bool BehaviorComponentRaise(BehaviorComponent* component, BehaviorInstance* outputBehavior, const char* outputName, const U32 timeDelta)
+   {
+      // Fetch output name.
+      StringTableEntry pOutputName = StringTable->insert(outputName);
+
+      // Perform the signal raising immediately if no schedule time specified.
+      if (timeDelta == 0)
+         return component->raise(outputBehavior, pOutputName);
+
+      // Schedule raise event.
+      BehaviorComponentRaiseEvent* pEvent = new BehaviorComponentRaiseEvent(outputBehavior, pOutputName);
+      Sim::postEvent(component, pEvent, Sim::getCurrentTime() + timeDelta);
+
+      return true;
+   }
+
+   DLL_PUBLIC U32 BehaviorComponentGetBehaviorConnectionCount(BehaviorComponent* component, BehaviorInstance* outputBehavior, const char* outputName)
+   {
+      // Fetch output name.
+      StringTableEntry pOutputName = StringTable->insert(outputName);
+
+      // Return the connection count.
+      return component->getBehaviorConnectionCount(outputBehavior, pOutputName);
+   }
+
+   DLL_PUBLIC const char* BehaviorComponentGetBehaviorConnection(BehaviorComponent* component, BehaviorInstance* outputBehavior, const char* outputName, const U32 connectionIndex)
+   {
+      // Fetch output name.
+      StringTableEntry pOutputName = StringTable->insert(outputName);
+
+      // Fetch connection.
+      const BehaviorComponent::BehaviorPortConnection* pBehaviorConnection = component->getBehaviorConnection(outputBehavior, pOutputName, connectionIndex);
+
+      // Finish if there are on connections.
+      if (pBehaviorConnection == NULL)
+         return StringTable->EmptyString;
+
+      //TODO should return struct instead.
+      // Format and return behavior input.
+      char* pBuffer = Con::getReturnBuffer(1024);
+      dSprintf(pBuffer, 1024, "%d,%d,%s,%s",
+         pBehaviorConnection->mOutputInstance->getId(),
+         pBehaviorConnection->mInputInstance->getId(),
+         pBehaviorConnection->mOutputName,
+         pBehaviorConnection->mInputName);
+      return pBuffer;
+   }
+
+   DLL_PUBLIC void Engine_CopyBehaviorToComponent(BehaviorInstance* behavior, SimComponent* component)
+   {
+      // Fetch template.
+      BehaviorTemplate* pTemplate = behavior->getTemplate();
+
+      // Fetch template field count.
+      const U32 fieldCount = pTemplate->getBehaviorFieldCount();
+
+      const char* pFieldValue = NULL;
+      BehaviorTemplate::BehaviorField* pField = NULL;
+
+      // Copy behavior fields.
+      for (U32 index = 0; index < fieldCount; ++index)
+      {
+         // Fetch behavior field.
+         pField = pTemplate->getBehaviorField(index);
+
+         // Fetch field value from behavior (if any).
+         pFieldValue = behavior->getDataField(pField->mName, NULL);
+
+         // Set field value on component.
+         component->setDataField(pField->mName, NULL, pFieldValue);
+      }
+   }
+}

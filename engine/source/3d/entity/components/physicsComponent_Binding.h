@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 namespace Scene
 {
 
@@ -35,4 +37,45 @@ namespace Scene
 
    ConsoleMethodGroupEndWithDocs(PhysicsComponent)
 
+   extern "C"{
+      DLL_PUBLIC PhysicsComponent* PhysicsComponentCreateInstance()
+      {
+         return new PhysicsComponent();
+      }
+
+      DLL_PUBLIC const char* PhysicsComponentGetOnCollideFunction(PhysicsComponent* PhysicsComponent)
+      {
+         return PhysicsComponent->getOnCollideFunction();
+      }
+
+      DLL_PUBLIC void PhysicsComponentSetOnCollideFunction(PhysicsComponent* PhysicsComponent, const char* function)
+      {
+         PhysicsComponent->setOnCollideFunction(StringTable->insert(function));
+      }
+
+      DLL_PUBLIC const char* PhysicsComponentGetCollisionType(PhysicsComponent* PhysicsComponent)
+      {
+         return PhysicsComponent->getCollisionType();
+      }
+
+      DLL_PUBLIC void PhysicsComponentSetCollisionType(PhysicsComponent* PhysicsComponent, const char* type)
+      {
+         PhysicsComponent->setCollisionType(StringTable->insert(type));
+      }
+
+      DLL_PUBLIC bool PhysicsComponentGetStatic(PhysicsComponent* PhysicsComponent)
+      {
+         return PhysicsComponent->getStatic();
+      }
+
+      DLL_PUBLIC void PhysicsComponentSetStatic(PhysicsComponent* PhysicsComponent, bool isStatic)
+      {
+         PhysicsComponent->setStatic(isStatic);
+      }
+
+      DLL_PUBLIC void PhysicsComponentSetLinearVelocity(PhysicsComponent* PhysicsComponent, CInterface::Point3FParam vel)
+      {
+         PhysicsComponent->setLinearVelocity(vel);
+      }
+   }
 }

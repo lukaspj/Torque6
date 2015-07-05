@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class NameTags : SimSet
    {
@@ -35,6 +37,9 @@ namespace Torque6_Bridge.SimObjects.Assets
          internal static extern IntPtr NameTagsCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern int NameTagsCreateTag(IntPtr nameTags, string newTagName);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int NameTagsRenameTag(IntPtr nameTags, int tagId, string newTagName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
@@ -59,21 +64,27 @@ namespace Torque6_Bridge.SimObjects.Assets
          internal static extern bool NameTagsUntag(IntPtr nameTags, int objectId, int tagIdsC, int[] tagIdsV);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool NameTagsHasTags(IntPtr nameTags, int objectId, int tagIdsC, int[] tagIdsV);
+         internal static extern bool NameTagsHasTag(IntPtr nameTags, int objectId, int tagIdsC, int[] tagIdsV);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern string NameTagsQueryTags(IntPtr nameTags, int tagIdsC, int[] tagIdsV, bool excluded);
-
-
       }
+      
       #endregion
 
       #region Properties
 
-
+      
+      
       #endregion
       
       #region Methods
+
+      public void CreateTag(string newTagName)
+      {
+         if (IsDead()) throw new SimObjectPointerInvalidException();
+         InternalUnsafeMethods.NameTagsCreateTag(ObjectPtr->ObjPtr, newTagName);
+      }
 
       public void RenameTag(int tagId, string newTagName)
       {
@@ -123,10 +134,10 @@ namespace Torque6_Bridge.SimObjects.Assets
          InternalUnsafeMethods.NameTagsUntag(ObjectPtr->ObjPtr, objectId, tagIdsC, tagIdsV);
       }
 
-      public void HasTags(int objectId, int tagIdsC, int[] tagIdsV)
+      public void HasTag(int objectId, int tagIdsC, int[] tagIdsV)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsHasTags(ObjectPtr->ObjPtr, objectId, tagIdsC, tagIdsV);
+         InternalUnsafeMethods.NameTagsHasTag(ObjectPtr->ObjPtr, objectId, tagIdsC, tagIdsV);
       }
 
       public void QueryTags(int tagIdsC, int[] tagIdsV, bool excluded)
@@ -134,7 +145,7 @@ namespace Torque6_Bridge.SimObjects.Assets
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.NameTagsQueryTags(ObjectPtr->ObjPtr, tagIdsC, tagIdsV, excluded);
       }
-
+      
       #endregion
    }
 }

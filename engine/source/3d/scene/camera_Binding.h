@@ -117,11 +117,6 @@ namespace Scene
          camera->setPanVelocity(panVel);
       }
 
-      DLL_PUBLIC void SceneCameraSetPosition(SceneCamera* camera, CInterface::Point3FParam position)
-      {
-         camera->setPosition(position);
-      }
-
       DLL_PUBLIC void SceneCameraRotate(SceneCamera* camera, CInterface::Point3FParam rotation)
       {
          camera->rotate(rotation);
@@ -130,6 +125,36 @@ namespace Scene
       DLL_PUBLIC void SceneCameraBindMouse(SceneCamera* camera, bool value, bool left, bool right)
       {
          camera->setBindMouse(value, left, right);
+      }
+
+      DLL_PUBLIC void SceneCameraGetPosition(SceneCamera* camera, CInterface::Point3FParam* position)
+      {
+         *position = camera->getPosition();
+      }
+
+      DLL_PUBLIC void SceneCameraSetPosition(SceneCamera* camera, CInterface::Point3FParam position)
+      {
+         camera->setPosition(position);
+      }
+
+      DLL_PUBLIC F32 SceneCameraGetHorizontalAngle(SceneCamera* camera)
+      {
+         return camera->getHorizontalAngle();
+      }
+
+      DLL_PUBLIC void SceneCameraSetHorizontalAngle(SceneCamera* camera, F32 angle)
+      {
+         camera->setHorizontalAngle(angle);
+      }
+
+      DLL_PUBLIC F32 SceneCameraGetVerticalAngle(SceneCamera* camera)
+      {
+         return camera->getVerticalAngle();
+      }
+
+      DLL_PUBLIC void SceneCameraSetVerticalAngle(SceneCamera* camera, F32 angle)
+      {
+         camera->setVerticalAngle(angle);
       }
    }
 }

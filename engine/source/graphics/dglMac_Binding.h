@@ -84,3 +84,46 @@ ConsoleFunctionGroupEnd( MacFSAA );
 #endif
 
 /*! @} */ // end group MacFSAA
+
+extern "C"{
+   DLL_PUBLIC void Mac_SetFSAA(S32 samples)
+   {
+#ifdef TORQUE_OS_OSX
+      gFSAASamples = samples;
+      if (gFSAASamples<1)
+         gFSAASamples = 1;
+      else if (gFSAASamples>gGLState.maxFSAASamples)
+         gFSAASamples = gGLState.maxFSAASamples;
+      dglSetFSAASamples(gFSAASamples);
+#else
+      AssertWarn(false, "Not an OSX build.");
+#endif
+   }
+
+   DLL_PUBLIC void Mac_IncreaseFSAA()
+   {
+#ifdef TORQUE_OS_OSX
+      if (gFSAASamples<gGLState.maxFSAASamples)
+      {
+         gFSAASamples<<=1;
+         dglSetFSAASamples(gFSAASamples);
+      }
+#else
+      AssertWarn(false, "Not an OSX build.");
+#endif
+   }
+
+   DLL_PUBLIC void Mac_DecreaseFSAA()
+   {
+#ifdef TORQUE_OS_OSX
+      if (gFSAASamples>1)
+      {
+         gFSAASamples>>=1;
+         dglSetFSAASamples(gFSAASamples);
+      }
+#else
+      AssertWarn(false, "Not an OSX build.");
+#endif
+   }
+
+}

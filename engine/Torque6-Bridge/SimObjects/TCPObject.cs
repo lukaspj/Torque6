@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class TCPObject : SimObject
    {
@@ -51,14 +53,14 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern string TCPObjectURLEncodeString(IntPtr tcpObj, string data);
-
-
       }
+      
       #endregion
 
       #region Properties
 
-
+      
+      
       #endregion
       
       #region Methods
@@ -98,7 +100,7 @@ namespace Torque6_Bridge.SimObjects.Assets
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.TCPObjectURLEncodeString(ObjectPtr->ObjPtr, data);
       }
-
+      
       #endregion
    }
 }

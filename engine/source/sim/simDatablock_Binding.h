@@ -43,3 +43,15 @@ ConsoleFunctionWithDocs(deleteDataBlocks, ConsoleVoid, 1, 1, ())
 }
 
 /*! @} */ // end group Datablocks
+
+extern "C"{
+   DLL_PUBLIC SimDataBlock* SimDataBlockCreateInstance()
+   {
+      return new SimDataBlock();
+   }
+
+   DLL_PUBLIC SimDataBlockGroup* SimDataBlockGroupCreateInstance()
+   {
+      return new SimDataBlockGroup();
+   }
+}

@@ -39,3 +39,16 @@ ConsoleMethodWithDocs( DynamicConsoleMethodComponent, callOnBehaviors, ConsoleSt
 }
 
 ConsoleMethodGroupEndWithDocs(DynamicConsoleMethodComponent)
+
+extern "C" {
+   DLL_PUBLIC DynamicConsoleMethodComponent* DynamicConsoleMethodComponentCreateInstance()
+   {
+      return new DynamicConsoleMethodComponent();
+   }
+
+   DLL_PUBLIC const char* DynamicConsoleMethodComponentCallOnBehaviors(DynamicConsoleMethodComponent* component, const char* methodName, int argc, const char** argv)
+   {
+      //TODO handle this
+      return NULL;
+   }
+}

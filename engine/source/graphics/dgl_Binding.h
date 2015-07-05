@@ -226,4 +226,188 @@ ConsoleFunctionWithDocs(showStats, void, 2, 2, "")
       bgfx::setDebug(BGFX_DEBUG_NONE);
 }
 
+extern "C"{
+   DLL_PUBLIC bool Engine_CaptureScreenArea(S32 posX, S32 posY, U32 width, U32 height, const char* fileName, const char* fileType)
+   {
+      GLint positionX = posX;
+      GLint positionY = posY;
 
+      FileStream fStream;
+      if (!fStream.open(fileName, FileStream::Write))
+      {
+         Con::printf("Failed to open file '%s'.", fileName);
+         return false;
+      }
+
+      // Read gl pixels here
+      glReadBuffer(GL_FRONT);
+
+      Point2I extent;
+      extent.x = width;
+      extent.y = height;
+
+      U8 * pixels = new U8[extent.x * extent.y * 4];
+      glReadPixels(positionX, positionY, extent.x, extent.y, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+
+      GBitmap * bitmap = new GBitmap;
+      bitmap->allocateBitmap(U32(extent.x), U32(extent.y));
+
+      // flip the rows
+      for (U32 y = 0; y < (U32)extent.y; y++)
+         dMemcpy(bitmap->getAddress(0, extent.y - y - 1), pixels + y * extent.x * 3, U32(extent.x * 3));
+
+      if (dStrcmp(fileType, "JPEG") == 0)
+         bitmap->writeJPEG(fStream);
+      else if (dStrcmp(fileType, "PNG") == 0)
+         bitmap->writePNG(fStream);
+      else
+         bitmap->writePNG(fStream);
+
+      fStream.close();
+
+      delete[] pixels;
+      delete bitmap;
+
+      return true;
+   }
+
+   DLL_PUBLIC bool Engine_PNG2JPG(const char* bmpname, U32 quality)
+   {
+      extern U32 gJpegQuality;
+      const char * rgbname = NULL;
+      const char * alphaname = NULL;
+      gJpegQuality = quality;
+
+      Con::printf("Converting file: %s", bmpname);
+
+      if (!rgbname)
+      {
+         char * buf = new char[dStrlen(bmpname) + 32];
+         dStrcpy(buf, bmpname);
+         char * pos = dStrstr((const char*)buf, ".png");
+         if (!pos)
+            pos = buf + dStrlen(buf);
+         dStrcpy(pos, ".jpg");
+         rgbname = buf;
+      }
+      if (!alphaname)
+      {
+         char * buf = new char[dStrlen(bmpname) + 32];
+         dStrcpy(buf, bmpname);
+         char * pos = dStrstr((const char*)buf, ".png");
+         if (!pos)
+            pos = buf + dStrlen(buf);
+         dStrcpy(pos, ".alpha.jpg");
+         alphaname = buf;
+      }
+      GBitmap bmp;
+      FileStream fs;
+      if (fs.open(bmpname, FileStream::Read) == false) {
+         Con::printf("Error: unable to open file: %s for reading\n", bmpname);
+         return -1;
+      }
+      if (bmp.readPNG(fs) == false) {
+         Con::printf("Error: unable to read %s as a .PNG\n", bmpname);
+         return -1;
+      }
+      fs.close();
+
+      if (bmp.getFormat() != GBitmap::RGB &&
+         bmp.getFormat() != GBitmap::RGBA) {
+         Con::printf("Error: %s is not a 24 or 32-bit .PNG\n", bmpname);
+         return false;
+      }
+
+      GBitmap * outRGB = NULL;
+      GBitmap * outAlpha = NULL;
+      GBitmap workRGB, workAlpha;
+      if (bmp.getFormat() == GBitmap::RGB)
+         outRGB = &bmp;
+      else
+      {
+         S32 w = bmp.getWidth();
+         S32 h = bmp.getHeight();
+         workRGB.allocateBitmap(w, h, false, GBitmap::RGB);
+         workAlpha.allocateBitmap(w, h, false, GBitmap::Alpha);
+
+         U8 * rgbBits = workRGB.getWritableBits();
+         U8 * alphaBits = workAlpha.getWritableBits();
+         U8 * bmpBits = bmp.getWritableBits();
+         for (S32 i = 0; i<w; i++)
+         {
+            for (S32 j = 0; j<h; j++)
+            {
+               rgbBits[i * 3 + j * 3 * w + 0] = bmpBits[i * 4 + j * 4 * w + 0];
+               rgbBits[i * 3 + j * 3 * w + 1] = bmpBits[i * 4 + j * 4 * w + 1];
+               rgbBits[i * 3 + j * 3 * w + 2] = bmpBits[i * 4 + j * 4 * w + 2];
+               alphaBits[i + j*w] = bmpBits[i * 4 + j * 4 * w + 3];
+            }
+         }
+         Con::printf("texture: width=%i, height=%i\n", w, h);
+         outRGB = &workRGB;
+         outAlpha = &workAlpha;
+      }
+
+      if (outRGB)
+      {
+         FileStream fws;
+         if (fws.open(rgbname, FileStream::Write) == false)
+         {
+            Con::printf("Error: unable to open file: %s for writing\n", rgbname);
+            return -1;
+         }
+
+         if (dStrstr(rgbname, ".png"))
+         {
+            if (outRGB->writePNG(fws) == false)
+            {
+               fws.close();
+               Con::printf("Error: couldn't write RGB as a png\n");
+               return -1;
+            }
+         }
+         else if (outRGB->writeJPEG(fws) == false)
+         {
+            Con::printf("Error: couldn't write RGB as a jpg\n");
+            return -1;
+         }
+         fws.close();
+      }
+      if (outAlpha)
+      {
+         gJpegQuality = 60;
+         FileStream fws;
+         if (fws.open(alphaname, FileStream::Write) == false)
+         {
+            Con::printf("Error: unable to open file: %s for writing\n", alphaname);
+            return -1;
+         }
+
+         if (dStrstr(alphaname, ".png"))
+         {
+            if (outAlpha->writePNG(fws) == false)
+            {
+               fws.close();
+               Con::printf("Error: couldn't write alpha as a png\n");
+               return -1;
+            }
+         }
+         else if (outAlpha->writeJPEG(fws) == false)
+         {
+            Con::printf("Error: couldn't write alpha as a jpg\n");
+            return -1;
+         }
+         fws.close();
+      }
+
+      return(0);
+   }
+
+   DLL_PUBLIC void Engine_ShowStats(bool enable)
+   {
+      if (enable)
+         bgfx::setDebug(BGFX_DEBUG_STATS);
+      else
+         bgfx::setDebug(BGFX_DEBUG_NONE);
+   }
+}

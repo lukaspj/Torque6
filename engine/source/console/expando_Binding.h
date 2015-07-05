@@ -127,3 +127,71 @@ ConsoleFunctionWithDocs(getPathExpandoValue, ConsoleString, 2, 2, (int expandoIn
 }
 
 /*! @} */ // group PathExpandoFunctions
+
+extern "C"{
+   DLL_PUBLIC const char* Expando_ExpandPath(const char* path)
+   {
+      char* ret = Con::getReturnBuffer(1024);
+      Con::expandPath(ret, 1024, path);
+      return ret;
+   }
+
+   DLL_PUBLIC const char* Expando_CollapsePath(const char* path)
+   {
+      char* ret = Con::getReturnBuffer(1024);
+      Con::collapsePath(ret, 1024, path);
+      return ret;
+   }
+
+   DLL_PUBLIC void Expando_AddPathExpando(const char* expando, const char* path)
+   {
+      Con::addPathExpando(expando, path);
+   }
+
+   DLL_PUBLIC void Expando_RemovePathExpando(const char* expando)
+   {
+      Con::removePathExpando(expando);
+   }
+
+   DLL_PUBLIC bool Expando_IsPathExpando(const char* expando)
+   {
+      return Con::isPathExpando(expando);
+   }
+
+   DLL_PUBLIC S32 Expando_GetPathExpandoCount()
+   {
+      return Con::getPathExpandoCount();
+   }
+
+   DLL_PUBLIC const char* Expando_GetPathExpandoKey(S32 expandoIndex)
+   {
+      // Is the expando index in range?
+      if (expandoIndex < 0 || expandoIndex >= (S32)Con::getPathExpandoCount())
+      {
+         // No, so warn.
+         Con::warnf("getPathExpandoKey() - Expando index of '%d' is out of bounds.  Current expando count is '%d'.",
+            expandoIndex,
+            Con::getPathExpandoCount());
+         return StringTable->EmptyString;
+      }
+
+      // Fetch path expando key.
+      return Con::getPathExpandoKey(expandoIndex);
+   }
+
+   DLL_PUBLIC const char* Expando_GetPathExpandoValue(S32 expandoIndex)
+   {
+      // Is the expando index in range?
+      if (expandoIndex < 0 || expandoIndex >= (S32)Con::getPathExpandoCount())
+      {
+         // No, so warn.
+         Con::warnf("getPathExpandoKey() - Expando index of '%d' is out of bounds.  Current expando count is '%d'.",
+            expandoIndex,
+            Con::getPathExpandoCount());
+         return StringTable->EmptyString;
+      }
+
+      // Fetch path expando key.
+      return Con::getPathExpandoValue(expandoIndex);
+   }
+}

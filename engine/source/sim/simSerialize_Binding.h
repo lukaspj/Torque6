@@ -116,3 +116,23 @@ ConsoleFunctionWithDocs(loadObject, ConsoleInt, 2, 2, (filename))
 }
 
 /*! @} */ // group SerializeFunctions
+
+extern "C" {
+   DLL_PUBLIC bool SimObjectSave(SimObject* obj, const char* filename, bool selectedOnly)
+   {
+      if (filename == NULL || *filename == 0)
+         return false;
+
+      return obj->save(filename, selectedOnly);
+   }
+
+   DLL_PUBLIC void SimObjectAddFieldFilter(SimObject* obj, const char* fieldName)
+   {
+      obj->addFieldFilter(fieldName);
+   }
+
+   DLL_PUBLIC void SimObjectRemoveFieldFilter(SimObject* obj, const char* fieldName)
+   {
+      obj->removeFieldFilter(fieldName);
+   }
+}

@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class EventManager : SimObject
    {
@@ -63,9 +65,8 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void EventManagerDumpSubscribers(IntPtr eventManager, string eventName);
-
-
       }
+      
       #endregion
 
       #region Properties
@@ -83,7 +84,7 @@ namespace Torque6_Bridge.SimObjects.Assets
             InternalUnsafeMethods.EventManagerSetQueue(ObjectPtr->ObjPtr, value);
          }
       }
-
+      
       #endregion
       
       #region Methods
@@ -135,7 +136,7 @@ namespace Torque6_Bridge.SimObjects.Assets
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.EventManagerDumpSubscribers(ObjectPtr->ObjPtr, eventName);
       }
-
+      
       #endregion
    }
 }

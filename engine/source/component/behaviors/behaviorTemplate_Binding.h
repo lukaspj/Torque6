@@ -262,26 +262,6 @@ extern "C"{
       return new BehaviorTemplate();
    }
 
-   DLL_PUBLIC BehaviorTemplate* BehaviorInstanceGetTemplate(BehaviorInstance* instance)
-   {
-      return instance->getTemplate();
-   }
-
-   DLL_PUBLIC BehaviorComponent* BehaviorInstanceGetOwner(BehaviorInstance* instance)
-   {
-      return instance->getBehaviorOwner();
-   }
-
-   DLL_PUBLIC void BehaviorInstanceSetOwner(BehaviorInstance* instance, BehaviorComponent* val)
-   {
-      instance->setBehaviorOwner(val);
-   }
-
-   DLL_PUBLIC const char* BehaviorInstanceGetTemplateName(BehaviorInstance* instance)
-   {
-      return instance->getTemplateName();
-   }
-
    DLL_PUBLIC BehaviorInstance* BehaviorTemplateCreateBehaviorInstance(BehaviorTemplate* instance)
    {
       BehaviorInstance* inst = instance->createInstance();
@@ -293,14 +273,29 @@ extern "C"{
       return instance->getFriendlyName();
    }
 
+   DLL_PUBLIC void BehaviorTemplateSetFriendlyName(BehaviorTemplate* instance, const char* name)
+   {
+      instance->setFriendlyName(name);
+   }
+
    DLL_PUBLIC const char* BehaviorTemplateGetDescription(BehaviorTemplate* instance)
    {
       return instance->getDescription();
    }
 
+   DLL_PUBLIC void BehaviorTemplateSetDescription(BehaviorTemplate* instance, const char* description)
+   {
+      instance->setDescription(description);
+   }
+
    DLL_PUBLIC const char* BehaviorTemplateGetBehaviorType(BehaviorTemplate* instance)
    {
       return instance->getBehaviorType();
+   }
+
+   DLL_PUBLIC void BehaviorTemplateSetBehaviorType(BehaviorTemplate* instance, const char* type)
+   {
+      instance->setBehaviorType(type);
    }
 
    DLL_PUBLIC bool BehaviorTemplateAddBehaviorField(BehaviorTemplate* instance, const char* fieldName, const char* desc, const char* type, const char* defaultValue, const char* userData)

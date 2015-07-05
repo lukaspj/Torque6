@@ -115,3 +115,62 @@ ConsoleFunctionWithDocs(setCompanyAndProduct, ConsoleVoid, 3, 3, (company, produ
 }
 
 /*! @{ */ // group BuildInfoFunctions
+
+extern "C"{
+   DLL_PUBLIC bool Version_IsDebugBuild()
+   {
+#ifdef TORQUE_DEBUG
+      return true;
+#else
+      return false;
+#endif
+   }
+
+   DLL_PUBLIC int Version_GetVersionNumber()
+   {
+      return getVersionNumber();
+   }
+
+   DLL_PUBLIC const char* Version_GetVersionString()
+   {
+      return getVersionString();
+   }
+
+   DLL_PUBLIC const char* Version_GetCompileTimeString()
+   {
+      return getCompileTimeString();
+   }
+
+   DLL_PUBLIC const char* Version_GetBuildString()
+   {
+#ifdef TORQUE_DEBUG
+      return "Debug";
+#else
+      return "Release";
+#endif
+   }
+
+   DLL_PUBLIC const char* Version_GetEngineVersion()
+   {
+      return T2D_ENGINE_VERSION;
+   }
+
+   DLL_PUBLIC const char* Version_GetiPhoneToolsVersion()
+   {
+      return T2D_IPHONETOOLS_VERSION;
+   }
+
+   DLL_PUBLIC void Version_SetCompanyAndProduct(const char* company, const char* product)
+   {
+      setCompanyName(StringTable->insert(company));
+      setProductName(StringTable->insert(product));
+
+      Con::setVariable("$Game::CompanyName", getCompanyName());
+      Con::setVariable("$Game::ProductName", getProductName());
+
+      char appDataPath[1024];
+      dSprintf(appDataPath, sizeof(appDataPath), "%s/%s/%s", Platform::getUserDataDirectory(), getCompanyName(), getProductName());
+
+      ResourceManager->addPath(appDataPath);
+   }
+}

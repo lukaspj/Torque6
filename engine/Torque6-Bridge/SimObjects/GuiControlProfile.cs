@@ -1,10 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
-using Torque6_Bridge.Types;
 using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class GuiControlProfile : SimObject
    {
@@ -251,9 +251,8 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr GuiControlProfileCreateInstance();
-
-
       }
+      
       #endregion
 
       #region Properties
@@ -752,11 +751,13 @@ namespace Torque6_Bridge.SimObjects.Assets
             InternalUnsafeMethods.GuiControlProfileSetProfileForChildren(ObjectPtr->ObjPtr, value.ObjectPtr->ObjPtr);
          }
       }
-
+      
       #endregion
       
       #region Methods
 
+      
+      
       #endregion
    }
 }

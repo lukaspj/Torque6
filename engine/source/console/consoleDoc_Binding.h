@@ -68,3 +68,14 @@ ConsoleFunctionWithDocs(dumpConsoleFunctions, ConsoleVoid, 1, 3, (bool dumpScrip
 ConsoleFunctionGroupEnd(ConsoleDoc);
 
 /*! @} */ // group ConsoleOutput
+
+extern "C"{
+   DLL_PUBLIC void Script_DumpConsoleClasses(bool dumpScript, bool dumpEngine)
+   {
+      Namespace::dumpClasses(dumpScript, dumpEngine);
+   }
+   DLL_PUBLIC void Script_DumpConsoleFunctions(bool dumpScript, bool dumpEngine)
+   {
+      Namespace::dumpFunctions(dumpScript, dumpEngine);
+   }
+}

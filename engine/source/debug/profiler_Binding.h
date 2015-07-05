@@ -82,3 +82,55 @@ ConsoleFunctionGroupEnd( Profiler );
 /*! @} */ // group ProfilerFunctions
 
 #endif
+
+extern "C"{
+   DLL_PUBLIC void Profiler_MarkerEnable(const char* markerName, bool enable)
+   {
+#ifdef TORQUE_ENABLE_PROFILER
+      if (gProfiler)
+         gProfiler->enableMarker(markerName, enable);
+#else
+      AssertWarn(false, "Profiler is disabled.");
+#endif
+   }
+
+   DLL_PUBLIC void Profiler_Enable(bool enable)
+   {
+#ifdef TORQUE_ENABLE_PROFILER
+      if (gProfiler)
+         gProfiler->enable(enable);
+#else
+      AssertWarn(false, "Profiler is disabled.");
+#endif
+   }
+
+   DLL_PUBLIC void Profiler_Dump()
+   {
+#ifdef TORQUE_ENABLE_PROFILER
+      if (gProfiler)
+         gProfiler->dumpToConsole();
+#else
+      AssertWarn(false, "Profiler is disabled.");
+#endif
+   }
+
+   DLL_PUBLIC void Profiler_DumpToFile(const char* file)
+   {
+#ifdef TORQUE_ENABLE_PROFILER
+      if (gProfiler)
+         gProfiler->dumpToFile(file);
+#else
+      AssertWarn(false, "Profiler is disabled.");
+#endif
+   }
+
+   DLL_PUBLIC void Profiler_Reset()
+   {
+#ifdef TORQUE_ENABLE_PROFILER
+      if (gProfiler)
+         gProfiler->reset();
+#else
+      AssertWarn(false, "Profiler is disabled.");
+#endif
+   }
+}

@@ -55,3 +55,17 @@ ConsoleFunctionWithDocs( activateDirectInput, ConsoleVoid, 1, 1, ())
 ConsoleFunctionGroupEnd( InputManagement );
 
 /*! @} */ // end group InputManagement
+
+extern "C"{
+   DLL_PUBLIC void Input_DeactivateDirectInput()
+   {
+      if (Input::isActive())
+         Input::deactivate();
+   }
+
+   DLL_PUBLIC void Input_ActivateDirectInput()
+   {
+      if (!Input::isActive())
+         Input::activate();
+   }
+}

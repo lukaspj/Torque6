@@ -221,3 +221,92 @@ ConsoleFunctionWithDocs( cls, ConsoleVoid, 1, 1, ())
 ConsoleFunctionGroupEnd(Output)
 
 /*! @} */ // group ConsoleOutput
+
+extern "C"{
+   DLL_PUBLIC void Console_Print(const char* text)
+   {
+      Con::printf("%s", text);
+   }
+
+   DLL_PUBLIC void Console_PrintSeparator()
+   {
+      Con::printSeparator();
+   }
+
+   DLL_PUBLIC void Console_Warn(const char* text)
+   {
+      Con::warnf(ConsoleLogEntry::General, "%s", text);
+   }
+
+   DLL_PUBLIC void Console_Error(const char* text)
+   {
+      Con::errorf(ConsoleLogEntry::General, "%s", text);
+   }
+
+   DLL_PUBLIC const char* Console_ExpandEscape(const char* text)
+   {
+      char *ret = Con::getReturnBuffer(dStrlen(text) * 2 + 1);  // worst case situation
+      expandEscape(ret, text);
+      return ret;
+   }
+
+   DLL_PUBLIC const char* Console_CollapseEscape(const char* text)
+   {
+      char *ret = Con::getReturnBuffer(dStrlen(text) + 1);  // worst case situation
+      dStrcpy(ret, text);
+      collapseEscape(ret);
+      return ret;
+   }
+
+   DLL_PUBLIC void Console_SetLogMode(int mode)
+   {
+      Con::setLogMode(mode);
+   }
+
+   DLL_PUBLIC void Console_PrintEchoFileLoads(bool isEnabled)
+   {
+      ResourceManager->setFileNameEcho(isEnabled);
+   }
+
+   DLL_PUBLIC void Engine_Quit()
+   {
+      Platform::postQuitMessage(0);
+   }
+
+   DLL_PUBLIC void Engine_QuitWithErrorMessage(const char* msg)
+   {
+      AssertISV(false, msg);
+   }
+
+   DLL_PUBLIC void Console_OpenWebPage(const char* address)
+   {
+      char* protocolSep = dStrstr(address, "://");
+
+      if (protocolSep != NULL)
+      {
+         Platform::openWebBrowser(address);
+         return;
+      }
+
+      // if we don't see a protocol seperator, then we know that some bullethead
+      // sent us a bad url. We'll first check to see if a file inside the sandbox
+      // with that name exists, then we'll just glom "http://" onto the front of 
+      // the bogus url, and hope for the best.
+
+      char urlBuf[2048];
+      if (Platform::isFile(address) || Platform::isDirectory(address))
+      {
+         dSprintf(urlBuf, sizeof(urlBuf), "file://%s", address);
+      }
+      else
+         dSprintf(urlBuf, sizeof(urlBuf), "http://%s", address);
+
+      Platform::openWebBrowser(urlBuf);
+      return;
+   }
+
+   DLL_PUBLIC void Console_Cls()
+   {
+      Con::cls();
+   }
+}

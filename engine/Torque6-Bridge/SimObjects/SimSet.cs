@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class SimSet : SimObject
    {
@@ -38,10 +40,10 @@ namespace Torque6_Bridge.SimObjects.Assets
          internal static extern void SimSetListObjects(IntPtr set);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimSetAddObject(IntPtr set, IntPtr obj);
+         internal static extern void SimSetAdd(IntPtr set, IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimSetRemoveObject(IntPtr set, IntPtr obj);
+         internal static extern void SimSetRemove(IntPtr set, IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimSetDeleteObjects(IntPtr set);
@@ -72,14 +74,14 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimSetPushToBack(IntPtr set, IntPtr obj);
-
-
       }
+      
       #endregion
 
       #region Properties
 
-
+      
+      
       #endregion
       
       #region Methods
@@ -90,16 +92,16 @@ namespace Torque6_Bridge.SimObjects.Assets
          InternalUnsafeMethods.SimSetListObjects(ObjectPtr->ObjPtr);
       }
 
-      public void AddObject(SimObject obj)
+      public void Add(SimObject obj)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimSetAddObject(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
+         InternalUnsafeMethods.SimSetAdd(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
       }
 
-      public void RemoveObject(SimObject obj)
+      public void Remove(SimObject obj)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimSetRemoveObject(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
+         InternalUnsafeMethods.SimSetRemove(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
       }
 
       public void DeleteObjects()
@@ -161,7 +163,7 @@ namespace Torque6_Bridge.SimObjects.Assets
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetPushToBack(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
       }
-
+      
       #endregion
    }
 }

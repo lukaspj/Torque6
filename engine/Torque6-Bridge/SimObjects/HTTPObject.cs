@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class HTTPObject : TCPObject
    {
@@ -39,14 +41,14 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void HTTPObjectPost(IntPtr httpObj, string address, string requestURI, string query, string post);
-
-
       }
+      
       #endregion
 
       #region Properties
 
-
+      
+      
       #endregion
       
       #region Methods
@@ -62,7 +64,7 @@ namespace Torque6_Bridge.SimObjects.Assets
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.HTTPObjectPost(ObjectPtr->ObjPtr, address, requestURI, query, post);
       }
-
+      
       #endregion
    }
 }

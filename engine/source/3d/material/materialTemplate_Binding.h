@@ -20,8 +20,35 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(MaterialTemplate, SimGroup)
 
 // Nothing Yet
 
 ConsoleMethodGroupEndWithDocs(MaterialTemplate)
+
+namespace Scene
+{
+   extern "C"{
+      DLL_PUBLIC BaseNode* BaseNodeCreateInstance()
+      {
+         return new BaseNode();
+      }
+
+      DLL_PUBLIC void BaseNodeGetPosition(BaseNode* materialAsset, CInterface::Point2IParam* pos)
+      {
+         *pos = materialAsset->mPosition;
+      }
+
+      DLL_PUBLIC void BaseNodeSetPosition(BaseNode* materialAsset, CInterface::Point2IParam pos)
+      {
+         materialAsset->mPosition = pos;
+      }
+
+      DLL_PUBLIC MaterialTemplate* MaterialTemplateCreateInstance()
+      {
+         return new MaterialTemplate();
+      }
+   }
+}

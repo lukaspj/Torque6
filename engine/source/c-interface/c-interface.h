@@ -45,11 +45,19 @@ public:
 
    struct ColorParam{
    public:
-      int r;
-      int g;
-      int b;
-      int a;
+      F32 r;
+      F32 g;
+      F32 b;
+      F32 a;
       ColorParam(const ColorI& copyCol)
+      {
+         ColorF col = copyCol;
+         r = col.red;
+         g = col.green;
+         b = col.blue;
+         a = col.alpha;
+      }
+      ColorParam(const ColorF& copyCol)
       {
          r = copyCol.red;
          g = copyCol.green;
@@ -57,7 +65,10 @@ public:
          a = copyCol.alpha;
       }
       operator ColorI() const{
-         return ColorI(r, g, b, a);
+         return ColorF(r, g, b, a);
+      }
+      operator ColorF() const{
+         return ColorF(r, g, b, a);
       }
    };
 
@@ -118,6 +129,24 @@ public:
       }
       operator Point3F() const{
          return Point3F(x, y, z);
+      }
+   };
+
+   struct Point4FParam{
+   public:
+      F32 x;
+      F32 y;
+      F32 z;
+      F32 w;
+      Point4FParam(const Point4F& copyPoint)
+      {
+         x = copyPoint.x;
+         y = copyPoint.y;
+         z = copyPoint.z;
+         w = copyPoint.w;
+      }
+      operator Point4F() const{
+         return Point4F(x, y, z, w);
       }
    };
 };

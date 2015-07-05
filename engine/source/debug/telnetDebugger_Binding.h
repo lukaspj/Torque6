@@ -57,3 +57,22 @@ ConsoleFunctionWithDocs( dbgDisconnect, ConsoleVoid, 1, 1, ())
 }
 
 /*! @} */ // group TelnetDebuggerFunctions
+
+extern "C"{
+   DLL_PUBLIC void Debugger_SetParameters(S32 port, const char* password, bool waitForClient)
+   {
+      if (TelDebugger)
+         TelDebugger->setDebugParameters(port, password, waitForClient);
+   }
+
+   DLL_PUBLIC bool Debugger_IsConnected()
+   {
+      return TelDebugger && TelDebugger->isConnected();
+   }
+
+   DLL_PUBLIC void Debugger_Disconnect()
+   {
+      if(TelDebugger)
+         TelDebugger->disconnect();
+   }
+}

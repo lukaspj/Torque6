@@ -62,6 +62,14 @@ namespace Scene
 
          DECLARE_CONOBJECT(AnimationComponent);
 
+         F32 getSpeed() { return mSpeed; }
+         void setSpeed(F32 val) { mSpeed = val; }
+         SimObjectPtr<MeshComponent> getTarget() { return mTarget; }
+         void setTarget(SimObjectPtr<MeshComponent> val) { mTarget = val; }
+         AssetPtr<MeshAsset> getMesh() { return mMeshAsset; }
+         void setMesh(const char* pMeshAssetId);
+
+
       protected:
          F64 mAnimationTime;
          F32 mSpeed;
@@ -70,7 +78,6 @@ namespace Scene
          virtual void processTick();
          virtual void advanceTime( F32 timeDelta );
 
-         void setMesh( const char* pMeshAssetId );
          static bool setMesh(void* obj, const char* data) { static_cast<AnimationComponent*>(obj)->setMesh( data ); return false; }
    };
 }

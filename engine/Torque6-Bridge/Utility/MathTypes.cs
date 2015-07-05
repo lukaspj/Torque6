@@ -3,12 +3,28 @@
 namespace Torque6_Bridge.Types
 {
    [StructLayout(LayoutKind.Sequential)]
-   public struct ColorI
+   public struct Color
    {
       public int R;
       public int G;
       public int B;
       public int A;
+
+      public Color(int pR, int pG, int pB)
+      {
+         R = pR;
+         G = pG;
+         B = pB;
+         A = 255;
+      }
+
+      public Color(float pR, float pG, float pB)
+      {
+         R = (int)(255 * pR);
+         G = (int)(255 * pG);
+         B = (int)(255 * pB);
+         A = 255;
+      }
    }
 
    [StructLayout(LayoutKind.Sequential)]
@@ -39,5 +55,26 @@ namespace Torque6_Bridge.Types
       public float x;
       public float y;
       public float z;
+
+      public Point3F(float pX, float pY, float pZ)
+      {
+         x = pX;
+         y = pY;
+         z = pZ;
+      }
+
+      public static Point3F Zero()
+      {
+         return new Point3F(0,0,0);
+      }
+   }
+
+   [StructLayout(LayoutKind.Sequential)]
+   public struct Point4F
+   {
+      public float x;
+      public float y;
+      public float z;
+      public float w;
    }
 }

@@ -40,3 +40,10 @@ ConsoleFunctionWithDocs( OpenRemoteDebugger, ConsoleBool, 4, 4, ( int debuggerVe
     // Open remote debugger with port and password.
     return RemoteDebuggerBridge::open( debuggerVersion, port, pPassword );
 }
+
+extern "C"{
+   DLL_PUBLIC bool Debugger_OpenRemoteDebugger(S32 debuggerVersion, S32 port, const char* password)
+   {
+      return RemoteDebuggerBridge::open(debuggerVersion, port, password);
+   }
+}

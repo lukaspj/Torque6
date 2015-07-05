@@ -20,8 +20,49 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-ConsoleMethodGroupBeginWithDocs(LightComponent, BaseComponent)
+#include "c-interface/c-interface.h"
+
+ConsoleMethodGroupBeginWithDocs(LightComponent, LightComponent)
 
 // Nothing Yet
 
 ConsoleMethodGroupEndWithDocs(LightComponent)
+
+namespace Scene {
+   extern "C"{
+      DLL_PUBLIC LightComponent* LightComponentCreateInstance()
+      {
+         return new LightComponent();
+      }
+
+      DLL_PUBLIC F32 LightComponentGetRadius(LightComponent* LightComponent)
+      {
+         return LightComponent->getRadius();
+      }
+
+      DLL_PUBLIC void LightComponentSetRadius(LightComponent* LightComponent, F32 radius)
+      {
+         LightComponent->setRadius(radius);
+      }
+
+      DLL_PUBLIC void LightComponentGetColor(LightComponent* LightComponent, CInterface::ColorParam* outColor)
+      {
+         *outColor = LightComponent->getColor();
+      }
+
+      DLL_PUBLIC void LightComponentSetColor(LightComponent* LightComponent, CInterface::ColorParam Color)
+      {
+         LightComponent->setColor(Color);
+      }
+
+      DLL_PUBLIC F32 LightComponentGetAttenuation(LightComponent* LightComponent)
+      {
+         return LightComponent->getAttenuation();
+      }
+
+      DLL_PUBLIC void LightComponentSetAttenuation(LightComponent* LightComponent, F32 Attenuation)
+      {
+         LightComponent->setAttenuation(Attenuation);
+      }
+   }
+}

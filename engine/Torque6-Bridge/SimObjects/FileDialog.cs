@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class FileDialog : SimObject
    {
@@ -72,9 +74,8 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool FileDialogExecute(IntPtr fileDialog);
-
-
       }
+      
       #endregion
 
       #region Properties
@@ -157,7 +158,7 @@ namespace Torque6_Bridge.SimObjects.Assets
             InternalUnsafeMethods.FileDialogSetChangePath(ObjectPtr->ObjPtr, value);
          }
       }
-
+      
       #endregion
       
       #region Methods
@@ -167,7 +168,7 @@ namespace Torque6_Bridge.SimObjects.Assets
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.FileDialogExecute(ObjectPtr->ObjPtr);
       }
-
+      
       #endregion
    }
 }

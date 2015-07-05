@@ -32,3 +32,35 @@ ConsoleMethodWithDocs(BehaviorInstance, getTemplateName, ConsoleString, 2, 2, ()
 }
 
 ConsoleMethodGroupEndWithDocs(BehaviorInstance)
+
+extern "C"{
+   DLL_PUBLIC BehaviorInstance* BehaviorInstanceCreateInstance()
+   {
+      return new BehaviorInstance();
+   }
+
+   DLL_PUBLIC BehaviorTemplate* BehaviorInstanceGetTemplate(BehaviorInstance* instance)
+   {
+      return instance->getTemplate();
+   }
+
+   DLL_PUBLIC void BehaviorInstanceSetTemplate(BehaviorInstance* instance, BehaviorTemplate* temp)
+   {
+      instance->setTemplate(temp);
+   }
+
+   DLL_PUBLIC BehaviorComponent* BehaviorInstanceGetOwner(BehaviorInstance* instance)
+   {
+      return instance->getBehaviorOwner();
+   }
+
+   DLL_PUBLIC void BehaviorInstanceSetOwner(BehaviorInstance* instance, BehaviorComponent* val)
+   {
+      instance->setBehaviorOwner(val);
+   }
+
+   DLL_PUBLIC const char* BehaviorInstanceGetTemplateName(BehaviorInstance* instance)
+   {
+      return instance->getTemplateName();
+   }
+}

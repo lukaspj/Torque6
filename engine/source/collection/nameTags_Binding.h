@@ -316,6 +316,11 @@ extern "C" {
       return new NameTags();
    }
 
+   DLL_PUBLIC int NameTagsCreateTag(NameTags* nameTags, const char* newTagName)
+   {
+      return nameTags->createTag(newTagName);
+   }
+
    DLL_PUBLIC int NameTagsRenameTag(NameTags* nameTags, int tagId, const char* newTagName)
    {
       // Sanity!
@@ -426,7 +431,7 @@ extern "C" {
       return true;
    }
 
-   DLL_PUBLIC bool NameTagsHasTags(NameTags* nameTags, int objectId, int tagIdsC, int* tagIdsV)
+   DLL_PUBLIC bool NameTagsHasTag(NameTags* nameTags, int objectId, int tagIdsC, int* tagIdsV)
    {
       // Iterate tags.
       for (U32 index = 0; index < tagIdsC; ++index)

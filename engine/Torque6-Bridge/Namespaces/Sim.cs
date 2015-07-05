@@ -1,9 +1,12 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
+using Torque6_Bridge.SimObjects;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
 namespace Torque6_Bridge.Namespaces
 {
-   public unsafe class Sim
+   public static unsafe class Sim
    {
       [StructLayout(LayoutKind.Explicit, Size = 4)]
       public partial struct SimObjectPtr
@@ -11,44 +14,55 @@ namespace Torque6_Bridge.Namespaces
          [FieldOffset(0)] public IntPtr ObjPtr;
       }
 
-      [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-      private static extern IntPtr SimFindObjectById(uint pId);
+      #region UnsafeNativeMethods
 
-      public static IntPtr FindObject(uint pId)
+      new internal struct InternalUnsafeMethods
       {
-         return SimFindObjectById(pId);
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern IntPtr Sim_FindObjectById(uint id);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern IntPtr Sim_FindObjectWrapperById(uint id);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern IntPtr Sim_FindObjectByName(string name);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern IntPtr Sim_FindObjectWrapperByName(string name);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern IntPtr Sim_WrapObject(IntPtr obj);
       }
 
-      [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-      private static extern IntPtr SimFindObjectWrapperById(uint pId);
+      #endregion
+      
+      #region Functions
 
-      public static SimObjectPtr* FindObjectWrapper(uint pId)
+      public static SimObject FindObjectById(uint id)
       {
-         return (SimObjectPtr*)SimFindObjectWrapperById(pId);
+         return new SimObject(InternalUnsafeMethods.Sim_FindObjectById(id));
       }
 
-      [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-      private static extern IntPtr SimFindObjectByName([MarshalAs(UnmanagedType.LPStr)]string pName);
-
-      public static IntPtr FindObject(string pName)
+      public static SimObjectPtr* FindObjectWrapperById(uint id)
       {
-         return SimFindObjectByName(pName);
+         return (SimObjectPtr*)InternalUnsafeMethods.Sim_FindObjectWrapperById(id);
       }
 
-      [DllImport("Torque6_DEBUG.dll", CallingConvention = CallingConvention.Cdecl)]
-      private static extern IntPtr SimFindObjectWrapperByName([MarshalAs(UnmanagedType.LPStr)]string pName);
-
-      public static SimObjectPtr* FindObjectWrapper(string pName)
+      public static SimObject FindObjectByName(string name)
       {
-         return (SimObjectPtr*)SimFindObjectWrapperByName(pName);
+         return new SimObject(InternalUnsafeMethods.Sim_FindObjectByName(name));
       }
 
-      [DllImport("Torque6_DEBUG.dll", CallingConvention = CallingConvention.Cdecl)]
-      private static extern IntPtr SimWrapObject(IntPtr pObj);
-
-      public static SimObjectPtr* WrapObject(IntPtr pObj)
+      public static SimObjectPtr* FindObjectWrapperByName(string name)
       {
-         return (SimObjectPtr*)SimWrapObject(pObj);
+         return (SimObjectPtr*)InternalUnsafeMethods.Sim_FindObjectWrapperByName(name);
       }
+
+      public static SimObjectPtr* WrapObject(IntPtr obj)
+      {
+         return (SimObjectPtr*)InternalUnsafeMethods.Sim_WrapObject(obj);
+      }      
+
+      #endregion
    }
 }

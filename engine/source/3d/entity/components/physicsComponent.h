@@ -61,6 +61,14 @@ namespace Scene
          void onCollide(void* _hitUser);
          void setLinearVelocity(Point3F pVel);
 
+         StringTableEntry getOnCollideFunction() { return mOnCollideFunction; }
+         void setOnCollideFunction(StringTableEntry func) { mOnCollideFunction = func; }
+         StringTableEntry getCollisionType() { return mCollisionType; }
+         void setCollisionType(StringTableEntry type) { mCollisionType = type; }
+         bool getStatic() { return mStatic; }
+         void setStatic(bool isStatic) { mStatic = isStatic; }
+
+
          virtual void interpolateTick( F32 delta );
          virtual void processTick();
          virtual void advanceTime( F32 timeDelta );

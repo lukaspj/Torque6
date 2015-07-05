@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 /*! @defgroup ColorFunctions Color
 	@ingroup TorqueScriptFunctions
 	@{
@@ -114,3 +116,37 @@ ConsoleFunctionWithDocs( getStockColorI, ConsoleString, 2, 2, (stockColorName))
 }
 
 /*! @} */ // group ColorFunctions
+
+extern "C"{
+   DLL_PUBLIC S32 Engine_GetStockColorCount()
+   {
+      return StockColor::getCount();
+   }
+
+   DLL_PUBLIC const char* Engine_GetStockColorCount(S32 index)
+   {
+      // Fetch the color item.
+      const StockColorItem* pColorItem = StockColor::getColorItem(index);
+
+      return pColorItem == NULL ? NULL : pColorItem->getColorName();
+   }
+
+   DLL_PUBLIC bool Engine_IsStockColor(const char* name)
+   {
+      // Return whether this is a stock color name or not.
+      return StockColor::isColor(name);
+   }
+
+   DLL_PUBLIC CInterface::ColorParam Engine_GetStockColor(const char* name)
+   {    
+      // Return nothing if stock color name is invalid.
+      if (!StockColor::isColor(name))
+      {
+         Con::warnf(ConsoleLogEntry::General, "%s is not a stockcolor");
+         return CInterface::ColorParam(ColorI(-1, -1, -1, -1));
+      }
+
+      // Fetch stock color.
+      return StockColor::colorF(name);
+   }
+}

@@ -1,8 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.SimObjects.Assets
+namespace Torque6_Bridge.SimObjects
 {
    public unsafe class BehaviorTemplate : SimObject
    {
@@ -35,10 +37,19 @@ namespace Torque6_Bridge.SimObjects.Assets
          internal static extern string BehaviorTemplateGetFriendlyName(IntPtr instance);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void BehaviorTemplateSetFriendlyName(IntPtr instance, string name);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern string BehaviorTemplateGetDescription(IntPtr instance);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void BehaviorTemplateSetDescription(IntPtr instance, string description);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern string BehaviorTemplateGetBehaviorType(IntPtr instance);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void BehaviorTemplateSetBehaviorType(IntPtr instance, string type);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr BehaviorTemplateCreateInstance();
@@ -84,9 +95,8 @@ namespace Torque6_Bridge.SimObjects.Assets
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool BehaviorTemplateHasBehaviorInput(IntPtr instance, string inputName);
-
-
       }
+      
       #endregion
 
       #region Properties
@@ -98,7 +108,11 @@ namespace Torque6_Bridge.SimObjects.Assets
             if (IsDead()) throw new SimObjectPointerInvalidException();
             return InternalUnsafeMethods.BehaviorTemplateGetFriendlyName(ObjectPtr->ObjPtr);
          }
-
+         set
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            InternalUnsafeMethods.BehaviorTemplateSetFriendlyName(ObjectPtr->ObjPtr, value);
+         }
       }
       public string Description
       {
@@ -107,7 +121,11 @@ namespace Torque6_Bridge.SimObjects.Assets
             if (IsDead()) throw new SimObjectPointerInvalidException();
             return InternalUnsafeMethods.BehaviorTemplateGetDescription(ObjectPtr->ObjPtr);
          }
-
+         set
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            InternalUnsafeMethods.BehaviorTemplateSetDescription(ObjectPtr->ObjPtr, value);
+         }
       }
       public string BehaviorType
       {
@@ -116,9 +134,13 @@ namespace Torque6_Bridge.SimObjects.Assets
             if (IsDead()) throw new SimObjectPointerInvalidException();
             return InternalUnsafeMethods.BehaviorTemplateGetBehaviorType(ObjectPtr->ObjPtr);
          }
-
+         set
+         {
+            if (IsDead()) throw new SimObjectPointerInvalidException();
+            InternalUnsafeMethods.BehaviorTemplateSetBehaviorType(ObjectPtr->ObjPtr, value);
+         }
       }
-
+      
       #endregion
       
       #region Methods
@@ -206,7 +228,7 @@ namespace Torque6_Bridge.SimObjects.Assets
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.BehaviorTemplateHasBehaviorInput(ObjectPtr->ObjPtr, inputName);
       }
-
+      
       #endregion
    }
 }

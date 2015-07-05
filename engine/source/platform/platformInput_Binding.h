@@ -215,3 +215,16 @@ ConsoleFunctionWithDocs( rumble, ConsoleVoid, 4, 4, (string device, float xRumbl
       Con::printf( "DirectInput/XInput is not enabled." );
    }
 }
+
+extern "C"{
+   DLL_PUBLIC InputDevice* InputDeviceCreateInstance()
+   {
+      AssertWarn(false, "Virtual class");
+      return NULL;
+   }
+   DLL_PUBLIC InputManager* InputManagerCreateInstance()
+   {
+      AssertWarn(false, "Virtual class");
+      return NULL;
+   }
+}

@@ -65,3 +65,20 @@ ConsoleFunctionWithDocs(deactivatePackage, ConsoleVoid,2,2, ( packageName ))
 ConsoleFunctionGroupEnd(Packages);
 
 /*! @} */ // group PackageFunctions
+
+extern "C" {
+   DLL_PUBLIC bool Script_IsPackage(const char* packageName)
+   {
+      return Namespace::isPackage(StringTable->insert(packageName));
+   }
+
+   DLL_PUBLIC void Script_ActivatePackage(const char* packageName)
+   {
+      Namespace::activatePackage(StringTable->insert(packageName));
+   }
+
+   DLL_PUBLIC void Engine_DeactivatePackage(const char* packageName)
+   {
+      Namespace::deactivatePackage(StringTable->insert(packageName));
+   }
+}

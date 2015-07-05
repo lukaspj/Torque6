@@ -85,6 +85,11 @@ namespace Scene
          sceneEntity->setTemplateAsset(templatePath);
       }
 
+      DLL_PUBLIC const char* SceneEntityGetTemplate(SceneEntity* sceneEntity)
+      {
+         return sceneEntity->mTemplateAssetID;
+      }
+
       DLL_PUBLIC void SceneEntitySetPosition(SceneEntity* sceneEntity, CInterface::Point3FParam position)
       {
          sceneEntity->mPosition = position;
