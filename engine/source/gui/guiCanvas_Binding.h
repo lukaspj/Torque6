@@ -445,3 +445,63 @@ ConsoleFunctionWithDocs(screenShot, ConsoleVoid, 3, 3, (string file, string form
    delete bitmap;
 #endif
 }
+
+extern "C" {
+   DLL_PUBLIC bool Engine_CreateCanvas(const char* windowTitle)
+   {
+      AssertISV(!Canvas, "CreateCanvas: canvas has already been instantiated");
+
+      Platform::initWindow(Point2I(MIN_RESOLUTION_X, MIN_RESOLUTION_Y), windowTitle);
+
+
+      if (!Video::getResolutionList())
+         return false;
+
+      // create the canvas, and add it to the manager
+      Canvas = new GuiCanvas();
+      Canvas->registerObject("Canvas"); // automatically adds to GuiGroup
+      return true;
+   }
+
+   DLL_PUBLIC bool Engine_SetCanvasTitle(const char* windowTitle)
+   {
+      Platform::setWindowTitle(windowTitle);
+   }
+
+   DLL_PUBLIC void Engine_ScreenShot(const char* file, const char* format)
+   {
+#if !defined(TORQUE_OS_IOS) && !defined(TORQUE_OS_ANDROID)
+      // PUAP -Mat no screenshots on iPhone can do it from Xcode
+      FileStream fStream;
+      if (!fStream.open(file, FileStream::Write))
+      {
+         Con::printf("Failed to open file '%s'.", file);
+         return;
+      }
+
+      glReadBuffer(GL_FRONT);
+
+      Point2I extent = Canvas->getExtent();
+      U8 * pixels = new U8[extent.x * extent.y * 4];
+      glReadPixels(0, 0, extent.x, extent.y, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+
+      GBitmap * bitmap = new GBitmap;
+      bitmap->allocateBitmap(U32(extent.x), U32(extent.y));
+
+      // flip the rows
+      for (U32 y = 0; y < (U32)extent.y; y++)
+         dMemcpy(bitmap->getAddress(0, extent.y - y - 1), pixels + y * extent.x * 3, U32(extent.x * 3));
+
+      if (dStrcmp(format, "JPEG") == 0)
+         bitmap->writeJPEG(fStream);
+      else if (dStrcmp(format, "PNG") == 0)
+         bitmap->writePNG(fStream);
+      else
+         bitmap->writePNG(fStream);
+
+      fStream.close();
+      delete[] pixels;
+      delete bitmap;
+#endif
+   }
+}

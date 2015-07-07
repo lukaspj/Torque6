@@ -152,3 +152,90 @@ ConsoleFunctionGroupEnd( Net );
 
 /*! @} */ // group NetworkFunctions
 
+extern "C"{
+   DLL_PUBLIC void Engine_CommandToServer(int argc, const char** argv)
+   {
+      NetConnection *conn = NetConnection::getConnectionToServer();
+      if (!conn)
+         return;
+      sendRemoteCommand(conn, argc, argv);
+   }
+
+   DLL_PUBLIC void Engine_CommandToClient(NetConnection* conn, int argc, const char** argv)
+   {
+      sendRemoteCommand(conn, argc, argv);
+   }
+
+   DLL_PUBLIC void Engine_RemoveTaggedString(const char* tag)
+   {
+      gNetStringTable->removeString(dAtoi(tag + 1), true);
+   }
+
+   DLL_PUBLIC const char* Engine_AddTaggedString(const char* tag)
+   {
+      NetStringHandle s(tag);
+      gNetStringTable->incStringRefScript(s.getIndex());
+
+      char *ret = Con::getReturnBuffer(10);
+      ret[0] = StringTagPrefixByte;
+      dSprintf(ret + 1, 9, "%d", s.getIndex());
+      return ret;
+   }
+
+   DLL_PUBLIC const char* Engine_GetTaggedString(const char* tag)
+   {
+      const char *indexPtr = tag;
+      if (*indexPtr == StringTagPrefixByte)
+         indexPtr++;
+      return gNetStringTable->lookupString(dAtoi(indexPtr));
+   }
+
+   DLL_PUBLIC const char* Engine_BuildTaggedString(const char* format, int argc, const char** argv)
+   {
+      const char *indexPtr = argv[1];
+      if (*indexPtr == StringTagPrefixByte)
+         indexPtr++;
+      const char *fmtString = gNetStringTable->lookupString(dAtoi(indexPtr));
+      char *strBuffer = Con::getReturnBuffer(512);
+      const char *fmtStrPtr = fmtString;
+      char *strBufPtr = strBuffer;
+      S32 strMaxLength = 511;
+      if (fmtString)
+      {
+         //build the string
+         while (*fmtStrPtr)
+         {
+            //look for an argument tag
+            if (*fmtStrPtr == '%')
+            {
+               if (fmtStrPtr[1] >= '1' && fmtStrPtr[1] <= '9')
+               {
+                  S32 argIndex = S32(fmtStrPtr[1] - '0') + 1;
+                  if (argIndex >= argc)
+                     break;
+                  const char *argStr = argv[argIndex];
+                  if (!argStr)
+                     break;
+                  S32 strLength = dStrlen(argStr);
+                  if (strLength > strMaxLength)
+                     break;
+                  dStrcpy(strBufPtr, argStr);
+                  strBufPtr += strLength;
+                  strMaxLength -= strLength;
+                  fmtStrPtr += 2;
+                  continue;
+               }
+            }
+
+            //if we don't continue, just copy the character
+            if (strMaxLength <= 0)
+               break;
+            *strBufPtr++ = *fmtStrPtr++;
+            strMaxLength--;
+         }
+      }
+
+      *strBufPtr = '\0';
+      return strBuffer;
+   }
+}

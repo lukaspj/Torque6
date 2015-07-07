@@ -354,3 +354,248 @@ ConsoleFunctionWithDocs(duplicateCachedFont, ConsoleVoid, 4, 4, (oldFontName, ol
 }
 
 /*! @} */ // group FontFunctions
+
+extern "C"{
+   DLL_PUBLIC void Engine_PopulateFontCacheString(const char* faceName, int size, const char* string)
+   {
+      Resource<GFont> f = GFont::create(faceName, size, Con::getVariable("$GUI::fontCacheDirectory"));
+
+      if (f.isNull())
+      {
+         Con::errorf("populateFontCacheString - could not load font '%s %d'!", faceName, size);
+         return;
+      }
+
+      if (!f->hasPlatformFont())
+      {
+         Con::errorf("populateFontCacheString - font '%s %d' has no platform font! Cannot generate more characters.", faceName, size);
+         return;
+      }
+
+      // This has the side effect of generating character info, including the bitmaps.
+      f->getStrWidthPrecise(string);
+   }
+
+   DLL_PUBLIC void Engine_PopulateFontCacheRange(const char* faceName, int size, int rangeStart, int rangeEnd)
+   {
+      Resource<GFont> f = GFont::create(faceName, size, Con::getVariable("$GUI::fontCacheDirectory"));
+
+      if (f.isNull())
+      {
+         Con::errorf("populateFontCacheString - could not load font '%s %d'!", faceName, size);
+         return;
+      }
+
+      if (rangeStart > rangeEnd)
+      {
+         Con::errorf("populateFontCacheRange - range start is after end!");
+         return;
+      }
+
+      if (!f->hasPlatformFont())
+      {
+         Con::errorf("populateFontCacheRange - font '%s %d' has no platform font! Cannot generate more characters.", faceName, size);
+         return;
+      }
+
+      // This has the side effect of generating character info, including the bitmaps.
+      for (U32 i = rangeStart; i<rangeEnd; i++)
+      {
+         if (f->isValidChar(i))
+            f->getCharWidth(i);
+         else
+            Con::warnf("populateFontCacheRange - skipping invalid char 0x%x", i);
+      }
+   }
+
+   DLL_PUBLIC void Engine_DumpFontCacheStatus()
+   {
+      FindMatch match("*.uft", 4096);
+      ResourceManager->findMatches(&match);
+
+      Con::printf("--------------------------------------------------------------------------");
+      Con::printf("   Font Cache Usage Report (%d fonts found)", match.numMatches());
+
+      for (U32 i = 0; i < (U32)match.numMatches(); i++)
+      {
+         char *curMatch = match.matchList[i];
+         Resource<GFont> font = ResourceManager->load(curMatch);
+
+         // Deal with inexplicably missing or failed to load fonts.
+         if (font.isNull())
+         {
+            Con::errorf(" o Couldn't load font : %s", curMatch);
+            continue;
+         }
+
+         // Ok, dump info!
+         font->dumpInfo();
+      }
+   }
+
+   DLL_PUBLIC void Engine_WriteFontCache()
+   {
+      FindMatch match("*.uft", 4096);
+      ResourceManager->findMatches(&match);
+
+      Con::printf("--------------------------------------------------------------------------");
+      Con::printf("   Writing font cache to disk (%d fonts found)", match.numMatches());
+
+      for (U32 i = 0; i < (U32)match.numMatches(); i++)
+      {
+         char *curMatch = match.matchList[i];
+         Resource<GFont> font = ResourceManager->load(curMatch);
+
+         // Deal with inexplicably missing or failed to load fonts.
+         if (font.isNull())
+         {
+            Con::errorf(" o Couldn't find font : %s", curMatch);
+            continue;
+         }
+
+         // Ok, dump info!
+         FileStream stream;
+         if (ResourceManager->openFileForWrite(stream, curMatch))
+         {
+            Con::printf("      o Writing '%s' to disk...", curMatch);
+            font->write(stream);
+            stream.close();
+         }
+         else
+         {
+            Con::errorf("      o Could not open '%s' for write!", curMatch);
+         }
+      }
+   }
+
+   DLL_PUBLIC void Engine_PopulateAllFontCacheString(const char* inString)
+   {
+      FindMatch match("*.uft", 4096);
+      ResourceManager->findMatches(&match);
+
+      Con::printf("Populating font cache with string '%s' (%d fonts found)", inString, match.numMatches());
+
+      for (U32 i = 0; i < (U32)match.numMatches(); i++)
+      {
+         char *curMatch = match.matchList[i];
+         Resource<GFont> font = ResourceManager->load(curMatch);
+
+         // Deal with inexplicably missing or failed to load fonts.
+         if (font.isNull())
+         {
+            Con::errorf(" o Couldn't load font : %s", curMatch);
+            continue;
+         }
+
+         if (!font->hasPlatformFont())
+         {
+            Con::errorf("populateAllFontCacheString - font '%s' has no platform font! Cannot generate more characters.", curMatch);
+            continue;
+         }
+
+         // This has the side effect of generating character info, including the bitmaps.
+         font->getStrWidthPrecise(inString);
+      }
+   }
+
+   DLL_PUBLIC void Engine_PopulateAllFontCacheRange(int rangeStart, int rangeEnd)
+   {
+      if (rangeStart > rangeEnd)
+      {
+         Con::errorf("populateAllFontCacheRange - range start is after end!");
+         return;
+      }
+
+      FindMatch match("*.uft", 4096);
+      ResourceManager->findMatches(&match);
+
+      Con::printf("Populating font cache with range 0x%x to 0x%x (%d fonts found)", rangeStart, rangeEnd, match.numMatches());
+
+      for (U32 i = 0; i < (U32)match.numMatches(); i++)
+      {
+         char *curMatch = match.matchList[i];
+         Resource<GFont> font = ResourceManager->load(curMatch);
+
+         // Deal with inexplicably missing or failed to load fonts.
+         if (font.isNull())
+         {
+            Con::errorf(" o Couldn't load font : %s", curMatch);
+            continue;
+         }
+
+         if (!font->hasPlatformFont())
+         {
+            Con::errorf("populateAllFontCacheRange - font '%s' has no platform font! Cannot generate more characters.", curMatch);
+            continue;
+         }
+
+         // This has the side effect of generating character info, including the bitmaps.
+         Con::printf("   o Populating font '%s'", curMatch);
+         for (U32 i = rangeStart; i<rangeEnd; i++)
+         {
+            if (font->isValidChar(i))
+               font->getCharWidth(i);
+            else
+               Con::warnf("populateAllFontCacheRange - skipping invalid char 0x%x", i);
+         }
+      }
+      // All done!
+   }
+
+   DLL_PUBLIC void Engine_ExportCachedFont(const char* fontName, S32 size, const char* fileName, S32 padding, S32 kerning)
+   {
+      // Tell the font to export itself.
+      Resource<GFont> f = GFont::create(fontName, size, Con::getVariable("$GUI::fontCacheDirectory"));
+
+      if (f.isNull())
+      {
+         Con::errorf("exportCachedFont - could not load font '%s %d'!", fontName, size);
+         return;
+      }
+
+      f->exportStrip(fileName, padding, kerning);
+   }
+
+   DLL_PUBLIC void Engine_ImportCachedFont(const char* fontName, S32 size, const char* fileName, S32 padding, S32 kerning)
+   {
+      // Tell the font to export itself.
+      Resource<GFont> f = GFont::create(fontName, size, Con::getVariable("$GUI::fontCacheDirectory"));
+
+      if (f.isNull())
+      {
+         Con::errorf("importCachedFont - could not load font '%s %d'!", fontName, size);
+         return;
+      }
+
+      f->importStrip(fileName, padding, kerning);
+   }
+
+   DLL_PUBLIC void Engine_DuplicateCachedFont(const char* oldFontName, S32 oldFontSize, const char* newFontName, S32 newFontSize)
+   {
+      char newFontFile[256];
+      GFont::getFontCacheFilename(newFontName, newFontSize, 256, newFontFile);
+
+      // Load the original font.
+      Resource<GFont> font = GFont::create(oldFontName, oldFontSize, Con::getVariable("$GUI::fontCacheDirectory"));
+
+      // Deal with inexplicably missing or failed to load fonts.
+      if (font.isNull())
+      {
+         Con::errorf(" o Couldn't find font : %s", newFontFile);
+         return;
+      }
+
+      // Ok, dump info!
+      FileStream stream;
+      if (ResourceManager->openFileForWrite(stream, newFontFile))
+      {
+         Con::printf("      o Writing duplicate font '%s' to disk...", newFontFile);
+         font->write(stream);
+         stream.close();
+      }
+      else
+      {
+         Con::errorf("      o Could not open '%s' for write!", newFontFile);
+      }
+   }
+}

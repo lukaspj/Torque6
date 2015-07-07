@@ -111,3 +111,54 @@ ConsoleFunctionWithDocs(isUsingVFS, ConsoleBool, 1, 1, ())
 }
 
 /*! @} */ // group ResourceManagerFunctions
+
+extern "C" {
+   DLL_PUBLIC void Engine_DumpResources(bool onlyLoaded)
+   {
+      ResourceManager->dumpResources(onlyLoaded);
+   }
+
+   DLL_PUBLIC void Engine_AddResPath(const char* path, bool ignoreZips)
+   {
+      ResourceManager->addPath(path, ignoreZips);
+   }
+
+   DLL_PUBLIC void Engine_RemoveResPath(const char* path)
+   {
+      ResourceManager->removePath(path);
+   }
+
+   DLL_PUBLIC void Engine_SetModPaths(const char* path)
+   {
+      char buf[512];
+      dStrncpy(buf, path, sizeof(buf) - 1);
+      buf[511] = '\0';
+
+      Vector<char *> paths;
+      char* temp = dStrtok(buf, ";");
+      while (temp)
+      {
+         if (temp[0])
+            paths.push_back(temp);
+
+         temp = dStrtok(NULL, ";");
+      }
+
+      ResourceManager->setModPaths(paths.size(), (const char**)paths.address());
+   }
+
+   DLL_PUBLIC const char* Engine_GetModPaths()
+   {
+      return ResourceManager->getModPaths();
+   }
+
+   DLL_PUBLIC void Engine_PurgeResources()
+   {
+      return ResourceManager->purge();
+   }
+
+   DLL_PUBLIC bool Engine_IsUsingVFS()
+   {
+      return ResourceManager->isUsingVFS();
+   }
+}

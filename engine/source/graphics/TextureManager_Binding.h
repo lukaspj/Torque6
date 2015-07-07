@@ -73,3 +73,39 @@ ConsoleFunctionWithDocs( dumpTextureManagerMetrics, ConsoleVoid, 1, 1, ())
 }
 
 /*! @} */ // group TextureManagerFunctions
+
+extern "C" {
+   DLL_PUBLIC void Engine_SetOpenGLTextureCompressionHint(const char* hint)
+   {
+      GLenum newHint = GL_DONT_CARE;
+      const char* newString = "GL_DONT_CARE";
+
+      if (!dStricmp(hint, "GL_FASTEST"))
+      {
+         newHint = GL_FASTEST;
+         newString = "GL_FASTEST";
+      }
+      else if (!dStricmp(hint, "GL_NICEST"))
+      {
+         newHint = GL_NICEST;
+         newString = "GL_NICEST";
+      }
+
+      TextureManager::mTextureCompressionHint = newHint;
+
+#if !defined(TORQUE_OS_IOS)  && !defined(TORQUE_OS_ANDROID)
+      if (dglDoesSupportTextureCompression())
+         glHint(GL_TEXTURE_COMPRESSION_HINT_ARB, TextureManager::mTextureCompressionHint);
+#endif
+   }
+
+   DLL_PUBLIC void Engine_FlushTextureCache()
+   {
+      TextureManager::flush();
+   }
+
+   DLL_PUBLIC void Engine_DumpTextureManagerMetrics()
+   {
+      TextureManager::dumpMetrics();
+   }
+}

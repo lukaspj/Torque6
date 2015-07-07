@@ -52,4 +52,11 @@ extern "C"{
    {
       shaderAsset->setPixelShaderPath(val);
    }
+
+   DLL_PUBLIC void Graphics_SetDefaultShaderPath(const char* path)
+   {
+      dSprintf(Graphics::shaderPath, 1024, "%s/", path);
+      dSprintf(Graphics::shaderIncludePath, 1024, "%s/includes/", path);
+      dSprintf(Graphics::shaderVaryingPath, 1024, "%s/includes/varying.def.sc", path);
+   }
 }

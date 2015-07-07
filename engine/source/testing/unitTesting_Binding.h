@@ -68,3 +68,46 @@ ConsoleFunctionWithDocs( runAllUnitTests, S32, 1, 1, () )
 /*! @} */ // end group UnitTesting
 
 #endif // TORQUE_SHIPPING
+
+
+extern "C" {
+   DLL_PUBLIC S32 Engine_RunAllUnitTests()
+   {
+#ifndef TORQUE_SHIPPING
+      // Set-up some empty arguments.
+      S32 testArgc = 0;
+      char** testArgv = NULL;
+
+      // Initialize Google Test.
+      testing::InitGoogleTest(&testArgc, testArgv);
+
+      // Fetch the unit test instance.
+      testing::UnitTest& unitTest = *testing::UnitTest::GetInstance();
+
+      // Fetch the unit test event listeners.
+      testing::TestEventListeners& listeners = unitTest.listeners();
+
+      // Release the default listener.
+      delete listeners.Release(listeners.default_result_printer());
+
+      // Add the Torque unit test listener.
+      listeners.Append(new TorqueUnitTestListener);
+
+      Con::printBlankLine();
+      Con::printSeparator();
+      Con::printf("Unit Tests Starting...");
+      Con::printBlankLine();
+
+      const S32 result RUN_ALL_TESTS();
+
+      Con::printBlankLine();
+      Con::printf("... Unit Tests Ended.");
+      Con::printSeparator();
+      Con::printBlankLine();
+
+      return result;
+#else
+      AssertWarn(false, "RunAllUnitTests is not available in a shipping build.");
+#endif // TORQUE_SHIPPING
+   }
+}
