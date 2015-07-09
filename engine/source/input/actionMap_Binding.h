@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(ActionMap, SimObject)
 
 /*! Use the bind method to associate a function to a keystroke or other device input.
@@ -299,7 +301,7 @@ extern "C" {
    */
    DLL_PUBLIC const char* ActionMapGetBinding(ActionMap* map, const char* command)
    {
-      return map->getBinding(command);
+      return CInterface::GetMarshallableString(map->getBinding(command));
    }
 
    //------------------------------------------------------------------------------
@@ -308,7 +310,7 @@ extern "C" {
    */
    DLL_PUBLIC const char* ActionMapGetCommand(ActionMap* map, const char* device, const char* action)
    {
-      return map->getCommand(device, action);
+      return CInterface::GetMarshallableString(map->getCommand(device, action));
    }
 
    //------------------------------------------------------------------------------
@@ -335,6 +337,6 @@ extern "C" {
    */
    DLL_PUBLIC const char* ActionMapGetDeadZone(ActionMap* map, const char* device, const char* action)
    {
-      return map->getDeadZone(device, action);
+      return CInterface::GetMarshallableString(map->getDeadZone(device, action));
    }
 }

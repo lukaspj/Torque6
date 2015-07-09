@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 namespace Scene{
    extern "C"{
       DLL_PUBLIC SinNode* SinNodeCreateInstance()
@@ -29,7 +31,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* SinNodeGetXSrc(SinNode* sinNode)
       {
-         return sinNode->mXSrc;
+         return CInterface::GetMarshallableString(sinNode->mXSrc);
       }
 
       DLL_PUBLIC void SinNodeSetXSrc(SinNode* sinNode, const char* src)

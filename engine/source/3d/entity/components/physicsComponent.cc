@@ -113,7 +113,7 @@ namespace Scene
 
    void PhysicsComponent::refresh()
    {
-      if ( !mPhysicsObject->initialized )
+      if ( mPhysicsObject && !mPhysicsObject->initialized )
       {
          mPhysicsObject->setPosition(mOwnerEntity->mPosition + mPosition);
          mPhysicsObject->setScale(mScale * mOwnerEntity->mScale);

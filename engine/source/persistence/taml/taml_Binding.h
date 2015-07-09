@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(Taml, SimObject)
 
 /*! Sets the format that Taml should use to read/write.
@@ -392,7 +394,7 @@ extern "C"{
 
    DLL_PUBLIC const char* TamlGetFormat(Taml* tamlObj)
    {
-      return Taml::getFormatModeDescription(tamlObj->getFormatMode());
+      return CInterface::GetMarshallableString(Taml::getFormatModeDescription(tamlObj->getFormatMode()));
    }
 
    DLL_PUBLIC void TamlSetAutoFormat(Taml* tamlObj, bool value)
@@ -432,7 +434,7 @@ extern "C"{
 
    DLL_PUBLIC const char* TamlGetAutoFormatXmlExtension(Taml* tamlObj)
    {
-      return tamlObj->getAutoFormatXmlExtension();
+      return CInterface::GetMarshallableString(tamlObj->getAutoFormatXmlExtension());
    }
 
    DLL_PUBLIC void TamlSetAutoFormatJSONExtension(Taml* tamlObj, const char* value)
@@ -442,7 +444,7 @@ extern "C"{
 
    DLL_PUBLIC const char* TamlGetAutoFormatJSONExtension(Taml* tamlObj)
    {
-      return tamlObj->getAutoFormatJSONExtension();
+      return CInterface::GetMarshallableString(tamlObj->getAutoFormatJSONExtension());
    }
 
    DLL_PUBLIC void TamlSetAutoFormatBinaryExtension(Taml* tamlObj, const char* value)
@@ -452,7 +454,7 @@ extern "C"{
 
    DLL_PUBLIC const char* TamlGetAutoFormatBinaryExtension(Taml* tamlObj)
    {
-      return tamlObj->getAutoFormatBinaryExtension();
+      return CInterface::GetMarshallableString(tamlObj->getAutoFormatBinaryExtension());
    }
 
    DLL_PUBLIC void TamlSetBinaryCompression(Taml* tamlObj, bool value)

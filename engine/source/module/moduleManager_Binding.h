@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(ModuleManager, SimObject)
 
 /*! Set the module extension used to scan for modules.  The default is 'module'.
@@ -537,7 +539,7 @@ extern "C" {
       }
 
       // Copy module.
-      return moduleManager->copyModule(sourceModuleDefinition, targetModuleId, targetPath, useVersionPathing);
+      return CInterface::GetMarshallableString(moduleManager->copyModule(sourceModuleDefinition, targetModuleId, targetPath, useVersionPathing));
    }
 
    DLL_PUBLIC bool ModuleManagerSynchronizeDependencies(ModuleManager* moduleManager, ModuleDefinition* rootModuleDefinition, const char* targetDependencyFolder)

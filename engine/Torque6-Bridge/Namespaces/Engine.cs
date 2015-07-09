@@ -20,6 +20,9 @@ namespace Torque6_Bridge.Namespaces
          internal static extern void Engine_DeactivatePackage(string packageName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string Engine_Eval(string script);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_Quit();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
@@ -464,6 +467,11 @@ namespace Torque6_Bridge.Namespaces
       public static void DeactivatePackage(string packageName)
       {
          InternalUnsafeMethods.Engine_DeactivatePackage(packageName);
+      }
+
+      public static string Eval(string script)
+      {
+         return InternalUnsafeMethods.Engine_Eval(script);
       }
 
       public static void Quit()

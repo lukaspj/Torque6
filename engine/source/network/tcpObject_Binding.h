@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(TCPObject, SimObject)
 
 /*! Use the send method to send any number of parameters, as strings, one at a time to the agent at the other end of the connection.
@@ -138,7 +140,7 @@ extern "C"{
       pEncodedString = tcpObj->URLEncodeData((U8 *)data, dStrlen(data) + 1, &iNewBufferLen);
 
       //copy string to return buffer
-      char *pcReturnBuffer = Con::getReturnBuffer(iNewBufferLen);
+      char *pcReturnBuffer = CInterface::GetMarshallableString(iNewBufferLen);
       dMemcpy(pcReturnBuffer, pEncodedString, iNewBufferLen);
 
       //free encoded data pointer

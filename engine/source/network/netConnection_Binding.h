@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(NetConnection, SimGroup)
 
 /*! Use the getAddress method to get the address and port that this NetConnection is currently attached to.
@@ -228,7 +230,7 @@ extern "C" {
    {
       if (connection->isLocalConnection())
          return "local";
-      char *buffer = Con::getReturnBuffer(256);
+      char *buffer = CInterface::GetMarshallableString(256);
       Net::addressToString(connection->getNetAddress(), buffer);
       return buffer;
    }
@@ -331,14 +333,14 @@ extern "C" {
       server->setConnectSequence(0);
       NetConnection::setLocalClientConnection(server);
       server->assignName("LocalClientConnection");
-      return "";
+      return NULL;
 
    errorOut:
       server->deleteObject();
       client->deleteObject();
       if (!error)
          error = "Unknown Error";
-      return error;
+      return CInterface::GetMarshallableString(error);
    }
 
    DLL_PUBLIC int NetConnectionGetGhostsActive(NetConnection* connection)

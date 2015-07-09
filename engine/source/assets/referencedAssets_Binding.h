@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 extern "C" {
    DLL_PUBLIC ReferencedAssets* ReferencedAssetsCreateInstance()
    {
@@ -28,7 +30,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ReferencedAssetsGetPath(ReferencedAssets* assets)
    {
-      return assets->getPath();
+      return CInterface::GetMarshallableString(assets->getPath());
    }
 
    DLL_PUBLIC void ReferencedAssetsSetPath(ReferencedAssets* assets, const char* path)
@@ -38,7 +40,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ReferencedAssetsGetExtension(ReferencedAssets* assets)
    {
-      return assets->getExtension();
+      return CInterface::GetMarshallableString(assets->getExtension());
    }
 
    DLL_PUBLIC void ReferencedAssetsSetExtension(ReferencedAssets* assets, const char* path)

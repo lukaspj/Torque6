@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 extern "C" {
    DLL_PUBLIC MessageForwarder* MessageForwarderCreateInstance()
    {
@@ -28,7 +30,7 @@ extern "C" {
 
    DLL_PUBLIC const char* MessageForwarderGetToQueue(MessageForwarder* forwarder)
    {
-      return forwarder->getToQueue();
+      return CInterface::GetMarshallableString(forwarder->getToQueue());
    }
 
    DLL_PUBLIC void MessageForwarderSetToQueue(MessageForwarder* forwarder, const char* value)

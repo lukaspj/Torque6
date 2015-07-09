@@ -22,6 +22,8 @@
 #include "platform/nativeDialogs/fileDialog.h"
 #include "console/console.h"
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(FileDialog, SimObject)
 
 /*! Executes the dialog
@@ -47,7 +49,7 @@ extern "C"{
 
    DLL_PUBLIC const char* FileDialogGetDefaultPath(FileDialog* fileDialog)
    {
-      return fileDialog->getData().mDefaultPath;
+      return CInterface::GetMarshallableString(fileDialog->getData().mDefaultPath);
    }
 
    DLL_PUBLIC void FileDialogSetDefaultFile(FileDialog* fileDialog, const char* value)
@@ -57,7 +59,7 @@ extern "C"{
 
    DLL_PUBLIC const char* FileDialogGetDefaultFile(FileDialog* fileDialog)
    {
-      return fileDialog->getData().mDefaultFile;
+      return CInterface::GetMarshallableString(fileDialog->getData().mDefaultFile);
    }
 
    DLL_PUBLIC void FileDialogSetFileName(FileDialog* fileDialog, const char* value)
@@ -67,7 +69,7 @@ extern "C"{
 
    DLL_PUBLIC const char* FileDialogGetFileName(FileDialog* fileDialog)
    {
-      return fileDialog->getData().mFile;
+      return CInterface::GetMarshallableString(fileDialog->getData().mFile);
    }
 
    DLL_PUBLIC void FileDialogSetFilters(FileDialog* fileDialog, const char* value)
@@ -77,7 +79,7 @@ extern "C"{
 
    DLL_PUBLIC const char* FileDialogGetFilters(FileDialog* fileDialog)
    {
-      return fileDialog->getData().mFilters;
+      return CInterface::GetMarshallableString(fileDialog->getData().mFilters);
    }
 
    DLL_PUBLIC void FileDialogSetTitle(FileDialog* fileDialog, const char* value)
@@ -87,7 +89,7 @@ extern "C"{
 
    DLL_PUBLIC const char* FileDialogGetTitle(FileDialog* fileDialog)
    {
-      return fileDialog->getData().mTitle;
+      return CInterface::GetMarshallableString(fileDialog->getData().mTitle);
    }
 
    DLL_PUBLIC void FileDialogSetChangePath(FileDialog* fileDialog, bool value)
@@ -151,7 +153,7 @@ extern "C"{
 
    DLL_PUBLIC const char* OpenFolderDialogGetFileMustExist(OpenFolderDialog* openFolderDialog)
    {
-         return openFolderDialog->mMustExistInDir;
+      return CInterface::GetMarshallableString(openFolderDialog->mMustExistInDir);
    }
 
    DLL_PUBLIC SaveFileDialog* SaveFileDialogCreateInstance()

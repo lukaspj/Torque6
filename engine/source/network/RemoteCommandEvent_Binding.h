@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 static void sendRemoteCommand(NetConnection *conn, S32 argc, const char **argv);
 
 ConsoleFunctionGroupBegin( Net, "Functions for use with the network; tagged strings and remote commands.");
@@ -176,7 +178,7 @@ extern "C"{
       NetStringHandle s(tag);
       gNetStringTable->incStringRefScript(s.getIndex());
 
-      char *ret = Con::getReturnBuffer(10);
+      char *ret = CInterface::GetMarshallableString(10);
       ret[0] = StringTagPrefixByte;
       dSprintf(ret + 1, 9, "%d", s.getIndex());
       return ret;
@@ -187,7 +189,7 @@ extern "C"{
       const char *indexPtr = tag;
       if (*indexPtr == StringTagPrefixByte)
          indexPtr++;
-      return gNetStringTable->lookupString(dAtoi(indexPtr));
+      return CInterface::GetMarshallableString(gNetStringTable->lookupString(dAtoi(indexPtr)));
    }
 
    DLL_PUBLIC const char* Engine_BuildTaggedString(const char* format, int argc, const char** argv)
@@ -196,7 +198,7 @@ extern "C"{
       if (*indexPtr == StringTagPrefixByte)
          indexPtr++;
       const char *fmtString = gNetStringTable->lookupString(dAtoi(indexPtr));
-      char *strBuffer = Con::getReturnBuffer(512);
+      char *strBuffer = CInterface::GetMarshallableString(512);
       const char *fmtStrPtr = fmtString;
       char *strBufPtr = strBuffer;
       S32 strMaxLength = 511;

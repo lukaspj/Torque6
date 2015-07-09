@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(ZipObject, SimObject)
 
 static const struct
@@ -223,6 +225,6 @@ extern "C" {
 
    DLL_PUBLIC const char* ZipObjectGetFileEntry(ZipObject* zipObj, int index)
    {
-      return zipObj->getFileEntry(index);
+      return CInterface::GetMarshallableString(zipObj->getFileEntry(index));
    }
 }

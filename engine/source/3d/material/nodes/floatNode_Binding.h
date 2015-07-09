@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 namespace Scene{
    extern "C"{
       DLL_PUBLIC FloatNode* FloatNodeCreateInstance()
@@ -29,7 +31,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* FloatNodeGetUniformName(FloatNode* floatNode)
       {
-         return floatNode->mUniformName;
+         return CInterface::GetMarshallableString(floatNode->mUniformName);
       }
 
       DLL_PUBLIC void FloatNodeSetUniformName(FloatNode* floatNode, const char* src)

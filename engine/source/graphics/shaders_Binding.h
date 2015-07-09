@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleNamespaceFunction( Graphics, setDefaultShaderPath, ConsoleVoid, 2, 2, (""))
 {
    dSprintf(Graphics::shaderPath, 1024, "%s/", argv[1]);
@@ -35,7 +37,7 @@ extern "C"{
 
    DLL_PUBLIC const char* ShaderAssetGetVertexShaderFile(Graphics::ShaderAsset* shaderAsset)
    {
-      return shaderAsset->getVertexShaderPath();
+      return CInterface::GetMarshallableString(shaderAsset->getVertexShaderPath());
    }
 
    DLL_PUBLIC void ShaderAssetSetVertexShaderFile(Graphics::ShaderAsset* shaderAsset, const char* val)
@@ -45,7 +47,7 @@ extern "C"{
 
    DLL_PUBLIC const char* ShaderAssetGetPixelShaderFile(Graphics::ShaderAsset* shaderAsset)
    {
-      return shaderAsset->getPixelShaderPath();
+      return CInterface::GetMarshallableString(shaderAsset->getPixelShaderPath());
    }
 
    DLL_PUBLIC void ShaderAssetSetPixelShaderFile(Graphics::ShaderAsset* shaderAsset, const char* val)

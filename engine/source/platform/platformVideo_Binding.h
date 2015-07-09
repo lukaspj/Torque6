@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleFunctionGroupBegin(Video, "Video control functions.");
 
 /*! @defgroup VideoFunctions Video
@@ -327,7 +329,7 @@ extern "C"{
 
    DLL_PUBLIC const char* Engine_GetResolution()
    {
-      static char resBuf[16];
+      char* resBuf = CInterface::GetMarshallableString(16);
       Resolution res = Video::getResolution();
       dSprintf(resBuf, sizeof(resBuf), "%d %d %d", res.w, res.h, res.bpp);
       return resBuf;
@@ -340,7 +342,7 @@ extern "C"{
 
    DLL_PUBLIC const char* Engine_GetDesktopResolution()
    {
-      static char resBuf[16];
+      char* resBuf = CInterface::GetMarshallableString(16);
       Resolution res = Video::getDesktopResolution();
       dSprintf(resBuf, sizeof(resBuf), "%d %d %d", res.w, res.h, res.bpp);
       return resBuf;
@@ -348,7 +350,7 @@ extern "C"{
 
    DLL_PUBLIC const char* Engine_GetDisplayDeviceList()
    {
-      return Video::getDeviceList();
+      return CInterface::GetMarshallableString(Video::getDeviceList());
    }
 
    DLL_PUBLIC const char* Engine_GetResolutionList(const char* deviceName)
@@ -360,12 +362,12 @@ extern "C"{
          return(NULL);
       }
 
-      return device->getResolutionList();
+      return CInterface::GetMarshallableString(device->getResolutionList());
    }
 
    DLL_PUBLIC const char* Engine_GetVideoDriverInfo()
    {
-      return Video::getDriverInfo();
+      return CInterface::GetMarshallableString(Video::getDriverInfo());
    }
 
    DLL_PUBLIC bool Engine_IsDeviceFullScreenOnly(const char* deviceName)

@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleFunctionGroupBegin( InputManagement, "Functions that let you deal with input from scripts" );
 
 /*! addtogroup WindowsPlatform Windows Platform
@@ -89,7 +91,7 @@ extern "C" {
    {
       DInputManager* mgr = dynamic_cast<DInputManager*>(Input::getManager());
       if (mgr)
-         return mgr->getJoystickAxesString(instance);
+         return CInterface::GetMarshallableString(mgr->getJoystickAxesString(instance));
 
       return StringTable->EmptyString;
    }

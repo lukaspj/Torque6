@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(ModuleDefinition, SimSet)
 
 /*! Saves the module definition to the file it was loaded from (if any).
@@ -122,7 +124,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleDefinitionGetModuleId(ModuleDefinition* moduleDefinition)
    {
-         return moduleDefinition->getModuleId();
+      return CInterface::GetMarshallableString(moduleDefinition->getModuleId());
    }
 
    DLL_PUBLIC void ModuleDefinitionSetModuleId(ModuleDefinition* moduleDefinition, const char* value)
@@ -157,7 +159,7 @@ extern "C" {
 
    DLL_PUBLIC void ModuleDefinitionSetEnabled(ModuleDefinition* moduleDefinition, bool value)
    {
-         moduleDefinition->setEnabled(value);
+      moduleDefinition->setEnabled(value);
    }
 
    DLL_PUBLIC bool ModuleDefinitionGetSynchronized(ModuleDefinition* moduleDefinition)
@@ -192,7 +194,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleDefinitionGetDescription(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getModuleDescription();
+      return CInterface::GetMarshallableString(moduleDefinition->getModuleDescription());
    }
 
    DLL_PUBLIC void ModuleDefinitionSetDescription(ModuleDefinition* moduleDefinition, const char* value)
@@ -202,7 +204,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleDefinitionGetAuthor(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getAuthor();
+      return CInterface::GetMarshallableString(moduleDefinition->getAuthor());
    }
 
    DLL_PUBLIC void ModuleDefinitionSetAuthor(ModuleDefinition* moduleDefinition, const char* value)
@@ -212,7 +214,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleDefinitionGetGroup(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getModuleGroup();
+      return CInterface::GetMarshallableString(moduleDefinition->getModuleGroup());
    }
 
    DLL_PUBLIC void ModuleDefinitionSetGroup(ModuleDefinition* moduleDefinition, const char* value)
@@ -222,7 +224,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleDefinitionGetType(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getModuleType();
+      return CInterface::GetMarshallableString(moduleDefinition->getModuleType());
    }
 
    DLL_PUBLIC void ModuleDefinitionSetType(ModuleDefinition* moduleDefinition, const char* value)
@@ -246,7 +248,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleDefinitionGetScriptFile(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getScriptFile();
+      return CInterface::GetMarshallableString(moduleDefinition->getScriptFile());
    }
 
    DLL_PUBLIC void ModuleDefinitionSetScriptFile(ModuleDefinition* moduleDefinition, const char* value)
@@ -256,7 +258,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleDefinitionGetCreateFunction(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getCreateFunction();
+      return CInterface::GetMarshallableString(moduleDefinition->getCreateFunction());
    }
 
    DLL_PUBLIC void ModuleDefinitionSetCreateFunction(ModuleDefinition* moduleDefinition, const char* value)
@@ -266,7 +268,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleDefinitionGetDestroyFunction(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getDestroyFunction();
+      return CInterface::GetMarshallableString(moduleDefinition->getDestroyFunction());
    }
 
    DLL_PUBLIC void ModuleDefinitionSetDestroyFunction(ModuleDefinition* moduleDefinition, const char* value)
@@ -276,7 +278,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleDefinitionGetAssetTagsManifest(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getAssetTagsManifest();
+      return CInterface::GetMarshallableString(moduleDefinition->getAssetTagsManifest());
    }
 
    DLL_PUBLIC void ModuleDefinitionSetAssetTagsManifest(ModuleDefinition* moduleDefinition, const char* value)
@@ -291,27 +293,27 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleDefinitionGetModulePath(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getModulePath();
+      return CInterface::GetMarshallableString(moduleDefinition->getModulePath());
    }
 
    DLL_PUBLIC const char* ModuleDefinitionGetModuleFile(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getModuleFile();
+      return CInterface::GetMarshallableString(moduleDefinition->getModuleFile());
    }
 
    DLL_PUBLIC const char* ModuleDefinitionGetModuleFilePath(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getModuleFilePath();
+      return CInterface::GetMarshallableString(moduleDefinition->getModuleFilePath());
    }
 
    DLL_PUBLIC const char* ModuleDefinitionGetModuleScriptFilePath(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getModuleScriptFilePath();
+      return CInterface::GetMarshallableString(moduleDefinition->getModuleScriptFilePath());
    }
 
    DLL_PUBLIC const char* ModuleDefinitionGetSignature(ModuleDefinition* moduleDefinition)
    {
-      return moduleDefinition->getSignature();
+      return CInterface::GetMarshallableString(moduleDefinition->getSignature());
    }
 
    DLL_PUBLIC bool ModuleDefinitionSave(ModuleDefinition* moduleDefinition)
@@ -337,7 +339,7 @@ extern "C" {
          return StringTable->EmptyString;
 
       // Format module dependency.
-      char* pReturnBuffer = Con::getReturnBuffer(256);
+      char* pReturnBuffer = CInterface::GetMarshallableString(256);
       dSprintf(pReturnBuffer, 256, "%s %d", dependency.mModuleId, dependency.mVersionId);
 
       return pReturnBuffer;

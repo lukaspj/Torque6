@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 extern "C" {
    DLL_PUBLIC MessageVector* MessageVectorCreateInstance()
    {
@@ -92,7 +94,7 @@ extern "C" {
    {
       for (U32 i = 0; i < messageVector->getNumLines(); i++)
          if (messageVector->getLine(i).messageTag == tag)
-            return messageVector->getLine(i).message;
+            return CInterface::GetMarshallableString(messageVector->getLine(i).message);
       return NULL;
    }
 
@@ -111,7 +113,7 @@ extern "C" {
          return nullptr;
       }
 
-      return messageVector->getLine(index).message;
+      return CInterface::GetMarshallableString(messageVector->getLine(index).message);
    }
 
    DLL_PUBLIC int MessageVectorGetLineTag(MessageVector* messageVector, U32 index)

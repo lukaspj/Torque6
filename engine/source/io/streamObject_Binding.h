@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(StreamObject, SimObject)
 
 /*! Gets the current status of the StreamObject
@@ -170,7 +172,7 @@ extern "C"{
 
    DLL_PUBLIC const char* StreamObjectGetStatus(StreamObject* streamObj)
    {
-      return streamObj->getStatus();
+      return CInterface::GetMarshallableString(streamObj->getStatus());
    }
 
    DLL_PUBLIC bool StreamObjectIsEOS(StreamObject* streamObj)
@@ -200,7 +202,7 @@ extern "C"{
 
    DLL_PUBLIC const char* StreamObjectReadLine(StreamObject* streamObj)
    {
-      return streamObj->readLine();
+      return CInterface::GetMarshallableString(streamObj->readLine());
    }
 
    DLL_PUBLIC void StreamObjectWriteLine(StreamObject* streamObj, const char* line)
@@ -210,17 +212,17 @@ extern "C"{
 
    DLL_PUBLIC const char* StreamObjectReadSTString(StreamObject* streamObj, bool caseSensitive)
    {
-      return streamObj->readSTString(caseSensitive);
+      return CInterface::GetMarshallableString(streamObj->readSTString(caseSensitive));
    }
 
    DLL_PUBLIC const char* StreamObjectReadString(StreamObject* streamObj)
    {
-      return streamObj->readString();
+      return CInterface::GetMarshallableString(streamObj->readString());
    }
 
    DLL_PUBLIC const char* StreamObjectReadLongString(StreamObject* streamObj, int maxLength)
    {
-      return streamObj->readLongString(maxLength);
+      return CInterface::GetMarshallableString(streamObj->readLongString(maxLength));
    }
 
    DLL_PUBLIC void StreamObjectWriteLongString(StreamObject* streamObj, int maxLength, const char* longString)

@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(RemoteDebugger1, RemoteDebuggerBase)
 
 /*! Get the count of active code files.
@@ -68,7 +70,7 @@ extern "C"{
    {
       // Fetch a return buffer.  This may be excessive but it avoids reallocation code.
       S32 bufferSize = 1024 * 65;
-      char* pBuffer = Con::getReturnBuffer(bufferSize);
+      char* pBuffer = CInterface::GetMarshallableString(bufferSize);
 
       // Get the code files.
       if (!debugger1->getCodeFiles(pBuffer, bufferSize))

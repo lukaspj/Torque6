@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 namespace Scene{
    extern "C"{
       DLL_PUBLIC MultiplyNode* MultiplyNodeCreateInstance()
@@ -29,7 +31,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* MultiplyNodeGetInputASrc(MultiplyNode* MultiplyNode)
       {
-         return MultiplyNode->mInputASrc;
+         return CInterface::GetMarshallableString(MultiplyNode->mInputASrc);
       }
 
       DLL_PUBLIC void MultiplyNodeSetInputASrc(MultiplyNode* MultiplyNode, const char* src)
@@ -39,7 +41,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* MultiplyNodeGetInputBSrc(MultiplyNode* MultiplyNode)
       {
-         return MultiplyNode->mInputBSrc;
+         return CInterface::GetMarshallableString(MultiplyNode->mInputBSrc);
       }
 
       DLL_PUBLIC void MultiplyNodeSetInputBSrc(MultiplyNode* MultiplyNode, const char* src)

@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodRootGroupBeginWithDocs(SimObject)
 
 /*! @class SimObject
@@ -1041,9 +1043,9 @@ extern "C"{
       obj->setCanSaveDynamicFields(val);
    }
 
-   DLL_PUBLIC StringTableEntry SimObjectGetInternalName(SimObject* obj)
+   DLL_PUBLIC char* SimObjectGetInternalName(SimObject* obj)
    {
-      return obj->getInternalName();
+      return CInterface::GetMarshallableString(obj->getInternalName());
    }
 
    DLL_PUBLIC void SimObjectSetInternalName(SimObject* obj, const char* val)
@@ -1061,9 +1063,9 @@ extern "C"{
       return obj->getGroup();
    }
 
-   DLL_PUBLIC StringTableEntry SimObjectGetSuperClass(SimObject* obj)
+   DLL_PUBLIC char* SimObjectGetSuperClass(SimObject* obj)
    {
-      return obj->getSuperClassNamespace();
+      return CInterface::GetMarshallableString(obj->getSuperClassNamespace());
    }
 
    DLL_PUBLIC void SimObjectSetSuperClass(SimObject* obj, const char* val)
@@ -1071,9 +1073,9 @@ extern "C"{
       obj->setSuperClassNamespace(val);
    }
 
-   DLL_PUBLIC StringTableEntry SimObjectGetClass(SimObject* obj)
+   DLL_PUBLIC char* SimObjectGetClass(SimObject* obj)
    {
-      return obj->getClassNamespace();
+      return CInterface::GetMarshallableString(obj->getClassNamespace());
    }
 
    DLL_PUBLIC void SimObjectSetClass(SimObject* obj, const char* val)
@@ -1081,9 +1083,9 @@ extern "C"{
       obj->setClassNamespace(val);
    }
 
-   DLL_PUBLIC StringTableEntry SimObjectGetName(SimObject* obj)
+   DLL_PUBLIC char* SimObjectGetName(SimObject* obj)
    {
-      return obj->getName();
+      return CInterface::GetMarshallableString(obj->getName());
    }
 
    DLL_PUBLIC void SimObjectSetName(SimObject* obj, const char* val)
@@ -1134,12 +1136,12 @@ extern "C"{
 
    DLL_PUBLIC const char* SimObjectGetClassName(SimObject* obj)
    {
-      return obj->getClassName();
+      return CInterface::GetMarshallableString(obj->getClassName());
    }
 
    DLL_PUBLIC const char* SimObjectGetFieldValue(SimObject* obj, const char* fieldName)
    {
-      return obj->getDataField(StringTable->insert(fieldName), NULL);
+      return CInterface::GetMarshallableString(obj->getDataField(StringTable->insert(fieldName), NULL));
    }
 
    DLL_PUBLIC void SimObjectSetFieldValue(SimObject* obj, const char* fieldName, const char* value)
@@ -1166,17 +1168,15 @@ extern "C"{
          if (!(*itr))
          {
             Con::warnf("Invalid dynamic field index passed to SimObject::getDynamicField!");
-            return nullptr;
+            return NULL;
          }
          ++itr;
       }
 
-      char* buffer = Con::getReturnBuffer(256);
       if (*itr)
       {
          SimFieldDictionary::Entry* entry = *itr;
-         dSprintf(buffer, 256, "%s", entry->slotName);
-         return buffer;
+         return CInterface::GetMarshallableString(entry->slotName);
       }
 
       Con::warnf("Invalid dynamic field index passed to SimObject::getDynamicField!");
@@ -1207,7 +1207,7 @@ extern "C"{
    {
       const AbstractClassRep::FieldList &list = obj->getFieldList();
       if ((index < 0) || (index >= list.size()))
-         return "";
+         return NULL;
 
       const AbstractClassRep::Field* f;
       S32 currentField = 0;
@@ -1224,7 +1224,7 @@ extern "C"{
          }
 
          if (currentField == index)
-            return f->pFieldname;
+            return CInterface::GetMarshallableString(f->pFieldname);
 
          currentField++;
       }
@@ -1235,7 +1235,7 @@ extern "C"{
 
    DLL_PUBLIC const char* SimObjectGetProgenitorFile(SimObject* obj)
    {
-      return obj->getProgenitorFile();
+      return CInterface::GetMarshallableString(obj->getProgenitorFile());
    }
 
    DLL_PUBLIC void SimObjectSetProgenitorFile(SimObject* obj, const char* file)
@@ -1254,7 +1254,7 @@ extern "C"{
       ConsoleBaseType* type = ConsoleBaseType::getType(typeID);
 
       if (type)
-         return type->getTypeClassName();
+         return CInterface::GetMarshallableString(type->getTypeClassName());
 
       return NULL;
    }

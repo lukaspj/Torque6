@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 extern "C"{
    DLL_PUBLIC bool Globals_GetBool(const char* variable)
    {
@@ -74,7 +76,7 @@ extern "C"{
       char globalVar[80];
       strcpy(globalVar, "$");
       strcat(globalVar, variable);
-      return Con::getVariable(globalVar);
+      return CInterface::GetMarshallableString(Con::getVariable(globalVar));
    }
 
    DLL_PUBLIC void Globals_SetString(const char* variable, const char* val)

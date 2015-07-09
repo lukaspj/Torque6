@@ -33,6 +33,8 @@
 #include <arpa/inet.h>
 #endif
 
+#include "c-interface/c-interface.h"
+
 // Buffer for expanding script filenames.
 static char pathBuffer[1024];
 
@@ -843,3 +845,10 @@ ConsoleFunctionWithDocs( enumerateConsoleClasses, ConsoleString, 1, 2, ([baseCla
 }
 
 /*! @} */ // group MetaScriptFunctions
+
+extern "C"{
+   DLL_PUBLIC const char* Engine_Eval(const char* script)
+   {
+      return CInterface::GetMarshallableString(Con::evaluate(script, false, NULL));
+   }
+}

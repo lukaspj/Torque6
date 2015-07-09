@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 extern "C"{
    DLL_PUBLIC AudioAsset* AudioAssetCreateInstance()
    {
@@ -28,7 +30,7 @@ extern "C"{
 
    DLL_PUBLIC const char* AudioAssetGetAudioFile(AudioAsset* audioAsset)
    {
-      return audioAsset->getAudioFile();
+      return CInterface::GetMarshallableString(audioAsset->getAudioFile());
    }
 
    DLL_PUBLIC void AudioAssetSetAudioFile(AudioAsset* audioAsset, const char* val)

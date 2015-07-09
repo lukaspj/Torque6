@@ -5,7 +5,7 @@ using Torque6_Bridge.Types;
 
 namespace HorribleHackz
 {
-   [ConsoleClass]
+   //[ConsoleClass]
    internal class AnimatedMeshExample
    {
       public static void create()

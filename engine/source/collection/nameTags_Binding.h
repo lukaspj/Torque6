@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 #ifndef _NAMETAGS_SCRIPTBINDING_H_
 #define _NAMETAGS_SCRIPTBINDING_H_
  
@@ -356,10 +358,10 @@ extern "C" {
       if (tagId == 0)
       {
          Con::warnf("Invalid tag Id.\n");
-         return nullptr;
+         return NULL;
       }
 
-      return nameTags->getTagName(tagId);
+      return CInterface::GetMarshallableString(nameTags->getTagName(tagId));
    }
 
    DLL_PUBLIC int NameTagsGetTagId(NameTags* nameTags, const char* tagName)
@@ -371,7 +373,7 @@ extern "C" {
    {
       // Get buffer.
       const U32 bufferLength = 4096;
-      char* pBuffer = Con::getReturnBuffer(bufferLength);
+      char* pBuffer = CInterface::GetMarshallableString(bufferLength);
 
       // Format tags.
       const S32 bufferUsed = nameTags->formatTags(pBuffer, bufferLength);
@@ -475,7 +477,7 @@ extern "C" {
 
       // Format results.
       U32 bufferSize = 8192;
-      char* pReturnBuffer = Con::getReturnBuffer(bufferSize);
+      char* pReturnBuffer = CInterface::GetMarshallableString(bufferSize);
       dSprintf(pReturnBuffer, bufferSize * sizeof(char), "%s", "");
       char* pBuffer = pReturnBuffer;
 

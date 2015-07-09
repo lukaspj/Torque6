@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(BehaviorInstance, SimObject)
 
 /*! Get the template name of this behavior
@@ -61,6 +63,6 @@ extern "C"{
 
    DLL_PUBLIC const char* BehaviorInstanceGetTemplateName(BehaviorInstance* instance)
    {
-      return instance->getTemplateName();
+      return CInterface::GetMarshallableString(instance->getTemplateName());
    }
 }

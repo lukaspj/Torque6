@@ -13,7 +13,7 @@ namespace HorribleHackz
          // Dwarfs like something to stand on. Free fall is bad for the health!
          SceneEntity example_room = new SceneEntity
          {
-            Template = "^ExampleRoom/entities/ExampleRoom.taml",
+            Template = "ExampleRoom:ExampleRoom",
             Position = new Point3F { x = 0, y = -100, z = 0 }
          };
          Scene.AddEntity(example_room, "Floor");

@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(AssetBase, SimObject)
 
 /*! Refresh the asset.
@@ -51,7 +53,7 @@ extern "C"{
 
    DLL_PUBLIC const char* AssetBaseGetAssetName(AssetBase* assetBase)
    {
-      return assetBase->getAssetName();
+      return CInterface::GetMarshallableString(assetBase->getAssetName());
    }
 
    DLL_PUBLIC void AssetBaseSetAssetName(AssetBase* assetBase, const char* name)
@@ -61,7 +63,7 @@ extern "C"{
 
    DLL_PUBLIC const char* AssetBaseGetAssetDescription(AssetBase* assetBase)
    {
-      return assetBase->getAssetDescription();
+      return CInterface::GetMarshallableString(assetBase->getAssetDescription());
    }
 
    DLL_PUBLIC void AssetBaseSetAssetDescription(AssetBase* assetBase, const char* val)
@@ -71,7 +73,7 @@ extern "C"{
 
    DLL_PUBLIC const char* AssetBaseGetAssetCategory(AssetBase* assetBase)
    {
-      return assetBase->getAssetCategory();
+      return CInterface::GetMarshallableString(assetBase->getAssetCategory());
    }
 
    DLL_PUBLIC void AssetBaseSetAssetCategory(AssetBase* assetBase, const char* val)
@@ -111,6 +113,6 @@ extern "C"{
 
    DLL_PUBLIC const char* AssetBaseGetAssetId(AssetBase* assetBase)
    {
-      return assetBase->getAssetId();
+      return CInterface::GetMarshallableString(assetBase->getAssetId());
    }
 }

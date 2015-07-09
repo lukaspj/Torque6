@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 /*! @defgroup BuildInfoFunctions Build Info
 	@ingroup TorqueScriptFunctions
 	@{
@@ -133,12 +135,12 @@ extern "C"{
 
    DLL_PUBLIC const char* Version_GetVersionString()
    {
-      return getVersionString();
+      return CInterface::GetMarshallableString(getVersionString());
    }
 
    DLL_PUBLIC const char* Version_GetCompileTimeString()
    {
-      return getCompileTimeString();
+      return CInterface::GetMarshallableString(getCompileTimeString());
    }
 
    DLL_PUBLIC const char* Version_GetBuildString()

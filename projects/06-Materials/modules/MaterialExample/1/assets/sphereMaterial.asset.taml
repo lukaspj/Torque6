@@ -1,5 +1,5 @@
 <MaterialAsset
     AssetName="sphereMaterial"
-    TemplateFile="sphereMaterial.taml"
+    TemplateFile="./sphereMaterial.taml"
     Texture0="./models/emissive_mask.png"
 />

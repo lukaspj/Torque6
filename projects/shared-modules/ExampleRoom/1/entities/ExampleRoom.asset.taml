@@ -1,4 +1,4 @@
 <EntityTemplateAsset
     AssetName="ExampleRoom"
-    TemplateFile="ExampleRoom.taml"
+    TemplateFile="./ExampleRoom.taml"
 />

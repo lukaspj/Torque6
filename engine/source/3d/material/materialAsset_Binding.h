@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(MaterialAsset, AssetBase)
 
 // Nothing Yet
@@ -34,7 +36,7 @@ extern "C"{
 
    DLL_PUBLIC const char* MaterialAssetGetTemplateFile(MaterialAsset* materialAsset)
    {
-      return materialAsset->getTemplateFile();
+      return CInterface::GetMarshallableString(materialAsset->getTemplateFile());
    }
 
    DLL_PUBLIC void MaterialAssetSetTemplateFile(MaterialAsset* materialAsset, const char* file)

@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(AnimationComponent, BaseComponent)
 
 // Nothing Yet
@@ -55,7 +57,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* AnimationComponentGetMeshAsset(AnimationComponent* animationComponent)
       {
-         return animationComponent->getMesh().getAssetId();
+         return CInterface::GetMarshallableString(animationComponent->getMesh().getAssetId());
       }
 
       DLL_PUBLIC void AnimationComponentSetMeshAsset(AnimationComponent* animationComponent, const char* meshAssetId)

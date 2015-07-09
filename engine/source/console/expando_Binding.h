@@ -19,6 +19,8 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
+#include "c-interface/c-interface.h"
+
 /*! @defgroup PathExpandoFunctions Path Expando
 	@ingroup TorqueScriptFunctions
 	@{
@@ -131,14 +133,14 @@ ConsoleFunctionWithDocs(getPathExpandoValue, ConsoleString, 2, 2, (int expandoIn
 extern "C"{
    DLL_PUBLIC const char* Expando_ExpandPath(const char* path)
    {
-      char* ret = Con::getReturnBuffer(1024);
+      char* ret = CInterface::GetMarshallableString(1024);
       Con::expandPath(ret, 1024, path);
       return ret;
    }
 
    DLL_PUBLIC const char* Expando_CollapsePath(const char* path)
    {
-      char* ret = Con::getReturnBuffer(1024);
+      char* ret = CInterface::GetMarshallableString(1024);
       Con::collapsePath(ret, 1024, path);
       return ret;
    }
@@ -176,7 +178,7 @@ extern "C"{
       }
 
       // Fetch path expando key.
-      return Con::getPathExpandoKey(expandoIndex);
+      return CInterface::GetMarshallableString(Con::getPathExpandoKey(expandoIndex));
    }
 
    DLL_PUBLIC const char* Expando_GetPathExpandoValue(S32 expandoIndex)
@@ -192,6 +194,6 @@ extern "C"{
       }
 
       // Fetch path expando key.
-      return Con::getPathExpandoValue(expandoIndex);
+      return CInterface::GetMarshallableString(Con::getPathExpandoValue(expandoIndex));
    }
 }

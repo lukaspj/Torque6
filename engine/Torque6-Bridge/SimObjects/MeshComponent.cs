@@ -13,6 +13,11 @@ namespace Torque6_Bridge.SimObjects
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.MeshComponentCreateInstance());
       }
 
+      public MeshComponent(SimObject pCopyObj)
+      {
+         ObjectPtr = pCopyObj.ObjectPtr;
+      }
+
       public MeshComponent(uint pId) : base(pId)
       {
       }

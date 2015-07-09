@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(UndoManager, SimObject)
 
 /*!  @return Returns the number of redo Actions stored as an integer
@@ -146,12 +148,12 @@ extern "C"{
 
    DLL_PUBLIC const char* UndoManagerGetUndoName(UndoManager* undoManager, int index)
    {
-      return undoManager->getUndoName(index);
+      return CInterface::GetMarshallableString(undoManager->getUndoName(index));
    }
 
    DLL_PUBLIC const char* UndoManagerGetRedoName(UndoManager* undoManager, int index)
    {
-      return undoManager->getRedoName(index);
+      return CInterface::GetMarshallableString(undoManager->getRedoName(index));
    }
 
    DLL_PUBLIC void UndoManagerUndo(UndoManager* undoManager)
@@ -166,12 +168,12 @@ extern "C"{
 
    DLL_PUBLIC const char* UndoManagerGetNextUndoName(UndoManager* undoManager)
    {
-      return undoManager->getNextUndoName();
+      return CInterface::GetMarshallableString(undoManager->getNextUndoName());
    }
 
    DLL_PUBLIC const char* UndoManagerGetNextRedoName(UndoManager* undoManager)
    {
-      return undoManager->getNextRedoName();
+      return CInterface::GetMarshallableString(undoManager->getNextRedoName());
    }
 
    DLL_PUBLIC int UndoManagerGetNumLevels(UndoManager* undoAction)
@@ -196,7 +198,7 @@ extern "C"{
 
    DLL_PUBLIC const char* UndoActionGetActionName(UndoAction* undoAction)
    {
-      return undoAction->mActionName;
+      return CInterface::GetMarshallableString(undoAction->mActionName);
    }
 
    DLL_PUBLIC void UndoActionSetActionName(UndoAction* undoAction, const char* value)

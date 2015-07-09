@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(Message, SimObject)
 
 /*! Get message type (script class name or C++ class name if no script defined class)
@@ -56,7 +58,7 @@ extern "C" {
 
    DLL_PUBLIC const char* MessageGetType(Message* message)
    {
-      return message->getType();
+      return CInterface::GetMarshallableString(message->getType());
    }
 
    DLL_PUBLIC void MessageAddReference(Message* message)

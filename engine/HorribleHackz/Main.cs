@@ -32,7 +32,7 @@ namespace HorribleHackz
 
          // Logging settings
          Console.SetLogMode(2);
-         Console.PrintEchoFileLoads(false);
+         Console.PrintEchoFileLoads(true);
          
          //Engine.Script.trace(false);
 
@@ -52,9 +52,9 @@ namespace HorribleHackz
          if (AssetDatabase.IsDead())
             throw new Exception("AssetDatabase not found");
 
-         ModuleDatabase.EchoInfo = false;
+         ModuleDatabase.EchoInfo = true;
          
-         AssetDatabase.EchoInfo = false;
+         AssetDatabase.EchoInfo = true;
          AssetDatabase.IgnoreAutoUnload = true;
 
          // Scan modules.

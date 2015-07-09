@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 /*! @defgroup ResourceManagerFunctions Resource Manager
 	@ingroup TorqueScriptFunctions
 	@{
@@ -149,7 +151,7 @@ extern "C" {
 
    DLL_PUBLIC const char* Engine_GetModPaths()
    {
-      return ResourceManager->getModPaths();
+      return CInterface::GetMarshallableString(ResourceManager->getModPaths());
    }
 
    DLL_PUBLIC void Engine_PurgeResources()

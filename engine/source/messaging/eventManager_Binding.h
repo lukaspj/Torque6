@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(EventManager, SimObject)
 
 /*! 
@@ -125,7 +127,7 @@ extern "C" {
 
    DLL_PUBLIC const char* EventManagerGetQueue(EventManager* eventManager)
    {
-      return eventManager->getMessageQueue();
+      return CInterface::GetMarshallableString(eventManager->getMessageQueue());
    }
 
    DLL_PUBLIC void EventManagerSetQueue(EventManager* eventManager, const char* value)

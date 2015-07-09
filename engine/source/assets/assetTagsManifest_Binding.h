@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(AssetTagsManifest, SimObject)
 
 /*! Creates an asset tag.
@@ -210,10 +212,10 @@ extern "C"{
       {
          // Yes, so warn.
          Con::warnf("AssetTagsManifest: Asset tag index '%d' is out of bounds.  Asset tag count is '%d'", tagIndex, assetTagsManifest->getTagCount());
-         return nullptr;
+         return NULL;
       }
 
-      return assetTagsManifest->getTag(tagIndex);
+      return CInterface::GetMarshallableString(assetTagsManifest->getTag(tagIndex));
    }
 
    DLL_PUBLIC int AssetTagsManifestGetAssetTagCount(AssetTagsManifest* assetTagsManifest, const char* assetId)
@@ -228,10 +230,10 @@ extern "C"{
       {
          // Yes, so warn.
          Con::warnf("AssetTagsManifest: Asset tag index '%d' is out of bounds.  Asset tag count is '%d'", tagIndex, assetTagsManifest->getTagCount());
-         return nullptr;
+         return NULL;
       }
 
-      return assetTagsManifest->getAssetTag(assetId, tagIndex);
+      return CInterface::GetMarshallableString(assetTagsManifest->getAssetTag(assetId, tagIndex));
    }
 
    DLL_PUBLIC bool AssetTagsManifestTag(AssetTagsManifest* assetTagsManifest, const char* assetId, const char* tagName)

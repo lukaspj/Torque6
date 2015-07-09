@@ -45,7 +45,7 @@ namespace Scene
 
       DLL_PUBLIC const char* PhysicsComponentGetOnCollideFunction(PhysicsComponent* PhysicsComponent)
       {
-         return PhysicsComponent->getOnCollideFunction();
+         return CInterface::GetMarshallableString(PhysicsComponent->getOnCollideFunction());
       }
 
       DLL_PUBLIC void PhysicsComponentSetOnCollideFunction(PhysicsComponent* PhysicsComponent, const char* function)
@@ -55,7 +55,7 @@ namespace Scene
 
       DLL_PUBLIC const char* PhysicsComponentGetCollisionType(PhysicsComponent* PhysicsComponent)
       {
-         return PhysicsComponent->getCollisionType();
+         return CInterface::GetMarshallableString(PhysicsComponent->getCollisionType());
       }
 
       DLL_PUBLIC void PhysicsComponentSetCollisionType(PhysicsComponent* PhysicsComponent, const char* type)

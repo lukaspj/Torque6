@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 extern "C" {
    DLL_PUBLIC ModuleMergeDefinition* ModuleMergeDefinitionCreateInstance()
    {
@@ -28,7 +30,7 @@ extern "C" {
 
    DLL_PUBLIC const char* ModuleMergeDefinitionGetMergePath(ModuleMergeDefinition* mergeDefinition)
    {
-      return mergeDefinition->getModuleMergePath();
+      return CInterface::GetMarshallableString(mergeDefinition->getModuleMergePath());
    }
 
    DLL_PUBLIC void ModuleMergeDefinitionSetMergePath(ModuleMergeDefinition* mergeDefinition, const char* value)

@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(FileObject, SimObject)
 
 /*! Use the openForRead method to open a previously created file for reading.
@@ -147,12 +149,12 @@ extern "C" {
 
    DLL_PUBLIC const char* FileObjectReadLine(FileObject* fileObj)
    {
-      return (const char*)fileObj->readLine();
+      return CInterface::GetMarshallableString((const char*)fileObj->readLine());
    }
 
    DLL_PUBLIC const char* FileObjectPeekLine(FileObject* fileObj)
    {
-      char *line = Con::getReturnBuffer(512);
+      char *line = CInterface::GetMarshallableString(512);
       fileObj->peekLine((U8*)line, 512);
       return line;
    }

@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 namespace Scene{
    extern "C"{
       DLL_PUBLIC ForwardNode* ForwardNodeCreateInstance()
@@ -29,7 +31,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* ForwardNodeGetColorSrc(ForwardNode* forwardNode)
       {
-         return forwardNode->getColorSrc();
+         return CInterface::GetMarshallableString(forwardNode->getColorSrc());
       }
 
       DLL_PUBLIC void ForwardNodeSetColorSrc(ForwardNode* forwardNode, const char* src)

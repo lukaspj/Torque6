@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 /*! @defgroup PlatformFunctions Platform
 	@ingroup TorqueScriptFunctions
 	@{
@@ -109,7 +111,7 @@ extern "C"{
 
    DLL_PUBLIC const char* Engine_GetLocalTime()
    {
-      char* buf = Con::getReturnBuffer(128);
+      char* buf = CInterface::GetMarshallableString(128);
 
       Platform::LocalTime lt;
       Platform::getLocalTime(lt);
@@ -127,7 +129,7 @@ extern "C"{
 
    DLL_PUBLIC const char* Engine_GetClipboard()
    {
-      return Platform::getClipboard();
+      return CInterface::GetMarshallableString(Platform::getClipboard());
    }
 
    DLL_PUBLIC bool Engine_SetClipboard(const char* val)
@@ -137,6 +139,6 @@ extern "C"{
 
    DLL_PUBLIC const char* Engine_CreateUUID()
    {
-      return Platform::createUUID();
+      return CInterface::GetMarshallableString(Platform::createUUID());
    }
 }

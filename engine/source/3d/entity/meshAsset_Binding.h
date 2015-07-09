@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(MeshAsset, AssetBase)
 
 // Nothing Yet
@@ -34,7 +36,7 @@ extern "C"{
 
    DLL_PUBLIC const char* MeshAssetGetMeshFile(MeshAsset* meshAsset)
    {
-      return meshAsset->getMeshFile();
+      return CInterface::GetMarshallableString(meshAsset->getMeshFile());
    }
 
    DLL_PUBLIC void MeshAssetSetMeshFile(MeshAsset* meshAsset, const char* val)

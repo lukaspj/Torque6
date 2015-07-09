@@ -180,7 +180,7 @@ extern "C" {
 
    DLL_PUBLIC const char* GuiControlProfileGetFontType(GuiControlProfile* controlProfile)
    {
-      return controlProfile->mFontType;
+      return CInterface::GetMarshallableString(controlProfile->mFontType);
    }
 
    DLL_PUBLIC void GuiControlProfileSetFontType(GuiControlProfile* controlProfile, const char* value)
@@ -350,7 +350,7 @@ extern "C" {
 
    DLL_PUBLIC const char* GuiControlProfileGetBitmap(GuiControlProfile* controlProfile)
    {
-      return controlProfile->mBitmapName;
+      return CInterface::GetMarshallableString(controlProfile->mBitmapName);
    }
 
    DLL_PUBLIC void GuiControlProfileSetBitmap(GuiControlProfile* controlProfile, const char* value)
@@ -415,7 +415,7 @@ extern "C" {
 
    DLL_PUBLIC const char* GuiCursorGetBitmapName(GuiCursor* guiCursor)
    {
-      return guiCursor->getBitmapName();
+      return CInterface::GetMarshallableString(guiCursor->getBitmapName());
    }
 
    DLL_PUBLIC void GuiCursorSetBitmapName(GuiCursor* guiCursor, const char* value)

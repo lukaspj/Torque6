@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 /*! @addtogroup FileSystem File System
 	@ingroup TorqueScriptFunctions
 	@{
@@ -63,22 +65,22 @@ ConsoleFunctionWithDocs(getUserHomeDirectory, ConsoleString, 1, 1, ())
 extern "C"{
    DLL_PUBLIC const char* Engine_GetTemporaryDirectory()
    {
-      return Platform::getTemporaryDirectory();
+      return CInterface::GetMarshallableString(Platform::getTemporaryDirectory());
    }
 
    DLL_PUBLIC const char* Engine_GetTemporaryFileName()
    {
-      return Platform::getTemporaryFileName();
+      return CInterface::GetMarshallableString(Platform::getTemporaryFileName());
    }
 
    DLL_PUBLIC const char* Engine_GetUserDataDirectory()
    {
-      return Platform::getUserDataDirectory();
+      return CInterface::GetMarshallableString(Platform::getUserDataDirectory());
    }
 
    DLL_PUBLIC const char* Engine_GetUserHomeDirectory()
    {
-      return Platform::getUserHomeDirectory();
+      return CInterface::GetMarshallableString(Platform::getUserHomeDirectory());
    }
 
    DLL_PUBLIC void Engine_SetMainDotCsDir(const char* csDir)

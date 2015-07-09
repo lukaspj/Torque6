@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 extern "C" {
    DLL_PUBLIC LangTable* LangTableCreateInstance()
    {
@@ -41,7 +43,7 @@ extern "C" {
 
       if ((str = (const char*)langTable->getString(langString)))
       {
-         ret = Con::getReturnBuffer(dStrlen(str) + 1);
+         ret = CInterface::GetMarshallableString(dStrlen(str) + 1);
          dStrcpy(ret, str);
          return ret;
       }
@@ -71,7 +73,7 @@ extern "C" {
 
       if ((str = (const char*)langTable->getLangName(language)))
       {
-         ret = Con::getReturnBuffer(dStrlen(str) + 1);
+         ret = CInterface::GetMarshallableString(dStrlen(str) + 1);
          dStrcpy(ret, str);
          return ret;
       }

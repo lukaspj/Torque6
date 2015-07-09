@@ -87,7 +87,7 @@ namespace Scene
 
       DLL_PUBLIC const char* SceneEntityGetTemplate(SceneEntity* sceneEntity)
       {
-         return sceneEntity->mTemplateAssetID;
+         return CInterface::GetMarshallableString(sceneEntity->mTemplateAssetID);
       }
 
       DLL_PUBLIC void SceneEntitySetPosition(SceneEntity* sceneEntity, CInterface::Point3FParam position)

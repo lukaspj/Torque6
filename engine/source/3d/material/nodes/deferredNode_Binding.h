@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 namespace Scene{
    extern "C"{
       DLL_PUBLIC DeferredNode* DeferredNodeCreateInstance()
@@ -29,7 +31,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* DeferredNodeGetColorSrc(DeferredNode* DeferredNode)
       {
-         return DeferredNode->mColorSrc;
+         return CInterface::GetMarshallableString(DeferredNode->mColorSrc);
       }
 
       DLL_PUBLIC void DeferredNodeSetColorSrc(DeferredNode* DeferredNode, const char* src)
@@ -39,7 +41,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* DeferredNodeGetNormalSrc(DeferredNode* DeferredNode)
       {
-         return DeferredNode->mNormalSrc;
+         return CInterface::GetMarshallableString(DeferredNode->mNormalSrc);
       }
 
       DLL_PUBLIC void DeferredNodeSetNormalSrc(DeferredNode* DeferredNode, const char* src)
@@ -49,7 +51,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* DeferredNodeGetMetallicSrc(DeferredNode* DeferredNode)
       {
-         return DeferredNode->mMetallicSrc;
+         return CInterface::GetMarshallableString(DeferredNode->mMetallicSrc);
       }
 
       DLL_PUBLIC void DeferredNodeSetMetallicSrc(DeferredNode* DeferredNode, const char* src)
@@ -59,7 +61,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* DeferredNodeGetRoughnessSrc(DeferredNode* DeferredNode)
       {
-         return DeferredNode->mRoughnessSrc;
+         return CInterface::GetMarshallableString(DeferredNode->mRoughnessSrc);
       }
 
       DLL_PUBLIC void DeferredNodeSetRoughnessSrc(DeferredNode* DeferredNode, const char* src)
@@ -69,7 +71,7 @@ namespace Scene{
 
       DLL_PUBLIC const char* DeferredNodeGetWorldPosOffsetSrc(DeferredNode* DeferredNode)
       {
-         return DeferredNode->mWorldPosOffsetSrc;
+         return CInterface::GetMarshallableString(DeferredNode->mWorldPosOffsetSrc);
       }
 
       DLL_PUBLIC void DeferredNodeSetWorldPosOffsetSrc(DeferredNode* DeferredNode, const char* src)

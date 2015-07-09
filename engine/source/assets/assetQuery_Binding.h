@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(AssetQuery, SimObject)
 
 /*! Clears all asset Id results.
@@ -120,6 +122,6 @@ extern "C"{
          return nullptr;
       }
 
-      return assetQuery->at(resultIndex);
+      return CInterface::GetMarshallableString(assetQuery->at(resultIndex));
    }
 }
