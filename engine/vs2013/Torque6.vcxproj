@@ -386,6 +386,7 @@
     <ClInclude Include="..\..\engine\source\console\consoleParser.h" />
     <ClInclude Include="..\..\engine\source\console\consoleTypes.h" />
     <ClInclude Include="..\..\engine\source\console\ConsoleTypeValidators.h" />
+    <ClInclude Include="..\source\console\console_Binding.h" />
     <ClInclude Include="..\source\console\expando_Binding.h" />
     <ClInclude Include="..\source\console\inputManagement_Binding.h" />
     <ClInclude Include="..\source\console\output_Binding.h" />

@@ -89,6 +89,7 @@ namespace Torque6_Bridge.SimObjects
          internal static extern void SimObjectSetClass(IntPtr pObjectPtr, string pVal);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         [return: MarshalAs(UnmanagedType.LPStr)]
          internal static extern string SimObjectGetName(IntPtr pObjectPtr);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]

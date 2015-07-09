@@ -24,3 +24,10 @@ ConsoleNamespaceFunction( Plugins, load, ConsoleVoid, 2, 2, (""))
 {
    Plugins::load(argv[1]);
 }
+
+extern "C"{
+   DLL_PUBLIC void Plugins_Load(const char* path)
+   {
+      Plugins::load(path);
+   }
+}

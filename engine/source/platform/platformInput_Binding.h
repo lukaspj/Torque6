@@ -222,9 +222,125 @@ extern "C"{
       AssertWarn(false, "Virtual class");
       return NULL;
    }
+
    DLL_PUBLIC InputManager* InputManagerCreateInstance()
    {
       AssertWarn(false, "Virtual class");
       return NULL;
+   }
+
+   DLL_PUBLIC bool Engine_ActivateKeyboard()
+   {
+      return Input::activateKeyboard();
+   }
+
+   DLL_PUBLIC void Engine_DeactivateKeyboard()
+   {
+      Input::deactivateKeyboard();
+   }
+
+   DLL_PUBLIC void Engine_EnableMouse()
+   {
+      Input::enableMouse();
+   }
+
+   DLL_PUBLIC void Engine_DisableMouse()
+   {
+      Input::disableMouse();
+   }
+
+   DLL_PUBLIC bool Engine_EnableJoystick()
+   {
+      return Input::enableJoystick();
+   }
+
+   DLL_PUBLIC void Engine_DisableJoystick()
+   {
+      Input::disableJoystick();
+   }
+
+   DLL_PUBLIC void Engine_EchoInputState()
+   {
+      Input::echoInputState();
+   }
+
+   DLL_PUBLIC bool Engine_EnableXInput()
+   {
+      return DInputManager::enableXInput();
+   }
+
+   DLL_PUBLIC void Engine_DisableXInput()
+   {
+      DInputManager::disableXInput();
+   }
+
+   DLL_PUBLIC void Engine_ResetXInput()
+   {
+      // This function requests a full "refresh" of events for all controllers the
+      // next time we go through the input processing loop. This is useful to call
+      // at the beginning of your game code after your actionMap is set up to hook
+      // all of the appropriate events
+
+      DInputManager* mgr = dynamic_cast<DInputManager*>(Input::getManager());
+      if (mgr && mgr->isEnabled())
+         mgr->resetXInput();
+   }
+
+   DLL_PUBLIC bool Engine_IsXInputConnected(int controllerID)
+   {
+      DInputManager* mgr = dynamic_cast<DInputManager*>(Input::getManager());
+      if (mgr && mgr->isEnabled()) return mgr->isXInputConnected(controllerID);
+      return false;
+   }
+
+   DLL_PUBLIC int Engine_GetXInputState(int controllerID, const char* prop, bool current)
+   {
+      DInputManager* mgr = dynamic_cast<DInputManager*>(Input::getManager());
+
+      if (!mgr || !mgr->isEnabled())
+         return -1;
+
+      // Use a little bit of macro magic to simplify this otherwise monolothic
+      // block of code.
+#define GET_XI_STATE(constName) \
+   if (!dStricmp(prop, #constName)) \
+      return mgr->getXInputState( controllerID, constName, current );
+
+      GET_XI_STATE(XI_THUMBLX);
+      GET_XI_STATE(XI_THUMBLY);
+      GET_XI_STATE(XI_THUMBRX);
+      GET_XI_STATE(XI_THUMBRY);
+      GET_XI_STATE(XI_LEFT_TRIGGER);
+      GET_XI_STATE(XI_RIGHT_TRIGGER);
+      GET_XI_STATE(SI_UPOV);
+      GET_XI_STATE(SI_DPOV);
+      GET_XI_STATE(SI_LPOV);
+      GET_XI_STATE(SI_RPOV);
+      GET_XI_STATE(XI_START);
+      GET_XI_STATE(XI_BACK);
+      GET_XI_STATE(XI_LEFT_THUMB);
+      GET_XI_STATE(XI_RIGHT_THUMB);
+      GET_XI_STATE(XI_LEFT_SHOULDER);
+      GET_XI_STATE(XI_RIGHT_SHOULDER);
+      GET_XI_STATE(XI_A);
+      GET_XI_STATE(XI_B);
+      GET_XI_STATE(XI_X);
+      GET_XI_STATE(XI_Y);
+#undef GET_XI_STATE
+
+      return -1;
+   }
+
+   DLL_PUBLIC void Engine_Rumble(const char* device, float xRumble, float yRumble)
+   {
+      DInputManager* mgr = dynamic_cast<DInputManager*>(Input::getManager());
+      if (mgr && mgr->isEnabled())
+      {
+         mgr->rumble(device, xRumble, yRumble);
+      }
+      else
+      {
+         Con::printf("DirectInput/XInput is not enabled.");
+      }
    }
 }

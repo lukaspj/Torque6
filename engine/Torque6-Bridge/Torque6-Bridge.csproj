@@ -42,12 +42,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Namespaces\Console.cs" />
+    <Compile Include="Namespaces\Debugger.cs" />
     <Compile Include="Namespaces\Engine.cs" />
     <Compile Include="Namespaces\Expando.cs" />
+    <Compile Include="Namespaces\Game.cs" />
+    <Compile Include="Namespaces\Globals.cs" />
+    <Compile Include="Namespaces\Graphics.cs" />
     <Compile Include="Namespaces\Input.cs" />
+    <Compile Include="Namespaces\Mac.cs" />
+    <Compile Include="Namespaces\Plugins.cs" />
+    <Compile Include="Namespaces\Profiler.cs" />
     <Compile Include="Namespaces\Scene.cs" />
     <Compile Include="Namespaces\Script.cs" />
     <Compile Include="Namespaces\Sim.cs" />
+    <Compile Include="Namespaces\SysGUI.cs" />
+    <Compile Include="Namespaces\Version.cs" />
     <Compile Include="SimObjects\ActionMap.cs" />
     <Compile Include="SimObjects\AnimationComponent.cs" />
     <Compile Include="SimObjects\AssetBase.cs" />

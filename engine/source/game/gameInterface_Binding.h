@@ -48,15 +48,6 @@ ConsoleFunctionWithDocs( playJournal, ConsoleVoid, 2, 3, ( namedFile , doBreak )
 #endif //TORQUE_ALLOW_JOURNALING
 
 extern "C"{
-   DLL_PUBLIC void Game_SaveJournal(const char* filePath)
-   {
-#ifdef TORQUE_ALLOW_JOURNALING
-      Game->saveJournal(filePath);
-#else
-      AssertWarn(false, "Journaling is not allowed");
-#endif
-   }
-
    DLL_PUBLIC void Game_SaveJournal(const char* filePath, bool doBreak)
    {
 #ifdef TORQUE_ALLOW_JOURNALING

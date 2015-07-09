@@ -257,6 +257,65 @@ extern "C"{
    {
       return new SimObjectPtr<SimObject>(obj);
    }
+
+   DLL_PUBLIC S32 Engine_GetSimTime()
+   {
+      return Sim::getCurrentTime();
+   }
+
+   DLL_PUBLIC void Engine_Cancel(S32 eventID)
+   {
+      Sim::cancelEvent(eventID);
+   }
+
+   DLL_PUBLIC bool Engine_IsEventPending(S32 eventID)
+   {
+      return Sim::isEventPending(eventID);
+   }
+
+   DLL_PUBLIC S32 Engine_GetEventTimeLeft(S32 eventID)
+   {
+      return Sim::getEventTimeLeft(eventID);
+   }
+
+   DLL_PUBLIC S32 Engine_GetScheduleDuration(S32 eventID)
+   {
+      return Sim::getScheduleDuration(eventID);
+   }
+
+   DLL_PUBLIC S32 Engine_GetTimeSinceStart(S32 eventID)
+   {
+      return Sim::getTimeSinceStart(eventID);
+   }
+
+   DLL_PUBLIC S32 Engine_Schedule(U32 timeDelta, SimObject* refObject, const char* functionName, S32 argc, const char** argv)
+   {
+      if (!refObject)
+      {
+         refObject = Sim::getRootGroup();
+      }
+      SimConsoleEvent *evt = new SimConsoleEvent(argc, argv, false);
+
+      S32 ret = Sim::postEvent(refObject, evt, Sim::getCurrentTime() + timeDelta);
+      // #ifdef DEBUG
+      //    Con::printf("ref %s schedule(%s) = %d", argv[2], argv[3], ret);
+      //    Con::executef(1, "backtrace");
+      // #endif
+      return ret;
+   }
+
+   DLL_PUBLIC bool Engine_IsObjectByName(const char* handle)
+   {
+      if (!dStrcmp(handle, "0") || !dStrcmp(handle, ""))
+         return false;
+      else
+         return (Sim::findObject(handle) != NULL);
+   }
+
+   DLL_PUBLIC bool Engine_IsObjectByID(int handle)
+   {
+      return (Sim::findObject(handle) != NULL);
+   }
 }
 
 //-----------------------------------------------------------------------------

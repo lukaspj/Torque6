@@ -6,7 +6,7 @@ using Torque6_Bridge.Types;
 
 namespace Torque6_Bridge.Namespaces
 {
-   public static unsafe class Game
+   public static unsafe class Plugins
    {
       
       #region UnsafeNativeMethods
@@ -14,16 +14,16 @@ namespace Torque6_Bridge.Namespaces
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Game_SaveJournal(string filePath, bool doBreak);
+         internal static extern void Plugins_Load(string path);
       }
 
       #endregion
       
       #region Functions
 
-      public static void SaveJournal(string filePath, bool doBreak)
+      public static void Load(string path)
       {
-         InternalUnsafeMethods.Game_SaveJournal(filePath, doBreak);
+         InternalUnsafeMethods.Plugins_Load(path);
       }      
 
       #endregion

@@ -123,7 +123,7 @@ extern "C"{
       return StockColor::getCount();
    }
 
-   DLL_PUBLIC const char* Engine_GetStockColorCount(S32 index)
+   DLL_PUBLIC const char* Engine_GetStockColorName(S32 index)
    {
       // Fetch the color item.
       const StockColorItem* pColorItem = StockColor::getColorItem(index);

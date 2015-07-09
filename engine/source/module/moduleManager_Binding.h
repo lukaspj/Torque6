@@ -459,7 +459,7 @@ extern "C" {
       return moduleManager->scanModules(rootPath, rootOnly);
    }
 
-   DLL_PUBLIC bool ModuleManagerUnregisterModule(ModuleManager* moduleManager, const char* moduleId, int versionId)
+   DLL_PUBLIC bool ModuleManagerUnregisterModule(ModuleManager* moduleManager, const char* moduleId, U32 versionId)
    {
       return moduleManager->unregisterModule(moduleId, versionId);
    }
@@ -474,7 +474,7 @@ extern "C" {
       return moduleManager->unloadModuleGroup(moduleGroup);
    }
 
-   DLL_PUBLIC bool ModuleManagerLoadExplicit(ModuleManager* moduleManager, const char* moduleId, int versionId)
+   DLL_PUBLIC bool ModuleManagerLoadExplicit(ModuleManager* moduleManager, const char* moduleId, U32 versionId)
    {
       return moduleManager->loadModuleExplicit(moduleId, versionId);
    }

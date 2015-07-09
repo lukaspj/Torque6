@@ -134,16 +134,16 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void FindComponent(string name)
+      public SimObject FindComponent(string name)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SceneEntityFindComponent(ObjectPtr->ObjPtr, name);
+         return new SimObject(InternalUnsafeMethods.SceneEntityFindComponent(ObjectPtr->ObjPtr, name));
       }
 
-      public void FindComponentByType(string name)
+      public SimObject FindComponentByType(string name)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SceneEntityFindComponentByType(ObjectPtr->ObjPtr, name);
+         return new SimObject(InternalUnsafeMethods.SceneEntityFindComponentByType(ObjectPtr->ObjPtr, name));
       }
       
       #endregion

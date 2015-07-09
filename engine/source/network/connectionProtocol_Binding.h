@@ -33,3 +33,10 @@ ConsoleFunctionWithDocs(DNetSetLogging, void, 2, 2, (bool enabled))
 }
 
 /*! @} */ // group Network
+
+extern "C"{
+   DLL_PUBLIC void Engine_DNetSetLogging(bool enabled)
+   {
+      gLogToConsole = enabled;
+   }
+}

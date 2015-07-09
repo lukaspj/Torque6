@@ -43,3 +43,10 @@ ConsoleFunctionGroupEnd(NetStringTable);
 #endif // DEBUG
 
 /*! @} */ // end group Network
+
+extern "C"{
+   DLL_PUBLIC void Engine_DumpNetStringTable()
+   {
+      gNetStringTable->dumpToConsole();
+   }
+}

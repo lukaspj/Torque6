@@ -73,9 +73,29 @@ extern "C" {
       AssertWarn(false, "Not implemented yet");
       return NULL;
    }
+
    DLL_PUBLIC DInputManager* DInputManagerCreateInstance()
    {
       AssertWarn(false, "Not implemented yet");
       return NULL;
+   }
+
+   DLL_PUBLIC bool Engine_IsJoystickDetected()
+   {
+      return DInputDevice::joystickDetected();
+   }
+
+   DLL_PUBLIC const char* Engine_GetJoystickAxes(S32 instance)
+   {
+      DInputManager* mgr = dynamic_cast<DInputManager*>(Input::getManager());
+      if (mgr)
+         return mgr->getJoystickAxesString(instance);
+
+      return StringTable->EmptyString;
+   }
+
+   DLL_PUBLIC S32 Engine_GetJoystickCount()
+   {
+      return DInputDevice::getJoystickCount();
    }
 }

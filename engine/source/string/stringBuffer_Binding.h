@@ -45,3 +45,23 @@ ConsoleFunctionWithDocs(sbmDumpStrings, ConsoleVoid, 1, 1, ())
 
 #endif // TORQUE_DEBUG
 
+extern "C"{
+   DLL_PUBLIC void Engine_sbmDumpStats()
+   {
+#if defined(TORQUE_DEBUG)
+      StringBufferManager::getManager().dumpStats();
+#else
+      AssertWarn(false, "sbmDumpStats is only available in debug builds.")
+#endif
+   }
+
+   DLL_PUBLIC void Engine_sbmDumpStrings()
+   {
+#if defined(TORQUE_DEBUG)
+      StringBufferManager::getManager().dumpAllStrings();
+#else
+      AssertWarn(false, "sbmDumpStrings is only available in debug builds.")
+#endif
+   }
+}
+

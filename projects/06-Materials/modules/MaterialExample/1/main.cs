@@ -1,7 +1,7 @@
 function MaterialExample::create(%this)
 {     
     %spheres = new SceneEntity();
-    %spheres.template = "MaterialExample:TestSpheres";
+    %spheres.template = "MaterialExample:entities/TestSpheres";
     %spheres.position = "0 0 0";
     %spheres.rotation = "0 0 0";
     Scene::addEntity(%spheres, "Spheres");

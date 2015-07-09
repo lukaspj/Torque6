@@ -41,6 +41,7 @@
 
 #include "output_Binding.h"
 #include "expando_Binding.h"
+#include "console_Binding.h"
 
 #ifndef _HASHTABLE_H
 #include "collection/hashTable.h"

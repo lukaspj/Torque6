@@ -95,3 +95,48 @@ ConsoleFunctionWithDocs( createUUID, ConsoleString, 1, 1, () )
 }
 
 /*! @} */ // group PlatformFunctions
+
+extern "C"{
+   DLL_PUBLIC void Engine_SetMouseLock(bool enable)
+   {
+      Platform::setMouseLock(enable);
+   }
+
+   DLL_PUBLIC S32 Engine_GetRealTime()
+   {
+      return Platform::getRealMilliseconds();
+   }
+
+   DLL_PUBLIC const char* Engine_GetLocalTime()
+   {
+      char* buf = Con::getReturnBuffer(128);
+
+      Platform::LocalTime lt;
+      Platform::getLocalTime(lt);
+
+      dSprintf(buf, 128, "%d/%d/%d %02d:%02d:%02d",
+         lt.monthday,
+         lt.month + 1,
+         lt.year + 1900,
+         lt.hour,
+         lt.min,
+         lt.sec);
+
+      return buf;
+   }
+
+   DLL_PUBLIC const char* Engine_GetClipboard()
+   {
+      return Platform::getClipboard();
+   }
+
+   DLL_PUBLIC bool Engine_SetClipboard(const char* val)
+   {
+      return Platform::setClipboard(val);
+   }
+
+   DLL_PUBLIC const char* Engine_CreateUUID()
+   {
+      return Platform::createUUID();
+   }
+}

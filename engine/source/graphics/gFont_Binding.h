@@ -356,7 +356,7 @@ ConsoleFunctionWithDocs(duplicateCachedFont, ConsoleVoid, 4, 4, (oldFontName, ol
 /*! @} */ // group FontFunctions
 
 extern "C"{
-   DLL_PUBLIC void Engine_PopulateFontCacheString(const char* faceName, int size, const char* string)
+   DLL_PUBLIC void Engine_PopulateFontCacheString(const char* faceName, int size, const char* str)
    {
       Resource<GFont> f = GFont::create(faceName, size, Con::getVariable("$GUI::fontCacheDirectory"));
 
@@ -373,7 +373,7 @@ extern "C"{
       }
 
       // This has the side effect of generating character info, including the bitmaps.
-      f->getStrWidthPrecise(string);
+      f->getStrWidthPrecise(str);
    }
 
    DLL_PUBLIC void Engine_PopulateFontCacheRange(const char* faceName, int size, int rangeStart, int rangeEnd)

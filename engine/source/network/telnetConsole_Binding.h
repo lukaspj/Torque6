@@ -45,3 +45,11 @@ ConsoleFunctionWithDocs( telnetSetParameters, ConsoleVoid, 4, 5, (int port, stri
 }
 
 /*! @} */ // end group TelnetConsole
+
+extern "C"{
+   DLL_PUBLIC void telnetSetParameters(int port, const char* consolePass, const char* listenPass, bool remoteEcho)
+   {
+      if (TelConsole)
+         TelConsole->setTelnetParameters(port, consolePass, listenPass, remoteEcho);
+   }
+}

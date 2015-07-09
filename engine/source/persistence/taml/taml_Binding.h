@@ -495,4 +495,59 @@ extern "C"{
 
       return pSimObject;
    }
+
+   DLL_PUBLIC bool Engine_TamlWrite(SimObject* obj, const char* filename, const char* format, bool compressed)
+   {
+      Taml taml;
+
+      taml.setFormatMode(Taml::getFormatModeEnum(format));
+
+      // Yes, so is the format mode binary?
+      if (taml.getFormatMode() == Taml::BinaryFormat)
+      {
+         // Yes, so set binary compression.
+         taml.setBinaryCompression(compressed);
+      }
+      else
+      {
+         // No, so warn.
+         Con::warnf("TamlWrite() - Setting binary compression is only valid for XML formatting.");
+      }
+
+      // Turn-off auto-formatting.
+      taml.setAutoFormat(false);
+
+      // Write.
+      return taml.write(obj, filename);
+   }
+
+   DLL_PUBLIC SimObject* Engine_TamlRead(const char* filename, const char* format)
+   {
+      // Set the format mode.
+      Taml taml;
+
+      // Yes, so set it.
+      taml.setFormatMode(Taml::getFormatModeEnum(format));
+
+      // Turn-off auto-formatting.
+      taml.setAutoFormat(false);
+
+      // Read object.
+      SimObject* pSimObject = taml.read(filename);
+
+      // Did we find the object?
+      if (pSimObject == NULL)
+      {
+         // No, so warn.
+         Con::warnf("TamlRead() - Could not read object from file '%s'.", filename);
+         return NULL;
+      }
+
+      return pSimObject;
+   }
+
+   DLL_PUBLIC bool Engine_GenerateTamlSchema()
+   {
+      return Taml::generateTamlSchema();
+   }
 }

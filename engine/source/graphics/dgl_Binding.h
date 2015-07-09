@@ -78,9 +78,9 @@ ConsoleFunctionWithDocs(CaptureScreenArea, bool, 7, 7, (posX, posY, width, heigh
     @param quality An optional quality between 0 and 100. The default quality is 90.
     @return Returns -1 if the file could not be opened, 0 on other failures, and 1 if the conversion worked
 */
+extern U32 gJpegQuality;
 ConsoleFunctionWithDocs(png2jpg, ConsoleInt, 2, 3, ( pngFilename, [quality ]? ))
 {
-   extern U32 gJpegQuality;
    const char * rgbname = NULL;
    const char * alphaname = NULL;
    const char * bmpname = argv[1];
@@ -273,7 +273,6 @@ extern "C"{
 
    DLL_PUBLIC bool Engine_PNG2JPG(const char* bmpname, U32 quality)
    {
-      extern U32 gJpegQuality;
       const char * rgbname = NULL;
       const char * alphaname = NULL;
       gJpegQuality = quality;

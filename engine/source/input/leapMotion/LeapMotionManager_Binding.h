@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleFunction(initLeapMotionManager, void, 1, 1, "() Initialize the LeapMotionManager")
 {
     if (gLeapMotionManager != NULL)
@@ -173,4 +175,98 @@ ConsoleFunction(getPointFromIntersection, const char*, 2, 2, "(fingerID) - Gets 
     }
 
     return gLeapMotionManager->getPointFromIntersection(dAtoi(argv[1])).scriptThis();
+}
+
+extern "C" {
+   DLL_PUBLIC void Engine_InitLeapMotionManager()
+   {
+      if (gLeapMotionManager != NULL)
+      {
+         Con::printf("LeapMotionManager already initialized");
+      }
+      else
+      {
+         gLeapMotionManager = new LeapMotionManager();
+      }
+   }
+
+   DLL_PUBLIC void Engine_EnableLeapMotionManager(bool enable)
+   {
+      if (gLeapMotionManager == NULL)
+      {
+         Con::printf("LeapMotionManager not initialized. Call initLeapMotionManager() first");
+      }
+      else
+      {
+         gLeapMotionManager->enable(enable);
+      }
+   }
+
+   DLL_PUBLIC bool Engine_IsLeapMotionManagerEnabled()
+   {
+      if (gLeapMotionManager == NULL)
+      {
+         Con::printf("LeapMotionManager not initialized. Call initLeapMotionManager() first");
+         return false;
+      }
+      else
+      {
+         return gLeapMotionManager->getEnabled();
+      }
+   }
+
+   DLL_PUBLIC void Engine_EnableLeapCursorControl(bool enable)
+   {
+      if (gLeapMotionManager == NULL)
+      {
+         Con::printf("LeapMotionManager not initialized. Call initLeapMotionManager() first");
+      }
+      else
+      {
+         gLeapMotionManager->toggleMouseControl(enable);
+      }
+   }
+
+   DLL_PUBLIC bool Engine_IsLeapCursorControlled()
+   {
+      if (gLeapMotionManager == NULL)
+      {
+         Con::printf("LeapMotionManager not initialized. Call initLeapMotionManager() first");
+         return false;
+      }
+      else
+      {
+         return gLeapMotionManager->getMouseControlToggle();
+      }
+   }
+
+   DLL_PUBLIC bool Engine_ConfigureLeapGesture(const char* gestureString, float value)
+   {
+      if (gLeapMotionManager == NULL)
+      {
+         Con::printf("LeapMotionManager not initialized. Call initLeapMotionManager() first");
+         return false;
+      }
+      else
+      {
+         if (!dStrcmp("Gesture.Circle.MinProgress", gestureString))
+         {
+            return gLeapMotionManager->setMinCircleProgress(value);
+         }
+         else
+         {
+            return gLeapMotionManager->configureLeapGesture(gestureString, value);
+         }
+      }
+   }
+
+   DLL_PUBLIC void Engine_GetPointFromProjection(CInterface::Point3FParam pos, CInterface::Point2FParam* outPos)
+   {
+      *outPos = gLeapMotionManager->getPointFromProjection(pos).ToPoint2F();
+   }
+
+   DLL_PUBLIC void Engine_GetPointFromIntersection(int fingerID, CInterface::Point2FParam* outPos)
+   {
+      *outPos = gLeapMotionManager->getPointFromIntersection(fingerID).ToPoint2F();
+   }
 }

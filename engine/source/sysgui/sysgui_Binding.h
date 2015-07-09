@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleNamespaceFunction( SysGUI, setEnabled, ConsoleVoid, 2, 2, (""))
 {
    SysGUI::setEnabled(dAtob(argv[1]));
@@ -166,4 +168,151 @@ ConsoleNamespaceFunction( SysGUI, clearList, ConsoleVoid, 2, 2, (""))
 ConsoleNamespaceFunction( SysGUI, setElementHidden, ConsoleVoid, 3, 3, (""))
 {
    SysGUI::setElementHidden(dAtoi(argv[1]), dAtob(argv[2]));
+}
+
+extern "C"{
+   DLL_PUBLIC void SysGUI_SetEnabled(bool enable)
+   {
+      SysGUI::setEnabled(enable);
+   }
+
+   DLL_PUBLIC S32 SysGUI_BeginScrollArea(const char* title, U32 x, U32 y, U32 width, U32 height)
+   {
+      return SysGUI::beginScrollArea(title, x, y, width, height);
+   }
+
+   DLL_PUBLIC S32 SysGUI_EndScrollArea()
+   {
+      return SysGUI::endScrollArea();
+   }
+
+   DLL_PUBLIC S32 SysGUI_BeginCollapse(const char* label, const char* text, bool open)
+   {
+      return SysGUI::beginCollapse(label, text, open);
+   }
+
+   DLL_PUBLIC S32 SysGUI_EndCollapse()
+   {
+      return SysGUI::endCollapse();
+   }
+
+   DLL_PUBLIC S32 SysGUI_ColorWheel(const char* label, CInterface::ColorParam col)
+   {
+      return SysGUI::colorWheel(label, col);
+   }
+
+   DLL_PUBLIC S32 SysGUI_Separator()
+   {
+      return SysGUI::separator();
+   }
+
+   DLL_PUBLIC S32 SysGUI_Vector3(const char* label, CInterface::Point3FParam vec3)
+   {
+      return SysGUI::vector3(label, vec3);
+   }
+
+   DLL_PUBLIC S32 SysGUI_Label(const char* label)
+   {
+      return SysGUI::label(label);
+   }
+
+   DLL_PUBLIC S32 SysGUI_TextInput(const char* label, const char* text)
+   {
+      return SysGUI::textInput(label, text);
+   }
+
+   DLL_PUBLIC S32 SysGUI_Button(const char* label, const char* text)
+   {
+      return SysGUI::button(label, text);
+   }
+
+   DLL_PUBLIC S32 SysGUI_CheckBox(const char* label, bool isChecked)
+   {
+      return SysGUI::checkBox(label, isChecked);
+   }
+
+   DLL_PUBLIC S32 SysGUI_Slider(const char* label, S32 value, S32 min, S32 max)
+   {
+      return SysGUI::slider(label, value, min, max);
+   }
+
+   DLL_PUBLIC const char* SysGUI_GetLabelValue(S32 id)
+   {
+      return SysGUI::getLabelValue(id);
+   }
+
+   DLL_PUBLIC void SysGUI_SetLabelValue(S32 id, const char* val)
+   {
+      SysGUI::setLabelValue(id, val);
+   }
+
+   DLL_PUBLIC const char* SysGUI_GetTextValue(S32 id)
+   {
+      return SysGUI::getTextValue(id);
+   }
+
+   DLL_PUBLIC void SysGUI_SetTextValue(S32 id, const char* val)
+   {
+      SysGUI::setTextValue(id, val);
+   }
+
+   DLL_PUBLIC S32 SysGUI_GetIntValue(S32 id)
+   {
+      return SysGUI::getIntValue(id);
+   }
+
+   DLL_PUBLIC bool SysGUI_GetBoolValue(S32 id)
+   {
+      return SysGUI::getBoolValue(id);
+   }
+
+   DLL_PUBLIC void SysGUI_AlignLeft(S32 id)
+   {
+      SysGUI::alignLeft(id);
+   }
+
+   DLL_PUBLIC void SysGUI_AlignRight(S32 id)
+   {
+      SysGUI::alignRight(id);
+   }
+
+   DLL_PUBLIC void SysGUI_AlignTop(S32 id)
+   {
+      SysGUI::alignTop(id);
+   }
+
+   DLL_PUBLIC void SysGUI_AlignBottom(S32 id)
+   {
+      SysGUI::alignBottom(id);
+   }
+
+   DLL_PUBLIC S32 SysGUI_List()
+   {
+      return SysGUI::list();
+   }
+
+   DLL_PUBLIC void SysGUI_AddListValue(S32 id, const char* value)
+   {
+      SysGUI::addListValue(id, value);
+   }
+
+   DLL_PUBLIC const char* SysGUI_GetListValue(S32 id, S32 idx)
+   {
+      return SysGUI::getListValue(id, idx);
+   }
+
+   DLL_PUBLIC S32 SysGUI_GetListSelected(S32 id)
+   {
+      return SysGUI::getListSelected(id);
+   }
+
+   DLL_PUBLIC void SysGUI_ClearList(S32 id)
+   {
+      SysGUI::clearList(id);
+   }
+
+   DLL_PUBLIC void SysGUI_SetElementHidden(S32 id, bool hidden)
+   {
+      SysGUI::setElementHidden(id, hidden);
+   }
 }

@@ -120,3 +120,54 @@ ConsoleFunctionWithDocs(dispatchMessageObject, ConsoleBool, 3, 3, (queueName, me
 }
 
 /*! @} */ // group MessageQueueFunctions
+
+extern "C"{
+   DLL_PUBLIC bool Engine_IsQueueRegistered(const char* queueName)
+   {
+      return isQueueRegistered(queueName);
+   }
+
+   DLL_PUBLIC void Engine_RegisterMessageQueue(const char* queueName)
+   {
+      registerMessageQueue(queueName);
+   }
+
+   DLL_PUBLIC void Engine_UnregisterMessageQueue(const char* queueName)
+   {
+      unregisterMessageQueue(queueName);
+   }
+
+   DLL_PUBLIC bool Engine_RegisterMessageListener(const char* queueName, SimObject* listener)
+   {
+      IMessageListener *msglistener = dynamic_cast<IMessageListener *>(listener);
+      if (listener == NULL)
+      {
+         Con::errorf("registerMessageListener - Unable to find listener object, not an IMessageListener ?!");
+         return false;
+      }
+
+      return registerMessageListener(queueName, msglistener);
+   }
+
+   DLL_PUBLIC void Engine_UnregisterMessageListener(const char* queueName, SimObject* listener)
+   {
+      IMessageListener *msglistener = dynamic_cast<IMessageListener *>(listener);
+      if (listener == NULL)
+      {
+         Con::errorf("registerMessageListener - Unable to find listener object, not an IMessageListener ?!");
+         return;
+      }
+
+      unregisterMessageListener(queueName, msglistener);
+   }
+
+   DLL_PUBLIC bool Engine_DispatchMessage(const char* queueName, const char* evt, const char* data)
+   {
+      return dispatchMessage(queueName, evt, data ? data : "");
+   }
+
+   DLL_PUBLIC bool Engine_DispatchMessageObject(const char* queueName, Message* msgObj)
+   {
+      return dispatchMessageObject(queueName, msgObj);
+   }
+}

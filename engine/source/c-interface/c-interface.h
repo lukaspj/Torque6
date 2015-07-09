@@ -5,6 +5,7 @@
 #include "platform/platform.h"
 #include "sim/simObject.h"
 #include "graphics/color.h"
+#include "math/mBox.h"
 
 extern "C" {
    DLL_PUBLIC void SetCallbacks(void* ptr, void* methodPtr, void* isMethodPtr, void *mainPtr);
@@ -147,6 +148,20 @@ public:
       }
       operator Point4F() const{
          return Point4F(x, y, z, w);
+      }
+   };
+
+   struct Box3FParam{
+   public:
+      Point3FParam minExtents;
+      Point3FParam maxExtents;
+      Box3FParam(const Box3F& copyBox)
+         : minExtents(copyBox.minExtents)
+         , maxExtents(copyBox.maxExtents)
+      {
+      }
+      operator Box3F() const{
+         return Box3F(minExtents, maxExtents);
       }
    };
 };

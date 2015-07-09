@@ -281,3 +281,129 @@ ConsoleFunctionWithDocs( restoreWindow, ConsoleVoid, 1, 1, ())
 ConsoleFunctionGroupEnd(Video)
 
 /*! @} */ // group VideoFunctions
+
+extern "C"{
+   DLL_PUBLIC bool Engine_SetDisplayDevice(const char* deviceName, U32 width, U32 height, U32 bpp, bool fullScreen)
+   {
+      return Video::setDevice(deviceName, width, height, bpp, fullScreen);
+   }
+
+   DLL_PUBLIC bool Engine_SetScreenMode(U32 width, U32 height, U32 bpp, bool fullScreen)
+   {
+      return Video::setScreenMode(width, height, bpp, fullScreen);
+   }
+
+   DLL_PUBLIC bool Engine_ToggleFullScreen()
+   {
+      return Video::toggleFullScreen();
+   }
+
+   DLL_PUBLIC bool Engine_IsFullScreen()
+   {
+      return Video::isFullScreen();
+   }
+
+   DLL_PUBLIC bool Engine_SwitchBitDepth()
+   {
+      if (!Video::isFullScreen())
+      {
+         Con::warnf(ConsoleLogEntry::General, "Can only switch bit depth in full-screen mode!");
+         return(false);
+      }
+
+      Resolution res = Video::getResolution();
+      return(Video::setResolution(res.w, res.h, (res.bpp == 16 ? 32 : 16)));
+   }
+
+   DLL_PUBLIC bool Engine_PrevResolution()
+   {
+      return Video::prevRes();
+   }
+
+   DLL_PUBLIC bool Engine_NextResolution()
+   {
+      return Video::nextRes();
+   }
+
+   DLL_PUBLIC const char* Engine_GetResolution()
+   {
+      static char resBuf[16];
+      Resolution res = Video::getResolution();
+      dSprintf(resBuf, sizeof(resBuf), "%d %d %d", res.w, res.h, res.bpp);
+      return resBuf;
+   }
+
+   DLL_PUBLIC bool Engine_SetResolution(U32 width, U32 height, U32 bpp)
+   {
+      return Video::setResolution(width, height, bpp);
+   }
+
+   DLL_PUBLIC const char* Engine_GetDesktopResolution()
+   {
+      static char resBuf[16];
+      Resolution res = Video::getDesktopResolution();
+      dSprintf(resBuf, sizeof(resBuf), "%d %d %d", res.w, res.h, res.bpp);
+      return resBuf;
+   }
+
+   DLL_PUBLIC const char* Engine_GetDisplayDeviceList()
+   {
+      return Video::getDeviceList();
+   }
+
+   DLL_PUBLIC const char* Engine_GetResolutionList(const char* deviceName)
+   {
+      DisplayDevice* device = Video::getDevice(deviceName);
+      if (!device)
+      {
+         Con::warnf(ConsoleLogEntry::General, "\"%s\" display device not found!", deviceName);
+         return(NULL);
+      }
+
+      return device->getResolutionList();
+   }
+
+   DLL_PUBLIC const char* Engine_GetVideoDriverInfo()
+   {
+      return Video::getDriverInfo();
+   }
+
+   DLL_PUBLIC bool Engine_IsDeviceFullScreenOnly(const char* deviceName)
+   {
+      DisplayDevice* device = Video::getDevice(deviceName);
+      if (!device)
+      {
+         Con::warnf(ConsoleLogEntry::General, "\"%s\" display device not found!", deviceName);
+         return(false);
+      }
+
+      return device->isFullScreenOnly();
+   }
+
+   DLL_PUBLIC void Engine_VideoSetGammaCorrection(float gamma)
+   {
+      F32 g = mClampF(gamma, 0.0, 1.0);
+      F32 d = -(g - 0.5f);
+
+      if (d != sgGammaCorrection &&
+         (sgOriginalGamma != -1.0f || Video::getGammaCorrection(sgOriginalGamma)))
+         Video::setGammaCorrection(sgOriginalGamma + d);
+      sgGammaCorrection = d;
+   }
+
+   DLL_PUBLIC bool Engine_SetVerticalSync(bool enable)
+   {
+      return Video::setVerticalSync(enable);
+   }
+
+   DLL_PUBLIC void Engine_MinimizeWindow()
+   {
+      Platform::minimizeWindow();
+   }
+
+   DLL_PUBLIC void Engine_RestoreWindow()
+   {
+      Platform::restoreWindow();
+   }
+
+}

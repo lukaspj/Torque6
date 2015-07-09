@@ -36,6 +36,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MaterialExample.cs" />
     <Compile Include="AnimatedMeshExample.cs" />
     <Compile Include="ExampleRoom.cs" />
     <Compile Include="Framework\Attributes.cs" />

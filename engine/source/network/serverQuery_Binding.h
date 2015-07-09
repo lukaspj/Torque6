@@ -220,3 +220,81 @@ ConsoleFunctionWithDocs( setServerInfo, ConsoleBool, 2, 2, ( index ))
 ConsoleFunctionGroupEnd( ServerQuery);
 
 /*! @} */ // group ServerQueryFunctions
+
+extern "C"{
+   DLL_PUBLIC void Engine_QueryLanServers(U32 lanPort, U8 flags, const char* gameType, const char* missionType, U8 minPlayers, U8 maxPlayers, U8 maxBots, U32 regionMask, U32 maxPing, U16 minCPU, U8 filterFlags)
+   {
+      queryLanServers(lanPort, flags, gameType, missionType, minPlayers, maxPlayers, maxBots,
+         regionMask, maxPing, minCPU, filterFlags);
+   }
+
+   DLL_PUBLIC void Engine_QueryMasterServer(U32 lanPort, U8 flags, const char* gameType, const char* missionType, U8 minPlayers, U8 maxPlayers, U8 maxBots, U32 regionMask, U32 maxPing, U16 minCPU, U8 filterFlags)
+   {
+      U32 buddyList = 0;
+      queryMasterServer(flags, gameType, missionType, minPlayers, maxPlayers, maxBots,
+         regionMask, maxPing, minCPU, filterFlags, 0, &buddyList);
+   }
+
+   DLL_PUBLIC void Engine_QuerySingleServer(const char* address, U8 flags)
+   {
+      NetAddress addr;
+      Net::stringToAddress(address, &addr);
+      querySingleServer(&addr, flags);
+   }
+
+   DLL_PUBLIC void Engine_CancelServerQuery()
+   {
+      cancelServerQuery();
+   }
+
+   DLL_PUBLIC void Engine_StopServerQuery()
+   {
+      stopServerQuery();
+   }
+
+   DLL_PUBLIC void Engine_StartHeartBeat()
+   {
+      startHeartbeat();
+   }
+
+   DLL_PUBLIC void Engine_StopHeartBeat()
+   {
+      stopHeartBeat();
+   }
+
+   DLL_PUBLIC S32 Engine_GetServerCount()
+   {
+      return gServerList.size();
+   }
+
+   DLL_PUBLIC bool Engine_SetServerInfo(S32 index)
+   {
+      if (index >= 0 && index < gServerList.size())
+      {
+         ServerInfo& info = gServerList[index];
+
+         char addrString[256];
+         Net::addressToString(&info.address, addrString);
+
+         Con::setIntVariable("ServerInfo::Status", info.status);
+         Con::setVariable("ServerInfo::Address", addrString);
+         Con::setVariable("ServerInfo::Name", info.name);
+         Con::setVariable("ServerInfo::GameType", info.gameType);
+         Con::setVariable("ServerInfo::MissionName", info.missionName);
+         Con::setVariable("ServerInfo::MissionType", info.missionType);
+         Con::setVariable("ServerInfo::State", info.statusString);
+         Con::setVariable("ServerInfo::Info", info.infoString);
+         Con::setIntVariable("ServerInfo::PlayerCount", info.numPlayers);
+         Con::setIntVariable("ServerInfo::MaxPlayers", info.maxPlayers);
+         Con::setIntVariable("ServerInfo::BotCount", info.numBots);
+         Con::setIntVariable("ServerInfo::Version", info.version);
+         Con::setIntVariable("ServerInfo::Ping", info.ping);
+         Con::setIntVariable("ServerInfo::CPUSpeed", info.cpuSpeed);
+         Con::setBoolVariable("ServerInfo::Favorite", info.isFavorite);
+         Con::setBoolVariable("ServerInfo::Dedicated", info.isDedicated());
+         Con::setBoolVariable("ServerInfo::Password", info.isPassworded());
+         return true;
+      }
+      return false;
+   }
+}

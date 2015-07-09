@@ -64,22 +64,22 @@ namespace Torque6_Bridge.SimObjects
          internal static extern void GuiControlProfileSetOpaque(IntPtr controlProfile, bool value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetFillColor(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetFillColor(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetFillColor(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetFillColor(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetFillColorHL(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetFillColorHL(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetFillColorHL(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetFillColorHL(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetFillColorNA(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetFillColorNA(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetFillColorNA(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetFillColorNA(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int GuiControlProfileGetBorder(IntPtr controlProfile);
@@ -94,34 +94,34 @@ namespace Torque6_Bridge.SimObjects
          internal static extern void GuiControlProfileSetBorderThickness(IntPtr controlProfile, int value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetBorderColor(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetBorderColor(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetBorderColor(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetBorderColor(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetBorderColorHL(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetBorderColorHL(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetBorderColorHL(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetBorderColorHL(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetBorderColorNA(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetBorderColorNA(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetBorderColorNA(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetBorderColorNA(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetBevelColorHL(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetBevelColorHL(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetBevelColorHL(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetBevelColorHL(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetBevelColorLL(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetBevelColorLL(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetBevelColorLL(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetBevelColorLL(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern string GuiControlProfileGetFontType(IntPtr controlProfile);
@@ -142,46 +142,46 @@ namespace Torque6_Bridge.SimObjects
          internal static extern void GuiControlProfileSetFontCharset(IntPtr controlProfile, int value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetFontColors(IntPtr controlProfile, int index, out ColorI outColor);
+         internal static extern void GuiControlProfileGetFontColors(IntPtr controlProfile, int index, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetFontColors(IntPtr controlProfile, int index, ColorI value);
+         internal static extern void GuiControlProfileSetFontColors(IntPtr controlProfile, int index, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetFontColor(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetFontColor(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetFontColor(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetFontColor(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetFontColorHL(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetFontColorHL(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetFontColorHL(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetFontColorHL(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetFontColorNA(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetFontColorNA(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetFontColorNA(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetFontColorNA(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetFontColorSEL(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetFontColorSEL(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetFontColorSEL(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetFontColorSEL(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetFontColorLink(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetFontColorLink(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetFontColorLink(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetFontColorLink(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetFontColorLinkHL(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetFontColorLinkHL(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetFontColorLinkHL(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetFontColorLinkHL(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int GuiControlProfileGetJustify(IntPtr controlProfile);
@@ -220,10 +220,10 @@ namespace Torque6_Bridge.SimObjects
          internal static extern void GuiControlProfileSetNumbersOnly(IntPtr controlProfile, bool value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileGetCursorColor(IntPtr controlProfile, out ColorI outColor);
+         internal static extern void GuiControlProfileGetCursorColor(IntPtr controlProfile, out Color outColor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlProfileSetCursorColor(IntPtr controlProfile, ColorI value);
+         internal static extern void GuiControlProfileSetCursorColor(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern string GuiControlProfileGetBitmap(IntPtr controlProfile);
@@ -322,12 +322,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetOpaque(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI FillColor
+      public Color FillColor
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFillColor(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -337,12 +337,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetFillColor(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI FillColorHL
+      public Color FillColorHL
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFillColorHL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -352,12 +352,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetFillColorHL(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI FillColorNA
+      public Color FillColorNA
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFillColorNA(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -393,12 +393,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetBorderThickness(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI BorderColor
+      public Color BorderColor
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetBorderColor(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -408,12 +408,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetBorderColor(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI BorderColorHL
+      public Color BorderColorHL
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetBorderColorHL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -423,12 +423,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetBorderColorHL(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI BorderColorNA
+      public Color BorderColorNA
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetBorderColorNA(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -438,12 +438,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetBorderColorNA(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI BevelColorHL
+      public Color BevelColorHL
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetBevelColorHL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -453,12 +453,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetBevelColorHL(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI BevelColorLL
+      public Color BevelColorLL
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetBevelColorLL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -508,20 +508,20 @@ namespace Torque6_Bridge.SimObjects
          }
       }
 
-      public FieldVector<ColorI> FontColors
+      public FieldVector<Color> FontColors
       {
          get
          {
-            return new FieldVector<ColorI>(this, 10, InternalUnsafeMethods.GuiControlProfileGetFontColors,
+            return new FieldVector<Color>(this, 10, InternalUnsafeMethods.GuiControlProfileGetFontColors,
                InternalUnsafeMethods.GuiControlProfileSetFontColors);
          }
       }
-      public ColorI FontColor
+      public Color FontColor
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColor(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -531,12 +531,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetFontColor(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI FontColorHL
+      public Color FontColorHL
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColorHL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -546,12 +546,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetFontColorHL(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI FontColorNA
+      public Color FontColorNA
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColorNA(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -561,12 +561,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetFontColorNA(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI FontColorSEL
+      public Color FontColorSEL
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColorSEL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -576,12 +576,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetFontColorSEL(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI FontColorLink
+      public Color FontColorLink
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColorLink(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -591,12 +591,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetFontColorLink(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI FontColorLinkHL
+      public Color FontColorLinkHL
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColorLinkHL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
@@ -684,12 +684,12 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.GuiControlProfileSetNumbersOnly(ObjectPtr->ObjPtr, value);
          }
       }
-      public ColorI CursorColor
+      public Color CursorColor
       {
          get
          {
             if (IsDead()) throw new SimObjectPointerInvalidException();
-            ColorI outVal;
+            Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetCursorColor(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }

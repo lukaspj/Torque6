@@ -59,3 +59,35 @@ ConsoleFunctionWithDocs(getUserHomeDirectory, ConsoleString, 1, 1, ())
 }
 
 /*! @} */ // group FileSystem
+
+extern "C"{
+   DLL_PUBLIC const char* Engine_GetTemporaryDirectory()
+   {
+      return Platform::getTemporaryDirectory();
+   }
+
+   DLL_PUBLIC const char* Engine_GetTemporaryFileName()
+   {
+      return Platform::getTemporaryFileName();
+   }
+
+   DLL_PUBLIC const char* Engine_GetUserDataDirectory()
+   {
+      return Platform::getUserDataDirectory();
+   }
+
+   DLL_PUBLIC const char* Engine_GetUserHomeDirectory()
+   {
+      return Platform::getUserHomeDirectory();
+   }
+
+   DLL_PUBLIC void Engine_SetMainDotCsDir(const char* csDir)
+   {
+      Platform::setMainDotCsDir(csDir);
+   }
+
+   DLL_PUBLIC void Engine_SetCurrentDirectory(const char* dir)
+   {
+      Platform::setCurrentDirectory(dir);
+   }
+}

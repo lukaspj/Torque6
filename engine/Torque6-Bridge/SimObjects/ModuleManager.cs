@@ -55,7 +55,7 @@ namespace Torque6_Bridge.SimObjects
          internal static extern bool ModuleManagerScanModules(IntPtr moduleManager, string rootPath, bool rootOnly);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ModuleManagerUnregisterModule(IntPtr moduleManager, string moduleId, int versionId);
+         internal static extern bool ModuleManagerUnregisterModule(IntPtr moduleManager, string moduleId, uint versionId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool ModuleManagerLoadGroup(IntPtr moduleManager, string moduleGroup);
@@ -64,7 +64,7 @@ namespace Torque6_Bridge.SimObjects
          internal static extern bool ModuleManagerUnloadGroup(IntPtr moduleManager, string moduleGroup);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ModuleManagerLoadExplicit(IntPtr moduleManager, string moduleId, int versionId);
+         internal static extern bool ModuleManagerLoadExplicit(IntPtr moduleManager, string moduleId, uint versionId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool ModuleManagerUnloadExplicit(IntPtr moduleManager, string moduleId);
@@ -147,7 +147,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.ModuleManagerScanModules(ObjectPtr->ObjPtr, rootPath, rootOnly);
       }
 
-      public void UnregisterModule(string moduleId, int versionId)
+      public void UnregisterModule(string moduleId, uint versionId)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.ModuleManagerUnregisterModule(ObjectPtr->ObjPtr, moduleId, versionId);
@@ -165,7 +165,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.ModuleManagerUnloadGroup(ObjectPtr->ObjPtr, moduleGroup);
       }
 
-      public void LoadExplicit(string moduleId, int versionId)
+      public void LoadExplicit(string moduleId, uint versionId)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.ModuleManagerLoadExplicit(ObjectPtr->ObjPtr, moduleId, versionId);

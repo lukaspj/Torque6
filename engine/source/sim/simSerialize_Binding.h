@@ -135,4 +135,14 @@ extern "C" {
    {
       obj->removeFieldFilter(fieldName);
    }
+
+   DLL_PUBLIC bool Engine_SaveObject(SimObject* obj, const char* filename)
+   {
+      return Sim::saveObject(obj, filename);
+   }
+
+   DLL_PUBLIC SimObject* Engine_LoadObject(const char* filename)
+   {
+      return Sim::loadObjectStream(filename);
+   }
 }

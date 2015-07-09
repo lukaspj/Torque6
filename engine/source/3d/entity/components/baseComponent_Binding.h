@@ -31,6 +31,7 @@ namespace Scene
 
       object->setUniformVec4(argv[2], value);
    }
+
    extern "C"{
       DLL_PUBLIC BaseComponent* BaseComponentCreateInstance()
       {

@@ -20,6 +20,7 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
 
 /*! @defgroup BoxFunctions Box Math
 	@ingroup TorqueScriptFunctions

@@ -54,4 +54,17 @@ extern "C"{
    {
       return new SimDataBlockGroup();
    }
+
+   DLL_PUBLIC void Engine_DeleteDataBlocks()
+   {
+      // delete from last to first:
+      SimGroup *grp = Sim::getDataBlockGroup();
+      for (S32 i = grp->size() - 1; i >= 0; i--)
+      {
+         SimObject *obj = (*grp)[i];
+         obj->deleteObject();
+      }
+      SimDataBlock::sNextObjectId = DataBlockObjectIdFirst;
+      SimDataBlock::sNextModifiedKey = 0;
+   }
 }

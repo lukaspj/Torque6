@@ -39,3 +39,10 @@ ConsoleFunctionWithDocs(allowConnections, ConsoleVoid,2,2, ( enable ))
 ConsoleFunctionGroupEnd(NetInterface);
 
 /*! @} */ // end group Network
+
+extern "C"{
+   DLL_PUBLIC void Engine_AllowConnections(bool enable)
+   {
+      GNet->setAllowsConnections(enable);
+   }
+}

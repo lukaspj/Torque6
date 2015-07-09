@@ -20,9 +20,9 @@ namespace Torque6_Bridge.Types
 
       public Color(float pR, float pG, float pB)
       {
-         R = (int)(255 * pR);
-         G = (int)(255 * pG);
-         B = (int)(255 * pB);
+         R = (int) (255*pR);
+         G = (int) (255*pG);
+         B = (int) (255*pB);
          A = 255;
       }
    }
@@ -65,13 +65,21 @@ namespace Torque6_Bridge.Types
 
       public static Point3F Zero()
       {
-         return new Point3F(0,0,0);
+         return new Point3F(0, 0, 0);
       }
    }
 
    [StructLayout(LayoutKind.Sequential)]
    public struct Point4F
    {
+      public Point4F(float pX, float pY, float pZ, float pW)
+      {
+         x = pX;
+         y = pY;
+         z = pZ;
+         w = pW;
+      }
+
       public float x;
       public float y;
       public float z;

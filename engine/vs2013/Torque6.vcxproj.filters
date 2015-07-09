@@ -1929,6 +1929,9 @@
     <ClInclude Include="..\source\sim\scriptObject_Binding.h">
       <Filter>engine\source\sim</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\console\console_Binding.h">
+      <Filter>engine\source\console</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\engine\source\2d\assets\ImageAsset.cc">

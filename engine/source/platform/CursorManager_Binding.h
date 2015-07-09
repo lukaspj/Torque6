@@ -68,3 +68,35 @@ ConsoleFunctionWithDocs( inputPopCursor, ConsoleVoid, 1, 1, ())
 }
 
 /*! @} */ // end group CursorManager
+
+extern "C"{
+   DLL_PUBLIC void Engine_InputPushCursor(const char* cursorShapeName)
+   {
+      S32 val = 0;
+
+      for (S32 i = 0; i < gCurManagerShapesTable.size; i++)
+      {
+         if (!dStricmp(cursorShapeName, gCurManagerShapesTable.table[i].label))
+         {
+            val = gCurManagerShapesTable.table[i].index;
+            break;
+         }
+      }
+
+      //*** Now set it
+      CursorManager* cm = Input::getCursorManager();
+      if (cm)
+      {
+         cm->pushCursor(val);
+      }
+   }
+
+   DLL_PUBLIC void Engine_InputPopCursor()
+   {
+      CursorManager* cm = Input::getCursorManager();
+      if (cm)
+      {
+         cm->popCursor();
+      }
+   }
+}

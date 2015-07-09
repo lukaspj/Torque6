@@ -50,3 +50,18 @@ ConsoleFunctionWithDocs(messageBox, ConsoleInt, 3, 5, (title, message, [buttons]
 }
 
 /*! @} */ // end group MessageBox
+
+extern "C"{
+   DLL_PUBLIC S32 Engine_MessageBox(const char* title, const char* message, const char* buttons, const char* icon)
+   {
+      S32 btns = MBOkCancel;
+      S32 icns = MIInformation;
+
+      if (buttons == NULL)
+         btns = getIDFromName(sgButtonEnums, buttons, btns);
+      if (icon == NULL)
+         icns = getIDFromName(sgIconEnums, icon, icns);
+
+      return Platform::messageBox(title, message, (MBButtons)btns, (MBIcons)icns);
+   }
+}

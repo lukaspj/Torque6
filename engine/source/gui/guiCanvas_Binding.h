@@ -463,7 +463,7 @@ extern "C" {
       return true;
    }
 
-   DLL_PUBLIC bool Engine_SetCanvasTitle(const char* windowTitle)
+   DLL_PUBLIC void Engine_SetCanvasTitle(const char* windowTitle)
    {
       Platform::setWindowTitle(windowTitle);
    }
