@@ -13,7 +13,7 @@ namespace HorribleHackz
          // Create some dwarfs!
          SceneEntity entity1 = new SceneEntity
          {
-            Template = "^AnimatedMeshExample/entities/bigDwarfRedDwarf.taml",
+            Template = "AnimatedMeshExample:BigDwarfRedDwarf",
             Position = Point3F.Zero(),
             Rotation = Point3F.Zero()
          };
@@ -27,7 +27,7 @@ namespace HorribleHackz
          // Let there be lights!
          SceneEntity light1 = new SceneEntity
          {
-            Template = "^AnimatedMeshExample/entities/lightTest2.taml",
+            Template = "AnimatedMeshExample:lightTest2",
             Position = Point3F.Zero()
          };
          light1.RegisterObject();

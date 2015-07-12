@@ -7,8 +7,6 @@ using Torque6_Bridge.SimObjects;
 using Console = Torque6_Bridge.Namespaces.Console;
 using Version = Torque6_Bridge.Namespaces.Version;
 
-//using IJWLayer;
-
 namespace HorribleHackz
 {
    internal class MainClass
