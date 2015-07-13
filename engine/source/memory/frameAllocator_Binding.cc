@@ -44,3 +44,10 @@ ConsoleFunctionWithDocs(getMaxFrameAllocation, S32, 1,1, ())
 /*! @} */ // end group MemoryFrameAllocation
 
 #endif
+
+extern "C"{
+   DLL_PUBLIC S32 Engine_GetMaxFrameAllocation()
+   {
+      return sgMaxFrameAllocation;
+   }
+}

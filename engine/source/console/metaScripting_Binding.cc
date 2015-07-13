@@ -27,6 +27,7 @@
 #include "io/resource/resourceManager.h"
 #include "io/fileStream.h"
 #include "console/compiler.h"
+#include "string/stringStack.h"
 
 #if defined(TORQUE_OS_IOS) || defined(TORQUE_OS_OSX)
 #include <ifaddrs.h>
@@ -847,8 +848,693 @@ ConsoleFunctionWithDocs( enumerateConsoleClasses, ConsoleString, 1, 2, ([baseCla
 /*! @} */ // group MetaScriptFunctions
 
 extern "C"{
+   DLL_PUBLIC const char* Engine_Call(const char* funcName, S32 argc, const char** argv)
+   {
+      const char **newdata = (const char**)malloc(argc + 1);
+      memcpy(newdata + 1, argv, argc);
+      newdata[0] = funcName;
+      return CInterface::GetMarshallableString(Con::execute(argc + 1, newdata));
+   }
+
+   DLL_PUBLIC const char* Engine_GetDSOPath(const char* scriptFileName)
+   {
+      Con::expandPath(pathBuffer, sizeof(pathBuffer), scriptFileName);
+
+      const char *filename = getDSOPath(pathBuffer);
+      if (filename == NULL || *filename == 0)
+         return NULL;
+
+      return CInterface::GetMarshallableString(filename);
+   }
+
+   DLL_PUBLIC bool Engine_Compile(const char* scriptFileName)
+   {
+      char nameBuffer[512];
+      char* script = NULL;
+      U32 scriptSize = 0;
+
+      FileTime comModifyTime, scrModifyTime;
+
+      Con::expandPath(pathBuffer, sizeof(pathBuffer), scriptFileName);
+
+      // Figure out where to put DSOs
+      StringTableEntry dsoPath = getDSOPath(pathBuffer);
+
+      // If the script file extention is '.ed.cs' then compile it to a different compiled extention
+      bool isEditorScript = false;
+      const char *ext = dStrrchr(pathBuffer, '.');
+      if (ext && (dStricmp(ext, ".cs") == 0))
+      {
+         const char* ext2 = ext - 3;
+         if (dStricmp(ext2, ".ed.cs") == 0)
+            isEditorScript = true;
+      }
+      else if (ext && (dStricmp(ext, ".gui") == 0))
+      {
+         const char* ext2 = ext - 3;
+         if (dStricmp(ext2, ".ed.gui") == 0)
+            isEditorScript = true;
+      }
+
+      const char *filenameOnly = dStrrchr(pathBuffer, '/');
+      if (filenameOnly)
+         ++filenameOnly;
+      else
+         filenameOnly = pathBuffer;
+
+      if (isEditorScript)
+         dStrcpyl(nameBuffer, sizeof(nameBuffer), dsoPath, "/", filenameOnly, ".edso", NULL);
+      else
+         dStrcpyl(nameBuffer, sizeof(nameBuffer), dsoPath, "/", filenameOnly, ".dso", NULL);
+
+      ResourceObject *rScr = ResourceManager->find(pathBuffer);
+      ResourceObject *rCom = ResourceManager->find(nameBuffer);
+
+      if (rCom)
+         rCom->getFileTimes(NULL, &comModifyTime);
+      if (rScr)
+         rScr->getFileTimes(NULL, &scrModifyTime);
+
+      Stream *s = ResourceManager->openStream(pathBuffer);
+      if (s)
+      {
+         scriptSize = ResourceManager->getSize(pathBuffer);
+         script = new char[scriptSize + 1];
+         s->read(scriptSize, script);
+         ResourceManager->closeStream(s);
+         script[scriptSize] = 0;
+      }
+
+      if (!scriptSize || !script)
+      {
+         delete[] script;
+         Con::errorf(ConsoleLogEntry::Script, "compile: invalid script file %s.", pathBuffer);
+         return false;
+      }
+      // compile this baddie.
+      // -Mat reducing console noise
+#if defined(TORQUE_DEBUG)
+      Con::printf("Compiling %s...", pathBuffer);
+#endif
+      CodeBlock *code = new CodeBlock();
+      code->compile(nameBuffer, pathBuffer, script);
+      delete code;
+      code = NULL;
+
+      delete[] script;
+      return true;
+   }
+
+   DLL_PUBLIC void Engine_CompilePath(const char* path, CInterface::Point2IParam* outRes)
+   {
+      if (!Con::expandPath(pathBuffer, sizeof(pathBuffer), path))
+      {
+         *outRes = Point2I(-1, 0);
+         return;
+      }
+
+      const char *compileArgs[2] = { "compile", NULL };
+
+      S32 failedScripts = 0;
+      S32 totalScripts = 0;
+      ResourceObject *match = NULL;
+
+      while ((match = ResourceManager->findMatch(pathBuffer, &compileArgs[1], match)))
+      {
+         if (!ccompile(NULL, 1, compileArgs))
+            failedScripts++;
+
+         totalScripts++;
+      }
+
+      *outRes = Point2I(failedScripts, totalScripts);
+   }
+
+   DLL_PUBLIC void Engine_SetScriptExecEcho(bool echo)
+   {
+      scriptExecutionEcho = echo;
+   }
+
+   DLL_PUBLIC bool Engine_Exec(const char* fileName, bool noCalls, bool journalScript)
+   {
+      execDepth++;
+
+#ifdef TORQUE_ALLOW_JOURNALING
+      bool journal = false;
+
+      if (journalDepth >= execDepth)
+         journalDepth = execDepth + 1;
+      else
+         journal = true;
+#endif //TORQUE_ALLOW_JOURNALING
+
+      bool ret = false;
+
+#ifdef TORQUE_ALLOW_JOURNALING
+      if (journalScript && !journal)
+      {
+         journal = true;
+         journalDepth = execDepth;
+      }
+#endif //TORQUE_ALLOW_JOURNALING
+
+      // Determine the filename we actually want...
+      Con::expandPath(pathBuffer, sizeof(pathBuffer), fileName);
+
+      // Figure out where to put DSOs
+      StringTableEntry dsoPath = getDSOPath(pathBuffer);
+
+      const char *ext = dStrrchr(pathBuffer, '.');
+
+      if (!ext)
+      {
+         // We need an extension!
+         Con::errorf(ConsoleLogEntry::Script, "exec: invalid script file name %s.", pathBuffer);
+         execDepth--;
+         return false;
+      }
+
+      // Check Editor Extensions
+      bool isEditorScript = false;
+
+#ifdef TORQUE_ALLOW_DSO_GENERATION
+      // If the script file extension is '.ed.cs' then compile it to a different compiled extension
+      if (dStricmp(ext, ".cs") == 0)
+      {
+         const char* ext2 = ext - 3;
+         if (dStricmp(ext2, ".ed.cs") == 0)
+            isEditorScript = true;
+      }
+      else if (dStricmp(ext, ".gui") == 0)
+      {
+         const char* ext2 = ext - 3;
+         if (dStricmp(ext2, ".ed.gui") == 0)
+            isEditorScript = true;
+      }
+#endif //TORQUE_ALLOW_DSO_GENERATION
+
+      // rdbhack: if we can't find the script file in the game directory, look for it
+      //   in the Application Data directory. This makes it possible to keep the user
+      //   ignorant of where the files are actually saving to, thus eliminating the need
+      //   for the script functions: execPrefs, getUserDataDirectory, etc.
+      //
+      //   This works because we know that script files located in the prefs path will 
+      //   not have compiled versions (it checks for this further down). Otherwise this
+      //   would be a big problem!
+
+      StringTableEntry scriptFileName = StringTable->EmptyString;
+
+
+      //Luma : This is redundant, we wont be building dso's on the device - 
+      //plus saving dso to the user directory when attempting build for the
+      //release tests on iPhone is irrelevant.
+#ifdef TORQUE_ALLOW_DSO_GENERATION
+
+      if (!ResourceManager->find(pathBuffer))
+      {
+         // NOTE: this code is pretty much a duplication of code much further down in this
+         //       function...
+
+         // our work just got a little harder.. if we couldn't find the .cs, then we need to
+         // also look for the .dso BEFORE we can try the prefs path.. UGH
+         const char *filenameOnly = dStrrchr(pathBuffer, '/');
+         if (filenameOnly)
+            ++filenameOnly;
+         else
+            filenameOnly = pathBuffer;
+
+         // we could skip this step and rid ourselves of a bunch of nonsense but we can't be
+         // certain the dso path is the same as the path given to use in scriptFileNameBuffer
+         char pathAndFilename[1024];
+         Platform::makeFullPathName(filenameOnly, pathAndFilename, sizeof(pathAndFilename), dsoPath);
+
+         char nameBuffer[1024];
+         if (isEditorScript) // this should never be the case since we are a PLAYER not a TOOL, but you never know
+            dStrcpyl(nameBuffer, sizeof(nameBuffer), pathAndFilename, ".edso", NULL);
+         else
+            dStrcpyl(nameBuffer, sizeof(nameBuffer), pathAndFilename, ".dso", NULL);
+
+         if (!ResourceManager->find(nameBuffer))
+            scriptFileName = Platform::getPrefsPath(Platform::stripBasePath(pathBuffer));
+         else
+            scriptFileName = StringTable->insert(pathBuffer);
+      }
+      else
+         scriptFileName = StringTable->insert(pathBuffer);
+#else //TORQUE_ALLOW_DSO_GENERATION
+
+      //Luma : Just insert the file name.
+      scriptFileName = StringTable->insert(pathBuffer);
+
+#endif //TORQUE_ALLOW_DSO_GENERATION
+
+      //Luma : Something screwed up so get out early
+      if (scriptFileName == NULL || *scriptFileName == 0)
+      {
+         execDepth--;
+         return false;
+      }
+
+#ifdef TORQUE_ALLOW_JOURNALING
+
+      bool compiled = dStricmp(ext, ".mis") && !journal && !Con::getBoolVariable("Scripts::ignoreDSOs");
+#else
+      bool compiled = dStricmp(ext, ".mis") && !Con::getBoolVariable("Scripts::ignoreDSOs");
+#endif //TORQUE_ALLOW_JOURNALING
+
+      // [tom, 12/5/2006] stripBasePath() messes up if the filename is not in the exe
+      // path, current directory or prefs path. Thus, getDSOFilename() will also mess
+      // up and so this allows the scripts to still load but without a DSO.
+      if (Platform::isFullPath(Platform::stripBasePath(pathBuffer)))
+         compiled = false;
+
+      // [tom, 11/17/2006] It seems to make sense to not compile scripts that are in the
+      // prefs directory. However, getDSOPath() can handle this situation and will put
+      // the dso along with the script to avoid name clashes with tools/game dsos.
+#ifdef TORQUE_ALLOW_DSO_GENERATION
+      // Is this a file we should compile? (anything in the prefs path should not be compiled)
+      StringTableEntry prefsPath = Platform::getPrefsPath();
+
+      if (dStrlen(prefsPath) > 0 && dStrnicmp(scriptFileName, prefsPath, dStrlen(prefsPath)) == 0)
+         compiled = false;
+#endif //TORQUE_ALLOW_DSO_GENERATION
+
+      // If we're in a journaling mode, then we will read the script
+      // from the journal file.
+#ifdef TORQUE_ALLOW_JOURNALING
+      if (journal && Game->isJournalReading())
+      {
+         char fileNameBuf[256];
+         bool fileRead;
+         U32 fileSize;
+
+         Game->getJournalStream()->readString(fileNameBuf);
+         Game->getJournalStream()->read(&fileRead);
+         if (!fileRead)
+         {
+            Con::errorf(ConsoleLogEntry::Script, "Journal script read (failed) for %s", fileNameBuf);
+            execDepth--;
+            return false;
+         }
+         Game->journalRead(&fileSize);
+         char *script = new char[fileSize + 1];
+         Game->journalRead(fileSize, script);
+         script[fileSize] = 0;
+         Con::printf("Executing (journal-read) %s.", scriptFileName);
+         CodeBlock *newCodeBlock = new CodeBlock();
+         newCodeBlock->compileExec(scriptFileName, script, noCalls, 0);
+         delete[] script;
+
+         execDepth--;
+         return true;
+      }
+#endif //TORQUE_ALLOW_JOURNALING
+
+      // Ok, we let's try to load and compile the script.
+      ResourceObject *rScr = ResourceManager->find(scriptFileName);
+      ResourceObject *rCom = NULL;
+
+      char nameBuffer[512];
+      char* script = NULL;
+      U32 scriptSize = 0;
+      U32 version;
+
+      Stream *compiledStream = NULL;
+      FileTime comModifyTime, scrModifyTime;
+
+      // Check here for .edso
+      //bool edso = false;
+      //if( dStricmp( ext, ".edso" ) == 0  && rScr )
+      //{
+      //   edso = true;
+      //   rCom = rScr;
+      //   rScr = NULL;
+
+      //   rCom->getFileTimes( NULL, &comModifyTime );
+      //   dStrcpy( nameBuffer, scriptFileName );
+      //}
+
+      // If we're supposed to be compiling this file, check to see if there's a DSO
+      if (compiled /*&& !edso*/)
+      {
+         const char *filenameOnly = dStrrchr(scriptFileName, '/');
+         if (filenameOnly)
+            ++filenameOnly; //remove the / at the front
+         else
+            filenameOnly = scriptFileName;
+
+         char pathAndFilename[1024];
+         Platform::makeFullPathName(filenameOnly, pathAndFilename, sizeof(pathAndFilename), dsoPath);
+
+         if (isEditorScript)
+            dStrcpyl(nameBuffer, sizeof(nameBuffer), pathAndFilename, ".edso", NULL);
+         else
+            dStrcpyl(nameBuffer, sizeof(nameBuffer), pathAndFilename, ".dso", NULL);
+
+         rCom = ResourceManager->find(nameBuffer);
+
+         if (rCom)
+            rCom->getFileTimes(NULL, &comModifyTime);
+         if (rScr)
+            rScr->getFileTimes(NULL, &scrModifyTime);
+      }
+
+      // Let's do a sanity check to complain about DSOs in the future.
+      //
+      // MM:	This doesn't seem to be working correctly for now so let's just not issue
+      //		the warning until someone knows how to resolve it.
+      //
+      //if(compiled && rCom && rScr && Platform::compareFileTimes(comModifyTime, scrModifyTime) < 0)
+      //{
+      //Con::warnf("exec: Warning! Found a DSO from the future! (%s)", nameBuffer);
+      //}
+
+      // If we had a DSO, let's check to see if we should be reading from it.
+      if ((compiled && rCom) && (!rScr || Platform::compareFileTimes(comModifyTime, scrModifyTime) >= 0))
+      {
+         compiledStream = ResourceManager->openStream(nameBuffer);
+         if (compiledStream)
+         {
+            // Check the version!
+            compiledStream->read(&version);
+            if (version != DSO_VERSION)
+            {
+               Con::warnf("exec: Found an old DSO (%s, ver %d < %d), ignoring.", nameBuffer, version, DSO_VERSION);
+               ResourceManager->closeStream(compiledStream);
+               compiledStream = NULL;
+            }
+         }
+      }
+
+#ifdef TORQUE_ALLOW_JOURNALING
+      // If we're journalling, let's write some info out.
+      if (journal && Game->isJournalWriting())
+         Game->getJournalStream()->writeString(scriptFileName);
+#endif //TORQUE_ALLOW_JOURNALING
+
+      if (rScr && !compiledStream)
+      {
+         // If we have source but no compiled version, then we need to compile
+         // (and journal as we do so, if that's required).
+
+         //Con::errorf( "No DSO found! : %s", scriptFileName );
+
+         Stream *s = ResourceManager->openStream(scriptFileName);
+
+#ifdef	TORQUE_ALLOW_JOURNALING
+         if (journal && Game->isJournalWriting())
+            Game->getJournalStream()->write(bool(s != NULL));
+#endif	//TORQUE_ALLOW_JOURNALING
+
+         if (s)
+         {
+            scriptSize = ResourceManager->getSize(scriptFileName);
+            script = new char[scriptSize + 1];
+            s->read(scriptSize, script);
+
+#ifdef	TORQUE_ALLOW_JOURNALING
+            if (journal && Game->isJournalWriting())
+            {
+               Game->journalWrite(scriptSize);
+               Game->journalWrite(scriptSize, script);
+            }
+#endif	//TORQUE_ALLOW_JOURNALING
+            ResourceManager->closeStream(s);
+            script[scriptSize] = 0;
+         }
+
+         if (!scriptSize || !script)
+         {
+            delete[] script;
+            Con::errorf(ConsoleLogEntry::Script, "exec: invalid script file %s.", scriptFileName);
+            execDepth--;
+            return false;
+         }
+
+         //Luma: Sven -
+         // no dsos in the editor, seems to fail with so many console changes and version crap. Leaving it to
+         // work with cs files as is, as they are included with the source either way.
+
+         //Also, no DSO generation on iPhone
+#if defined(TORQUE_OS_IOS) || defined(TORQUE_OS_ANDROID) || defined(TORQUE_OS_EMSCRIPTEN)
+         if (false)
+#else
+         if (compiled)
+#endif
+         {
+            // compile this baddie.
+#if defined(TORQUE_DEBUG)
+            Con::printf("Compiling %s...", scriptFileName);
+#endif
+            CodeBlock *code = new CodeBlock();
+            code->compile(nameBuffer, scriptFileName, script);
+            delete code;
+            code = NULL;
+
+            compiledStream = ResourceManager->openStream(nameBuffer);
+            if (compiledStream)
+            {
+               compiledStream->read(&version);
+            }
+            else
+            {
+               // We have to exit out here, as otherwise we get double error reports.
+               delete[] script;
+               execDepth--;
+               return false;
+            }
+         }
+      }
+      else
+      {
+#ifdef	TORQUE_ALLOW_JOURNALING
+         if (journal && Game->isJournalWriting())
+            Game->getJournalStream()->write(bool(false));
+#endif	//TORQUE_ALLOW_JOURNALING
+      }
+
+      //Luma : Load compiled script here
+      if (compiledStream)
+      {
+         // Delete the script object first to limit memory used
+         // during recursive execs.
+         delete[] script;
+         script = 0;
+
+         // We're all compiled, so let's run it.
+
+         //Luma: Profile script executions 
+         F32 st1 = (F32)Platform::getRealMilliseconds();
+
+         CodeBlock *code = new CodeBlock;
+         code->read(scriptFileName, *compiledStream);
+         ResourceManager->closeStream(compiledStream);
+         code->exec(0, scriptFileName, NULL, 0, NULL, noCalls, NULL, 0);
+
+         F32 et1 = (F32)Platform::getRealMilliseconds();
+
+         F32 etf = et1 - st1;
+
+         if (scriptExecutionEcho)
+            Con::printf("Loaded compiled script %s. Took %.0f ms", scriptFileName, etf);
+
+         ret = true;
+      }
+      else if (rScr) //Luma : Load normal cs file here.
+      {
+         // No compiled script,  let's just try executing it
+         // directly... this is either a mission file, or maybe
+         // we're on a readonly volume.
+
+         CodeBlock *newCodeBlock = new CodeBlock();
+         StringTableEntry name = StringTable->insert(scriptFileName);
+
+
+         //Luma: Profile script executions 
+         F32 st1 = (F32)Platform::getRealMilliseconds();
+
+         newCodeBlock->compileExec(name, script, noCalls, 0);
+
+         F32 et1 = (F32)Platform::getRealMilliseconds();
+
+         F32 etf = et1 - st1;
+
+         if (scriptExecutionEcho)
+            Con::printf("Executed %s. Took %.0f ms", scriptFileName, etf);
+
+         ret = true;
+      }
+      else
+      {
+         // Don't have anything.
+         Con::warnf(ConsoleLogEntry::Script, "Missing file: %s!", pathBuffer);
+         ret = false;
+      }
+
+      delete[] script;
+      execDepth--;
+      return ret;
+   }
+
    DLL_PUBLIC const char* Engine_Eval(const char* script)
    {
       return CInterface::GetMarshallableString(Con::evaluate(script, false, NULL));
+   }
+
+   DLL_PUBLIC const char* Engine_GetVariable(const char* varName)
+   {
+      return CInterface::GetMarshallableString(Con::getVariable(varName));
+   }
+
+   DLL_PUBLIC bool Engine_IsFunction(const char* funcName)
+   {
+      return Con::isFunction(funcName);
+   }
+
+   DLL_PUBLIC bool Engine_IsMethod(const char* nameSpace, const char* method)
+   {
+      Namespace* ns = Namespace::find(StringTable->insert(nameSpace));
+      Namespace::Entry* nse = ns->lookup(StringTable->insert(method));
+      if (!nse)
+         return false;
+
+      return true;
+   }
+
+   DLL_PUBLIC const char* Engine_GetModNameFromPath(const char* path)
+   {
+      return CInterface::GetMarshallableString(Con::getModNameFromPath(path));
+   }
+
+   DLL_PUBLIC const char* Engine_GetPrefsPath(const char* fileName)
+   {
+      const char *filename = Platform::getPrefsPath(fileName != NULL ? fileName: NULL);
+      if (filename == NULL || *filename == 0)
+         return NULL;
+
+      return filename;
+   }
+
+   DLL_PUBLIC bool Engine_ExecPrefs(const char* fileName, bool nocalls, bool journalScript)
+   {
+      const char *filename = Platform::getPrefsPath(fileName);
+      if (filename == NULL || *filename == 0)
+         return false;
+
+      if (!Platform::isFile(filename))
+         return false;
+
+      return Engine_Exec(filename, nocalls, journalScript);
+   }
+
+   DLL_PUBLIC void Engine_Export(const char* wildCard, const char* fileName, bool append)
+   {
+      const char* pFilename = NULL;
+      if (fileName != NULL)
+      {
+         Con::expandPath(pathBuffer, sizeof(pathBuffer), fileName);
+         pFilename = pathBuffer;
+      }
+
+      // Export the variables.
+      gEvalState.globalVars.exportVariables(wildCard, pFilename, append);
+   }
+
+   DLL_PUBLIC void Engine_DeleteVariables(const char* wildCard)
+   {
+      // Export the variables.
+      gEvalState.globalVars.deleteVariables(wildCard);
+   }
+
+   DLL_PUBLIC void Engine_Trace(bool enable)
+   {
+      // Export the variables.
+      gEvalState.traceOn = enable;
+      Con::printf("Console trace is %s", gEvalState.traceOn ? "on." : "off.");
+   }
+
+   DLL_PUBLIC void Engine_DebugBreak()
+   {
+#if defined(TORQUE_DEBUG) || defined(INTERNAL_RELEASE)
+      Platform::debugBreak();
+#endif
+   }
+
+   DLL_PUBLIC const char* Engine_GetAppleDeviceIPAddress()
+   {
+#if defined(TORQUE_OS_IOS) || defined(TORQUE_OS_OSX)
+      char *address = Con::getReturnBuffer(32);
+      dStrcpy(address, "error");
+      struct ifaddrs *interfaces = NULL;
+      struct ifaddrs *temp_addr = NULL;
+      int success = 0;
+
+      // retrieve the current interfaces - returns 0 on success
+      success = getifaddrs(&interfaces);
+      if (success == 0)
+      {
+         // Loop through linked list of interfaces
+         temp_addr = interfaces;
+         while (temp_addr != NULL)
+         {
+            if (temp_addr->ifa_addr->sa_family == AF_INET)
+            {
+               // Check if interface is en0 which is the wifi connection on the iPhone
+               // Note: Could be different on MacOSX and simulator and may need modifying
+               if (dStrcmp(temp_addr->ifa_name, "en0") == 0)
+               {
+                  dStrcpy(address, inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr));
+               }
+            }
+
+            temp_addr = temp_addr->ifa_next;
+         }
+      }
+
+      // Free memory
+      freeifaddrs(interfaces);
+
+      return CInterface::GetMarshallableString(address);
+#else
+      AssertWarn(false, "Cannot call GetAppleDeviceIPAddress from non iOS or OSX device.");
+      return NULL;
+#endif
+   }
+
+   DLL_PUBLIC const char* Engine_EnumerateConsoleClasses(const char* baseClass)
+   {
+      AbstractClassRep *base = NULL;
+      if (baseClass != NULL)
+      {
+         base = AbstractClassRep::findClassRep(baseClass);
+         if (!base)
+            return NULL;
+      }
+
+      Vector<AbstractClassRep*> classes;
+      U32 bufSize = 0;
+      for (AbstractClassRep *rep = AbstractClassRep::getClassList(); rep; rep = rep->getNextClass())
+      {
+         if (!base || rep->isClass(base))
+         {
+            classes.push_back(rep);
+            bufSize += dStrlen(rep->getClassName()) + 1;
+         }
+      }
+
+      if (!classes.size())
+         return NULL;
+
+      dQsort(classes.address(), classes.size(), sizeof(AbstractClassRep*), ACRCompare);
+
+      char* ret = Con::getReturnBuffer(bufSize);
+      dStrcpy(ret, classes[0]->getClassName());
+      for (U32 i = 0; i< (U32)classes.size(); i++)
+      {
+         dStrcat(ret, "\t");
+         dStrcat(ret, classes[i]->getClassName());
+      }
+
+      return CInterface::GetMarshallableString(ret);
    }
 }

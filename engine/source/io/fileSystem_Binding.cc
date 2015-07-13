@@ -33,6 +33,8 @@
 #include "torqueConfig.h"
 #include "memory/frameAllocator.h"
 
+#include "c-interface/c-interface.h"
+
 // Buffer for expanding script filenames.
 static char scriptFilenameBuffer[1024];
 
@@ -665,3 +667,455 @@ ConsoleFunctionWithDocs( createPath, ConsoleBool, 2,2, (pathName))
 ConsoleFunctionGroupEnd(FileSystem)
 
 /*! @} */ // group FileSystem
+
+extern "C"{
+   DLL_PUBLIC const char* Engine_FindFirstFile(const char* pattern)
+   {
+      const char *fn = NULL;
+      firstMatch = NULL;
+      if (Con::expandPath(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), pattern))
+         firstMatch = ResourceManager->findMatch(scriptFilenameBuffer, &fn, NULL);
+
+      if (firstMatch)
+         return CInterface::GetMarshallableString(fn);
+      else
+         return NULL;
+   }
+
+   DLL_PUBLIC const char* Engine_FindNextFile(const char* pattern)
+   {
+      const char *fn = NULL;
+      firstMatch = NULL;
+      if (Con::expandPath(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), pattern))
+         firstMatch = ResourceManager->findMatch(scriptFilenameBuffer, &fn, firstMatch);
+      else
+         firstMatch = NULL;
+
+      if (firstMatch)
+         return CInterface::GetMarshallableString(fn);
+      else
+         return NULL;
+   }
+
+   DLL_PUBLIC S32 Engine_GetFileCount(const char* pattern)
+   {
+      const char* fn;
+      U32 count = 0;
+      firstMatch = ResourceManager->findMatch(pattern, &fn, NULL);
+      if (firstMatch)
+      {
+         count++;
+         while (1)
+         {
+            firstMatch = ResourceManager->findMatch(pattern, &fn, firstMatch);
+            if (firstMatch)
+               count++;
+            else
+               break;
+         }
+      }
+
+      return count;
+   }
+
+   DLL_PUBLIC const char* Engine_FindFirstFileMultiExpr(const char* pattern)
+   {
+      const char *fn = NULL;
+      firstMatch = NULL;
+      if (Con::expandPath(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), pattern))
+         firstMatch = ResourceManager->findMatchMultiExprs(scriptFilenameBuffer, &fn, NULL);
+
+      if (firstMatch)
+         return CInterface::GetMarshallableString(fn);
+      else
+         return NULL;
+   }
+
+   DLL_PUBLIC const char* Engine_FindNextFileMultiExpr(const char* pattern)
+   {
+      const char *fn = NULL;
+      firstMatch = NULL;
+      if (Con::expandPath(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), pattern))
+         firstMatch = ResourceManager->findMatchMultiExprs(scriptFilenameBuffer, &fn, firstMatch);
+      else
+         firstMatch = NULL;
+
+      if (firstMatch)
+         return CInterface::GetMarshallableString(fn);
+      else
+         return NULL;
+   }
+
+   DLL_PUBLIC S32 Engine_GetFileCountMultiExpr(const char* pattern)
+   {
+      const char* fn;
+      U32 count = 0;
+      firstMatch = ResourceManager->findMatchMultiExprs(pattern, &fn, NULL);
+      if (firstMatch)
+      {
+         count++;
+         while (1)
+         {
+            firstMatch = ResourceManager->findMatchMultiExprs(pattern, &fn, firstMatch);
+            if (firstMatch)
+               count++;
+            else
+               break;
+         }
+      }
+      return count;
+   }
+
+   DLL_PUBLIC S32 Engine_GetFileCRC(const char* fileName)
+   {
+      const char* fn;
+      U32 crcVal;
+      Con::expandPath(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), fileName);
+
+      if (!ResourceManager->getCrc(scriptFilenameBuffer, crcVal))
+         return -1;
+      return S32(crcVal);
+   }
+
+   DLL_PUBLIC bool Engine_IsDirectory(const char* path)
+   {
+      bool doesExist = Platform::isDirectory(path);
+      if (doesExist)
+         return true;
+
+      return false;
+   }
+
+   DLL_PUBLIC bool Engine_IsFile(const char* fileName)
+   {
+      Con::expandPath(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), fileName);
+      return bool(ResourceManager->find(scriptFilenameBuffer));
+   }
+
+   DLL_PUBLIC bool Engine_IsWriteableFileName(const char* fileName)
+   {
+      char filename[1024];
+      Con::expandPath(filename, sizeof(filename), fileName);
+
+      if (filename == NULL || *filename == 0)
+         return false;
+
+      // in a writeable directory?
+      if (!ResourceManager->isValidWriteFileName(filename))
+         return false;
+
+      // exists?
+      FileStream fs;
+      if (!fs.open(filename, FileStream::Read))
+         return true;
+
+      // writeable? (ReadWrite will create file if it does not exist)
+      fs.close();
+      if (!fs.open(filename, FileStream::ReadWrite))
+         return false;
+
+      return true;
+   }
+
+   DLL_PUBLIC const char* Engine_GetDirectoryList(const char* dirPath, S32 depth)
+   {
+      // Grab the full path.
+      char path[1024];
+      Platform::makeFullPathName(dStrcmp(dirPath, "/") == 0 ? "" : dirPath, path, sizeof(path));
+
+      // Append a trailing backslash if it's not present already.
+      if (path[dStrlen(path) - 1] != '/')
+      {
+         S32 pos = dStrlen(path);
+         path[pos] = '/';
+         path[pos + 1] = '\0';
+      }
+
+      // Dump the directories.
+      Vector<StringTableEntry> directories;
+      Platform::dumpDirectories(path, directories, depth, true);
+
+      if (directories.empty())
+         return "";
+
+      // Grab the required buffer length.
+      S32 length = 0;
+
+      for (S32 i = 0; i < directories.size(); i++)
+         length += dStrlen(directories[i]) + 1;
+
+      // Get a return buffer.
+      char* buffer = Con::getReturnBuffer(length);
+      char* p = buffer;
+
+      // Copy the directory names to the buffer.
+      for (S32 i = 0; i < directories.size(); i++)
+      {
+         dStrcpy(p, directories[i]);
+         p += dStrlen(directories[i]);
+         // Tab separated.
+         p[0] = '\t';
+         p++;
+      }
+      p--;
+      p[0] = '\0';
+
+      return CInterface::GetMarshallableString(buffer);
+   }
+
+   DLL_PUBLIC const char* Engine_GetFileList(const char* strPath)
+   {
+      // Grab the full path.
+      char basePath[1024];
+      Con::expandPath(basePath, sizeof(basePath), strPath);
+
+      Vector<Platform::FileInfo> files;
+      if (!Platform::dumpPath(basePath, files, 0))
+      {
+         Con::warnf("Failed to get file list in directory '%s'", basePath);
+         return NULL;
+      }
+
+      if (files.size() == 0)
+         return "";
+
+      // Grab the required buffer length.
+      S32 length = 0;
+
+      for (S32 i = 0; i < files.size(); i++)
+         length += dStrlen(files[i].pFileName) + 1;
+
+      // Get a return buffer.
+      char* buffer = Con::getReturnBuffer(length);
+      char* p = buffer;
+
+      // Copy the directory names to the buffer.
+      for (S32 i = 0; i < files.size(); i++)
+      {
+         dStrcpy(p, files[i].pFileName);
+         p += dStrlen(files[i].pFileName);
+         // Tab separated.
+         p[0] = '\t';
+         p++;
+      }
+      p--;
+      p[0] = '\0';
+
+      return CInterface::GetMarshallableString(buffer);
+   }
+
+   DLL_PUBLIC S32 Engine_FileSize(const char* fileName)
+   {
+      Con::expandPath(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), fileName);
+      return Platform::getFileSize(scriptFilenameBuffer);
+   }
+
+   DLL_PUBLIC bool Engine_FileDelete(const char* fileName)
+   {
+      static char pFileName[1024];
+      static char pSandboxFileName[1024];
+
+      Con::expandPath(pFileName, sizeof(pFileName), fileName);
+      Platform::makeFullPathName(pFileName, pSandboxFileName, sizeof(pSandboxFileName));
+
+      return Platform::fileDelete(pSandboxFileName);
+   }
+
+   DLL_PUBLIC bool Engine_DirectoryDelete(const char* directoryName)
+   {
+      static char pDirectoryName[1024];
+      static char pSandboxdirectoryName[1024];
+
+      Con::expandPath(pDirectoryName, sizeof(pDirectoryName), directoryName);
+      Platform::makeFullPathName(pDirectoryName, pSandboxdirectoryName, sizeof(pSandboxdirectoryName));
+
+      return Platform::deleteDirectory(pSandboxdirectoryName);
+   }
+
+   DLL_PUBLIC bool Engine_IsValidImageFile(const char* filePath)
+   {
+      Con::expandPath(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), filePath);
+
+      // does file exist?
+      if (!ResourceManager->find(scriptFilenameBuffer))
+         return false;
+
+      const char *ext = dStrrchr(filePath, '.');
+      if (!ext)
+         return false;	// no extension
+
+      Stream *stream = ResourceManager->openStream(scriptFilenameBuffer);
+      if (stream == NULL)
+         return false;
+
+      bool ret = false;
+
+      if (dStricmp(ext, ".jpg") == 0)
+      {
+         U8 bArray[2];
+         stream->read(2, bArray);
+         // check header signature
+         ret = ((bArray[0] == 0xFF) && (bArray[1] == 0xD8));
+      }
+      else if (dStricmp(ext, ".png") == 0)
+      {
+         int i = 0;
+         U8 bArray[8];
+         stream->read(8, bArray);
+         // check header signature
+         ret = ((bArray[i++] == 0x89) && (bArray[i++] == 0x50) && (bArray[i++] == 0x4E) && (bArray[i++] == 0x47));
+      }
+
+      ResourceManager->closeStream(stream);
+
+      return ret;
+   }
+
+   DLL_PUBLIC const char* Engine_FileExt(const char* fileName)
+   {
+      const char *ret = dStrrchr(fileName, '.');
+      if (ret)
+         return CInterface::GetMarshallableString(ret);
+      return NULL;
+   }
+
+   DLL_PUBLIC const char* Engine_FileBase(const char* fileName)
+   {
+      S32 pathLen = dStrlen(fileName);
+      FrameTemp<char> szPathCopy(pathLen + 1);
+
+      dStrcpy(szPathCopy, fileName);
+      forwardslash(szPathCopy);
+
+      const char *path = dStrrchr(szPathCopy, '/');
+      if (!path)
+         path = szPathCopy;
+      else
+         path++;
+      char *ret = Con::getReturnBuffer(dStrlen(path) + 1);
+      dStrcpy(ret, path);
+      char *ext = dStrrchr(ret, '.');
+      if (ext)
+         *ext = 0;
+      return CInterface::GetMarshallableString(ret);
+   }
+
+   DLL_PUBLIC const char* Engine_FileName(const char* fileName)
+   {
+      S32 pathLen = dStrlen(fileName);
+      FrameTemp<char> szPathCopy(pathLen + 1);
+
+      dStrcpy(szPathCopy, fileName);
+      forwardslash(szPathCopy);
+
+      const char *name = dStrrchr(szPathCopy, '/');
+      if (!name)
+         name = szPathCopy;
+      else
+         name++;
+      char *ret = Con::getReturnBuffer(dStrlen(name));
+      dStrcpy(ret, name);
+      return ret;
+   }
+
+   DLL_PUBLIC const char* Engine_FilePath(const char* fileName)
+   {
+      S32 pathLen = dStrlen(fileName);
+      FrameTemp<char> szPathCopy(pathLen + 1);
+
+      dStrcpy(szPathCopy, fileName);
+      forwardslash(szPathCopy);
+
+      const char *path = dStrrchr(szPathCopy, '/');
+      if (!path)
+         return NULL;
+      U32 len = (U32)(path - (char*)szPathCopy);
+      char *ret = Con::getReturnBuffer(len + 1);
+      dStrncpy(ret, szPathCopy, len);
+      ret[len] = 0;
+      return ret;
+   }
+
+   DLL_PUBLIC void Engine_OpenFolder(const char* path)
+   {
+      Platform::openFolder(path);
+   }
+
+   DLL_PUBLIC bool Engine_PathCopy(const char* fromFile, const char* toFile, bool noOverwrite)
+   {
+      static char pFromFile[1024];
+      static char pToFile[1024];
+
+      static char qualifiedFromFile[1024];
+      static char qualifiedToFile[1024];
+
+      Con::expandPath(pFromFile, sizeof(fromFile), fromFile);
+      Con::expandPath(pToFile, sizeof(toFile), toFile);
+
+      Platform::makeFullPathName(fromFile, qualifiedFromFile, sizeof(qualifiedFromFile));
+      Platform::makeFullPathName(toFile, qualifiedToFile, sizeof(qualifiedToFile));
+
+      return Platform::pathCopy(qualifiedFromFile, qualifiedToFile, noOverwrite);
+   }
+
+   DLL_PUBLIC const char* Engine_GetCurrentDirectory()
+   {
+      return CInterface::GetMarshallableString(Platform::getCurrentDirectory());
+   }
+
+   DLL_PUBLIC bool Engine_SetCurrentDirectory(const char* absolutePathName)
+   {
+      return  Platform::setCurrentDirectory(StringTable->insert(absolutePathName));
+   }
+
+   DLL_PUBLIC const char* Engine_GetExecutableName()
+   {
+      return CInterface::GetMarshallableString(Platform::getExecutableName());
+   }
+
+   DLL_PUBLIC const char* Engine_GetMainDotCsDir()
+   {
+      return CInterface::GetMarshallableString(Platform::getMainDotCsDir());
+   }
+
+   DLL_PUBLIC const char* Engine_MakeFullPath(const char* path, const char* currentWorkingDirectory)
+   {
+      char *buf = Con::getReturnBuffer(512);
+      Platform::makeFullPathName(path, buf, 512, currentWorkingDirectory);
+      return CInterface::GetMarshallableString(buf);
+   }
+
+   DLL_PUBLIC const char* Engine_MakeRelativePath(const char* path, const char* to)
+   {
+      return CInterface::GetMarshallableString(Platform::makeRelativePathName(path, to));
+   }
+
+   DLL_PUBLIC const char* Engine_PathConcat(const char* path, S32 argc, const char** argv)
+   {
+      char *buf = Con::getReturnBuffer(1024);
+      char pathBuf[1024];
+      dStrcpy(buf, path);
+
+      for (S32 i = 0; i < argc; ++i)
+      {
+         Platform::makeFullPathName(argv[i], pathBuf, 1024, buf);
+         dStrcpy(buf, pathBuf);
+      }
+      return CInterface::GetMarshallableString(buf);
+   }
+
+   DLL_PUBLIC void Engine_RestartInstance()
+   {
+      Game->setRestart(true);
+      Platform::postQuitMessage(0);
+   }
+
+   DLL_PUBLIC bool Engine_CreatePath(const char* path)
+   {
+      static char pathName[1024];
+
+      Con::expandPath(pathName, sizeof(pathName), path);
+
+      return Platform::createPath(pathName);
+   }
+}

@@ -56,3 +56,15 @@ ConsoleFunctionWithDocs( closeNetPort, ConsoleVoid, 1, 1, ())
 
 
 /*! @} */ // end group Network
+
+extern "C"{
+   DLL_PUBLIC bool Engine_SetNetPort(S32 port)
+   {
+      return Net::openPort(port);
+   }
+
+   DLL_PUBLIC void Engine_CloseNetPort()
+   {
+      Net::closePort();
+   }
+}

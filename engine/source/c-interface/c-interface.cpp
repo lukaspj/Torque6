@@ -65,6 +65,8 @@ void CInterface::_CallMain(bool *res)
 
 char* CInterface::GetMarshallableString(const char* str)
 {
+   if (str == NULL)
+      return NULL;
    const ULONG ulSize = dStrlen(str) + sizeof(char);
    char* pszReturn = (char*)::CoTaskMemAlloc(ulSize);
    // Copy the contents of szSampleString

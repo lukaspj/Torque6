@@ -87,9 +87,4 @@ extern "C"{
    {
       Platform::setMainDotCsDir(csDir);
    }
-
-   DLL_PUBLIC void Engine_SetCurrentDirectory(const char* dir)
-   {
-      Platform::setCurrentDirectory(dir);
-   }
 }

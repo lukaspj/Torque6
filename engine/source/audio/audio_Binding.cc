@@ -46,6 +46,8 @@
 #include "platformiOS/iOSStreamSource.h"
 #endif
 
+#include "c-interface/c-interface.h"
+
 
 extern ALuint alxGetWaveLen(ALuint buffer);
 
@@ -811,3 +813,391 @@ ConsoleFunctionWithDocs(setiOSAudioStreamVolume, ConsoleVoid, 3, 3, setiPhoneAud
 #endif
 
 /*! @} */ // group AudioFunctions
+
+extern "C"{
+   DLL_PUBLIC bool Engine_OpenALInitDriver()
+   {
+      if (Audio::OpenALInit())
+      {
+         static bool registered = false;
+         if (!registered) {
+            ResourceManager->registerExtension(".wav", AudioBuffer::construct);
+         }
+         registered = true;
+         return true;
+      }
+      return false;
+   }
+
+   DLL_PUBLIC void Engine_OpenALShutdownDriver()
+   {
+      Audio::OpenALShutdown();
+   }
+
+   DLL_PUBLIC const char* Engine_AlGetString(const char* ALEnum)
+   {
+      ALenum e = getEnum(ALEnum, (Context | Get));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "alGetString: invalid enum name '%s'", ALEnum);
+         return "";
+      }
+
+      return CInterface::GetMarshallableString((const char*)alGetString(e));
+   }
+
+   DLL_PUBLIC int Engine_AlxGetAudioLength(const char* assetId)
+   {
+      // Acquire audio asset.
+      AudioAsset* pAudioAsset = AssetDatabase.acquireAsset<AudioAsset>(assetId);
+
+      // Did we get the audio asset?
+      if (pAudioAsset == NULL)
+      {
+         // No, so warn.
+         Con::warnf("alxGetAudioLength() - Could not find audio asset '%s'.", assetId);
+         return 0;
+      }
+
+      Resource<AudioBuffer> buffer = AudioBuffer::find(pAudioAsset->getAudioFile());
+
+      if (!buffer.isNull())
+      {
+         ALuint alBuffer = buffer->getALBuffer();
+         return alxGetWaveLen(alBuffer);
+      }
+
+      // Warn.
+      Con::warnf("alxGetAudioLength() - Could not find audio file '%s' for asset '%s'.", pAudioAsset->getAudioFile(), assetId);
+
+      return 0;
+   }
+
+   DLL_PUBLIC int Engine_AlxCreateSource(const char* assetId)
+   {
+      // Acquire audio asset.
+      AudioAsset* pAudioAsset = AssetDatabase.acquireAsset<AudioAsset>(assetId);
+
+      // Did we get the audio asset?
+      if (pAudioAsset == NULL)
+      {
+         // No, so warn.
+         Con::warnf("alxCreateSource() - Could not find audio asset '%s'.", assetId);
+         return NULL_AUDIOHANDLE;
+      }
+
+      // Fetch audio handle.
+      AUDIOHANDLE handle = alxCreateSource(pAudioAsset);
+
+      // Release asset.
+      AssetDatabase.releaseAsset(assetId);
+
+      return handle;
+   }
+
+   DLL_PUBLIC void Engine_AlxSourceF(S32 handle, const char* ALEnum, F32 value)
+   {
+      ALenum e = getEnum(ALEnum, (Source | Set | Float));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "cAudio_alxSourcef: invalid enum name '%s'", ALEnum);
+         return;
+      }
+
+      alxSourcef(handle, e, value);
+   }
+
+   DLL_PUBLIC void Engine_AlxSource3F(S32 handle, const char* ALEnum, CInterface::Point3FParam pos)
+   {
+      ALenum e = getEnum(ALEnum, (Source | Set | Float3));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "cAudio_alxSource3f: invalid enum name '%s'", ALEnum);
+         return;
+      }
+
+      alxSource3f(handle, e, pos.x, pos.y, pos.z);
+   }
+
+   DLL_PUBLIC void Engine_AlxSourceI(S32 handle, const char* ALEnum, S32 value)
+   {
+      ALenum e = getEnum(ALEnum, (Source | Set | Int));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "cAudio_alxSourcei: invalid enum name '%s'", ALEnum);
+         return;
+      }
+
+      alxSourcei(handle, e, static_cast<ALint>(value));
+   }
+
+   DLL_PUBLIC F32 Engine_AlxGetSourceF(S32 handle, const char* ALEnum)
+   {
+      ALenum e = getEnum(ALEnum, (Source | Get | Float));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "cAudio_alxGetSourcef: invalid enum name '%s'", ALEnum);
+         return(0.f);
+      }
+
+      F32 value;
+      alxGetSourcef(handle, e, &value);
+      return value;
+   }
+
+   DLL_PUBLIC void Engine_AlxGetSource3F(S32 handle, const char* ALEnum, CInterface::Point3FParam* outPos)
+   {
+      ALenum e = getEnum(ALEnum, (Source | Get | Float));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "cAudio_alxGetSourcef: invalid enum name '%s'", ALEnum);
+         *outPos = Point3F::Zero;
+         return;
+      }
+
+      F32 value1, value2, value3;
+      alxGetSource3f(handle, e, &value1, &value2, &value3);
+      *outPos = Point3F(value1, value2, value3);
+   }
+
+   DLL_PUBLIC S32 Engine_AlxGetSourceI(S32 handle, const char* ALEnum)
+   {
+      ALenum e = getEnum(ALEnum, (Source | Get | Int));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "cAudio_alxGetSourcei: invalid enum name '%s'", ALEnum);
+         return 0;
+      }
+
+      ALint value;
+      alxGetSourcei(handle, e, &value);
+      return static_cast<S32>(value);
+   }
+
+   DLL_PUBLIC S32 Engine_AlxPlay(const char* assetId)
+   {
+      // Acquire audio asset.
+      AudioAsset* pAudioAsset = AssetDatabase.acquireAsset<AudioAsset>(assetId);
+
+      // Did we get the audio asset?
+      if (pAudioAsset == NULL)
+      {
+         // No, so warn.
+         Con::warnf("alxPlay() - Could not find audio asset '%s'.", assetId);
+         return NULL_AUDIOHANDLE;
+      }
+
+      // Fetch audio handle.
+      AUDIOHANDLE handle = alxPlay(pAudioAsset);
+
+      // Release asset.
+      AssetDatabase.releaseAsset(assetId);
+
+      return handle;
+   }
+
+   DLL_PUBLIC bool Engine_AlxPause(U32 handle)
+   {
+      if (handle == NULL_AUDIOHANDLE)
+         return false;
+      return alxPause(handle);
+   }
+
+   DLL_PUBLIC void Engine_AlxUnpause(U32 handle)
+   {
+      if (handle == NULL_AUDIOHANDLE)
+         return;
+      alxUnPause(handle);
+   }
+
+   DLL_PUBLIC void Engine_AlxStop(U32 handle)
+   {
+      if (handle == NULL_AUDIOHANDLE)
+         return;
+      alxStop(handle);
+   }
+
+   DLL_PUBLIC void Engine_AlxStopAll()
+   {
+      alxStopAll();
+   }
+
+   DLL_PUBLIC bool Engine_AlxIsPlaying(U32 handle)
+   {
+      if (handle == NULL_AUDIOHANDLE)
+         return false;
+      return alxIsPlaying(handle);
+   }
+
+   DLL_PUBLIC void Engine_AlxListenerF(const char* ALEnum, F32 value)
+   {
+      ALenum e = getEnum(ALEnum, (Listener | Set | Float));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "alxListenerf: invalid enum name '%s'", ALEnum);
+         return;
+      }
+
+      alxListenerf(e, value);
+   }
+
+   DLL_PUBLIC void Engine_AlxListener3F(const char* ALEnum, CInterface::Point3FParam pos)
+   {
+      ALenum e = getEnum(ALEnum, (Listener | Set | Float3));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "alxListener3f: invalid enum name '%s'", ALEnum);
+         return;
+      }
+      Point3F pPos = pos;
+      alxListenerPoint3F(e, &pPos);
+   }
+
+   DLL_PUBLIC F32 Engine_AlxGetListenerF(const char* ALEnum)
+   {
+      ALenum e = getEnum(ALEnum, (Listener | Set | Float));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "alxGetListenerf: invalid enum name '%s'", ALEnum);
+         return 0.f;
+      }
+
+      F32 value;
+      alxGetListenerf(e, &value);
+      return value;
+   }
+
+   DLL_PUBLIC void Engine_AlxGetListener3F(const char* ALEnum, CInterface::Point3FParam* outPos)
+   {
+      ALenum e = getEnum(ALEnum, (Listener | Set | Float3));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "alxGetListener3f: invalid enum name '%s'", ALEnum);
+         *outPos = Point3F::Zero;
+         return;
+      }
+
+      Point3F v;
+      alxGetListenerPoint3F(e, &v);
+      *outPos = v;
+   }
+
+   DLL_PUBLIC S32 Engine_AlGetListenerI(const char* ALEnum)
+   {
+      ALenum e = getEnum(ALEnum, (Listener | Set | Int));
+      if (e == AL_INVALID)
+      {
+         Con::errorf(ConsoleLogEntry::General, "alxGetListeneri: invalid enum name '%s'", ALEnum);
+         return 0;
+      }
+
+      S32 value;
+      alGetListeneri(e, &value);
+      return value;
+   }
+
+   DLL_PUBLIC F32 Engine_AlxGetChannelVolume(U32 channel)
+   {
+      if (channel >= Audio::AudioVolumeChannels)
+      {
+         Con::errorf(ConsoleLogEntry::General, "alxGetChannelVolume: invalid channel '%d'", channel);
+         return 0.f;
+      }
+
+      return mAudioChannelVolumes[channel];
+   }
+
+   DLL_PUBLIC bool Engine_AlxSetChannelVolume(U32 channel, F32 volume)
+   {
+      volume = mClampF(volume, 0.f, 1.f);
+
+      if (channel >= Audio::AudioVolumeChannels)
+      {
+         Con::errorf(ConsoleLogEntry::General, "alxSetChannelVolume: channel '%d' out of range [0, %d]", channel, Audio::AudioVolumeChannels);
+         return false;
+      }
+
+      mAudioChannelVolumes[channel] = volume;
+      alxUpdateTypeGain(channel);
+      return true;
+   }
+
+   DLL_PUBLIC F32 Engine_AlxGetStreamPosition(U32 handle)
+   {
+      if (handle == NULL_AUDIOHANDLE)
+         return -1;
+
+      return alxGetStreamPosition(handle);
+   }
+
+   DLL_PUBLIC F32 Engine_AlxGetStreamDuration(U32 handle)
+   {
+      if (handle == NULL_AUDIOHANDLE)
+         return -1;
+
+      return alxGetStreamDuration(handle);
+   }
+   
+   DLL_PUBLIC S32 Engine_StartiOSAudioStream(const char* assetId)
+   {
+#ifdef TORQUE_OS_IOS
+      // Acquire audio asset.
+      AudioAsset* pAudioAsset = AssetDatabase.acquireAsset<AudioAsset>(assetId);
+
+      // Did we get the audio asset?
+      if (pAudioAsset == NULL)
+      {
+         // No, so warn.
+         Con::warnf("startiOSAudioStream() - Could not find audio asset '%s'.", assetId);
+         return 0;
+      }
+
+      // Fetch the audio filename,
+      char fileName[1024];
+      Con::expandPath(fileName, sizeof(fileName), pAudioAsset->getAudioFile());
+      iOSStreamSource* pStream = new iOSStreamSource(fileName);
+      pStream->start(pAudioAsset->getLooping());
+
+      // Release asset.
+      AssetDatabase.releaseAsset(assetId);
+
+      return pStream->getId();
+#else
+      AssertFatal(false, "Can only run StartiOSAudioStream on iOS");
+      return NULL;
+#endif
+   }
+   
+   DLL_PUBLIC void Engine_StopiOSAudioStream(S32 streamId)
+   {
+#ifdef TORQUE_OS_IOS
+      iOSStreamSource* pStream = Sim::findObject<iOSStreamSource>( streamId );
+
+      if( pStream != NULL )
+      {
+         if( pStream->isPlaying() )
+         {
+            pStream->stop();
+         }
+         pStream->deleteObject();
+      }
+#else
+      AssertFatal(false, "Can only run StopiOSAudioStream on iOS");
+#endif
+   }
+   
+   DLL_PUBLIC void Engine_SetiOSAudioStreamVolume(S32 streamId, F32 volume)
+   {
+#ifdef TORQUE_OS_IOS
+      iOSStreamSource* pStream = Sim::findObject<iOSStreamSource>( streamId );
+
+      if( pStream ) {
+         if( pStream->isPlaying() ) {
+            pStream->setVolume(volume);
+         }
+      }
+#else
+      AssertFatal(false, "Can only run SetiOSAudioStreamVolume on iOS");
+#endif
+   }
+}
