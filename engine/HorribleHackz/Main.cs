@@ -32,7 +32,7 @@ namespace HorribleHackz
          Console.SetLogMode(2);
          Console.PrintEchoFileLoads(true);
          
-         //Engine.Script.trace(false);
+         Engine.Trace(false);
 
          // Not really necessary, but shows how globals work
          Globals.SetBool("Scripts::ignoreDSOs", true);
@@ -87,7 +87,7 @@ namespace HorribleHackz
          // Logging settings
          Console.SetLogMode(2);
          Console.PrintEchoFileLoads(false);
-         //Engine.Script.trace(false);
+         Engine.Trace(false);
 
          // Not really necessary, but shows how globals work
          Globals.SetBool("Scripts::ignoreDSOs", true);
