@@ -14,16 +14,24 @@ namespace Torque6_Bridge.Namespaces
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Game_SaveJournal(string filePath, bool doBreak);
+         internal static extern void Game_SaveJournal(string namedFile);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void Game_PlayJournal(string filePath, bool doBreak);
       }
 
       #endregion
       
       #region Functions
 
-      public static void SaveJournal(string filePath, bool doBreak)
+      public static void SaveJournal(string namedFile)
       {
-         InternalUnsafeMethods.Game_SaveJournal(filePath, doBreak);
+         InternalUnsafeMethods.Game_SaveJournal(namedFile);
+      }
+
+      public static void PlayJournal(string filePath, bool doBreak)
+      {
+         InternalUnsafeMethods.Game_PlayJournal(filePath, doBreak);
       }      
 
       #endregion

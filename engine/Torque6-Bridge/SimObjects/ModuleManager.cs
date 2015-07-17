@@ -141,7 +141,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.ModuleManagerSetModuleExtension(ObjectPtr->ObjPtr, moduleExtension);
       }
 
-      public void ScanModules(string rootPath, bool rootOnly)
+      public void ScanModules(string rootPath, bool rootOnly = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.ModuleManagerScanModules(ObjectPtr->ObjPtr, rootPath, rootOnly);
@@ -165,7 +165,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.ModuleManagerUnloadGroup(ObjectPtr->ObjPtr, moduleGroup);
       }
 
-      public void LoadExplicit(string moduleId, uint versionId)
+      public void LoadExplicit(string moduleId, uint versionId = 0)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.ModuleManagerLoadExplicit(ObjectPtr->ObjPtr, moduleId, versionId);

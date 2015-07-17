@@ -357,7 +357,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.AssetManagerRenameReferencedAsset(ObjectPtr->ObjPtr, assetIdFrom, assetIdTo);
       }
 
-      public void AcquireAsset(string assetId, bool asPrivate)
+      public void AcquireAsset(string assetId, bool asPrivate = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerAcquireAsset(ObjectPtr->ObjPtr, assetId, asPrivate);
@@ -387,7 +387,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.AssetManagerRefreshAsset(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void RefreshAllAssets(bool includeUnloaded)
+      public void RefreshAllAssets(bool includeUnloaded = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerRefreshAllAssets(ObjectPtr->ObjPtr, includeUnloaded);
@@ -411,43 +411,43 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.AssetManagerGetAssetTags(ObjectPtr->ObjPtr);
       }
 
-      public void FindAllAssets(AssetQuery assetQuery, bool ignoreInternal, bool ignorePrivate)
+      public void FindAllAssets(AssetQuery assetQuery, bool ignoreInternal = true, bool ignorePrivate = true)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerFindAllAssets(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, ignoreInternal, ignorePrivate);
       }
 
-      public void FindAssetName(AssetQuery assetQuery, string assetName, bool partialName)
+      public void FindAssetName(AssetQuery assetQuery, string assetName, bool partialName = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerFindAssetName(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetName, partialName);
       }
 
-      public void FindAssetCategory(AssetQuery assetQuery, string assetName, bool assetQueryAsSource)
+      public void FindAssetCategory(AssetQuery assetQuery, string assetName, bool assetQueryAsSource = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerFindAssetCategory(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetName, assetQueryAsSource);
       }
 
-      public void FindAssetAutoUnload(AssetQuery assetQuery, bool assetAutoUnload, bool assetQueryAsSource)
+      public void FindAssetAutoUnload(AssetQuery assetQuery, bool assetAutoUnload, bool assetQueryAsSource = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerFindAssetAutoUnload(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetAutoUnload, assetQueryAsSource);
       }
 
-      public void FindAssetInternal(AssetQuery assetQuery, bool assetInternal, bool assetQueryAsSource)
+      public void FindAssetInternal(AssetQuery assetQuery, bool assetInternal, bool assetQueryAsSource = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerFindAssetInternal(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetInternal, assetQueryAsSource);
       }
 
-      public void FindAssetPrivate(AssetQuery assetQuery, bool assetPrivate, bool assetQueryAsSource)
+      public void FindAssetPrivate(AssetQuery assetQuery, bool assetPrivate, bool assetQueryAsSource = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerFindAssetPrivate(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetPrivate, assetQueryAsSource);
       }
 
-      public void FindAssetType(AssetQuery assetQuery, string assetType, bool assetQueryAsSource)
+      public void FindAssetType(AssetQuery assetQuery, string assetType, bool assetQueryAsSource = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerFindAssetType(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetType, assetQueryAsSource);
@@ -471,13 +471,13 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.AssetManagerFindInvalidAssetReferences(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr);
       }
 
-      public void FindTaggedAssets(AssetQuery assetQuery, string assetTagNames, bool assetQueryAsSource)
+      public void FindTaggedAssets(AssetQuery assetQuery, string assetTagNames, bool assetQueryAsSource = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerFindTaggedAssets(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetTagNames, assetQueryAsSource);
       }
 
-      public void FindAssetLooseFile(AssetQuery assetQuery, string assetLooseFile, bool assetQueryAsSource)
+      public void FindAssetLooseFile(AssetQuery assetQuery, string assetLooseFile, bool assetQueryAsSource = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerFindAssetLooseFile(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetLooseFile, assetQueryAsSource);

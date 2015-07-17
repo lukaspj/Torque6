@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 /*!
    @defgroup StringFunctions String
       @ingroup TorqueScriptFunctions
@@ -363,3 +365,26 @@ ConsoleFunctionWithDocs( stripTrailingSpaces, ConsoleString, 2, 2, ( string ))
 }
 
 /*! @} */ // group StringFunctions
+
+extern "C"{
+   DLL_PUBLIC const char* Engine_StripChars(const char* sourceString, const char* chars)
+   {
+      char* ret = Con::getReturnBuffer(dStrlen(sourceString) + 1);
+      dStrcpy(ret, sourceString);
+      U32 pos = dStrcspn(ret, chars);
+      while (pos < dStrlen(ret))
+      {
+         dStrcpy(ret + pos, ret + pos + 1);
+         pos = dStrcspn(ret, chars);
+      }
+      return CInterface::GetMarshallableString(ret);
+   }
+
+   DLL_PUBLIC const char* Engine_StripColorCodes(const char* sourceString, const char* chars)
+   {
+      char* ret = Con::getReturnBuffer(dStrlen(sourceString) + 1);
+      dStrcpy(ret, sourceString);
+      Con::stripColorChars(ret);
+      return CInterface::GetMarshallableString(ret);
+   }
+}

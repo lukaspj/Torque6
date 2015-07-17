@@ -1,6 +1,7 @@
 ﻿using HorribleHackz.CustomAttributes;
 using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.SimObjects;
+using Torque6_Bridge.SimObjects.Scene;
 using Torque6_Bridge.Types;
 
 namespace HorribleHackz

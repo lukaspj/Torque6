@@ -53,7 +53,7 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void Get(string address, string requestURI, string query)
+      public void Get(string address, string requestURI, string query = null)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.HTTPObjectGet(ObjectPtr->ObjPtr, address, requestURI, query);

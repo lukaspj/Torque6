@@ -502,22 +502,25 @@ extern "C"{
    {
       Taml taml;
 
-      taml.setFormatMode(Taml::getFormatModeEnum(format));
-
-      // Yes, so is the format mode binary?
-      if (taml.getFormatMode() == Taml::BinaryFormat)
+      if (format != NULL)
       {
-         // Yes, so set binary compression.
-         taml.setBinaryCompression(compressed);
-      }
-      else
-      {
-         // No, so warn.
-         Con::warnf("TamlWrite() - Setting binary compression is only valid for XML formatting.");
-      }
+         taml.setFormatMode(Taml::getFormatModeEnum(format));
 
-      // Turn-off auto-formatting.
-      taml.setAutoFormat(false);
+         // Yes, so is the format mode binary?
+         if (taml.getFormatMode() == Taml::BinaryFormat)
+         {
+            // Yes, so set binary compression.
+            taml.setBinaryCompression(compressed);
+         }
+         else
+         {
+            // No, so warn.
+            Con::warnf("TamlWrite() - Setting binary compression is only valid for XML formatting.");
+         }
+
+         // Turn-off auto-formatting.
+         taml.setAutoFormat(false);
+      }
 
       // Write.
       return taml.write(obj, filename);
@@ -528,12 +531,14 @@ extern "C"{
       // Set the format mode.
       Taml taml;
 
-      // Yes, so set it.
-      taml.setFormatMode(Taml::getFormatModeEnum(format));
+      if (format != NULL)
+      {
+         // Yes, so set it.
+         taml.setFormatMode(Taml::getFormatModeEnum(format));
 
-      // Turn-off auto-formatting.
-      taml.setAutoFormat(false);
-
+         // Turn-off auto-formatting.
+         taml.setAutoFormat(false);
+      }
       // Read object.
       SimObject* pSimObject = taml.read(filename);
 

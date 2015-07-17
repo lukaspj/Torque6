@@ -40,7 +40,7 @@ namespace Torque6_Bridge.SimObjects
          internal static extern void GameConnectionSetJoinPassword(IntPtr connection, string password);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GameConnectionSetConnectArgs(IntPtr connection, string password);
+         internal static extern void GameConnectionSetConnectArgs(IntPtr connection, int argC, string[] argV);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GameConnectionActivateGhosting(IntPtr connection);
@@ -71,10 +71,10 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.GameConnectionSetJoinPassword(ObjectPtr->ObjPtr, password);
       }
 
-      public void SetConnectArgs(string password)
+      public void SetConnectArgs(int argC, string[] argV)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.GameConnectionSetConnectArgs(ObjectPtr->ObjPtr, password);
+         InternalUnsafeMethods.GameConnectionSetConnectArgs(ObjectPtr->ObjPtr, argC, argV);
       }
 
       public void ActivateGhosting()
@@ -89,7 +89,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.GameConnectionResetGhosting(ObjectPtr->ObjPtr);
       }
 
-      public void Delete(string reason)
+      public void Delete(string reason = null)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.GameConnectionDelete(ObjectPtr->ObjPtr, reason);

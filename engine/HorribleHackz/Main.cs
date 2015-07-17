@@ -31,8 +31,8 @@ namespace HorribleHackz
          // Logging settings
          Console.SetLogMode(2);
          Console.PrintEchoFileLoads(true);
-         
-         Engine.Trace(false);
+
+         Script.Trace(false);
 
          // Not really necessary, but shows how globals work
          Globals.SetBool("Scripts::ignoreDSOs", true);
@@ -51,29 +51,29 @@ namespace HorribleHackz
             throw new Exception("AssetDatabase not found");
 
          ModuleDatabase.EchoInfo = true;
-         
+
          AssetDatabase.EchoInfo = true;
          AssetDatabase.IgnoreAutoUnload = true;
 
          // Scan modules.
-         ModuleDatabase.ScanModules("modules", false);
+         ModuleDatabase.ScanModules("modules");
 
-         ModuleDatabase.ScanModules("../shared-modules", false);
+         ModuleDatabase.ScanModules("../shared-modules");
 
          // Load AppCore module.
-         ModuleDatabase.LoadExplicit("AppCore", 0);
+         ModuleDatabase.LoadExplicit("AppCore");
 
          // Load the modules needed for this example
-         ModuleDatabase.LoadExplicit("Console", 0);
-         ModuleDatabase.LoadExplicit("FreeViewCamera", 0);
-         ModuleDatabase.LoadExplicit("ExampleRoom", 0);
-         ModuleDatabase.LoadExplicit("Skybox", 0);
+         ModuleDatabase.LoadExplicit("Console");
+         ModuleDatabase.LoadExplicit("FreeViewCamera");
+         ModuleDatabase.LoadExplicit("ExampleRoom");
+         ModuleDatabase.LoadExplicit("Skybox");
 
          // Editor is not required, but try to load it anyway.
-         ModuleDatabase.LoadExplicit("Editor", 0);
+         ModuleDatabase.LoadExplicit("Editor");
 
          // Load the example itself.
-         ModuleDatabase.LoadExplicit("MaterialExample", 0);
+         ModuleDatabase.LoadExplicit("MaterialExample");
       }
 
       private static void RunAnimatedMeshProjected()
@@ -87,7 +87,7 @@ namespace HorribleHackz
          // Logging settings
          Console.SetLogMode(2);
          Console.PrintEchoFileLoads(false);
-         Engine.Trace(false);
+         Script.Trace(false);
 
          // Not really necessary, but shows how globals work
          Globals.SetBool("Scripts::ignoreDSOs", true);
@@ -109,16 +109,16 @@ namespace HorribleHackz
          AssetDatabase.IgnoreAutoUnload = true;
 
          // Scan modules.
-         ModuleDatabase.ScanModules("modules", false);
+         ModuleDatabase.ScanModules("modules");
 
-         ModuleDatabase.ScanModules("../shared-modules", false);
+         ModuleDatabase.ScanModules("../shared-modules");
 
          // Load AppCore module.
-         ModuleDatabase.LoadExplicit("AppCore", 0);
+         ModuleDatabase.LoadExplicit("AppCore");
 
          // Load the modules needed for this example
-         ModuleDatabase.LoadExplicit("Console", 0);
-         ModuleDatabase.LoadExplicit("FreeViewCamera", 0);
+         ModuleDatabase.LoadExplicit("Console");
+         ModuleDatabase.LoadExplicit("FreeViewCamera");
       }
 
       [ConsoleFunction]

@@ -77,7 +77,7 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void OpenArchive(string fileName, int mode)
+      public void OpenArchive(string fileName, int mode = 0)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.ZipObjectOpenArchive(ObjectPtr->ObjPtr, fileName, mode);
@@ -107,7 +107,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.ZipObjectCloseFile(ObjectPtr->ObjPtr, stream.ObjectPtr->ObjPtr);
       }
 
-      public void AddFile(string fileName, string pathInZip, bool replace)
+      public void AddFile(string fileName, string pathInZip, bool replace = true)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.ZipObjectAddFile(ObjectPtr->ObjPtr, fileName, pathInZip, replace);

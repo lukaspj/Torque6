@@ -107,13 +107,13 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.EventManagerIsRegisteredEvent(ObjectPtr->ObjPtr, eventName);
       }
 
-      public void PostEvent(string eventName, string data)
+      public void PostEvent(string eventName, string data = null)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.EventManagerPostEvent(ObjectPtr->ObjPtr, eventName, data);
       }
 
-      public void Subscribe(SimObject listener, string eventName, string callback)
+      public void Subscribe(SimObject listener, string eventName, string callback = null)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.EventManagerSubscribe(ObjectPtr->ObjPtr, listener.ObjectPtr->ObjPtr, eventName, callback);
@@ -131,7 +131,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.EventManagerDumpEvents(ObjectPtr->ObjPtr);
       }
 
-      public void DumpSubscribers(string eventName)
+      public void DumpSubscribers(string eventName = null)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.EventManagerDumpSubscribers(ObjectPtr->ObjPtr, eventName);

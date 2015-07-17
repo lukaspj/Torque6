@@ -48,7 +48,7 @@ extern "C" {
 
    DLL_PUBLIC const char* DynamicConsoleMethodComponentCallOnBehaviors(DynamicConsoleMethodComponent* component, const char* methodName, int argc, const char** argv)
    {
-      //TODO handle this
+      //C-TODO handle this
       return NULL;
    }
 }

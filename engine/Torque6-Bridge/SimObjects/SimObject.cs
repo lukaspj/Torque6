@@ -1,28 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
+using Torque6_Bridge.Utility;
+using Torque6_Bridge.Types;
 
 namespace Torque6_Bridge.SimObjects
 {
-   public class SimObjectPointerInvalidException : Exception
-   {
-      public SimObjectPointerInvalidException()
-      :base("The SimObject was invalid, this usually happens if you try to use an object after it has been deleted.")
-      {
-      }
-
-      public SimObjectPointerInvalidException(string message)
-         : base(message)
-      {
-      }
-
-      public SimObjectPointerInvalidException(string message, Exception inner)
-         : base(message, inner)
-      {
-      }
-   }
-
-   public unsafe class SimObject : IDisposable
+   public unsafe class SimObject
    {
       public SimObject()
       {
@@ -31,142 +15,149 @@ namespace Torque6_Bridge.SimObjects
 
       public SimObject(uint pId)
       {
-         ObjectPtr = Sim.FindObjectWrapperById(pId);
-      }
-
-      public SimObject(string pName)
-      {
-         ObjectPtr = Sim.FindObjectWrapperByName(pName);
       }
 
       public SimObject(IntPtr pObjPtr)
       {
-         ObjectPtr = Sim.WrapObject(pObjPtr);
+      }
+
+      public SimObject(string pName)
+      {
       }
 
       public SimObject(Sim.SimObjectPtr* pObjPtr)
       {
-         ObjectPtr = pObjPtr;
       }
-
-      public Sim.SimObjectPtr* ObjectPtr { get; protected set; }
 
       #region UnsafeNativeMethods
 
-      internal struct InternalUnsafeMethods
+      new internal struct InternalUnsafeMethods
       {
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern bool SimObjectGetCanSaveDynamicFields(IntPtr obj);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void SimObjectSetCanSaveDynamicFields(IntPtr obj, bool val);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string SimObjectGetInternalName(IntPtr obj);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void SimObjectSetInternalName(IntPtr obj, string val);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern IntPtr SimObjectGetParentGroup(IntPtr obj);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void SimObjectSetParentGroup(IntPtr obj, IntPtr parent);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string SimObjectGetSuperClass(IntPtr obj);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void SimObjectSetSuperClass(IntPtr obj, string val);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string SimObjectGetClass(IntPtr obj);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void SimObjectSetClass(IntPtr obj, string val);
+
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr SimObjectCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimObjectRegisterObject(IntPtr pObjectPtr);
+         internal static extern bool SimObjectRegisterObject(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimObjectGetCanSaveDynamicFields(IntPtr pObjectPtr);
+         internal static extern IntPtr SimObjectGetName(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectSetCanSaveDynamicFields(IntPtr pObjectPtr, bool pVal);
+         internal static extern void SimObjectSetName(IntPtr obj, string val);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetInternalUnsafeMethodsName(IntPtr pObjectPtr);
+         internal static extern uint SimObjectGetID(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectSetInternalUnsafeMethodsName(IntPtr pObjectPtr, string pVal);
+         internal static extern bool SimObjectIsMethod(IntPtr obj, string val);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectSetParentGroup(IntPtr pObjectPtr, IntPtr pParentGroup);
+         internal static extern bool SimObjectCall(IntPtr obj, int argc, string[] argv);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetSuperClass(IntPtr pObjectPtr);
+         internal static extern void SimObjectDumpClassHierarchy(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectSetSuperClass(IntPtr pObjectPtr, string pVal);
+         internal static extern void SimObjectDump(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetClass(IntPtr pObjectPtr);
+         internal static extern bool SimObjectIsMemberOfClass(IntPtr obj, string className);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectSetClass(IntPtr pObjectPtr, string pVal);
+         internal static extern string SimObjectGetClassName(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         [return: MarshalAs(UnmanagedType.LPStr)]
-         internal static extern string SimObjectGetName(IntPtr pObjectPtr);
+         internal static extern string SimObjectGetFieldValue(IntPtr obj, string fieldName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectSetName(IntPtr pObjectPtr, string pVal);
+         internal static extern void SimObjectSetFieldValue(IntPtr obj, string fieldName, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern uint SimObjectGetID(IntPtr pObjectPtr);
+         internal static extern int SimObjectGetDynamicFieldCount(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimObjectIsMethod(IntPtr pObjectPtr, string pMethodName);
+         internal static extern string SimObjectGetDynamicField(IntPtr obj, int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectCall(IntPtr pObjectPtr, int pArgc, string[] pArgv);
+         internal static extern int SimObjectGetFieldCount(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectDumpClassHierarchy(IntPtr pObjectPtr);
+         internal static extern string SimObjectGetField(IntPtr obj, int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectDump(IntPtr pObjectPtr);
+         internal static extern string SimObjectGetProgenitorFile(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimObjectIsMemberOfClass(IntPtr pObjectPtr, string pClassName);
+         internal static extern void SimObjectSetProgenitorFile(IntPtr obj, string file);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetFieldValue(IntPtr pObjectPtr, string pFieldName);
+         internal static extern int SimObjectGetType(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectSetFieldValue(IntPtr pObjectPtr, string pFieldName, string pValue);
+         internal static extern string SimObjectGetFieldType(IntPtr obj, string fieldName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int SimObjectGetDynamicFieldCount(IntPtr pObjectPtr);
+         internal static extern bool SimObjectIsChildOfGroup(IntPtr obj, IntPtr group);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetDynamicField(IntPtr pObjectPtr, int pIndex);
+         internal static extern IntPtr SimObjectGetGroup(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int SimObjectGetFieldCount(IntPtr pObjectPtr);
+         internal static extern void SimObjectDelete(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetField(IntPtr pObjectPtr, int pIndex);
+         internal static extern IntPtr SimObjectClone(IntPtr obj, bool copyDynamicFields);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetProgenitorFile(IntPtr pObjectPtr);
+         internal static extern bool SimObjectStartTimer(IntPtr obj, string callbackFunction, float timePeriod, int repeat);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectSetProgenitorFile(IntPtr pObjectPtr, string pFile);
+         internal static extern void SimObjectStopTimer(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int SimObjectGetType(IntPtr pObjectPtr);
+         internal static extern bool SimObjectIsTimerActive(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetFieldType(IntPtr pObjectPtr, string pFileName);
+         internal static extern int SimObjectSchedule(IntPtr obj, int time, int argc, string[] argv);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimObjectIsChildOfGroup(IntPtr pObjectPtr, IntPtr pGroup);
+         internal static extern bool SimObjectSave(IntPtr obj, string filename, bool selectedOnly);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimObjectGetGroup(IntPtr pObjectPtr);
+         internal static extern void SimObjectAddFieldFilter(IntPtr obj, string fieldName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectDeleteObject(IntPtr pObjectPtr);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimObjectClone(IntPtr pObjectPtr, bool pCopyDynamicFields);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimObjectStartTimer(IntPtr pObjectPtr, string pCallbackFunction, float pTimePeriod,
-            int pRepeat);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimObjectStopTimer(IntPtr pObjectPtr);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimObjectIsTimerActive(IntPtr pObjectPtr);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int SimObjectSchedule(IntPtr pObjectPtr, int pTime, int pArgc, string[] pArgv);
+         internal static extern void SimObjectRemoveFieldFilter(IntPtr obj, string fieldName);
       }
 
       #endregion
@@ -177,88 +168,65 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.SimObjectGetCanSaveDynamicFields(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SimObjectSetCanSaveDynamicFields(ObjectPtr->ObjPtr, value);
          }
       }
-
-      public string InternalUnsafeMethodsName
+      public string InternalName
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.SimObjectGetInternalUnsafeMethodsName(ObjectPtr->ObjPtr);
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+            return InternalUnsafeMethods.SimObjectGetInternalName(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
-            InternalUnsafeMethods.SimObjectSetInternalUnsafeMethodsName(ObjectPtr->ObjPtr, value);
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+            InternalUnsafeMethods.SimObjectSetInternalName(ObjectPtr->ObjPtr, value);
          }
       }
-
-      public SimObject ParentGroup
+      public SimGroup ParentGroup
       {
-         get { throw new Exception("Eh?"); }
+         get
+         {
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+            return new SimGroup(InternalUnsafeMethods.SimObjectGetParentGroup(ObjectPtr->ObjPtr));
+         }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SimObjectSetParentGroup(ObjectPtr->ObjPtr, value.ObjectPtr->ObjPtr);
          }
       }
-
-      public string SuperClass
+      public string Superclass
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.SimObjectGetSuperClass(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SimObjectSetSuperClass(ObjectPtr->ObjPtr, value);
          }
       }
-
       public string Class
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.SimObjectGetClass(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SimObjectSetClass(ObjectPtr->ObjPtr, value);
-         }
-      }
-
-      public string Name
-      {
-         get
-         {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.SimObjectGetName(ObjectPtr->ObjPtr);
-         }
-         set
-         {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
-            InternalUnsafeMethods.SimObjectSetName(ObjectPtr->ObjPtr, value);
-         }
-      }
-
-      public uint Id
-      {
-         get
-         {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.SimObjectGetID(ObjectPtr->ObjPtr);
          }
       }
 
@@ -266,166 +234,202 @@ namespace Torque6_Bridge.SimObjects
 
       #region Methods
 
-      public bool IsDead()
+      public void RegisterObject()
       {
-         return ObjectPtr->ObjPtr == IntPtr.Zero;
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectRegisterObject(ObjectPtr->ObjPtr);
       }
 
-      public bool RegisterObject()
+      public void GetName()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectRegisterObject(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetName(ObjectPtr->ObjPtr);
       }
 
-      public bool IsMethod(string pMethodName)
+      public void SetName(string val)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectIsMethod(ObjectPtr->ObjPtr, pMethodName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectSetName(ObjectPtr->ObjPtr, val);
       }
 
-      public string Call(string pMethodName, params string[] pArgs)
+      public void GetID()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         string[] newParams = new string[pArgs.Length + 2];
-         for (int i = 0; i < pArgs.Length; i++)
-            newParams[i + 2] = pArgs[i];
-         newParams[0] = pMethodName;
-         newParams[1] = pMethodName;
-         return InternalUnsafeMethods.SimObjectCall(ObjectPtr->ObjPtr, newParams.Length, newParams);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetID(ObjectPtr->ObjPtr);
+      }
+
+      public void IsMethod(string val)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectIsMethod(ObjectPtr->ObjPtr, val);
+      }
+
+      public void Call(int argc, string[] argv)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectCall(ObjectPtr->ObjPtr, argc, argv);
       }
 
       public void DumpClassHierarchy()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimObjectDumpClassHierarchy(ObjectPtr->ObjPtr);
       }
 
       public void Dump()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimObjectDump(ObjectPtr->ObjPtr);
       }
 
-      public bool IsMemberOfClass(string pClassName)
+      public void IsMemberOfClass(string className)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectIsMemberOfClass(ObjectPtr->ObjPtr, pClassName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectIsMemberOfClass(ObjectPtr->ObjPtr, className);
       }
 
-      public string GetFieldValue(string pFieldName)
+      public void GetClassName()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetFieldValue(ObjectPtr->ObjPtr, pFieldName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetClassName(ObjectPtr->ObjPtr);
       }
 
-      public void SetFieldValue(string pFieldName, string pValue)
+      public void GetFieldValue(string fieldName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectSetFieldValue(ObjectPtr->ObjPtr, pFieldName, pValue);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetFieldValue(ObjectPtr->ObjPtr, fieldName);
       }
 
-      public int GetDynamicFieldCount()
+      public void SetFieldValue(string fieldName, string value)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetDynamicFieldCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectSetFieldValue(ObjectPtr->ObjPtr, fieldName, value);
       }
 
-      public string GetDynamicField(int pIndex)
+      public void GetDynamicFieldCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetDynamicField(ObjectPtr->ObjPtr, pIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetDynamicFieldCount(ObjectPtr->ObjPtr);
       }
 
-      public int GetFieldCount()
+      public void GetDynamicField(int index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetFieldCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetDynamicField(ObjectPtr->ObjPtr, index);
       }
 
-      public string GetField(int pIndex)
+      public void GetFieldCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetField(ObjectPtr->ObjPtr, pIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetFieldCount(ObjectPtr->ObjPtr);
       }
 
-      public string GetProgenitorFile()
+      public void GetField(int index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetProgenitorFile(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetField(ObjectPtr->ObjPtr, index);
       }
 
-      public void SetProgenitorFile(string pFile)
+      public void GetProgenitorFile()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectSetProgenitorFile(ObjectPtr->ObjPtr, pFile);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetProgenitorFile(ObjectPtr->ObjPtr);
       }
 
-      public int GetTypeMask()
+      public void SetProgenitorFile(string file)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetType(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectSetProgenitorFile(ObjectPtr->ObjPtr, file);
       }
 
-      public string GetFieldType(string pFieldName)
+      public void GetType()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetFieldType(ObjectPtr->ObjPtr, pFieldName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetType(ObjectPtr->ObjPtr);
       }
 
-      public bool IsChildOfGroup(SimGroup pGroup)
+      public void GetFieldType(string fieldName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectIsChildOfGroup(ObjectPtr->ObjPtr, pGroup.ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetFieldType(ObjectPtr->ObjPtr, fieldName);
       }
 
-      public SimGroup GetGroup()
+      public void IsChildOfGroup(SimGroup group)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return new SimGroup(InternalUnsafeMethods.SimObjectGetGroup(ObjectPtr->ObjPtr));
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectIsChildOfGroup(ObjectPtr->ObjPtr, group.ObjectPtr->ObjPtr);
       }
 
-      public void DeleteObject()
+      public void GetGroup()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectDeleteObject(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectGetGroup(ObjectPtr->ObjPtr);
       }
 
-      public SimObject Clone(bool pCopyDynamicFields)
+      public void Delete()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return new SimObject(InternalUnsafeMethods.SimObjectClone(ObjectPtr->ObjPtr, pCopyDynamicFields));
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectDelete(ObjectPtr->ObjPtr);
       }
 
-      public bool StartTimer(string pCallbackFunction, float pTimePeriod, int pRepeat)
+      public void Clone(bool copyDynamicFields = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectStartTimer(ObjectPtr->ObjPtr, pCallbackFunction, pTimePeriod, pRepeat);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectClone(ObjectPtr->ObjPtr, copyDynamicFields);
+      }
+
+      public void StartTimer(string callbackFunction, float timePeriod, int repeat = 0)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectStartTimer(ObjectPtr->ObjPtr, callbackFunction, timePeriod, repeat);
       }
 
       public void StopTimer()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimObjectStopTimer(ObjectPtr->ObjPtr);
       }
 
-      public bool IsTimerActive()
+      public void IsTimerActive()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectIsTimerActive(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectIsTimerActive(ObjectPtr->ObjPtr);
       }
 
-      public string Schedule(int pTime, string pCommand, params string[] pArgs)
+      public void Schedule(int time, int argc, string[] argv)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         string[] newParams = new string[pArgs.Length + 2];
-         for (int i = 0; i < pArgs.Length; i++)
-            newParams[i + 2] = pArgs[i];
-         newParams[0] = pCommand;
-         newParams[1] = Id.ToString();
-         return InternalUnsafeMethods.SimObjectCall(ObjectPtr->ObjPtr, newParams.Length, newParams);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectSchedule(ObjectPtr->ObjPtr, time, argc, argv);
+      }
+
+      public void Save(string filename, bool selectedOnly = false)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectSave(ObjectPtr->ObjPtr, filename, selectedOnly);
+      }
+
+      public void AddFieldFilter(string fieldName)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectAddFieldFilter(ObjectPtr->ObjPtr, fieldName);
+      }
+
+      public void RemoveFieldFilter(string fieldName)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.SimObjectRemoveFieldFilter(ObjectPtr->ObjPtr, fieldName);
       }
 
       #endregion
+
+      #region SimObject specifics
+
+      public Sim.SimObjectPtr* ObjectPtr { get; protected set; }
+
+      public bool IsDead()
+      {
+         return ObjectPtr->ObjPtr == IntPtr.Zero;
+      }
 
       #region IDisposable
 
@@ -439,7 +443,7 @@ namespace Torque6_Bridge.SimObjects
       {
          if (ObjectPtr->ObjPtr != IntPtr.Zero)
          {
-            Marshal.FreeHGlobal((IntPtr) ObjectPtr);
+            Marshal.FreeHGlobal((IntPtr)ObjectPtr);
          }
       }
 
@@ -447,6 +451,8 @@ namespace Torque6_Bridge.SimObjects
       {
          Dispose(false);
       }
+
+      #endregion
 
       #endregion
    }

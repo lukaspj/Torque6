@@ -172,6 +172,9 @@ extern "C" {
 
    DLL_PUBLIC void EventManagerDumpSubscribers(EventManager* eventManager, const char* eventName)
    {
-      eventManager->dumpSubscribers(eventName);
+      if (eventName)
+         eventManager->dumpSubscribers(eventName);
+      else   
+         eventManager->dumpSubscribers();
    }
 }

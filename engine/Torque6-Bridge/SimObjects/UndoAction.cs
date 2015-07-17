@@ -68,7 +68,7 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void AddToManager(UndoManager undoManager)
+      public void AddToManager(UndoManager undoManager = null)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.UndoActionAddToManager(ObjectPtr->ObjPtr, undoManager.ObjectPtr->ObjPtr);

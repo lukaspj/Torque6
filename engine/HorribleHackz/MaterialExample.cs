@@ -1,6 +1,7 @@
 ﻿using HorribleHackz.CustomAttributes;
 using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.SimObjects;
+using Torque6_Bridge.SimObjects.Scene;
 using Torque6_Bridge.Types;
 
 namespace HorribleHackz
@@ -45,8 +46,8 @@ namespace HorribleHackz
          // More lights I guess
          Scene.SetDirectionalLight(new Point3F(1, 1, -1), new Color(1.0f, 1.0f, 1.0f), new Color(0.2f, 0.2f, 0.2f));
 
-         Engine.Eval("Skybox::load(expandPath(\"^Skybox/textures/pisa_lod.dds\"));");
-         Engine.Eval("Skybox::enable();");
+         Script.Eval("Skybox::load(expandPath(\"^Skybox/textures/pisa_lod.dds\"));");
+         Script.Eval("Skybox::enable();");
       }
 
       public static void destroy()

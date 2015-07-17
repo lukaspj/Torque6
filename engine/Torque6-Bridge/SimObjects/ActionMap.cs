@@ -116,7 +116,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.ActionMapUnbindObj(ObjectPtr->ObjPtr, device, action, obj.ObjectPtr->ObjPtr);
       }
 
-      public void Save(string fileName, bool append)
+      public void Save(string fileName = null, bool append = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.ActionMapSave(ObjectPtr->ObjPtr, fileName, append);

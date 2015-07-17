@@ -137,7 +137,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.StreamObjectWriteLine(ObjectPtr->ObjPtr, line);
       }
 
-      public void ReadSTString(bool caseSensitive)
+      public void ReadSTString(bool caseSensitive = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.StreamObjectReadSTString(ObjectPtr->ObjPtr, caseSensitive);
@@ -161,7 +161,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.StreamObjectWriteLongString(ObjectPtr->ObjPtr, maxLength, longString);
       }
 
-      public void WriteString(string longString, int maxLength)
+      public void WriteString(string longString, int maxLength = 255)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.StreamObjectWriteString(ObjectPtr->ObjPtr, longString, maxLength);

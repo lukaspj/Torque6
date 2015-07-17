@@ -25,3 +25,12 @@ ConsoleMethodGroupBeginWithDocs(TextComponent, BaseComponent)
 // Nothing Yet
 
 ConsoleMethodGroupEndWithDocs(TextComponent)
+
+namespace Scene{
+   extern "C"{
+      DLL_PUBLIC TextComponent* TextComponentCreateInstance()
+      {
+         return new TextComponent();
+      }
+   }
+}

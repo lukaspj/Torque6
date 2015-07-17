@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.SimObjects;
+using Torque6_Bridge.SimObjects.Scene;
 using Torque6_Bridge.Utility;
 using Torque6_Bridge.Types;
 
@@ -14,154 +15,13 @@ namespace Torque6_Bridge.Namespaces
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Engine_OpenALInitDriver();
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_OpenALShutdownDriver();
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_AlGetString(string ALEnum);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int Engine_AlxGetAudioLength(string assetId);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int Engine_AlxCreateSource(string assetId);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_AlxSourceF(int handle, string ALEnum, float value);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_AlxSource3F(int handle, string ALEnum, Point3F pos);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_AlxSourceI(int handle, string ALEnum, int value);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float Engine_AlxGetSourceF(int handle, string ALEnum);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_AlxGetSource3F(int handle, string ALEnum, Point3F outPos);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int Engine_AlxGetSourceI(int handle, string ALEnum);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int Engine_AlxPlay(string assetId);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Engine_AlxPause(uint handle);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_AlxUnpause(uint handle);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_AlxStop(uint handle);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_AlxStopAll();
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Engine_AlxIsPlaying(uint handle);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_AlxListenerF(string ALEnum, float value);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_AlxListener3F(string ALEnum, Point3F pos);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float Engine_AlxGetListenerF(string ALEnum);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_AlxGetListener3F(string ALEnum, Point3F outPos);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int Engine_AlGetListenerI(string ALEnum);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float Engine_AlxGetChannelVolume(uint channel);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Engine_AlxSetChannelVolume(uint channel, float volume);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float Engine_AlxGetStreamPosition(uint handle);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float Engine_AlxGetStreamDuration(uint handle);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int Engine_StartiOSAudioStream(string assetId);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_StopiOSAudioStream(int streamId);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_SetiOSAudioStreamVolume(int streamId, float volume);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_CopyBehaviorToComponent(IntPtr behavior, IntPtr component);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_DeactivatePackage(string packageName);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_Call(string funcName, int argc, string[] argv);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetDSOPath(string scriptFileName);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Engine_Compile(string scriptFileName);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_CompilePath(string path, Point2I outRes);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_SetScriptExecEcho(bool echo);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Engine_Exec(string fileName, bool noCalls, bool journalScript);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_Eval(string script);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetVariable(string varName);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Engine_IsFunction(string funcName);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Engine_IsMethod(string nameSpace, string method);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetModNameFromPath(string path);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetPrefsPath(string fileName);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Engine_ExecPrefs(string fileName, bool nocalls, bool journalScript);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_Export(string wildCard, string fileName, bool append);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_DeleteVariables(string wildCard);
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Engine_Trace(bool enable);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_DebugBreak();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern string Engine_GetAppleDeviceIPAddress();
-
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_EnumerateConsoleClasses(string baseClass);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_Quit();
@@ -536,6 +396,12 @@ namespace Torque6_Bridge.Namespaces
          internal static extern void Engine_CloseNetPort();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string Engine_StripChars(string sourceString, string chars);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string Engine_StripColorCodes(string sourceString, string chars);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool Engine_SetDisplayDevice(string deviceName, uint width, uint height, uint bpp, bool fullScreen);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
@@ -641,6 +507,9 @@ namespace Torque6_Bridge.Namespaces
          internal static extern int Engine_GetJoystickCount();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void Engine_MathInit(int argc, string[] argv);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_AddCardProfile(string vendor, string renderer, bool safeMode, bool lockArray, bool subImage, bool fogTexture, bool noEnvColor, bool clipHigh, bool deleteContext, bool texCompress, bool interiorLock, bool skipFirstFog, bool only16, bool noArraysAlpha, string profileName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
@@ -696,239 +565,9 @@ namespace Torque6_Bridge.Namespaces
       
       #region Functions
 
-      public static bool OpenALInitDriver()
-      {
-         return InternalUnsafeMethods.Engine_OpenALInitDriver();
-      }
-
-      public static void OpenALShutdownDriver()
-      {
-         InternalUnsafeMethods.Engine_OpenALShutdownDriver();
-      }
-
-      public static string AlGetString(string ALEnum)
-      {
-         return InternalUnsafeMethods.Engine_AlGetString(ALEnum);
-      }
-
-      public static int AlxGetAudioLength(string assetId)
-      {
-         return InternalUnsafeMethods.Engine_AlxGetAudioLength(assetId);
-      }
-
-      public static int AlxCreateSource(string assetId)
-      {
-         return InternalUnsafeMethods.Engine_AlxCreateSource(assetId);
-      }
-
-      public static void AlxSourceF(int handle, string ALEnum, float value)
-      {
-         InternalUnsafeMethods.Engine_AlxSourceF(handle, ALEnum, value);
-      }
-
-      public static void AlxSource3F(int handle, string ALEnum, Point3F pos)
-      {
-         InternalUnsafeMethods.Engine_AlxSource3F(handle, ALEnum, pos);
-      }
-
-      public static void AlxSourceI(int handle, string ALEnum, int value)
-      {
-         InternalUnsafeMethods.Engine_AlxSourceI(handle, ALEnum, value);
-      }
-
-      public static float AlxGetSourceF(int handle, string ALEnum)
-      {
-         return InternalUnsafeMethods.Engine_AlxGetSourceF(handle, ALEnum);
-      }
-
-      public static void AlxGetSource3F(int handle, string ALEnum, Point3F outPos)
-      {
-         InternalUnsafeMethods.Engine_AlxGetSource3F(handle, ALEnum, outPos);
-      }
-
-      public static int AlxGetSourceI(int handle, string ALEnum)
-      {
-         return InternalUnsafeMethods.Engine_AlxGetSourceI(handle, ALEnum);
-      }
-
-      public static int AlxPlay(string assetId)
-      {
-         return InternalUnsafeMethods.Engine_AlxPlay(assetId);
-      }
-
-      public static bool AlxPause(uint handle)
-      {
-         return InternalUnsafeMethods.Engine_AlxPause(handle);
-      }
-
-      public static void AlxUnpause(uint handle)
-      {
-         InternalUnsafeMethods.Engine_AlxUnpause(handle);
-      }
-
-      public static void AlxStop(uint handle)
-      {
-         InternalUnsafeMethods.Engine_AlxStop(handle);
-      }
-
-      public static void AlxStopAll()
-      {
-         InternalUnsafeMethods.Engine_AlxStopAll();
-      }
-
-      public static bool AlxIsPlaying(uint handle)
-      {
-         return InternalUnsafeMethods.Engine_AlxIsPlaying(handle);
-      }
-
-      public static void AlxListenerF(string ALEnum, float value)
-      {
-         InternalUnsafeMethods.Engine_AlxListenerF(ALEnum, value);
-      }
-
-      public static void AlxListener3F(string ALEnum, Point3F pos)
-      {
-         InternalUnsafeMethods.Engine_AlxListener3F(ALEnum, pos);
-      }
-
-      public static float AlxGetListenerF(string ALEnum)
-      {
-         return InternalUnsafeMethods.Engine_AlxGetListenerF(ALEnum);
-      }
-
-      public static void AlxGetListener3F(string ALEnum, Point3F outPos)
-      {
-         InternalUnsafeMethods.Engine_AlxGetListener3F(ALEnum, outPos);
-      }
-
-      public static int AlGetListenerI(string ALEnum)
-      {
-         return InternalUnsafeMethods.Engine_AlGetListenerI(ALEnum);
-      }
-
-      public static float AlxGetChannelVolume(uint channel)
-      {
-         return InternalUnsafeMethods.Engine_AlxGetChannelVolume(channel);
-      }
-
-      public static bool AlxSetChannelVolume(uint channel, float volume)
-      {
-         return InternalUnsafeMethods.Engine_AlxSetChannelVolume(channel, volume);
-      }
-
-      public static float AlxGetStreamPosition(uint handle)
-      {
-         return InternalUnsafeMethods.Engine_AlxGetStreamPosition(handle);
-      }
-
-      public static float AlxGetStreamDuration(uint handle)
-      {
-         return InternalUnsafeMethods.Engine_AlxGetStreamDuration(handle);
-      }
-
-      public static int StartiOSAudioStream(string assetId)
-      {
-         return InternalUnsafeMethods.Engine_StartiOSAudioStream(assetId);
-      }
-
-      public static void StopiOSAudioStream(int streamId)
-      {
-         InternalUnsafeMethods.Engine_StopiOSAudioStream(streamId);
-      }
-
-      public static void SetiOSAudioStreamVolume(int streamId, float volume)
-      {
-         InternalUnsafeMethods.Engine_SetiOSAudioStreamVolume(streamId, volume);
-      }
-
       public static void CopyBehaviorToComponent(BehaviorInstance behavior, SimComponent component)
       {
          InternalUnsafeMethods.Engine_CopyBehaviorToComponent(behavior.ObjectPtr->ObjPtr, component.ObjectPtr->ObjPtr);
-      }
-
-      public static void DeactivatePackage(string packageName)
-      {
-         InternalUnsafeMethods.Engine_DeactivatePackage(packageName);
-      }
-
-      public static string Call(string funcName, int argc, string[] argv)
-      {
-         return InternalUnsafeMethods.Engine_Call(funcName, argc, argv);
-      }
-
-      public static string GetDSOPath(string scriptFileName)
-      {
-         return InternalUnsafeMethods.Engine_GetDSOPath(scriptFileName);
-      }
-
-      public static bool Compile(string scriptFileName)
-      {
-         return InternalUnsafeMethods.Engine_Compile(scriptFileName);
-      }
-
-      public static void CompilePath(string path, Point2I outRes)
-      {
-         InternalUnsafeMethods.Engine_CompilePath(path, outRes);
-      }
-
-      public static void SetScriptExecEcho(bool echo)
-      {
-         InternalUnsafeMethods.Engine_SetScriptExecEcho(echo);
-      }
-
-      public static bool Exec(string fileName, bool noCalls, bool journalScript)
-      {
-         return InternalUnsafeMethods.Engine_Exec(fileName, noCalls, journalScript);
-      }
-
-      public static string Eval(string script)
-      {
-         return InternalUnsafeMethods.Engine_Eval(script);
-      }
-
-      public static string GetVariable(string varName)
-      {
-         return InternalUnsafeMethods.Engine_GetVariable(varName);
-      }
-
-      public static bool IsFunction(string funcName)
-      {
-         return InternalUnsafeMethods.Engine_IsFunction(funcName);
-      }
-
-      public static bool IsMethod(string nameSpace, string method)
-      {
-         return InternalUnsafeMethods.Engine_IsMethod(nameSpace, method);
-      }
-
-      public static string GetModNameFromPath(string path)
-      {
-         return InternalUnsafeMethods.Engine_GetModNameFromPath(path);
-      }
-
-      public static string GetPrefsPath(string fileName)
-      {
-         return InternalUnsafeMethods.Engine_GetPrefsPath(fileName);
-      }
-
-      public static bool ExecPrefs(string fileName, bool nocalls, bool journalScript)
-      {
-         return InternalUnsafeMethods.Engine_ExecPrefs(fileName, nocalls, journalScript);
-      }
-
-      public static void Export(string wildCard, string fileName, bool append)
-      {
-         InternalUnsafeMethods.Engine_Export(wildCard, fileName, append);
-      }
-
-      public static void DeleteVariables(string wildCard)
-      {
-         InternalUnsafeMethods.Engine_DeleteVariables(wildCard);
-      }
-
-      public static void Trace(bool enable)
-      {
-         InternalUnsafeMethods.Engine_Trace(enable);
       }
 
       public static void DebugBreak()
@@ -939,11 +578,6 @@ namespace Torque6_Bridge.Namespaces
       public static string GetAppleDeviceIPAddress()
       {
          return InternalUnsafeMethods.Engine_GetAppleDeviceIPAddress();
-      }
-
-      public static string EnumerateConsoleClasses(string baseClass)
-      {
-         return InternalUnsafeMethods.Engine_EnumerateConsoleClasses(baseClass);
       }
 
       public static void Quit()
@@ -1566,6 +1200,16 @@ namespace Torque6_Bridge.Namespaces
          InternalUnsafeMethods.Engine_CloseNetPort();
       }
 
+      public static string StripChars(string sourceString, string chars)
+      {
+         return InternalUnsafeMethods.Engine_StripChars(sourceString, chars);
+      }
+
+      public static string StripColorCodes(string sourceString, string chars)
+      {
+         return InternalUnsafeMethods.Engine_StripColorCodes(sourceString, chars);
+      }
+
       public static bool SetDisplayDevice(string deviceName, uint width, uint height, uint bpp, bool fullScreen)
       {
          return InternalUnsafeMethods.Engine_SetDisplayDevice(deviceName, width, height, bpp, fullScreen);
@@ -1739,6 +1383,11 @@ namespace Torque6_Bridge.Namespaces
       public static int GetJoystickCount()
       {
          return InternalUnsafeMethods.Engine_GetJoystickCount();
+      }
+
+      public static void MathInit(int argc, string[] argv)
+      {
+         InternalUnsafeMethods.Engine_MathInit(argc, argv);
       }
 
       public static void AddCardProfile(string vendor, string renderer, bool safeMode, bool lockArray, bool subImage, bool fogTexture, bool noEnvColor, bool clipHigh, bool deleteContext, bool texCompress, bool interiorLock, bool skipFirstFog, bool only16, bool noArraysAlpha, string profileName)

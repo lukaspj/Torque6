@@ -122,7 +122,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.FileObjectClose(ObjectPtr->ObjPtr);
       }
 
-      public void WriteObject(SimObject simObj, string text)
+      public void WriteObject(SimObject simObj, string text = null)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.FileObjectWriteObject(ObjectPtr->ObjPtr, simObj.ObjectPtr->ObjPtr, text);

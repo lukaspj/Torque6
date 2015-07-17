@@ -140,7 +140,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.NameTagsHasTag(ObjectPtr->ObjPtr, objectId, tagIdsC, tagIdsV);
       }
 
-      public void QueryTags(int tagIdsC, int[] tagIdsV, bool excluded)
+      public void QueryTags(int tagIdsC, int[] tagIdsV, bool excluded = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.NameTagsQueryTags(ObjectPtr->ObjPtr, tagIdsC, tagIdsV, excluded);

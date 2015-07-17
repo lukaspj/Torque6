@@ -112,9 +112,9 @@ extern "C" {
       connection->setJoinPassword(password);
    }
 
-   DLL_PUBLIC void GameConnectionSetConnectArgs(GameConnection* connection, const char* password)
+   DLL_PUBLIC void GameConnectionSetConnectArgs(GameConnection* connection, int argC, const char** argV)
    {
-      //TODO handle this
+      connection->setConnectArgs(argC, argV);
    }
 
    DLL_PUBLIC void GameConnectionActivateGhosting(GameConnection* connection)

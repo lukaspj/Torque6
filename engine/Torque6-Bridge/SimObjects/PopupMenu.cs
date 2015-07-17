@@ -95,7 +95,7 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void InsertItem(int pos, string title, string accelerator)
+      public void InsertItem(int pos, string title = null, string accelerator = "")
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.PopupMenuInsertItem(ObjectPtr->ObjPtr, pos, title, accelerator);
@@ -149,7 +149,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.PopupMenuRemoveFromMenuBar(ObjectPtr->ObjPtr);
       }
 
-      public void ShowPopup(int x, int y)
+      public void ShowPopup(int x = -1, int y = -1)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.PopupMenuShowPopup(ObjectPtr->ObjPtr, x, y);

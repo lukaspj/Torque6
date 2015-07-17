@@ -146,7 +146,7 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.SimSetIsMember(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
       }
 
-      public void FindObjectByInternalName(string name, bool searchChildren)
+      public void FindObjectByInternalName(string name, bool searchChildren = false)
       {
          if (IsDead()) throw new SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetFindObjectByInternalName(ObjectPtr->ObjPtr, name, searchChildren);

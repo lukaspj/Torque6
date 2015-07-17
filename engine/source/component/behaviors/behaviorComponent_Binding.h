@@ -381,9 +381,9 @@ extern "C" {
       return component->addBehavior(inst);
    }
 
-   DLL_PUBLIC bool BehaviorComponentRemoveBehavior(BehaviorComponent* component, BehaviorInstance* inst)
+   DLL_PUBLIC bool BehaviorComponentRemoveBehavior(BehaviorComponent* component, BehaviorInstance* inst, bool deleteBehavior)
    {
-      return component->removeBehavior(inst);
+      return component->removeBehavior(inst, deleteBehavior);
    }
 
    DLL_PUBLIC void BehaviorComponentClearBehaviors(BehaviorComponent* component)

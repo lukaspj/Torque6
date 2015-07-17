@@ -848,7 +848,7 @@ ConsoleFunctionWithDocs( enumerateConsoleClasses, ConsoleString, 1, 2, ([baseCla
 /*! @} */ // group MetaScriptFunctions
 
 extern "C"{
-   DLL_PUBLIC const char* Engine_Call(const char* funcName, S32 argc, const char** argv)
+   DLL_PUBLIC const char* Script_Call(const char* funcName, S32 argc, const char** argv)
    {
       const char **newdata = (const char**)malloc(argc + 1);
       memcpy(newdata + 1, argv, argc);
@@ -856,7 +856,7 @@ extern "C"{
       return CInterface::GetMarshallableString(Con::execute(argc + 1, newdata));
    }
 
-   DLL_PUBLIC const char* Engine_GetDSOPath(const char* scriptFileName)
+   DLL_PUBLIC const char* Script_GetDSOPath(const char* scriptFileName)
    {
       Con::expandPath(pathBuffer, sizeof(pathBuffer), scriptFileName);
 
@@ -867,7 +867,7 @@ extern "C"{
       return CInterface::GetMarshallableString(filename);
    }
 
-   DLL_PUBLIC bool Engine_Compile(const char* scriptFileName)
+   DLL_PUBLIC bool Script_Compile(const char* scriptFileName)
    {
       char nameBuffer[512];
       char* script = NULL;
@@ -945,7 +945,7 @@ extern "C"{
       return true;
    }
 
-   DLL_PUBLIC void Engine_CompilePath(const char* path, CInterface::Point2IParam* outRes)
+   DLL_PUBLIC void Script_CompilePath(const char* path, CInterface::Point2IParam* outRes)
    {
       if (!Con::expandPath(pathBuffer, sizeof(pathBuffer), path))
       {
@@ -970,12 +970,12 @@ extern "C"{
       *outRes = Point2I(failedScripts, totalScripts);
    }
 
-   DLL_PUBLIC void Engine_SetScriptExecEcho(bool echo)
+   DLL_PUBLIC void Script_SetScriptExecEcho(bool echo)
    {
       scriptExecutionEcho = echo;
    }
 
-   DLL_PUBLIC bool Engine_Exec(const char* fileName, bool noCalls, bool journalScript)
+   DLL_PUBLIC bool Script_Exec(const char* fileName, bool noCalls, bool journalScript)
    {
       execDepth++;
 
@@ -1376,22 +1376,22 @@ extern "C"{
       return ret;
    }
 
-   DLL_PUBLIC const char* Engine_Eval(const char* script)
+   DLL_PUBLIC const char* Script_Eval(const char* script)
    {
       return CInterface::GetMarshallableString(Con::evaluate(script, false, NULL));
    }
 
-   DLL_PUBLIC const char* Engine_GetVariable(const char* varName)
+   DLL_PUBLIC const char* Script_GetVariable(const char* varName)
    {
       return CInterface::GetMarshallableString(Con::getVariable(varName));
    }
 
-   DLL_PUBLIC bool Engine_IsFunction(const char* funcName)
+   DLL_PUBLIC bool Script_IsFunction(const char* funcName)
    {
       return Con::isFunction(funcName);
    }
 
-   DLL_PUBLIC bool Engine_IsMethod(const char* nameSpace, const char* method)
+   DLL_PUBLIC bool Script_IsMethod(const char* nameSpace, const char* method)
    {
       Namespace* ns = Namespace::find(StringTable->insert(nameSpace));
       Namespace::Entry* nse = ns->lookup(StringTable->insert(method));
@@ -1401,12 +1401,12 @@ extern "C"{
       return true;
    }
 
-   DLL_PUBLIC const char* Engine_GetModNameFromPath(const char* path)
+   DLL_PUBLIC const char* Script_GetModNameFromPath(const char* path)
    {
       return CInterface::GetMarshallableString(Con::getModNameFromPath(path));
    }
 
-   DLL_PUBLIC const char* Engine_GetPrefsPath(const char* fileName)
+   DLL_PUBLIC const char* Script_GetPrefsPath(const char* fileName)
    {
       const char *filename = Platform::getPrefsPath(fileName != NULL ? fileName: NULL);
       if (filename == NULL || *filename == 0)
@@ -1415,7 +1415,7 @@ extern "C"{
       return filename;
    }
 
-   DLL_PUBLIC bool Engine_ExecPrefs(const char* fileName, bool nocalls, bool journalScript)
+   DLL_PUBLIC bool Script_ExecPrefs(const char* fileName, bool nocalls, bool journalScript)
    {
       const char *filename = Platform::getPrefsPath(fileName);
       if (filename == NULL || *filename == 0)
@@ -1424,10 +1424,10 @@ extern "C"{
       if (!Platform::isFile(filename))
          return false;
 
-      return Engine_Exec(filename, nocalls, journalScript);
+      return Script_Exec(filename, nocalls, journalScript);
    }
 
-   DLL_PUBLIC void Engine_Export(const char* wildCard, const char* fileName, bool append)
+   DLL_PUBLIC void Script_Export(const char* wildCard, const char* fileName, bool append)
    {
       const char* pFilename = NULL;
       if (fileName != NULL)
@@ -1440,13 +1440,13 @@ extern "C"{
       gEvalState.globalVars.exportVariables(wildCard, pFilename, append);
    }
 
-   DLL_PUBLIC void Engine_DeleteVariables(const char* wildCard)
+   DLL_PUBLIC void Script_DeleteVariables(const char* wildCard)
    {
       // Export the variables.
       gEvalState.globalVars.deleteVariables(wildCard);
    }
 
-   DLL_PUBLIC void Engine_Trace(bool enable)
+   DLL_PUBLIC void Script_Trace(bool enable)
    {
       // Export the variables.
       gEvalState.traceOn = enable;
@@ -1501,7 +1501,7 @@ extern "C"{
 #endif
    }
 
-   DLL_PUBLIC const char* Engine_EnumerateConsoleClasses(const char* baseClass)
+   DLL_PUBLIC const char* Script_EnumerateConsoleClasses(const char* baseClass)
    {
       AbstractClassRep *base = NULL;
       if (baseClass != NULL)

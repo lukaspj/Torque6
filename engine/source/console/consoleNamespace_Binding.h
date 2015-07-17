@@ -77,7 +77,7 @@ extern "C" {
       Namespace::activatePackage(StringTable->insert(packageName));
    }
 
-   DLL_PUBLIC void Engine_DeactivatePackage(const char* packageName)
+   DLL_PUBLIC void Script_DeactivatePackage(const char* packageName)
    {
       Namespace::deactivatePackage(StringTable->insert(packageName));
    }

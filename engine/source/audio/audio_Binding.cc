@@ -815,7 +815,7 @@ ConsoleFunctionWithDocs(setiOSAudioStreamVolume, ConsoleVoid, 3, 3, setiPhoneAud
 /*! @} */ // group AudioFunctions
 
 extern "C"{
-   DLL_PUBLIC bool Engine_OpenALInitDriver()
+   DLL_PUBLIC bool Audio_OpenALInitDriver()
    {
       if (Audio::OpenALInit())
       {
@@ -829,12 +829,12 @@ extern "C"{
       return false;
    }
 
-   DLL_PUBLIC void Engine_OpenALShutdownDriver()
+   DLL_PUBLIC void Audio_OpenALShutdownDriver()
    {
       Audio::OpenALShutdown();
    }
 
-   DLL_PUBLIC const char* Engine_AlGetString(const char* ALEnum)
+   DLL_PUBLIC const char* Audio_AlGetString(const char* ALEnum)
    {
       ALenum e = getEnum(ALEnum, (Context | Get));
       if (e == AL_INVALID)
@@ -846,7 +846,7 @@ extern "C"{
       return CInterface::GetMarshallableString((const char*)alGetString(e));
    }
 
-   DLL_PUBLIC int Engine_AlxGetAudioLength(const char* assetId)
+   DLL_PUBLIC int Audio_AlxGetAudioLength(const char* assetId)
    {
       // Acquire audio asset.
       AudioAsset* pAudioAsset = AssetDatabase.acquireAsset<AudioAsset>(assetId);
@@ -873,7 +873,7 @@ extern "C"{
       return 0;
    }
 
-   DLL_PUBLIC int Engine_AlxCreateSource(const char* assetId)
+   DLL_PUBLIC int Audio_AlxCreateSource(const char* assetId)
    {
       // Acquire audio asset.
       AudioAsset* pAudioAsset = AssetDatabase.acquireAsset<AudioAsset>(assetId);
@@ -895,7 +895,7 @@ extern "C"{
       return handle;
    }
 
-   DLL_PUBLIC void Engine_AlxSourceF(S32 handle, const char* ALEnum, F32 value)
+   DLL_PUBLIC void Audio_AlxSourceF(S32 handle, const char* ALEnum, F32 value)
    {
       ALenum e = getEnum(ALEnum, (Source | Set | Float));
       if (e == AL_INVALID)
@@ -907,7 +907,7 @@ extern "C"{
       alxSourcef(handle, e, value);
    }
 
-   DLL_PUBLIC void Engine_AlxSource3F(S32 handle, const char* ALEnum, CInterface::Point3FParam pos)
+   DLL_PUBLIC void Audio_AlxSource3F(S32 handle, const char* ALEnum, CInterface::Point3FParam pos)
    {
       ALenum e = getEnum(ALEnum, (Source | Set | Float3));
       if (e == AL_INVALID)
@@ -919,7 +919,7 @@ extern "C"{
       alxSource3f(handle, e, pos.x, pos.y, pos.z);
    }
 
-   DLL_PUBLIC void Engine_AlxSourceI(S32 handle, const char* ALEnum, S32 value)
+   DLL_PUBLIC void Audio_AlxSourceI(S32 handle, const char* ALEnum, S32 value)
    {
       ALenum e = getEnum(ALEnum, (Source | Set | Int));
       if (e == AL_INVALID)
@@ -931,7 +931,7 @@ extern "C"{
       alxSourcei(handle, e, static_cast<ALint>(value));
    }
 
-   DLL_PUBLIC F32 Engine_AlxGetSourceF(S32 handle, const char* ALEnum)
+   DLL_PUBLIC F32 Audio_AlxGetSourceF(S32 handle, const char* ALEnum)
    {
       ALenum e = getEnum(ALEnum, (Source | Get | Float));
       if (e == AL_INVALID)
@@ -945,7 +945,7 @@ extern "C"{
       return value;
    }
 
-   DLL_PUBLIC void Engine_AlxGetSource3F(S32 handle, const char* ALEnum, CInterface::Point3FParam* outPos)
+   DLL_PUBLIC void Audio_AlxGetSource3F(S32 handle, const char* ALEnum, CInterface::Point3FParam* outPos)
    {
       ALenum e = getEnum(ALEnum, (Source | Get | Float));
       if (e == AL_INVALID)
@@ -960,7 +960,7 @@ extern "C"{
       *outPos = Point3F(value1, value2, value3);
    }
 
-   DLL_PUBLIC S32 Engine_AlxGetSourceI(S32 handle, const char* ALEnum)
+   DLL_PUBLIC S32 Audio_AlxGetSourceI(S32 handle, const char* ALEnum)
    {
       ALenum e = getEnum(ALEnum, (Source | Get | Int));
       if (e == AL_INVALID)
@@ -974,7 +974,7 @@ extern "C"{
       return static_cast<S32>(value);
    }
 
-   DLL_PUBLIC S32 Engine_AlxPlay(const char* assetId)
+   DLL_PUBLIC S32 Audio_AlxPlay(const char* assetId)
    {
       // Acquire audio asset.
       AudioAsset* pAudioAsset = AssetDatabase.acquireAsset<AudioAsset>(assetId);
@@ -996,40 +996,40 @@ extern "C"{
       return handle;
    }
 
-   DLL_PUBLIC bool Engine_AlxPause(U32 handle)
+   DLL_PUBLIC bool Audio_AlxPause(U32 handle)
    {
       if (handle == NULL_AUDIOHANDLE)
          return false;
       return alxPause(handle);
    }
 
-   DLL_PUBLIC void Engine_AlxUnpause(U32 handle)
+   DLL_PUBLIC void Audio_AlxUnpause(U32 handle)
    {
       if (handle == NULL_AUDIOHANDLE)
          return;
       alxUnPause(handle);
    }
 
-   DLL_PUBLIC void Engine_AlxStop(U32 handle)
+   DLL_PUBLIC void Audio_AlxStop(U32 handle)
    {
       if (handle == NULL_AUDIOHANDLE)
          return;
       alxStop(handle);
    }
 
-   DLL_PUBLIC void Engine_AlxStopAll()
+   DLL_PUBLIC void Audio_AlxStopAll()
    {
       alxStopAll();
    }
 
-   DLL_PUBLIC bool Engine_AlxIsPlaying(U32 handle)
+   DLL_PUBLIC bool Audio_AlxIsPlaying(U32 handle)
    {
       if (handle == NULL_AUDIOHANDLE)
          return false;
       return alxIsPlaying(handle);
    }
 
-   DLL_PUBLIC void Engine_AlxListenerF(const char* ALEnum, F32 value)
+   DLL_PUBLIC void Audio_AlxListenerF(const char* ALEnum, F32 value)
    {
       ALenum e = getEnum(ALEnum, (Listener | Set | Float));
       if (e == AL_INVALID)
@@ -1041,7 +1041,7 @@ extern "C"{
       alxListenerf(e, value);
    }
 
-   DLL_PUBLIC void Engine_AlxListener3F(const char* ALEnum, CInterface::Point3FParam pos)
+   DLL_PUBLIC void Audio_AlListener3F(const char* ALEnum, CInterface::Point3FParam pos)
    {
       ALenum e = getEnum(ALEnum, (Listener | Set | Float3));
       if (e == AL_INVALID)
@@ -1053,7 +1053,7 @@ extern "C"{
       alxListenerPoint3F(e, &pPos);
    }
 
-   DLL_PUBLIC F32 Engine_AlxGetListenerF(const char* ALEnum)
+   DLL_PUBLIC F32 Audio_AlxGetListenerF(const char* ALEnum)
    {
       ALenum e = getEnum(ALEnum, (Listener | Set | Float));
       if (e == AL_INVALID)
@@ -1067,7 +1067,7 @@ extern "C"{
       return value;
    }
 
-   DLL_PUBLIC void Engine_AlxGetListener3F(const char* ALEnum, CInterface::Point3FParam* outPos)
+   DLL_PUBLIC void Audio_AlGetListener3F(const char* ALEnum, CInterface::Point3FParam* outPos)
    {
       ALenum e = getEnum(ALEnum, (Listener | Set | Float3));
       if (e == AL_INVALID)
@@ -1082,7 +1082,7 @@ extern "C"{
       *outPos = v;
    }
 
-   DLL_PUBLIC S32 Engine_AlGetListenerI(const char* ALEnum)
+   DLL_PUBLIC S32 Audio_AlGetListenerI(const char* ALEnum)
    {
       ALenum e = getEnum(ALEnum, (Listener | Set | Int));
       if (e == AL_INVALID)
@@ -1096,7 +1096,7 @@ extern "C"{
       return value;
    }
 
-   DLL_PUBLIC F32 Engine_AlxGetChannelVolume(U32 channel)
+   DLL_PUBLIC F32 Audio_AlxGetChannelVolume(U32 channel)
    {
       if (channel >= Audio::AudioVolumeChannels)
       {
@@ -1107,7 +1107,7 @@ extern "C"{
       return mAudioChannelVolumes[channel];
    }
 
-   DLL_PUBLIC bool Engine_AlxSetChannelVolume(U32 channel, F32 volume)
+   DLL_PUBLIC bool Audio_AlxSetChannelVolume(U32 channel, F32 volume)
    {
       volume = mClampF(volume, 0.f, 1.f);
 
@@ -1122,7 +1122,7 @@ extern "C"{
       return true;
    }
 
-   DLL_PUBLIC F32 Engine_AlxGetStreamPosition(U32 handle)
+   DLL_PUBLIC F32 Audio_AlxGetStreamPosition(U32 handle)
    {
       if (handle == NULL_AUDIOHANDLE)
          return -1;
@@ -1130,7 +1130,7 @@ extern "C"{
       return alxGetStreamPosition(handle);
    }
 
-   DLL_PUBLIC F32 Engine_AlxGetStreamDuration(U32 handle)
+   DLL_PUBLIC F32 Audio_AlxGetStreamDuration(U32 handle)
    {
       if (handle == NULL_AUDIOHANDLE)
          return -1;
@@ -1138,7 +1138,7 @@ extern "C"{
       return alxGetStreamDuration(handle);
    }
    
-   DLL_PUBLIC S32 Engine_StartiOSAudioStream(const char* assetId)
+   DLL_PUBLIC S32 Audio_StartiOSAudioStream(const char* assetId)
    {
 #ifdef TORQUE_OS_IOS
       // Acquire audio asset.
@@ -1168,7 +1168,7 @@ extern "C"{
 #endif
    }
    
-   DLL_PUBLIC void Engine_StopiOSAudioStream(S32 streamId)
+   DLL_PUBLIC void Audio_StopiOSAudioStream(S32 streamId)
    {
 #ifdef TORQUE_OS_IOS
       iOSStreamSource* pStream = Sim::findObject<iOSStreamSource>( streamId );
@@ -1186,7 +1186,7 @@ extern "C"{
 #endif
    }
    
-   DLL_PUBLIC void Engine_SetiOSAudioStreamVolume(S32 streamId, F32 volume)
+   DLL_PUBLIC void Audio_SetiOSAudioStreamVolume(S32 streamId, F32 volume)
    {
 #ifdef TORQUE_OS_IOS
       iOSStreamSource* pStream = Sim::findObject<iOSStreamSource>( streamId );

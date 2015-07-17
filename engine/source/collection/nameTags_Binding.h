@@ -467,13 +467,9 @@ extern "C" {
       // Fetch appropriate results.
       NameTags::queryType results;
       if (excluded)
-      {
-         results = nameTags->mIncludedQueryMap;
-      }
-      else
-      {
          results = nameTags->mExcludedQueryMap;
-      }
+      else
+         results = nameTags->mIncludedQueryMap;
 
       // Format results.
       U32 bufferSize = 8192;
