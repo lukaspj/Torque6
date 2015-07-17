@@ -4,28 +4,33 @@ using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
 using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.GuiInspectorTypeColorI
+namespace Torque6_Bridge.SimObjects.GuiControls
 {
-   public unsafe class SimObjects.GuiControls : GuiInspectorTypeColor
+   public unsafe class GuiInspectorTypeColorI : GuiInspectorTypeColor
    {
-      public SimObjects.GuiControls()
+      
+      public GuiInspectorTypeColorI()
       {
-         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimObjects.GuiControlsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiInspectorTypeColorICreateInstance());
       }
 
-      public SimObjects.GuiControls(uint pId) : base(pId)
-      {
-      }
-
-      public SimObjects.GuiControls(IntPtr pObjPtr) : base(pObjPtr)
+      public GuiInspectorTypeColorI(uint pId) : base(pId)
       {
       }
 
-      public SimObjects.GuiControls(string pName) : base(pName)
+      public GuiInspectorTypeColorI(string pName) : base(pName)
       {
       }
 
-      public SimObjects.GuiControls(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      public GuiInspectorTypeColorI(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiInspectorTypeColorI(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiInspectorTypeColorI(SimObject pObj) : base(pObj)
       {
       }
       
@@ -49,5 +54,7 @@ namespace Torque6_Bridge.GuiInspectorTypeColorI
       
       
       #endregion
+
+      
    }
 }

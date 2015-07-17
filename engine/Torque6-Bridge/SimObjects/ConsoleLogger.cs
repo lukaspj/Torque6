@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ConsoleLogger : SimObject
    {
+      
       public ConsoleLogger()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ConsoleLoggerCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ConsoleLogger(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ConsoleLogger(string pName) : base(pName)
       {
       }
 
+      public ConsoleLogger(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ConsoleLogger(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ConsoleLogger(SimObject pObj) : base(pObj)
       {
       }
       
@@ -57,12 +62,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ConsoleLoggerGetLevel(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ConsoleLoggerSetLevel(ObjectPtr->ObjPtr, value);
          }
       }
@@ -71,18 +76,20 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void Attach()
+      public bool Attach()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ConsoleLoggerAttach(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ConsoleLoggerAttach(ObjectPtr->ObjPtr);
       }
 
-      public void Detach()
+      public bool Detach()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ConsoleLoggerDetach(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ConsoleLoggerDetach(ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

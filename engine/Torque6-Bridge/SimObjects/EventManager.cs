@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class EventManager : SimObject
    {
+      
       public EventManager()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.EventManagerCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public EventManager(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public EventManager(string pName) : base(pName)
       {
       }
 
+      public EventManager(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public EventManager(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public EventManager(SimObject pObj) : base(pObj)
       {
       }
       
@@ -75,12 +80,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.EventManagerGetQueue(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.EventManagerSetQueue(ObjectPtr->ObjPtr, value);
          }
       }
@@ -89,54 +94,56 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void RegisterEvent(string eventName)
+      public bool RegisterEvent(string eventName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.EventManagerRegisterEvent(ObjectPtr->ObjPtr, eventName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.EventManagerRegisterEvent(ObjectPtr->ObjPtr, eventName);
       }
 
       public void UnregisterEvent(string eventName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.EventManagerUnregisterEvent(ObjectPtr->ObjPtr, eventName);
       }
 
-      public void IsRegisteredEvent(string eventName)
+      public bool IsRegisteredEvent(string eventName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.EventManagerIsRegisteredEvent(ObjectPtr->ObjPtr, eventName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.EventManagerIsRegisteredEvent(ObjectPtr->ObjPtr, eventName);
       }
 
-      public void PostEvent(string eventName, string data = null)
+      public bool PostEvent(string eventName, string data = null)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.EventManagerPostEvent(ObjectPtr->ObjPtr, eventName, data);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.EventManagerPostEvent(ObjectPtr->ObjPtr, eventName, data);
       }
 
-      public void Subscribe(SimObject listener, string eventName, string callback = null)
+      public bool Subscribe(SimObject listener, string eventName, string callback = null)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.EventManagerSubscribe(ObjectPtr->ObjPtr, listener.ObjectPtr->ObjPtr, eventName, callback);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.EventManagerSubscribe(ObjectPtr->ObjPtr, listener.ObjectPtr->ObjPtr, eventName, callback);
       }
 
       public void Remove(SimObject listener, string eventName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.EventManagerRemove(ObjectPtr->ObjPtr, listener.ObjectPtr->ObjPtr, eventName);
       }
 
       public void DumpEvents()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.EventManagerDumpEvents(ObjectPtr->ObjPtr);
       }
 
       public void DumpSubscribers(string eventName = null)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.EventManagerDumpSubscribers(ObjectPtr->ObjPtr, eventName);
       }
       
       #endregion
+
+      
    }
 }

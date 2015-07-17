@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class LangTable : SimObject
    {
+      
       public LangTable()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.LangTableCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public LangTable(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public LangTable(string pName) : base(pName)
       {
       }
 
+      public LangTable(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public LangTable(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public LangTable(SimObject pObj) : base(pObj)
       {
       }
       
@@ -68,48 +73,50 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void AddLanguage(string filename, string languageName)
+      public int AddLanguage(string filename, string languageName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.LangTableAddLanguage(ObjectPtr->ObjPtr, filename, languageName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.LangTableAddLanguage(ObjectPtr->ObjPtr, filename, languageName);
       }
 
-      public void GetString(int langString)
+      public string GetString(int langString)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.LangTableGetString(ObjectPtr->ObjPtr, langString);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.LangTableGetString(ObjectPtr->ObjPtr, langString);
       }
 
       public void SetDefaultLanguage(int language)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.LangTableSetDefaultLanguage(ObjectPtr->ObjPtr, language);
       }
 
       public void SetCurrentLanguage(int language)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.LangTableSetCurrentLanguage(ObjectPtr->ObjPtr, language);
       }
 
-      public void GetCurrentLanguage()
+      public int GetCurrentLanguage()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.LangTableGetCurrentLanguage(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.LangTableGetCurrentLanguage(ObjectPtr->ObjPtr);
       }
 
-      public void GetLangName(int language)
+      public string GetLangName(int language)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.LangTableGetLangName(ObjectPtr->ObjPtr, language);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.LangTableGetLangName(ObjectPtr->ObjPtr, language);
       }
 
-      public void GetNumLang()
+      public int GetNumLang()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.LangTableGetNumLang(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.LangTableGetNumLang(ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

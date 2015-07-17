@@ -4,28 +4,33 @@ using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
 using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.GuiGraphCtrl
+namespace Torque6_Bridge.SimObjects.GuiControls
 {
-   public unsafe class SimObjects.GuiControls : GuiControl
+   public unsafe class GuiGraphCtrl : GuiControl
    {
-      public SimObjects.GuiControls()
+      
+      public GuiGraphCtrl()
       {
-         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimObjects.GuiControlsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiGraphCtrlCreateInstance());
       }
 
-      public SimObjects.GuiControls(uint pId) : base(pId)
-      {
-      }
-
-      public SimObjects.GuiControls(IntPtr pObjPtr) : base(pObjPtr)
+      public GuiGraphCtrl(uint pId) : base(pId)
       {
       }
 
-      public SimObjects.GuiControls(string pName) : base(pName)
+      public GuiGraphCtrl(string pName) : base(pName)
       {
       }
 
-      public SimObjects.GuiControls(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      public GuiGraphCtrl(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiGraphCtrl(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiGraphCtrl(SimObject pObj) : base(pObj)
       {
       }
       
@@ -49,5 +54,7 @@ namespace Torque6_Bridge.GuiGraphCtrl
       
       
       #endregion
+
+      
    }
 }

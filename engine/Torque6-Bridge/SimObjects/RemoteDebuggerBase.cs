@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class RemoteDebuggerBase : SimObject
    {
+      
       public RemoteDebuggerBase()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.RemoteDebuggerBaseCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public RemoteDebuggerBase(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public RemoteDebuggerBase(string pName) : base(pName)
       {
       }
 
+      public RemoteDebuggerBase(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public RemoteDebuggerBase(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public RemoteDebuggerBase(SimObject pObj) : base(pObj)
       {
       }
       
@@ -50,5 +55,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

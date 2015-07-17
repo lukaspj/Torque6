@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ReferencedAssets : SimObject
    {
+      
       public ReferencedAssets()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ReferencedAssetsCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ReferencedAssets(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ReferencedAssets(string pName) : base(pName)
       {
       }
 
+      public ReferencedAssets(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ReferencedAssets(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ReferencedAssets(SimObject pObj) : base(pObj)
       {
       }
       
@@ -63,12 +68,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ReferencedAssetsGetPath(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ReferencedAssetsSetPath(ObjectPtr->ObjPtr, value);
          }
       }
@@ -76,12 +81,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ReferencedAssetsGetExtension(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ReferencedAssetsSetExtension(ObjectPtr->ObjPtr, value);
          }
       }
@@ -89,12 +94,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ReferencedAssetsGetRecurse(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ReferencedAssetsSetRecurse(ObjectPtr->ObjPtr, value);
          }
       }
@@ -106,5 +111,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

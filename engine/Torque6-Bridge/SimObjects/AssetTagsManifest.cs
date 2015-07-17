@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class AssetTagsManifest : SimObject
    {
+      
       public AssetTagsManifest()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.AssetTagsManifestCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public AssetTagsManifest(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public AssetTagsManifest(string pName) : base(pName)
       {
       }
 
+      public AssetTagsManifest(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public AssetTagsManifest(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public AssetTagsManifest(SimObject pObj) : base(pObj)
       {
       }
       
@@ -82,70 +87,72 @@ namespace Torque6_Bridge.SimObjects
 
       public void CreateTag(string tagName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetTagsManifestCreateTag(ObjectPtr->ObjPtr, tagName);
       }
 
-      public void RenameTag(string oldTagName, string newTagName)
+      public bool RenameTag(string oldTagName, string newTagName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetTagsManifestRenameTag(ObjectPtr->ObjPtr, oldTagName, newTagName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetTagsManifestRenameTag(ObjectPtr->ObjPtr, oldTagName, newTagName);
       }
 
-      public void DeleteTag(string tagName)
+      public bool DeleteTag(string tagName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetTagsManifestDeleteTag(ObjectPtr->ObjPtr, tagName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetTagsManifestDeleteTag(ObjectPtr->ObjPtr, tagName);
       }
 
-      public void IsTag(string tagName)
+      public bool IsTag(string tagName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetTagsManifestIsTag(ObjectPtr->ObjPtr, tagName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetTagsManifestIsTag(ObjectPtr->ObjPtr, tagName);
       }
 
-      public void GetTagCount()
+      public int GetTagCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetTagsManifestGetTagCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetTagsManifestGetTagCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetTag(int tagIndex)
+      public string GetTag(int tagIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetTagsManifestGetTag(ObjectPtr->ObjPtr, tagIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetTagsManifestGetTag(ObjectPtr->ObjPtr, tagIndex);
       }
 
-      public void GetAssetTagCount(string assetId)
+      public int GetAssetTagCount(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetTagsManifestGetAssetTagCount(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetTagsManifestGetAssetTagCount(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void GetAssetTag(string assetId, int tagIndex)
+      public string GetAssetTag(string assetId, int tagIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetTagsManifestGetAssetTag(ObjectPtr->ObjPtr, assetId, tagIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetTagsManifestGetAssetTag(ObjectPtr->ObjPtr, assetId, tagIndex);
       }
 
-      public void Tag(string assetId, string tagName)
+      public bool Tag(string assetId, string tagName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetTagsManifestTag(ObjectPtr->ObjPtr, assetId, tagName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetTagsManifestTag(ObjectPtr->ObjPtr, assetId, tagName);
       }
 
-      public void Untag(string assetId, string tagName)
+      public bool Untag(string assetId, string tagName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetTagsManifestUntag(ObjectPtr->ObjPtr, assetId, tagName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetTagsManifestUntag(ObjectPtr->ObjPtr, assetId, tagName);
       }
 
-      public void HasTag(string assetId, string tagName)
+      public bool HasTag(string assetId, string tagName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetTagsManifestHasTag(ObjectPtr->ObjPtr, assetId, tagName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetTagsManifestHasTag(ObjectPtr->ObjPtr, assetId, tagName);
       }
       
       #endregion
+
+      
    }
 }

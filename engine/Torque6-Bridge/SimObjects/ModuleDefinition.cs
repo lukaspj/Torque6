@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ModuleDefinition : SimSet
    {
+      
       public ModuleDefinition()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ModuleDefinitionCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ModuleDefinition(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ModuleDefinition(string pName) : base(pName)
       {
       }
 
+      public ModuleDefinition(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ModuleDefinition(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ModuleDefinition(SimObject pObj) : base(pObj)
       {
       }
       
@@ -177,12 +182,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetModuleId(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetModuleId(ObjectPtr->ObjPtr, value);
          }
       }
@@ -190,12 +195,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetVersionId(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetVersionId(ObjectPtr->ObjPtr, value);
          }
       }
@@ -203,12 +208,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetBuildId(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetBuildId(ObjectPtr->ObjPtr, value);
          }
       }
@@ -216,12 +221,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetEnabled(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetEnabled(ObjectPtr->ObjPtr, value);
          }
       }
@@ -229,12 +234,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetSynchronized(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetSynchronized(ObjectPtr->ObjPtr, value);
          }
       }
@@ -242,12 +247,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetDeprecated(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetDeprecated(ObjectPtr->ObjPtr, value);
          }
       }
@@ -255,12 +260,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetCriticalMerge(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetCriticalMerge(ObjectPtr->ObjPtr, value);
          }
       }
@@ -268,12 +273,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetDescription(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetDescription(ObjectPtr->ObjPtr, value);
          }
       }
@@ -281,12 +286,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetAuthor(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetAuthor(ObjectPtr->ObjPtr, value);
          }
       }
@@ -294,12 +299,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetGroup(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetGroup(ObjectPtr->ObjPtr, value);
          }
       }
@@ -307,12 +312,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetType(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetType(ObjectPtr->ObjPtr, value);
          }
       }
@@ -320,12 +325,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetDependencies(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetDependencies(ObjectPtr->ObjPtr, value);
          }
       }
@@ -333,12 +338,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetScriptFile(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetScriptFile(ObjectPtr->ObjPtr, value);
          }
       }
@@ -346,12 +351,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetCreateFunction(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetCreateFunction(ObjectPtr->ObjPtr, value);
          }
       }
@@ -359,12 +364,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetDestroyFunction(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetDestroyFunction(ObjectPtr->ObjPtr, value);
          }
       }
@@ -372,12 +377,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetAssetTagsManifest(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleDefinitionSetAssetTagsManifest(ObjectPtr->ObjPtr, value);
          }
       }
@@ -385,7 +390,7 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetScopeSet(ObjectPtr->ObjPtr);
          }
 
@@ -394,7 +399,7 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetModulePath(ObjectPtr->ObjPtr);
          }
 
@@ -403,7 +408,7 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetModuleFile(ObjectPtr->ObjPtr);
          }
 
@@ -412,7 +417,7 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetModuleFilePath(ObjectPtr->ObjPtr);
          }
 
@@ -421,7 +426,7 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleDefinitionGetModuleScriptFilePath(ObjectPtr->ObjPtr);
          }
 
@@ -431,48 +436,50 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void GetSignature()
+      public string GetSignature()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleDefinitionGetSignature(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleDefinitionGetSignature(ObjectPtr->ObjPtr);
       }
 
-      public void Save()
+      public bool Save()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleDefinitionSave(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleDefinitionSave(ObjectPtr->ObjPtr);
       }
 
-      public void GetModuleManager()
+      public ModuleManager GetModuleManager()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleDefinitionGetModuleManager(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new ModuleManager(InternalUnsafeMethods.ModuleDefinitionGetModuleManager(ObjectPtr->ObjPtr));
       }
 
-      public void GetDependencyCount()
+      public int GetDependencyCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleDefinitionGetDependencyCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleDefinitionGetDependencyCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetDependency(int dependencyIndex)
+      public string GetDependency(int dependencyIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleDefinitionGetDependency(ObjectPtr->ObjPtr, dependencyIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleDefinitionGetDependency(ObjectPtr->ObjPtr, dependencyIndex);
       }
 
-      public void AddDependency(string moduleId, int versionId)
+      public bool AddDependency(string moduleId, int versionId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleDefinitionAddDependency(ObjectPtr->ObjPtr, moduleId, versionId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleDefinitionAddDependency(ObjectPtr->ObjPtr, moduleId, versionId);
       }
 
-      public void RemoveDependency(string moduleId)
+      public bool RemoveDependency(string moduleId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleDefinitionRemoveDependency(ObjectPtr->ObjPtr, moduleId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleDefinitionRemoveDependency(ObjectPtr->ObjPtr, moduleId);
       }
       
       #endregion
+
+      
    }
 }

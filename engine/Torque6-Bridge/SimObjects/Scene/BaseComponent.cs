@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class BaseComponent : SimObject
    {
+      
       public BaseComponent()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.BaseComponentCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public BaseComponent(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public BaseComponent(string pName) : base(pName)
       {
       }
 
+      public BaseComponent(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public BaseComponent(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public BaseComponent(SimObject pObj) : base(pObj)
       {
       }
       
@@ -66,14 +71,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point3F outVal;
             InternalUnsafeMethods.BaseComponentGetPosition(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.BaseComponentSetPosition(ObjectPtr->ObjPtr, value);
          }
       }
@@ -81,14 +86,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point3F outVal;
             InternalUnsafeMethods.BaseComponentGetRotation(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.BaseComponentSetRotation(ObjectPtr->ObjPtr, value);
          }
       }
@@ -96,14 +101,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point3F outVal;
             InternalUnsafeMethods.BaseComponentGetScale(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.BaseComponentSetScale(ObjectPtr->ObjPtr, value);
          }
       }
@@ -114,10 +119,12 @@ namespace Torque6_Bridge.SimObjects.Scene
 
       public void SetUniformVec4(string name, Point4F value)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.BaseComponentSetUniformVec4(ObjectPtr->ObjPtr, name, value);
       }
       
       #endregion
+
+      
    }
 }

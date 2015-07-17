@@ -4,28 +4,33 @@ using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
 using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.GuiBitmapButtonTextCtrl
+namespace Torque6_Bridge.SimObjects.GuiControls
 {
-   public unsafe class SimObjects.GuiControls : GuiBitmapButtonCtrl
+   public unsafe class GuiBitmapButtonTextCtrl : GuiBitmapButtonCtrl
    {
-      public SimObjects.GuiControls()
+      
+      public GuiBitmapButtonTextCtrl()
       {
-         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimObjects.GuiControlsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiBitmapButtonTextCtrlCreateInstance());
       }
 
-      public SimObjects.GuiControls(uint pId) : base(pId)
-      {
-      }
-
-      public SimObjects.GuiControls(IntPtr pObjPtr) : base(pObjPtr)
+      public GuiBitmapButtonTextCtrl(uint pId) : base(pId)
       {
       }
 
-      public SimObjects.GuiControls(string pName) : base(pName)
+      public GuiBitmapButtonTextCtrl(string pName) : base(pName)
       {
       }
 
-      public SimObjects.GuiControls(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      public GuiBitmapButtonTextCtrl(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiBitmapButtonTextCtrl(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiBitmapButtonTextCtrl(SimObject pObj) : base(pObj)
       {
       }
       
@@ -49,5 +54,7 @@ namespace Torque6_Bridge.GuiBitmapButtonTextCtrl
       
       
       #endregion
+
+      
    }
 }

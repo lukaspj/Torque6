@@ -85,4 +85,30 @@ namespace Torque6_Bridge.Types
       public float z;
       public float w;
    }
+
+   [StructLayout(LayoutKind.Sequential)]
+   public struct Box3F
+   {
+      public Box3F(Point3F pMinExtents, Point3F pMaxExtents)
+      {
+         minExtents = pMinExtents;
+         maxExtents = pMaxExtents;
+      }
+
+      public Point3F minExtents;
+      public Point3F maxExtents;
+   }
+
+   [StructLayout(LayoutKind.Sequential)]
+   public struct RectI
+   {
+      public RectI(Point2I pPosition, Point2I pExtents)
+      {
+         position  = pPosition;
+         extents = pExtents;
+      }
+
+      public Point2I position;
+      public Point2I extents;
+   }
 }

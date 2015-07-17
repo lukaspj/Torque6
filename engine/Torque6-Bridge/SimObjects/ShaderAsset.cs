@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ShaderAsset : AssetBase
    {
+      
       public ShaderAsset()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ShaderAssetCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ShaderAsset(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ShaderAsset(string pName) : base(pName)
       {
       }
 
+      public ShaderAsset(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ShaderAsset(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ShaderAsset(SimObject pObj) : base(pObj)
       {
       }
       
@@ -57,12 +62,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ShaderAssetGetVertexShaderFile(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ShaderAssetSetVertexShaderFile(ObjectPtr->ObjPtr, value);
          }
       }
@@ -70,12 +75,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ShaderAssetGetPixelShaderFile(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ShaderAssetSetPixelShaderFile(ObjectPtr->ObjPtr, value);
          }
       }
@@ -87,5 +92,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class RemoteDebugger1 : RemoteDebuggerBase
    {
+      
       public RemoteDebugger1()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.RemoteDebugger1CreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public RemoteDebugger1(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public RemoteDebugger1(string pName) : base(pName)
       {
       }
 
+      public RemoteDebugger1(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public RemoteDebugger1(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public RemoteDebugger1(SimObject pObj) : base(pObj)
       {
       }
       
@@ -53,18 +58,20 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void GetCodeFiles()
+      public string GetCodeFiles()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.RemoteDebugger1GetCodeFiles(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.RemoteDebugger1GetCodeFiles(ObjectPtr->ObjPtr);
       }
 
       public void SetNextStatementBreak(bool enabled)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.RemoteDebugger1SetNextStatementBreak(ObjectPtr->ObjPtr, enabled);
       }
       
       #endregion
+
+      
    }
 }

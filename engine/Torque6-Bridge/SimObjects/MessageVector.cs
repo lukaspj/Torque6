@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class MessageVector : SimObject
    {
+      
       public MessageVector()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.MessageVectorCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public MessageVector(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public MessageVector(string pName) : base(pName)
       {
       }
 
+      public MessageVector(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public MessageVector(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public MessageVector(SimObject pObj) : base(pObj)
       {
       }
       
@@ -88,82 +93,84 @@ namespace Torque6_Bridge.SimObjects
 
       public void Clear()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.MessageVectorClear(ObjectPtr->ObjPtr);
       }
 
       public void PushBackLine(string msg, int tag)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.MessageVectorPushBackLine(ObjectPtr->ObjPtr, msg, tag);
       }
 
-      public void PopBackLine()
+      public bool PopBackLine()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.MessageVectorPopBackLine(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.MessageVectorPopBackLine(ObjectPtr->ObjPtr);
       }
 
       public void PushFrontLine(string msg, int tag)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.MessageVectorPushFrontLine(ObjectPtr->ObjPtr, msg, tag);
       }
 
-      public void PopFrontLine()
+      public bool PopFrontLine()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.MessageVectorPopFrontLine(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.MessageVectorPopFrontLine(ObjectPtr->ObjPtr);
       }
 
-      public void InsertLine(int pos, string msg, int tag)
+      public bool InsertLine(int pos, string msg, int tag)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.MessageVectorInsertLine(ObjectPtr->ObjPtr, pos, msg, tag);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.MessageVectorInsertLine(ObjectPtr->ObjPtr, pos, msg, tag);
       }
 
-      public void DeleteLine(uint lineIndex)
+      public bool DeleteLine(uint lineIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.MessageVectorDeleteLine(ObjectPtr->ObjPtr, lineIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.MessageVectorDeleteLine(ObjectPtr->ObjPtr, lineIndex);
       }
 
       public void Dump(string filename, string header)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.MessageVectorDump(ObjectPtr->ObjPtr, filename, header);
       }
 
-      public void GetNumLines()
+      public int GetNumLines()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.MessageVectorGetNumLines(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.MessageVectorGetNumLines(ObjectPtr->ObjPtr);
       }
 
-      public void GetLineTextByTag(int tag)
+      public string GetLineTextByTag(int tag)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.MessageVectorGetLineTextByTag(ObjectPtr->ObjPtr, tag);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.MessageVectorGetLineTextByTag(ObjectPtr->ObjPtr, tag);
       }
 
-      public void GetLineIndexByTag(int tag)
+      public int GetLineIndexByTag(int tag)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.MessageVectorGetLineIndexByTag(ObjectPtr->ObjPtr, tag);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.MessageVectorGetLineIndexByTag(ObjectPtr->ObjPtr, tag);
       }
 
-      public void GetLineText(uint index)
+      public string GetLineText(uint index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.MessageVectorGetLineText(ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.MessageVectorGetLineText(ObjectPtr->ObjPtr, index);
       }
 
-      public void GetLineTag(uint index)
+      public int GetLineTag(uint index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.MessageVectorGetLineTag(ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.MessageVectorGetLineTag(ObjectPtr->ObjPtr, index);
       }
       
       #endregion
+
+      
    }
 }

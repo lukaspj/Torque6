@@ -6,6 +6,7 @@
 #include "sim/simObject.h"
 #include "graphics/color.h"
 #include "math/mBox.h"
+#include "math/mRect.h"
 
 extern "C" {
    DLL_PUBLIC void SetCallbacks(void* ptr, void* methodPtr, void* isMethodPtr, void *mainPtr);
@@ -165,6 +166,20 @@ public:
       }
       operator Box3F() const{
          return Box3F(minExtents, maxExtents);
+      }
+   };
+
+   struct RectIParam{
+   public:
+      Point2IParam point;
+      Point2IParam extent;
+      RectIParam(const RectI& copyRect)
+         : point(copyRect.point)
+         , extent(copyRect.extent)
+      {
+      }
+      operator RectI() const{
+         return RectI(point, extent);
       }
    };
 };

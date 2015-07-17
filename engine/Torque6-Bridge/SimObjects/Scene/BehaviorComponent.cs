@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class BehaviorComponent : DynamicConsoleMethodComponent
    {
+      
       public BehaviorComponent()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.BehaviorComponentCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public BehaviorComponent(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public BehaviorComponent(string pName) : base(pName)
       {
       }
 
+      public BehaviorComponent(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public BehaviorComponent(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public BehaviorComponent(SimObject pObj) : base(pObj)
       {
       }
       
@@ -83,78 +88,80 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       #region Methods
 
-      public void AddBehavior(BehaviorInstance inst)
+      public bool AddBehavior(BehaviorInstance inst)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentAddBehavior(ObjectPtr->ObjPtr, inst.ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorComponentAddBehavior(ObjectPtr->ObjPtr, inst.ObjectPtr->ObjPtr);
       }
 
-      public void RemoveBehavior(BehaviorInstance inst, bool deleteBehavior = true)
+      public bool RemoveBehavior(BehaviorInstance inst, bool deleteBehavior = true)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentRemoveBehavior(ObjectPtr->ObjPtr, inst.ObjectPtr->ObjPtr, deleteBehavior);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorComponentRemoveBehavior(ObjectPtr->ObjPtr, inst.ObjectPtr->ObjPtr, deleteBehavior);
       }
 
       public void ClearBehaviors()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.BehaviorComponentClearBehaviors(ObjectPtr->ObjPtr);
       }
 
-      public void GetBehaviorCount()
+      public int GetBehaviorCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentGetBehaviorCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorComponentGetBehaviorCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetBehavior(string name)
+      public BehaviorInstance GetBehavior(string name)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentGetBehavior(ObjectPtr->ObjPtr, name);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new BehaviorInstance(InternalUnsafeMethods.BehaviorComponentGetBehavior(ObjectPtr->ObjPtr, name));
       }
 
-      public void GetBehaviorByIndex(uint index)
+      public BehaviorInstance GetBehaviorByIndex(uint index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentGetBehaviorByIndex(ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new BehaviorInstance(InternalUnsafeMethods.BehaviorComponentGetBehaviorByIndex(ObjectPtr->ObjPtr, index));
       }
 
-      public void ReOrder(BehaviorInstance inst, uint index)
+      public bool ReOrder(BehaviorInstance inst, uint index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentReOrder(ObjectPtr->ObjPtr, inst.ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorComponentReOrder(ObjectPtr->ObjPtr, inst.ObjectPtr->ObjPtr, index);
       }
 
-      public void Connect(BehaviorInstance outputBehavior, string outputName, BehaviorInstance inputBehavior, string inputName)
+      public bool Connect(BehaviorInstance outputBehavior, string outputName, BehaviorInstance inputBehavior, string inputName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentConnect(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName, inputBehavior.ObjectPtr->ObjPtr, inputName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorComponentConnect(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName, inputBehavior.ObjectPtr->ObjPtr, inputName);
       }
 
-      public void Disconnect(BehaviorInstance outputBehavior, string outputName, BehaviorInstance inputBehavior, string inputName)
+      public bool Disconnect(BehaviorInstance outputBehavior, string outputName, BehaviorInstance inputBehavior, string inputName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentDisconnect(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName, inputBehavior.ObjectPtr->ObjPtr, inputName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorComponentDisconnect(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName, inputBehavior.ObjectPtr->ObjPtr, inputName);
       }
 
-      public void Raise(BehaviorInstance outputBehavior, string outputName, uint timeDelta = 0)
+      public bool Raise(BehaviorInstance outputBehavior, string outputName, uint timeDelta = 0)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentRaise(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName, timeDelta);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorComponentRaise(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName, timeDelta);
       }
 
-      public void GetBehaviorConnectionCount(BehaviorInstance outputBehavior, string outputName)
+      public uint GetBehaviorConnectionCount(BehaviorInstance outputBehavior, string outputName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentGetBehaviorConnectionCount(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorComponentGetBehaviorConnectionCount(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName);
       }
 
-      public void GetBehaviorConnection(BehaviorInstance outputBehavior, string outputName, uint connectionIndex)
+      public string GetBehaviorConnection(BehaviorInstance outputBehavior, string outputName, uint connectionIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorComponentGetBehaviorConnection(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName, connectionIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorComponentGetBehaviorConnection(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName, connectionIndex);
       }
       
       #endregion
+
+      
    }
 }

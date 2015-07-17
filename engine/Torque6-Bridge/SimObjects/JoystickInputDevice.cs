@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class JoystickInputDevice : InputDevice
    {
+      
       public JoystickInputDevice()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.JoystickInputDeviceCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public JoystickInputDevice(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public JoystickInputDevice(string pName) : base(pName)
       {
       }
 
+      public JoystickInputDevice(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public JoystickInputDevice(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public JoystickInputDevice(SimObject pObj) : base(pObj)
       {
       }
       
@@ -49,5 +54,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

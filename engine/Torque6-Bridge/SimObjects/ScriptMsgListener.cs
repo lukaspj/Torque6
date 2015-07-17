@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ScriptMsgListener : SimObject
    {
+      
       public ScriptMsgListener()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ScriptMsgListenerCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ScriptMsgListener(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ScriptMsgListener(string pName) : base(pName)
       {
       }
 
+      public ScriptMsgListener(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ScriptMsgListener(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ScriptMsgListener(SimObject pObj) : base(pObj)
       {
       }
       
@@ -50,5 +55,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

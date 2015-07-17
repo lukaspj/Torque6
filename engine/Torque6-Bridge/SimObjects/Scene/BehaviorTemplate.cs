@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class BehaviorTemplate : SimObject
    {
+      
       public BehaviorTemplate()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.BehaviorTemplateCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public BehaviorTemplate(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public BehaviorTemplate(string pName) : base(pName)
       {
       }
 
+      public BehaviorTemplate(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public BehaviorTemplate(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public BehaviorTemplate(SimObject pObj) : base(pObj)
       {
       }
       
@@ -105,12 +110,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.BehaviorTemplateGetFriendlyName(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.BehaviorTemplateSetFriendlyName(ObjectPtr->ObjPtr, value);
          }
       }
@@ -118,12 +123,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.BehaviorTemplateGetDescription(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.BehaviorTemplateSetDescription(ObjectPtr->ObjPtr, value);
          }
       }
@@ -131,12 +136,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.BehaviorTemplateGetBehaviorType(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.BehaviorTemplateSetBehaviorType(ObjectPtr->ObjPtr, value);
          }
       }
@@ -145,90 +150,92 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       #region Methods
 
-      public void CreateBehaviorInstance()
+      public BehaviorInstance CreateBehaviorInstance()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateCreateBehaviorInstance(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new BehaviorInstance(InternalUnsafeMethods.BehaviorTemplateCreateBehaviorInstance(ObjectPtr->ObjPtr));
       }
 
-      public void AddBehaviorField(string fieldName, string desc, string type, string defaultValue = null, string userData = null)
+      public bool AddBehaviorField(string fieldName, string desc, string type, string defaultValue = null, string userData = null)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateAddBehaviorField(ObjectPtr->ObjPtr, fieldName, desc, type, defaultValue, userData);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateAddBehaviorField(ObjectPtr->ObjPtr, fieldName, desc, type, defaultValue, userData);
       }
 
-      public void GetBehaviorFieldCount()
+      public int GetBehaviorFieldCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateGetBehaviorFieldCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorFieldCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetBehaviorField(int fieldIndex)
+      public string GetBehaviorField(int fieldIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateGetBehaviorField(ObjectPtr->ObjPtr, fieldIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorField(ObjectPtr->ObjPtr, fieldIndex);
       }
 
-      public void GetBehaviorFieldUserData(int fieldIndex)
+      public string GetBehaviorFieldUserData(int fieldIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateGetBehaviorFieldUserData(ObjectPtr->ObjPtr, fieldIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorFieldUserData(ObjectPtr->ObjPtr, fieldIndex);
       }
 
-      public void GetBehaviorFieldDescription(int fieldIndex)
+      public string GetBehaviorFieldDescription(int fieldIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateGetBehaviorFieldDescription(ObjectPtr->ObjPtr, fieldIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorFieldDescription(ObjectPtr->ObjPtr, fieldIndex);
       }
 
-      public void AddBehaviorOutput(string outputName, string label, string description)
+      public bool AddBehaviorOutput(string outputName, string label, string description)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateAddBehaviorOutput(ObjectPtr->ObjPtr, outputName, label, description);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateAddBehaviorOutput(ObjectPtr->ObjPtr, outputName, label, description);
       }
 
-      public void GetBehaviorOutputCount()
+      public int GetBehaviorOutputCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateGetBehaviorOutputCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorOutputCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetBehaviorOutput(int fieldIndex)
+      public string GetBehaviorOutput(int fieldIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateGetBehaviorOutput(ObjectPtr->ObjPtr, fieldIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorOutput(ObjectPtr->ObjPtr, fieldIndex);
       }
 
-      public void HasBehaviorOutput(string outputName)
+      public bool HasBehaviorOutput(string outputName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateHasBehaviorOutput(ObjectPtr->ObjPtr, outputName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateHasBehaviorOutput(ObjectPtr->ObjPtr, outputName);
       }
 
-      public void AddBehaviorInput(string inputName, string label, string description)
+      public bool AddBehaviorInput(string inputName, string label, string description)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateAddBehaviorInput(ObjectPtr->ObjPtr, inputName, label, description);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateAddBehaviorInput(ObjectPtr->ObjPtr, inputName, label, description);
       }
 
-      public void GetBehaviorInputCount()
+      public int GetBehaviorInputCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateGetBehaviorInputCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorInputCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetBehaviorInput(int fieldIndex)
+      public string GetBehaviorInput(int fieldIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateGetBehaviorInput(ObjectPtr->ObjPtr, fieldIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorInput(ObjectPtr->ObjPtr, fieldIndex);
       }
 
-      public void HasBehaviorInput(string inputName)
+      public bool HasBehaviorInput(string inputName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorTemplateHasBehaviorInput(ObjectPtr->ObjPtr, inputName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorTemplateHasBehaviorInput(ObjectPtr->ObjPtr, inputName);
       }
       
       #endregion
+
+      
    }
 }

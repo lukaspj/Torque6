@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class FileObject : SimObject
    {
+      
       public FileObject()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.FileObjectCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public FileObject(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public FileObject(string pName) : base(pName)
       {
       }
 
+      public FileObject(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public FileObject(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public FileObject(SimObject pObj) : base(pObj)
       {
       }
       
@@ -74,60 +79,62 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void OpenForRead(string filename)
+      public bool OpenForRead(string filename)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.FileObjectOpenForRead(ObjectPtr->ObjPtr, filename);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.FileObjectOpenForRead(ObjectPtr->ObjPtr, filename);
       }
 
-      public void OpenForWrite(string filename)
+      public bool OpenForWrite(string filename)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.FileObjectOpenForWrite(ObjectPtr->ObjPtr, filename);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.FileObjectOpenForWrite(ObjectPtr->ObjPtr, filename);
       }
 
-      public void OpenForAppend(string filename)
+      public bool OpenForAppend(string filename)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.FileObjectOpenForAppend(ObjectPtr->ObjPtr, filename);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.FileObjectOpenForAppend(ObjectPtr->ObjPtr, filename);
       }
 
-      public void IsEOF()
+      public bool IsEOF()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.FileObjectIsEOF(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.FileObjectIsEOF(ObjectPtr->ObjPtr);
       }
 
-      public void ReadLine()
+      public string ReadLine()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.FileObjectReadLine(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.FileObjectReadLine(ObjectPtr->ObjPtr);
       }
 
-      public void PeekLine()
+      public string PeekLine()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.FileObjectPeekLine(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.FileObjectPeekLine(ObjectPtr->ObjPtr);
       }
 
       public void WriteLine(string text)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.FileObjectWriteLine(ObjectPtr->ObjPtr, text);
       }
 
       public void Close()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.FileObjectClose(ObjectPtr->ObjPtr);
       }
 
       public void WriteObject(SimObject simObj, string text = null)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.FileObjectWriteObject(ObjectPtr->ObjPtr, simObj.ObjectPtr->ObjPtr, text);
       }
       
       #endregion
+
+      
    }
 }

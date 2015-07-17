@@ -4,28 +4,33 @@ using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
 using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.GuiTickCtrl
+namespace Torque6_Bridge.SimObjects.GuiControls
 {
-   public unsafe class SimObjects.GuiControls : GuiControl
+   public unsafe class GuiTickCtrl : GuiControl
    {
-      public SimObjects.GuiControls()
+      
+      public GuiTickCtrl()
       {
-         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimObjects.GuiControlsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiTickCtrlCreateInstance());
       }
 
-      public SimObjects.GuiControls(uint pId) : base(pId)
-      {
-      }
-
-      public SimObjects.GuiControls(IntPtr pObjPtr) : base(pObjPtr)
+      public GuiTickCtrl(uint pId) : base(pId)
       {
       }
 
-      public SimObjects.GuiControls(string pName) : base(pName)
+      public GuiTickCtrl(string pName) : base(pName)
       {
       }
 
-      public SimObjects.GuiControls(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      public GuiTickCtrl(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiTickCtrl(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiTickCtrl(SimObject pObj) : base(pObj)
       {
       }
       
@@ -49,5 +54,7 @@ namespace Torque6_Bridge.GuiTickCtrl
       
       
       #endregion
+
+      
    }
 }

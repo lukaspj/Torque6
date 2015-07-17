@@ -4,28 +4,33 @@ using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
 using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.GuiTextEditCtrl
+namespace Torque6_Bridge.SimObjects.GuiControls
 {
-   public unsafe class SimObjects.GuiControls : GuiTextCtrl
+   public unsafe class GuiTextEditCtrl : GuiTextCtrl
    {
-      public SimObjects.GuiControls()
+      
+      public GuiTextEditCtrl()
       {
-         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimObjects.GuiControlsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiTextEditCtrlCreateInstance());
       }
 
-      public SimObjects.GuiControls(uint pId) : base(pId)
-      {
-      }
-
-      public SimObjects.GuiControls(IntPtr pObjPtr) : base(pObjPtr)
+      public GuiTextEditCtrl(uint pId) : base(pId)
       {
       }
 
-      public SimObjects.GuiControls(string pName) : base(pName)
+      public GuiTextEditCtrl(string pName) : base(pName)
       {
       }
 
-      public SimObjects.GuiControls(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      public GuiTextEditCtrl(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiTextEditCtrl(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiTextEditCtrl(SimObject pObj) : base(pObj)
       {
       }
       
@@ -49,5 +54,7 @@ namespace Torque6_Bridge.GuiTextEditCtrl
       
       
       #endregion
+
+      
    }
 }

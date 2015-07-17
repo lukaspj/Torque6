@@ -20,38 +20,21 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-#ifndef _GUICONSOLEEDITCTRL_H_
-#define _GUICONSOLEEDITCTRL_H_
+#include "c-interface/c-interface.h"
 
-#ifndef _GUITYPES_H_
-#include "gui/guiTypes.h"
-#endif
-#ifndef _GUITEXTEDITCTRL_H_
-#include "gui/guiTextEditCtrl.h"
-#endif
-#ifndef _GUISCROLLCTRL_H_
-#include "gui/containers/guiScrollCtrl.h"
-#endif
+extern "C"{
+   DLL_PUBLIC GuiConsoleTextCtrl* GuiConsoleTextCtrlCreateInstance()
+   {
+      return new GuiConsoleTextCtrl();
+   }
 
-class GuiConsoleEditCtrl : public GuiTextEditCtrl
-{
-private:
-   typedef GuiTextEditCtrl Parent;
+   DLL_PUBLIC char* GuiConsoleTextCtrlGetExpression(GuiConsoleTextCtrl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getText());
+   }
 
-protected:
-   bool mUseSiblingScroller;
-   GuiScrollCtrl* mSiblingScroller;
-
-public:
-   GuiConsoleEditCtrl();
-   DECLARE_CONOBJECT(GuiConsoleEditCtrl);
-
-   static void initPersistFields();
-
-   bool getUseSiblingScroller() { return mUseSiblingScroller; }
-   void setUseSiblingScroller(bool use) { mUseSiblingScroller = use; }
-
-   bool onKeyDown(const GuiEvent &event);
-};
-
-#endif //_GUI_TEXTEDIT_CTRL_H
+   DLL_PUBLIC void GuiConsoleTextCtrlSetExpression(GuiConsoleTextCtrl* ctrl, const char* expr)
+   {
+      ctrl->setText(expr);
+   }
+}

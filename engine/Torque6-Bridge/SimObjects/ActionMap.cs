@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ActionMap : SimObject
    {
+      
       public ActionMap()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ActionMapCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ActionMap(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ActionMap(string pName) : base(pName)
       {
       }
 
+      public ActionMap(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ActionMap(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ActionMap(SimObject pObj) : base(pObj)
       {
       }
       
@@ -88,82 +93,84 @@ namespace Torque6_Bridge.SimObjects
 
       public void Bind(int argc, string[] argv)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ActionMapBind(ObjectPtr->ObjPtr, argc, argv);
       }
 
       public void BindObj(int argc, string[] argv, SimObject obj)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ActionMapBindObj(ObjectPtr->ObjPtr, argc, argv, obj.ObjectPtr->ObjPtr);
       }
 
       public void BindCmd(string device, string action, string makeCmd, string breakCmd)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ActionMapBindCmd(ObjectPtr->ObjPtr, device, action, makeCmd, breakCmd);
       }
 
       public void Unbind(string device, string action)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ActionMapUnbind(ObjectPtr->ObjPtr, device, action);
       }
 
       public void UnbindObj(string device, string action, SimObject obj)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ActionMapUnbindObj(ObjectPtr->ObjPtr, device, action, obj.ObjectPtr->ObjPtr);
       }
 
       public void Save(string fileName = null, bool append = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ActionMapSave(ObjectPtr->ObjPtr, fileName, append);
       }
 
       public void Push()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ActionMapPush(ObjectPtr->ObjPtr);
       }
 
       public void Pop()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ActionMapPop(ObjectPtr->ObjPtr);
       }
 
-      public void GetBinding(string command)
+      public string GetBinding(string command)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ActionMapGetBinding(ObjectPtr->ObjPtr, command);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ActionMapGetBinding(ObjectPtr->ObjPtr, command);
       }
 
-      public void GetCommand(string device, string action)
+      public string GetCommand(string device, string action)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ActionMapGetCommand(ObjectPtr->ObjPtr, device, action);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ActionMapGetCommand(ObjectPtr->ObjPtr, device, action);
       }
 
-      public void IsInverted(string device, string action)
+      public bool IsInverted(string device, string action)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ActionMapIsInverted(ObjectPtr->ObjPtr, device, action);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ActionMapIsInverted(ObjectPtr->ObjPtr, device, action);
       }
 
-      public void GetScale(string device, string action)
+      public float GetScale(string device, string action)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ActionMapGetScale(ObjectPtr->ObjPtr, device, action);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ActionMapGetScale(ObjectPtr->ObjPtr, device, action);
       }
 
-      public void GetDeadZone(string device, string action)
+      public string GetDeadZone(string device, string action)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ActionMapGetDeadZone(ObjectPtr->ObjPtr, device, action);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ActionMapGetDeadZone(ObjectPtr->ObjPtr, device, action);
       }
       
       #endregion
+
+      
    }
 }

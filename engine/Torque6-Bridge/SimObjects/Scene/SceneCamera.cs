@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class SceneCamera : SimObject
    {
+      
       public SceneCamera()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SceneCameraCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public SceneCamera(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public SceneCamera(string pName) : base(pName)
       {
       }
 
+      public SceneCamera(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public SceneCamera(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public SceneCamera(SimObject pObj) : base(pObj)
       {
       }
       
@@ -81,14 +86,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point3F outVal;
             InternalUnsafeMethods.SceneCameraGetPosition(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SceneCameraSetPosition(ObjectPtr->ObjPtr, value);
          }
       }
@@ -96,12 +101,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.SceneCameraGetHorizontalAngle(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SceneCameraSetHorizontalAngle(ObjectPtr->ObjPtr, value);
          }
       }
@@ -109,12 +114,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.SceneCameraGetVerticalAngle(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SceneCameraSetVerticalAngle(ObjectPtr->ObjPtr, value);
          }
       }
@@ -125,40 +130,42 @@ namespace Torque6_Bridge.SimObjects.Scene
 
       public void LookAt(Point3F look_at)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SceneCameraLookAt(ObjectPtr->ObjPtr, look_at);
       }
 
       public void Translate(Point3F translation)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SceneCameraTranslate(ObjectPtr->ObjPtr, translation);
       }
 
       public void Pan(Point3F pan)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SceneCameraPan(ObjectPtr->ObjPtr, pan);
       }
 
       public void SetPanVelocity(Point3F panVel)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SceneCameraSetPanVelocity(ObjectPtr->ObjPtr, panVel);
       }
 
       public void Rotate(Point3F rotation)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SceneCameraRotate(ObjectPtr->ObjPtr, rotation);
       }
 
       public void BindMouse(bool value, bool left = false, bool right = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SceneCameraBindMouse(ObjectPtr->ObjPtr, value, left, right);
       }
       
       #endregion
+
+      
    }
 }

@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class AndroidStreamSource : SimObject
    {
+      
       public AndroidStreamSource()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.AndroidStreamSourceCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public AndroidStreamSource(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public AndroidStreamSource(string pName) : base(pName)
       {
       }
 
+      public AndroidStreamSource(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public AndroidStreamSource(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public AndroidStreamSource(SimObject pObj) : base(pObj)
       {
       }
       
@@ -49,5 +54,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

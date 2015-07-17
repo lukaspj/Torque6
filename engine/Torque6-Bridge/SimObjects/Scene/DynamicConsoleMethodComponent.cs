@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class DynamicConsoleMethodComponent : SimComponent
    {
+      
       public DynamicConsoleMethodComponent()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.DynamicConsoleMethodComponentCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public DynamicConsoleMethodComponent(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public DynamicConsoleMethodComponent(string pName) : base(pName)
       {
       }
 
+      public DynamicConsoleMethodComponent(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public DynamicConsoleMethodComponent(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public DynamicConsoleMethodComponent(SimObject pObj) : base(pObj)
       {
       }
       
@@ -50,12 +55,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       #region Methods
 
-      public void CallOnBehaviors(string methodName, int argc, string[] argv)
+      public string CallOnBehaviors(string methodName, int argc, string[] argv)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.DynamicConsoleMethodComponentCallOnBehaviors(ObjectPtr->ObjPtr, methodName, argc, argv);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.DynamicConsoleMethodComponentCallOnBehaviors(ObjectPtr->ObjPtr, methodName, argc, argv);
       }
       
       #endregion
+
+      
    }
 }

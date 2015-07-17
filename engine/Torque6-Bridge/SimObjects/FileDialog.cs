@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class FileDialog : SimObject
    {
+      
       public FileDialog()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.FileDialogCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public FileDialog(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public FileDialog(string pName) : base(pName)
       {
       }
 
+      public FileDialog(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public FileDialog(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public FileDialog(SimObject pObj) : base(pObj)
       {
       }
       
@@ -84,12 +89,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.FileDialogGetDefaultPath(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.FileDialogSetDefaultPath(ObjectPtr->ObjPtr, value);
          }
       }
@@ -97,12 +102,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.FileDialogGetDefaultFile(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.FileDialogSetDefaultFile(ObjectPtr->ObjPtr, value);
          }
       }
@@ -110,12 +115,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.FileDialogGetFileName(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.FileDialogSetFileName(ObjectPtr->ObjPtr, value);
          }
       }
@@ -123,12 +128,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.FileDialogGetFilters(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.FileDialogSetFilters(ObjectPtr->ObjPtr, value);
          }
       }
@@ -136,12 +141,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.FileDialogGetTitle(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.FileDialogSetTitle(ObjectPtr->ObjPtr, value);
          }
       }
@@ -149,12 +154,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.FileDialogGetChangePath(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.FileDialogSetChangePath(ObjectPtr->ObjPtr, value);
          }
       }
@@ -163,12 +168,14 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void Execute()
+      public bool Execute()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.FileDialogExecute(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.FileDialogExecute(ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

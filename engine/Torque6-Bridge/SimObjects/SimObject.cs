@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
@@ -15,18 +15,32 @@ namespace Torque6_Bridge.SimObjects
 
       public SimObject(uint pId)
       {
-      }
-
-      public SimObject(IntPtr pObjPtr)
-      {
+         ObjectPtr = Sim.FindObjectWrapperById(pId);
       }
 
       public SimObject(string pName)
       {
+         ObjectPtr = Sim.FindObjectWrapperByName(pName);
+      }
+
+      public SimObject(IntPtr pObjPtr)
+      {
+         ObjectPtr = Sim.WrapObject(pObjPtr);
       }
 
       public SimObject(Sim.SimObjectPtr* pObjPtr)
       {
+         ObjectPtr = pObjPtr;
+      }
+
+      public SimObject(SimObject pObj)
+      {
+         ObjectPtr = pObj.ObjectPtr;
+      }
+
+      public T As<T>() where T : new()
+      {
+         return (T)Activator.CreateInstance(typeof (T), this);
       }
 
       #region UnsafeNativeMethods
@@ -70,7 +84,7 @@ namespace Torque6_Bridge.SimObjects
          internal static extern bool SimObjectRegisterObject(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimObjectGetName(IntPtr obj);
+         internal static extern string SimObjectGetName(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimObjectSetName(IntPtr obj, string val);
@@ -159,7 +173,7 @@ namespace Torque6_Bridge.SimObjects
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimObjectRemoveFieldFilter(IntPtr obj, string fieldName);
       }
-
+      
       #endregion
 
       #region Properties
@@ -229,21 +243,21 @@ namespace Torque6_Bridge.SimObjects
             InternalUnsafeMethods.SimObjectSetClass(ObjectPtr->ObjPtr, value);
          }
       }
-
+      
       #endregion
-
+      
       #region Methods
 
-      public void RegisterObject()
+      public bool RegisterObject()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectRegisterObject(ObjectPtr->ObjPtr);
+         return InternalUnsafeMethods.SimObjectRegisterObject(ObjectPtr->ObjPtr);
       }
 
-      public void GetName()
+      public string GetName()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetName(ObjectPtr->ObjPtr);
+         return InternalUnsafeMethods.SimObjectGetName(ObjectPtr->ObjPtr);
       }
 
       public void SetName(string val)
@@ -252,22 +266,22 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.SimObjectSetName(ObjectPtr->ObjPtr, val);
       }
 
-      public void GetID()
+      public uint GetID()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetID(ObjectPtr->ObjPtr);
+         return InternalUnsafeMethods.SimObjectGetID(ObjectPtr->ObjPtr);
       }
 
-      public void IsMethod(string val)
+      public bool IsMethod(string val)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectIsMethod(ObjectPtr->ObjPtr, val);
+         return InternalUnsafeMethods.SimObjectIsMethod(ObjectPtr->ObjPtr, val);
       }
 
-      public void Call(int argc, string[] argv)
+      public bool Call(int argc, string[] argv)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectCall(ObjectPtr->ObjPtr, argc, argv);
+         return InternalUnsafeMethods.SimObjectCall(ObjectPtr->ObjPtr, argc, argv);
       }
 
       public void DumpClassHierarchy()
@@ -282,22 +296,22 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.SimObjectDump(ObjectPtr->ObjPtr);
       }
 
-      public void IsMemberOfClass(string className)
+      public bool IsMemberOfClass(string className)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectIsMemberOfClass(ObjectPtr->ObjPtr, className);
+         return InternalUnsafeMethods.SimObjectIsMemberOfClass(ObjectPtr->ObjPtr, className);
       }
 
-      public void GetClassName()
+      public string GetClassName()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetClassName(ObjectPtr->ObjPtr);
+         return InternalUnsafeMethods.SimObjectGetClassName(ObjectPtr->ObjPtr);
       }
 
-      public void GetFieldValue(string fieldName)
+      public string GetFieldValue(string fieldName)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetFieldValue(ObjectPtr->ObjPtr, fieldName);
+         return InternalUnsafeMethods.SimObjectGetFieldValue(ObjectPtr->ObjPtr, fieldName);
       }
 
       public void SetFieldValue(string fieldName, string value)
@@ -306,34 +320,34 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.SimObjectSetFieldValue(ObjectPtr->ObjPtr, fieldName, value);
       }
 
-      public void GetDynamicFieldCount()
+      public int GetDynamicFieldCount()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetDynamicFieldCount(ObjectPtr->ObjPtr);
+         return InternalUnsafeMethods.SimObjectGetDynamicFieldCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetDynamicField(int index)
+      public string GetDynamicField(int index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetDynamicField(ObjectPtr->ObjPtr, index);
+         return InternalUnsafeMethods.SimObjectGetDynamicField(ObjectPtr->ObjPtr, index);
       }
 
-      public void GetFieldCount()
+      public int GetFieldCount()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetFieldCount(ObjectPtr->ObjPtr);
+         return InternalUnsafeMethods.SimObjectGetFieldCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetField(int index)
+      public string GetField(int index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetField(ObjectPtr->ObjPtr, index);
+         return InternalUnsafeMethods.SimObjectGetField(ObjectPtr->ObjPtr, index);
       }
 
-      public void GetProgenitorFile()
+      public string GetProgenitorFile()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetProgenitorFile(ObjectPtr->ObjPtr);
+         return InternalUnsafeMethods.SimObjectGetProgenitorFile(ObjectPtr->ObjPtr);
       }
 
       public void SetProgenitorFile(string file)
@@ -342,28 +356,28 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.SimObjectSetProgenitorFile(ObjectPtr->ObjPtr, file);
       }
 
-      public void GetType()
+      public int GetType()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetType(ObjectPtr->ObjPtr);
+         return InternalUnsafeMethods.SimObjectGetType(ObjectPtr->ObjPtr);
       }
 
-      public void GetFieldType(string fieldName)
+      public string GetFieldType(string fieldName)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetFieldType(ObjectPtr->ObjPtr, fieldName);
+         return InternalUnsafeMethods.SimObjectGetFieldType(ObjectPtr->ObjPtr, fieldName);
       }
 
-      public void IsChildOfGroup(SimGroup group)
+      public bool IsChildOfGroup(SimGroup group)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectIsChildOfGroup(ObjectPtr->ObjPtr, group.ObjectPtr->ObjPtr);
+         return InternalUnsafeMethods.SimObjectIsChildOfGroup(ObjectPtr->ObjPtr, group.ObjectPtr->ObjPtr);
       }
 
-      public void GetGroup()
+      public SimGroup GetGroup()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectGetGroup(ObjectPtr->ObjPtr);
+         return new SimGroup(InternalUnsafeMethods.SimObjectGetGroup(ObjectPtr->ObjPtr));
       }
 
       public void Delete()
@@ -372,16 +386,16 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.SimObjectDelete(ObjectPtr->ObjPtr);
       }
 
-      public void Clone(bool copyDynamicFields = false)
+      public SimObject Clone(bool copyDynamicFields = false)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectClone(ObjectPtr->ObjPtr, copyDynamicFields);
+         return new SimObject(InternalUnsafeMethods.SimObjectClone(ObjectPtr->ObjPtr, copyDynamicFields));
       }
 
-      public void StartTimer(string callbackFunction, float timePeriod, int repeat = 0)
+      public bool StartTimer(string callbackFunction, float timePeriod, int repeat = 0)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectStartTimer(ObjectPtr->ObjPtr, callbackFunction, timePeriod, repeat);
+         return InternalUnsafeMethods.SimObjectStartTimer(ObjectPtr->ObjPtr, callbackFunction, timePeriod, repeat);
       }
 
       public void StopTimer()
@@ -390,22 +404,22 @@ namespace Torque6_Bridge.SimObjects
          InternalUnsafeMethods.SimObjectStopTimer(ObjectPtr->ObjPtr);
       }
 
-      public void IsTimerActive()
+      public bool IsTimerActive()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectIsTimerActive(ObjectPtr->ObjPtr);
+         return InternalUnsafeMethods.SimObjectIsTimerActive(ObjectPtr->ObjPtr);
       }
 
-      public void Schedule(int time, int argc, string[] argv)
+      public int Schedule(int time, int argc, string[] argv)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectSchedule(ObjectPtr->ObjPtr, time, argc, argv);
+         return InternalUnsafeMethods.SimObjectSchedule(ObjectPtr->ObjPtr, time, argc, argv);
       }
 
-      public void Save(string filename, bool selectedOnly = false)
+      public bool Save(string filename, bool selectedOnly = false)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimObjectSave(ObjectPtr->ObjPtr, filename, selectedOnly);
+         return InternalUnsafeMethods.SimObjectSave(ObjectPtr->ObjPtr, filename, selectedOnly);
       }
 
       public void AddFieldFilter(string fieldName)
@@ -419,7 +433,7 @@ namespace Torque6_Bridge.SimObjects
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimObjectRemoveFieldFilter(ObjectPtr->ObjPtr, fieldName);
       }
-
+      
       #endregion
 
       #region SimObject specifics
@@ -443,7 +457,7 @@ namespace Torque6_Bridge.SimObjects
       {
          if (ObjectPtr->ObjPtr != IntPtr.Zero)
          {
-            Marshal.FreeHGlobal((IntPtr)ObjectPtr);
+            Marshal.FreeHGlobal((IntPtr) ObjectPtr);
          }
       }
 
@@ -454,6 +468,6 @@ namespace Torque6_Bridge.SimObjects
 
       #endregion
 
-      #endregion
+            #endregion
    }
 }

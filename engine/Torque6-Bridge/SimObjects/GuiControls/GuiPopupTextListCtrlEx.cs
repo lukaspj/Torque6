@@ -4,28 +4,33 @@ using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
 using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.GuiPopupTextListCtrlEx
+namespace Torque6_Bridge.SimObjects.GuiControls
 {
-   public unsafe class SimObjects.GuiControls : GuiTextListCtrl
+   public unsafe class GuiPopupTextListCtrlEx : GuiTextListCtrl
    {
-      public SimObjects.GuiControls()
+      
+      public GuiPopupTextListCtrlEx()
       {
-         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimObjects.GuiControlsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiPopupTextListCtrlExCreateInstance());
       }
 
-      public SimObjects.GuiControls(uint pId) : base(pId)
-      {
-      }
-
-      public SimObjects.GuiControls(IntPtr pObjPtr) : base(pObjPtr)
+      public GuiPopupTextListCtrlEx(uint pId) : base(pId)
       {
       }
 
-      public SimObjects.GuiControls(string pName) : base(pName)
+      public GuiPopupTextListCtrlEx(string pName) : base(pName)
       {
       }
 
-      public SimObjects.GuiControls(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      public GuiPopupTextListCtrlEx(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiPopupTextListCtrlEx(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiPopupTextListCtrlEx(SimObject pObj) : base(pObj)
       {
       }
       
@@ -49,5 +54,7 @@ namespace Torque6_Bridge.GuiPopupTextListCtrlEx
       
       
       #endregion
+
+      
    }
 }

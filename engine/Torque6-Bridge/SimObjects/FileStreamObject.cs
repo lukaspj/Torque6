@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class FileStreamObject : StreamObject
    {
+      
       public FileStreamObject()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.FileStreamObjectCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public FileStreamObject(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public FileStreamObject(string pName) : base(pName)
       {
       }
 
+      public FileStreamObject(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public FileStreamObject(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public FileStreamObject(SimObject pObj) : base(pObj)
       {
       }
       
@@ -53,18 +58,20 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void Open(string fileName, int mode)
+      public bool Open(string fileName, int mode)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.FileStreamObjectOpen(ObjectPtr->ObjPtr, fileName, mode);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.FileStreamObjectOpen(ObjectPtr->ObjPtr, fileName, mode);
       }
 
       public void Close()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.FileStreamObjectClose(ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class SimDataBlockGroup : SimGroup
    {
+      
       public SimDataBlockGroup()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimDataBlockGroupCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public SimDataBlockGroup(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public SimDataBlockGroup(string pName) : base(pName)
       {
       }
 
+      public SimDataBlockGroup(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public SimDataBlockGroup(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public SimDataBlockGroup(SimObject pObj) : base(pObj)
       {
       }
       
@@ -50,5 +55,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

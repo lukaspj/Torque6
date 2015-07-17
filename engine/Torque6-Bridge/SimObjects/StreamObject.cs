@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class StreamObject : SimObject
    {
+      
       public StreamObject()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.StreamObjectCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public StreamObject(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public StreamObject(string pName) : base(pName)
       {
       }
 
+      public StreamObject(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public StreamObject(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public StreamObject(SimObject pObj) : base(pObj)
       {
       }
       
@@ -89,90 +94,92 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void GetStatus()
+      public string GetStatus()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectGetStatus(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectGetStatus(ObjectPtr->ObjPtr);
       }
 
-      public void IsEOS()
+      public bool IsEOS()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectIsEOS(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectIsEOS(ObjectPtr->ObjPtr);
       }
 
-      public void IsEOF()
+      public bool IsEOF()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectIsEOF(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectIsEOF(ObjectPtr->ObjPtr);
       }
 
-      public void GetPosition()
+      public int GetPosition()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectGetPosition(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectGetPosition(ObjectPtr->ObjPtr);
       }
 
-      public void SetPosition(int newPos)
+      public bool SetPosition(int newPos)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectSetPosition(ObjectPtr->ObjPtr, newPos);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectSetPosition(ObjectPtr->ObjPtr, newPos);
       }
 
-      public void GetStreamSize()
+      public int GetStreamSize()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectGetStreamSize(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectGetStreamSize(ObjectPtr->ObjPtr);
       }
 
-      public void ReadLine()
+      public string ReadLine()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectReadLine(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectReadLine(ObjectPtr->ObjPtr);
       }
 
       public void WriteLine(string line)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.StreamObjectWriteLine(ObjectPtr->ObjPtr, line);
       }
 
-      public void ReadSTString(bool caseSensitive = false)
+      public string ReadSTString(bool caseSensitive = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectReadSTString(ObjectPtr->ObjPtr, caseSensitive);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectReadSTString(ObjectPtr->ObjPtr, caseSensitive);
       }
 
-      public void ReadString()
+      public string ReadString()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectReadString(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectReadString(ObjectPtr->ObjPtr);
       }
 
-      public void ReadLongString(int maxLength)
+      public string ReadLongString(int maxLength)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectReadLongString(ObjectPtr->ObjPtr, maxLength);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectReadLongString(ObjectPtr->ObjPtr, maxLength);
       }
 
       public void WriteLongString(int maxLength, string longString)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.StreamObjectWriteLongString(ObjectPtr->ObjPtr, maxLength, longString);
       }
 
       public void WriteString(string longString, int maxLength = 255)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.StreamObjectWriteString(ObjectPtr->ObjPtr, longString, maxLength);
       }
 
-      public void CopyFrom(StreamObject other)
+      public bool CopyFrom(StreamObject other)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.StreamObjectCopyFrom(ObjectPtr->ObjPtr, other.ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.StreamObjectCopyFrom(ObjectPtr->ObjPtr, other.ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

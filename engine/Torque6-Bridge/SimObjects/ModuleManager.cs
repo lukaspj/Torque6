@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
@@ -8,6 +9,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ModuleManager : SimObject
    {
+      
       public ModuleManager()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ModuleManagerCreateInstance());
@@ -17,15 +19,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ModuleManager(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ModuleManager(string pName) : base(pName)
       {
       }
 
+      public ModuleManager(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ModuleManager(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ModuleManager(SimObject pObj) : base(pObj)
       {
       }
       
@@ -108,12 +114,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleManagerGetEnforceDependencies(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleManagerSetEnforceDependencies(ObjectPtr->ObjPtr, value);
          }
       }
@@ -121,12 +127,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleManagerGetEchoInfo(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleManagerSetEchoInfo(ObjectPtr->ObjPtr, value);
          }
       }
@@ -135,108 +141,110 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void SetModuleExtension(string moduleExtension)
+      public bool SetModuleExtension(string moduleExtension)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerSetModuleExtension(ObjectPtr->ObjPtr, moduleExtension);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerSetModuleExtension(ObjectPtr->ObjPtr, moduleExtension);
       }
 
-      public void ScanModules(string rootPath, bool rootOnly = false)
+      public bool ScanModules(string rootPath, bool rootOnly = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerScanModules(ObjectPtr->ObjPtr, rootPath, rootOnly);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerScanModules(ObjectPtr->ObjPtr, rootPath, rootOnly);
       }
 
-      public void UnregisterModule(string moduleId, uint versionId)
+      public bool UnregisterModule(string moduleId, uint versionId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerUnregisterModule(ObjectPtr->ObjPtr, moduleId, versionId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerUnregisterModule(ObjectPtr->ObjPtr, moduleId, versionId);
       }
 
-      public void LoadGroup(string moduleGroup)
+      public bool LoadGroup(string moduleGroup)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerLoadGroup(ObjectPtr->ObjPtr, moduleGroup);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerLoadGroup(ObjectPtr->ObjPtr, moduleGroup);
       }
 
-      public void UnloadGroup(string moduleGroup)
+      public bool UnloadGroup(string moduleGroup)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerUnloadGroup(ObjectPtr->ObjPtr, moduleGroup);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerUnloadGroup(ObjectPtr->ObjPtr, moduleGroup);
       }
 
-      public void LoadExplicit(string moduleId, uint versionId = 0)
+      public bool LoadExplicit(string moduleId, uint versionId = 0)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerLoadExplicit(ObjectPtr->ObjPtr, moduleId, versionId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerLoadExplicit(ObjectPtr->ObjPtr, moduleId, versionId);
       }
 
-      public void UnloadExplicit(string moduleId)
+      public bool UnloadExplicit(string moduleId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerUnloadExplicit(ObjectPtr->ObjPtr, moduleId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerUnloadExplicit(ObjectPtr->ObjPtr, moduleId);
       }
 
-      public void FindModule(string moduleId, uint versionId)
+      public ModuleDefinition FindModule(string moduleId, uint versionId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerFindModule(ObjectPtr->ObjPtr, moduleId, versionId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new ModuleDefinition(InternalUnsafeMethods.ModuleManagerFindModule(ObjectPtr->ObjPtr, moduleId, versionId));
       }
 
-      public void FindModules(bool loadedOnly)
+      public SimObject[] FindModules(bool loadedOnly)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerFindModules(ObjectPtr->ObjPtr, loadedOnly);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerFindModules(ObjectPtr->ObjPtr, loadedOnly).Select(x => new SimObject(x)).ToArray();
       }
 
-      public void FindModuleTypes(string moduleType, bool loadedOnly)
+      public SimObject[] FindModuleTypes(string moduleType, bool loadedOnly)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerFindModuleTypes(ObjectPtr->ObjPtr, moduleType, loadedOnly);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerFindModuleTypes(ObjectPtr->ObjPtr, moduleType, loadedOnly).Select(x => new SimObject(x)).ToArray();
       }
 
-      public void CopyModule(ModuleDefinition sourceModuleDefinition, string targetModuleId, string targetPath, bool useVersionPathing)
+      public string CopyModule(ModuleDefinition sourceModuleDefinition, string targetModuleId, string targetPath, bool useVersionPathing)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerCopyModule(ObjectPtr->ObjPtr, sourceModuleDefinition.ObjectPtr->ObjPtr, targetModuleId, targetPath, useVersionPathing);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerCopyModule(ObjectPtr->ObjPtr, sourceModuleDefinition.ObjectPtr->ObjPtr, targetModuleId, targetPath, useVersionPathing);
       }
 
-      public void SynchronizeDependencies(ModuleDefinition rootModuleDefinition, string targetDependencyFolder)
+      public bool SynchronizeDependencies(ModuleDefinition rootModuleDefinition, string targetDependencyFolder)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerSynchronizeDependencies(ObjectPtr->ObjPtr, rootModuleDefinition.ObjectPtr->ObjPtr, targetDependencyFolder);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerSynchronizeDependencies(ObjectPtr->ObjPtr, rootModuleDefinition.ObjectPtr->ObjPtr, targetDependencyFolder);
       }
 
-      public void IsModuleMergeAvailable()
+      public bool IsModuleMergeAvailable()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerIsModuleMergeAvailable(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerIsModuleMergeAvailable(ObjectPtr->ObjPtr);
       }
 
-      public void CanMergeModules(string mergeSourcePath)
+      public bool CanMergeModules(string mergeSourcePath)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerCanMergeModules(ObjectPtr->ObjPtr, mergeSourcePath);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerCanMergeModules(ObjectPtr->ObjPtr, mergeSourcePath);
       }
 
-      public void MergeModules(string mergeTargetPath, bool removeMergeDefinition, bool registerNewModules)
+      public bool MergeModules(string mergeTargetPath, bool removeMergeDefinition, bool registerNewModules)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ModuleManagerMergeModules(ObjectPtr->ObjPtr, mergeTargetPath, removeMergeDefinition, registerNewModules);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ModuleManagerMergeModules(ObjectPtr->ObjPtr, mergeTargetPath, removeMergeDefinition, registerNewModules);
       }
 
       public void AddListener(SimObject listenerObject)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ModuleManagerAddListener(ObjectPtr->ObjPtr, listenerObject.ObjectPtr->ObjPtr);
       }
 
       public void RemoveListener(SimObject listenerObject)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ModuleManagerRemoveListener(ObjectPtr->ObjPtr, listenerObject.ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

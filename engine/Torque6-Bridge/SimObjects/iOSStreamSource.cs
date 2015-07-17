@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class iOSStreamSource : SimObject
    {
+      
       public iOSStreamSource()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.iOSStreamSourceCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public iOSStreamSource(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public iOSStreamSource(string pName) : base(pName)
       {
       }
 
+      public iOSStreamSource(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public iOSStreamSource(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public iOSStreamSource(SimObject pObj) : base(pObj)
       {
       }
       
@@ -49,5 +54,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

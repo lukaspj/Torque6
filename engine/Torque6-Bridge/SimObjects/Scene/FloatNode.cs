@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class FloatNode : BaseNode
    {
+      
       public FloatNode()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.FloatNodeCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public FloatNode(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public FloatNode(string pName) : base(pName)
       {
       }
 
+      public FloatNode(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public FloatNode(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public FloatNode(SimObject pObj) : base(pObj)
       {
       }
       
@@ -57,12 +62,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.FloatNodeGetUniformName(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.FloatNodeSetUniformName(ObjectPtr->ObjPtr, value);
          }
       }
@@ -70,12 +75,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.FloatNodeGetValue(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.FloatNodeSetValue(ObjectPtr->ObjPtr, value);
          }
       }
@@ -87,5 +92,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

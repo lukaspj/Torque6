@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class RootNode : BaseNode
    {
+      
       public RootNode()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.RootNodeCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public RootNode(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public RootNode(string pName) : base(pName)
       {
       }
 
+      public RootNode(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public RootNode(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public RootNode(SimObject pObj) : base(pObj)
       {
       }
       
@@ -50,5 +55,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

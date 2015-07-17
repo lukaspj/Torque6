@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class SimSet : SimObject
    {
+      
       public SimSet()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimSetCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public SimSet(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public SimSet(string pName) : base(pName)
       {
       }
 
+      public SimSet(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public SimSet(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public SimSet(SimObject pObj) : base(pObj)
       {
       }
       
@@ -88,82 +93,84 @@ namespace Torque6_Bridge.SimObjects
 
       public void ListObjects()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetListObjects(ObjectPtr->ObjPtr);
       }
 
       public void Add(SimObject obj)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetAdd(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
       }
 
       public void Remove(SimObject obj)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetRemove(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
       }
 
       public void DeleteObjects()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetDeleteObjects(ObjectPtr->ObjPtr);
       }
 
       public void Clear()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetClear(ObjectPtr->ObjPtr);
       }
 
       public void CallOnChildren(string method, int argc, string[] argv)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetCallOnChildren(ObjectPtr->ObjPtr, method, argc, argv);
       }
 
       public void ReorderChild(SimObject obj1, SimObject obj2)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetReorderChild(ObjectPtr->ObjPtr, obj1.ObjectPtr->ObjPtr, obj2.ObjectPtr->ObjPtr);
       }
 
-      public void GetCount()
+      public int GetCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimSetGetCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimSetGetCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetObject(int index)
+      public SimObject GetObject(int index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimSetGetObject(ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new SimObject(InternalUnsafeMethods.SimSetGetObject(ObjectPtr->ObjPtr, index));
       }
 
-      public void IsMember(SimObject obj)
+      public bool IsMember(SimObject obj)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimSetIsMember(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimSetIsMember(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
       }
 
-      public void FindObjectByInternalName(string name, bool searchChildren = false)
+      public SimObject FindObjectByInternalName(string name, bool searchChildren = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimSetFindObjectByInternalName(ObjectPtr->ObjPtr, name, searchChildren);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new SimObject(InternalUnsafeMethods.SimSetFindObjectByInternalName(ObjectPtr->ObjPtr, name, searchChildren));
       }
 
       public void BringToFront(SimObject obj)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetBringToFront(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
       }
 
       public void PushToBack(SimObject obj)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimSetPushToBack(ObjectPtr->ObjPtr, obj.ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

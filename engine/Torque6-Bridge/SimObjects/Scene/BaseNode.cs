@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class BaseNode : SimObject
    {
+      
       public BaseNode()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.BaseNodeCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public BaseNode(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public BaseNode(string pName) : base(pName)
       {
       }
 
+      public BaseNode(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public BaseNode(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public BaseNode(SimObject pObj) : base(pObj)
       {
       }
       
@@ -51,14 +56,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point2I outVal;
             InternalUnsafeMethods.BaseNodeGetPosition(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.BaseNodeSetPosition(ObjectPtr->ObjPtr, value);
          }
       }
@@ -70,5 +75,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

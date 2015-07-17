@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class TimeNode : BaseNode
    {
+      
       public TimeNode()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.TimeNodeCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public TimeNode(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public TimeNode(string pName) : base(pName)
       {
       }
 
+      public TimeNode(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public TimeNode(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public TimeNode(SimObject pObj) : base(pObj)
       {
       }
       
@@ -51,12 +56,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.TimeNodeGetMultiplier(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.TimeNodeSetMultiplier(ObjectPtr->ObjPtr, value);
          }
       }
@@ -68,5 +73,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

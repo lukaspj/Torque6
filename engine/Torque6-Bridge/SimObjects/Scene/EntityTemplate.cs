@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class EntityTemplate : SimGroup
    {
+      
       public EntityTemplate()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.EntityTemplateCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public EntityTemplate(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public EntityTemplate(string pName) : base(pName)
       {
       }
 
+      public EntityTemplate(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public EntityTemplate(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public EntityTemplate(SimObject pObj) : base(pObj)
       {
       }
       
@@ -50,5 +55,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

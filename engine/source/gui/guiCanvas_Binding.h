@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(GuiCanvas, GuiControl)
 
 /*! Use the getContent method to get the ID of the control which is being used as the current canvas content.
@@ -469,6 +471,190 @@ extern "C" {
    }
 
    DLL_PUBLIC void Engine_ScreenShot(const char* file, const char* format)
+   {
+#if !defined(TORQUE_OS_IOS) && !defined(TORQUE_OS_ANDROID)
+      // PUAP -Mat no screenshots on iPhone can do it from Xcode
+      FileStream fStream;
+      if (!fStream.open(file, FileStream::Write))
+      {
+         Con::printf("Failed to open file '%s'.", file);
+         return;
+      }
+
+      glReadBuffer(GL_FRONT);
+
+      Point2I extent = Canvas->getExtent();
+      U8 * pixels = new U8[extent.x * extent.y * 4];
+      glReadPixels(0, 0, extent.x, extent.y, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+
+      GBitmap * bitmap = new GBitmap;
+      bitmap->allocateBitmap(U32(extent.x), U32(extent.y));
+
+      // flip the rows
+      for (U32 y = 0; y < (U32)extent.y; y++)
+         dMemcpy(bitmap->getAddress(0, extent.y - y - 1), pixels + y * extent.x * 3, U32(extent.x * 3));
+
+      if (dStrcmp(format, "JPEG") == 0)
+         bitmap->writeJPEG(fStream);
+      else if (dStrcmp(format, "PNG") == 0)
+         bitmap->writePNG(fStream);
+      else
+         bitmap->writePNG(fStream);
+
+      fStream.close();
+      delete[] pixels;
+      delete bitmap;
+#endif
+   }
+}
+
+extern "C"{
+   DLL_PUBLIC GuiCanvas* GuiCanvasCreateInstance()
+   {
+      return new GuiCanvas();
+   }
+
+   DLL_PUBLIC GuiControl* GuiCanvasGetContent(GuiCanvas* canvas)
+   {
+      return canvas->getContentControl();
+   }
+
+   DLL_PUBLIC void GuiCanvasSetContent(GuiCanvas* canvas, GuiControl* ctrl)
+   {
+      canvas->setContentControl(ctrl);
+   }
+
+   DLL_PUBLIC void GuiCanvasPushDialog(GuiCanvas* canvas, GuiControl* ctrl, S32 layer)
+   {
+      canvas->pushDialogControl(ctrl, layer);
+   }
+
+   DLL_PUBLIC void GuiCanvasPopDialog(GuiCanvas* canvas, GuiControl* ctrl)
+   {
+      if (ctrl)
+         canvas->popDialogControl(ctrl);
+      else
+         canvas->popDialogControl();
+   }
+
+   DLL_PUBLIC void GuiCanvasPopLayer(GuiCanvas* canvas, S32 layer)
+   {
+      canvas->popDialogControl(layer);
+   }
+
+   DLL_PUBLIC void GuiCanvasCursorOn(GuiCanvas* canvas)
+   {
+      canvas->setCursorON(true);
+   }
+
+   DLL_PUBLIC void GuiCanvasCursorOff(GuiCanvas* canvas)
+   {
+      canvas->setCursorON(false);
+   }
+
+   DLL_PUBLIC void GuiCanvasSetCursor(GuiCanvas* canvas, GuiCursor *cursor)
+   {
+      canvas->setCursor(cursor);
+   }
+
+   DLL_PUBLIC void GuiCanvasRenderFront(GuiCanvas* canvas, bool enable)
+   {
+      canvas->setRenderFront(enable);
+   }
+
+   DLL_PUBLIC void GuiCanvasShowCursor(GuiCanvas* canvas)
+   {
+      canvas->showCursor(true);
+   }
+
+   DLL_PUBLIC void GuiCanvasHideCursor(GuiCanvas* canvas)
+   {
+      canvas->showCursor(false);
+   }
+
+   DLL_PUBLIC bool GuiCanvasIsCursorOn(GuiCanvas* canvas)
+   {
+      return canvas->isCursorON();
+   }
+
+   DLL_PUBLIC void GuiCanvasSetDoubleClickDelay(GuiCanvas* canvas, S32 delay)
+   {
+      canvas->setDoubleClickTime(delay);
+   }
+
+   DLL_PUBLIC void GuiCanvasSetDoubleClickMoveBuffer(GuiCanvas* canvas, S32 width, S32 height)
+   {
+      canvas->setDoubleClickWidth(width);
+      canvas->setDoubleClickHeight(height);
+   }
+
+   DLL_PUBLIC void GuiCanvasRepaint(GuiCanvas* canvas)
+   {
+      canvas->paint();
+   }
+
+   DLL_PUBLIC void GuiCanvasReset(GuiCanvas* canvas)
+   {
+      canvas->resetUpdateRegions();
+   }
+
+   DLL_PUBLIC void GuiCanvasGetCursorPos(GuiCanvas* canvas, CInterface::Point2IParam *outPos)
+   {
+      *outPos = canvas->getCursorPos();
+   }
+
+   DLL_PUBLIC void GuiCanvasSetCursorPos(GuiCanvas* canvas, CInterface::Point2IParam pos)
+   {
+      canvas->setCursorPos(pos);
+   }
+
+   DLL_PUBLIC GuiControl* GuiCanvasGetMouseControl(GuiCanvas* canvas)
+   {
+      return canvas->getMouseControl();
+   }
+
+   DLL_PUBLIC void GuiCanvasSetBackgroundColor(GuiCanvas* canvas, CInterface::ColorParam color)
+   {
+      canvas->setBackgroundColor(color);
+   }
+
+   DLL_PUBLIC void GuiCanvasGetBackgroundColor(GuiCanvas* canvas, CInterface::ColorParam *outColor)
+   {
+      *outColor = canvas->getBackgroundColor();
+   }
+
+   DLL_PUBLIC void GuiCanvasSetUseBackgroundColor(GuiCanvas* canvas, bool use)
+   {
+      canvas->setUseBackgroundColor(use);
+   }
+
+   DLL_PUBLIC bool GuiCanvasGetUseBackgroundColor(GuiCanvas* canvas)
+   {
+      return canvas->getUseBackgroundColor();
+   }
+
+   DLL_PUBLIC bool Gui_CreateCanvas(const char* title)
+   {
+      AssertISV(!Canvas, "CreateCanvas: canvas has already been instantiated");
+
+      Platform::initWindow(Point2I(MIN_RESOLUTION_X, MIN_RESOLUTION_Y), title);
+
+
+      if (!Video::getResolutionList())
+         return false;
+
+      // create the canvas, and add it to the manager
+      Canvas = new GuiCanvas();
+      Canvas->registerObject("Canvas"); // automatically adds to GuiGroup
+      return true;
+   }
+
+   DLL_PUBLIC void Gui_SetCanvasTitle(const char* windowTitle)
+   {
+      Platform::setWindowTitle(windowTitle);
+   }
+
+   DLL_PUBLIC void Gui_ScreenShot(const char* file, const char* format)
    {
 #if !defined(TORQUE_OS_IOS) && !defined(TORQUE_OS_ANDROID)
       // PUAP -Mat no screenshots on iPhone can do it from Xcode

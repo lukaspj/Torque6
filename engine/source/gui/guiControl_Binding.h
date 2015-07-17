@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(GuiControl, SimGroup)
 
 /*! Sets whether this control can serialize itself to the hard disk
@@ -51,7 +53,7 @@ ConsoleMethodWithDocs(GuiControl, pointInControl, ConsoleBool, 4,4, (int x, int 
 ConsoleMethodWithDocs( GuiControl, addGuiControl, ConsoleVoid, 3, 3, (int controlId))
 {
 
-   GuiControl *ctrl = dynamic_cast<GuiControl *>(Sim::findObject(argv[2]));
+   GuiControl* ctrl = dynamic_cast<GuiControl* >(Sim::findObject(argv[2]));
    if(ctrl)
    {
       object->addObject(ctrl);
@@ -297,7 +299,7 @@ ConsoleMethodWithDocs( GuiControl, getMinExtent, ConsoleString, 2, 2, ())
 ConsoleMethodWithDocs( GuiControl, findHitControl, ConsoleInt, 4, 4, (int x, int y))
 {
    Point2I pos(dAtoi(argv[2]), dAtoi(argv[3]));
-   GuiControl *hit = object->findHitControl(pos);
+   GuiControl* hit = object->findHitControl(pos);
    return hit ? hit->getId() : 0;
 }
 
@@ -309,3 +311,306 @@ ConsoleMethodWithDocs(GuiControl, setFirstResponder, ConsoleVoid, 2, 2, ())
 }
 
 ConsoleMethodGroupEndWithDocs(GuiControl)
+
+extern "C"{
+   DLL_PUBLIC GuiControl* GuiControlCreateInstance()
+   {
+      return new GuiControl();
+   }
+
+   DLL_PUBLIC void GuiControlSetCanSave(GuiControl* ctrl, bool canSave)
+   {
+      ctrl->setCanSave(canSave);
+   }
+
+   DLL_PUBLIC bool GuiControlPointInControl(GuiControl* ctrl, CInterface::Point2IParam point)
+   {
+      return ctrl->pointInControl(point);
+   }
+
+   DLL_PUBLIC void GuiControlAddGuiControl(GuiControl* ctrl, GuiControl* guiCtrl)
+   {
+      ctrl->addObject(guiCtrl);
+   }
+
+   DLL_PUBLIC void GuiControlReorderChild(GuiControl* ctrl, GuiControl* child1, GuiControl* child2)
+   {
+      if (child1 && child2)
+      {
+         ctrl->reOrder(child1, child2);
+      }
+   }
+
+   DLL_PUBLIC GuiControl* GuiControlGetParent(GuiControl* ctrl)
+   {
+      return ctrl->getParent();
+   }
+
+   DLL_PUBLIC void GuiControlSetValue(GuiControl* ctrl, const char* value)
+   {
+      ctrl->setScriptValue(value);
+   }
+
+   DLL_PUBLIC char* GuiControlGetValue(GuiControl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getScriptValue());
+   }
+
+   DLL_PUBLIC void GuiControlSetActive(GuiControl* ctrl, bool isActive)
+   {
+      ctrl->setActive(isActive);
+   }
+
+   DLL_PUBLIC bool GuiControlIsActive(GuiControl* ctrl)
+   {
+      return ctrl->isActive();
+   }
+
+   DLL_PUBLIC void GuiControlSetVisible(GuiControl* ctrl, bool isVisible)
+   {
+      ctrl->setVisible(isVisible);
+   }
+
+   DLL_PUBLIC bool GuiControlIsVisible(GuiControl* ctrl)
+   {
+      return ctrl->isVisible();
+   }
+
+   DLL_PUBLIC void GuiControlMakeFirstResponder(GuiControl* ctrl, bool isFirst)
+   {
+      ctrl->makeFirstResponder(isFirst);
+   }
+
+   DLL_PUBLIC bool GuiControlIsAwake(GuiControl* ctrl)
+   {
+      return ctrl->isAwake();
+   }
+
+   DLL_PUBLIC void GuiControlSetProfile(GuiControl* ctrl, GuiControlProfile *profile)
+   {
+      if (profile)
+         ctrl->setControlProfile(profile);
+   }
+
+   DLL_PUBLIC void GuiControlResize(GuiControl* ctrl, CInterface::Point2IParam newPos, CInterface::Point2IParam newExt)
+   {
+      ctrl->resize(newPos, newExt);
+   }
+
+   DLL_PUBLIC void GuiControlGetPosition(GuiControl* ctrl, CInterface::Point2IParam *outPos)
+   {
+      *outPos = ctrl->getPosition();
+   }
+
+   DLL_PUBLIC void GuiControlGetCenter(GuiControl* ctrl, CInterface::Point2IParam *outPos)
+   {
+      const Point2I pos = ctrl->getPosition();
+      const Point2I ext = ctrl->getExtent();
+      *outPos = Point2I(pos.x + ext.x / 2, pos.y + ext.y / 2);
+   }
+
+   DLL_PUBLIC void GuiControlSetCenter(GuiControl* ctrl, CInterface::Point2IParam newCenter)
+   {
+      const Point2I ext = ctrl->getExtent();
+      Point2I newpos(newCenter.x - ext.x / 2, newCenter.y - ext.y / 2);
+      ctrl->setPosition(newpos);
+   }
+
+   DLL_PUBLIC void GuiControlGetGlobalCenter(GuiControl* ctrl, CInterface::Point2IParam *outPos)
+   {
+      const Point2I tl(0, 0);
+      Point2I pos = ctrl->localToGlobalCoord(tl);
+      const Point2I ext = ctrl->getExtent();
+      *outPos = Point2I(pos.x + ext.x / 2, pos.y + ext.y / 2);
+   }
+
+   DLL_PUBLIC void GuiControlGetGlobalPosition(GuiControl* ctrl, CInterface::Point2IParam *outPos)
+   {
+      const Point2I pos(0, 0);
+      *outPos = ctrl->localToGlobalCoord(pos);
+   }
+
+   DLL_PUBLIC void GuiControlSetPositionGlobal(GuiControl* ctrl, CInterface::Point2IParam pos)
+   {
+      Point2I lPosOffset = ctrl->globalToLocalCoord(pos);
+      lPosOffset.x += ctrl->mBounds.point.x;
+      lPosOffset.y += ctrl->mBounds.point.y;
+
+      ctrl->mBounds.set(lPosOffset, ctrl->mBounds.extent);
+   }
+
+   DLL_PUBLIC void GuiControlSetPosition(GuiControl* ctrl, CInterface::Point2IParam pos)
+   {
+      ctrl->mBounds.set(pos, ctrl->mBounds.extent);
+   }
+
+   DLL_PUBLIC void GuiControlGetExtent(GuiControl* ctrl, CInterface::Point2IParam* outExt)
+   {
+      *outExt = ctrl->getExtent();
+   }
+
+   DLL_PUBLIC void GuiControlSetExtent(GuiControl* ctrl, CInterface::Point2IParam ext)
+   {
+      ctrl->setExtent(ext);
+   }
+
+   DLL_PUBLIC void GuiControlGetMinExtent(GuiControl* ctrl, CInterface::Point2IParam* outExt)
+   {
+      *outExt = ctrl->getMinExtent();
+   }
+
+   DLL_PUBLIC void GuiControlSetMinExtent(GuiControl* ctrl, CInterface::Point2IParam ext)
+   {
+      ctrl->setMinExtent(ext);
+   }
+
+   DLL_PUBLIC GuiControl* GuiControlFindHitControl(GuiControl* ctrl, CInterface::Point2IParam pos)
+   {
+      return ctrl->findHitControl(pos);
+   }
+
+   DLL_PUBLIC void GuiControlSetFirstResponder(GuiControl* ctrl)
+   {
+      ctrl->setFirstResponder();
+   }
+
+   DLL_PUBLIC bool GuiControlGetIsContainer(GuiControl* ctrl)
+   {
+      return ctrl->mIsContainer;
+   }
+
+   DLL_PUBLIC void GuiControlSetIsContainer(GuiControl* ctrl, bool container)
+   {
+      ctrl->mIsContainer = container;
+   }
+
+   DLL_PUBLIC GuiControlProfile* GuiControlGetProfile(GuiControl* ctrl)
+   {
+      return ctrl->mProfile;
+   }
+
+   DLL_PUBLIC S32 GuiControlGetHorizSizing(GuiControl* ctrl)
+   {
+      return ctrl->getHorizSizing();
+   }
+
+   DLL_PUBLIC void GuiControlSetHorizSizing(GuiControl* ctrl, S32 sizing)
+   {
+      ctrl->setHorizSizing(sizing);
+   }
+
+   DLL_PUBLIC S32 GuiControlGetVertSizing(GuiControl* ctrl)
+   {
+      return ctrl->getVertSizing();
+   }
+
+   DLL_PUBLIC void GuiControlSetVertSizing(GuiControl* ctrl, S32 sizing)
+   {
+      ctrl->setVertSizing(sizing);
+   }
+
+   DLL_PUBLIC bool GuiControlGetCanSave(GuiControl* ctrl)
+   {
+      return ctrl->getCanSave();
+   }
+
+   DLL_PUBLIC bool GuiControlGetVisible(GuiControl* ctrl)
+   {
+      return ctrl->isVisible();
+   }
+
+   DLL_PUBLIC char* GuiControlGetVariable(GuiControl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getConsoleVariable());
+   }
+
+   DLL_PUBLIC void GuiControlSetVariable(GuiControl* ctrl, const char* variable)
+   {
+      ctrl->setConsoleVariable(variable);
+   }
+
+   DLL_PUBLIC char* GuiControlGetCommand(GuiControl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getConsoleCommand());
+   }
+
+   DLL_PUBLIC void GuiControlSetCommand(GuiControl* ctrl, const char* command)
+   {
+      ctrl->setConsoleCommand(command);
+   }
+
+   DLL_PUBLIC char* GuiControlGetAltCommand(GuiControl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getAltConsoleCommand());
+   }
+
+   DLL_PUBLIC void GuiControlSetAltCommand(GuiControl* ctrl, const char* command)
+   {
+      ctrl->setAltConsoleCommand(command);
+   }
+
+   DLL_PUBLIC char* GuiControlGetAccelerator(GuiControl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getAcceleratorKey());
+   }
+
+   DLL_PUBLIC void GuiControlSetAccelerator(GuiControl* ctrl, const char* acceleratorKey)
+   {
+      ctrl->setAcceleratorKey(acceleratorKey);
+   }
+
+   DLL_PUBLIC bool GuiControlGetActive(GuiControl* ctrl)
+   {
+      return ctrl->isActive();
+   }
+
+   DLL_PUBLIC GuiControlProfile* GuiControlGetTooltipProfile(GuiControl* ctrl)
+   {
+      return ctrl->mTooltipProfile;
+   }
+
+   DLL_PUBLIC void GuiControlSetTooltipProfile(GuiControl* ctrl, GuiControlProfile* profile)
+   {
+      ctrl->mTooltipProfile = profile;
+   }
+
+   DLL_PUBLIC char* GuiControlGetTooltip(GuiControl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getTooltip());
+   }
+
+   DLL_PUBLIC void GuiControlSetTooltip(GuiControl* ctrl, const char* tooltip)
+   {
+      ctrl->setTooltip(tooltip);
+   }
+
+   DLL_PUBLIC S32 GuiControlGetTooltipWidth(GuiControl* ctrl)
+   {
+      return ctrl->mTooltipWidth;
+   }
+
+   DLL_PUBLIC void GuiControlSetTooltipWidth(GuiControl* ctrl, S32 width)
+   {
+      ctrl->mTooltipWidth = width;
+   }
+
+   DLL_PUBLIC S32 GuiControlGetHoverTime(GuiControl* ctrl)
+   {
+      return ctrl->mTipHoverTime;
+   }
+
+   DLL_PUBLIC void GuiControlSetHoverTime(GuiControl* ctrl, S32 time)
+   {
+      ctrl->mTipHoverTime = time;
+   }
+
+   DLL_PUBLIC char* GuiControlGetLangTableMod(GuiControl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->mLangTableName);
+   }
+
+   DLL_PUBLIC void GuiControlSetLangTableMod(GuiControl* ctrl, const char* langTableName)
+   {
+      ctrl->mLangTableName = langTableName;
+   }
+}

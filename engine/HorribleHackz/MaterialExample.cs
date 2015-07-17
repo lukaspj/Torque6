@@ -30,10 +30,9 @@ namespace HorribleHackz
 
          for (int i = 0; i < 25; i++)
          {
-            new MeshComponent(spheres.FindComponent("TestSphere" + i)).SetUniformVec4("sphereMetalVal",
-               new Point4F(metal, 0, 0, 0));
-            new MeshComponent(spheres.FindComponent("TestSphere" + i)).SetUniformVec4("sphereRoughVal",
-               new Point4F(rough, 0, 0, 0));
+            MeshComponent mesh = spheres.FindComponent("TestSphere" + i).As<MeshComponent>();
+            mesh.SetUniformVec4("sphereMetalVal", new Point4F(metal, 0, 0, 0));
+            mesh.SetUniformVec4("sphereRoughVal", new Point4F(rough, 0, 0, 0));
 
             metal += 0.25f;
             if (metal > 1.0)

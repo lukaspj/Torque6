@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class Vec3Node : BaseNode
    {
+      
       public Vec3Node()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.Vec3NodeCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public Vec3Node(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public Vec3Node(string pName) : base(pName)
       {
       }
 
+      public Vec3Node(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public Vec3Node(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public Vec3Node(SimObject pObj) : base(pObj)
       {
       }
       
@@ -57,12 +62,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.Vec3NodeGetUniformName(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.Vec3NodeSetUniformName(ObjectPtr->ObjPtr, value);
          }
       }
@@ -70,14 +75,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point3F outVal;
             InternalUnsafeMethods.Vec3NodeGetValue(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.Vec3NodeSetValue(ObjectPtr->ObjPtr, value);
          }
       }
@@ -89,5 +94,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

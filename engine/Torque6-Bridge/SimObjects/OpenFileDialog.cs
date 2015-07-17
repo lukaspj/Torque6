@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class OpenFileDialog : FileDialog
    {
+      
       public OpenFileDialog()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.OpenFileDialogCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public OpenFileDialog(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public OpenFileDialog(string pName) : base(pName)
       {
       }
 
+      public OpenFileDialog(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public OpenFileDialog(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public OpenFileDialog(SimObject pObj) : base(pObj)
       {
       }
       
@@ -57,12 +62,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.OpenFileDialogGetMustExist(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.OpenFileDialogSetMustExist(ObjectPtr->ObjPtr, value);
          }
       }
@@ -70,12 +75,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.OpenFileDialogGetMultipleFiles(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.OpenFileDialogSetMultipleFiles(ObjectPtr->ObjPtr, value);
          }
       }
@@ -87,5 +92,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

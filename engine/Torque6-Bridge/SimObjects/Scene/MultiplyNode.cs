@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class MultiplyNode : BaseNode
    {
+      
       public MultiplyNode()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.MultiplyNodeCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public MultiplyNode(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public MultiplyNode(string pName) : base(pName)
       {
       }
 
+      public MultiplyNode(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public MultiplyNode(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public MultiplyNode(SimObject pObj) : base(pObj)
       {
       }
       
@@ -57,12 +62,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.MultiplyNodeGetInputASrc(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.MultiplyNodeSetInputASrc(ObjectPtr->ObjPtr, value);
          }
       }
@@ -70,12 +75,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.MultiplyNodeGetInputBSrc(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.MultiplyNodeSetInputBSrc(ObjectPtr->ObjPtr, value);
          }
       }
@@ -87,5 +92,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

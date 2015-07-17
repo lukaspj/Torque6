@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class SceneEntity : NetObject
    {
+      
       public SceneEntity()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SceneEntityCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public SceneEntity(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public SceneEntity(string pName) : base(pName)
       {
       }
 
+      public SceneEntity(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public SceneEntity(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public SceneEntity(SimObject pObj) : base(pObj)
       {
       }
       
@@ -75,12 +80,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.SceneEntityGetTemplate(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SceneEntitySetTemplate(ObjectPtr->ObjPtr, value);
          }
       }
@@ -88,14 +93,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point3F outVal;
             InternalUnsafeMethods.SceneEntityGetPosition(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SceneEntitySetPosition(ObjectPtr->ObjPtr, value);
          }
       }
@@ -103,14 +108,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point3F outVal;
             InternalUnsafeMethods.SceneEntityGetRotation(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SceneEntitySetRotation(ObjectPtr->ObjPtr, value);
          }
       }
@@ -118,14 +123,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point3F outVal;
             InternalUnsafeMethods.SceneEntityGetScale(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SceneEntitySetScale(ObjectPtr->ObjPtr, value);
          }
       }
@@ -134,18 +139,20 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       #region Methods
 
-      public IntPtr FindComponent(string name)
+      public SimObject FindComponent(string name)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SceneEntityFindComponent(ObjectPtr->ObjPtr, name);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new SimObject(InternalUnsafeMethods.SceneEntityFindComponent(ObjectPtr->ObjPtr, name));
       }
 
-      public IntPtr FindComponentByType(string name)
+      public SimObject FindComponentByType(string name)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SceneEntityFindComponentByType(ObjectPtr->ObjPtr, name);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new SimObject(InternalUnsafeMethods.SceneEntityFindComponentByType(ObjectPtr->ObjPtr, name));
       }
       
       #endregion
+
+      
    }
 }

@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class AnimationComponent : BaseComponent
    {
+      
       public AnimationComponent()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.AnimationComponentCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public AnimationComponent(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public AnimationComponent(string pName) : base(pName)
       {
       }
 
+      public AnimationComponent(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public AnimationComponent(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public AnimationComponent(SimObject pObj) : base(pObj)
       {
       }
       
@@ -63,12 +68,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AnimationComponentGetSpeed(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AnimationComponentSetSpeed(ObjectPtr->ObjPtr, value);
          }
       }
@@ -76,12 +81,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return new MeshComponent(InternalUnsafeMethods.AnimationComponentGetTarget(ObjectPtr->ObjPtr));
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AnimationComponentSetTarget(ObjectPtr->ObjPtr, value.ObjectPtr->ObjPtr);
          }
       }
@@ -89,12 +94,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AnimationComponentGetMeshAsset(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AnimationComponentSetMeshAsset(ObjectPtr->ObjPtr, value);
          }
       }
@@ -106,5 +111,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

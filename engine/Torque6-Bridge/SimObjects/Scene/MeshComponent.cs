@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class MeshComponent : BaseComponent
    {
+      
       public MeshComponent()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.MeshComponentCreateInstance());
@@ -17,18 +18,22 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public MeshComponent(IntPtr pObjPtr) : base(pObjPtr)
+      public MeshComponent(string pName) : base(pName)
       {
       }
 
-      public MeshComponent(string pName) : base(pName)
+      public MeshComponent(IntPtr pObjPtr) : base(pObjPtr)
       {
       }
 
       public MeshComponent(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
       {
       }
-      
+
+      public MeshComponent(SimObject pObj) : base(pObj)
+      {
+      }
+
       #region UnsafeNativeMethods
 
       new internal struct InternalUnsafeMethods
@@ -51,12 +56,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.MeshComponentGetMeshAsset(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.MeshComponentSetMeshAsset(ObjectPtr->ObjPtr, value);
          }
       }
@@ -68,5 +73,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

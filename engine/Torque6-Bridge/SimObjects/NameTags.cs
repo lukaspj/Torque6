@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class NameTags : SimSet
    {
+      
       public NameTags()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.NameTagsCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public NameTags(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public NameTags(string pName) : base(pName)
       {
       }
 
+      public NameTags(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public NameTags(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public NameTags(SimObject pObj) : base(pObj)
       {
       }
       
@@ -80,72 +85,74 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void CreateTag(string newTagName)
+      public int CreateTag(string newTagName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsCreateTag(ObjectPtr->ObjPtr, newTagName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsCreateTag(ObjectPtr->ObjPtr, newTagName);
       }
 
-      public void RenameTag(int tagId, string newTagName)
+      public int RenameTag(int tagId, string newTagName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsRenameTag(ObjectPtr->ObjPtr, tagId, newTagName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsRenameTag(ObjectPtr->ObjPtr, tagId, newTagName);
       }
 
-      public void DeleteTag(int tagId)
+      public int DeleteTag(int tagId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsDeleteTag(ObjectPtr->ObjPtr, tagId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsDeleteTag(ObjectPtr->ObjPtr, tagId);
       }
 
-      public void GetTagCount()
+      public int GetTagCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsGetTagCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsGetTagCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetTagName(int tagId)
+      public string GetTagName(int tagId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsGetTagName(ObjectPtr->ObjPtr, tagId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsGetTagName(ObjectPtr->ObjPtr, tagId);
       }
 
-      public void GetTagId(string tagName)
+      public int GetTagId(string tagName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsGetTagId(ObjectPtr->ObjPtr, tagName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsGetTagId(ObjectPtr->ObjPtr, tagName);
       }
 
-      public void GetAllTags()
+      public string GetAllTags()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsGetAllTags(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsGetAllTags(ObjectPtr->ObjPtr);
       }
 
-      public void Tag(int objectId, int tagIdsC, int[] tagIdsV)
+      public bool Tag(int objectId, int tagIdsC, int[] tagIdsV)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsTag(ObjectPtr->ObjPtr, objectId, tagIdsC, tagIdsV);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsTag(ObjectPtr->ObjPtr, objectId, tagIdsC, tagIdsV);
       }
 
-      public void Untag(int objectId, int tagIdsC, int[] tagIdsV)
+      public bool Untag(int objectId, int tagIdsC, int[] tagIdsV)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsUntag(ObjectPtr->ObjPtr, objectId, tagIdsC, tagIdsV);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsUntag(ObjectPtr->ObjPtr, objectId, tagIdsC, tagIdsV);
       }
 
-      public void HasTag(int objectId, int tagIdsC, int[] tagIdsV)
+      public bool HasTag(int objectId, int tagIdsC, int[] tagIdsV)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsHasTag(ObjectPtr->ObjPtr, objectId, tagIdsC, tagIdsV);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsHasTag(ObjectPtr->ObjPtr, objectId, tagIdsC, tagIdsV);
       }
 
-      public void QueryTags(int tagIdsC, int[] tagIdsV, bool excluded = false)
+      public string QueryTags(int tagIdsC, int[] tagIdsV, bool excluded = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NameTagsQueryTags(ObjectPtr->ObjPtr, tagIdsC, tagIdsV, excluded);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NameTagsQueryTags(ObjectPtr->ObjPtr, tagIdsC, tagIdsV, excluded);
       }
       
       #endregion
+
+      
    }
 }

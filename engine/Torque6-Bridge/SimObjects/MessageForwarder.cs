@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class MessageForwarder : ScriptMsgListener
    {
+      
       public MessageForwarder()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.MessageForwarderCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public MessageForwarder(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public MessageForwarder(string pName) : base(pName)
       {
       }
 
+      public MessageForwarder(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public MessageForwarder(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public MessageForwarder(SimObject pObj) : base(pObj)
       {
       }
       
@@ -51,12 +56,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.MessageForwarderGetToQueue(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.MessageForwarderSetToQueue(ObjectPtr->ObjPtr, value);
          }
       }
@@ -68,5 +73,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

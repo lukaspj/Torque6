@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(GuiSpriteCtrl, GuiControl)
 
 /*! Gets whether the control is in static or dynamic (animated) mode.
@@ -185,3 +187,141 @@ ConsoleMethodWithDocs(GuiSpriteCtrl, getNamedImageFrame, ConsoleString, 2, 2, ()
 }
 
 ConsoleMethodGroupEndWithDocs(GuiSpriteCtrl)
+
+extern "C"{
+   DLL_PUBLIC GuiSpriteCtrl* GuiSpriteCtrlCreateInstance()
+   {
+      return new GuiSpriteCtrl();
+   }
+
+   DLL_PUBLIC bool GuiSpriteCtrlIsStaticFrameProvider(GuiSpriteCtrl* ctrl)
+   {
+      return ctrl->isStaticFrameProvider();
+   }
+
+   DLL_PUBLIC bool GuiSpriteCtrlIsUsingNamedImageFrame(GuiSpriteCtrl* ctrl)
+   {
+      return ctrl->isUsingNamedImageFrame();
+   }
+
+   DLL_PUBLIC bool GuiSpriteCtrlSetImage(GuiSpriteCtrl* ctrl, const char* imageAssetId)
+   {
+      return ctrl->setImage(imageAssetId);
+   }
+
+   DLL_PUBLIC char* GuiSpriteCtrlGetImage(GuiSpriteCtrl* ctrl)
+   {
+      // Are we in static mode?
+      if (!ctrl->isStaticFrameProvider())
+      {
+         // No, so warn.
+         Con::warnf("GuiSpriteCtrl::getImage() - Method invalid, not in static mode.");
+         return NULL;
+      }
+
+      // Get image.
+      return CInterface::GetMarshallableString(ctrl->getImage());
+   }
+
+   DLL_PUBLIC bool GuiSpriteCtrlSetImageFrame(GuiSpriteCtrl* ctrl, S32 imageFrame)
+   {
+      // Are we in static mode?
+      if (!ctrl->isStaticFrameProvider())
+      {
+         // No, so warn.
+         Con::warnf("GuiSpriteCtrl::getImage() - Method invalid, not in static mode.");
+         return NULL;
+      }
+
+      // Get image.
+      return ctrl->setImageFrame(imageFrame);
+   }
+
+   DLL_PUBLIC S32 GuiSpriteCtrlGetImageFrame(GuiSpriteCtrl* ctrl)
+   {
+      // Are we in static mode?
+      if (!ctrl->isStaticFrameProvider())
+      {
+         // No, so warn.
+         Con::warnf("GuiSpriteCtrl::getImage() - Method invalid, not in static mode.");
+         return NULL;
+      }
+
+      // Are we using a named image frame?
+      if (ctrl->isUsingNamedImageFrame())
+      {
+         // Yes, so warn.
+         Con::warnf("GuiSpriteCtrl::getImageFrame() - Method invalid, using a named image frame.");
+         return -1;
+      }
+
+      // Get image frame.
+      return ctrl->getImageFrame();
+   }
+
+   DLL_PUBLIC bool GuiSpriteCtrlSetNamedImageFrame(GuiSpriteCtrl* ctrl, const char* frame)
+   {
+      // Are we in static mode?
+      if (!ctrl->isStaticFrameProvider())
+      {
+         // No, so warn.
+         Con::warnf("GuiSpriteCtrl::getImage() - Method invalid, not in static mode.");
+         return NULL;
+      }
+
+      // Get image frame.
+      return ctrl->setNamedImageFrame(frame);
+   }
+
+   DLL_PUBLIC char* GuiSpriteCtrlGetNamedImageFrame(GuiSpriteCtrl* ctrl)
+   {
+      // Are we in static mode?
+      if (!ctrl->isStaticFrameProvider())
+      {
+         // No, so warn.
+         Con::warnf("GuiSpriteCtrl::getImage() - Method invalid, not in static mode.");
+         return NULL;
+      }
+
+      // Are we using a named image frame?
+      if (!ctrl->isUsingNamedImageFrame())
+      {
+         // No, so warn.
+         Con::warnf("GuiSpriteCtrl::getNamedImageFrame() - Method invalid, not using a named image frame.");
+         return NULL;
+      }
+
+      // Get image frame.
+      return CInterface::GetMarshallableString(ctrl->getNamedImageFrame());
+   }
+
+   DLL_PUBLIC S32 GuiSpriteCtrlGetFrame(GuiSpriteCtrl* ctrl)
+   {
+      return GuiSpriteCtrlGetImageFrame(ctrl);
+   }
+
+   DLL_PUBLIC void GuiSpriteCtrlSetFrame(GuiSpriteCtrl* ctrl, S32 frame)
+   {
+      GuiSpriteCtrlSetImageFrame(ctrl, frame);
+   }
+
+   DLL_PUBLIC char* GuiSpriteCtrlGetNamedFrame(GuiSpriteCtrl* ctrl)
+   {
+      return GuiSpriteCtrlGetNamedImageFrame(ctrl);
+   }
+
+   DLL_PUBLIC void GuiSpriteCtrlSetNamedFrame(GuiSpriteCtrl* ctrl, const char* frame)
+   {
+      GuiSpriteCtrlSetNamedFrame(ctrl, frame);
+   }
+
+   DLL_PUBLIC char* GuiSpriteCtrlGetAnimation(GuiSpriteCtrl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getAnimation());
+   }
+
+   DLL_PUBLIC void GuiSpriteCtrlSetAnimation(GuiSpriteCtrl* ctrl, const char* animationAssetid)
+   {
+      ctrl->setAnimation(animationAssetid);
+   }
+}

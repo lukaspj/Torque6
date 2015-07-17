@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class AssetQuery : SimObject
    {
+      
       public AssetQuery()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.AssetQueryCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public AssetQuery(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public AssetQuery(string pName) : base(pName)
       {
       }
 
+      public AssetQuery(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public AssetQuery(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public AssetQuery(SimObject pObj) : base(pObj)
       {
       }
       
@@ -61,28 +66,30 @@ namespace Torque6_Bridge.SimObjects
 
       public void Clear()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetQueryClear(ObjectPtr->ObjPtr);
       }
 
       public void Set(AssetQuery setAssetQuery)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetQuerySet(ObjectPtr->ObjPtr, setAssetQuery.ObjectPtr->ObjPtr);
       }
 
-      public void GetCount()
+      public int GetCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetQueryGetCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetQueryGetCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetAsset(int resultIndex)
+      public string GetAsset(int resultIndex)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetQueryGetAsset(ObjectPtr->ObjPtr, resultIndex);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetQueryGetAsset(ObjectPtr->ObjPtr, resultIndex);
       }
       
       #endregion
+
+      
    }
 }

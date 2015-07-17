@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class ForwardNode : RootNode
    {
+      
       public ForwardNode()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ForwardNodeCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public ForwardNode(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ForwardNode(string pName) : base(pName)
       {
       }
 
+      public ForwardNode(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ForwardNode(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ForwardNode(SimObject pObj) : base(pObj)
       {
       }
       
@@ -57,12 +62,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ForwardNodeGetColorSrc(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ForwardNodeSetColorSrc(ObjectPtr->ObjPtr, value);
          }
       }
@@ -70,12 +75,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ForwardNodeGetLit(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ForwardNodeSetLit(ObjectPtr->ObjPtr, value);
          }
       }
@@ -87,5 +92,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

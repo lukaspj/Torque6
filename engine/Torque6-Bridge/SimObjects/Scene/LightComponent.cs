@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class LightComponent : BaseComponent
    {
+      
       public LightComponent()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.LightComponentCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public LightComponent(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public LightComponent(string pName) : base(pName)
       {
       }
 
+      public LightComponent(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public LightComponent(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public LightComponent(SimObject pObj) : base(pObj)
       {
       }
       
@@ -63,12 +68,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.LightComponentGetRadius(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.LightComponentSetRadius(ObjectPtr->ObjPtr, value);
          }
       }
@@ -76,14 +81,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.LightComponentGetColor(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.LightComponentSetColor(ObjectPtr->ObjPtr, value);
          }
       }
@@ -91,12 +96,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.LightComponentGetAttenuation(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.LightComponentSetAttenuation(ObjectPtr->ObjPtr, value);
          }
       }
@@ -108,5 +113,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

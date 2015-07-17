@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ImageAsset : AssetBase
    {
+      
       public ImageAsset()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ImageAssetCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ImageAsset(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ImageAsset(string pName) : base(pName)
       {
       }
 
+      public ImageAsset(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ImageAsset(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ImageAsset(SimObject pObj) : base(pObj)
       {
       }
       
@@ -183,12 +188,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetImageFile(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetImageFile(ObjectPtr->ObjPtr, value);
          }
       }
@@ -196,12 +201,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetForce16Bit(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetForce16Bit(ObjectPtr->ObjPtr, value);
          }
       }
@@ -209,12 +214,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetFilterMode(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetFilterMode(ObjectPtr->ObjPtr, value);
          }
       }
@@ -222,12 +227,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetExplicitMode(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetExplicitMode(ObjectPtr->ObjPtr, value);
          }
       }
@@ -235,12 +240,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetCellRowOrder(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetCellRowOrder(ObjectPtr->ObjPtr, value);
          }
       }
@@ -248,12 +253,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetCellOffsetX(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetCellOffsetX(ObjectPtr->ObjPtr, value);
          }
       }
@@ -261,12 +266,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetCellOffsetY(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetCellOffsetY(ObjectPtr->ObjPtr, value);
          }
       }
@@ -274,12 +279,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetCellStrideX(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetCellStrideX(ObjectPtr->ObjPtr, value);
          }
       }
@@ -287,12 +292,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetCellStrideY(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetCellStrideY(ObjectPtr->ObjPtr, value);
          }
       }
@@ -300,12 +305,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetCellCountX(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetCellCountX(ObjectPtr->ObjPtr, value);
          }
       }
@@ -313,12 +318,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetCellCountY(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetCellCountY(ObjectPtr->ObjPtr, value);
          }
       }
@@ -326,12 +331,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetCellWidth(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetCellWidth(ObjectPtr->ObjPtr, value);
          }
       }
@@ -339,12 +344,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ImageAssetGetCellHeight(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ImageAssetSetCellHeight(ObjectPtr->ObjPtr, value);
          }
       }
@@ -353,126 +358,128 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void GetImageWidth()
+      public int GetImageWidth()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetImageWidth(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetImageWidth(ObjectPtr->ObjPtr);
       }
 
-      public void GetImageHeight()
+      public int GetImageHeight()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetImageHeight(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetImageHeight(ObjectPtr->ObjPtr);
       }
 
-      public void GetImageSize()
+      public string GetImageSize()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetImageSize(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetImageSize(ObjectPtr->ObjPtr);
       }
 
-      public void GetIsImagePOT()
+      public bool GetIsImagePOT()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetIsImagePOT(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetIsImagePOT(ObjectPtr->ObjPtr);
       }
 
-      public void GetFrameCount()
+      public int GetFrameCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetFrameCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetFrameCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetFrameSize(int frame)
+      public string GetFrameSize(int frame)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetFrameSize(ObjectPtr->ObjPtr, frame);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetFrameSize(ObjectPtr->ObjPtr, frame);
       }
 
-      public void ClearExplicitCells()
+      public bool ClearExplicitCells()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetClearExplicitCells(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetClearExplicitCells(ObjectPtr->ObjPtr);
       }
 
-      public void AddExplicitCell(int cellOffsetX, int cellOffsetY, int cellWidth, int cellHeight, string cellName)
+      public bool AddExplicitCell(int cellOffsetX, int cellOffsetY, int cellWidth, int cellHeight, string cellName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetAddExplicitCell(ObjectPtr->ObjPtr, cellOffsetX, cellOffsetY, cellWidth, cellHeight, cellName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetAddExplicitCell(ObjectPtr->ObjPtr, cellOffsetX, cellOffsetY, cellWidth, cellHeight, cellName);
       }
 
-      public void InsertExplicitCell(int cellIndex, int cellOffsetX, int cellOffsetY, int cellWidth, int cellHeight, string cellName)
+      public bool InsertExplicitCell(int cellIndex, int cellOffsetX, int cellOffsetY, int cellWidth, int cellHeight, string cellName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetInsertExplicitCell(ObjectPtr->ObjPtr, cellIndex, cellOffsetX, cellOffsetY, cellWidth, cellHeight, cellName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetInsertExplicitCell(ObjectPtr->ObjPtr, cellIndex, cellOffsetX, cellOffsetY, cellWidth, cellHeight, cellName);
       }
 
-      public void RemoveExplicitCell(int cellIdx)
+      public bool RemoveExplicitCell(int cellIdx)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetRemoveExplicitCell(ObjectPtr->ObjPtr, cellIdx);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetRemoveExplicitCell(ObjectPtr->ObjPtr, cellIdx);
       }
 
-      public void SetExplicitCell(int cellIndex, int cellOffsetX, int cellOffsetY, int cellWidth, int cellHeight, string cellName)
+      public bool SetExplicitCell(int cellIndex, int cellOffsetX, int cellOffsetY, int cellWidth, int cellHeight, string cellName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetSetExplicitCell(ObjectPtr->ObjPtr, cellIndex, cellOffsetX, cellOffsetY, cellWidth, cellHeight, cellName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetSetExplicitCell(ObjectPtr->ObjPtr, cellIndex, cellOffsetX, cellOffsetY, cellWidth, cellHeight, cellName);
       }
 
-      public void GetExplicitCellCount()
+      public int GetExplicitCellCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetExplicitCellCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetExplicitCellCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetExplicitCellOffset(int cellIdx)
+      public string GetExplicitCellOffset(int cellIdx)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetExplicitCellOffset(ObjectPtr->ObjPtr, cellIdx);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetExplicitCellOffset(ObjectPtr->ObjPtr, cellIdx);
       }
 
-      public void GetExplicitCellOffsetByName(string cellName)
+      public string GetExplicitCellOffsetByName(string cellName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetExplicitCellOffsetByName(ObjectPtr->ObjPtr, cellName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetExplicitCellOffsetByName(ObjectPtr->ObjPtr, cellName);
       }
 
-      public void GetExplicitCellWidth(int cellIdx)
+      public int GetExplicitCellWidth(int cellIdx)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetExplicitCellWidth(ObjectPtr->ObjPtr, cellIdx);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetExplicitCellWidth(ObjectPtr->ObjPtr, cellIdx);
       }
 
-      public void GetExplicitCellWidthByName(string cellName)
+      public int GetExplicitCellWidthByName(string cellName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetExplicitCellWidthByName(ObjectPtr->ObjPtr, cellName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetExplicitCellWidthByName(ObjectPtr->ObjPtr, cellName);
       }
 
-      public void GetExplicitCellHeight(int cellIdx)
+      public int GetExplicitCellHeight(int cellIdx)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetExplicitCellHeight(ObjectPtr->ObjPtr, cellIdx);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetExplicitCellHeight(ObjectPtr->ObjPtr, cellIdx);
       }
 
-      public void GetExplicitCellHeightByName(string cellName)
+      public int GetExplicitCellHeightByName(string cellName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetExplicitCellHeightByName(ObjectPtr->ObjPtr, cellName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetExplicitCellHeightByName(ObjectPtr->ObjPtr, cellName);
       }
 
-      public void GetExplicitCellName(int cellIdx)
+      public string GetExplicitCellName(int cellIdx)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetExplicitCellName(ObjectPtr->ObjPtr, cellIdx);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetExplicitCellName(ObjectPtr->ObjPtr, cellIdx);
       }
 
-      public void GetExplicitCellIndex(string cellName)
+      public int GetExplicitCellIndex(string cellName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ImageAssetGetExplicitCellIndex(ObjectPtr->ObjPtr, cellName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ImageAssetGetExplicitCellIndex(ObjectPtr->ObjPtr, cellName);
       }
       
       #endregion
+
+      
    }
 }

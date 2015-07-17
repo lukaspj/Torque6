@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class HTTPObject : TCPObject
    {
+      
       public HTTPObject()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.HTTPObjectCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public HTTPObject(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public HTTPObject(string pName) : base(pName)
       {
       }
 
+      public HTTPObject(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public HTTPObject(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public HTTPObject(SimObject pObj) : base(pObj)
       {
       }
       
@@ -55,16 +60,18 @@ namespace Torque6_Bridge.SimObjects
 
       public void Get(string address, string requestURI, string query = null)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.HTTPObjectGet(ObjectPtr->ObjPtr, address, requestURI, query);
       }
 
       public void Post(string address, string requestURI, string query, string post)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.HTTPObjectPost(ObjectPtr->ObjPtr, address, requestURI, query, post);
       }
       
       #endregion
+
+      
    }
 }

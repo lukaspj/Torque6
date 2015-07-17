@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class TextComponent : BaseComponent
    {
+      
       public TextComponent()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.TextComponentCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public TextComponent(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public TextComponent(string pName) : base(pName)
       {
       }
 
+      public TextComponent(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public TextComponent(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public TextComponent(SimObject pObj) : base(pObj)
       {
       }
       
@@ -50,5 +55,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

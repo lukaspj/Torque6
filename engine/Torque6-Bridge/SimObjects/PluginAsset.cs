@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class PluginAsset : AssetBase
    {
+      
       public PluginAsset()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.PluginAssetCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public PluginAsset(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public PluginAsset(string pName) : base(pName)
       {
       }
 
+      public PluginAsset(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public PluginAsset(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public PluginAsset(SimObject pObj) : base(pObj)
       {
       }
       
@@ -51,12 +56,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.PluginAssetGetPluginFile(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.PluginAssetSetPluginFile(ObjectPtr->ObjPtr, value);
          }
       }
@@ -68,5 +73,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

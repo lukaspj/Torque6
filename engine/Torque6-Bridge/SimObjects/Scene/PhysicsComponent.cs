@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class PhysicsComponent : BaseComponent
    {
+      
       public PhysicsComponent()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.PhysicsComponentCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public PhysicsComponent(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public PhysicsComponent(string pName) : base(pName)
       {
       }
 
+      public PhysicsComponent(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public PhysicsComponent(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public PhysicsComponent(SimObject pObj) : base(pObj)
       {
       }
       
@@ -66,12 +71,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.PhysicsComponentGetOnCollideFunction(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.PhysicsComponentSetOnCollideFunction(ObjectPtr->ObjPtr, value);
          }
       }
@@ -79,12 +84,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.PhysicsComponentGetCollisionType(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.PhysicsComponentSetCollisionType(ObjectPtr->ObjPtr, value);
          }
       }
@@ -92,12 +97,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.PhysicsComponentGetStatic(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.PhysicsComponentSetStatic(ObjectPtr->ObjPtr, value);
          }
       }
@@ -108,10 +113,12 @@ namespace Torque6_Bridge.SimObjects.Scene
 
       public void SetLinearVelocity(Point3F vel)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.PhysicsComponentSetLinearVelocity(ObjectPtr->ObjPtr, vel);
       }
       
       #endregion
+
+      
    }
 }

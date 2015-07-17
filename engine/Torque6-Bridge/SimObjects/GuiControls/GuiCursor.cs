@@ -4,28 +4,33 @@ using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
 using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.GuiCursor
+namespace Torque6_Bridge.SimObjects.GuiControls
 {
-   public unsafe class SimObjects.GuiControls : SimObject
+   public unsafe class GuiCursor : SimObject
    {
-      public SimObjects.GuiControls()
+      
+      public GuiCursor()
       {
-         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimObjects.GuiControlsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiCursorCreateInstance());
       }
 
-      public SimObjects.GuiControls(uint pId) : base(pId)
-      {
-      }
-
-      public SimObjects.GuiControls(IntPtr pObjPtr) : base(pObjPtr)
+      public GuiCursor(uint pId) : base(pId)
       {
       }
 
-      public SimObjects.GuiControls(string pName) : base(pName)
+      public GuiCursor(string pName) : base(pName)
       {
       }
 
-      public SimObjects.GuiControls(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      public GuiCursor(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiCursor(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiCursor(SimObject pObj) : base(pObj)
       {
       }
       
@@ -63,14 +68,14 @@ namespace Torque6_Bridge.GuiCursor
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point2I outVal;
             InternalUnsafeMethods.GuiCursorGetHotSpot(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiCursorSetHotSpot(ObjectPtr->ObjPtr, value);
          }
       }
@@ -78,14 +83,14 @@ namespace Torque6_Bridge.GuiCursor
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Point2F outVal;
             InternalUnsafeMethods.GuiCursorGetRenderOffset(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiCursorSetRenderOffset(ObjectPtr->ObjPtr, value);
          }
       }
@@ -93,12 +98,12 @@ namespace Torque6_Bridge.GuiCursor
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiCursorGetBitmapName(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiCursorSetBitmapName(ObjectPtr->ObjPtr, value);
          }
       }
@@ -110,5 +115,7 @@ namespace Torque6_Bridge.GuiCursor
       
       
       #endregion
+
+      
    }
 }

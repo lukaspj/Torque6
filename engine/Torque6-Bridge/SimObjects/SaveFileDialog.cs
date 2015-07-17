@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class SaveFileDialog : FileDialog
    {
+      
       public SaveFileDialog()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SaveFileDialogCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public SaveFileDialog(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public SaveFileDialog(string pName) : base(pName)
       {
       }
 
+      public SaveFileDialog(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public SaveFileDialog(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public SaveFileDialog(SimObject pObj) : base(pObj)
       {
       }
       
@@ -51,12 +56,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.SaveFileDialogGetOverwritePrompt(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SaveFileDialogSetOverwritePrompt(ObjectPtr->ObjPtr, value);
          }
       }
@@ -68,5 +73,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

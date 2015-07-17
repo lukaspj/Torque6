@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class TCPObject : SimObject
    {
+      
       public TCPObject()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.TCPObjectCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public TCPObject(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public TCPObject(string pName) : base(pName)
       {
       }
 
+      public TCPObject(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public TCPObject(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public TCPObject(SimObject pObj) : base(pObj)
       {
       }
       
@@ -67,40 +72,42 @@ namespace Torque6_Bridge.SimObjects
 
       public void Send(int argsC, string[] argsV)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.TCPObjectSend(ObjectPtr->ObjPtr, argsC, argsV);
       }
 
       public void Listen(int port)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.TCPObjectListen(ObjectPtr->ObjPtr, port);
       }
 
       public void Connect(string address)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.TCPObjectConnect(ObjectPtr->ObjPtr, address);
       }
 
       public void OpenAndConnect(string address)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.TCPObjectOpenAndConnect(ObjectPtr->ObjPtr, address);
       }
 
       public void Disconnect()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.TCPObjectDisconnect(ObjectPtr->ObjPtr);
       }
 
-      public void URLEncodeString(string data)
+      public string URLEncodeString(string data)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.TCPObjectURLEncodeString(ObjectPtr->ObjPtr, data);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.TCPObjectURLEncodeString(ObjectPtr->ObjPtr, data);
       }
       
       #endregion
+
+      
    }
 }

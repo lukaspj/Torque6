@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class DeferredNode : RootNode
    {
+      
       public DeferredNode()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.DeferredNodeCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public DeferredNode(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public DeferredNode(string pName) : base(pName)
       {
       }
 
+      public DeferredNode(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public DeferredNode(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public DeferredNode(SimObject pObj) : base(pObj)
       {
       }
       
@@ -75,12 +80,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.DeferredNodeGetColorSrc(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.DeferredNodeSetColorSrc(ObjectPtr->ObjPtr, value);
          }
       }
@@ -88,12 +93,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.DeferredNodeGetNormalSrc(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.DeferredNodeSetNormalSrc(ObjectPtr->ObjPtr, value);
          }
       }
@@ -101,12 +106,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.DeferredNodeGetMetallicSrc(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.DeferredNodeSetMetallicSrc(ObjectPtr->ObjPtr, value);
          }
       }
@@ -114,12 +119,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.DeferredNodeGetRoughnessSrc(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.DeferredNodeSetRoughnessSrc(ObjectPtr->ObjPtr, value);
          }
       }
@@ -127,12 +132,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.DeferredNodeGetWorldPosOffsetSrc(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.DeferredNodeSetWorldPosOffsetSrc(ObjectPtr->ObjPtr, value);
          }
       }
@@ -144,5 +149,7 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       
       #endregion
+
+      
    }
 }

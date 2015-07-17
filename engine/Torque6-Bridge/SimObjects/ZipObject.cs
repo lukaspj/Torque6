@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ZipObject : SimObject
    {
+      
       public ZipObject()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ZipObjectCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ZipObject(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ZipObject(string pName) : base(pName)
       {
       }
 
+      public ZipObject(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ZipObject(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ZipObject(SimObject pObj) : base(pObj)
       {
       }
       
@@ -77,66 +82,68 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void OpenArchive(string fileName, int mode = 0)
+      public bool OpenArchive(string fileName, int mode = 0)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ZipObjectOpenArchive(ObjectPtr->ObjPtr, fileName, mode);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ZipObjectOpenArchive(ObjectPtr->ObjPtr, fileName, mode);
       }
 
       public void CloseArchive()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ZipObjectCloseArchive(ObjectPtr->ObjPtr);
       }
 
-      public void OpenFileForRead(string fileName)
+      public StreamObject OpenFileForRead(string fileName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ZipObjectOpenFileForRead(ObjectPtr->ObjPtr, fileName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new StreamObject(InternalUnsafeMethods.ZipObjectOpenFileForRead(ObjectPtr->ObjPtr, fileName));
       }
 
-      public void OpenFileForWrite(string fileName)
+      public StreamObject OpenFileForWrite(string fileName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ZipObjectOpenFileForWrite(ObjectPtr->ObjPtr, fileName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new StreamObject(InternalUnsafeMethods.ZipObjectOpenFileForWrite(ObjectPtr->ObjPtr, fileName));
       }
 
       public void CloseFile(StreamObject stream)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.ZipObjectCloseFile(ObjectPtr->ObjPtr, stream.ObjectPtr->ObjPtr);
       }
 
-      public void AddFile(string fileName, string pathInZip, bool replace = true)
+      public bool AddFile(string fileName, string pathInZip, bool replace = true)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ZipObjectAddFile(ObjectPtr->ObjPtr, fileName, pathInZip, replace);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ZipObjectAddFile(ObjectPtr->ObjPtr, fileName, pathInZip, replace);
       }
 
-      public void ExtractFile(string fileName, string pathInZip)
+      public bool ExtractFile(string fileName, string pathInZip)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ZipObjectExtractFile(ObjectPtr->ObjPtr, fileName, pathInZip);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ZipObjectExtractFile(ObjectPtr->ObjPtr, fileName, pathInZip);
       }
 
-      public void DeleteFile(string pathInZip)
+      public bool DeleteFile(string pathInZip)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ZipObjectDeleteFile(ObjectPtr->ObjPtr, pathInZip);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ZipObjectDeleteFile(ObjectPtr->ObjPtr, pathInZip);
       }
 
-      public void GetFileEntryCount()
+      public int GetFileEntryCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ZipObjectGetFileEntryCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ZipObjectGetFileEntryCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetFileEntry(int index)
+      public string GetFileEntry(int index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.ZipObjectGetFileEntry(ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.ZipObjectGetFileEntry(ObjectPtr->ObjPtr, index);
       }
       
       #endregion
+
+      
    }
 }

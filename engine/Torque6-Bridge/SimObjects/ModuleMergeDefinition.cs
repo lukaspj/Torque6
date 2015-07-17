@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ModuleMergeDefinition : SimObject
    {
+      
       public ModuleMergeDefinition()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ModuleMergeDefinitionCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ModuleMergeDefinition(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ModuleMergeDefinition(string pName) : base(pName)
       {
       }
 
+      public ModuleMergeDefinition(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ModuleMergeDefinition(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ModuleMergeDefinition(SimObject pObj) : base(pObj)
       {
       }
       
@@ -51,12 +56,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.ModuleMergeDefinitionGetMergePath(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.ModuleMergeDefinitionSetMergePath(ObjectPtr->ObjPtr, value);
          }
       }
@@ -68,5 +73,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

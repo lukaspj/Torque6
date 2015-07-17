@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class Taml : SimObject
    {
+      
       public Taml()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.TamlCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public Taml(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public Taml(string pName) : base(pName)
       {
       }
 
+      public Taml(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public Taml(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public Taml(SimObject pObj) : base(pObj)
       {
       }
       
@@ -105,12 +110,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.TamlGetFormat(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.TamlSetFormat(ObjectPtr->ObjPtr, value);
          }
       }
@@ -118,12 +123,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.TamlGetJSONStrict(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.TamlSetJSONStrict(ObjectPtr->ObjPtr, value);
          }
       }
@@ -131,12 +136,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.TamlGetBinaryCompression(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.TamlSetBinaryCompression(ObjectPtr->ObjPtr, value);
          }
       }
@@ -144,12 +149,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.TamlGetWriteDefaults(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.TamlSetWriteDefaults(ObjectPtr->ObjPtr, value);
          }
       }
@@ -157,12 +162,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.TamlGetProgenitorUpdate(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.TamlSetProgenitorUpdate(ObjectPtr->ObjPtr, value);
          }
       }
@@ -170,12 +175,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.TamlGetAutoFormat(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.TamlSetAutoFormat(ObjectPtr->ObjPtr, value);
          }
       }
@@ -183,12 +188,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.TamlGetAutoFormatXmlExtension(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.TamlSetAutoFormatXmlExtension(ObjectPtr->ObjPtr, value);
          }
       }
@@ -196,12 +201,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.TamlGetAutoFormatBinaryExtension(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.TamlSetAutoFormatBinaryExtension(ObjectPtr->ObjPtr, value);
          }
       }
@@ -209,12 +214,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.TamlGetAutoFormatJSONExtension(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.TamlSetAutoFormatJSONExtension(ObjectPtr->ObjPtr, value);
          }
       }
@@ -223,18 +228,20 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void Write(SimObject simObj, string filename)
+      public bool Write(SimObject simObj, string filename)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.TamlWrite(ObjectPtr->ObjPtr, simObj.ObjectPtr->ObjPtr, filename);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.TamlWrite(ObjectPtr->ObjPtr, simObj.ObjectPtr->ObjPtr, filename);
       }
 
-      public void Read(string filename)
+      public SimObject Read(string filename)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.TamlRead(ObjectPtr->ObjPtr, filename);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new SimObject(InternalUnsafeMethods.TamlRead(ObjectPtr->ObjPtr, filename));
       }
       
       #endregion
+
+      
    }
 }

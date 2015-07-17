@@ -442,12 +442,16 @@
     <ClInclude Include="..\..\engine\source\gui\guiBitmapCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiBubbleTextCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiCanvas.h" />
+    <ClInclude Include="..\source\gui\guiBitmapCtrl_Binding.h" />
     <ClInclude Include="..\source\gui\guiCanvas_Binding.h" />
     <ClInclude Include="..\..\engine\source\gui\guiColorPicker.h" />
     <ClInclude Include="..\..\engine\source\gui\guiConsole.h" />
     <ClInclude Include="..\..\engine\source\gui\guiConsoleEditCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiConsoleTextCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiControl.h" />
+    <ClInclude Include="..\source\gui\guiColorPicker_Binding.h" />
+    <ClInclude Include="..\source\gui\guiConsoleEditCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiConsoleTextCtrl_Binding.h" />
     <ClInclude Include="..\source\gui\guiControl_Binding.h" />
     <ClInclude Include="..\..\engine\source\gui\guiCurveCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiDefaultControlRender.h" />

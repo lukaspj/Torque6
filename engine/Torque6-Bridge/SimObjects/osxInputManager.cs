@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class osxInputManager : InputManager
    {
+      
       public osxInputManager()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.osxInputManagerCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public osxInputManager(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public osxInputManager(string pName) : base(pName)
       {
       }
 
+      public osxInputManager(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public osxInputManager(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public osxInputManager(SimObject pObj) : base(pObj)
       {
       }
       
@@ -49,5 +54,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

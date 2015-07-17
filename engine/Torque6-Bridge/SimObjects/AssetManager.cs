@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class AssetManager : SimObject
    {
+      
       public AssetManager()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.AssetManagerCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public AssetManager(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public AssetManager(string pName) : base(pName)
       {
       }
 
+      public AssetManager(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public AssetManager(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public AssetManager(SimObject pObj) : base(pObj)
       {
       }
       
@@ -204,12 +209,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AssetManagerGetEchoInfo(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AssetManagerSetEchoInfo(ObjectPtr->ObjPtr, value);
          }
       }
@@ -217,12 +222,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AssetManagerGetIgnoreAutoUnload(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AssetManagerSetIgnoreAutoUnload(ObjectPtr->ObjPtr, value);
          }
       }
@@ -231,300 +236,302 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void CompileReferencedAssets(ModuleDefinition moduleDefinition)
+      public bool CompileReferencedAssets(ModuleDefinition moduleDefinition)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerCompileReferencedAssets(ObjectPtr->ObjPtr, moduleDefinition.ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerCompileReferencedAssets(ObjectPtr->ObjPtr, moduleDefinition.ObjectPtr->ObjPtr);
       }
 
-      public void AddModuleDeclaredAssets(ModuleDefinition moduleDefinition)
+      public bool AddModuleDeclaredAssets(ModuleDefinition moduleDefinition)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerAddModuleDeclaredAssets(ObjectPtr->ObjPtr, moduleDefinition.ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerAddModuleDeclaredAssets(ObjectPtr->ObjPtr, moduleDefinition.ObjectPtr->ObjPtr);
       }
 
-      public void AddDeclaredAsset(ModuleDefinition moduleDefinition, string assetFilePath)
+      public bool AddDeclaredAsset(ModuleDefinition moduleDefinition, string assetFilePath)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerAddDeclaredAsset(ObjectPtr->ObjPtr, moduleDefinition.ObjectPtr->ObjPtr, assetFilePath);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerAddDeclaredAsset(ObjectPtr->ObjPtr, moduleDefinition.ObjectPtr->ObjPtr, assetFilePath);
       }
 
-      public void AddPrivateAsset(AssetBase assetObject)
+      public string AddPrivateAsset(AssetBase assetObject)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerAddPrivateAsset(ObjectPtr->ObjPtr, assetObject.ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerAddPrivateAsset(ObjectPtr->ObjPtr, assetObject.ObjectPtr->ObjPtr);
       }
 
-      public void RemoveDeclaredAssets(ModuleDefinition moduleDefinition)
+      public bool RemoveDeclaredAssets(ModuleDefinition moduleDefinition)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerRemoveDeclaredAssets(ObjectPtr->ObjPtr, moduleDefinition.ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerRemoveDeclaredAssets(ObjectPtr->ObjPtr, moduleDefinition.ObjectPtr->ObjPtr);
       }
 
-      public void RemoveDeclaredAsset(string assetId)
+      public bool RemoveDeclaredAsset(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerRemoveDeclaredAsset(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerRemoveDeclaredAsset(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void GetAssetName(string assetId)
+      public string GetAssetName(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetAssetName(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetAssetName(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void GetAssetDescription(string assetId)
+      public string GetAssetDescription(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetAssetDescription(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetAssetDescription(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void GetAssetCategory(string assetId)
+      public string GetAssetCategory(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetAssetCategory(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetAssetCategory(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void GetAssetType(string assetId)
+      public string GetAssetType(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetAssetType(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetAssetType(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void GetAssetFilePath(string assetId)
+      public string GetAssetFilePath(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetAssetFilePath(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetAssetFilePath(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void GetAssetPath(string assetId)
+      public string GetAssetPath(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetAssetPath(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetAssetPath(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void GetAssetModule(string assetId)
+      public ModuleDefinition GetAssetModule(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetAssetModule(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new ModuleDefinition(InternalUnsafeMethods.AssetManagerGetAssetModule(ObjectPtr->ObjPtr, assetId));
       }
 
-      public void IsAssetInternal(string assetId)
+      public bool IsAssetInternal(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerIsAssetInternal(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerIsAssetInternal(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void IsAssetPrivate(string assetId)
+      public bool IsAssetPrivate(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerIsAssetPrivate(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerIsAssetPrivate(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void IsAssetAutoUnload(string assetId)
+      public bool IsAssetAutoUnload(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerIsAssetAutoUnload(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerIsAssetAutoUnload(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void IsAssetLoaded(string assetId)
+      public bool IsAssetLoaded(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerIsAssetLoaded(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerIsAssetLoaded(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void IsDeclaredAsset(string assetId)
+      public bool IsDeclaredAsset(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerIsDeclaredAsset(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerIsDeclaredAsset(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void IsReferencedAsset(string assetId)
+      public bool IsReferencedAsset(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerIsReferencedAsset(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerIsReferencedAsset(ObjectPtr->ObjPtr, assetId);
       }
 
-      public void RenameDeclaredAsset(string assetIdFrom, string assetIdTo)
+      public bool RenameDeclaredAsset(string assetIdFrom, string assetIdTo)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerRenameDeclaredAsset(ObjectPtr->ObjPtr, assetIdFrom, assetIdTo);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerRenameDeclaredAsset(ObjectPtr->ObjPtr, assetIdFrom, assetIdTo);
       }
 
-      public void RenameReferencedAsset(string assetIdFrom, string assetIdTo)
+      public bool RenameReferencedAsset(string assetIdFrom, string assetIdTo)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerRenameReferencedAsset(ObjectPtr->ObjPtr, assetIdFrom, assetIdTo);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerRenameReferencedAsset(ObjectPtr->ObjPtr, assetIdFrom, assetIdTo);
       }
 
-      public void AcquireAsset(string assetId, bool asPrivate = false)
+      public string AcquireAsset(string assetId, bool asPrivate = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerAcquireAsset(ObjectPtr->ObjPtr, assetId, asPrivate);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerAcquireAsset(ObjectPtr->ObjPtr, assetId, asPrivate);
       }
 
-      public void ReleaseAsset(string assetId)
+      public bool ReleaseAsset(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerReleaseAsset(ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerReleaseAsset(ObjectPtr->ObjPtr, assetId);
       }
 
       public void PurgeAssets()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerPurgeAssets(ObjectPtr->ObjPtr);
       }
 
-      public void DeleteAsset(string assetId, bool deleteLooseFiles, bool deleteDependencies)
+      public bool DeleteAsset(string assetId, bool deleteLooseFiles, bool deleteDependencies)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerDeleteAsset(ObjectPtr->ObjPtr, assetId, deleteLooseFiles, deleteDependencies);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerDeleteAsset(ObjectPtr->ObjPtr, assetId, deleteLooseFiles, deleteDependencies);
       }
 
       public void RefreshAsset(string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerRefreshAsset(ObjectPtr->ObjPtr, assetId);
       }
 
       public void RefreshAllAssets(bool includeUnloaded = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerRefreshAllAssets(ObjectPtr->ObjPtr, includeUnloaded);
       }
 
-      public void SaveAssetTags()
+      public bool SaveAssetTags()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerSaveAssetTags(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerSaveAssetTags(ObjectPtr->ObjPtr);
       }
 
-      public void RestoreAssetTags()
+      public bool RestoreAssetTags()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerRestoreAssetTags(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerRestoreAssetTags(ObjectPtr->ObjPtr);
       }
 
-      public void GetAssetTags()
+      public AssetTagsManifest GetAssetTags()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetAssetTags(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new AssetTagsManifest(InternalUnsafeMethods.AssetManagerGetAssetTags(ObjectPtr->ObjPtr));
       }
 
-      public void FindAllAssets(AssetQuery assetQuery, bool ignoreInternal = true, bool ignorePrivate = true)
+      public int FindAllAssets(AssetQuery assetQuery, bool ignoreInternal = true, bool ignorePrivate = true)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindAllAssets(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, ignoreInternal, ignorePrivate);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindAllAssets(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, ignoreInternal, ignorePrivate);
       }
 
-      public void FindAssetName(AssetQuery assetQuery, string assetName, bool partialName = false)
+      public int FindAssetName(AssetQuery assetQuery, string assetName, bool partialName = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindAssetName(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetName, partialName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindAssetName(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetName, partialName);
       }
 
-      public void FindAssetCategory(AssetQuery assetQuery, string assetName, bool assetQueryAsSource = false)
+      public int FindAssetCategory(AssetQuery assetQuery, string assetName, bool assetQueryAsSource = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindAssetCategory(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetName, assetQueryAsSource);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindAssetCategory(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetName, assetQueryAsSource);
       }
 
-      public void FindAssetAutoUnload(AssetQuery assetQuery, bool assetAutoUnload, bool assetQueryAsSource = false)
+      public int FindAssetAutoUnload(AssetQuery assetQuery, bool assetAutoUnload, bool assetQueryAsSource = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindAssetAutoUnload(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetAutoUnload, assetQueryAsSource);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindAssetAutoUnload(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetAutoUnload, assetQueryAsSource);
       }
 
-      public void FindAssetInternal(AssetQuery assetQuery, bool assetInternal, bool assetQueryAsSource = false)
+      public int FindAssetInternal(AssetQuery assetQuery, bool assetInternal, bool assetQueryAsSource = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindAssetInternal(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetInternal, assetQueryAsSource);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindAssetInternal(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetInternal, assetQueryAsSource);
       }
 
-      public void FindAssetPrivate(AssetQuery assetQuery, bool assetPrivate, bool assetQueryAsSource = false)
+      public int FindAssetPrivate(AssetQuery assetQuery, bool assetPrivate, bool assetQueryAsSource = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindAssetPrivate(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetPrivate, assetQueryAsSource);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindAssetPrivate(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetPrivate, assetQueryAsSource);
       }
 
-      public void FindAssetType(AssetQuery assetQuery, string assetType, bool assetQueryAsSource = false)
+      public int FindAssetType(AssetQuery assetQuery, string assetType, bool assetQueryAsSource = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindAssetType(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetType, assetQueryAsSource);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindAssetType(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetType, assetQueryAsSource);
       }
 
-      public void FindAssetDependsOn(AssetQuery assetQuery, string assetId)
+      public int FindAssetDependsOn(AssetQuery assetQuery, string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindAssetDependsOn(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindAssetDependsOn(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetId);
       }
 
-      public void FindAssetIsDependedOn(AssetQuery assetQuery, string assetId)
+      public int FindAssetIsDependedOn(AssetQuery assetQuery, string assetId)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindAssetIsDependedOn(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetId);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindAssetIsDependedOn(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetId);
       }
 
-      public void FindInvalidAssetReferences(AssetQuery assetQuery)
+      public int FindInvalidAssetReferences(AssetQuery assetQuery)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindInvalidAssetReferences(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindInvalidAssetReferences(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr);
       }
 
-      public void FindTaggedAssets(AssetQuery assetQuery, string assetTagNames, bool assetQueryAsSource = false)
+      public int FindTaggedAssets(AssetQuery assetQuery, string assetTagNames, bool assetQueryAsSource = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindTaggedAssets(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetTagNames, assetQueryAsSource);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindTaggedAssets(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetTagNames, assetQueryAsSource);
       }
 
-      public void FindAssetLooseFile(AssetQuery assetQuery, string assetLooseFile, bool assetQueryAsSource = false)
+      public int FindAssetLooseFile(AssetQuery assetQuery, string assetLooseFile, bool assetQueryAsSource = false)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerFindAssetLooseFile(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetLooseFile, assetQueryAsSource);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerFindAssetLooseFile(ObjectPtr->ObjPtr, assetQuery.ObjectPtr->ObjPtr, assetLooseFile, assetQueryAsSource);
       }
 
-      public void GetDeclaredAssetCount()
+      public bool GetDeclaredAssetCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetDeclaredAssetCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetDeclaredAssetCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetReferencedAssetCount()
+      public bool GetReferencedAssetCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetReferencedAssetCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetReferencedAssetCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetLoadedInternalAssetCount()
+      public bool GetLoadedInternalAssetCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetLoadedInternalAssetCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetLoadedInternalAssetCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetMaxLoadedInternalAssetCount()
+      public bool GetMaxLoadedInternalAssetCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetMaxLoadedInternalAssetCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetMaxLoadedInternalAssetCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetLoadedExternalAssetCount()
+      public bool GetLoadedExternalAssetCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetLoadedExternalAssetCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetLoadedExternalAssetCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetMaxLoadedExternalAssetCount()
+      public bool GetMaxLoadedExternalAssetCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.AssetManagerGetMaxLoadedExternalAssetCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.AssetManagerGetMaxLoadedExternalAssetCount(ObjectPtr->ObjPtr);
       }
 
       public void DumpDeclaredAssets()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.AssetManagerDumpDeclaredAssets(ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

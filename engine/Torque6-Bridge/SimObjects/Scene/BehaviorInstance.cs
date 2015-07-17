@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class BehaviorInstance : SimObject
    {
+      
       public BehaviorInstance()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.BehaviorInstanceCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public BehaviorInstance(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public BehaviorInstance(string pName) : base(pName)
       {
       }
 
+      public BehaviorInstance(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public BehaviorInstance(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public BehaviorInstance(SimObject pObj) : base(pObj)
       {
       }
       
@@ -60,12 +65,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return new BehaviorTemplate(InternalUnsafeMethods.BehaviorInstanceGetTemplate(ObjectPtr->ObjPtr));
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.BehaviorInstanceSetTemplate(ObjectPtr->ObjPtr, value.ObjectPtr->ObjPtr);
          }
       }
@@ -73,12 +78,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return new BehaviorComponent(InternalUnsafeMethods.BehaviorInstanceGetOwner(ObjectPtr->ObjPtr));
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.BehaviorInstanceSetOwner(ObjectPtr->ObjPtr, value.ObjectPtr->ObjPtr);
          }
       }
@@ -87,12 +92,14 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       #region Methods
 
-      public void GetTemplateName()
+      public string GetTemplateName()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.BehaviorInstanceGetTemplateName(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.BehaviorInstanceGetTemplateName(ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

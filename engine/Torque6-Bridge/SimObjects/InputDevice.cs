@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class InputDevice : SimObject
    {
+      
       public InputDevice()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.InputDeviceCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public InputDevice(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public InputDevice(string pName) : base(pName)
       {
       }
 
+      public InputDevice(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public InputDevice(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public InputDevice(SimObject pObj) : base(pObj)
       {
       }
       
@@ -50,5 +55,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

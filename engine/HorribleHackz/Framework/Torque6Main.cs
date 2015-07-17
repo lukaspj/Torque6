@@ -95,7 +95,7 @@ namespace HorribleHackz.Framework
          string[] strings = null;
          if (argv != IntPtr.Zero)
             strings = CustomMarshalling.IntPtrToStringArray(argv, argc);
-         string strRes = EngineCallbacks.CallScriptMethod(objectWrapper.Name, objectWrapper, _name, strings, out result);
+         string strRes = EngineCallbacks.CallScriptMethod(objectWrapper.GetName(), objectWrapper, _name, strings, out result);
          if (!result)
             strRes = EngineCallbacks.CallScriptMethod(_className, objectWrapper, _name, strings, out result);
          return strRes;

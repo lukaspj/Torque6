@@ -1932,6 +1932,18 @@
     <ClInclude Include="..\source\console\console_Binding.h">
       <Filter>engine\source\console</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\gui\guiBitmapCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiColorPicker_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiConsoleEditCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiConsoleTextCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\engine\source\2d\assets\ImageAsset.cc">

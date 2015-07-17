@@ -20,6 +20,8 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+#include "c-interface/c-interface.h"
+
 ConsoleMethodGroupBeginWithDocs(GuiImageButtonCtrl, GuiButtonCtrl)
 
 /*! Sets the asset Id the button \up\ state.
@@ -72,3 +74,55 @@ ConsoleMethodWithDocs( GuiImageButtonCtrl, setActive, ConsoleVoid, 3, 3, (imageA
 }
 
 ConsoleMethodGroupEndWithDocs(GuiImageButtonCtrl)
+
+extern "C"{
+   DLL_PUBLIC GuiImageButtonCtrl* GuiImageButtonCtrlCreateInstance()
+   {
+      return new GuiImageButtonCtrl();
+   }
+
+   DLL_PUBLIC void GuiImageButtonCtrlSetNormalImage(GuiImageButtonCtrl* ctrl, const char* imageAssetId)
+   {
+      ctrl->setNormalImage(imageAssetId);
+   }
+
+   DLL_PUBLIC void GuiImageButtonCtrlSetHoverImage(GuiImageButtonCtrl* ctrl, const char* imageAssetId)
+   {
+      ctrl->setHoverImage(imageAssetId);
+   }
+
+   DLL_PUBLIC void GuiImageButtonCtrlSetDownImage(GuiImageButtonCtrl* ctrl, const char* imageAssetId)
+   {
+      ctrl->setDownImage(imageAssetId);
+   }
+
+   DLL_PUBLIC void GuiImageButtonCtrlSetInactiveImage(GuiImageButtonCtrl* ctrl, const char* imageAssetId)
+   {
+      ctrl->setInactiveImage(imageAssetId);
+   }
+
+   DLL_PUBLIC void GuiImageButtonCtrlSetActive(GuiImageButtonCtrl* ctrl, bool active)
+   {
+      ctrl->setActive(active);
+   }
+
+   DLL_PUBLIC char* GuiImageButtonCtrlGetNormalImage(GuiImageButtonCtrl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getNormalImage());
+   }
+
+   DLL_PUBLIC char* GuiImageButtonCtrlGetHoverImage(GuiImageButtonCtrl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getHoverImage());
+   }
+
+   DLL_PUBLIC char* GuiImageButtonCtrlGetDownImage(GuiImageButtonCtrl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getDownImage());
+   }
+
+   DLL_PUBLIC char* GuiImageButtonCtrlGetInactiveImage(GuiImageButtonCtrl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getInactiveImage());
+   }
+}

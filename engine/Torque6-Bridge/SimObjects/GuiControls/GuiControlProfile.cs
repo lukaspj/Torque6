@@ -4,28 +4,33 @@ using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
 using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.GuiControlProfile
+namespace Torque6_Bridge.SimObjects.GuiControls
 {
-   public unsafe class SimObjects.GuiControls : SimObject
+   public unsafe class GuiControlProfile : SimObject
    {
-      public SimObjects.GuiControls()
+      
+      public GuiControlProfile()
       {
-         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimObjects.GuiControlsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiControlProfileCreateInstance());
       }
 
-      public SimObjects.GuiControls(uint pId) : base(pId)
-      {
-      }
-
-      public SimObjects.GuiControls(IntPtr pObjPtr) : base(pObjPtr)
+      public GuiControlProfile(uint pId) : base(pId)
       {
       }
 
-      public SimObjects.GuiControls(string pName) : base(pName)
+      public GuiControlProfile(string pName) : base(pName)
       {
       }
 
-      public SimObjects.GuiControls(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      public GuiControlProfile(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiControlProfile(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiControlProfile(SimObject pObj) : base(pObj)
       {
       }
       
@@ -261,12 +266,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetTab(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetTab(ObjectPtr->ObjPtr, value);
          }
       }
@@ -274,12 +279,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetCanKeyFocus(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetCanKeyFocus(ObjectPtr->ObjPtr, value);
          }
       }
@@ -287,12 +292,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetMouseOverSelected(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetMouseOverSelected(ObjectPtr->ObjPtr, value);
          }
       }
@@ -300,12 +305,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetModal(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetModal(ObjectPtr->ObjPtr, value);
          }
       }
@@ -313,12 +318,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetOpaque(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetOpaque(ObjectPtr->ObjPtr, value);
          }
       }
@@ -326,14 +331,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFillColor(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFillColor(ObjectPtr->ObjPtr, value);
          }
       }
@@ -341,14 +346,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFillColorHL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFillColorHL(ObjectPtr->ObjPtr, value);
          }
       }
@@ -356,14 +361,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFillColorNA(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFillColorNA(ObjectPtr->ObjPtr, value);
          }
       }
@@ -371,12 +376,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetBorder(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetBorder(ObjectPtr->ObjPtr, value);
          }
       }
@@ -384,12 +389,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetBorderThickness(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetBorderThickness(ObjectPtr->ObjPtr, value);
          }
       }
@@ -397,14 +402,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetBorderColor(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetBorderColor(ObjectPtr->ObjPtr, value);
          }
       }
@@ -412,14 +417,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetBorderColorHL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetBorderColorHL(ObjectPtr->ObjPtr, value);
          }
       }
@@ -427,14 +432,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetBorderColorNA(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetBorderColorNA(ObjectPtr->ObjPtr, value);
          }
       }
@@ -442,14 +447,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetBevelColorHL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetBevelColorHL(ObjectPtr->ObjPtr, value);
          }
       }
@@ -457,14 +462,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetBevelColorLL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetBevelColorLL(ObjectPtr->ObjPtr, value);
          }
       }
@@ -472,12 +477,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetFontType(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFontType(ObjectPtr->ObjPtr, value);
          }
       }
@@ -485,12 +490,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetFontSize(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFontSize(ObjectPtr->ObjPtr, value);
          }
       }
@@ -498,12 +503,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetFontCharset(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFontCharset(ObjectPtr->ObjPtr, value);
          }
       }
@@ -520,14 +525,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColor(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFontColor(ObjectPtr->ObjPtr, value);
          }
       }
@@ -535,14 +540,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColorHL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFontColorHL(ObjectPtr->ObjPtr, value);
          }
       }
@@ -550,14 +555,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColorNA(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFontColorNA(ObjectPtr->ObjPtr, value);
          }
       }
@@ -565,14 +570,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColorSEL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFontColorSEL(ObjectPtr->ObjPtr, value);
          }
       }
@@ -580,14 +585,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColorLink(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFontColorLink(ObjectPtr->ObjPtr, value);
          }
       }
@@ -595,14 +600,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetFontColorLinkHL(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetFontColorLinkHL(ObjectPtr->ObjPtr, value);
          }
       }
@@ -610,12 +615,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetJustify(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetJustify(ObjectPtr->ObjPtr, value);
          }
       }
@@ -623,12 +628,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetTextOffset(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetTextOffset(ObjectPtr->ObjPtr, value);
          }
       }
@@ -636,12 +641,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetAutoSizeWidth(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetAutoSizeWidth(ObjectPtr->ObjPtr, value);
          }
       }
@@ -649,12 +654,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetAutoSizeHeight(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetAutoSizeHeight(ObjectPtr->ObjPtr, value);
          }
       }
@@ -662,12 +667,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetReturnTab(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetReturnTab(ObjectPtr->ObjPtr, value);
          }
       }
@@ -675,12 +680,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetNumbersOnly(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetNumbersOnly(ObjectPtr->ObjPtr, value);
          }
       }
@@ -688,14 +693,14 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             Color outVal;
             InternalUnsafeMethods.GuiControlProfileGetCursorColor(ObjectPtr->ObjPtr, out outVal);
             return outVal;
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetCursorColor(ObjectPtr->ObjPtr, value);
          }
       }
@@ -703,12 +708,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.GuiControlProfileGetBitmap(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetBitmap(ObjectPtr->ObjPtr, value);
          }
       }
@@ -716,12 +721,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return new AudioAsset(InternalUnsafeMethods.GuiControlProfileGetSoundButtonDown(ObjectPtr->ObjPtr));
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetSoundButtonDown(ObjectPtr->ObjPtr, value.ObjectPtr->ObjPtr);
          }
       }
@@ -729,12 +734,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return new AudioAsset(InternalUnsafeMethods.GuiControlProfileGetSoundButtonOver(ObjectPtr->ObjPtr));
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetSoundButtonOver(ObjectPtr->ObjPtr, value.ObjectPtr->ObjPtr);
          }
       }
@@ -742,12 +747,12 @@ namespace Torque6_Bridge.GuiControlProfile
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return new GuiControlProfile(InternalUnsafeMethods.GuiControlProfileGetProfileForChildren(ObjectPtr->ObjPtr));
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.GuiControlProfileSetProfileForChildren(ObjectPtr->ObjPtr, value.ObjectPtr->ObjPtr);
          }
       }
@@ -759,5 +764,7 @@ namespace Torque6_Bridge.GuiControlProfile
       
       
       #endregion
+
+      
    }
 }

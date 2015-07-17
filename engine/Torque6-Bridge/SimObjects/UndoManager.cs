@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class UndoManager : SimObject
    {
+      
       public UndoManager()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.UndoManagerCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public UndoManager(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public UndoManager(string pName) : base(pName)
       {
       }
 
+      public UndoManager(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public UndoManager(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public UndoManager(SimObject pObj) : base(pObj)
       {
       }
       
@@ -78,12 +83,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.UndoManagerGetNumLevels(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.UndoManagerSetNumLevels(ObjectPtr->ObjPtr, value);
          }
       }
@@ -92,60 +97,62 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void GetRedoCount()
+      public int GetRedoCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.UndoManagerGetRedoCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.UndoManagerGetRedoCount(ObjectPtr->ObjPtr);
       }
 
       public void ClearAll()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.UndoManagerClearAll(ObjectPtr->ObjPtr);
       }
 
-      public void GetUndoCount()
+      public int GetUndoCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.UndoManagerGetUndoCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.UndoManagerGetUndoCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetUndoName(int index)
+      public string GetUndoName(int index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.UndoManagerGetUndoName(ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.UndoManagerGetUndoName(ObjectPtr->ObjPtr, index);
       }
 
-      public void GetRedoName(int index)
+      public string GetRedoName(int index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.UndoManagerGetRedoName(ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.UndoManagerGetRedoName(ObjectPtr->ObjPtr, index);
       }
 
       public void Undo()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.UndoManagerUndo(ObjectPtr->ObjPtr);
       }
 
       public void Redo()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.UndoManagerRedo(ObjectPtr->ObjPtr);
       }
 
-      public void GetNextUndoName()
+      public string GetNextUndoName()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.UndoManagerGetNextUndoName(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.UndoManagerGetNextUndoName(ObjectPtr->ObjPtr);
       }
 
-      public void GetNextRedoName()
+      public string GetNextRedoName()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.UndoManagerGetNextRedoName(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.UndoManagerGetNextRedoName(ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

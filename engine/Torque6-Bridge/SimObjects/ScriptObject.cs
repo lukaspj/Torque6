@@ -9,6 +9,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class ScriptObject : BehaviorComponent
    {
+      
       public ScriptObject()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.ScriptObjectCreateInstance());
@@ -18,15 +19,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public ScriptObject(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public ScriptObject(string pName) : base(pName)
       {
       }
 
+      public ScriptObject(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public ScriptObject(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public ScriptObject(SimObject pObj) : base(pObj)
       {
       }
       
@@ -51,5 +56,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

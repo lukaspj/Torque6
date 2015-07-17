@@ -4,28 +4,33 @@ using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
 using Torque6_Bridge.Types;
 
-namespace Torque6_Bridge.GuiConsoleTextCtrl
+namespace Torque6_Bridge.SimObjects.GuiControls
 {
-   public unsafe class SimObjects.GuiControls : GuiControl
+   public unsafe class GuiConsoleTextCtrl : GuiControl
    {
-      public SimObjects.GuiControls()
+      
+      public GuiConsoleTextCtrl()
       {
-         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimObjects.GuiControlsCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiConsoleTextCtrlCreateInstance());
       }
 
-      public SimObjects.GuiControls(uint pId) : base(pId)
-      {
-      }
-
-      public SimObjects.GuiControls(IntPtr pObjPtr) : base(pObjPtr)
+      public GuiConsoleTextCtrl(uint pId) : base(pId)
       {
       }
 
-      public SimObjects.GuiControls(string pName) : base(pName)
+      public GuiConsoleTextCtrl(string pName) : base(pName)
       {
       }
 
-      public SimObjects.GuiControls(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      public GuiConsoleTextCtrl(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiConsoleTextCtrl(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public GuiConsoleTextCtrl(SimObject pObj) : base(pObj)
       {
       }
       
@@ -33,14 +38,33 @@ namespace Torque6_Bridge.GuiConsoleTextCtrl
 
       new internal struct InternalUnsafeMethods
       {
-         
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string GuiConsoleTextCtrlGetExpression(IntPtr ctrl);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void GuiConsoleTextCtrlSetExpression(IntPtr ctrl, string expr);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern IntPtr GuiConsoleTextCtrlCreateInstance();
       }
       
       #endregion
 
       #region Properties
 
-      
+      public string Expression
+      {
+         get
+         {
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+            return InternalUnsafeMethods.GuiConsoleTextCtrlGetExpression(ObjectPtr->ObjPtr);
+         }
+         set
+         {
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+            InternalUnsafeMethods.GuiConsoleTextCtrlSetExpression(ObjectPtr->ObjPtr, value);
+         }
+      }
       
       #endregion
       
@@ -49,5 +73,7 @@ namespace Torque6_Bridge.GuiConsoleTextCtrl
       
       
       #endregion
+
+      
    }
 }

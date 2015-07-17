@@ -20,38 +20,19 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-#ifndef _GUICONSOLEEDITCTRL_H_
-#define _GUICONSOLEEDITCTRL_H_
+extern "C"{
+   DLL_PUBLIC GuiConsoleEditCtrl* GuiConsoleEditCtrlCreateInstance()
+   {
+      return new GuiConsoleEditCtrl();
+   }
 
-#ifndef _GUITYPES_H_
-#include "gui/guiTypes.h"
-#endif
-#ifndef _GUITEXTEDITCTRL_H_
-#include "gui/guiTextEditCtrl.h"
-#endif
-#ifndef _GUISCROLLCTRL_H_
-#include "gui/containers/guiScrollCtrl.h"
-#endif
+   DLL_PUBLIC bool GuiConsoleEditCtrlGetUseSiblingScroller(GuiConsoleEditCtrl* ctrl)
+   {
+      return ctrl->getUseSiblingScroller();
+   }
 
-class GuiConsoleEditCtrl : public GuiTextEditCtrl
-{
-private:
-   typedef GuiTextEditCtrl Parent;
-
-protected:
-   bool mUseSiblingScroller;
-   GuiScrollCtrl* mSiblingScroller;
-
-public:
-   GuiConsoleEditCtrl();
-   DECLARE_CONOBJECT(GuiConsoleEditCtrl);
-
-   static void initPersistFields();
-
-   bool getUseSiblingScroller() { return mUseSiblingScroller; }
-   void setUseSiblingScroller(bool use) { mUseSiblingScroller = use; }
-
-   bool onKeyDown(const GuiEvent &event);
-};
-
-#endif //_GUI_TEXTEDIT_CTRL_H
+   DLL_PUBLIC void GuiConsoleEditCtrlSetUseSiblingScroller(GuiConsoleEditCtrl* ctrl, bool use)
+   {
+      ctrl->setUseSiblingScroller(use);
+   }
+}

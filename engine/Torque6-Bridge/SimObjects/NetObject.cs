@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class NetObject : SimObject
    {
+      
       public NetObject()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.NetObjectCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public NetObject(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public NetObject(string pName) : base(pName)
       {
       }
 
+      public NetObject(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public NetObject(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public NetObject(SimObject pObj) : base(pObj)
       {
       }
       
@@ -61,28 +66,30 @@ namespace Torque6_Bridge.SimObjects
 
       public void ScopeToClient(NetConnection client)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.NetObjectScopeToClient(ObjectPtr->ObjPtr, client.ObjectPtr->ObjPtr);
       }
 
       public void ClearScopeToClient(NetConnection client)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.NetObjectClearScopeToClient(ObjectPtr->ObjPtr, client.ObjectPtr->ObjPtr);
       }
 
       public void SetScopeAlways()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.NetObjectSetScopeAlways(ObjectPtr->ObjPtr);
       }
 
-      public void GetGhostID()
+      public int GetGhostID()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.NetObjectGetGhostID(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.NetObjectGetGhostID(ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

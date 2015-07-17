@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class AudioSampleEnvironment : SimDataBlock
    {
+      
       public AudioSampleEnvironment()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.AudioSampleEnvironmentCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public AudioSampleEnvironment(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public AudioSampleEnvironment(string pName) : base(pName)
       {
       }
 
+      public AudioSampleEnvironment(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public AudioSampleEnvironment(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public AudioSampleEnvironment(SimObject pObj) : base(pObj)
       {
       }
       
@@ -117,12 +122,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetDirect(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetDirect(ObjectPtr->ObjPtr, value);
          }
       }
@@ -130,12 +135,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetDirectHF(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetDirectHF(ObjectPtr->ObjPtr, value);
          }
       }
@@ -143,12 +148,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetRoom(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetRoom(ObjectPtr->ObjPtr, value);
          }
       }
@@ -156,12 +161,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetObstruction(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetObstruction(ObjectPtr->ObjPtr, value);
          }
       }
@@ -169,12 +174,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetObstructionLFRatio(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetObstructionLFRatio(ObjectPtr->ObjPtr, value);
          }
       }
@@ -182,12 +187,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetOcclusion(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetOcclusion(ObjectPtr->ObjPtr, value);
          }
       }
@@ -195,12 +200,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetOcclusionLFRatio(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetOcclusionLFRatio(ObjectPtr->ObjPtr, value);
          }
       }
@@ -208,12 +213,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetOcclusionRoomRatio(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetOcclusionRoomRatio(ObjectPtr->ObjPtr, value);
          }
       }
@@ -221,12 +226,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetRoomRolloff(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetRoomRolloff(ObjectPtr->ObjPtr, value);
          }
       }
@@ -234,12 +239,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetAirAbsorption(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetAirAbsorption(ObjectPtr->ObjPtr, value);
          }
       }
@@ -247,12 +252,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetOutsideVolumeHF(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetOutsideVolumeHF(ObjectPtr->ObjPtr, value);
          }
       }
@@ -260,12 +265,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.AudioSampleEnvironmentGetFlags(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.AudioSampleEnvironmentSetFlags(ObjectPtr->ObjPtr, value);
          }
       }
@@ -277,5 +282,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

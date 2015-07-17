@@ -9,6 +9,7 @@ namespace Torque6_Bridge.SimObjects.Scene
 {
    public unsafe class SimComponent : SimObject
    {
+      
       public SimComponent()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimComponentCreateInstance());
@@ -18,15 +19,19 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
       }
 
-      public SimComponent(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public SimComponent(string pName) : base(pName)
       {
       }
 
+      public SimComponent(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public SimComponent(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public SimComponent(SimObject pObj) : base(pObj)
       {
       }
       
@@ -64,12 +69,12 @@ namespace Torque6_Bridge.SimObjects.Scene
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.SimComponentGetEnabled(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.SimComponentSetEnabled(ObjectPtr->ObjPtr, value);
          }
       }
@@ -78,30 +83,32 @@ namespace Torque6_Bridge.SimObjects.Scene
       
       #region Methods
 
-      public void AddComponents(int argc, SimObject[] argv)
+      public bool AddComponents(int argc, SimObject[] argv)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimComponentAddComponents(ObjectPtr->ObjPtr, argc, argv.Select(x => x.ObjectPtr->ObjPtr).ToArray());
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimComponentAddComponents(ObjectPtr->ObjPtr, argc, argv.Select(x => x.ObjectPtr->ObjPtr).ToArray());
       }
 
-      public void RemoveComponents(int argc, SimObject[] argv)
+      public bool RemoveComponents(int argc, SimObject[] argv)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimComponentRemoveComponents(ObjectPtr->ObjPtr, argc, argv.Select(x => x.ObjectPtr->ObjPtr).ToArray());
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimComponentRemoveComponents(ObjectPtr->ObjPtr, argc, argv.Select(x => x.ObjectPtr->ObjPtr).ToArray());
       }
 
-      public void GetComponentCount()
+      public int GetComponentCount()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimComponentGetComponentCount(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimComponentGetComponentCount(ObjectPtr->ObjPtr);
       }
 
-      public void GetComponent(int index)
+      public SimComponent GetComponent(int index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimComponentGetComponent(ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return new SimComponent(InternalUnsafeMethods.SimComponentGetComponent(ObjectPtr->ObjPtr, index));
       }
       
       #endregion
+
+      
    }
 }

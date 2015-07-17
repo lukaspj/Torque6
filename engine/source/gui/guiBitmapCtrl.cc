@@ -26,6 +26,8 @@
 
 #include "gui/guiBitmapCtrl.h"
 
+#include "gui/guiBitmapCtrl_Binding.h"
+
 IMPLEMENT_CONOBJECT(GuiBitmapCtrl);
 
 GuiBitmapCtrl::GuiBitmapCtrl(void)

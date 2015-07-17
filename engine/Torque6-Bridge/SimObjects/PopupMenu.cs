@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class PopupMenu : SimObject
    {
+      
       public PopupMenu()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.PopupMenuCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public PopupMenu(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public PopupMenu(string pName) : base(pName)
       {
       }
 
+      public PopupMenu(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public PopupMenu(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public PopupMenu(SimObject pObj) : base(pObj)
       {
       }
       
@@ -81,12 +86,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.PopupMenuGetIsPopup(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.PopupMenuSetIsPopup(ObjectPtr->ObjPtr, value);
          }
       }
@@ -95,66 +100,68 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void InsertItem(int pos, string title = null, string accelerator = "")
+      public int InsertItem(int pos, string title = null, string accelerator = "")
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.PopupMenuInsertItem(ObjectPtr->ObjPtr, pos, title, accelerator);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.PopupMenuInsertItem(ObjectPtr->ObjPtr, pos, title, accelerator);
       }
 
       public void RemoveItem(int pos)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.PopupMenuRemoveItem(ObjectPtr->ObjPtr, pos);
       }
 
-      public void InsertSubMenu(int pos, string title, PopupMenu submenu)
+      public int InsertSubMenu(int pos, string title, PopupMenu submenu)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.PopupMenuInsertSubMenu(ObjectPtr->ObjPtr, pos, title, submenu.ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.PopupMenuInsertSubMenu(ObjectPtr->ObjPtr, pos, title, submenu.ObjectPtr->ObjPtr);
       }
 
       public void EnableItem(int pos, bool enable)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.PopupMenuEnableItem(ObjectPtr->ObjPtr, pos, enable);
       }
 
       public void CheckItem(int pos, bool checkedValue)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.PopupMenuCheckItem(ObjectPtr->ObjPtr, pos, checkedValue);
       }
 
       public void CheckRadioItem(int firstPos, int lastPos, int checkPos)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.PopupMenuCheckRadioItem(ObjectPtr->ObjPtr, firstPos, lastPos, checkPos);
       }
 
-      public void IsItemChecked(int pos)
+      public bool IsItemChecked(int pos)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.PopupMenuIsItemChecked(ObjectPtr->ObjPtr, pos);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.PopupMenuIsItemChecked(ObjectPtr->ObjPtr, pos);
       }
 
       public void AttachToMenuBar(int pos, string title)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.PopupMenuAttachToMenuBar(ObjectPtr->ObjPtr, pos, title);
       }
 
       public void RemoveFromMenuBar()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.PopupMenuRemoveFromMenuBar(ObjectPtr->ObjPtr);
       }
 
       public void ShowPopup(int x = -1, int y = -1)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.PopupMenuShowPopup(ObjectPtr->ObjPtr, x, y);
       }
       
       #endregion
+
+      
    }
 }

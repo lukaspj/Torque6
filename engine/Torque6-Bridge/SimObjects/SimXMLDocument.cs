@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class SimXMLDocument : SimObject
    {
+      
       public SimXMLDocument()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.SimXMLDocumentCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public SimXMLDocument(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public SimXMLDocument(string pName) : base(pName)
       {
       }
 
+      public SimXMLDocument(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public SimXMLDocument(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public SimXMLDocument(SimObject pObj) : base(pObj)
       {
       }
       
@@ -145,196 +150,198 @@ namespace Torque6_Bridge.SimObjects
 
       public void Reset()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentReset(ObjectPtr->ObjPtr);
       }
 
-      public void LoadFile(string fileName)
+      public bool LoadFile(string fileName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentLoadFile(ObjectPtr->ObjPtr, fileName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentLoadFile(ObjectPtr->ObjPtr, fileName);
       }
 
-      public void SaveFile(string fileName)
+      public bool SaveFile(string fileName)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentSaveFile(ObjectPtr->ObjPtr, fileName);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentSaveFile(ObjectPtr->ObjPtr, fileName);
       }
 
-      public void Parse(string textXML)
+      public bool Parse(string textXML)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentParse(ObjectPtr->ObjPtr, textXML);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentParse(ObjectPtr->ObjPtr, textXML);
       }
 
       public void Clear()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentClear(ObjectPtr->ObjPtr);
       }
 
-      public void GetErrorDesc()
+      public string GetErrorDesc()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentGetErrorDesc(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentGetErrorDesc(ObjectPtr->ObjPtr);
       }
 
       public void ClearError()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentClearError(ObjectPtr->ObjPtr);
       }
 
-      public void PushFirstChildElement(string name)
+      public bool PushFirstChildElement(string name)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentPushFirstChildElement(ObjectPtr->ObjPtr, name);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentPushFirstChildElement(ObjectPtr->ObjPtr, name);
       }
 
-      public void PushChildElement(int index)
+      public bool PushChildElement(int index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentPushChildElement(ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentPushChildElement(ObjectPtr->ObjPtr, index);
       }
 
-      public void NextSiblingElement(string name)
+      public bool NextSiblingElement(string name)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentNextSiblingElement(ObjectPtr->ObjPtr, name);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentNextSiblingElement(ObjectPtr->ObjPtr, name);
       }
 
-      public void ElementValue()
+      public string ElementValue()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentElementValue(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentElementValue(ObjectPtr->ObjPtr);
       }
 
       public void PopElement()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentPopElement(ObjectPtr->ObjPtr);
       }
 
-      public void Attribute(string attribute)
+      public string Attribute(string attribute)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentAttribute(ObjectPtr->ObjPtr, attribute);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentAttribute(ObjectPtr->ObjPtr, attribute);
       }
 
-      public void AttributeF32(string attribute)
+      public float AttributeF32(string attribute)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentAttributeF32(ObjectPtr->ObjPtr, attribute);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentAttributeF32(ObjectPtr->ObjPtr, attribute);
       }
 
-      public void AttributeS32(string attribute)
+      public int AttributeS32(string attribute)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentAttributeS32(ObjectPtr->ObjPtr, attribute);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentAttributeS32(ObjectPtr->ObjPtr, attribute);
       }
 
-      public void AttributeExists(string attribute)
+      public bool AttributeExists(string attribute)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentAttributeExists(ObjectPtr->ObjPtr, attribute);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentAttributeExists(ObjectPtr->ObjPtr, attribute);
       }
 
-      public void FirstAttribute()
+      public string FirstAttribute()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentFirstAttribute(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentFirstAttribute(ObjectPtr->ObjPtr);
       }
 
-      public void LastAttribute()
+      public string LastAttribute()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentLastAttribute(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentLastAttribute(ObjectPtr->ObjPtr);
       }
 
-      public void NextAttribute()
+      public string NextAttribute()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentNextAttribute(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentNextAttribute(ObjectPtr->ObjPtr);
       }
 
-      public void PrevAttribute()
+      public string PrevAttribute()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentPrevAttribute(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentPrevAttribute(ObjectPtr->ObjPtr);
       }
 
       public void SetAttribute(string attribute, string attributeValue)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentSetAttribute(ObjectPtr->ObjPtr, attribute, attributeValue);
       }
 
       public void SetObjectAttributes(string attributeValue)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentSetObjectAttributes(ObjectPtr->ObjPtr, attributeValue);
       }
 
       public void PushNewElement(string name)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentPushNewElement(ObjectPtr->ObjPtr, name);
       }
 
       public void AddNewElement(string name)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentAddNewElement(ObjectPtr->ObjPtr, name);
       }
 
       public void AddHeader()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentAddHeader(ObjectPtr->ObjPtr);
       }
 
       public void AddComment(string comment)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentAddComment(ObjectPtr->ObjPtr, comment);
       }
 
-      public void ReadComment(int index)
+      public string ReadComment(int index)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentReadComment(ObjectPtr->ObjPtr, index);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentReadComment(ObjectPtr->ObjPtr, index);
       }
 
       public void AddText(string text)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentAddText(ObjectPtr->ObjPtr, text);
       }
 
-      public void GetText()
+      public string GetText()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentGetText(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentGetText(ObjectPtr->ObjPtr);
       }
 
       public void RemoveText()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentRemoveText(ObjectPtr->ObjPtr);
       }
 
       public void AddData(string text)
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.SimXMLDocumentAddData(ObjectPtr->ObjPtr, text);
       }
 
-      public void GetData()
+      public string GetData()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.SimXMLDocumentGetData(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.SimXMLDocumentGetData(ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

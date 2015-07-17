@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class UndoScriptAction : UndoAction
    {
+      
       public UndoScriptAction()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.UndoScriptActionCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public UndoScriptAction(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public UndoScriptAction(string pName) : base(pName)
       {
       }
 
+      public UndoScriptAction(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public UndoScriptAction(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public UndoScriptAction(SimObject pObj) : base(pObj)
       {
       }
       
@@ -50,5 +55,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

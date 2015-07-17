@@ -20,38 +20,51 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-#ifndef _GUICONSOLEEDITCTRL_H_
-#define _GUICONSOLEEDITCTRL_H_
+#include "c-interface/c-interface.h"
 
-#ifndef _GUITYPES_H_
-#include "gui/guiTypes.h"
-#endif
-#ifndef _GUITEXTEDITCTRL_H_
-#include "gui/guiTextEditCtrl.h"
-#endif
-#ifndef _GUISCROLLCTRL_H_
-#include "gui/containers/guiScrollCtrl.h"
-#endif
+extern "C"{
+   DLL_PUBLIC GuiBitmapCtrl* GuiBitmapCtrlCreateInstance()
+   {
+      return new GuiBitmapCtrl();
+   }
 
-class GuiConsoleEditCtrl : public GuiTextEditCtrl
-{
-private:
-   typedef GuiTextEditCtrl Parent;
+   DLL_PUBLIC const char* GuiBitmapCtrlGetBitmap(GuiBitmapCtrl* ctrl)
+   {
+      return CInterface::GetMarshallableString(ctrl->getBitmap());
+   }
 
-protected:
-   bool mUseSiblingScroller;
-   GuiScrollCtrl* mSiblingScroller;
+   DLL_PUBLIC void GuiBitmapCtrlSetBitmap(GuiBitmapCtrl* ctrl, const char* bitmapFile)
+   {
+      ctrl->setBitmap(bitmapFile);
+   }
 
-public:
-   GuiConsoleEditCtrl();
-   DECLARE_CONOBJECT(GuiConsoleEditCtrl);
+   DLL_PUBLIC bool GuiBitmapCtrlGetWrap(GuiBitmapCtrl* ctrl)
+   {
+      return ctrl->getWrap();
+   }
 
-   static void initPersistFields();
+   DLL_PUBLIC void GuiBitmapCtrlSetWrap(GuiBitmapCtrl* ctrl, bool wrap)
+   {
+      ctrl->setWrap(wrap);
+   }
 
-   bool getUseSiblingScroller() { return mUseSiblingScroller; }
-   void setUseSiblingScroller(bool use) { mUseSiblingScroller = use; }
+   DLL_PUBLIC bool GuiBitmapCtrlGetUseSourceRect(GuiBitmapCtrl* ctrl)
+   {
+      return ctrl->getUseSourceRect();
+   }
 
-   bool onKeyDown(const GuiEvent &event);
-};
+   DLL_PUBLIC void GuiBitmapCtrlSetUseSourceRect(GuiBitmapCtrl* ctrl, bool use)
+   {
+      ctrl->setUseSourceRect(use);
+   }
 
-#endif //_GUI_TEXTEDIT_CTRL_H
+   DLL_PUBLIC void GuiBitmapCtrlGetSourceRect(GuiBitmapCtrl* ctrl, CInterface::RectIParam* outRect)
+   {
+      *outRect = ctrl->getSourceRect();
+   }
+
+   DLL_PUBLIC void GuiBitmapCtrlSetSourceRect(GuiBitmapCtrl* ctrl, CInterface::RectIParam rect)
+   {
+      ctrl->setSourceRect(rect.point.x, rect.point.y, rect.extent.x, rect.extent.y);
+   }
+}

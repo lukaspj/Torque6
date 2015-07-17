@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class DInputManager : InputManager
    {
+      
       public DInputManager()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.DInputManagerCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public DInputManager(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public DInputManager(string pName) : base(pName)
       {
       }
 
+      public DInputManager(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public DInputManager(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public DInputManager(SimObject pObj) : base(pObj)
       {
       }
       
@@ -50,5 +55,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }

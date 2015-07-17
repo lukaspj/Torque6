@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class Message : SimObject
    {
+      
       public Message()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.MessageCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public Message(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public Message(string pName) : base(pName)
       {
       }
 
+      public Message(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public Message(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public Message(SimObject pObj) : base(pObj)
       {
       }
       
@@ -56,24 +61,26 @@ namespace Torque6_Bridge.SimObjects
       
       #region Methods
 
-      public void GetType()
+      public string GetType()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
-         InternalUnsafeMethods.MessageGetType(ObjectPtr->ObjPtr);
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.MessageGetType(ObjectPtr->ObjPtr);
       }
 
       public void AddReference()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.MessageAddReference(ObjectPtr->ObjPtr);
       }
 
       public void FreeReference()
       {
-         if (IsDead()) throw new SimObjectPointerInvalidException();
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
          InternalUnsafeMethods.MessageFreeReference(ObjectPtr->ObjPtr);
       }
       
       #endregion
+
+      
    }
 }

@@ -8,6 +8,7 @@ namespace Torque6_Bridge.SimObjects
 {
    public unsafe class OpenFolderDialog : OpenFileDialog
    {
+      
       public OpenFolderDialog()
       {
          ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.OpenFolderDialogCreateInstance());
@@ -17,15 +18,19 @@ namespace Torque6_Bridge.SimObjects
       {
       }
 
-      public OpenFolderDialog(IntPtr pObjPtr) : base(pObjPtr)
-      {
-      }
-
       public OpenFolderDialog(string pName) : base(pName)
       {
       }
 
+      public OpenFolderDialog(IntPtr pObjPtr) : base(pObjPtr)
+      {
+      }
+
       public OpenFolderDialog(Sim.SimObjectPtr* pObjPtr) : base(pObjPtr)
+      {
+      }
+
+      public OpenFolderDialog(SimObject pObj) : base(pObj)
       {
       }
       
@@ -51,12 +56,12 @@ namespace Torque6_Bridge.SimObjects
       {
          get
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             return InternalUnsafeMethods.OpenFolderDialogGetFileMustExist(ObjectPtr->ObjPtr);
          }
          set
          {
-            if (IsDead()) throw new SimObjectPointerInvalidException();
+            if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
             InternalUnsafeMethods.OpenFolderDialogSetFileMustExist(ObjectPtr->ObjPtr, value);
          }
       }
@@ -68,5 +73,7 @@ namespace Torque6_Bridge.SimObjects
       
       
       #endregion
+
+      
    }
 }
