@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
@@ -27,22 +27,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -442,7 +442,39 @@
     <ClInclude Include="..\..\engine\source\gui\guiBitmapCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiBubbleTextCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiCanvas.h" />
+    <ClInclude Include="..\source\gui\buttons\guiBitmapButtonCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\buttons\guiButtonBaseCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\buttons\guiButtonCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\buttons\guiCheckBoxCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\buttons\guiIconButtonCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\buttons\guiRadioCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\buttons\guiToolboxButtonCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiAutoScrollCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiCtrlArrayCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiDragAndDropCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiDynamicCtrlArrayCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiFormCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiFrameCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiGridCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiPaneCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiRolloutCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiScrollCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiStackCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiTabBookCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\containers\guiWindowCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\editor\guiDebugger_Binding.h" />
+    <ClInclude Include="..\source\gui\editor\guiEditCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\editor\guiFilterCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\editor\guiGraphCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\editor\guiImageList_Binding.h" />
+    <ClInclude Include="..\source\gui\editor\guiInspectorTypes_Binding.h" />
+    <ClInclude Include="..\source\gui\editor\guiInspector_Binding.h" />
+    <ClInclude Include="..\source\gui\editor\guiMenuBar_Binding.h" />
+    <ClInclude Include="..\source\gui\editor\guiSeparatorCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiArrayCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiBackgroundCtrl_Binding.h" />
     <ClInclude Include="..\source\gui\guiBitmapCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiBubbleTextCtrl_Binding.h" />
     <ClInclude Include="..\source\gui\guiCanvas_Binding.h" />
     <ClInclude Include="..\..\engine\source\gui\guiColorPicker.h" />
     <ClInclude Include="..\..\engine\source\gui\guiConsole.h" />
@@ -452,6 +484,7 @@
     <ClInclude Include="..\source\gui\guiColorPicker_Binding.h" />
     <ClInclude Include="..\source\gui\guiConsoleEditCtrl_Binding.h" />
     <ClInclude Include="..\source\gui\guiConsoleTextCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiConsole_Binding.h" />
     <ClInclude Include="..\source\gui\guiControl_Binding.h" />
     <ClInclude Include="..\..\engine\source\gui\guiCurveCtrl.h" />
     <ClInclude Include="..\..\engine\source\gui\guiDefaultControlRender.h" />
@@ -509,6 +542,25 @@
     <ClInclude Include="..\source\assets\declaredAssets_Binding.h" />
     <ClInclude Include="..\source\assets\referencedAssets_Binding.h" />
     <ClInclude Include="..\source\audio\AudioAsset_Binding.h" />
+    <ClInclude Include="..\source\gui\guiCurveCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiInputCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiListBoxCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiMessageVectorCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiMLTextCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiMLTextEditCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiMouseEventCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiPopUpCtrlEx_Binding.h" />
+    <ClInclude Include="..\source\gui\guiPopUpCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiProgressCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiScriptNotifyControl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiSliderCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiTabPageCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiTextCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiTextEditCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiTextEditSliderCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiTextListCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiTickCtrl_Binding.h" />
+    <ClInclude Include="..\source\gui\guiTreeViewCtrl_Binding.h" />
     <ClInclude Include="..\source\gui\guiTypes_Binding.h" />
     <ClInclude Include="..\source\gui\language\lang_Binding.h" />
     <ClInclude Include="..\source\gui\messageVector_Binding.h" />

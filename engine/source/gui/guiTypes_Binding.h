@@ -360,22 +360,22 @@ extern "C" {
 
    DLL_PUBLIC AudioAsset* GuiControlProfileGetSoundButtonDown(GuiControlProfile* controlProfile)
    {
-      return (AudioAsset*)controlProfile->mSoundButtonDown;
+      return controlProfile->mSoundButtonDown;
    }
 
    DLL_PUBLIC void GuiControlProfileSetSoundButtonDown(GuiControlProfile* controlProfile, AudioAsset* value)
    {
-      controlProfile->mSoundButtonDown = AssetPtr<AudioAsset>(value->getAssetId());
+      controlProfile->mSoundButtonDown = value->getAssetId();
    }
 
    DLL_PUBLIC AudioAsset* GuiControlProfileGetSoundButtonOver(GuiControlProfile* controlProfile)
    {
-      return (AudioAsset*)controlProfile->mSoundButtonOver;
+      return controlProfile->mSoundButtonOver;
    }
 
    DLL_PUBLIC void GuiControlProfileSetSoundButtonOver(GuiControlProfile* controlProfile, AudioAsset* value)
    {
-      controlProfile->mSoundButtonOver = AssetPtr<AudioAsset>(value->getAssetId());
+      controlProfile->mSoundButtonOver = value->getAssetId();
    }
 
    DLL_PUBLIC GuiControlProfile* GuiControlProfileGetProfileForChildren(GuiControlProfile* controlProfile)

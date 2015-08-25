@@ -552,7 +552,7 @@ extern "C"{
       canvas->setCursorON(false);
    }
 
-   DLL_PUBLIC void GuiCanvasSetCursor(GuiCanvas* canvas, GuiCursor *cursor)
+   DLL_PUBLIC void GuiCanvasSetCursor(GuiCanvas* canvas, GuiCursor* cursor)
    {
       canvas->setCursor(cursor);
    }
@@ -598,7 +598,7 @@ extern "C"{
       canvas->resetUpdateRegions();
    }
 
-   DLL_PUBLIC void GuiCanvasGetCursorPos(GuiCanvas* canvas, CInterface::Point2IParam *outPos)
+   DLL_PUBLIC void GuiCanvasGetCursorPos(GuiCanvas* canvas, CInterface::Point2IParam* outPos)
    {
       *outPos = canvas->getCursorPos();
    }
@@ -618,7 +618,7 @@ extern "C"{
       canvas->setBackgroundColor(color);
    }
 
-   DLL_PUBLIC void GuiCanvasGetBackgroundColor(GuiCanvas* canvas, CInterface::ColorParam *outColor)
+   DLL_PUBLIC void GuiCanvasGetBackgroundColor(GuiCanvas* canvas, CInterface::ColorParam* outColor)
    {
       *outColor = canvas->getBackgroundColor();
    }

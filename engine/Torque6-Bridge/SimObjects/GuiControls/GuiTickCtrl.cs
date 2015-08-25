@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
@@ -38,7 +39,11 @@ namespace Torque6_Bridge.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern IntPtr GuiTickCtrlCreateInstance();
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void GuiTickCtrlSetProcessTicks(IntPtr ctrl, bool tick);
       }
       
       #endregion
@@ -51,7 +56,11 @@ namespace Torque6_Bridge.SimObjects.GuiControls
       
       #region Methods
 
-      
+      public void SetProcessTicks(bool tick)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.GuiTickCtrlSetProcessTicks(ObjectPtr->ObjPtr, tick);
+      }
       
       #endregion
 

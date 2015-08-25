@@ -102,6 +102,9 @@ namespace Torque6_Bridge.Namespaces
          internal static extern void Engine_ScreenShot(string file, string format);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern string Engine_StripMLControlChars(string sourceString);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_InitLeapMotionManager();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
@@ -708,6 +711,11 @@ namespace Torque6_Bridge.Namespaces
       public static void ScreenShot(string file, string format)
       {
          InternalUnsafeMethods.Engine_ScreenShot(file, format);
+      }
+
+      public static string StripMLControlChars(string sourceString)
+      {
+         return InternalUnsafeMethods.Engine_StripMLControlChars(sourceString);
       }
 
       public static void InitLeapMotionManager()

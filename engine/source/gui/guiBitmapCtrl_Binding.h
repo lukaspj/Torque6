@@ -22,6 +22,35 @@
 
 #include "c-interface/c-interface.h"
 
+ConsoleMethod(GuiBitmapCtrl, setValue, void, 4, 4, "(int xAxis, int yAxis)"
+   "Set the offset of the bitmap.\n"
+   "@return No return value."
+   )
+{
+   object->setValue(dAtoi(argv[2]), dAtoi(argv[3]));
+}
+
+ConsoleMethod(GuiBitmapCtrl, setBitmap, void, 3, 3, "( pathName ) Use the setBitmap method to change the bitmap this control uses.\n"
+   "@param pathName A path to a new texture for this control. Limited to 256x256.\n"
+   "@return No return value")
+{
+   object->setBitmap(argv[2]);
+}
+
+ConsoleMethod(GuiBitmapCtrl, getTextureWidth, S32, 2, 2, "Gets the Width of the Texture.\n"
+   "@return Texture Width"
+   )
+{
+   return object->getWidth();
+}
+
+ConsoleMethod(GuiBitmapCtrl, getTextureHeight, S32, 2, 2, "Gets the Height of the Texture.\n"
+   "@return Texture Height"
+   )
+{
+   return object->getHeight();
+}
+
 extern "C"{
    DLL_PUBLIC GuiBitmapCtrl* GuiBitmapCtrlCreateInstance()
    {
@@ -66,5 +95,20 @@ extern "C"{
    DLL_PUBLIC void GuiBitmapCtrlSetSourceRect(GuiBitmapCtrl* ctrl, CInterface::RectIParam rect)
    {
       ctrl->setSourceRect(rect.point.x, rect.point.y, rect.extent.x, rect.extent.y);
+   }
+
+   DLL_PUBLIC void GuiBitmapCtrlSetValue(GuiBitmapCtrl* ctrl, S32 x, S32 y)
+   {
+      ctrl->setValue(x, y);
+   }
+
+   DLL_PUBLIC S32 GuiBitmapCtrlGetTextureWidth(GuiBitmapCtrl* ctrl)
+   {
+      return ctrl->getWidth();
+   }
+
+   DLL_PUBLIC S32 GuiBitmapCtrlGetTextureHeight(GuiBitmapCtrl* ctrl)
+   {
+      return ctrl->getHeight();
    }
 }

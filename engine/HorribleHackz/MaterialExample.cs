@@ -35,7 +35,7 @@ namespace HorribleHackz
             mesh.SetUniformVec4("sphereRoughVal", new Point4F(rough, 0, 0, 0));
 
             metal += 0.25f;
-            if (metal > 1.0)
+            if (metal > 1.0f)
             {
                metal = 0.0f;
                rough += 0.25f;

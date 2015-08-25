@@ -1944,6 +1944,162 @@
     <ClInclude Include="..\source\gui\guiConsoleTextCtrl_Binding.h">
       <Filter>engine\source\gui</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\gui\guiCurveCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiListBoxCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiMessageVectorCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiMLTextCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiMLTextEditCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiMouseEventCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiScriptNotifyControl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiSliderCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiTextCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiTextEditCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiTextEditSliderCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiTextListCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiTreeViewCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\buttons\guiBitmapButtonCtrl_Binding.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\buttons\guiButtonBaseCtrl_Binding.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\buttons\guiCheckBoxCtrl_Binding.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\buttons\guiIconButtonCtrl_Binding.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\buttons\guiToolboxButtonCtrl_Binding.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiAutoScrollCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiCtrlArrayCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiDragAndDropCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiDynamicCtrlArrayCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiFormCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiFrameCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiGridCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiPaneCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiRolloutCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiScrollCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiStackCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiTabBookCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\containers\guiWindowCtrl_Binding.h">
+      <Filter>engine\source\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\editor\guiFilterCtrl_Binding.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\editor\guiMenuBar_Binding.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\editor\guiSeparatorCtrl_Binding.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiTickCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiTabPageCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\buttons\guiRadioCtrl_Binding.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiProgressCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiPopUpCtrlEx_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiPopUpCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\editor\guiInspectorTypes_Binding.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\editor\guiInspector_Binding.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiInputCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\editor\guiImageList_Binding.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\editor\guiGraphCtrl_Binding.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\editor\guiEditCtrl_Binding.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiConsole_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\buttons\guiButtonCtrl_Binding.h">
+      <Filter>engine\source\gui\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiBubbleTextCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiBackgroundCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\guiArrayCtrl_Binding.h">
+      <Filter>engine\source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\editor\guiDebugger_Binding.h">
+      <Filter>engine\source\gui\editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\engine\source\2d\assets\ImageAsset.cc">

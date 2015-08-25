@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
@@ -76,6 +77,18 @@ namespace Torque6_Bridge.SimObjects.GuiControls
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr GuiColorPickerCtrlCreateInstance();
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void GuiColorPickerCtrlGetSelectorPos(IntPtr ctrl, Point2I outPos);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void GuiColorPickerCtrlGetSelectorPosForColor(IntPtr ctrl, Color col, Point2I outPos);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void GuiColorPickerCtrlSetSelectorPos(IntPtr ctrl, Point2I pos);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void GuiColorPickerCtrlUpdateColor(IntPtr ctrl);
       }
       
       #endregion
@@ -169,7 +182,29 @@ namespace Torque6_Bridge.SimObjects.GuiControls
       
       #region Methods
 
-      
+      public void GetSelectorPos(Point2I outPos)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.GuiColorPickerCtrlGetSelectorPos(ObjectPtr->ObjPtr, outPos);
+      }
+
+      public void GetSelectorPosForColor(Color col, Point2I outPos)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.GuiColorPickerCtrlGetSelectorPosForColor(ObjectPtr->ObjPtr, col, outPos);
+      }
+
+      public void SetSelectorPos(Point2I pos)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.GuiColorPickerCtrlSetSelectorPos(ObjectPtr->ObjPtr, pos);
+      }
+
+      public void UpdateColor()
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.GuiColorPickerCtrlUpdateColor(ObjectPtr->ObjPtr);
+      }
       
       #endregion
 

@@ -1859,13 +1859,13 @@ int bgfx::compileShader(uint64_t _flags,
    char buf[1024];
    buf[0] = '\0';
    std::setbuf(stderr, buf);
-
+   
    bx::CommandLine cmdLine(argc, argv);
    preprocessAndCompile(cmdLine);
-
+   
    fflush(stderr);
    strcpy(_outputText, buf);
-
+   
    return 0;
 }
 

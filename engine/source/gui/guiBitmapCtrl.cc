@@ -70,35 +70,6 @@ void GuiBitmapCtrl::initPersistFields()
    endGroup("Misc");	
 }
 
-ConsoleMethod( GuiBitmapCtrl, setValue, void, 4, 4, "(int xAxis, int yAxis)"
-              "Set the offset of the bitmap.\n"
-              "@return No return value."
-              )
-{
-   object->setValue(dAtoi(argv[2]), dAtoi(argv[3]));
-}
-
-ConsoleMethod( GuiBitmapCtrl, setBitmap, void, 3, 3, "( pathName ) Use the setBitmap method to change the bitmap this control uses.\n"
-                                                                "@param pathName A path to a new texture for this control. Limited to 256x256.\n"
-                                                                "@return No return value")
-{
-   object->setBitmap(argv[2]);
-}
-
-ConsoleMethod(GuiBitmapCtrl, getTextureWidth, S32, 2, 2, "Gets the Width of the Texture.\n"
-              "@return Texture Width"
-              )
-{
-   return object->getWidth();
-}
-
-ConsoleMethod(GuiBitmapCtrl, getTextureHeight, S32, 2, 2, "Gets the Height of the Texture.\n"
-              "@return Texture Height"
-              )
-{
-   return object->getHeight();
-}
-
 bool GuiBitmapCtrl::onWake()
 {
    if (! Parent::onWake())

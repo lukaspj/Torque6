@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
@@ -37,12 +38,7 @@ namespace Torque6_Bridge.SimObjects
       {
          ObjectPtr = pObj.ObjectPtr;
       }
-
-      public T As<T>() where T : new()
-      {
-         return (T)Activator.CreateInstance(typeof (T), this);
-      }
-
+      
       #region UnsafeNativeMethods
 
       new internal struct InternalUnsafeMethods
@@ -438,6 +434,11 @@ namespace Torque6_Bridge.SimObjects
 
       #region SimObject specifics
 
+      public T As<T>() where T : new()
+      {
+         return (T)Activator.CreateInstance(typeof (T), this);
+      }
+
       public Sim.SimObjectPtr* ObjectPtr { get; protected set; }
 
       public bool IsDead()
@@ -455,10 +456,10 @@ namespace Torque6_Bridge.SimObjects
 
       protected virtual void Dispose(bool pDisposing)
       {
-         if (ObjectPtr->ObjPtr != IntPtr.Zero)
-         {
-            Marshal.FreeHGlobal((IntPtr) ObjectPtr);
-         }
+         //if (ObjectPtr->ObjPtr != IntPtr.Zero)
+         //{
+            //Marshal.FreeHGlobal((IntPtr) ObjectPtr);
+         //}
       }
 
       ~SimObject()

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Torque6_Bridge.Namespaces;
 using Torque6_Bridge.Utility;
@@ -64,6 +65,15 @@ namespace Torque6_Bridge.SimObjects.GuiControls
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr GuiBitmapCtrlCreateInstance();
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern void GuiBitmapCtrlSetValue(IntPtr ctrl, int x, int y);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern int GuiBitmapCtrlGetTextureWidth(IntPtr ctrl);
+
+         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
+         internal static extern int GuiBitmapCtrlGetTextureHeight(IntPtr ctrl);
       }
       
       #endregion
@@ -129,7 +139,23 @@ namespace Torque6_Bridge.SimObjects.GuiControls
       
       #region Methods
 
-      
+      public void SetValue(int x, int y)
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         InternalUnsafeMethods.GuiBitmapCtrlSetValue(ObjectPtr->ObjPtr, x, y);
+      }
+
+      public int GetTextureWidth()
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.GuiBitmapCtrlGetTextureWidth(ObjectPtr->ObjPtr);
+      }
+
+      public int GetTextureHeight()
+      {
+         if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
+         return InternalUnsafeMethods.GuiBitmapCtrlGetTextureHeight(ObjectPtr->ObjPtr);
+      }
       
       #endregion
 

@@ -386,7 +386,7 @@ extern "C"{
       return ctrl->isAwake();
    }
 
-   DLL_PUBLIC void GuiControlSetProfile(GuiControl* ctrl, GuiControlProfile *profile)
+   DLL_PUBLIC void GuiControlSetProfile(GuiControl* ctrl, GuiControlProfile* profile)
    {
       if (profile)
          ctrl->setControlProfile(profile);
@@ -397,12 +397,12 @@ extern "C"{
       ctrl->resize(newPos, newExt);
    }
 
-   DLL_PUBLIC void GuiControlGetPosition(GuiControl* ctrl, CInterface::Point2IParam *outPos)
+   DLL_PUBLIC void GuiControlGetPosition(GuiControl* ctrl, CInterface::Point2IParam* outPos)
    {
       *outPos = ctrl->getPosition();
    }
 
-   DLL_PUBLIC void GuiControlGetCenter(GuiControl* ctrl, CInterface::Point2IParam *outPos)
+   DLL_PUBLIC void GuiControlGetCenter(GuiControl* ctrl, CInterface::Point2IParam* outPos)
    {
       const Point2I pos = ctrl->getPosition();
       const Point2I ext = ctrl->getExtent();
@@ -416,7 +416,7 @@ extern "C"{
       ctrl->setPosition(newpos);
    }
 
-   DLL_PUBLIC void GuiControlGetGlobalCenter(GuiControl* ctrl, CInterface::Point2IParam *outPos)
+   DLL_PUBLIC void GuiControlGetGlobalCenter(GuiControl* ctrl, CInterface::Point2IParam* outPos)
    {
       const Point2I tl(0, 0);
       Point2I pos = ctrl->localToGlobalCoord(tl);
@@ -424,7 +424,7 @@ extern "C"{
       *outPos = Point2I(pos.x + ext.x / 2, pos.y + ext.y / 2);
    }
 
-   DLL_PUBLIC void GuiControlGetGlobalPosition(GuiControl* ctrl, CInterface::Point2IParam *outPos)
+   DLL_PUBLIC void GuiControlGetGlobalPosition(GuiControl* ctrl, CInterface::Point2IParam* outPos)
    {
       const Point2I pos(0, 0);
       *outPos = ctrl->localToGlobalCoord(pos);
