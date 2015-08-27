@@ -1,0 +1,6 @@
+E:\GitHub\Torque6\engine\Torque6Scripts\obj\Debug\Torque6Scripts.csprojResolveAssemblyReference.cache
+E:\GitHub\Torque6\bin\windows\Torque6Scripts.exe.config
+E:\GitHub\Torque6\bin\windows\Torque6Scripts.exe
+E:\GitHub\Torque6\bin\windows\Torque6Scripts.pdb
+E:\GitHub\Torque6\engine\Torque6Scripts\obj\Debug\Torque6Scripts.exe
+E:\GitHub\Torque6\engine\Torque6Scripts\obj\Debug\Torque6Scripts.pdb
